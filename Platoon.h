@@ -1,24 +1,31 @@
 #ifndef PLATOON_H
 #define PLATOON_H
 
-namespace Main {
-	class Platoon : Main::Unit {
+#include <vector>
+#include "BobTheBuilder.h"
+#include "Unit.h"
+#include "Weapon.h"
+#include "Platoon.h"
 
-	private:
-		Main::BobTheBuilder* bob;
-		vector<Main::Unit*> humans;
-		vector<Main::Unit*> vehicles;
-		vector<Main::Weapon*> weapons;
+using namespace std;
 
-	public:
-		void construct();
+class Platoon : public Unit
+{
 
-		void changeStrategy();
+private:
+	BobTheBuilder *bob;
+	vector<Unit *> humans;
+	vector<Unit *> vehicles;
+	vector<Weapon *> weapons;
 
-		Main::Platoon* splitPlatoon();
+public:
+	void construct();
 
-		void joinPlatoon(Main::Platoon* platoon);
-	};
-}
+	void changeStrategy();
+
+	Platoon *splitPlatoon();
+
+	void joinPlatoon(Platoon *platoon);
+};
 
 #endif

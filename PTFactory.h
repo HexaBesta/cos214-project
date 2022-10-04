@@ -1,9 +1,12 @@
 #ifndef PTFACTORY_H
 #define PTFACTORY_H
 
-namespace Main {
-	class PTFactory : Main::TransportFactory {
-	};
-}
+#include "TransportFactory.h"
+
+using namespace std;
+
+class PTFactory : public TransportFactory
+{
+};
 
 #endif

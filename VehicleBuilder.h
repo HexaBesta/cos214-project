@@ -1,9 +1,12 @@
 #ifndef VEHICLEBUILDER_H
 #define VEHICLEBUILDER_H
 
-namespace Main {
-	class VehicleBuilder : Main::BobTheBuilder {
-	};
-}
+#include "BobTheBuilder.h"
+
+using namespace std;
+
+class VehicleBuilder : public BobTheBuilder
+{
+};
 
 #endif

@@ -1,12 +1,16 @@
 #ifndef TRANSPORT_H
 #define TRANSPORT_H
 
-namespace Main {
-	class Transport {
+#include "TransportRoute.h"
 
-	private:
-		Main::TransportRoute* route;
-	};
-}
+using namespace std;
+
+class Transport
+{
+
+private:
+	TransportRoute *route;
+	
+};
 
 #endif

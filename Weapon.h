@@ -1,7 +1,10 @@
 #ifndef WEAPON_H
 #define WEAPON_H
 
-namespace Main {
+using namespace std;
+
+class Platoon;
+
 	class Weapon {
 
 	private:
@@ -10,8 +13,8 @@ namespace Main {
 	public:
 		virtual void clone() = 0;
 
-		virtual void doDamage(Main::Platoon* platoon) = 0;
+		virtual void doDamage(Platoon* platoon) = 0;
 	};
-}
+
 
 #endif

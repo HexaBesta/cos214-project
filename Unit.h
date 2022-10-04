@@ -1,22 +1,26 @@
 #ifndef UNIT_H
 #define UNIT_H
 
-namespace Main {
-	class Unit {
+#include "UnitsState.h"
+class Platoon;
 
-	private:
-		Main::UnitsState unitState;
-		int health;
+using namespace std;
 
-	public:
-		virtual void attack(Main::Platoon* other) = 0;
+class Unit
+{
 
-		void request();
+private:
+	UnitsState *unitState;
+	int health;
 
-		void setUnitState(Main::UnitsState unitState);
+public:
+	virtual void attack(Platoon *other) = 0;
 
-		int takeDamage(int damage);
-	};
-}
+	void request();
+
+	void setUnitState(UnitsState *unitState);
+
+	int takeDamage(int damage);
+};
 
 #endif

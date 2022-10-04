@@ -1,9 +1,14 @@
 #ifndef PEOPLE_H
 #define PEOPLE_H
 
-namespace Main {
-	class People : Main::Transport {
-	};
-}
+#include "Transport.h"
+
+using namespace std;
+
+
+class People : public Transport
+{
+
+};
 
 #endif

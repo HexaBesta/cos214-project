@@ -1,14 +1,17 @@
 #ifndef TRANSPORTROUTE_H
 #define TRANSPORTROUTE_H
 
-namespace Main {
-	class TransportRoute : Main::MapComponent {
+#include "Area.h"
 
-	private:
-		Main::Area* to;
-		Main::Area* from;
-		bool available;
-	};
-}
+using namespace std;
+
+class TransportRoute : public MapComponent
+{
+
+private:
+	Area *to;
+	Area *from;
+	bool available;
+};
 
 #endif

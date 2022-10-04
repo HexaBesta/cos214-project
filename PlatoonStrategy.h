@@ -1,13 +1,15 @@
 #ifndef PLATOONSTRATEGY_H
 #define PLATOONSTRATEGY_H
 
-namespace Main {
-	class PlatoonStrategy {
+#include "Platoon.h"
 
+using namespace std;
 
-	public:
-		virtual void attack(Main::Platoon* plankton) = 0;
-	};
-}
+class PlatoonStrategy
+{
+
+public:
+	virtual void attack(Platoon *plankton) = 0;
+};
 
 #endif

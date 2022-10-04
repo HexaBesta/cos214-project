@@ -1,15 +1,18 @@
 #ifndef TRANSPORTFACTORY_H
 #define TRANSPORTFACTORY_H
 
-namespace Main {
-	class TransportFactory {
+using namespace std;
+#include "Transport.h"
 
-	private:
-		Main::Transport* transport;
+class TransportFactory
+{
 
-	public:
-		virtual Main::Transport* makeTypeTransport() = 0;
-	};
-}
+private:
+	Transport *transport;
+
+public:
+	virtual Transport *makeTypeTransport() = 0;
+	
+};
 
 #endif

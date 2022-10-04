@@ -1,13 +1,14 @@
 #ifndef MILITARY_H
 #define MILITARY_H
 
-namespace Main {
-	class Military {
+using namespace std;
 
+class Military
+{
 
-	public:
-		void constructPlatoon();
-	};
-}
+public:
+	void constructPlatoon();
+	
+};
 
 #endif

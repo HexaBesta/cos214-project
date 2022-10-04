@@ -1,9 +1,12 @@
 #ifndef WEAPONS_H
 #define WEAPONS_H
 
-namespace Main {
-	class Weapons : Main::Transport {
-	};
-}
+#include "Transport.h"
+
+using namespace std;
+
+class Weapons : public Transport
+{
+};
 
 #endif

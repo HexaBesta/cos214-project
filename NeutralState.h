@@ -1,9 +1,12 @@
 #ifndef NEUTRALSTATE_H
 #define NEUTRALSTATE_H
 
-namespace Main {
-	class NeutralState : Main::CountryState {
-	};
-}
+#include "CountryState.h"
+
+using namespace std;
+
+class NeutralState : public CountryState
+{
+};
 
 #endif

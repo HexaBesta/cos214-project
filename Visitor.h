@@ -1,15 +1,18 @@
 #ifndef VISITOR_H
 #define VISITOR_H
 
-namespace Main {
-	class Visitor {
+#include "Area.h"
+#include "TransportRoute.h"
 
+using namespace std;
 
-	public:
-		virtual void visitArea(Main::Area* area) = 0;
+class Visitor
+{
 
-		virtual void visitTransportRoute(Main::TransportRoute* transportRoute) = 0;
-	};
-}
+public:
+	virtual void visitArea(Area *area) = 0;
+
+	virtual void visitTransportRoute(TransportRoute *transportRoute) = 0;
+};
 
 #endif

@@ -1,9 +1,13 @@
 #ifndef WITHDRAWNSTATE_H
 #define WITHDRAWNSTATE_H
 
-namespace Main {
-	class WithdrawnState : Main::CountryState {
-	};
-}
+#include "CountryState.h"
+
+using namespace std;
+
+class WithdrawnState : public CountryState {
+
+};
+
 
 #endif

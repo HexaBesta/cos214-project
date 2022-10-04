@@ -1,9 +1,12 @@
 #ifndef PLATOONBUILDER_H
 #define PLATOONBUILDER_H
 
-namespace Main {
-	class PlatoonBuilder : Main::BobTheBuilder {
-	};
-}
+#include "BobTheBuilder.h"
+
+using namespace std;
+
+class PlatoonBuilder : public BobTheBuilder
+{
+};
 
 #endif

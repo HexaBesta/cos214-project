@@ -1,21 +1,24 @@
 #ifndef UNITSSTATE_H
 #define UNITSSTATE_H
 
-namespace Main {
-	class UnitsState {
+#include "DeployedState.h"
 
-	private:
-		Main::DeployedState* deployedState;
+using namespace std;
 
-	public:
-		virtual void handleUnits() = 0;
+class UnitsState
+{
 
-		virtual Main::UnitsState changeUnitState() = 0;
+private:
+	DeployedState *deployedState;
 
-		void request();
+public:
+	virtual void handleUnits() = 0;
 
-		void setDeployedState(Main::DeployedState deployedState);
-	};
-}
+	virtual UnitsState changeUnitState() = 0;
+
+	void request();
+
+	void setDeployedState(DeployedState *deployedState);
+};
 
 #endif

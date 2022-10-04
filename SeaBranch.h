@@ -1,13 +1,15 @@
 #ifndef SEABRANCH_H
 #define SEABRANCH_H
 
-namespace Main {
-	class SeaBranch : Main::Branch {
+#include "Branch.h"
 
+using namespace std;
 
-	public:
-		SeaBranch(Main::Unit* unit);
-	};
-}
+class SeaBranch : public Branch
+{
+
+public:
+	SeaBranch(Unit *unit);
+};
 
 #endif

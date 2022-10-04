@@ -1,23 +1,28 @@
 #ifndef MAPCOMPONENT_H
 #define MAPCOMPONENT_H
 
-namespace Main {
-	class MapComponent {
+#include "Map.h"
+class Visitor;
 
-	private:
-		Map *  map;
+using namespace std;
 
-	public:
-		void attach(Map *  map);
+class MapComponent
+{
 
-		void detach(Map *  map);
+private:
+	Map *map;
 
-		void accept(Main::Visitor* visitor);
+public:
+	void attach(Map *map);
 
-		void attach(Map *  map);
+	void detach(Map *map);
 
-		void detach(Map *  map);
-	};
-}
+	void accept(Visitor *visitor);
+
+	void attach(Map *map);
+
+	void detach(Map *map);
+};
+
 
 #endif

@@ -1,9 +1,13 @@
 #ifndef WTFACTORY_H
 #define WTFACTORY_H
 
-namespace Main {
-	class WTFactory : Main::TransportFactory {
-	};
-}
+#include "TransportFactory.h"
+
+using namespace std;
+
+class WTFactory : public TransportFactory {
+
+};
+
 
 #endif

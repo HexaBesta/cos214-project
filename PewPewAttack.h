@@ -1,13 +1,16 @@
 #ifndef PEWPEWATTACK_H
 #define PEWPEWATTACK_H
 
-namespace Main {
-	class PewPewAttack : Main::PlatoonStrategy {
+#include "PlatoonStrategy.h"
 
+using namespace std;
 
-	public:
-		virtual void attack(Main::Platoon* plankton) = 0;
-	};
-}
+class PewPewAttack : public PlatoonStrategy
+{
+
+public:
+	virtual void attack(Platoon *plankton) = 0;
+
+};
 
 #endif

@@ -1,9 +1,12 @@
 #ifndef TRANSPORTROUTEVISITOR_H
 #define TRANSPORTROUTEVISITOR_H
 
-namespace Main {
-	class TransportRouteVisitor : Main::Visitor {
-	};
-}
+#include "Visitor.h"
+
+using namespace std;
+
+class TransportRouteVisitor : public Visitor
+{
+};
 
 #endif

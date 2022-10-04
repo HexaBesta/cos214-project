@@ -1,13 +1,15 @@
 #ifndef PRECISION_H
 #define PRECISION_H
 
-namespace Main {
-	class Precision : Main::Weapon {
+#include "Weapon.h"
 
+using namespace std;
 
-	public:
-		virtual void clone() = 0;
-	};
-}
+class Precision : public Weapon
+{
+
+public:
+	virtual void clone() = 0;
+};
 
 #endif
