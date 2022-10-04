@@ -13,7 +13,7 @@ using namespace std;
 	public:
 		void request();
 
-		void setCountryState(CountryState countryState);
+		void setCountryState(CountryState* countryState);
 	};
 
 
