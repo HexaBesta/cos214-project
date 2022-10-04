@@ -3,8 +3,9 @@
 #include "Unit.h"
 using namespace std;
 
-	class Human : public Unit {
-	};
-
+class Human : public Unit
+{
+	
+};
 
 #endif

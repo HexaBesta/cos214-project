@@ -2,7 +2,8 @@
 #define ALLIANCES_H
 
 
-	class Alliances {
-	};
+class Alliances {
+
+};
 
 #endif

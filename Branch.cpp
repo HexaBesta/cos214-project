@@ -1,6 +1,6 @@
 #include "Branch.h"
 
-Main::Branch::Branch(Main::Unit* unit) {
+Branch::Branch(Unit* unit) {
 	// TODO - implement Branch::Branch
 	throw "Not yet implemented";
 }

@@ -3,8 +3,8 @@
 #include "UnitsState.h"
 using namespace std;
 
-	class DeadState : public UnitsState {
-	};
-
+class DeadState : public UnitsState
+{
+};
 
 #endif

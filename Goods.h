@@ -3,8 +3,8 @@
 #include "Transport.h"
 using namespace std;
 
-	class Goods : public Transport {
-	};
-
+class Goods : public Transport
+{
+};
 
 #endif

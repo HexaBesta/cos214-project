@@ -3,8 +3,8 @@
 #include "CountryState.h"
 using namespace std;
 
-	class JoinedState : public CountryState {
-	};
-
+class JoinedState : public CountryState
+{
+};
 
 #endif

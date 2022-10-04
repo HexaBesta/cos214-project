@@ -3,8 +3,8 @@
 #include "DeployedState.h"
 using namespace std;
 
-	class Fit : public DeployedState {
-	};
-
+class Fit : public DeployedState
+{
+};
 
 #endif

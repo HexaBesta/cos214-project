@@ -1,14 +1,15 @@
 #ifndef BOBTHEBUILDER_H
 #define BOBTHEBUILDER_H
+
 #include "Unit.h"
+
 using namespace std;
 
-	class BobTheBuilder {
+class BobTheBuilder
+{
 
-
-	public:
-		Unit buildPart();
-	};
-
+public:
+	Unit * buildPart();
+};
 
 #endif

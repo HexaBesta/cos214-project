@@ -3,12 +3,12 @@
 #include "Alliances.h"
 using namespace std;
 
-	class GodOfWar {
+class GodOfWar
+{
 
-	private:
-		Alliances* groupOne;
-		Alliances* groupTwo;
-	};
-
+private:
+	Alliances *groupOne;
+	Alliances *groupTwo;
+};
 
 #endif
