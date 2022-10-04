@@ -3,12 +3,11 @@
 #include "Weapon.h"
 using namespace std;
 
-	class Explosive : public Weapon {
+class Explosive : public Weapon
+{
 
-
-	public:
-		virtual void clone() = 0;
-	};
-
+public:
+	virtual void clone() = 0;
+};
 
 #endif

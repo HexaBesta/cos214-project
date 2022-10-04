@@ -4,11 +4,12 @@
 #include "CountryState.h"
 using namespace std;
 
-	class Country {
+class Country
+{
 
-	private:
-		string name;
-		CountryState* countryState;
+private:
+	string name;
+	CountryState *countryState;
 
 	public:
 		void request();

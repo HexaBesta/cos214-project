@@ -5,25 +5,25 @@
 #include "Iterator.h"
 #include "Battle.h"
 
-	class Area : public MapComponent {
+class Area : public MapComponent
+{
 
-	private:
-		Platoon* defender;
-		double xco;
-		double yco;
-		Platoon* attacker;
+private:
+	Platoon *defender;
+	double xco;
+	double yco;
+	Platoon *attacker;
 
-	public:
-		void updatePlatoons(int type, string platoonName);
+public:
+	void updatePlatoons(int type, string platoonName);
 
-		Iterator* createIterator();
+	Iterator *createIterator();
 
-		Battle* marchIn(Platoon* platoon);
+	Battle *marchIn(Platoon *platoon);
 
-		bool marchOut();
+	bool marchOut();
 
-		bool requestReinforcements();
-	};
-
+	bool requestReinforcements();
+};
 
 #endif

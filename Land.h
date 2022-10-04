@@ -3,8 +3,8 @@
 #include "Area.h"
 using namespace std;
 
-	class Land : public Area {
-	};
-
+class Land : public Area
+{
+};
 
 #endif

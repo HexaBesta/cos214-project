@@ -2,13 +2,13 @@
 #define COUNTRYSTATE_H
 using namespace std;
 
-	class CountryState {
+class CountryState
+{
 
+public:
+	virtual void handleCountry() = 0;
 
-	public:
-		virtual void handleCountry() = 0;
-
-		virtual CountryState* changeCountryState() = 0;
-	};
+	virtual CountryState *changeCountryState() = 0;
+};
 
 #endif
