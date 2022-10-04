@@ -1,19 +1,22 @@
 #ifndef BATTLE_H
 #define BATTLE_H
+#include "Platoon.h"
+#include "Area.h"
+#include <string>
+using namespace std;
 
-namespace Main {
 	class Battle {
 
 	private:
-		Main::Platoon* sideOne;
-		Main::Platoon* sideTwo;
+		Platoon* sideOne;
+		Platoon* sideTwo;
 		/**
 		 * true = side 1
 		 * false = side 2
 		 */
 		bool turn;
-		boolean active;
-		Main::Area* area;
+		bool active;
+		Area* area;
 
 	public:
 		virtual void changeStrategy() = 0;
@@ -26,6 +29,6 @@ namespace Main {
 
 		void takeTurn();
 	};
-}
+
 
 #endif

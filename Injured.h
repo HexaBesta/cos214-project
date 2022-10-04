@@ -1,9 +1,10 @@
 #ifndef INJURED_H
 #define INJURED_H
+#include "DeployedState.h"
+using namespace std;
 
-namespace Main {
-	class Injured : Main::DeployedState {
+	class Injured : public DeployedState {
 	};
-}
+
 
 #endif

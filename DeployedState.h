@@ -1,15 +1,16 @@
 #ifndef DEPLOYEDSTATE_H
 #define DEPLOYEDSTATE_H
+#include "UnitsState.h"
+using namespace std;
 
-namespace Main {
-	class DeployedState : Main::UnitsState {
+	class DeployedState : public UnitsState {
 
 
 	public:
 		virtual void handleDeployed() = 0;
 
-		virtual Main::DeployedState changeDeployedState() = 0;
+		virtual DeployedState changeDeployedState() = 0;
 	};
-}
+
 
 #endif

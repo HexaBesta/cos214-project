@@ -1,9 +1,10 @@
 #ifndef DEADSTATE_H
 #define DEADSTATE_H
+#include "UnitsState.h"
+using namespace std;
 
-namespace Main {
-	class DeadState : Main::UnitsState {
+	class DeadState : public UnitsState {
 	};
-}
+
 
 #endif

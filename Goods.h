@@ -1,9 +1,10 @@
 #ifndef GOODS_H
 #define GOODS_H
+#include "Transport.h"
+using namespace std;
 
-namespace Main {
-	class Goods : Main::Transport {
+	class Goods : public Transport {
 	};
-}
+
 
 #endif

@@ -1,14 +1,15 @@
 #ifndef BRANCH_H
 #define BRANCH_H
+#include "Unit.h"
+using namespace std;
 
-namespace Main {
-	class Branch : Main::Unit {
+	class Branch : public Unit {
 
 	public:
-		Main::Unit* unit;
+		Unit* unit;
 
-		Branch(Main::Unit* unit);
+		Branch(Unit* unit);
 	};
-}
+
 
 #endif

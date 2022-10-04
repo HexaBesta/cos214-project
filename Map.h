@@ -1,21 +1,24 @@
 #ifndef MAP_H
 #define MAP_H
+#include "Area.h"
+#include <vector>
+using namespace std;
 
-namespace Main {
+
 	class Map {
 
 
 	public:
-		string createTransportRoutes(Main::Area* area1, Main::Area* area2);
+		string createTransportRoutes(Area* area1, Area* area2);
 
-		Main::Area* chooseArea();
+		Area* chooseArea();
 
-		string destroyTransportRoute(Main::Area* area1);
+		string destroyTransportRoute(Area* area1);
 
-		vector<Main::Area*> listAdjacent(Main::Area* area);
+		vector<Area*> listAdjacent(Area* area);
 
 		void update();
 	};
-}
+
 
 #endif
