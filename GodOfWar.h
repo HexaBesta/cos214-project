@@ -1,13 +1,14 @@
 #ifndef GODOFWAR_H
 #define GODOFWAR_H
+#include "Alliances.h"
+using namespace std;
 
-namespace Main {
 	class GodOfWar {
 
 	private:
-		Main::Alliances* groupOne;
-		Main::Alliances* groupTwo;
+		Alliances* groupOne;
+		Alliances* groupTwo;
 	};
-}
+
 
 #endif

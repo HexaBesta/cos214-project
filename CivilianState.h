@@ -1,9 +1,10 @@
 #ifndef CIVILIANSTATE_H
 #define CIVILIANSTATE_H
+#include "UnitsState.h"
+using namespace std;
 
-namespace Main {
-	class CivilianState : Main::UnitsState {
+	class CivilianState : public UnitsState {
 	};
-}
+
 
 #endif

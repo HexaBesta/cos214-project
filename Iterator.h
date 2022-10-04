@@ -1,7 +1,7 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
+using namespace std;
 
-namespace Main {
 	class Iterator {
 
 
@@ -14,6 +14,6 @@ namespace Main {
 
 		virtual void currentItem() = 0;
 	};
-}
+
 
 #endif

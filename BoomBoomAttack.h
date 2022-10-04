@@ -1,13 +1,14 @@
 #ifndef BOOMBOOMATTACK_H
 #define BOOMBOOMATTACK_H
+#include "PlatoonStrategy.h"
+using namespace std;
 
-namespace Main {
-	class BoomBoomAttack : Main::PlatoonStrategy {
+	class BoomBoomAttack : public PlatoonStrategy {
 
 
 	public:
-		virtual void attack(Main::Platoon plankton) = 0;
+		virtual void attack(Platoon plankton) = 0;
 	};
-}
+
 
 #endif
