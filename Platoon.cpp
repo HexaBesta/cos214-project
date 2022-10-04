@@ -1,21 +1,21 @@
 #include "Platoon.h"
 
-void Main::Platoon::construct() {
+void  Platoon::construct() {
 	// TODO - implement Platoon::construct
 	throw "Not yet implemented";
 }
 
-void Main::Platoon::changeStrategy() {
+void  Platoon::changeStrategy() {
 	// TODO - implement Platoon::changeStrategy
 	throw "Not yet implemented";
 }
 
-Main::Platoon* Main::Platoon::splitPlatoon() {
+ Platoon*  Platoon::splitPlatoon() {
 	// TODO - implement Platoon::splitPlatoon
 	throw "Not yet implemented";
 }
 
-void Main::Platoon::joinPlatoon(Main::Platoon* platoon) {
+void  Platoon::joinPlatoon( Platoon* platoon) {
 	// TODO - implement Platoon::joinPlatoon
 	throw "Not yet implemented";
 }

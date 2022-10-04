@@ -4,21 +4,19 @@
 #include <vector>
 using namespace std;
 
+class Map
+{
 
-	class Map {
+public:
+	string createTransportRoutes(Area *area1, Area *area2);
 
+	Area *chooseArea();
 
-	public:
-		string createTransportRoutes(Area* area1, Area* area2);
+	string destroyTransportRoute(Area *area1);
 
-		Area* chooseArea();
+	vector<Area *> listAdjacent(Area *area);
 
-		string destroyTransportRoute(Area* area1);
-
-		vector<Area*> listAdjacent(Area* area);
-
-		void update();
-	};
-
+	void update();
+};
 
 #endif
