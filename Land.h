@@ -1,9 +1,10 @@
 #ifndef LAND_H
 #define LAND_H
+#include "Area.h"
+using namespace std;
 
-namespace Main {
-	class Land : Main::Area {
+	class Land : public Area {
 	};
-}
+
 
 #endif

@@ -1,9 +1,8 @@
 #ifndef BABYBUILDER_H
 #define BABYBUILDER_H
+#include "BobTheBuilder.h"
 
-namespace Main {
-	class BabyBuilder : Main::BobTheBuilder {
+	class BabyBuilder : public BobTheBuilder {
 	};
-}
 
 #endif

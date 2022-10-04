@@ -1,9 +1,10 @@
 #ifndef AIR_H
 #define AIR_H
+#include "Area.h"
+using namespace std;
 
-namespace Main {
-	class Air : Main::Area {
+	class Air : public Area {
+
 	};
-}
 
 #endif

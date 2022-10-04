@@ -1,13 +1,14 @@
 #ifndef LANDBRANCH_H
 #define LANDBRANCH_H
-
-namespace Main {
-	class LandBranch : Main::Branch {
+#include "Branch.h"
+#include "Unit.h"
+using namespace std;
+	class LandBranch : public Branch {
 
 
 	public:
-		LandBranch(Main::Unit* unit);
+		LandBranch(Unit* unit);
 	};
-}
+
 
 #endif

@@ -1,13 +1,12 @@
 #ifndef AIRBRANCH_H
 #define AIRBRANCH_H
+#include "Branch.h"
+using namespace std;
 
-namespace Main {
-	class AirBranch : Main::Branch {
-
-
-	public:
-		AirBranch(Main::Unit* unit);
-	};
-}
+class AirBranch : public Branch
+{	
+public:
+	AirBranch(Unit *unit);
+};
 
 #endif

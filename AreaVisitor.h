@@ -1,9 +1,8 @@
 #ifndef AREAVISITOR_H
 #define AREAVISITOR_H
+#include "Visitor.h"
 
-namespace Main {
-	class AreaVisitor : Main::Visitor {
+	class AreaVisitor : public Visitor {
 	};
-}
 
 #endif

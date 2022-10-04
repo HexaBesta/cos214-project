@@ -1,9 +1,10 @@
 #ifndef FIT_H
 #define FIT_H
+#include "DeployedState.h"
+using namespace std;
 
-namespace Main {
-	class Fit : Main::DeployedState {
+	class Fit : public DeployedState {
 	};
-}
+
 
 #endif

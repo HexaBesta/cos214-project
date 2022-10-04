@@ -1,9 +1,10 @@
 #ifndef JOINEDSTATE_H
 #define JOINEDSTATE_H
+#include "CountryState.h"
+using namespace std;
 
-namespace Main {
-	class JoinedState : Main::CountryState {
+	class JoinedState : public CountryState {
 	};
-}
+
 
 #endif

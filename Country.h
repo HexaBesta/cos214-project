@@ -1,18 +1,20 @@
 #ifndef COUNTRY_H
 #define COUNTRY_H
+#include <string>
+#include "CountryState.h"
+using namespace std;
 
-namespace Main {
 	class Country {
 
 	private:
 		string name;
-		Main::CountryState* countryState;
+		CountryState* countryState;
 
 	public:
 		void request();
 
-		void setCountryState(Main::CountryState countryState);
+		void setCountryState(CountryState countryState);
 	};
-}
+
 
 #endif

@@ -1,9 +1,10 @@
 #ifndef HUMAN_H
 #define HUMAN_H
+#include "Unit.h"
+using namespace std;
 
-namespace Main {
-	class Human : Main::Unit {
+	class Human : public Unit {
 	};
-}
+
 
 #endif

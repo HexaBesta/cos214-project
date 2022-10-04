@@ -1,26 +1,29 @@
 #ifndef AREA_H
 #define AREA_H
+#include "MapComponent.h"
+#include "Platoon.h"
+#include "Iterator.h"
+#include "Battle.h"
 
-namespace Main {
-	class Area : Main::MapComponent {
+	class Area : public MapComponent {
 
 	private:
-		Main::Platoon* defender;
+		Platoon* defender;
 		double xco;
 		double yco;
-		Main::Platoon* attacker;
+		Platoon* attacker;
 
 	public:
 		void updatePlatoons(int type, string platoonName);
 
-		Main::Iterator* createIterator();
+		Iterator* createIterator();
 
-		Main::Battle* marchIn(Main::Platoon* platoon);
+		Battle* marchIn(Platoon* platoon);
 
 		bool marchOut();
 
 		bool requestReinforcements();
 	};
-}
+
 
 #endif
