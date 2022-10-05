@@ -1,7 +1,7 @@
 #ifndef UNIT_H
 #define UNIT_H
 
-#include "UnitsState.h"
+#include "DeadState.h"
 class Platoon;
 
 using namespace std;
@@ -16,11 +16,11 @@ private:
 public:
 	virtual void attack(Platoon *other) = 0;
 
-	void request();
+	void requestState();
 
-	void setUnitState(UnitsState *unitState);
+	void setUnitState(UnitsState *unitState = nullptr);
 
-	int takeDamage(int damage);
+	virtual int takeDamage(int damage);
 };
 
 #endif

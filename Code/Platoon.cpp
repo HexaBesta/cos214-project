@@ -6,7 +6,7 @@ void  Platoon::construct() {
 }
 
 void  Platoon::changeStrategy() {
-	// TODO - implement Platoon::changeStrategy
+	this->strategy = this->strategy->toggleStrategy();
 	throw "Not yet implemented";
 }
 
@@ -19,3 +19,9 @@ void  Platoon::joinPlatoon( Platoon* platoon) {
 	// TODO - implement Platoon::joinPlatoon
 	throw "Not yet implemented";
 }
+
+//added
+
+	// int takeDamage(int damage);
+
+	// virtual void attack(Platoon *other);
