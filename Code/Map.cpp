@@ -1,5 +1,9 @@
 #include "Map.h"
 
+Map::Map(string setupFile){
+	
+}
+
 string  Map::createTransportRoutes(Area* area1,  Area* area2) {
 	// TODO - implement Map::createTransportRoutes
 	throw "Not yet implemented";
