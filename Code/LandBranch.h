@@ -11,6 +11,7 @@ class LandBranch : public Branch
 
 public:
 	LandBranch(Unit *unit);
+	void print();
 };
 
 #endif
