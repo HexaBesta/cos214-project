@@ -15,12 +15,3 @@ void  MapComponent::accept( Visitor* visitor) {
 	throw "Not yet implemented";
 }
 
-void  MapComponent::attach(Map *  map) {
-	// TODO - implement MapComponent::attach
-	throw "Not yet implemented";
-}
-
-void  MapComponent::detach(Map *  map) {
-	// TODO - implement MapComponent::detach
-	throw "Not yet implemented";
-}

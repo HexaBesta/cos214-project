@@ -3,6 +3,9 @@
 #include "Area.h"
 #include "TransportRoute.h"
 #include <vector>
+#include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
 class Map
@@ -65,7 +68,13 @@ public:
 
 private:
 	vector<Area *> allAreas;
-	TransportRoute **adjacencies;
+	TransportRoute ***adjacencies;
+
+	/**
+	 * @brief Set the All End Points of transport routes in the adjacency matrix
+	 * 
+	 */
+	void setAllEndPoints();
 };
 
 #endif

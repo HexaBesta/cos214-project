@@ -1,7 +1,7 @@
 #ifndef MAPCOMPONENT_H
 #define MAPCOMPONENT_H
 
-#include "Map.h"
+class Map;
 class Visitor;
 
 using namespace std;
@@ -34,9 +34,6 @@ public:
 	 */
 	void accept(Visitor *visitor);
 
-	void attach(Map *map);
-
-	void detach(Map *map);
 };
 
 
