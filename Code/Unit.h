@@ -14,6 +14,8 @@ protected:
 	UnitsState *unitState;
 	int health;
 	virtual void print()=0;
+	int damage;
+	
 public:
 	virtual void attack(Platoon *other) = 0;
 
