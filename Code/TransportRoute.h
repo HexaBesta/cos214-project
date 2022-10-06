@@ -18,6 +18,14 @@ class TransportRoute : public MapComponent
 		TransportRoute();
 
 		/**
+		 * @brief returns whether or not the transport route is available
+		 * 
+		 * @return true if the transport route is available
+		 * @return false if the transport route is not available
+		 */
+		bool isAvailable();
+
+		/**
 		 * @brief Sets the end points of the transport route
 		 * 
 		 * @param endPoint1 The first end point of the transport route

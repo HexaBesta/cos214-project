@@ -154,7 +154,7 @@ Map::Map(string setupFile)
 		*/
 		Area *currArea = new Area(stoi(areaParts.at(1)));
 		allAreas.push_back(currArea);
-		
+
 		/*
 		Set adjacencies in the adjacency matrix
 		*/
@@ -172,10 +172,13 @@ Map::Map(string setupFile)
 	setAllGridAreas();
 }
 
-string Map::createTransportRoutes(Area *area1, Area *area2)
+void Map::createTransportRoute(Area *area1, Area *area2)
 {
-	// TODO - implement Map::createTransportRoutes
-	throw "Not yet implemented";
+	if (adjacencies[area1->getIndex()][area2->getIndex()] != NULL)
+	{
+		adjacencies[area1->getIndex()][area2->getIndex()]->create();
+		adjacencies[area2->getIndex()][area1->getIndex()]->create();
+	}
 }
 
 Area *Map::chooseArea()
@@ -190,16 +193,51 @@ string Map::destroyTransportRoute(Area *area1)
 	throw "Not yet implemented";
 }
 
-vector<Area *> Map::listAdjacent(::Area *area)
-{
-	// TODO - implement Map::listAdjacent
-	throw "Not yet implemented";
-}
-
 void Map::update()
 {
 	// TODO - implement Map::update
 	throw "Not yet implemented";
+}
+vector<Area *> Map::listAdjacent(Area *area)
+{
+	string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
+	vector<Area *> adjacentAreas = {};
+	for (int i = 0; i < allAreas.size(); i++)
+	{
+		if (adjacencies[area->getIndex()][i] != NULL)
+		{
+			out += to_string(i) + ",";
+			adjacentAreas.push_back(allAreas.at(i));
+		}
+	}
+	out += "\n";
+	cout << out;
+	return adjacentAreas;
+}
+
+Area *Map::getAreaByIndex(int index)
+{
+	for (int i = 0; i < allAreas.size(); i++)
+	{
+		if (allAreas.at(i)->getIndex() == index)
+		{
+			return allAreas.at(i);
+		}
+	}
+	cout << "Area could not be found" << endl;
+	return NULL;
+}
+
+bool Map::transportRouteisAvailable(Area *point1, Area *point2)
+{
+	if (adjacencies[point1->getIndex()][point2->getIndex()] == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		return adjacencies[point1->getIndex()][point2->getIndex()]->isAvailable();
+	}
 }
 
 void Map::setAllEndPoints()
@@ -231,44 +269,75 @@ void Map::setAllGridAreas()
 void Map::printMap()
 {
 	string output = "";
-
+	for (int i = 0; i < gridXSize; i++)
+	{
+		output += "---- ";
+	}
+	output += "\n";
 	for (int j = 0; j < gridYSize; j++)
 	{
 
 		for (int i = 0; i < gridXSize; i++)
 		{
-			output += "---- ";
-		}
-		output += "\n";
-		for (int i = 0; i < gridXSize; i++)
-		{
-			int colour=-2;
-			string symbol=grid[i][j];
-			if (grid[i][j]!="X")
+			int colour = -2;
+			string symbol=" ";
+			symbol += grid[i][j];
+			if (grid[i][j] != "X")
 			{
-				colour=stoi(grid[i][j]);
+				colour = stoi(grid[i][j]);
 			}
 
-			while (symbol.length()<2)
+			while (symbol.length() < 3)
 			{
-				symbol+=" ";
+				symbol += " ";
 			}
-			
-			
-			output += "|\033["+to_string(41+(colour%7))+"m" + symbol + "\033[0m| ";
+
+			output += "|\033[" + to_string(41 + (colour % 7)) + "m" + symbol + "\033[0m|";
+			if (grid[i][j] != "X" && i + 1 < gridXSize && grid[i+1][j] != "X")
+			{
+				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i+1][j]))))
+				{
+					output += "═";
+				}
+				else
+				{
+					output += " ";
+				}
+			}
+			else
+			{
+				output += " ";
+			}
 		}
 		output += "\n";
-	}
-	for (int i = 0; i < gridXSize; i++)
-	{
-		output += "---- ";
+
+		for (int i = 0; i < gridXSize; i++)
+		{
+			if (grid[i][j] != "X" && j + 1 < gridXSize && grid[i][j+1] != "X")
+			{
+				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i][j+1]))))
+				{
+					output += "--║-- ";
+				}
+				else
+				{
+					output += "----- ";
+				}
+			}
+			else
+			{
+				output += "----- ";
+			}
+			
+		}
+		output += "\n";
 	}
 
 	cout << output << endl;
 
-	// --- ---
-	// |3| |5|
-	// --- ---
-	// |4|
-	// ---
+	// ----- -----
+	// | 3 |=| 5 |
+	// ---- -----
+	// | 4 |
+	// -----
 }

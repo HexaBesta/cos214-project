@@ -4,6 +4,10 @@ TransportRoute::TransportRoute(){
     this->available=false;
 }
 
+bool TransportRoute::isAvailable(){
+    return this->available;
+}
+
 void TransportRoute::setEndPoints(Area* endPoint1,Area* endPoint2){
     this->from=endPoint1;
     this->to=endPoint2;

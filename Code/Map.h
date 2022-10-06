@@ -30,9 +30,8 @@ public:
 	 * @param area2 The second end point of the transport route
 	 *
 	 * @note Since the map is a bidirectional graph the order of area1 and area2 does not matter
-	 * @return string (probably a string represnting the transport route, not too sure though)
 	 */
-	string createTransportRoutes(Area *area1, Area *area2);
+	void createTransportRoute(Area *area1, Area *area2);
 
 	/**
 	 * @brief Allows the client to choose an area on the map for further action
@@ -58,6 +57,24 @@ public:
 	 * @return returns a vector of area pointers, all areas in the vector are necessarily adjacent to the input area.
 	 */
 	vector<Area *> listAdjacent(Area *area);
+
+	/**
+	 * @brief Get the Area By its index member variable
+	 * 
+	 * @param index the index of the area as seen on the map
+	 * @return returns the area if it is found, returns NULL if not
+	 */
+	Area* getAreaByIndex(int index);
+
+	/**
+	 * @brief returns whether or not there is an available transport route between two areas
+	 * 
+	 * @param point1 
+	 * @param point2 
+	 * @return true if there is an available transport route
+	 * @return false if there is no transport route or if the transport route is unavialable
+	 */
+	bool transportRouteisAvailable(Area* point1,Area* point2);
 
 	/**
 	 * @brief The update method realting to the observer pattern, will be called when areas or transport routes 'notify' the map of change
