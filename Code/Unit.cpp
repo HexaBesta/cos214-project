@@ -1,15 +1,22 @@
 #include "Unit.h"
 
-void Unit::request() {
-	// TODO - implement Unit::request
-	throw "Not yet implemented";
+void Unit::requestState() {
+	this->unitState->request();
 }
 
-void Unit::setUnitState(UnitsState * unitState) {
+void Unit::setUnitState(UnitsState * unitState = nullptr) {
+	if(unitState == nullptr){
+		this->unitState = this->unitState->changeUnitState();
+	}else{
+		delete this->unitState;
 	this->unitState = unitState;
+	}
+	
 }
 
 int Unit::takeDamage(int damage) {
-	// TODO - implement Unit::takeDamage
-	throw "Not yet implemented";
+	this->health = this->health - damage;
+	if(this->health <= 0 ){
+		this->setUnitState(new DeadState());
+	}
 }

@@ -2,7 +2,7 @@
 #define UNIT_H
 #include <string>
 #include <iostream>
-#include "UnitsState.h"
+#include "DeadState.h"
 class Platoon;
 
 using namespace std;
@@ -22,6 +22,7 @@ public:
 	virtual void request();
 
 	virtual void setUnitState(UnitsState *unitState);
+
 
 	virtual int takeDamage(int damage);
 };

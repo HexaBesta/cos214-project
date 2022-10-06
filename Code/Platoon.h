@@ -5,7 +5,8 @@
 #include "BobTheBuilder.h"
 #include "Unit.h"
 #include "Weapon.h"
-#include "Platoon.h"
+#include "PlatoonStrategy.h"
+
 
 using namespace std;
 
@@ -17,6 +18,7 @@ private:
 	vector<Unit *> humans;
 	vector<Unit *> vehicles;
 	vector<Weapon *> weapons;
+	PlatoonStrategy * strategy;
 
 public:
 	void construct();
@@ -26,6 +28,12 @@ public:
 	Platoon *splitPlatoon();
 
 	void joinPlatoon(Platoon *platoon);
+
+	//added
+
+	int takeDamage(int damage);
+
+	virtual void attack(Platoon *other);
 };
 
 #endif
