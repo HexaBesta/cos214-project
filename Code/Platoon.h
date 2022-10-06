@@ -2,6 +2,7 @@
 #define PLATOON_H
 
 #include <vector>
+#include <random>
 #include "BobTheBuilder.h"
 #include "Unit.h"
 #include "Weapon.h"
@@ -19,9 +20,11 @@ private:
 	vector<Unit *> vehicles;
 	vector<Weapon *> weapons;
 	PlatoonStrategy * strategy;
+	virtual void print();
 
 public:
 	Platoon(vector<Unit*> human, vector<Unit*> vehicles, vector<Weapon*> weapons);
+	
 	void construct();
 
 	void changeStrategy();
@@ -32,7 +35,7 @@ public:
 
 	//added
 
-	int takeDamage(int damage);
+	int takeDamage(int damage, bool checkPewPew);
 
 	virtual void attack(Platoon *other);
 };

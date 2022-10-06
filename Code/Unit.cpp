@@ -1,6 +1,6 @@
 #include "Unit.h"
 
-void Unit::requestState() {
+void Unit::request() {
 	this->unitState->request();
 }
 
@@ -12,6 +12,14 @@ void Unit::setUnitState(UnitsState * unitState = nullptr) {
 	this->unitState = unitState;
 	}
 	
+}
+
+int Unit::getDamage(){
+	return this->damage;
+}
+
+int Unit::getHealth(){
+	return this->health;
 }
 
 int Unit::takeDamage(int damage) {

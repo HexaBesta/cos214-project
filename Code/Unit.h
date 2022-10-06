@@ -21,8 +21,11 @@ public:
 
 	virtual void request();
 
-	virtual void setUnitState(UnitsState *unitState);
+	virtual void setUnitState(UnitsState *unitState = nullptr);
 
+	int getHealth();
+
+	int getDamage();
 
 	virtual int takeDamage(int damage);
 };
