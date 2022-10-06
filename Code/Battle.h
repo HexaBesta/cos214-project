@@ -11,38 +11,20 @@ class Battle
 {
 
 private:
-	Platoon *sideOne;
-	Platoon *sideTwo;
 
-	/**
-	 * @brief Indicated active side 
-	 * true = side 1
-	 * false = side 2
-	 * Hereafter
-	*/
-	bool turn;
+	//Pretty sure we don't need this
+	// /**
+	//  * @brief Allows the active side to change strategy before attacking
+	//  * 
+	//  */
+	// virtual void changeStrategy();
 
-	bool active;
-	Area *area;
+	// /**
+	//  * @brief Attack will call the active side's attack method. 
+	//  * 
+	//  */
 
-	/**
-	 * @brief Enum for type of reinforcements requested
-	 * 
-	 */
-	enum Reinforcements {troops, weapons, goods};
-
-	/**
-	 * @brief Allows the active side to change strategy before attacking
-	 * 
-	 */
-	virtual void changeStrategy();
-
-	/**
-	 * @brief Attack will call the active side's attack method. 
-	 * 
-	 */
-
-	virtual void attack();
+	// virtual void attack();
 
 	/**
 	 * @brief active side can request reinforcements from neighbouring area's.
@@ -51,12 +33,11 @@ private:
 	 * 			Will make use of the Observer pattern to function:
 	 * 			The Area's (subject) notify will be called so that the Map (observer) can be updated to check availability
 	 * 
-	 * @param needed is an enum type Reinforcements representing what is being requested (troops, weapons or goods)
 	 * @return true if there is an adjacent Area with platoons from the same alliance able to send reinforcements
-	 * @return false otherwise
+	 * @return false otherwise, including when no reinforcements are requested
 	 */
 
-	virtual bool requestReinforcements(Reinforcements needed);
+	virtual bool requestReinforcements();
 
 
 public:
@@ -91,6 +72,28 @@ public:
 	 */
 
 	void takeTurn();
+
+private:
+	Platoon *sideOne;
+	Platoon *sideTwo;
+
+	/**
+	 * @brief Indicated active side 
+	 * true = side 1
+	 * false = side 2
+	 * Hereafter
+	*/
+	bool turn;
+
+	/**
+	 * @brief Check that neither platoon's state is Dead
+	 * 
+	 */
+	bool active;
+	
+	Area *area;
+
+
 };
 
 #endif

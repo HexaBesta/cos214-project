@@ -7,7 +7,7 @@ class CivilianState : public UnitsState
 {
     public: 
         /**
-         * @brief Adjusts damage dealt based on UnitState
+         * @brief Adjusts damage dealt based on UnitState - Civilian = 1/3 Full
          * 
          * @param damage - the default damage dealt by the unit
          * @return double - the damage dealt after adjustment

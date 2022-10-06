@@ -83,10 +83,14 @@ public:
 	/**
 	 * @brief This function can be called by the defending platoon during a battle, to get aid from adjecent friendly areas which are connected by active transport routes
 	 *
+	 * @param type is the type of reinforcement requested
+	 * 			1 - Troops
+	 * 			2 - Weapons
+	 * 			3 - Goods
 	 * @return true if there were friendly platoons in adjecent areas which are connected by active transport routes
 	 * @return false if there were no friendly platoons in adjecent areas which are connected by active transport routes
 	 */
-	bool requestReinforcements();
+	bool requestReinforcements(int type);
 
 	/**
 	 * @brief adds a grid cell to the list for printing
