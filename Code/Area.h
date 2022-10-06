@@ -3,20 +3,17 @@
 #include "MapComponent.h"
 #include "Platoon.h"
 #include "Iterator.h"
+#include "Coordinate.h"
 #include <string>
 class Battle;
 
 class Area : public MapComponent
 {
-	struct Coordinate
-	{
-		int xCoord;
-		int yCood;
-	};
+	
 
 private:
 	Platoon *defender;
-	vector<Coordinate> areasCoordinates;
+	vector<Coordinate*> areasCoordinates;
 	Platoon *attacker;
 	int index;
 
@@ -89,12 +86,20 @@ public:
 	bool requestReinforcements();
 
 	/**
-	 * @brief adds a grid cell to the list for printing
+	 * @brief Adds a cell to the area to be printed
 	 * 
-	 * @param x the x-coordinate of the cell to be added to this area
-	 * @param y the y-coordinate of the cell to be added to this area
+	 * @param coord the coordinate of the a cell to be added in the format "x,y"
 	 */
-	void addCell(int x,int y);
+	void addCell(string coord);
+
+	/**
+	 * @brief Get the vector of Coordinates that this area takes up on the map grid
+	 * 
+	 * @return vector<Coordinate*> 
+	 */
+	vector<Coordinate*> getAreaCoordinates();
+
+
 };
 
 #endif

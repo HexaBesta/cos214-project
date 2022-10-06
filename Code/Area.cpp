@@ -1,38 +1,66 @@
 #include "Area.h"
 
-Area::Area(int index){
-	this->index=index;
+Area::Area(int index)
+{
+	this->index = index;
 }
 
-int Area::getIndex(){
+int Area::getIndex()
+{
 	return this->index;
 }
 
-void Area::updatePlatoons(int type, string platoonName) {
+void Area::updatePlatoons(int type, string platoonName)
+{
 	// TODO - implement Area::updatePlatoons
 	throw "Not yet implemented";
 }
 
-Iterator* Area::createIterator() {
+Iterator *Area::createIterator()
+{
 	// TODO - implement Area::createIterator
 	throw "Not yet implemented";
 }
 
-Battle* Area::marchIn(Platoon* platoon) {
+Battle *Area::marchIn(Platoon *platoon)
+{
 	// TODO - implement Area::marchIn
 	throw "Not yet implemented";
 }
 
-bool Area::marchOut() {
+bool Area::marchOut()
+{
 	// TODO - implement Area::marchOut
 	throw "Not yet implemented";
 }
 
-bool Area::requestReinforcements() {
+bool Area::requestReinforcements()
+{
 	// TODO - implement Area::requestReinforcements
 	throw "Not yet implemented";
 }
 
-void Area::addCell(int x,int y){
-	this->areasCoordinates
+void Area::addCell(string coord)
+{
+	string xStr = "";
+	string yStr = "";
+	int pos = 0;
+	while (coord.at(pos) != ',')
+	{
+		xStr += coord.at(pos);
+		pos++;
+	}
+	pos++;
+	while (pos < coord.length())
+	{
+		yStr += coord.at(pos);
+		pos++;
+	}
+
+	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr)));
 }
+
+vector<Coordinate*> Area::getAreaCoordinates(){
+	return this->areasCoordinates;
+}
+

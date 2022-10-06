@@ -66,15 +66,32 @@ public:
 	 */
 	void update();
 
+	/**
+	 * @brief prints out a grid based reprsentation of the map
+	 * 
+	 */
+	void printMap();
+
 private:
 	vector<Area *> allAreas;
 	TransportRoute ***adjacencies;
+	string **grid;
+	int gridXSize;
+	int gridYSize;
 
 	/**
 	 * @brief Set the All End Points of transport routes in the adjacency matrix
-	 * 
+	 *
 	 */
 	void setAllEndPoints();
+
+	/**
+	 * @brief Loops through the allAreas vector and "paints" the grid 2D array based on the coordinates belonging to that area
+	 *
+	 */
+	void setAllGridAreas();
+
+	
 };
 
 #endif

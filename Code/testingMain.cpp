@@ -1,7 +1,8 @@
 #include "Map.h"
 
 void testMap(){
- Map* m=new Map("../Maps/map1.txt");
+ Map* m=new Map("../Maps/europe.txt");
+ m->printMap();
  delete m;
 }
 
