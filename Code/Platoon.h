@@ -5,8 +5,8 @@
 #include "BobTheBuilder.h"
 #include "Unit.h"
 #include "Weapon.h"
-#include "PlatoonStrategy.h"
-
+#include "BoomBoomAttack.h"
+#include "PewPewAttack.h"
 
 using namespace std;
 
@@ -21,6 +21,7 @@ private:
 	PlatoonStrategy * strategy;
 
 public:
+	Platoon(vector<Unit*> human, vector<Unit*> vehicles, vector<Weapon*> weapons);
 	void construct();
 
 	void changeStrategy();

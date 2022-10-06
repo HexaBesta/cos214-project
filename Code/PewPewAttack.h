@@ -9,7 +9,7 @@ class PewPewAttack : public PlatoonStrategy
 {
 
 public:
-	virtual void attack(Platoon *plankton) = 0;
+	virtual void attack(Platoon *plankton);
 
 };
 
