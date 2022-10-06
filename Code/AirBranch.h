@@ -14,6 +14,7 @@ public:
 	 * @param unit passed in set to decorator unit
 	 */
 	AirBranch(Unit *unit);
+	void print();
 };
 
 #endif
