@@ -6,8 +6,13 @@
 using namespace std;
 
 class AirBranch : public Branch
-{	
+{
 public:
+	/**
+	 * @brief Construct a new Air Branch object
+	 *
+	 * @param unit passed in set to decorator unit
+	 */
 	AirBranch(Unit *unit);
 };
 
