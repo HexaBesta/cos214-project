@@ -187,10 +187,13 @@ Area *Map::chooseArea()
 	throw "Not yet implemented";
 }
 
-string Map::destroyTransportRoute(Area *area1)
+void Map::destroyTransportRoute(Area *area1, Area *area2)
 {
-	// TODO - implement Map::destroyTransportRoute
-	throw "Not yet implemented";
+	if (adjacencies[area1->getIndex()][area2->getIndex()] != NULL)
+	{
+		adjacencies[area1->getIndex()][area2->getIndex()]->destroy();
+		adjacencies[area2->getIndex()][area1->getIndex()]->destroy();
+	}
 }
 
 void Map::update()
@@ -271,7 +274,7 @@ void Map::printMap()
 	string output = "";
 	for (int i = 0; i < gridXSize; i++)
 	{
-		output += "---- ";
+		output += "----- ";
 	}
 	output += "\n";
 	for (int j = 0; j < gridYSize; j++)
@@ -313,7 +316,7 @@ void Map::printMap()
 
 		for (int i = 0; i < gridXSize; i++)
 		{
-			if (grid[i][j] != "X" && j + 1 < gridXSize && grid[i][j+1] != "X")
+			if (grid[i][j] != "X" && j + 1 < gridYSize && grid[i][j+1] != "X")
 			{
 				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i][j+1]))))
 				{

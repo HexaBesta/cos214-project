@@ -41,12 +41,18 @@ public:
 	Area *chooseArea();
 
 	/**
-	 * @brief
+	 * @brief Create a Transport Route between the two given areas of the map
 	 *
-	 * @param area1
-	 * @return string
+	 * @note Transport routes should be destryoed automatically when troops take over a new area.
+	 * The route should be destroyed between the this areas and the area that belongs to enemies
+	 *
+	 *
+	 * @param area1 The first end point of the transport route
+	 * @param area2 The second end point of the transport route
+	 *
+	 * @note Since the map is a bidirectional graph the order of area1 and area2 does not matter
 	 */
-	string destroyTransportRoute(Area *area1);
+	void destroyTransportRoute(Area *area1, Area *area2);
 
 	/**
 	 * @brief Lists the areas adjacent to the given area

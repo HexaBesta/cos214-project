@@ -15,3 +15,7 @@ run:
 
 mem: clear compile clean
 	 valgrind --leak-check=yes ./main
+
+debug:
+	g++ -g *.cpp
+	gdb ./a.out
