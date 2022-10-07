@@ -283,7 +283,7 @@ void Map::printMap()
 		for (int i = 0; i < gridXSize; i++)
 		{
 			int colour = -2;
-			string symbol=" ";
+			string symbol = " ";
 			symbol += grid[i][j];
 			if (grid[i][j] != "X")
 			{
@@ -296,9 +296,9 @@ void Map::printMap()
 			}
 
 			output += "|\033[" + to_string(41 + (colour % 7)) + "m" + symbol + "\033[0m|";
-			if (grid[i][j] != "X" && i + 1 < gridXSize && grid[i+1][j] != "X")
+			if (grid[i][j] != "X" && i + 1 < gridXSize && grid[i + 1][j] != "X")
 			{
-				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i+1][j]))))
+				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i + 1][j]))))
 				{
 					output += "═";
 				}
@@ -316,9 +316,9 @@ void Map::printMap()
 
 		for (int i = 0; i < gridXSize; i++)
 		{
-			if (grid[i][j] != "X" && j + 1 < gridYSize && grid[i][j+1] != "X")
+			if (grid[i][j] != "X" && j + 1 < gridYSize && grid[i][j + 1] != "X")
 			{
-				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i][j+1]))))
+				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i][j + 1]))))
 				{
 					output += "--║-- ";
 				}
@@ -331,7 +331,6 @@ void Map::printMap()
 			{
 				output += "----- ";
 			}
-			
 		}
 		output += "\n";
 	}
@@ -343,4 +342,27 @@ void Map::printMap()
 	// ---- -----
 	// | 4 |
 	// -----
+}
+
+Map::~Map(){
+	for (int i = 0; i < gridXSize; i++)
+	{
+		delete[] grid[i];
+	}
+	delete[] grid;
+
+	for (int i = 0; i < allAreas.size(); i++)
+	{
+		for (int j = 0; j < allAreas.size(); j++)
+		{
+			delete adjacencies[i][j];
+		}
+		delete[] adjacencies[i];
+	}
+	delete [] adjacencies;
+
+	while(!allAreas.empty()) {
+        delete allAreas.back();
+        allAreas.pop_back();
+    }
 }

@@ -99,6 +99,11 @@ public:
 	 */
 	vector<Coordinate*> getAreaCoordinates();
 
+	/**
+	 * @brief Destroy the Area object
+	 * 
+	 */
+	~Area();
 
 };
 

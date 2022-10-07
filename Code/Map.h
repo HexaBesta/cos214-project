@@ -95,6 +95,12 @@ public:
 	 */
 	void printMap();
 
+	/**
+	 * @brief Destroy the Map object for memory purposes
+	 * 
+	 */
+	~Map();
+
 private:
 	vector<Area *> allAreas;
 	TransportRoute ***adjacencies;

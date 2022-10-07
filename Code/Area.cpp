@@ -64,3 +64,10 @@ vector<Coordinate*> Area::getAreaCoordinates(){
 	return this->areasCoordinates;
 }
 
+Area::~Area(){
+	while(!areasCoordinates.empty()) {
+        delete areasCoordinates.back();
+        areasCoordinates.pop_back();
+    }
+}
+
