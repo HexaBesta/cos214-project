@@ -96,6 +96,12 @@ public:
 	void printMap();
 
 	/**
+	 * @brief Print the map with areas coloured differntly
+	 * 
+	 */
+	void printColourMap();
+
+	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
 	 */

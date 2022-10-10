@@ -287,6 +287,190 @@ void Map::printMap()
 			symbol += grid[i][j];
 			if (grid[i][j] != "X")
 			{
+				colour = 53;
+			}
+
+			while (symbol.length() < 3)
+			{
+				symbol += " ";
+			}
+
+			if (i - 1 >= 0 && grid[i - 1][j] == grid[i][j])
+			{
+				output += "\033[48;5;" + to_string(41 + (colour)) + "m";
+			}
+
+			if (i - 1 >= 0 && grid[i - 1][j] != "X" && grid[i][j] != "X" && transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i - 1][j]))))
+			{
+				output += "┤";
+			}
+			else
+			{
+				output += "|";
+			}
+
+			output += "\033[48;5;" + to_string(41 + (colour)) + "m" + symbol + "\033[0m";
+			if (grid[i][j] != "X" && i + 1 < gridXSize && grid[i + 1][j] != "X")
+			{
+				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i + 1][j]))))
+				{
+					output += "├═";
+				}
+				else
+				{
+					if (grid[i][j] == grid[i + 1][j])
+					{
+						output += "\033[48;5;" + to_string(41 + (colour)) + "m";
+					}
+
+					output += "| \033[0m";
+				}
+			}
+			else
+			{
+				if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j])
+				{
+					output += "\033[48;5;" + to_string(41 + (colour)) + "m";
+				}
+
+				output += "| \033[0m";
+			}
+		}
+		output += "\n";
+
+		for (int i = 0; i < gridXSize; i++)
+		{
+			int colour = -2;
+			string symbol = " ";
+			symbol += grid[i][j];
+			if (grid[i][j] != "X")
+			{
+				colour = 53;
+			}
+			if (grid[i][j] != "X" && j + 1 < gridYSize && grid[i][j + 1] != "X")
+			{
+				if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])), getAreaByIndex(stoi(grid[i][j + 1]))))
+				{
+					output += "--║-- ";
+				}
+				else
+				{
+					if (i - 1 >= 0 && j < gridYSize)
+					{
+						if (grid[i][j] == grid[i - 1][j] && grid[i][j] == grid[i][j + 1] && grid[i][j] == grid[i - 1][j + 1])
+						{
+							output += "\033[48;5;" + to_string(41 + (colour)) + "m" + "----\033[0m";
+							if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
+							{
+								output += "\033[48;5;" + to_string(41 + (colour)) + "m" + "- \033[0m";
+							}
+							else
+							{
+								output += "- ";
+							}
+						}
+						else if (grid[i][j] == grid[i][j + 1])
+						{
+							output += "-\033[48;5;" + to_string(41 + (colour)) + "m" + "---\033[0m";
+							if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
+							{
+								output += "\033[48;5;" + to_string(41 + (colour)) + "m" + "- \033[0m";
+							}
+							else
+							{
+								output += "- ";
+							}
+						}
+						else
+						{
+
+							output += "----- ";
+						}
+					}
+					else
+					{
+						output += "----- ";
+					}
+				}
+			}
+			else
+			{
+				if (i - 1 >= 0 && j < gridYSize)
+				{
+					if (grid[i][j] == grid[i - 1][j] && grid[i][j] == grid[i][j + 1] && grid[i][j] == grid[i - 1][j + 1])
+					{
+						output += "\033[48;5;" + to_string(41 + (colour)) + "m" + "----\033[0m";
+						if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
+						{
+							output += "\033[48;5;" + to_string(41 + (colour)) + "m" + "- \033[0m";
+						}
+						else
+						{
+							output += "- ";
+						}
+					}
+					else if (grid[i][j] == grid[i][j + 1])
+					{
+						output += "-\033[48;5;" + to_string(41 + (colour)) + "m" + "---\033[0m";
+						if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
+						{
+							output += "\033[48;5;" + to_string(41 + (colour)) + "m" + "- \033[0m";
+						}
+						else
+						{
+							output += "- ";
+						}
+					}
+					else
+					{
+
+						output += "----- ";
+					}
+				}
+				else
+				{
+					if (j < gridYSize && grid[i][j + 1] == grid[i][j])
+					{
+						output += "-\033[48;5;" + to_string(41 + (colour)) + "m" + "---- \033[0m";
+					}
+					else
+					{
+
+						output += "----- ";
+					}
+				}
+			}
+		}
+		output += "\n";
+	}
+
+	cout << output << endl;
+
+	// ----- -----
+	// | 3 |=| 5 |
+	// ---- -----
+	// | 4 |
+	// -----
+}
+
+void Map::printColourMap()
+{
+	string output = "";
+	for (int i = 0; i < gridXSize; i++)
+	{
+		output += "----- ";
+	}
+	output += "\n";
+	for (int j = 0; j < gridYSize; j++)
+	{
+
+		for (int i = 0; i < gridXSize; i++)
+		{
+			int colour = -2;
+			string symbol = " ";
+			symbol += grid[i][j];
+			if (grid[i][j] != "X")
+			{
 				colour = stoi(grid[i][j]);
 			}
 
@@ -344,7 +528,8 @@ void Map::printMap()
 	// -----
 }
 
-Map::~Map(){
+Map::~Map()
+{
 	for (int i = 0; i < gridXSize; i++)
 	{
 		delete[] grid[i];
@@ -359,10 +544,11 @@ Map::~Map(){
 		}
 		delete[] adjacencies[i];
 	}
-	delete [] adjacencies;
+	delete[] adjacencies;
 
-	while(!allAreas.empty()) {
-        delete allAreas.back();
-        allAreas.pop_back();
-    }
+	while (!allAreas.empty())
+	{
+		delete allAreas.back();
+		allAreas.pop_back();
+	}
 }
