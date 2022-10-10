@@ -1,13 +1,19 @@
 #include "Area.h"
 
-Area::Area(int index)
+Area::Area(string name,int index,int colour)
 {
+	this->name = name;
 	this->index = index;
+	this->colour=colour;
 }
 
 int Area::getIndex()
 {
 	return this->index;
+}
+
+int Area::getColour(){
+	return this->colour;
 }
 
 void Area::updatePlatoons(int type, string platoonName)

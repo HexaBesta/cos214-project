@@ -15,7 +15,9 @@ private:
 	Platoon *defender;
 	vector<Coordinate*> areasCoordinates;
 	Platoon *attacker;
+	string name;
 	int index;
+	int colour;
 
 public:
 	/**
@@ -23,7 +25,7 @@ public:
 	 *
 	 * @param index the index of the area (used in the map's adjacency matrix)
 	 */
-	Area(int index);
+	Area(string name,int index,int colour);
 
 	/**
 	 * @brief Gets the index of the area for the adjacency matrix
@@ -31,6 +33,13 @@ public:
 	 * @return int
 	 */
 	int getIndex();
+
+	/**
+	 * @brief Get the Colour object
+	 * 
+	 * @return int 
+	 */
+	int getColour();
 	/**
 	 * @brief Not a clue right now
 	 *
