@@ -2,10 +2,12 @@
 #define PLATOON_H
 
 #include <vector>
+#include <random>
 #include "BobTheBuilder.h"
 #include "Unit.h"
 #include "Weapon.h"
-#include "Platoon.h"
+#include "BoomBoomAttack.h"
+#include "PewPewAttack.h"
 
 using namespace std;
 
@@ -17,8 +19,12 @@ private:
 	vector<Unit *> humans;
 	vector<Unit *> vehicles;
 	vector<Weapon *> weapons;
+	PlatoonStrategy * strategy;
+	virtual void print();
 
 public:
+	Platoon(vector<Unit*> human, vector<Unit*> vehicles, vector<Weapon*> weapons);
+	
 	void construct();
 
 	void changeStrategy();
@@ -26,6 +32,12 @@ public:
 	Platoon *splitPlatoon();
 
 	void joinPlatoon(Platoon *platoon);
+
+	//added
+
+	int takeDamage(int damage, bool checkPewPew);
+
+	virtual void attack(Platoon *other);
 };
 
 #endif
