@@ -2,7 +2,7 @@
 #define COUNTRY_H
 #include <string>
 #include <iostream>
-#include "CountryState.h"
+#include "../CountryState/CountryState.h"
 using namespace std;
 
 class Country {
