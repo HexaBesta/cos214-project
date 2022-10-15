@@ -1,7 +1,8 @@
 #include "UnitsState.h"
 
-void UnitsState::request() {
-	// TODO - implement UnitsState::request
-	throw "Not yet implemented";
-}
+//Take out virtual
+// void UnitsState::request() {
+// 	// TODO - implement UnitsState::request
+// 	throw "Not yet implemented";
+// }
 

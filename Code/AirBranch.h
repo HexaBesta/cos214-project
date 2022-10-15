@@ -9,6 +9,7 @@ class AirBranch : public Branch
 {	
 public:
 	AirBranch(Unit *unit);
+	void print();
 };
 
 #endif

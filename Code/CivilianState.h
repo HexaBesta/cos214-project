@@ -1,10 +1,14 @@
 #ifndef CIVILIANSTATE_H
 #define CIVILIANSTATE_H
-#include "UnitsState.h"
+#include "FitState.h"
 using namespace std;
 
 class CivilianState : public UnitsState
 {
+    public: 
+        virtual double attackStrength(double damage);
+        virtual UnitsState * changeUnitState();
+        virtual void request();
 };
 
 #endif

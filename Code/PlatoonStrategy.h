@@ -10,6 +10,9 @@ class PlatoonStrategy
 
 public:
 	virtual void attack(Platoon *plankton) = 0;
+
+	//Added
+	virtual PlatoonStrategy* toggleStrategy()=0;
 };
 
 #endif

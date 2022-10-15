@@ -10,6 +10,7 @@ class SeaBranch : public Branch
 
 public:
 	SeaBranch(Unit *unit);
+	void print();
 };
 
 #endif

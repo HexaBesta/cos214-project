@@ -1,6 +1,8 @@
 #include "LandBranch.h"
 
 LandBranch::LandBranch(Unit* unit):Branch(unit) {
-	// TODO - implement LandBranch::LandBranch
-	throw "Not yet implemented";
+}
+
+void LandBranch::print(){
+	cout<<"LAND BRANCH"<<endl;
 }
