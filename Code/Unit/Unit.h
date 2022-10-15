@@ -2,7 +2,7 @@
 #define UNIT_H
 #include <string>
 #include <iostream>
-#include "../UnitState/UnitsState.h"
+#include "../UnitState/DeadState.h"
 class Platoon;
 
 using namespace std;
@@ -23,9 +23,9 @@ class Unit {
 		virtual void attack(Platoon *other) = 0;
 
 		/**
-		 * @brief need to add this
+		 * @brief returns the state of the currently set unit state 
 		 */
-		virtual void request();
+		virtual void requestState();
 
 		/**
 		 * @brief Sets the unit state

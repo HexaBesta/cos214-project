@@ -11,12 +11,40 @@ class Country {
 		CountryState *countryState;
 		double moral;
 	public:
-		Country(string);
+		/**
+		 * @brief Constructs a new country object
+		 * 
+		 * @param name is the name of the country
+		 */
+		Country(string name);
+
+		/**
+		 * @brief Country Deconstructor, will delete the countryState?
+		 */
 		~Country();
-		void request();
+
+		/**
+		 * @brief returns the state of the currently set country state. !! Need to implement in country state !!
+		 */
+		void requestState();
+
+		/**
+		 * @brief Sets the country state
+		 * 
+		 * @param countryState is the state we are changing to
+		 */
 		void setCountryState(CountryState* countryState);
 
-		bool updateCountryMoral(double);
+		/**
+		 * @brief Updates the country moral to the provided moral
+		 * 
+		 * @param moral is the moral we are updating to
+		 */
+		bool updateCountryMoral(double moral);
+
+		/**
+		 * @brief Returns the country moral
+		 */
 		double getCountryMoral();
 };
 

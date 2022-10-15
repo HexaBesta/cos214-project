@@ -13,7 +13,7 @@ class UnitsState {
 
 		//changed method - just returns different values based on state eg injured<fit
 		virtual double attackStrength(double damage) = 0;
-		virtual void request()=0;
+		virtual void request() = 0;
 		virtual UnitsState * changeUnitState() = 0;
 
 };

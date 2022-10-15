@@ -1,6 +1,6 @@
 #include "Unit.h"
 
-void Unit::request() {
+void Unit::requestState() {
 	this->unitState->request();
 }
 
@@ -9,7 +9,7 @@ void Unit::setUnitState(UnitsState * unitState = nullptr) {
 		this->unitState = this->unitState->changeUnitState();
 	}else{
 		delete this->unitState;
-	this->unitState = unitState;
+		this->unitState = unitState;
 	}
 	
 }

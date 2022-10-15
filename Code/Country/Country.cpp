@@ -8,9 +8,8 @@ Country::Country(string name) {
 	cout << "Created country " << this->name << endl;
 }
 
-void Country::request() {
-	// TODO - implement Country::request
-	throw "Not yet implemented";
+void Country::requestState() {
+	// this->countryState->request();
 }
 
 void Country::setCountryState(CountryState* countryState) {
