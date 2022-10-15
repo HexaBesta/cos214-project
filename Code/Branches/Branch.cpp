@@ -8,8 +8,8 @@ void Branch::attack(Platoon* pl){
 	this->unit->attack(pl);
 }
 
-void Branch::request(){
-	this->unit->request();
+void Branch::requestState(){
+	this->unit->requestState();
 }
 
 void Branch::setUnitState(UnitsState* unitS){
