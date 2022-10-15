@@ -19,7 +19,7 @@ protected:
 public:
 	virtual void attack(Platoon *other) = 0;
 
-	virtual void request();
+	virtual void requestState();
 
 	virtual void setUnitState(UnitsState *unitState);
 
