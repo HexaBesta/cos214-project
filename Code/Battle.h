@@ -13,18 +13,22 @@ class Battle
 private:
 
 	//Pretty sure we don't need this
-	// /**
-	//  * @brief Allows the active side to change strategy before attacking
-	//  * 
-	//  */
-	// virtual void changeStrategy();
+	/**
+	 * @brief Allows the active side to change strategy before attacking
+	 * 
+	 * 
+	 */
+	virtual void changeStrategy();
 
-	// /**
-	//  * @brief Attack will call the active side's attack method. 
-	//  * 
-	//  */
+	/**
+	 * @brief Attack will call the active side's attack method. 
+	 * 
+	 * @details Will call the active platoon's attack method on the passive platoon
+	 *  		Afterwards will perform a health check on the passive platoon
+	 * 
+	 */
 
-	// virtual void attack();
+	virtual void attack();
 
 	/**
 	 * @brief active side can request reinforcements from neighbouring area's.
@@ -49,7 +53,7 @@ public:
 	 * 			- Turn will be set to true (side1 will take their turn first)
 	 * 			- ACtive will be set to true
 	 * 
-	 * @param side1 will be the defensing unit (Platoon that was in area first)
+	 * @param side1 will be the defending unit (Platoon that was in area first)
 	 * @param side2 the unit who marched into an occupied area
 	 * @param area 
 	 */
@@ -74,14 +78,12 @@ public:
 	void takeTurn();
 
 private:
-	Platoon *sideOne;
-	Platoon *sideTwo;
+	vector<Platoon *> sides;
 
 	/**
-	 * @brief Indicated active side 
+	 * @brief determines which platoon's turn it is 
+	 * false = side 0
 	 * true = side 1
-	 * false = side 2
-	 * Hereafter
 	*/
 	bool turn;
 
