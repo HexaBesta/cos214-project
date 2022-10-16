@@ -93,7 +93,8 @@ bool Battle::requestReinforcements()
 
 	if (resp == 0 || resp == 1 || resp == 2)
 	{
-		return this->area->requestReinforcements(resp);
+		//Should be able to request specific reinforcements
+		return this->area->requestReinforcements();
 	}
 	else
 	{
