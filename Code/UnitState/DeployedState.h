@@ -6,6 +6,11 @@ using namespace std;
 class DeployedState : public UnitsState
 {
 	public:
+
+        /**
+         * @brief Prints the current state "Deployed: "
+         * 
+         */
         virtual void request();
 
 };
