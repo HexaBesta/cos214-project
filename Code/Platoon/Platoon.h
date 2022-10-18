@@ -12,8 +12,7 @@
 
 using namespace std;
 
-class Platoon : public Unit
-{
+class Platoon : public Unit {
 
 private:
 	BobTheBuilder *bob;
