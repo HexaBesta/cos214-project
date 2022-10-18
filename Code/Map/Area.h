@@ -47,6 +47,15 @@ public:
 	 * @param type
 	 * @param platoonName
 	 */
+
+
+	/**
+	 * @brief Get the Name of the area
+	 * 
+	 * @return string 
+	 */
+	string getName();
+	
 	void updatePlatoons(int type, string platoonName);
 
 	/**
