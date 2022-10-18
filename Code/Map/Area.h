@@ -4,6 +4,7 @@
 #include "../Platoon/Platoon.h"
 #include "Iterator.h"
 #include "Coordinate.h"
+#include "Visitor.h"
 #include <string>
 class Battle;
 
@@ -48,6 +49,14 @@ public:
 	 * @param platoonName
 	 */
 	void updatePlatoons(int type, string platoonName);
+
+	/**
+	* @brief accept visitor 
+	* 
+	* @param visitor takes in the pointer visitor that will be accpeted
+	*/
+
+	virtual void accept(Visitor* visitor);
 
 	/**
 	 * @brief Create a Iterator object that can loop through the area (under review)

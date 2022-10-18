@@ -31,25 +31,45 @@ public:
 	 * @param weapons the vector Weapon of weapons in the platoon
 	 */
 	Platoon(vector<Unit*> human, vector<Unit*> vehicles, vector<Weapon*> weapons);
+	
 	/**
 	 * @brief Construct a new Platoon using BobTheBuilder
 	 */
 	void construct();
+	
 	/**
 	 * @brief Change the strategy of the current Platoon
 	 */
 	void changeStrategy();
+	
 	/**
 	 * @brief Split the current platoon in half
 	 * 
-	 * @return a platoon pointer of one of the split platoons
+	 * @return a unit pointer of one of the split platoons
 	 */
-	Platoon *splitPlatoon();
+	Unit *split();
+	
 	/**
-	 * @brief Join a platoon with a
+	 * @brief Join a platoon with a unit
+	 * @param platoon a pointer of the unit that will be joined with the current platoon
 	 */
-	void joinPlatoon(Platoon *platoon);
-	int takeDamage(int damage, bool checkPewPew);
+	void join(Unit *platoon);
+	
+	/**
+	 * @brief function to take damage from another platoon and see what type of damage and how much
+	 * 
+	 * @param damage is the amount of damage inflected to the platoon
+	 * @param checkPewPew checks what strategy the platoon that attacked has
+	 * 
+	 * @return boolean indicating if the platoon is alive or dead
+	 */
+	bool takeDamage(int damage, bool checkPewPew);
+
+	/**
+	 * @brief virtual function to attack a certain platoon
+	 * 
+	 * @param other is a pointer of the platoon that will be attacked 
+	 */
 	virtual void attack(Platoon *other);
 };
 

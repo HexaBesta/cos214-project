@@ -53,8 +53,9 @@ void Platoon::changeStrategy()
 	this->strategy = this->strategy->toggleStrategy();
 }
 
-Platoon *Platoon::splitPlatoon()
+Unit* Platoon::split()
 {
+	
 	size_t const half_sizeH = this->humans.size() / 2;
 	vector<Unit *> human1(this->humans.begin(), this->humans.begin() + half_sizeH);
 	vector<Unit *> human2(this->humans.begin() + half_sizeH, this->humans.end());
@@ -75,7 +76,7 @@ Platoon *Platoon::splitPlatoon()
 	return split;
 }
 
-void Platoon::joinPlatoon(Platoon *platoon)
+void Platoon::join(Unit *platoon)
 {
 	this->humans.insert(this->humans.end(), platoon->humans.begin(), platoon->humans.end());
 	this->vehicles.insert(this->vehicles.end(), platoon->vehicles.begin(), platoon->vehicles.end());
@@ -84,7 +85,7 @@ void Platoon::joinPlatoon(Platoon *platoon)
 
 // added
 
-int Platoon::takeDamage(int damage, bool checkPew)
+bool Platoon::takeDamage(int damage, bool checkPew)
 {
 	if (this->health > 0)
 	{
@@ -99,7 +100,15 @@ int Platoon::takeDamage(int damage, bool checkPew)
 					human = false;			
 				}
 			}while(!((human && this->humans.at(random)->getHealth()>0) || (!human && this->vehicles.at(random)->getHealth()>0)));
+		}else{
+			this->health = this->health - damage;
 		}
+	}
+
+	if(this->getHealth()>0){
+		return true;
+	}else{
+		return false;
 	}
 
 	return -1;
