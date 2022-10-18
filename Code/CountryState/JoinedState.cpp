@@ -8,3 +8,7 @@ void JoinedState::handleCountry() {
 CountryState* JoinedState::changeCountryState() {
     return new JoinedState();
 }
+
+string JoinedState::requestState() {
+    return "Joined";
+}

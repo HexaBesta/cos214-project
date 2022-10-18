@@ -9,3 +9,7 @@ void WithdrawnState::handleCountry() {
 CountryState* WithdrawnState::changeCountryState() {
     return new WithdrawnState();
 }
+
+string WithdrawnState::requestState() {
+    return "Withdrawn";
+}
