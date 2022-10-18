@@ -14,6 +14,10 @@ int Area::getColour() {
 	return this->colour;
 }
 
+string Area::getName(){
+	return this->name;
+}
+
 void Area::updatePlatoons(int type, string platoonName)
 {
 	// TODO - implement Area::updatePlatoons
