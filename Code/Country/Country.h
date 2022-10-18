@@ -2,7 +2,8 @@
 #define COUNTRY_H
 #include <string>
 #include <iostream>
-#include "../CountryState/CountryState.h"
+// #include "../CountryState/CountryState.h"
+#include "../CountryState/NeutralState.h"
 using namespace std;
 
 class Country {
@@ -13,7 +14,6 @@ class Country {
 	public:
 		/**
 		 * @brief Constructs a new country object
-		 * 
 		 * @param name is the name of the country
 		 */
 		Country(string name);
@@ -30,20 +30,20 @@ class Country {
 
 		/**
 		 * @brief Sets the country state
-		 * 
 		 * @param countryState is the state we are changing to
 		 */
 		void setCountryState(CountryState* countryState);
 
 		/**
 		 * @brief Updates the country moral to the provided moral
-		 * 
 		 * @param moral is the moral we are updating to
+		 * @return Boolean that represents whether the countrys moral was updates or not
 		 */
 		bool updateCountryMoral(double moral);
 
 		/**
 		 * @brief Returns the country moral
+		 * @return Double that represents the moral of the country
 		 */
 		double getCountryMoral();
 };
