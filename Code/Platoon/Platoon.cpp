@@ -101,6 +101,8 @@ int Platoon::takeDamage(int damage, bool checkPew)
 			}while(!((human && this->humans.at(random)->getHealth()>0) || (!human && this->vehicles.at(random)->getHealth()>0)));
 		}
 	}
+
+	return -1;
 }
 
 void Platoon:: attack(Platoon *other){
