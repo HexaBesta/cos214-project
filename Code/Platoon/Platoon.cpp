@@ -6,7 +6,7 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, vector<Weapon *>
 	this->vehicles = vehicles;
 	this->weapons = weapons;
 	//this->strategy = new PewPewAttack();
-	cout<<"Remeber to pewpew in platoon contrsuctor"<<endl;
+	cout << "Remeber to pewpew in platoon contrsuctor" << endl;
 }
 
 void Platoon::construct()
@@ -101,6 +101,8 @@ int Platoon::takeDamage(int damage, bool checkPew)
 			}while(!((human && this->humans.at(random)->getHealth()>0) || (!human && this->vehicles.at(random)->getHealth()>0)));
 		}
 	}
+
+	return -1;
 }
 
 void Platoon:: attack(Platoon *other){

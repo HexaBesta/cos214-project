@@ -5,8 +5,10 @@
 
 using namespace std;
 
-class PlatoonBuilder : public BobTheBuilder
-{
+class PlatoonBuilder : public BobTheBuilder {
+    public:
+        Unit* buildPart();
+        Unit* getResult();
 };
 
 #endif
