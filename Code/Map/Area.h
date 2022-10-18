@@ -113,7 +113,7 @@ public:
 	 * @return true if the destination area is valid
 	 * @return false if the destination area is invalid
 	 */
-	bool marchOut(Area* whereTo);
+	void marchOut(Area* whereTo);
 
 	/**
 	 * @brief This function can be called by the defending platoon during a battle, to get aid from adjecent friendly areas which are connected by active transport routes

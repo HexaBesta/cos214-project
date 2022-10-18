@@ -4,7 +4,7 @@ void Unit::requestState() {
 	this->unitState->request();
 }
 
-void Unit::setUnitState(UnitsState * unitState = nullptr) {
+void Unit::setUnitState(UnitsState * unitState) {
 	if(unitState == nullptr){
 		this->unitState = this->unitState->changeUnitState();
 	}else{
@@ -22,14 +22,16 @@ int Unit::getHealth(){
 	return this->health;
 }
 
-int Unit::takeDamage(int damage) {
+bool Unit::takeDamage(int damage) {
 	this->health = this->health - damage;
 	if(this->health <= 0 ){
 		this->setUnitState(new DeadState());
+		return true;
 	}
+	return false;
 }
 
- Unit*  Unit::split(){}
+ Unit*  Unit::split(){return NULL;}
 
 
 void  Unit::join(Unit* others){}

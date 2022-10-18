@@ -51,7 +51,7 @@ class Unit {
 		 *
 		 * @param damage is the amount of damage the unit will take
 		 */
-		virtual int takeDamage(int damage);
+		virtual bool takeDamage(int damage);
 
 		/**
 		 * @brief Splits the unit into equal halves if possible

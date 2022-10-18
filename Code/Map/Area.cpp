@@ -106,7 +106,7 @@ Battle *Area::marchIn(Unit *unit)
 	
 }
 
-bool Area::marchOut(Area* whereTo)
+void Area::marchOut(Area* whereTo)
 {
 	if (land->getDefender()!=NULL)
 	{
@@ -126,7 +126,7 @@ bool Area::requestReinforcements()
 }
 
 bool Area::requestResources(int type){
-
+	return false;
 }
 
 void Area::addCell(string coord)
@@ -193,5 +193,5 @@ Area::~Area()
 	delete allFactories[1];
 	delete allFactories[2];
 
-	delete [] allFactories;
+
 }

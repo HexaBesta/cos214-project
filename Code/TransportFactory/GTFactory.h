@@ -7,7 +7,7 @@ using namespace std;
 class GTFactory : public TransportFactory
 {
     public:
-    virtual Transport *makeTypeTransport();
+    virtual Transport *makeTypeTransport(){return NULL;};
 };
 
 #endif

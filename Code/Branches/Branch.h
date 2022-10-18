@@ -44,7 +44,7 @@ public:
 	 * @param damage the amount of damage the unit should take, passed in as a parameter
 	 * 
 	 */
-	virtual int takeDamage(int damage);
+	virtual bool takeDamage(int damage);
 
 	virtual string getBranch();
 };

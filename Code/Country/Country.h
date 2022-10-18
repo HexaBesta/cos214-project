@@ -55,7 +55,7 @@ class Country {
 		 * @return Alliances* 
 		 */
 		Alliances* getAlliances(){
-
+			return this->alliance;
 		}
 };
 

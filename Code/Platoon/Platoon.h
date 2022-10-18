@@ -28,8 +28,9 @@ public:
 	void construct();
 	void changeStrategy();
 	Unit *split();
+	Unit* takeRandom();
 	void join(Unit *platoon);
-	int takeDamage(int damage, bool checkPewPew);
+	bool takeDamage(int damage, bool checkPewPew);
 	virtual void attack(Platoon *other);
 };
 
