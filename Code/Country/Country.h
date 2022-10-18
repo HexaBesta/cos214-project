@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include "../CountryState/CountryState.h"
+#include "../Alliances/Alliances.h"
 using namespace std;
 
 class Country {
@@ -10,6 +11,7 @@ class Country {
 		string name;
 		CountryState *countryState;
 		double moral;
+		Alliances* alliance;
 	public:
 		/**
 		 * @brief Constructs a new country object
@@ -46,6 +48,15 @@ class Country {
 		 * @brief Returns the country moral
 		 */
 		double getCountryMoral();
+
+		/**
+		 * @brief Get the Alliances of this country
+		 * 
+		 * @return Alliances* 
+		 */
+		Alliances* getAlliances(){
+
+		}
 };
 
 #endif

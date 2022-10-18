@@ -1,4 +1,4 @@
-#include "Map.h"
+#include "Map/Map.h"
 using namespace std;
 
 void testEuropeMap()

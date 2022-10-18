@@ -53,7 +53,7 @@ void Platoon::changeStrategy()
 	this->strategy = this->strategy->toggleStrategy();
 }
 
-Platoon *Platoon::splitPlatoon()
+Unit* Platoon::split()
 {
 	size_t const half_sizeH = this->humans.size() / 2;
 	vector<Unit *> human1(this->humans.begin(), this->humans.begin() + half_sizeH);
@@ -75,7 +75,7 @@ Platoon *Platoon::splitPlatoon()
 	return split;
 }
 
-void Platoon::joinPlatoon(Platoon *platoon)
+void Platoon::join(Platoon *platoon)
 {
 	this->humans.insert(this->humans.end(), platoon->humans.begin(), platoon->humans.end());
 	this->vehicles.insert(this->vehicles.end(), platoon->vehicles.begin(), platoon->vehicles.end());

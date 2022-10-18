@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include "../UnitState/DeadState.h"
+#include "../Country/Country.h"
 class Platoon;
 
 using namespace std;
@@ -13,6 +14,7 @@ class Unit {
 		int health;
 		virtual void print()=0;
 		int damage;
+		Country* country;
 		
 	public:
 		/**
@@ -50,6 +52,36 @@ class Unit {
 		 * @param damage is the amount of damage the unit will take
 		 */
 		virtual int takeDamage(int damage);
+
+		/**
+		 * @brief Splits the unit into equal halves if possible
+		 * 
+		 * @return Unit* 
+		 */
+		virtual Unit* split();
+
+		/**
+		 * @brief Merges two units together
+		 * 
+		 * @param others 
+		 */
+		virtual void join(Unit* others);
+
+		/**
+		 * @brief Get the Branch of the unit
+		 * @attention Branch class needs to be able to return some indication of which branch
+		 * @return string 
+		 */
+		virtual string getBranch();
+
+		/**
+		 * @brief Get the Alliance that the unit beloings to.
+		 * @attention Units  needs to be able to return some indication of which allaince they belong to
+		 * @return string 
+		 */
+		virtual string getAlliance();
+
+		
 };
 
 #endif

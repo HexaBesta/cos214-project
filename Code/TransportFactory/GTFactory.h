@@ -6,6 +6,8 @@ using namespace std;
 
 class GTFactory : public TransportFactory
 {
+    public:
+    virtual Transport *makeTypeTransport();
 };
 
 #endif

@@ -28,3 +28,16 @@ int Unit::takeDamage(int damage) {
 		this->setUnitState(new DeadState());
 	}
 }
+
+ Unit*  Unit::split(){}
+
+
+void  Unit::join(Unit* others){}
+
+string Unit::getBranch(){
+	return "NotAClue";
+}
+
+string Unit::getAlliance(){
+	return country->getAlliances()->getName();
+}

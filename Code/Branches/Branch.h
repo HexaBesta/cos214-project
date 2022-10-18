@@ -45,6 +45,8 @@ public:
 	 * 
 	 */
 	virtual int takeDamage(int damage);
+
+	virtual string getBranch();
 };
 
 #endif
