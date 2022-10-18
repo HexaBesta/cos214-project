@@ -6,6 +6,7 @@ compile:
 
 clean:
 	rm *.o
+	rm *.out
 
 clear:
 	clear
@@ -15,3 +16,7 @@ run:
 
 mem: clear compile clean
 	 valgrind --leak-check=yes ./main
+
+debug:
+	g++ -g *.cpp
+	gdb ./a.out
