@@ -1,8 +1,7 @@
 #include "MapComponent.h"
 
 void  MapComponent::attach(Map *  map) {
-	// TODO - implement MapComponent::attach
-	throw "Not yet implemented";
+	this->map=map;
 }
 
 void  MapComponent::detach(Map *  map) {

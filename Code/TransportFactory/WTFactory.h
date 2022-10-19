@@ -6,7 +6,8 @@
 using namespace std;
 
 class WTFactory : public TransportFactory {
-
+    public:
+    virtual Transport *makeTypeTransport(){return NULL;};
 };
 
 

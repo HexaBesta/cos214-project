@@ -51,12 +51,13 @@ public:
 	 * @details Constructor will set member functions. 
 	 * 			- Turn will be set to true (side1 will take their turn first)
 	 * 			- ACtive will be set to true
+	 *          - Will initiate battle loop
 	 * 
 	 * @param side1 will be the defending unit (Platoon that was in area first)
 	 * @param side2 the unit who marched into an occupied area
 	 * @param area 
 	 */
-	Battle(Unit * side1, Unit * side2, Area * area);
+	Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area);
 
 	/**
 	 * @brief Will print a summary of the current state of a battle
@@ -75,6 +76,12 @@ public:
 	 */
 
 	void takeTurn();
+
+	/**
+	 * @brief Will continue to alternate turns while the battle is active and print state of battle between turns
+	 * 
+	 */
+	void battleLoop();
 
 private:
 	vector<Platoon *> sides;

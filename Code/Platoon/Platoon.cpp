@@ -6,7 +6,7 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, vector<Weapon *>
 	this->vehicles = vehicles;
 	this->weapons = weapons;
 	//this->strategy = new PewPewAttack();
-	cout<<"Remeber to pewpew in platoon contrsuctor"<<endl;
+	cout << "Remeber to pewpew in platoon contrsuctor" << endl;
 }
 
 void Platoon::construct()
@@ -50,10 +50,12 @@ void Platoon::print()
 
 void Platoon::changeStrategy()
 {
-	this->strategy = this->strategy->toggleStrategy();
+	PlatoonStrategy * newStrategy = this->strategy->toggleStrategy();
+	delete this->strategy;
+	this->strategy = newStrategy;
 }
 
-Platoon *Platoon::splitPlatoon()
+Unit* Platoon::split()
 {
 	size_t const half_sizeH = this->humans.size() / 2;
 	vector<Unit *> human1(this->humans.begin(), this->humans.begin() + half_sizeH);
@@ -75,8 +77,10 @@ Platoon *Platoon::splitPlatoon()
 	return split;
 }
 
-void Platoon::joinPlatoon(Platoon *platoon)
+void Platoon::join(Unit *unit)
 {
+
+	Platoon* platoon = dynamic_cast<Platoon*>(unit);
 	this->humans.insert(this->humans.end(), platoon->humans.begin(), platoon->humans.end());
 	this->vehicles.insert(this->vehicles.end(), platoon->vehicles.begin(), platoon->vehicles.end());
 	this->weapons.insert(this->weapons.end(), platoon->weapons.begin(), platoon->weapons.end());
@@ -84,7 +88,7 @@ void Platoon::joinPlatoon(Platoon *platoon)
 
 // added
 
-int Platoon::takeDamage(int damage, bool checkPew)
+bool Platoon::takeDamage(int damage, bool checkPew)
 {
 	if (this->health > 0)
 	{
@@ -101,6 +105,27 @@ int Platoon::takeDamage(int damage, bool checkPew)
 			}while(!((human && this->humans.at(random)->getHealth()>0) || (!human && this->vehicles.at(random)->getHealth()>0)));
 		}
 	}
+	if (this->health<=0)
+	{
+		return true;
+	}else{
+		return false;
+	}
+	
+}
+
+Unit* Platoon::takeRandom(){
+	int unit=rand()%2;
+	if (unit==0)
+	{
+		int chosen=rand()%humans.size();
+		return humans.at(chosen);
+	}else if(unit==1){
+		int chosen=rand()%vehicles.size();
+		return vehicles.at(chosen);
+	}
+	return NULL;
+	
 }
 
 void Platoon:: attack(Platoon *other){

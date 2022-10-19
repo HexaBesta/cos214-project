@@ -2,7 +2,7 @@
 #define LANDBRANCH_H
 
 #include "Branch.h"
-#include "Unit.h"
+#include "../Unit/Unit.h"
 
 using namespace std;
 
@@ -23,6 +23,13 @@ public:
 	 *
 	 */
 	void print();
+
+	/**
+	 * @brief Get the Branch of the unit
+	 * 
+	 * @return string 
+	 */
+	string getBranch();
 };
 
 #endif
