@@ -7,7 +7,9 @@ using namespace std;
 
 class BobTheBuilder {
 	public:
-		Unit * buildPart();
+		BobTheBuilder();
+		virtual Unit* buildPart() = 0;
+		virtual Unit* getResult() = 0;
 };
 
 #endif
