@@ -17,5 +17,5 @@ void Branch::setUnitState(UnitsState* unitS){
 }
 
 int Branch::takeDamage(int damage){
-	this->unit->takeDamage(damage);
+	return this->unit->takeDamage(damage);
 }

@@ -1,7 +1,7 @@
 all: clear compile run clean
 
 compile:
-	g++ -c *.cpp
+	g++ -c */*.cpp
 	g++ -o main *.o
 
 clean:
