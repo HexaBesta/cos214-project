@@ -2,13 +2,42 @@
 
 Battle::Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area)
 {
-	this->sides.push_back((Platoon *)land->getDefender());
-	this->sides.push_back((Platoon *)land->getAttacker());
+	if(side1 == NULL || side2 == NULL || area == NULL){
+		cout<<"Null parameter passed to battle constructor for battle"<<endl;
+		this->area = NULL;
+		this->active = false;
 
-	this->area = area;
+	}
+	else{
+		Platoon * one = dynamic_cast<Platoon*>(side1);
+		Platoon * two = dynamic_cast<Platoon*>(side2);
 
-	this->active = true;
-	this->turn = false;
+		if(one == nullptr || two == nullptr){
+			cout<<"Units passed to battle were not platoons. Only platoons can battle"<<endl;
+			this->area = NULL;
+			this->active = false;
+		}
+		else{
+			this->sides.push_back(one);
+			this->sides.push_back(two);
+
+			this->area = area;
+
+			this->active = true;
+			this->turn = false;
+
+			this->battleLoop();
+		}
+		
+	}
+	
+}
+
+void Battle::battleLoop(){
+	while(this->active){
+		this->takeTurn();
+		this->getStateSummary();
+	}
 }
 
 void Battle::getStateSummary()

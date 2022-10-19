@@ -50,7 +50,9 @@ void Platoon::print()
 
 void Platoon::changeStrategy()
 {
-	this->strategy = this->strategy->toggleStrategy();
+	PlatoonStrategy * newStrategy = this->strategy->toggleStrategy();
+	delete this->strategy;
+	this->strategy = newStrategy;
 }
 
 Unit* Platoon::split()
