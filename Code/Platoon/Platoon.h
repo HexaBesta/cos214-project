@@ -18,7 +18,8 @@ private:
 	BobTheBuilder *bob;
 	vector<Unit *> humans;
 	vector<Unit *> vehicles;
-	vector<Weapon *> weapons;
+	int pewpew;
+	int boomboom;
 	PlatoonStrategy * strategy;
 	virtual void print();
 
@@ -30,7 +31,7 @@ public:
 	 * @param vehicles the vector Units of vehicles in the platoon
 	 * @param weapons the vector Weapon of weapons in the platoon
 	 */
-	Platoon(vector<Unit*> human, vector<Unit*> vehicles, vector<Weapon*> weapons);
+	Platoon(vector<Unit*> human, vector<Unit*> vehicles, int pewpew, int boomboom);
 	
 	/**
 	 * @brief Construct a new Platoon using BobTheBuilder

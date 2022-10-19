@@ -1,10 +1,11 @@
 #include "Platoon.h"
 
-Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, vector<Weapon *> weapons)
+Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, int pewpew, int boomboom)
 {
 	this->humans = human;
 	this->vehicles = vehicles;
-	this->weapons = weapons;
+	this->pewpew = pewpew;
+	this->boomboom = boomboom;
 	//this->strategy = new PewPewAttack();
 	cout<<"Remeber to pewpew in platoon contrsuctor"<<endl;
 }
@@ -50,6 +51,7 @@ void Platoon::print()
 
 void Platoon::changeStrategy()
 {
+	if(this->strategy.)
 	PlatoonStrategy * newStrategy = this->strategy->toggleStrategy();
 	delete this->strategy;
 	this->strategy = newStrategy;
@@ -66,25 +68,26 @@ Unit* Platoon::split()
 	vector<Unit *> vehicles1(this->vehicles.begin(), this->vehicles.begin() + half_sizeV);
 	vector<Unit *> vehicles2(this->vehicles.begin() + half_sizeV, this->vehicles.end());
 
-	size_t const half_sizeW = this->weapons.size() / 2;
-	vector<Weapon *> weapon1(this->weapons.begin(), this->weapons.begin() + half_sizeW);
-	vector<Weapon *> weapon2(this->weapons.begin() + half_sizeW, this->weapons.end());
+	int halfpew = pewpew/2;
+	int halfboom = boomboom/2;
 
 	this->humans = human1;
 	this->vehicles = vehicles1;
-	this->weapons = weapon1;
+	this->pewpew = pewpew/2;
+	this->boomboom = boomboom/2;
 
-	Platoon *split = new Platoon(human2, vehicles2, weapon2);
+	Platoon *split = new Platoon(human2, vehicles2, halfpew, halfboom);
 	return split;
 }
 
-void Platoon::join(Unit *platoon)
+void Platoon::join(Unit *platoon1)
 {
 
-	Platoon* platoon = dynamic_cast<Platoon*>(unit);
+	Platoon* platoon = dynamic_cast<Platoon*>(platoon1);
 	this->humans.insert(this->humans.end(), platoon->humans.begin(), platoon->humans.end());
 	this->vehicles.insert(this->vehicles.end(), platoon->vehicles.begin(), platoon->vehicles.end());
-	this->weapons.insert(this->weapons.end(), platoon->weapons.begin(), platoon->weapons.end());
+	this->pewpew = this->pewpew + platoon->pewpew;
+	this->boomboom = this->boomboom + platoon->boomboom;
 }
 
 // added
