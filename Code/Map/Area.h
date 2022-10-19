@@ -4,6 +4,11 @@
 #include "../Platoon/Platoon.h"
 #include "Iterator.h"
 #include "Coordinate.h"
+#include "TheatreOfWar.h"
+#include "../TransportFactory/TransportFactory.h"
+#include "../TransportFactory/PTFactory.h"
+#include "../TransportFactory/WTFactory.h"
+#include "../TransportFactory/GTFactory.h"
 #include <string>
 class Battle;
 
@@ -11,12 +16,23 @@ class Area : public MapComponent
 {
 
 private:
-	Platoon *defender;
 	vector<Coordinate*> areasCoordinates;
-	Platoon *attacker;
 	string name;
 	int index;
 	int colour;
+	TheatreOfWar* land;
+	TheatreOfWar* air;
+	TransportFactory* allFactories[3];
+
+	/**
+	 * @brief Checks if a battle would happen.
+	 * 
+	 * A battle occurs if there is an attacker and a defender in either land, air or both
+	 * 
+	 * @return true 
+	 * @return false 
+	 */
+	bool checkIfBattleHappens();
 
 public:
 	/**
@@ -25,8 +41,9 @@ public:
 	 * @name name the name of the country
 	 * @param index the index of the area (used in the map's adjacency matrix)
 	 * @param colour the colour of the area on the map
+	 * @param factories indicates whether or not the area starts with factories
 	 */
-	Area(string name,int index,int colour);
+	Area(string name,int index,int colour,bool factories);
 
 	/**
 	 * @brief Gets the index of the area for the adjacency matrix
@@ -47,6 +64,15 @@ public:
 	 * @param type
 	 * @param platoonName
 	 */
+
+
+	/**
+	 * @brief Get the Name of the area
+	 * 
+	 * @return string 
+	 */
+	string getName();
+	
 	void updatePlatoons(int type, string platoonName);
 
 	/**
@@ -77,15 +103,17 @@ public:
 	 * @param platoon The platoon marching into this area.
 	 * @return returns a Battle pointer if a battle occurs when the platoon enters the area, returns NULL if not.
 	 */
-	Battle *marchIn(Platoon *platoon);
+	Battle *marchIn(Unit *unit);
 
 	/**
 	 * @brief Orders the platoon to leave the area and go to another area
 	 *
+	 * @param whereTo The area to marchTo
+	 * 
 	 * @return true if the destination area is valid
 	 * @return false if the destination area is invalid
 	 */
-	bool marchOut();
+	void marchOut(Area* whereTo);
 
 	/**
 	 * @brief This function can be called by the defending platoon during a battle, to get aid from adjecent friendly areas which are connected by active transport routes
@@ -95,6 +123,14 @@ public:
 	 */
 	bool requestReinforcements();
 
+	/**
+	 * @brief Request a specific type of resource from adjacent connected areas
+	 * 
+	 * @param type the type of resource
+	 * @return true on success
+	 * @return false on failure
+	 */
+	bool requestResources(int type);
 	/**
 	 * @brief Adds a cell to the area to be printed
 	 * 

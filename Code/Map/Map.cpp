@@ -152,7 +152,9 @@ Map::Map(string setupFile)
 		/*
 		Add area to all areas
 		*/
-		Area *currArea = new Area(areaParts.at(0),stoi(areaParts.at(1)),stoi(areaParts.at(2)));
+
+		Area *currArea = new Area(areaParts.at(0), stoi(areaParts.at(1)), stoi(areaParts.at(2)), stoi(areaParts.at(2)) != 94);
+		currArea->attach(this);
 		allAreas.push_back(currArea);
 
 		/*
@@ -201,7 +203,7 @@ void Map::update()
 	// TODO - implement Map::update
 	throw "Not yet implemented";
 }
-vector<Area *> Map::listAdjacent(Area *area)
+vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 {
 	string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
 	vector<Area *> adjacentAreas = {};
@@ -209,8 +211,19 @@ vector<Area *> Map::listAdjacent(Area *area)
 	{
 		if (adjacencies[area->getIndex()][i] != NULL)
 		{
-			out += to_string(i) + ",";
-			adjacentAreas.push_back(allAreas.at(i));
+			if (transportRoute)
+			{
+				if (transportRouteisAvailable(area, allAreas.at(i)))
+				{
+					out += to_string(i) + ",";
+					adjacentAreas.push_back(allAreas.at(i));
+				}
+			}
+			else
+			{
+				out += to_string(i) + ",";
+				adjacentAreas.push_back(allAreas.at(i));
+			}
 		}
 	}
 	out += "\n";
@@ -374,7 +387,7 @@ void Map::printMap()
 							output += "-\033[48;5;" + to_string((colour)) + "m" + "---\033[0m";
 							if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
 							{
-								output += "\033[48;5;" + to_string( (colour)) + "m" + "- \033[0m";
+								output += "\033[48;5;" + to_string((colour)) + "m" + "- \033[0m";
 							}
 							else
 							{
@@ -402,7 +415,7 @@ void Map::printMap()
 						output += "\033[48;5;" + to_string((colour)) + "m" + "----\033[0m";
 						if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
 						{
-							output += "\033[48;5;" + to_string( (colour)) + "m" + "- \033[0m";
+							output += "\033[48;5;" + to_string((colour)) + "m" + "- \033[0m";
 						}
 						else
 						{
@@ -414,7 +427,7 @@ void Map::printMap()
 						output += "-\033[48;5;" + to_string((colour)) + "m" + "---\033[0m";
 						if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
 						{
-							output += "\033[48;5;" + to_string( (colour)) + "m" + "- \033[0m";
+							output += "\033[48;5;" + to_string((colour)) + "m" + "- \033[0m";
 						}
 						else
 						{
@@ -431,7 +444,7 @@ void Map::printMap()
 				{
 					if (j < gridYSize && grid[i][j + 1] == grid[i][j])
 					{
-						output += "-\033[48;5;" + to_string( (colour)) + "m" + "---- \033[0m";
+						output += "-\033[48;5;" + to_string((colour)) + "m" + "---- \033[0m";
 					}
 					else
 					{

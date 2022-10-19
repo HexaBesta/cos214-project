@@ -1,9 +1,9 @@
 #include "Battle.h"
 
-Battle::Battle(Unit *side1, Unit *side2, Area *area)
+Battle::Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area)
 {
-	this->sides.push_back((Platoon *)side1);
-	this->sides.push_back((Platoon *)side2);
+	this->sides.push_back((Platoon *)land->getDefender());
+	this->sides.push_back((Platoon *)land->getAttacker());
 
 	this->area = area;
 
@@ -118,11 +118,11 @@ void Battle::changeStrategy()
 	}
 }
 
-void attack(Platoon *activePlatoon, Platoon *passivePlatoon)
+void Battle::attack()
 {
-	activePlatoon->attack(passivePlatoon);
+	//activePlatoon->attack(passivePlatoon);
 
-	cout << "!!!!!!!!!!!!!Remember to add health check" << endl;
+	//cout << "!!!!!!!!!!!!!Remember to add health check" << endl;
 
 	// if(this->sides.at(!turn)->getHealth()<=0){
 	// 	cout<<this->sides.at(turn)->getName()<<" has annihilated "<<this->sides.at(!turn)->getName()<<endl;

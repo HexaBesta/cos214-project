@@ -56,7 +56,7 @@ public:
 	 * @param side2 the unit who marched into an occupied area
 	 * @param area 
 	 */
-	Battle(Unit * side1, Unit * side2, Area * area);
+	Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area);
 
 	/**
 	 * @brief Will print a summary of the current state of a battle

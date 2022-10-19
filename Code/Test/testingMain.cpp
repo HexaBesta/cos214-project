@@ -1,4 +1,4 @@
-#include "./Map/Map.h"
+#include "../Map/Map.h"
 using namespace std;
 
 void testEuropeMap()
@@ -33,11 +33,12 @@ void testEuropeMap()
         }
     }
 
-    m->printColourMap();
+
+    m->printMap();
 
     for (size_t i = 0; i < 32; i++)
     {
-        m->listAdjacent(m->getAreaByIndex(i));
+        m->listAdjacent(m->getAreaByIndex(i),false);
     }
 
     delete m;
@@ -54,7 +55,7 @@ void testMap1()
 
     for (size_t i = 0; i < 6; i++)
     {
-        m->listAdjacent(m->getAreaByIndex(i));
+        m->listAdjacent(m->getAreaByIndex(i),false);
     }
 
     delete m;

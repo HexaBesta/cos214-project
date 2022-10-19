@@ -16,6 +16,10 @@ void Branch::setUnitState(UnitsState* unitS){
 	this->unit->setUnitState(unitS);
 }
 
-int Branch::takeDamage(int damage){
+bool Branch::takeDamage(int damage){
 	return this->unit->takeDamage(damage);
+}
+
+string Branch::getBranch(){
+	return "BRANCH";
 }

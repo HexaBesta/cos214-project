@@ -20,6 +20,13 @@ public:
 	 *
 	 */
 	void print();
+	
+	/**
+	 * @brief Get the Branch of the unit
+	 * 
+	 * @return string 
+	 */
+	string getBranch();
 };
 
 #endif
