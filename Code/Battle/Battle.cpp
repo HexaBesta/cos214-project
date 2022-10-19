@@ -5,10 +5,23 @@ Battle::Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area)
 	this->sides.push_back((Platoon *)land->getDefender());
 	this->sides.push_back((Platoon *)land->getAttacker());
 
-	this->area = area;
+			this->area = area;
 
-	this->active = true;
-	this->turn = false;
+			this->active = true;
+			this->turn = false;
+
+			this->battleLoop();
+		}
+		
+	}
+	
+}
+
+void Battle::battleLoop(){
+	while(this->active){
+		this->takeTurn();
+		this->getStateSummary();
+	}
 }
 
 void Battle::getStateSummary()
