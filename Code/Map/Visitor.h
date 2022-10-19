@@ -1,6 +1,7 @@
 #ifndef VISITOR_H
 #define VISITOR_H
-
+#include <string>
+#include <iostream>
 class Area;
 class TransportRoute;
 

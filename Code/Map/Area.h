@@ -9,6 +9,7 @@
 #include "../TransportFactory/PTFactory.h"
 #include "../TransportFactory/WTFactory.h"
 #include "../TransportFactory/GTFactory.h"
+#include "Visitor.h"
 #include <string>
 class Battle;
 

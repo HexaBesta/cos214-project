@@ -22,6 +22,12 @@ class CountVisitor : public Visitor
      * @param transport will take in the transport route to iterate through the adjacent transport routes
      */
     virtual void visit(TransportRoute* transport);
+
+    private:
+        int alliance2Count = 0;
+        int alliance1Count = 0;
+        int alliance2CountTransport = 0;
+        int alliance1CountTransport = 0;
 };
 
 #endif
