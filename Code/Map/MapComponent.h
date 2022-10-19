@@ -1,7 +1,7 @@
 #ifndef MAPCOMPONENT_H
 #define MAPCOMPONENT_H
 
-class Map;
+#include "Map.h"
 class Visitor;
 
 using namespace std;
@@ -9,7 +9,7 @@ using namespace std;
 class MapComponent
 {
 
-private:
+protected:
 	Map *map;
 
 public:

@@ -1,16 +1,14 @@
-#include "Area.h"
-#include "../Battle/Battle.h"
 
+#include "Area.h"
 Area::Area(string name, int index, int colour,bool factories)
 {
 	this->name = name;
 	this->index = index;
 	this->colour = colour;
-
 	if (factories)
 	{
 		allFactories[0]=new PTFactory();
-		allFactories[1]=new WTFactory();
+		allFactories[1]=new ATFactory();
 		allFactories[2]=new GTFactory();
 	}
 	
@@ -43,7 +41,7 @@ Iterator *Area::createIterator()
 	throw "Not yet implemented";
 }
 
-Battle *Area::marchIn(Unit *unit)
+void Area::marchIn(Unit *unit)
 {
 	if (unit->getBranch() == "LAND BRANCH")
 	{
@@ -98,11 +96,7 @@ Battle *Area::marchIn(Unit *unit)
 		}
 	}
 	
-	if (checkIfBattleHappens())
-	{
-		return new Battle(air,land,this);
-	}
-	return NULL;
+	
 	
 }
 
@@ -154,30 +148,55 @@ vector<Coordinate *> Area::getAreaCoordinates()
 	return this->areasCoordinates;
 }
 
-bool Area::checkIfBattleHappens(){
+Battle* Area::returnBattle(){
+
+bool isBattle=false;
 
 	if (land->getDefender()!=NULL && land->getAttacker()!=NULL)
 	{
-		return true;
+		isBattle = true;
 	}
 
 	if (air->getDefender()!=NULL && air->getAttacker()!=NULL)
 	{
-		return true;
+		isBattle = true;
 	}
 
 	if (land->getDefender()!=NULL && air->getAttacker()!=NULL)
 	{
-		return true;
+		isBattle = true;
 	}
 
 	if (air->getDefender()!=NULL && land->getAttacker()!=NULL)
 	{
-		return true;
+		isBattle = true;
 	}
 	
-	return false;
+	if (isBattle)
+	{
+		//return new Battle(air,land,this);
+	}
+	return NULL;
 
+}
+
+TransportFactory* Area::getFactory(int type){
+
+	if(allFactories[type]==NULL){
+		return NULL;
+	}else{
+		return allFactories[type]->clone();
+	}
+}
+
+bool Area::requestFactory(int type){
+	TransportFactory* foundFactory =map->requestFactoryForArea(this,type);
+	if(foundFactory== NULL){
+		return false;
+	}else{
+		allFactories[type]=foundFactory;
+		return true;
+	}
 }
 
 
@@ -189,9 +208,12 @@ Area::~Area()
 		areasCoordinates.pop_back();
 	}
 
-	delete allFactories[0];
-	delete allFactories[1];
-	delete allFactories[2];
+	for(int i=0; i<3; i++){
+		if(allFactories[i]!=NULL){
+			delete allFactories[i];
+            allFactories[i]=NULL;
+		}
+	}
 
 
 }

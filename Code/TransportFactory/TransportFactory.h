@@ -12,6 +12,7 @@ private:
 
 public:
 	virtual Transport *makeTypeTransport() = 0;
+	virtual TransportFactory* clone()=0;
 	
 };
 
