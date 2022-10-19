@@ -1,4 +1,9 @@
+#ifndef MAP_CPP
+#define MAP_CPP
+#include "Area.h"
+#include "TransportRoute.h"
 #include "Map.h"
+
 
 Map::Map(string setupFile)
 {
@@ -203,6 +208,18 @@ void Map::update()
 	// TODO - implement Map::update
 	throw "Not yet implemented";
 }
+
+TransportFactory* Map::requestFactoryForArea(Area* area,int type){
+	vector<Area *> areas=listAdjacent(area,true);
+	for (int i = 0; i < areas.size(); i++)
+    {
+		if (areas.at(i)->getFactory(type)!=NULL){
+			return areas.at(i)->getFactory(type);
+		}
+	}
+	return NULL;
+}
+
 vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 {
 	string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
@@ -565,3 +582,5 @@ Map::~Map()
 		allAreas.pop_back();
 	}
 }
+
+#endif

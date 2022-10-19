@@ -1,45 +1,19 @@
 #include "../Map/Map.h"
+#include "../Map/Area.h"
 using namespace std;
 
 void testEuropeMap()
 {
     Map *m = new Map("../Maps/europe.txt");
-    
-    for (int i = 0; i < 32; i++)
-    {
-        for (int j = 0; j < 32; j++)
-        {
-            if (i!=j)
-            {
-                m->createTransportRoute(m->getAreaByIndex(i), m->getAreaByIndex(j));
-            }
-            
-            
-        }
-    }
 
     m->printMap();
-
-    for (int i = 0; i < 32; i++)
-    {
-        for (int j = 0; j < 32; j++)
-        {
-            if (i!=j)
-            {
-                m->destroyTransportRoute(m->getAreaByIndex(i), m->getAreaByIndex(j));
-            }
-            
-            
-        }
-    }
-
-
-    m->printMap();
-
-    for (size_t i = 0; i < 32; i++)
-    {
-        m->listAdjacent(m->getAreaByIndex(i),false);
-    }
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+    cout << m->getAreaByIndex(7)->requestFactory(1) << endl;
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+    m->createTransportRoute(m->getAreaByIndex(6),m->getAreaByIndex(7));
+    cout << m->getAreaByIndex(7)->requestFactory(0) << endl;
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
 
     delete m;
 }
@@ -55,7 +29,7 @@ void testMap1()
 
     for (size_t i = 0; i < 6; i++)
     {
-        m->listAdjacent(m->getAreaByIndex(i),false);
+        m->listAdjacent(m->getAreaByIndex(i), false);
     }
 
     delete m;
@@ -63,7 +37,7 @@ void testMap1()
 
 int main()
 {
-    testMap1();
+    // testMap1();
     cout << endl
          << endl;
     testEuropeMap();
