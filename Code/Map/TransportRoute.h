@@ -53,6 +53,20 @@ class TransportRoute : public MapComponent
 		 */
 		void create();
 
+		/**
+		 * @brief Get the From object
+		 * 
+		 * @return Area* 
+		 */
+		Area* getFrom();
+
+		/**
+		 * @brief Get the To object
+		 * 
+		 * @return Area* 
+		 */
+		Area* getTo();
+
 private:
 	Area *to;
 	Area *from;

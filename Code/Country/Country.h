@@ -2,8 +2,8 @@
 #define COUNTRY_H
 #include <string>
 #include <iostream>
-// #include "../CountryState/CountryState.h"
-#include "../CountryState/NeutralState.h"
+#include "../CountryState/CountryState.h"
+#include "../Alliances/Alliances.h"
 using namespace std;
 
 class Country {
@@ -11,6 +11,7 @@ class Country {
 		string name;
 		CountryState *countryState;
 		double moral;
+		Alliances* alliance;
 	public:
 		/**
 		 * @brief Constructs a new country object
@@ -46,6 +47,15 @@ class Country {
 		 * @return Double that represents the moral of the country
 		 */
 		double getCountryMoral();
+
+		/**
+		 * @brief Get the Alliances of this country
+		 * 
+		 * @return Alliances* 
+		 */
+		Alliances* getAlliances(){
+			return this->alliance;
+		}
 };
 
 #endif

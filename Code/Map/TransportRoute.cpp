@@ -20,3 +20,11 @@ void TransportRoute::destroy(){
 void TransportRoute::create(){
     this->available=true;
 }
+
+Area* TransportRoute::getFrom(){
+    return this->from;
+}
+
+Area* TransportRoute::getTo(){
+    return this->to;
+}

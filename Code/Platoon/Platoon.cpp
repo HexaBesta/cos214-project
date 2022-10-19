@@ -78,6 +78,8 @@ Unit* Platoon::split()
 
 void Platoon::join(Unit *platoon)
 {
+
+	Platoon* platoon = dynamic_cast<Platoon*>(unit);
 	this->humans.insert(this->humans.end(), platoon->humans.begin(), platoon->humans.end());
 	this->vehicles.insert(this->vehicles.end(), platoon->vehicles.begin(), platoon->vehicles.end());
 	this->weapons.insert(this->weapons.end(), platoon->weapons.begin(), platoon->weapons.end());

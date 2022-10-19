@@ -13,6 +13,7 @@ private:
 	Map *map;
 
 public:
+
 	/**
 	 * @brief attaches/sets the map as an observer to this MapComponent
 	 * 
