@@ -146,6 +146,14 @@ public:
 	vector<Coordinate*> getAreaCoordinates();
 
 	/**
+	 * @brief Attempts to retreat from Area 
+	 * 
+	 * @param type will be "attack" or "defense"
+	 * 
+	 */
+	bool retreat(string type);
+
+	/**
 	 * @brief Destroy the Area object
 	 * 
 	 */

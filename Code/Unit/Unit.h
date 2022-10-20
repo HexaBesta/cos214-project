@@ -22,7 +22,7 @@ class Unit {
 		 * 
 		 * @param other is the other platoon we are going to attack
 		 */
-		virtual void attack(Platoon *other) = 0;
+		virtual void attack(Unit *other) = 0;
 
 		/**
 		 * @brief returns the state of the currently set unit state 

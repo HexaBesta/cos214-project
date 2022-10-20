@@ -1,25 +1,75 @@
 #include "Battle.h"
 
-Battle::Battle(TheatreOfWar *air, TheatreOfWar *land, Area *area)
+Battle::Battle(TheatreOfWar *air, TheatreOfWar *land, Area *area, Player *player)
 {
-	this->sides.push_back((Platoon *)land->getDefender());
-	this->sides.push_back((Platoon *)land->getAttacker());
 
+	this->air = air;
+	this->land = land;
 	this->area = area;
-
+	this->player = player;
 	this->active = true;
-	this->turn = false;
-
-	this->battleLoop();
+	this->turn = true;
 }
 
 void Battle::battleLoop()
 {
 	while (this->active)
 	{
+		if(this->checkRetreat()){
+			this->active = false;
+			break;
+		}
 		this->takeTurn();
 		this->getStateSummary();
 	}
+}
+
+bool Battle::checkRetreat()
+{
+	if (this->turn)
+	{
+		if (this->player->playerRetreat(this))
+		{
+			return this->area->retreat("attack");
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		if (this->player->playerRetreat(this))
+		{
+			return this->area->retreat("defense");
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
+
+void Battle::setAttackerToDefender(){
+	Unit * oldAttacker = this->air->getAttacker();
+	Unit * oldDefender = this->air->getDefender();
+	if(oldAttacker != NULL){
+		if(oldDefender){
+			this->area->retreat("defense");
+		}
+		this->air->setDefender(oldAttacker);
+		this->air->setAttacker(NULL);
+	}
+	oldAttacker = this->land->getAttacker();
+	oldDefender = this->land->getDefender();
+	if(oldAttacker != NULL){
+		if(oldDefender){
+			this->area->retreat("defense");
+		}
+		this->land->setDefender(oldAttacker);
+		this->land->setAttacker(NULL);
+	}
+
 }
 
 void Battle::getStateSummary()
@@ -33,19 +83,28 @@ void Battle::getStateSummary()
 	cout << "Turn: ";
 	if (!this->turn)
 	{
-		cout << "Side 1" << endl;
+		cout << "Defender" << endl;
 	}
 	else
 	{
-		cout << "Side 2" << endl;
+		cout << "Attacker" << endl;
 	}
-	cout << "SIDE 1: add print" << endl;
+	cout << "Defender: add print" << endl;
+	if(this->air->getDefender()){
+		//this->air->getDefender()->print();
+	}
+	if(this->land->getDefender()){
+		//this->land->getDefender()->print();
+	}
 
-	// this->sides.at(0)->print();
+	cout << "Attacker: add print" << endl;
 
-	cout << "SIDE 2: add print" << endl;
-
-	// this->sides.at(1)->print();
+	if(this->air->getAttacker()){
+		//this->air->getAttacker()->print();
+	}
+	if(this->land->getAttacker()){
+		//this->land->getAttacker()->print();
+	}
 
 	cout << endl;
 	cout << "-------------------------------------------" << endl;
@@ -54,21 +113,134 @@ void Battle::getStateSummary()
 void Battle::takeTurn()
 {
 
+	Unit * active = NULL;
+	Unit * passive = NULL;
+
+	/*
+	Get current active (initiate attack) and passive (take damage)
+	*/
+	if(this->turn){
+		//Attacker in air
+		if(this->air->getAttacker() /* && (!this->air->getAttacker()->getState().compare("Dead")*/){
+			
+			active = this->air->getAttacker();
+
+			//Defender in air
+			if(this->air->getDefender() /* && (!this->air->getDefender()->getState().compare("Dead")*/){
+				passive = this->air->getDefender();
+			}
+			//Defender on land
+			else if(this->land->getDefender() /* && (!this->land->getDefender()->getState().compare("Dead")*/){
+				passive = this->land->getDefender();
+			}
+			//No defender
+			else{
+				this->active = false;
+				this->setAttackerToDefender();
+			}
+
+		}
+		//attacker on land
+		else if(this->land->getAttacker() /* && (!this->land->getAttacker()->getState().compare("Dead")*/){
+			active = this->land->getAttacker();
+			//Defender on land
+			if(this->land->getDefender() /* && (!this->land->getDefender()->getState().compare("Dead")*/){
+				passive = this->land->getDefender();
+			}
+			//No defender
+			else if (!(this->air->getDefender() /* && (!this->air->getDefender()->getState().compare("Dead"))*/)){
+				this->active = false;
+			}
+			//Only air defender - request reinforcements
+			else{
+				cout<<"Add call to request reinforcements in Battle line 155"<<endl;
+				/*
+				Unit * reinforcements = this->area->requestReinforcements("attack");
+				if(reinforcements == NULL){
+					this->area->retreat("attack");
+				}else{
+					this->air->setAttacker(reinforcements);
+				}	
+				*/
+			}
+		}
+		//No attacker left
+		else{
+			this->active = false;
+		}
+	}
+	//Defender active
+	else{
+		//Defender in air
+		if(this->air->getDefender() /* && (!this->air->getDefender()->getState().compare("Dead")*/){
+			
+			active = this->air->getDefender();
+
+			//Attacker in air
+			if(this->air->getAttacker() /* && (!this->air->getAttacker()->getState().compare("Dead")*/){
+				passive = this->air->getAttacker();
+			}
+			//Attacker on land
+			else if(this->land->getAttacker() /* && (!this->land->getAttacker()->getState().compare("Dead")*/){
+				passive = this->land->getAttacker();
+			}
+			//No attacker
+			else{
+				this->active = false;
+			}
+
+		}
+		//defender on land
+		else if(this->land->getDefender() /* && (!this->land->getDefender()->getState().compare("Dead")*/){
+			active = this->land->getDefender();
+			//Attacker on land
+			if(this->land->getAttacker() /* && (!this->land->getAttacker()->getState().compare("Dead")*/){
+				passive = this->land->getAttacker();
+			}
+			//No Attacker
+			else if (!(this->air->getAttacker() /* && (!this->air->getAttacker()->getState().compare("Dead"))*/)){
+				this->active = false;
+			}
+			//Only air attacker - request reinforcements
+			else{
+				cout<<"Add call to request reinforcements in Battle line 199"<<endl;
+				/*
+				Unit * reinforcements = this->area->requestReinforcements("defense");
+				if(reinforcements == NULL){
+					this->area->retreat("defense");
+				}else{
+					this->air->setDefender(reinforcements)	
+				}	
+				*/
+			}
+		}
+		//No defender left
+		else{
+			this->active = false;
+			this->setAttackerToDefender();
+		}
+	}
+
+	//If one side no longer has troops/active side only had land against air
+	if(this->active == false ||  passive == NULL){
+		return;
+	}
+
 	/*
 	Change strategy: Ask user input to check if strategy change necessary
 	*/
-	this->changeStrategy();
+	this->changeStrategy(active);
 
 	/*
 	Attack!
 	*/
-	this->attack();
+	this->attack(active, passive);
 
 	/*
 	Print active platoon after attack
 	*/
 
-	// activePlatoon.print();
+	// active->print();
 	cout << "!!!!!!!!!!!!!Remember to print platoon in Battle takeTurn" << endl;
 
 	/*
@@ -79,7 +251,7 @@ void Battle::takeTurn()
 	{
 		if (this->requestReinforcements())
 		{
-			cout << "Reinforcements that were requested are in route" << endl;
+			cout << "Reinforcements have arrived" << endl;
 		}
 		else
 		{
@@ -94,49 +266,48 @@ void Battle::takeTurn()
 
 bool Battle::requestReinforcements()
 {
-	int resp;
-	cout << "Request Reinforcements" << endl
-		 << "1. Troops\n2. Weapons\n3. Goods \n4. Not necessary" << endl;
-	cin >> resp;
+	if(this->player->requestReinforcements(this)){
+		/*
+			if(this->turn){
+				Unit * reinforcements = this->area->requestReinforcements("attack");
+				
+				if(reinforcements == NULL){
+					return false;
+				}
 
-	// clear buffer
-	cin.ignore(30, '\n');
+				this->air->setAttacker(reinforcements);
+					
+			}
+			else{
+				Unit * reinforcements = this->area->requestReinforcements("defense");
+				
+				if(reinforcements == NULL){
+					return false;
+				}
 
-	if (resp == 0 || resp == 1 || resp == 2)
-	{
-		// Should be able to request specific reinforcements
-		return this->area->requestReinforcements();
-	}
-	else
-	{
-		return false;
-	}
-}
-
-void Battle::changeStrategy()
-{
-	int resp;
-	cout << "Do you want to change strategy?" << endl
-		 << "1. Yes\n2. No" << endl;
-	cin >> resp;
-
-	// clear buffer
-	cin.ignore(30, '\n');
-
-	if (resp == 1)
-	{
-		this->sides.at(turn)->changeStrategy();
+				this->air->setDefender(reinforcements);
+			}
+		*/
 	}
 }
 
-void Battle::attack()
+void Battle::changeStrategy(Unit * active)
 {
-	// activePlatoon->attack(passivePlatoon);
 
-	// cout << "!!!!!!!!!!!!!Remember to add health check" << endl;
+	if (this->player->checkChangeStrategy(active))
+	{
+		cout<<"Add in call to unit change strategy Battle 299"<<endl;
+		//active->changeStrategy();
+	}
+}
 
-	// if(this->sides.at(!turn)->getHealth()<=0){
-	// 	cout<<this->sides.at(turn)->getName()<<" has annihilated "<<this->sides.at(!turn)->getName()<<endl;
-	// 	this->active = false;
-	// }
+void Battle::attack(Unit * active, Unit * passive)
+{
+	active->attack(passive);
+
+	/*
+	if(passive->getState.compare("Dead")==0){
+		this->active = false;
+	}
+	*/
 }

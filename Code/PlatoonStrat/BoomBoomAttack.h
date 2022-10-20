@@ -8,7 +8,7 @@ class BoomBoomAttack : public PlatoonStrategy
 {
 
 public:
-	virtual void attack(Platoon plankton) = 0;
+	virtual void attack(Unit * plankton) = 0;
 };
 
 #endif
