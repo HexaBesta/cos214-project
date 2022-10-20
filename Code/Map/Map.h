@@ -1,13 +1,14 @@
 #ifndef MAP_H
 #define MAP_H
-#include "Area.h"
-#include "TransportRoute.h"
+
+#include "../TransportFactory/TransportFactory.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
-
+class Area;
+class TransportRoute;
 class Map
 {
 
@@ -91,6 +92,14 @@ public:
 	void update();
 
 	/**
+	 * @brief Given an area, return a factory of the requested type if it is available in any adjacent area of the same allinace, otherwise return null
+	 * 
+	 * @return Factory* return a factory of the requested type if it is available in any adjacent area of the same allinace, otherwise return null
+	 */
+	TransportFactory* requestFactoryForArea(Area* area,int type);
+
+	/**
+	 * 
 	 * @brief prints out a grid based reprsentation of the map
 	 * 
 	 */

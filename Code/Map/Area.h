@@ -7,9 +7,10 @@
 #include "TheatreOfWar.h"
 #include "../TransportFactory/TransportFactory.h"
 #include "../TransportFactory/PTFactory.h"
-#include "../TransportFactory/WTFactory.h"
+#include "../TransportFactory/ATFactory.h"
 #include "../TransportFactory/GTFactory.h"
 #include <string>
+
 class Battle;
 
 class Area : public MapComponent
@@ -24,15 +25,7 @@ private:
 	TheatreOfWar* air;
 	TransportFactory* allFactories[3];
 
-	/**
-	 * @brief Checks if a battle would happen.
-	 * 
-	 * A battle occurs if there is an attacker and a defender in either land, air or both
-	 * 
-	 * @return true 
-	 * @return false 
-	 */
-	bool checkIfBattleHappens();
+	
 
 public:
 	/**
@@ -85,7 +78,8 @@ public:
 	/**
 	 * @brief Called when a platoon marches into this area, determines whether or not a battle takes place and returns a Battle pointer if it does, otherwise returns NULL
 	 * @details When a platoon marches into an area a few things could happen depending on the state of the area.
-	 * 	1) The area is unoccupied:
+	 * 	
+	 * 1) The area is unoccupied:
 	 * 		The platoon claims the area for their country/alliance.
 	 * 		A Transport route is set up between this area and the area the platoon came from.
 	 * 		No battle occurs so NULL is returned.
@@ -101,9 +95,9 @@ public:
 	 *
 	 *
 	 * @param platoon The platoon marching into this area.
-	 * @return returns a Battle pointer if a battle occurs when the platoon enters the area, returns NULL if not.
+	 * 
 	 */
-	Battle *marchIn(Unit *unit);
+	void marchIn(Unit *unit);
 
 	/**
 	 * @brief Orders the platoon to leave the area and go to another area
@@ -145,6 +139,44 @@ public:
 	 */
 	vector<Coordinate*> getAreaCoordinates();
 
+	/**
+	 * @brief Checks if a battle would happen if it does return a Battle object to resolve else return null.
+	 * 
+	 * A battle occurs if there is an attacker and a defender in either land, air or both
+	 * 
+	 * @return the battle holding combatants if it occurs 
+	 */
+	Battle* returnBattle();
+
+	/**
+	 * @brief Get the a specific type of factory if it exists here.
+	 * Used when another area is requeting a factory.
+	 * 
+	 * Types:
+	 * 0) Person
+	 * 1) Ammo
+	 * 2) Goods
+	 * 
+	 * @param type 
+	 * @return TransportFactory* 
+	 */
+	TransportFactory* getFactory(int type);
+
+	
+	/**
+	 * @brief requests a specific type of factory if it exists in an adjacent area.
+	 * 
+	 * @param type the type of factory to request.
+	 * @return true if an factory of the specified type exists, false otherwise
+	 * @return false 
+	 */
+	bool requestFactory(int type);
+	
+	string toString(){
+		string out= "Name: " + name +"\tID: " + to_string(index) +"\tColour: " + to_string(colour);
+		out+="\n \tFactories: Person["+to_string(allFactories[0]!=NULL)+"]\t Ammo["+to_string(allFactories[1]!=NULL)+"]\t Goods["+to_string(allFactories[2]!=NULL)+"]";
+		return out;
+	}
 	/**
 	 * @brief Attempts to retreat from Area 
 	 * 

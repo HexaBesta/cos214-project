@@ -1,15 +1,16 @@
-#ifndef GTFACTORY_H
-#define GTFACTORY_H
+#ifndef ATFACTORY_H
+#define ATFACTORY_H
 
 #include "TransportFactory.h"
-#include "Goods.h"
+#include "Ammunition.h"
+
 using namespace std;
 
-class GTFactory : public TransportFactory
-{
+class ATFactory : public TransportFactory {
     public:
     virtual Transport *makeTypeTransport();
     virtual TransportFactory* clone();
 };
+
 
 #endif
