@@ -22,7 +22,9 @@ void testEuropeMap()
     cout <<"Status of factory request: "<< m->getAreaByIndex(8)->requestFactory(1) << endl;
     cout << (m->getAreaByIndex(8)->toString()) << endl;
 
-     cout << (m->getAreaByIndex(4)->toString()) << endl;
+    cout << (m->getAreaByIndex(4)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(16)->toString()) << endl;
 
     delete m;
 }

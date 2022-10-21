@@ -216,7 +216,7 @@ string Area::toString(){
 		out+="\n";
 
 
-		next="          Name: " + name +"  ID: " + to_string(index) +"  Colour: " + to_string(colour);
+		next="               Name:" + name +"  ID:" + to_string(index) +"  Colour:" + to_string(colour);
 		while(next.length()<lineChars-1){
 			next+=" ";
 		}
