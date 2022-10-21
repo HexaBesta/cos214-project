@@ -22,6 +22,10 @@ void Unit::setUnitState(UnitsState * unitState) {
 	
 }
 
+void Unit::changeStrategy(){
+	cout<<"This unit type cannot change strategy"<<endl;
+}
+
 int Unit::getDamage(){
 	return this->damage;
 }

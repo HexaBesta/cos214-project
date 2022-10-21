@@ -148,10 +148,57 @@ void Area::marchOut(Area *whereTo)
 	}
 }
 
-bool Area::requestReinforcements()
+bool Area::requestReinforcements(string type)
 {
-	// TODO - implement Area::requestReinforcements
-	throw "Not yet implemented";
+	vector<Area *> adjacent = this->map->listAdjacent(this, true);
+
+	int allianceColor = 0;
+
+	if(type.compare("attack") == 0){
+		if(this->land->getAttacker() != NULL){
+			allianceColor = this->land->getAttacker()->getCountry()->getAlliances()->getColour();
+		}
+		else if(this->air->getAttacker() != NULL){
+			allianceColor = this->air->getAttacker()->getCountry()->getAlliances()->getColour();
+		}
+		else{
+			throw "No active attack side found to send reinforcements to";
+		}
+	}
+	else if(type.compare("defense") == 0){
+		if(this->land->getDefender() != NULL){
+			allianceColor = this->land->getDefender()->getCountry()->getAlliances()->getColour();
+		}
+		else if(this->air->getDefender() != NULL){
+			allianceColor = this->air->getDefender()->getCountry()->getAlliances()->getColour();
+		}
+		else{
+			throw "No active defense side found to send reinforcements to";
+		}
+	}
+	else{
+		throw "Invalid paramater passed to requestReinforcements";
+	}
+
+	if(allianceColor == 0){
+		return false;
+	}
+
+	for(Area * area: adjacent){
+		Unit * unit = area->sendReinforcements(allianceColor);
+		if(unit != NULL){
+			if(type.compare("attack") == 0){
+				this->air->setAttacker(unit);
+			}
+			else{
+				this->air->setDefender(unit);
+			}
+			return true;
+		}
+	}
+
+	return false;
+
 }
 
 void Area::addCell(string coord)
@@ -361,21 +408,27 @@ bool Area::retreat(string side)
 	{
 		if (area->getColour() == allianceColour || area->getColour() == 94)
 		{
-			if(side.compare("defense") == 0){
-				if(this->land->getAttacker() != NULL){
-					Country * country = this->land->getAttacker()->getCountry();
+			if (side.compare("defense") == 0)
+			{
+				if (this->land->getAttacker() != NULL)
+				{
+					Country *country = this->land->getAttacker()->getCountry();
 					this->colour = country->getAlliances()->getColour();
 					this->country = country;
-				} else if (this->air->getAttacker() != NULL){
-					Country * country = this->air->getAttacker()->getCountry();
+				}
+				else if (this->air->getAttacker() != NULL)
+				{
+					Country *country = this->air->getAttacker()->getCountry();
 					this->colour = country->getAlliances()->getColour();
 					this->country = country;
-				}else{
+				}
+				else
+				{
 					this->colour = 94;
 					this->country = NULL;
 				}
 			}
-			
+
 			if (landUnit != NULL)
 			{
 				area->marchIn(land->retreat(side), this);
@@ -389,22 +442,38 @@ bool Area::retreat(string side)
 		}
 	}
 
-	cout<<"No adjacent areas suitable to retreat to"<<endl;
+	cout << "No adjacent areas suitable to retreat to" << endl;
 
 	return false;
 }
 
-void Area::retreatInto(Unit* unit){
+void Area::retreatInto(Unit *unit)
+{
 	if (unit->getBranch() == "LAND BRANCH")
 	{
-			land->setDefender(unit);
-			country = unit->getCountry();
-			colour = country->getAlliances()->getColour();
-		
+		land->setDefender(unit);
+		country = unit->getCountry();
+		colour = country->getAlliances()->getColour();
 	}
 	else if (unit->getBranch() == "AIR BRANCH")
 	{
 		air->setDefender(unit);
+	}
+}
+
+Unit *Area::sendReinforcements(int color)
+{
+	if (this->air->getDefender() != NULL)
+	{
+		if (this->air->getAttacker() == NULL && this->land->getAttacker() == NULL)
+		{
+			if (this->air->getDefender()->getCountry()->getAlliances()->getColour() == color)
+			{
+				return this->air->sendReinforcements();
+			}
+		}
+	}else{
+		return NULL;
 	}
 }
 

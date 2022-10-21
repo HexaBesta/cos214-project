@@ -98,6 +98,14 @@ Unit * TheatreOfWar::retreat(string side){
     }
 }
 
+Unit* TheatreOfWar::sendReinforcements(){
+    if(this->defender != NULL){
+        Unit* curr=defender;
+        defender=NULL;
+        return curr;
+    }
+}
+
 TheatreOfWar::~TheatreOfWar(){
     if (attacker!=NULL)
         delete attacker;

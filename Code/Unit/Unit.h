@@ -24,6 +24,12 @@ class Unit {
 		virtual void attack(Unit *other) = 0;
 
 		/**
+		 * @brief Stubbed method for changing strategy - only applicable to platoons
+		 * 
+		 */
+		virtual void changeStrategy();
+
+		/**
 		 * @brief prints the state of the currently set unit state 
 		 */
 		virtual void requestState();
