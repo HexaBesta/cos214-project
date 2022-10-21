@@ -33,6 +33,12 @@ class UnitsState {
          */
 		virtual void request() = 0;
 
+		/**
+		 * @brief Returns the name of the state
+		 * 
+		 */
+		virtual string getState()=0;
+
 };
 
 #endif

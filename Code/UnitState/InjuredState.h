@@ -34,6 +34,12 @@ class InjuredState : public DeployedState
          * 
          */
         virtual void request();
+
+        /**
+		 * @brief Returns the name of the state: "Injured"
+		 * 
+		 */
+		virtual string getState();
 };
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "../Platoon/Platoon.h"
 #include "../Map/Area.h"
+#include "../Player/Player.h"
 #include <string>
 
 using namespace std;
@@ -15,9 +16,9 @@ private:
 	/**
 	 * @brief Allows the active side to change strategy before attacking
 	 * 
-	 * 
+	 * @param active the unit whose turn it is 
 	 */
-	virtual void changeStrategy();
+	virtual void changeStrategy(Unit * active);
 
 	/**
 	 * @brief Attack will call the active side's attack method. 
@@ -25,9 +26,11 @@ private:
 	 * @details Will call the active platoon's attack method on the passive platoon
 	 *  		Afterwards will perform a health check on the passive platoon
 	 * 
+	 * @param active the unit whose turn it is 
+	 * @param passive the unit that will take damage
 	 */
 
-	virtual void attack();
+	virtual void attack(Unit * active, Unit * passive);
 
 	/**
 	 * @brief active side can request reinforcements from neighbouring area's.
@@ -42,6 +45,20 @@ private:
 
 	virtual bool requestReinforcements();
 
+	/**
+	 * @brief Checks whether active side wants to retreat and retreats if requested
+	 * 
+	 * @return true if side retreats
+	 * @return false if side does not retreat
+	 */
+	bool checkRetreat();
+
+	/**
+	 * @brief Set the Attacker To Defender in area if attacker wins
+	 * 
+	 */
+	void setAttackerToDefender();
+
 
 public:
 
@@ -50,14 +67,13 @@ public:
 	 * 
 	 * @details Constructor will set member functions. 
 	 * 			- Turn will be set to true (side1 will take their turn first)
-	 * 			- ACtive will be set to true
-	 *          - Will initiate battle loop
+	 * 			- Active will be set to true (attacker attack first)
 	 * 
-	 * @param side1 will be the defending unit (Platoon that was in area first)
-	 * @param side2 the unit who marched into an occupied area
+	 * @param air the air Theatre of War 
+	 * @param side2 the land Theatre Of War
 	 * @param area 
 	 */
-	Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area);
+	Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area, Player * player);
 
 	/**
 	 * @brief Will print a summary of the current state of a battle
@@ -70,6 +86,8 @@ public:
 	 * @brief Template method to initiate turn taken by active side
 	 * 
 	 * @details Turn will consist of:
+	 * 			- Retreat 
+	 * 				OR
 	 * 			- Changing Strategy (optional)
 	 * 			- Attacking (required)
 	 *			- Requesting reinforcements (optional)
@@ -83,13 +101,21 @@ public:
 	 */
 	void battleLoop();
 
+	/**
+	 * @brief Will resolve the battle when called at end of turn
+	 * 
+	 */
+	void resolveBattle();
+
+
 private:
-	vector<Platoon *> sides;
+	TheatreOfWar * air;
+	TheatreOfWar * land;
 
 	/**
 	 * @brief determines which platoon's turn it is 
-	 * false = side 0
-	 * true = side 1
+	 * false = defender
+	 * true = attacker
 	*/
 	bool turn;
 
@@ -100,6 +126,8 @@ private:
 	bool active;
 	
 	Area *area;
+
+	Player * player;
 
 
 };

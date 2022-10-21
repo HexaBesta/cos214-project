@@ -30,6 +30,12 @@ class CivilianState : public UnitsState
          * 
          */
         virtual void request();
+
+        /**
+		 * @brief Returns the name of the state
+		 * 
+		 */
+		virtual string getState();
 };
 
 #endif

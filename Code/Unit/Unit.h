@@ -12,7 +12,6 @@ class Unit {
 	protected:
 		UnitsState *unitState;
 		int health;
-		virtual void print()=0;
 		int damage;
 		Country* country;
 		
@@ -22,12 +21,18 @@ class Unit {
 		 * 
 		 * @param other is the other platoon we are going to attack
 		 */
-		virtual void attack(Platoon *other) = 0;
+		virtual void attack(Unit *other) = 0;
 
 		/**
-		 * @brief returns the state of the currently set unit state 
+		 * @brief prints the state of the currently set unit state 
 		 */
 		virtual void requestState();
+
+		/**
+		 * @brief Returns state of unit
+		 * 
+		 */
+		virtual string getState();
 
 		/**
 		 * @brief Sets the unit state
@@ -94,6 +99,21 @@ class Unit {
 		 * @return Country* 
 		 */
 		virtual Country* getCountry();
+
+		/**
+		 * @brief Prints all the details about Unit
+		 * 
+		 * @details Pure virtual - implemented in subclasses
+		 * 
+		 */
+		virtual void print();
+
+		/**
+	 	* @brief Returns random member of platoon to take damage - in other Units, return this
+	 	* 
+	 	* @return Unit* this
+	 	*/
+		virtual Unit * takeRandom();
 
 		/**
 		 * @brief Destroy the Unit object

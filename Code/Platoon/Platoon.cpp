@@ -128,7 +128,7 @@ Unit* Platoon::takeRandom(){
 	
 }
 
-void Platoon:: attack(Platoon *other){
+void Platoon:: attack(Unit *other){
 	this->strategy->attack(other);
 }
 
