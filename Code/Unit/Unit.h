@@ -12,7 +12,6 @@ class Unit {
 	protected:
 		UnitsState *unitState;
 		int health;
-		virtual void print()=0;
 		int damage;
 		Country* country;
 		
@@ -100,6 +99,21 @@ class Unit {
 		 * @return Country* 
 		 */
 		virtual Country* getCountry();
+
+		/**
+		 * @brief Prints all the details about Unit
+		 * 
+		 * @details Pure virtual - implemented in subclasses
+		 * 
+		 */
+		virtual void print();
+
+		/**
+	 	* @brief Returns random member of platoon to take damage - in other Units, return this
+	 	* 
+	 	* @return Unit* this
+	 	*/
+		virtual Unit * takeRandom();
 
 		/**
 		 * @brief Destroy the Unit object

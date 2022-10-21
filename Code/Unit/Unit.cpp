@@ -1,7 +1,8 @@
 #include "Unit.h"
 
 void Unit::requestState() {
-	this->unitState->request();
+	if(this->unitState != NULL)
+		this->unitState->request();
 }
 
 string Unit::getState(){
@@ -59,8 +60,18 @@ Country* Unit::getCountry(){
     return this->country;
 }
 
+void Unit::print(){
+	cout<<"Add unit print statement"<<endl;
+}
+
+Unit* Unit::takeRandom(){
+	return this;
+}
+
 Unit::~Unit(){
 	
 	delete this->unitState;
     //delete this->country;
 }
+
+

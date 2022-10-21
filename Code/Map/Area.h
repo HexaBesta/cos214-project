@@ -181,13 +181,28 @@ public:
 	 * @return Country* 
 	 */
 	Country* getCountry();
+
 	/**
 	 * @brief Attempts to retreat from Area 
+	 * 
+	 * @details can retreat to any adjacent area that is empty or owned by its own alliance
 	 * 
 	 * @param type will be "attack" or "defense"
 	 * 
 	 */
 	bool retreat(string type);
+
+	/**
+	 * @brief Called when a platoon marches into this area
+	 *  * 1) The area is unoccupied:
+	 * 		The platoon claims the area for their country/alliance.
+	 *
+	 *  2) The area is occupied by allies:
+	 * 		The platoon joins with the platoon already in the area.
+	 * 
+	 * @param unit the unit retreating to the area
+	 */
+	void retreatInto(Unit * unit);
 
 	/**
 	 * @brief Destroy the Area object

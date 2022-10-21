@@ -25,7 +25,7 @@ public:
 	 * @param other the platoon which the unit will attack
 	 * 
 	 */
-	virtual void attack(Platoon *other);
+	virtual void attack(Unit *other);
 	/**
 	 * @brief Calls the unit's requestState
 	 * 
