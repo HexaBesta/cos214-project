@@ -23,3 +23,7 @@ bool Branch::takeDamage(int damage){
 string Branch::getBranch(){
 	return "BRANCH";
 }
+
+Branch::~Branch(){
+	delete this->unit;
+}

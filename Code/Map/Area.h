@@ -174,6 +174,13 @@ public:
 	 * @return string 
 	 */
 	string toString();
+
+	/**
+	 * @brief Get the Country that owns the area
+	 * 
+	 * @return Country* 
+	 */
+	Country* getCountry();
 	/**
 	 * @brief Destroy the Area object
 	 * 

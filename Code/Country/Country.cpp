@@ -20,6 +20,8 @@ Country::~Country()
 		countryState = NULL;
 	}
 
+	delete alliance;
+
 	cout << "Deleted country " << this->name << endl;
 }
 

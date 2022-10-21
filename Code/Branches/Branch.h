@@ -46,7 +46,18 @@ public:
 	 */
 	virtual bool takeDamage(int damage);
 
+	/**
+	 * @brief Get the branch of the unit as a string
+	 * 
+	 * @return string 
+	 */
 	virtual string getBranch();
+
+	/**
+	 * @brief Destroy the Branch object
+	 * 
+	 */
+	virtual ~Branch();
 };
 
 #endif

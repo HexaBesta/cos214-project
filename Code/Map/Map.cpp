@@ -5,8 +5,9 @@
 #include "Map.h"
 
 
-Map::Map(string setupFile)
-{
+Map::Map(string setupFile){
+	
+
 	std::string filename(setupFile);
 	std::vector<std::string> lines;
 	std::string line;
@@ -161,6 +162,7 @@ Map::Map(string setupFile)
 		Area *currArea = new Area(areaParts.at(0), stoi(areaParts.at(1)), stoi(areaParts.at(2)), stoi(areaParts.at(2)) != 94, stoi(areaParts.at(2)) != 94);
 		currArea->attach(this);
 		allAreas.push_back(currArea);
+		addCountry(currArea->getCountry());
 
 		/*
 		Set adjacencies in the adjacency matrix
@@ -302,10 +304,12 @@ void Map::setAllGridAreas()
 
 void Map::addCountry(Country* country){
 	bool add=true;
+	if(!allCountries.empty()){
 	for(int i=0; i<allCountries.size();i++){
 		if(allCountries.at(i)==country){
 			add=false;
 		}
+	}
 	}
 	if(add){
         allCountries.push_back(country);

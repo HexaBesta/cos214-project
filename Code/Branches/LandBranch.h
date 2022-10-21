@@ -30,6 +30,12 @@ public:
 	 * @return string 
 	 */
 	string getBranch();
+
+	/**
+	 * @brief Destroy the Land Branch object
+	 * 
+	 */
+	virtual ~LandBranch();
 };
 
 #endif

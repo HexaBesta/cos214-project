@@ -10,3 +10,7 @@ void LandBranch::print(){
 string LandBranch::getBranch(){
 	return "LAND BRANCH";
 }
+
+ LandBranch::~LandBranch(){
+	
+ }
