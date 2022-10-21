@@ -9,11 +9,72 @@ void testEuropeMap()
     m->printMap();
     cout << (m->getAreaByIndex(6)->toString()) << endl;
     cout << (m->getAreaByIndex(7)->toString()) << endl;
-    cout << m->getAreaByIndex(7)->requestFactory(1) << endl;
+    
+    cout <<"Status of factory request: "<< m->getAreaByIndex(7)->requestFactory(1) << endl;
     cout << (m->getAreaByIndex(7)->toString()) << endl;
+    
     m->createTransportRoute(m->getAreaByIndex(6),m->getAreaByIndex(7));
-    cout << m->getAreaByIndex(7)->requestFactory(0) << endl;
+    
+    cout <<"Status of factory request: "<< m->getAreaByIndex(7)->requestFactory(0) << endl;
     cout << (m->getAreaByIndex(7)->toString()) << endl;
+
+    m->createTransportRoute(m->getAreaByIndex(6),m->getAreaByIndex(8));
+    cout <<"Status of factory request: "<< m->getAreaByIndex(8)->requestFactory(1) << endl;
+    cout << (m->getAreaByIndex(8)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(4)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    m->getAreaByIndex(4)->marchOut(m->getAreaByIndex(5));
+
+    cout << (m->getAreaByIndex(4)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    
+
+    m->printMap();
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+    cout <<"Status of factory request: "<< m->getAreaByIndex(5)->requestFactory(2) << endl;
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+    m->printMap();
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(8)->toString()) << endl;
+
+    m->getAreaByIndex(5)->marchOut(m->getAreaByIndex(8));
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(8)->toString()) << endl;
+
+    m->printMap();
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(10)->toString()) << endl;
+
+    m->getAreaByIndex(6)->marchOut(m->getAreaByIndex(10));
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(10)->toString()) << endl;
+
+    m->printMap();
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+
+    m->getAreaByIndex(6)->marchOut(m->getAreaByIndex(7));
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+
+    m->printMap();
 
     delete m;
 }

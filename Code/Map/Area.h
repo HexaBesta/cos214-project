@@ -9,6 +9,7 @@
 #include "../TransportFactory/PTFactory.h"
 #include "../TransportFactory/ATFactory.h"
 #include "../TransportFactory/GTFactory.h"
+#include "../Country/Country.h"
 #include <string>
 
 class Battle;
@@ -24,7 +25,7 @@ private:
 	TheatreOfWar* land;
 	TheatreOfWar* air;
 	TransportFactory* allFactories[3];
-
+	Country* country;
 	
 
 public:
@@ -35,8 +36,9 @@ public:
 	 * @param index the index of the area (used in the map's adjacency matrix)
 	 * @param colour the colour of the area on the map
 	 * @param factories indicates whether or not the area starts with factories
+	 * @param troops indicates whether or not the area starts with troops
 	 */
-	Area(string name,int index,int colour,bool factories);
+	Area(string name,int index,int colour,bool factories,bool troops);
 
 	/**
 	 * @brief Gets the index of the area for the adjacency matrix
@@ -95,9 +97,10 @@ public:
 	 *
 	 *
 	 * @param platoon The platoon marching into this area.
+	 * @param from The area that the unit came from
 	 * 
 	 */
-	void marchIn(Unit *unit);
+	void marchIn(Unit *unit,Area* from);
 
 	/**
 	 * @brief Orders the platoon to leave the area and go to another area
@@ -117,14 +120,7 @@ public:
 	 */
 	bool requestReinforcements();
 
-	/**
-	 * @brief Request a specific type of resource from adjacent connected areas
-	 * 
-	 * @param type the type of resource
-	 * @return true on success
-	 * @return false on failure
-	 */
-	bool requestResources(int type);
+	
 	/**
 	 * @brief Adds a cell to the area to be printed
 	 * 
@@ -172,11 +168,19 @@ public:
 	 */
 	bool requestFactory(int type);
 	
-	string toString(){
-		string out= "Name: " + name +"\tID: " + to_string(index) +"\tColour: " + to_string(colour);
-		out+="\n \tFactories: Person["+to_string(allFactories[0]!=NULL)+"]\t Ammo["+to_string(allFactories[1]!=NULL)+"]\t Goods["+to_string(allFactories[2]!=NULL)+"]";
-		return out;
-	}
+	/**
+	 * @brief Returns a string representation of the area
+	 * 
+	 * @return string 
+	 */
+	string toString();
+
+	/**
+	 * @brief Get the Country that owns the area
+	 * 
+	 * @return Country* 
+	 */
+	Country* getCountry();
 	/**
 	 * @brief Attempts to retreat from Area 
 	 * 

@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include "../TransportFactory/TransportFactory.h"
+#include "../Country/Country.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -66,6 +67,16 @@ public:
 	vector<Area *> listAdjacent(Area *area,bool transportRoute);
 
 	/**
+	 * @brief Tests whether the given areas are adjacent to each other
+	 * 
+	 * @param to 
+	 * @param from 
+	 * @return true they are adjacent to each other
+	 * @return false they are not adjacent to each other
+	 */
+	bool areAdjacent(Area *to,Area* from);
+
+	/**
 	 * @brief Get the Area By its index member variable
 	 * 
 	 * @param area the area to search for adjacencies
@@ -112,6 +123,13 @@ public:
 	void printColourMap();
 
 	/**
+	 * @brief Adds a country to the map
+	 * 
+	 * @param country the country to be added
+	 */
+	void addCountry(Country* country);
+
+	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
 	 */
@@ -121,6 +139,7 @@ private:
 	vector<Area *> allAreas;
 	TransportRoute ***adjacencies;
 	string **grid;
+	vector<Country*> allCountries;
 	int gridXSize;
 	int gridYSize;
 

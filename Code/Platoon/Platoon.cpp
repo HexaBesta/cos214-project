@@ -131,3 +131,26 @@ Unit* Platoon::takeRandom(){
 void Platoon:: attack(Unit *other){
 	this->strategy->attack(other);
 }
+
+Platoon::~Platoon(){
+	while (!humans.empty())
+	{
+		delete humans.back();
+		humans.pop_back();
+	}
+
+	while (!vehicles.empty())
+	{
+		delete vehicles.back();
+		vehicles.pop_back();
+	}
+
+	while (!weapons.empty())
+	{
+		delete weapons.back();
+		weapons.pop_back();
+	}
+
+	delete strategy;
+	delete bob;
+}

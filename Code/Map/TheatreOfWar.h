@@ -11,7 +11,6 @@ private:
     string type;
 public:
     TheatreOfWar(string type);
-    ~TheatreOfWar();
 
     /**
      * @brief Get the Unit pointer that is in the attacker slot
@@ -56,6 +55,19 @@ public:
      * @return Unit* the enite defender or a portion of the defender (The portion that is returned from the split function is returned)
      */
     Unit* MarchOut(bool split);
+
+    /**
+     * @brief Returns a string reprsentation of the units in the TheatreOfWar
+     * 
+     * @return string 
+     */
+    string toString();
+
+    /**
+     * @brief Destroy the Theatre Of War object by detroying its attacker and defender
+     * 
+     */
+    ~TheatreOfWar();
 };
 
 
