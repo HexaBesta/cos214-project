@@ -32,6 +32,24 @@ void testEuropeMap()
 
     cout << (m->getAreaByIndex(5)->toString()) << endl;
 
+    
+
+    m->printMap();
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+    cout <<"Status of factory request: "<< m->getAreaByIndex(5)->requestFactory(2) << endl;
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+    m->printMap();
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(8)->toString()) << endl;
+
+    m->getAreaByIndex(5)->marchOut(m->getAreaByIndex(8));
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(8)->toString()) << endl;
+
     m->printMap();
 
     delete m;
