@@ -56,21 +56,46 @@ void Platoon::changeStrategy()
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
-	}else if(this->strategy->getPlatoonStrategy().compare("boom") == true && pewpew >= 200){
+	}
+	else if (this->strategy->getPlatoonStrategy().compare("boom") == true && pewpew >= 200)
+	{
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
 	}
 }
 
-void Platoon::retrieveAmmo(Ammunition* ammo){
-	
+void Platoon::retrieveAmmo(Ammunition *ammo)
+{
+	while (!ammo->isEmpty())
+	{
+		this->boomboom += ammo->replenishBoomBoom();
+		this->pewpew += ammo->replenishPewPew();
+	}
 }
 
+void Platoon::retrieveGoods(Goods *good)
+{
+	while (!good->isEmpty())
+	{
+		int index = rand()%this->humans.size();
+		this->humans.at(index)->setMoral(good->replenishMoral());
+	}
+}
 
-void Platoon::getAccumlateMoral(){
+void Platoon::retrieveMedic(People *medic)
+{
+	while (!medic->isEmpty())
+	{
+		int index = rand()%this->humans.size();
+		this->humans.at(index)->setHealth(medic->replenishHealth());
+	}
+}
+
+void Platoon::getAccumlateMoral()
+{
 	int moral = 0;
-	
+
 	for (auto it : this->humans)
 	{
 		moral += it->getMoral();
@@ -79,19 +104,21 @@ void Platoon::getAccumlateMoral(){
 	this->moral = moral;
 }
 
-int Platoon::getMoral(){
+int Platoon::getMoral()
+{
 	this->getAccumlateMoral();
 	return this->moral;
 }
 
-void Platoon::getAccumlateHealth(){
+void Platoon::getAccumlateHealth()
+{
 	int health = 0;
 
 	for (auto it : this->humans)
 	{
 		health += it->getHealth();
 	}
-	
+
 	for (auto it : this->vehicles)
 	{
 		health += it->getHealth();
@@ -100,7 +127,8 @@ void Platoon::getAccumlateHealth(){
 	this->health = health;
 }
 
-int Platoon::getHealth(){
+int Platoon::getHealth()
+{
 	this->getAccumlateHealth();
 	return this->health;
 }
@@ -190,7 +218,8 @@ Unit *Platoon::takeRandom()
 	return NULL;
 }
 
-void Platoon:: attack(Unit *other){
+void Platoon::attack(Unit *other)
+{
 	this->strategy->attack(other);
 }
 
