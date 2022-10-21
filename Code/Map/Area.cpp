@@ -206,10 +206,55 @@ bool Area::requestFactory(int type){
 }
 
 string Area::toString(){
-		string out= "Name: " + name +"\tID: " + to_string(index) +"\tColour: " + to_string(colour);
-		out+="\n \tFactories: Person["+to_string(allFactories[0]!=NULL)+"]\t Ammo["+to_string(allFactories[1]!=NULL)+"]\t Goods["+to_string(allFactories[2]!=NULL)+"]";
-		out+="\n\tLand:\n\t"+land->toString();
-		out+="\n\tAir:\n\t"+air->toString();
+		string out="";
+		string next="";
+	    int lineChars=70;
+
+		
+		for(int i=0;i<lineChars+1;i++)
+			out+="-";
+		out+="\n";
+
+
+		next="          Name: " + name +"  ID: " + to_string(index) +"  Colour: " + to_string(colour);
+		while(next.length()<lineChars-1){
+			next+=" ";
+		}
+		
+		out+= "|\033[48;5;" + to_string((this->colour)) + "m"+next+ "\033[0m"+"|\n";
+
+		out+="|";
+		for(int i=0;i<lineChars-1;i++)
+			out+="-";
+		out+="|\n";
+
+		next="|     Factories:    Person["+to_string(allFactories[0]!=NULL)+"]      Ammo["+to_string(allFactories[1]!=NULL)+"]      Goods["+to_string(allFactories[2]!=NULL)+"]";
+		while(next.length()<lineChars){
+			next+=" ";
+		}
+		next+="|\n";
+		out+= next;
+		
+
+		next="|     Land:     "+land->toString();
+		while(next.length()<lineChars){
+			next+=" ";
+		}
+		next+="|\n";
+		out+= next;
+
+
+		next="|     Air:      "+air->toString();
+		while(next.length()<lineChars){
+			next+=" ";
+		}
+		next+="|\n";
+		out+= next;
+
+		for(int i=0;i<lineChars+1;i++)
+			out+="-";
+		out+="\n";
+	
 		return out;
 	}
 

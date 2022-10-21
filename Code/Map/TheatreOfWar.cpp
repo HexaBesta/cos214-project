@@ -54,13 +54,13 @@ Unit* TheatreOfWar::retreat(bool turn){
 }
 
 string TheatreOfWar::toString(){
-        string out="\tDefender:";
+        string out="    Defender:";
         if(defender!=NULL){
             out+="Yes";
         }else{
             out+="No";
         }
-        out+="\tAttacker:";
+        out+="    Attacker:";
         if(attacker!=NULL){
             out+="Yes";
         }else{
