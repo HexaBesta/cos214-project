@@ -12,6 +12,7 @@ class Unit {
 	protected:
 		UnitsState *unitState;
 		int health;
+		int moral;
 		virtual void print()=0;
 		int damage;
 		Country* country;
@@ -46,6 +47,20 @@ class Unit {
 		 */
 		int getDamage();
 
+		/**
+	 	* @brief Returns the current moral of the unit
+	 	* 
+	 	* @return int 
+	 	*/
+		virtual int getMoral();
+
+
+		/**
+		 * @brief Set the current moral of the unit
+		 * 
+		 * @param moral takes in the moral that will be set
+		 */
+		virtual void setMoral(int moral);
 		/**
 		 * @brief The unit takes damage
 		 *

@@ -9,6 +9,10 @@
 #include "../Weapon/Weapon.h"
 #include "../PlatoonStrat/BoomBoomAttack.h"
 #include "../PlatoonStrat/PewPewAttack.h"
+#include "../PlatoonStrat/PlatoonStrategy.h"
+#include "../TransportFactory/Ammunition.h"
+#include "../TransportFactory/Goods.h"
+#include "../TransportFactory/People.h"
 
 using namespace std;
 
@@ -20,6 +24,7 @@ private:
 	vector<Unit *> vehicles;
 	int pewpew;
 	int boomboom;
+	int moral;
 	PlatoonStrategy * strategy;
 	virtual void print();
 
@@ -38,6 +43,55 @@ public:
 	 */
 	void construct();
 	
+	/**
+	 * @brief Get the health of the platoon
+	 * 
+	 * @return int
+	 */
+	int getHealth();
+
+	/**
+	 * @brief Gets the total health of the current platoon using the human and vehicle vector
+	 * 
+	 */
+	void getAccumlateHealth();
+
+	/**
+	 * @brief This will allow for a platoon to receive goods from the factory created in the area
+	 * This however will only health a few amount of humans from the vector
+	 * 
+	 * @param good 
+	 */
+	void retrieveGoods(Goods* good);
+
+	/**
+	 * @brief This will allow for a platoon to receive ammo from the factory created in the area
+	 * 
+	 * @param good 
+	 */
+	void retrieveAmmo(Ammunition* ammo);
+
+	/**
+	 * @brief This will allow for a platoon to receive medicial help from the factory created in the area
+	 * This however will only health a few amount of humans from the vector
+	 * 
+	 * @param good 
+	 */
+	void retrieveMedic(People* medic);
+
+	/**
+	 * @brief Get the moral of the platoon
+	 * 
+	 * @return int
+	 */
+	int getMoral();
+	
+	/**
+	 * @brief Gets the total moral of the current platoon using the human vector
+	 * 
+	 */
+	void getAccumlateMoral();
+
 	/**
 	 * @brief Change the strategy of the current Platoon
 	 */
@@ -72,6 +126,18 @@ public:
 	 * @param other is a pointer of the platoon that will be attacked 
 	 */
 	virtual void attack(Platoon *other);
+
+	/**
+	 * @brief function will take a random soldier or vehicle from the humans and vehicles vectors
+	 * 
+	 * @return Unit* will be returned to controll the randomly selected human or vehicle
+	 */
+	Unit* takeRandom();
+
+	/**
+	 * @brief Destroy the Platoon object
+	 * 
+	 */
 	~Platoon();
 };
 
