@@ -79,6 +79,33 @@ Unit* TheatreOfWar::MarchOut(bool split){
     
 }
 
+Unit * TheatreOfWar::retreat(string side){
+    if(side.compare("defense") == 0){
+        Unit * curr = defender;
+        defender = NULL;
+        if(attacker != NULL){
+            defender = attacker;
+        }
+        return curr;
+    }
+    else if(side.compare("attack") == 0){
+        Unit * curr = attacker;
+        attacker = NULL;
+        return curr;
+    }
+    else{
+        return NULL;
+    }
+}
+
+Unit* TheatreOfWar::sendReinforcements(){
+    if(this->defender != NULL){
+        Unit* curr=defender;
+        defender=NULL;
+        return curr;
+    }
+}
+
 TheatreOfWar::~TheatreOfWar(){
     if (attacker!=NULL)
         delete attacker;

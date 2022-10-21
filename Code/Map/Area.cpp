@@ -132,11 +132,12 @@ void Area::marchIn(Unit *unit, Area *from)
 
 void Area::marchOut(Area *whereTo)
 {
-	if(!map->areAdjacent(whereTo,this)){
-		cout << "Cannot march to area that is not adjacent"<<endl;
+	if (!map->areAdjacent(whereTo, this))
+	{
+		cout << "Cannot march to area that is not adjacent" << endl;
 		return;
 	}
-	
+
 	if (land->getDefender() != NULL)
 	{
 		whereTo->marchIn(land->MarchOut(false), this);
@@ -147,10 +148,57 @@ void Area::marchOut(Area *whereTo)
 	}
 }
 
-bool Area::requestReinforcements()
+bool Area::requestReinforcements(string type)
 {
-	// TODO - implement Area::requestReinforcements
-	throw "Not yet implemented";
+	vector<Area *> adjacent = this->map->listAdjacent(this, true);
+
+	int allianceColor = 0;
+
+	if(type.compare("attack") == 0){
+		if(this->land->getAttacker() != NULL){
+			allianceColor = this->land->getAttacker()->getCountry()->getAlliances()->getColour();
+		}
+		else if(this->air->getAttacker() != NULL){
+			allianceColor = this->air->getAttacker()->getCountry()->getAlliances()->getColour();
+		}
+		else{
+			throw "No active attack side found to send reinforcements to";
+		}
+	}
+	else if(type.compare("defense") == 0){
+		if(this->land->getDefender() != NULL){
+			allianceColor = this->land->getDefender()->getCountry()->getAlliances()->getColour();
+		}
+		else if(this->air->getDefender() != NULL){
+			allianceColor = this->air->getDefender()->getCountry()->getAlliances()->getColour();
+		}
+		else{
+			throw "No active defense side found to send reinforcements to";
+		}
+	}
+	else{
+		throw "Invalid paramater passed to requestReinforcements";
+	}
+
+	if(allianceColor == 0){
+		return false;
+	}
+
+	for(Area * area: adjacent){
+		Unit * unit = area->sendReinforcements(allianceColor);
+		if(unit != NULL){
+			if(type.compare("attack") == 0){
+				this->air->setAttacker(unit);
+			}
+			else{
+				this->air->setDefender(unit);
+			}
+			return true;
+		}
+	}
+
+	return false;
+
 }
 
 void Area::addCell(string coord)
@@ -300,6 +348,133 @@ string Area::toString()
 Country *Area::getCountry()
 {
 	return this->country;
+}
+
+bool Area::retreat(string side)
+{
+
+	vector<Area *> adjacent = this->map->listAdjacent(this, false);
+
+	int allianceColour = 0;
+	Unit *landUnit = NULL;
+	Unit *airUnit = NULL;
+
+	// Get alliance colour
+	if (side.compare("defense") == 0)
+	{
+
+		landUnit = this->land->getDefender();
+		airUnit = this->air->getDefender();
+
+		if (landUnit)
+		{
+			allianceColour = landUnit->getCountry()->getAlliances()->getColour();
+		}
+		else if (airUnit)
+		{
+			allianceColour = airUnit->getCountry()->getAlliances()->getColour();
+		}
+		else
+		{
+			throw "No defending units to retreat";
+		}
+	}
+	else if (side.compare("attack") == 0)
+	{
+		landUnit = this->land->getAttacker();
+		airUnit = this->air->getAttacker();
+
+		if (landUnit)
+		{
+			allianceColour = landUnit->getCountry()->getAlliances()->getColour();
+		}
+		else if (airUnit)
+		{
+			allianceColour = airUnit->getCountry()->getAlliances()->getColour();
+		}
+		else
+		{
+			throw "No attacking units to retreat";
+		}
+	}
+
+	if (allianceColour == 0)
+	{
+		throw "Invalid parameter passed to retreat";
+	}
+
+	// Check if there is an adjacent area that can accept retreating troops
+	for (Area *area : adjacent)
+	{
+		if (area->getColour() == allianceColour || area->getColour() == 94)
+		{
+			if (side.compare("defense") == 0)
+			{
+				if (this->land->getAttacker() != NULL)
+				{
+					Country *country = this->land->getAttacker()->getCountry();
+					this->colour = country->getAlliances()->getColour();
+					this->country = country;
+				}
+				else if (this->air->getAttacker() != NULL)
+				{
+					Country *country = this->air->getAttacker()->getCountry();
+					this->colour = country->getAlliances()->getColour();
+					this->country = country;
+				}
+				else
+				{
+					this->colour = 94;
+					this->country = NULL;
+				}
+			}
+
+			if (landUnit != NULL)
+			{
+				area->marchIn(land->retreat(side), this);
+			}
+			if (airUnit != NULL)
+			{
+				area->marchIn(air->retreat(side), this);
+			}
+
+			return true;
+		}
+	}
+
+	cout << "No adjacent areas suitable to retreat to" << endl;
+
+	return false;
+}
+
+void Area::retreatInto(Unit *unit)
+{
+	if (unit->getBranch() == "LAND BRANCH")
+	{
+		land->setDefender(unit);
+		country = unit->getCountry();
+		colour = country->getAlliances()->getColour();
+	}
+	else if (unit->getBranch() == "AIR BRANCH")
+	{
+		air->setDefender(unit);
+	}
+}
+
+Unit *Area::sendReinforcements(int color)
+{
+	if (this->air->getDefender() != NULL)
+	{
+		if (this->air->getAttacker() == NULL && this->land->getAttacker() == NULL)
+		{
+			if (this->air->getDefender()->getCountry()->getAlliances()->getColour() == color)
+			{
+				return this->air->sendReinforcements();
+			}
+		}
+	}else{
+		return NULL;
+	}
 }
 
 Area::~Area()

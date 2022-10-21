@@ -57,6 +57,21 @@ public:
     Unit* MarchOut(bool split);
 
     /**
+     * @brief Return the attacker/defender to retreat to other area
+     * 
+     * @param side can be "attack" or "defense"
+     * @return Unit* the entire Unit if exists
+     */
+    Unit* retreat(string side);
+
+    /**
+     * @brief sends reinforcements (currently sends entire platoon, but we should consider splitting??)
+     * 
+     * @return Unit* the reinforcements
+     */
+    Unit * sendReinforcements();
+
+    /**
      * @brief Returns a string reprsentation of the units in the TheatreOfWar
      * 
      * @return string 

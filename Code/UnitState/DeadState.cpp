@@ -17,3 +17,7 @@ UnitsState * DeadState::changeUnitState(){
 void DeadState::request(){
     cout<<"Dumm dummmm duuuuummmmmmmmmmm. You are DEAD"<<endl;
 }
+
+string DeadState::getState(){
+    return "Dead";
+}

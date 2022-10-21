@@ -124,10 +124,13 @@ public:
 	/**
 	 * @brief This function can be called by the defending platoon during a battle, to get aid from adjecent friendly areas which are connected by active transport routes
 	 *
+	 * @details If an adjacent area has friendly air platoons, they will join air platoon of side requesting reinforcements 
+	 * 
+	 * @param type will be attack or defense (the side requesting reinforcements)
 	 * @return true if there were friendly platoons in adjecent areas which are connected by active transport routes
 	 * @return false if there were no friendly platoons in adjecent areas which are connected by active transport routes
 	 */
-	bool requestReinforcements();
+	bool requestReinforcements(string type);
 
 	
 	/**
@@ -190,6 +193,37 @@ public:
 	 * @return Country* 
 	 */
 	Country* getCountry();
+
+	/**
+	 * @brief Attempts to retreat from Area 
+	 * 
+	 * @details can retreat to any adjacent area that is empty or owned by its own alliance
+	 * 
+	 * @param type will be "attack" or "defense"
+	 * 
+	 */
+	bool retreat(string type);
+
+	/**
+	 * @brief Called when a platoon marches into this area
+	 *  * 1) The area is unoccupied:
+	 * 		The platoon claims the area for their country/alliance.
+	 *
+	 *  2) The area is occupied by allies:
+	 * 		The platoon joins with the platoon already in the area.
+	 * 
+	 * @param unit the unit retreating to the area
+	 */
+	void retreatInto(Unit * unit);
+
+	/**
+	 * @brief Sends reinforcements if there is an air unit of the alliance requesting reinforcements
+	 * 
+	 * @param color color of alliance requesting reinforcements
+	 * @return Unit* 
+	 */
+	Unit * sendReinforcements(int color);
+
 	/**
 	 * @brief Destroy the Area object
 	 * 

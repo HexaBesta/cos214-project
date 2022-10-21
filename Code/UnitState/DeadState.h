@@ -31,6 +31,12 @@ class DeadState : public UnitsState
          */
         virtual void request();
 
+        /**
+		 * @brief Returns the name of the state: "Dead"
+		 * 
+		 */
+		virtual string getState();
+
 };
 
 #endif

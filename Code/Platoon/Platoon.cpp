@@ -190,8 +190,7 @@ Unit *Platoon::takeRandom()
 	return NULL;
 }
 
-void Platoon::attack(Platoon *other)
-{
+void Platoon:: attack(Unit *other){
 	this->strategy->attack(other);
 }
 

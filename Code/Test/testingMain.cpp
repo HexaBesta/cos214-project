@@ -76,6 +76,14 @@ void testEuropeMap()
 
     m->printMap();
 
+    //Added test - Inge (Retreat)
+
+    m->getAreaByIndex(7)->retreat("defense");
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+    m->printMap();
+
     delete m;
 }
 

@@ -18,3 +18,7 @@ void FitState::request(){
     DeployedState::request();
     cout<<"FIT"<<endl;
 }
+
+string FitState::getState(){
+    return "Fit";
+}

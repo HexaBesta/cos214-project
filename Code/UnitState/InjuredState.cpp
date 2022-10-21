@@ -18,3 +18,7 @@ void InjuredState::request(){
     DeployedState::request();
     cout<<"INJURED"<<endl;
 }
+
+string InjuredState::getState(){
+    return "Injured";
+}

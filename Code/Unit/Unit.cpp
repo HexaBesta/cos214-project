@@ -1,7 +1,15 @@
 #include "Unit.h"
 
 void Unit::requestState() {
-	this->unitState->request();
+	if(this->unitState != NULL)
+		this->unitState->request();
+}
+
+string Unit::getState(){
+	if(this->unitState != NULL){
+		return this->unitState->getState();
+	}
+	return "";
 }
 
 void Unit::setUnitState(UnitsState * unitState) {
@@ -12,6 +20,10 @@ void Unit::setUnitState(UnitsState * unitState) {
 		this->unitState = unitState;
 	}
 	
+}
+
+void Unit::changeStrategy(){
+	cout<<"This unit type cannot change strategy"<<endl;
 }
 
 int Unit::getDamage(){
@@ -52,8 +64,18 @@ Country* Unit::getCountry(){
     return this->country;
 }
 
+void Unit::print(){
+	cout<<"Add unit print statement"<<endl;
+}
+
+Unit* Unit::takeRandom(){
+	return this;
+}
+
 Unit::~Unit(){
 	
 	delete this->unitState;
     //delete this->country;
 }
+
+

@@ -4,7 +4,7 @@ Branch::Branch(Unit* unit) {
 	this->unit = unit;
 }
 
-void Branch::attack(Platoon* pl){
+void Branch::attack(Unit* pl){
 	this->unit->attack(pl);
 }
 
