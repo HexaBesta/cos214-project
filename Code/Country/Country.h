@@ -4,6 +4,7 @@
 #include <iostream>
 #include "../CountryState/CountryState.h"
 #include "../Alliances/Alliances.h"
+#include "../CountryState/NeutralState.h"
 using namespace std;
 
 class Country {

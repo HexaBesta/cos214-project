@@ -56,6 +56,13 @@ public:
      * @return Unit* the enite defender or a portion of the defender (The portion that is returned from the split function is returned)
      */
     Unit* MarchOut(bool split);
+
+    /**
+     * @brief Returns a string reprsentation of the units in the TheatreOfWar
+     * 
+     * @return string 
+     */
+    string toString();
 };
 
 

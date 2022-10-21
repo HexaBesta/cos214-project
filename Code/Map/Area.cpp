@@ -5,11 +5,17 @@ Area::Area(string name, int index, int colour,bool factories)
 	this->name = name;
 	this->index = index;
 	this->colour = colour;
+	this->land=new TheatreOfWar("Land");
+	this->air=new TheatreOfWar("Air");
 	if (factories)
 	{
 		allFactories[0]=new PTFactory();
 		allFactories[1]=new ATFactory();
 		allFactories[2]=new GTFactory();
+	}else{
+		allFactories[0]=NULL;
+		allFactories[1]=NULL;
+		allFactories[2]=NULL;
 	}
 	
 }
@@ -191,7 +197,7 @@ TransportFactory* Area::getFactory(int type){
 
 bool Area::requestFactory(int type){
 	TransportFactory* foundFactory =map->requestFactoryForArea(this,type);
-	if(foundFactory== NULL){
+	if(foundFactory==NULL){
 		return false;
 	}else{
 		allFactories[type]=foundFactory;
@@ -199,6 +205,13 @@ bool Area::requestFactory(int type){
 	}
 }
 
+string Area::toString(){
+		string out= "Name: " + name +"\tID: " + to_string(index) +"\tColour: " + to_string(colour);
+		out+="\n \tFactories: Person["+to_string(allFactories[0]!=NULL)+"]\t Ammo["+to_string(allFactories[1]!=NULL)+"]\t Goods["+to_string(allFactories[2]!=NULL)+"]";
+		out+="\n\tLand:\n\t"+land->toString();
+		out+="\n\tAir:\n\t"+air->toString();
+		return out;
+	}
 
 Area::~Area()
 {
@@ -215,5 +228,7 @@ Area::~Area()
 		}
 	}
 
+	delete air;
+	delete land;
 
 }

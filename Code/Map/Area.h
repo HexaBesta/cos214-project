@@ -172,11 +172,12 @@ public:
 	 */
 	bool requestFactory(int type);
 	
-	string toString(){
-		string out= "Name: " + name +"\tID: " + to_string(index) +"\tColour: " + to_string(colour);
-		out+="\n \tFactories: Person["+to_string(allFactories[0]!=NULL)+"]\t Ammo["+to_string(allFactories[1]!=NULL)+"]\t Goods["+to_string(allFactories[2]!=NULL)+"]";
-		return out;
-	}
+	/**
+	 * @brief Returns a string representation of the area
+	 * 
+	 * @return string 
+	 */
+	string toString();
 	/**
 	 * @brief Destroy the Area object
 	 * 

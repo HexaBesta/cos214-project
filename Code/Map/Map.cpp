@@ -213,8 +213,9 @@ TransportFactory* Map::requestFactoryForArea(Area* area,int type){
 	vector<Area *> areas=listAdjacent(area,true);
 	for (int i = 0; i < areas.size(); i++)
     {
-		if (areas.at(i)->getFactory(type)!=NULL){
-			return areas.at(i)->getFactory(type);
+		TransportFactory* foundFactory=areas.at(i)->getFactory(type);
+		if (foundFactory!=NULL){
+			return foundFactory;
 		}
 	}
 	return NULL;
