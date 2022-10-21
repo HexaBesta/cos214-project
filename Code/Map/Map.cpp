@@ -251,6 +251,10 @@ vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 	return adjacentAreas;
 }
 
+bool Map::areAdjacent(Area *to,Area* from){
+	return (adjacencies[to->getIndex()][from->getIndex()]!=NULL);
+}
+
 Area *Map::getAreaByIndex(int index)
 {
 	for (int i = 0; i < allAreas.size(); i++)

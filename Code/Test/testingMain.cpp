@@ -52,6 +52,30 @@ void testEuropeMap()
 
     m->printMap();
 
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(10)->toString()) << endl;
+
+    m->getAreaByIndex(6)->marchOut(m->getAreaByIndex(10));
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(10)->toString()) << endl;
+
+    m->printMap();
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+
+    m->getAreaByIndex(6)->marchOut(m->getAreaByIndex(7));
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+
+    m->printMap();
+
     delete m;
 }
 

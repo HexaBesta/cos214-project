@@ -67,6 +67,16 @@ public:
 	vector<Area *> listAdjacent(Area *area,bool transportRoute);
 
 	/**
+	 * @brief Tests whether the given areas are adjacent to each other
+	 * 
+	 * @param to 
+	 * @param from 
+	 * @return true they are adjacent to each other
+	 * @return false they are not adjacent to each other
+	 */
+	bool areAdjacent(Area *to,Area* from);
+
+	/**
 	 * @brief Get the Area By its index member variable
 	 * 
 	 * @param area the area to search for adjacencies

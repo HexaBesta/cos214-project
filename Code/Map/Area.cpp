@@ -132,6 +132,11 @@ void Area::marchIn(Unit *unit, Area *from)
 
 void Area::marchOut(Area *whereTo)
 {
+	if(!map->areAdjacent(whereTo,this)){
+		cout << "Cannot march to area that is not adjacent"<<endl;
+		return;
+	}
+	
 	if (land->getDefender() != NULL)
 	{
 		whereTo->marchIn(land->MarchOut(false), this);
