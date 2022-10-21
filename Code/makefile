@@ -6,7 +6,6 @@ compile:
 
 clean:
 	rm *.o
-	rm *.out
 
 clear:
 	clear

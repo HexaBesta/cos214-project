@@ -5,8 +5,7 @@ void  MapComponent::attach(Map *  map) {
 }
 
 void  MapComponent::detach(Map *  map) {
-	// TODO - implement MapComponent::detach
-	throw "Not yet implemented";
+	this->map=NULL;
 }
 
 

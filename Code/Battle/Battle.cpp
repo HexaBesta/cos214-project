@@ -1,40 +1,23 @@
+#include "../Map/Area.h"
 #include "Battle.h"
 
-Battle::Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area)
+Battle::Battle(TheatreOfWar *air, TheatreOfWar *land, Area *area)
 {
-	if(side1 == NULL || side2 == NULL || area == NULL){
-		cout<<"Null parameter passed to battle constructor for battle"<<endl;
-		this->area = NULL;
-		this->active = false;
+	this->sides.push_back((Platoon *)land->getDefender());
+	this->sides.push_back((Platoon *)land->getAttacker());
 
-	}
-	else{
-		Platoon * one = dynamic_cast<Platoon*>(side1);
-		Platoon * two = dynamic_cast<Platoon*>(side2);
+	this->area = area;
 
-		if(one == nullptr || two == nullptr){
-			cout<<"Units passed to battle were not platoons. Only platoons can battle"<<endl;
-			this->area = NULL;
-			this->active = false;
-		}
-		else{
-			this->sides.push_back(one);
-			this->sides.push_back(two);
+	this->active = true;
+	this->turn = false;
 
-			this->area = area;
-
-			this->active = true;
-			this->turn = false;
-
-			this->battleLoop();
-		}
-		
-	}
-	
+	this->battleLoop();
 }
 
-void Battle::battleLoop(){
-	while(this->active){
+void Battle::battleLoop()
+{
+	while (this->active)
+	{
 		this->takeTurn();
 		this->getStateSummary();
 	}
@@ -122,7 +105,7 @@ bool Battle::requestReinforcements()
 
 	if (resp == 0 || resp == 1 || resp == 2)
 	{
-		//Should be able to request specific reinforcements
+		// Should be able to request specific reinforcements
 		return this->area->requestReinforcements();
 	}
 	else
@@ -149,9 +132,9 @@ void Battle::changeStrategy()
 
 void Battle::attack()
 {
-	//activePlatoon->attack(passivePlatoon);
+	// activePlatoon->attack(passivePlatoon);
 
-	//cout << "!!!!!!!!!!!!!Remember to add health check" << endl;
+	// cout << "!!!!!!!!!!!!!Remember to add health check" << endl;
 
 	// if(this->sides.at(!turn)->getHealth()<=0){
 	// 	cout<<this->sides.at(turn)->getName()<<" has annihilated "<<this->sides.at(!turn)->getName()<<endl;

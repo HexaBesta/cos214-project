@@ -117,10 +117,46 @@ bool Platoon::takeDamage(int damage, bool checkPew)
 	}else{
 		return false;
 	}
+	
+}
 
-	return -1;
+Unit* Platoon::takeRandom(){
+	int unit=rand()%2;
+	if (unit==0)
+	{
+		int chosen=rand()%humans.size();
+		return humans.at(chosen);
+	}else if(unit==1){
+		int chosen=rand()%vehicles.size();
+		return vehicles.at(chosen);
+	}
+	return NULL;
+	
 }
 
 void Platoon:: attack(Platoon *other){
 	this->strategy->attack(other);
+}
+
+Platoon::~Platoon(){
+	while (!humans.empty())
+	{
+		delete humans.back();
+		humans.pop_back();
+	}
+
+	while (!vehicles.empty())
+	{
+		delete vehicles.back();
+		vehicles.pop_back();
+	}
+
+	while (!weapons.empty())
+	{
+		delete weapons.back();
+		weapons.pop_back();
+	}
+
+	delete strategy;
+	delete bob;
 }

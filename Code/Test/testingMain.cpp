@@ -1,45 +1,80 @@
 #include "../Map/Map.h"
+#include "../Map/Area.h"
 using namespace std;
 
 void testEuropeMap()
 {
     Map *m = new Map("../Maps/europe.txt");
+
+    m->printMap();
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
     
-    for (int i = 0; i < 32; i++)
-    {
-        for (int j = 0; j < 32; j++)
-        {
-            if (i!=j)
-            {
-                m->createTransportRoute(m->getAreaByIndex(i), m->getAreaByIndex(j));
-            }
-            
-            
-        }
-    }
+    cout <<"Status of factory request: "<< m->getAreaByIndex(7)->requestFactory(1) << endl;
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+    
+    m->createTransportRoute(m->getAreaByIndex(6),m->getAreaByIndex(7));
+    
+    cout <<"Status of factory request: "<< m->getAreaByIndex(7)->requestFactory(0) << endl;
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+
+    m->createTransportRoute(m->getAreaByIndex(6),m->getAreaByIndex(8));
+    cout <<"Status of factory request: "<< m->getAreaByIndex(8)->requestFactory(1) << endl;
+    cout << (m->getAreaByIndex(8)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(4)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    m->getAreaByIndex(4)->marchOut(m->getAreaByIndex(5));
+
+    cout << (m->getAreaByIndex(4)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    
+
+    m->printMap();
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+    cout <<"Status of factory request: "<< m->getAreaByIndex(5)->requestFactory(2) << endl;
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+    m->printMap();
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(8)->toString()) << endl;
+
+    m->getAreaByIndex(5)->marchOut(m->getAreaByIndex(8));
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(8)->toString()) << endl;
 
     m->printMap();
 
-    for (int i = 0; i < 32; i++)
-    {
-        for (int j = 0; j < 32; j++)
-        {
-            if (i!=j)
-            {
-                m->destroyTransportRoute(m->getAreaByIndex(i), m->getAreaByIndex(j));
-            }
-            
-            
-        }
-    }
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
 
+    cout << (m->getAreaByIndex(10)->toString()) << endl;
+
+    m->getAreaByIndex(6)->marchOut(m->getAreaByIndex(10));
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(10)->toString()) << endl;
 
     m->printMap();
 
-    for (size_t i = 0; i < 32; i++)
-    {
-        m->listAdjacent(m->getAreaByIndex(i),false);
-    }
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+
+    m->getAreaByIndex(6)->marchOut(m->getAreaByIndex(7));
+
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+
+    m->printMap();
 
     delete m;
 }
@@ -55,7 +90,7 @@ void testMap1()
 
     for (size_t i = 0; i < 6; i++)
     {
-        m->listAdjacent(m->getAreaByIndex(i),false);
+        m->listAdjacent(m->getAreaByIndex(i), false);
     }
 
     delete m;
@@ -63,7 +98,7 @@ void testMap1()
 
 int main()
 {
-    testMap1();
+    // testMap1();
     cout << endl
          << endl;
     testEuropeMap();

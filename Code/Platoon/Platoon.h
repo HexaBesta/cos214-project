@@ -72,6 +72,7 @@ public:
 	 * @param other is a pointer of the platoon that will be attacked 
 	 */
 	virtual void attack(Platoon *other);
+	~Platoon();
 };
 
 #endif

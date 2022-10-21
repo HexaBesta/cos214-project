@@ -1,19 +1,41 @@
-#include "Area.h"
-#include "../Battle/Battle.h"
 
-Area::Area(string name, int index, int colour,bool factories)
+#include "Area.h"
+#include "../Unit/Human.h"
+#include "../Branches/LandBranch.h"
+Area::Area(string name, int index, int colour, bool factories, bool troops)
 {
 	this->name = name;
 	this->index = index;
 	this->colour = colour;
-
+	this->land = new TheatreOfWar("Land");
+	this->air = new TheatreOfWar("Air");
 	if (factories)
 	{
-		allFactories[0]=new PTFactory();
-		allFactories[1]=new WTFactory();
-		allFactories[2]=new GTFactory();
+		allFactories[0] = new PTFactory();
+		allFactories[1] = new ATFactory();
+		allFactories[2] = new GTFactory();
 	}
-	
+	else
+	{
+		allFactories[0] = NULL;
+		allFactories[1] = NULL;
+		allFactories[2] = NULL;
+	}
+
+	if (this->colour != 94)
+		country = new Country(name, colour);
+
+	if (troops)
+	{
+		vector<Unit *> humans = {};
+		humans.push_back(new Human());
+
+		vector<Unit *> vehicles = {};
+		vector<Weapon *> weaps;
+		Unit *platoon = new LandBranch(new Platoon(humans, vehicles, weaps));
+		platoon->setCountry(country);
+		land->setDefender(platoon);
+	}
 }
 
 int Area::getIndex()
@@ -43,7 +65,7 @@ Iterator *Area::createIterator()
 	throw "Not yet implemented";
 }
 
-Battle *Area::marchIn(Unit *unit)
+void Area::marchIn(Unit *unit, Area *from)
 {
 	if (unit->getBranch() == "LAND BRANCH")
 	{
@@ -52,10 +74,16 @@ Battle *Area::marchIn(Unit *unit)
 			if (air->getDefender() == NULL)
 			{
 				land->setDefender(unit);
+				country = unit->getCountry();
+				colour = country->getAlliances()->getColour();
+				map->createTransportRoute(this, from);
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				land->setDefender(unit);
+				country = unit->getCountry();
+				colour = country->getAlliances()->getColour();
+				map->createTransportRoute(this, from);
 			}
 			else if (air->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -65,6 +93,9 @@ Battle *Area::marchIn(Unit *unit)
 		else if (land->getDefender()->getAlliance() == unit->getAlliance())
 		{
 			land->setDefender(unit);
+			country = unit->getCountry();
+			colour = country->getAlliances()->getColour();
+			map->createTransportRoute(this, from);
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -97,36 +128,29 @@ Battle *Area::marchIn(Unit *unit)
 			air->setAttacker(unit);
 		}
 	}
-	
-	if (checkIfBattleHappens())
-	{
-		return new Battle(air,land,this);
-	}
-	return NULL;
-	
 }
 
-void Area::marchOut(Area* whereTo)
+void Area::marchOut(Area *whereTo)
 {
-	if (land->getDefender()!=NULL)
-	{
-		whereTo->marchIn(land->MarchOut(false));
+	if(!map->areAdjacent(whereTo,this)){
+		cout << "Cannot march to area that is not adjacent"<<endl;
+		return;
 	}
-	if (air->getDefender()!=NULL)
-	{
-		whereTo->marchIn(air->MarchOut(false));
-	}	
 	
+	if (land->getDefender() != NULL)
+	{
+		whereTo->marchIn(land->MarchOut(false), this);
+	}
+	if (air->getDefender() != NULL)
+	{
+		whereTo->marchIn(air->MarchOut(false), this);
+	}
 }
 
 bool Area::requestReinforcements()
 {
 	// TODO - implement Area::requestReinforcements
 	throw "Not yet implemented";
-}
-
-bool Area::requestResources(int type){
-	return false;
 }
 
 void Area::addCell(string coord)
@@ -154,32 +178,129 @@ vector<Coordinate *> Area::getAreaCoordinates()
 	return this->areasCoordinates;
 }
 
-bool Area::checkIfBattleHappens(){
+Battle *Area::returnBattle()
+{
 
-	if (land->getDefender()!=NULL && land->getAttacker()!=NULL)
+	bool isBattle = false;
+
+	if (land->getDefender() != NULL && land->getAttacker() != NULL)
 	{
-		return true;
+		isBattle = true;
 	}
 
-	if (air->getDefender()!=NULL && air->getAttacker()!=NULL)
+	if (air->getDefender() != NULL && air->getAttacker() != NULL)
 	{
-		return true;
+		isBattle = true;
 	}
 
-	if (land->getDefender()!=NULL && air->getAttacker()!=NULL)
+	if (land->getDefender() != NULL && air->getAttacker() != NULL)
 	{
-		return true;
+		isBattle = true;
 	}
 
-	if (air->getDefender()!=NULL && land->getAttacker()!=NULL)
+	if (air->getDefender() != NULL && land->getAttacker() != NULL)
 	{
-		return true;
+		isBattle = true;
 	}
-	
-	return false;
 
+	if (isBattle)
+	{
+		// return new Battle(air,land,this);
+	}
+	return NULL;
 }
 
+TransportFactory *Area::getFactory(int type)
+{
+
+	if (allFactories[type] == NULL)
+	{
+		return NULL;
+	}
+	else
+	{
+		return allFactories[type]->clone();
+	}
+}
+
+bool Area::requestFactory(int type)
+{
+	TransportFactory *foundFactory = map->requestFactoryForArea(this, type);
+	if (foundFactory == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		allFactories[type] = foundFactory;
+		return true;
+	}
+}
+
+string Area::toString()
+{
+	string out = "";
+	string next = "";
+	int lineChars = 70;
+
+	for (int i = 0; i < lineChars + 1; i++)
+		out += "-";
+	out += "\n";
+
+	string owner = "None";
+	if (country != NULL)
+	{
+		owner = country->getName();
+	}
+
+	next = "           Name:" + name + "  ID:" + to_string(index) + "  Colour:" + to_string(colour) + "  Owner:" + owner;
+	while (next.length() < lineChars - 1)
+	{
+		next += " ";
+	}
+
+	out += "|\033[48;5;" + to_string((this->colour)) + "m" + next + "\033[0m" + "|\n";
+
+	out += "|";
+	for (int i = 0; i < lineChars - 1; i++)
+		out += "-";
+	out += "|\n";
+
+	next = "|     Factories:    Person[" + to_string(allFactories[0] != NULL) + "]      Ammo[" + to_string(allFactories[1] != NULL) + "]      Goods[" + to_string(allFactories[2] != NULL) + "]";
+	while (next.length() < lineChars)
+	{
+		next += " ";
+	}
+	next += "|\n";
+	out += next;
+
+	next = "|     Land:     " + land->toString();
+	while (next.length() < lineChars)
+	{
+		next += " ";
+	}
+	next += "|\n";
+	out += next;
+
+	next = "|     Air:      " + air->toString();
+	while (next.length() < lineChars)
+	{
+		next += " ";
+	}
+	next += "|\n";
+	out += next;
+
+	for (int i = 0; i < lineChars + 1; i++)
+		out += "-";
+	out += "\n";
+
+	return out;
+}
+
+Country *Area::getCountry()
+{
+	return this->country;
+}
 
 Area::~Area()
 {
@@ -189,9 +310,22 @@ Area::~Area()
 		areasCoordinates.pop_back();
 	}
 
-	delete allFactories[0];
-	delete allFactories[1];
-	delete allFactories[2];
+	for (int i = 0; i < 3; i++)
+	{
+		if (allFactories[i] != NULL)
+		{
+			delete allFactories[i];
+			allFactories[i] = NULL;
+		}
+	}
 
+	if (air != NULL)
+	{
+		delete air;
+	}
 
+	if (land != NULL)
+	{
+		delete land;
+	}
 }

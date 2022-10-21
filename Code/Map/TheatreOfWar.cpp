@@ -3,11 +3,10 @@
 TheatreOfWar::TheatreOfWar(string type)
 {
     this->type=type;
+    this->attacker=NULL;
+    this->defender=NULL;
 }
 
-TheatreOfWar::~TheatreOfWar()
-{
-}
 
 Unit *TheatreOfWar::getAttacker()
 {
@@ -51,6 +50,23 @@ Unit* TheatreOfWar::retreat(bool turn){
     
 }
 
+string TheatreOfWar::toString(){
+        string out="    Defender:";
+        if(defender!=NULL){
+            out+="Yes";
+        }else{
+            out+="No";
+        }
+        out+="    Attacker:";
+        if(attacker!=NULL){
+            out+="Yes";
+        }else{
+            out+="No";
+        }
+
+        return out;
+    }
+
 Unit* TheatreOfWar::MarchOut(bool split){
     if (split)
     {
@@ -58,7 +74,17 @@ Unit* TheatreOfWar::MarchOut(bool split){
     }else{
         Unit* curr=defender;
         defender=NULL;
-        return defender;
+        return curr;
     }
+    
+}
+
+TheatreOfWar::~TheatreOfWar(){
+    if (attacker!=NULL)
+        delete attacker;
+    
+
+    if (defender!=NULL)
+        delete defender;
     
 }
