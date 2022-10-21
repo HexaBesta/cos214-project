@@ -15,3 +15,7 @@ UnitsState * CivilianState::changeUnitState() {
 void CivilianState::request() {
     cout<<"CIVILIAN"<<endl;
 }
+
+string CivilianState::getState(){
+    return "Civilian";
+}

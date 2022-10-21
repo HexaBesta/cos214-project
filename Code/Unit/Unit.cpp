@@ -4,6 +4,13 @@ void Unit::requestState() {
 	this->unitState->request();
 }
 
+string Unit::getState(){
+	if(this->unitState != NULL){
+		return this->unitState->getState();
+	}
+	return "";
+}
+
 void Unit::setUnitState(UnitsState * unitState) {
 	if(unitState == nullptr){
 		this->unitState = this->unitState->changeUnitState();
