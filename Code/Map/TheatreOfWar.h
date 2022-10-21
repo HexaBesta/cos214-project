@@ -11,7 +11,6 @@ private:
     string type;
 public:
     TheatreOfWar(string type);
-    ~TheatreOfWar();
 
     /**
      * @brief Get the Unit pointer that is in the attacker slot
@@ -63,6 +62,12 @@ public:
      * @return string 
      */
     string toString();
+
+    /**
+     * @brief Destroy the Theatre Of War object by detroying its attacker and defender
+     * 
+     */
+    ~TheatreOfWar();
 };
 
 

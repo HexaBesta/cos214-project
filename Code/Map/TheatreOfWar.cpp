@@ -7,9 +7,6 @@ TheatreOfWar::TheatreOfWar(string type)
     this->defender=NULL;
 }
 
-TheatreOfWar::~TheatreOfWar()
-{
-}
 
 Unit *TheatreOfWar::getAttacker()
 {
@@ -77,7 +74,17 @@ Unit* TheatreOfWar::MarchOut(bool split){
     }else{
         Unit* curr=defender;
         defender=NULL;
-        return defender;
+        return curr;
     }
+    
+}
+
+TheatreOfWar::~TheatreOfWar(){
+    if (attacker!=NULL)
+        delete attacker;
+    
+
+    if (defender!=NULL)
+        delete defender;
     
 }

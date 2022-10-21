@@ -31,6 +31,7 @@ public:
 	void join(Unit *platoon);
 	bool takeDamage(int damage, bool checkPewPew);
 	virtual void attack(Platoon *other);
+	~Platoon();
 };
 
 #endif

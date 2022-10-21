@@ -1,6 +1,8 @@
 
 #include "Area.h"
-Area::Area(string name, int index, int colour,bool factories)
+#include "../Unit/Human.h"
+#include "../Branches/LandBranch.h"
+Area::Area(string name, int index, int colour,bool factories,bool troops)
 {
 	this->name = name;
 	this->index = index;
@@ -17,6 +19,22 @@ Area::Area(string name, int index, int colour,bool factories)
 		allFactories[1]=NULL;
 		allFactories[2]=NULL;
 	}
+
+	if(this->colour!=94)
+		country=new Country(name,colour);
+
+	if(troops){
+		vector<Unit*> humans={};
+		humans.push_back(new Human());
+
+		vector<Unit*> vehicles={};
+		vector<Weapon*> weaps;
+		Unit* platoon=new LandBranch(new Platoon(humans,vehicles,weaps));
+		platoon->setCountry(country);
+		land->setDefender(platoon);
+	}
+
+	
 	
 }
 
@@ -47,7 +65,7 @@ Iterator *Area::createIterator()
 	throw "Not yet implemented";
 }
 
-void Area::marchIn(Unit *unit)
+void Area::marchIn(Unit *unit,Area *from)
 {
 	if (unit->getBranch() == "LAND BRANCH")
 	{
@@ -56,10 +74,16 @@ void Area::marchIn(Unit *unit)
 			if (air->getDefender() == NULL)
 			{
 				land->setDefender(unit);
+				country=unit->getCountry();
+				colour=country->getAlliances()->getColour();
+				map->createTransportRoute(this,from);
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				land->setDefender(unit);
+				country=unit->getCountry();
+				colour=country->getAlliances()->getColour();
+				map->createTransportRoute(this,from);
 			}
 			else if (air->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -69,6 +93,9 @@ void Area::marchIn(Unit *unit)
 		else if (land->getDefender()->getAlliance() == unit->getAlliance())
 		{
 			land->setDefender(unit);
+			country=unit->getCountry();
+			colour=country->getAlliances()->getColour();
+			map->createTransportRoute(this,from);
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -110,11 +137,11 @@ void Area::marchOut(Area* whereTo)
 {
 	if (land->getDefender()!=NULL)
 	{
-		whereTo->marchIn(land->MarchOut(false));
+		whereTo->marchIn(land->MarchOut(false),this);
 	}
 	if (air->getDefender()!=NULL)
 	{
-		whereTo->marchIn(air->MarchOut(false));
+		whereTo->marchIn(air->MarchOut(false),this);
 	}	
 	
 }
@@ -123,10 +150,6 @@ bool Area::requestReinforcements()
 {
 	// TODO - implement Area::requestReinforcements
 	throw "Not yet implemented";
-}
-
-bool Area::requestResources(int type){
-	return false;
 }
 
 void Area::addCell(string coord)
@@ -215,8 +238,13 @@ string Area::toString(){
 			out+="-";
 		out+="\n";
 
-
-		next="               Name:" + name +"  ID:" + to_string(index) +"  Colour:" + to_string(colour);
+		string owner="None";
+		if (country!=NULL)
+		{
+			owner=country->getName();
+		}
+		
+		next="           Name:" + name +"  ID:" + to_string(index) +"  Colour:" + to_string(colour)+"  Owner:" + owner;
 		while(next.length()<lineChars-1){
 			next+=" ";
 		}
@@ -273,7 +301,17 @@ Area::~Area()
 		}
 	}
 
-	delete air;
-	delete land;
+	if (air!=NULL)
+	{
+		delete air;
+	}
+
+	if (land!=NULL)
+    {
+        delete land;
+    }
+
+	
+
 
 }

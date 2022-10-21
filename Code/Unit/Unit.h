@@ -81,6 +81,25 @@ class Unit {
 		 */
 		virtual string getAlliance();
 
+		/**
+		 * @brief Set the Country of this unit
+		 * 
+		 * @param country 
+		 */
+		virtual void setCountry(Country* country);
+
+		/**
+		 * @brief Get the Country of this unit
+		 * 
+		 * @return Country* 
+		 */
+		virtual Country* getCountry();
+
+		/**
+		 * @brief Destroy the Unit object
+		 * 
+		 */
+		virtual ~Unit();
 		
 };
 

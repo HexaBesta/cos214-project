@@ -18,7 +18,7 @@ class Country {
 		 * @brief Constructs a new country object
 		 * @param name is the name of the country
 		 */
-		Country(string name);
+		Country(string name,int colour);
 
 		/**
 		 * @brief Country Deconstructor, will delete the countryState?
@@ -54,9 +54,14 @@ class Country {
 		 * 
 		 * @return Alliances* 
 		 */
-		Alliances* getAlliances(){
-			return this->alliance;
-		}
+		Alliances* getAlliances();
+
+		/**
+		 * @brief Get the Name of this country
+		 * 
+		 * @return string 
+		 */
+		string getName();
 };
 
 #endif

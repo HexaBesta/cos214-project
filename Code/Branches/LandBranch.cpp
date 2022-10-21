@@ -8,5 +8,5 @@ void LandBranch::print(){
 }
 
 string LandBranch::getBranch(){
-	return "AIR BRANCH";
+	return "LAND BRANCH";
 }

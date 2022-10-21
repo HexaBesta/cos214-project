@@ -43,3 +43,17 @@ string Unit::getBranch(){
 string Unit::getAlliance(){
 	return country->getAlliances()->getName();
 }
+
+void Unit::setCountry(Country* country){
+	this->country = country;
+}
+
+Country* Unit::getCountry(){
+    return this->country;
+}
+
+Unit::~Unit(){
+	
+	delete this->unitState;
+    //delete this->country;
+}

@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include "../TransportFactory/TransportFactory.h"
+#include "../Country/Country.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -112,6 +113,13 @@ public:
 	void printColourMap();
 
 	/**
+	 * @brief Adds a country to the map
+	 * 
+	 * @param country the country to be added
+	 */
+	void addCountry(Country* country);
+
+	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
 	 */
@@ -121,6 +129,7 @@ private:
 	vector<Area *> allAreas;
 	TransportRoute ***adjacencies;
 	string **grid;
+	vector<Country*> allCountries;
 	int gridXSize;
 	int gridYSize;
 

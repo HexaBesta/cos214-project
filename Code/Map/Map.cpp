@@ -158,7 +158,7 @@ Map::Map(string setupFile)
 		Add area to all areas
 		*/
 
-		Area *currArea = new Area(areaParts.at(0), stoi(areaParts.at(1)), stoi(areaParts.at(2)), stoi(areaParts.at(2)) != 94);
+		Area *currArea = new Area(areaParts.at(0), stoi(areaParts.at(1)), stoi(areaParts.at(2)), stoi(areaParts.at(2)) != 94, stoi(areaParts.at(2)) != 94);
 		currArea->attach(this);
 		allAreas.push_back(currArea);
 
@@ -297,6 +297,18 @@ void Map::setAllGridAreas()
 		{
 			grid[areaCoords.at(j)->x][areaCoords.at(j)->y] = to_string(allAreas.at(i)->getIndex());
 		}
+	}
+}
+
+void Map::addCountry(Country* country){
+	bool add=true;
+	for(int i=0; i<allCountries.size();i++){
+		if(allCountries.at(i)==country){
+			add=false;
+		}
+	}
+	if(add){
+        allCountries.push_back(country);
 	}
 }
 
@@ -581,6 +593,12 @@ Map::~Map()
 	{
 		delete allAreas.back();
 		allAreas.pop_back();
+	}
+
+	while (!allCountries.empty())
+	{
+		delete allCountries.back();
+		allCountries.pop_back();
 	}
 }
 

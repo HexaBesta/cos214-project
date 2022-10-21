@@ -24,7 +24,15 @@ void testEuropeMap()
 
     cout << (m->getAreaByIndex(4)->toString()) << endl;
 
-    cout << (m->getAreaByIndex(16)->toString()) << endl;
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    m->getAreaByIndex(4)->marchOut(m->getAreaByIndex(5));
+
+    cout << (m->getAreaByIndex(4)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(5)->toString()) << endl;
+
+    m->printMap();
 
     delete m;
 }
