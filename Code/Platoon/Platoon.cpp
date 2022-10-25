@@ -7,7 +7,6 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, vector<Weapon *>
 	this->pewpew = pewpew;
 	this->boomboom = boomboom;
 	this->strategy = new PewPewAttack(this);
-	cout << "Remember to pewpew in platoon contrsuctor" << endl;
 }
 
 void Platoon::construct()
