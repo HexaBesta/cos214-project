@@ -1,4 +1,5 @@
 #include "BoomBoomAttack.h"
+#include "../Platoon/Platoon.h"
 
 BoomBoomAttack::BoomBoomAttack(Platoon *plat) : PlatoonStrategy(plat)
 {
