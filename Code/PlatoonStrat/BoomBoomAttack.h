@@ -8,6 +8,8 @@ class BoomBoomAttack : public PlatoonStrategy
 {
 
 public:
+	BoomBoomAttack(Platoon* thisPlatoon);
+
 	virtual void attack(Unit* plankton);
 
 	virtual PlatoonStrategy* toggleStrategy();

@@ -34,6 +34,10 @@ int Unit::getHealth(){
 	return this->health;
 }
 
+int Unit::getSize(){
+	return 1;
+}
+
 void Unit::setHealth(int healthhhh){
 	this->health = healthhhh;
 }
@@ -42,7 +46,8 @@ void Unit::setMoral(int moral){
 	this->moral = moral;
 }
 
-bool Unit::takeDamage(int damage) {
+
+bool Unit::takeDamage(int damage, bool checkStrat = true) {
 	this->health = this->health - damage;
 	if(this->health <= 0 ){
 		this->setUnitState(new DeadState());

@@ -8,7 +8,12 @@ using namespace std;
 class PlatoonStrategy
 {
 public:
-
+	/**
+	 * @brief Construct a new Platoon Strategy object
+	 * 
+	 * @param thisPlatoon takes in the Platoon that will be managed by the strategies 
+	 */
+	PlatoonStrategy(Platoon* thisPlatoon);
 	/**
 	 * @brief This is a pure virtual method which will attack a platoon from a different alliance
 	 * baised on the current strategy of the chosen platoon
@@ -30,6 +35,8 @@ public:
 	 * @return string of the current strategy
 	 */
 	virtual string getPlatoonStrategy() = 0;
+protected:
+	Platoon* thePlatoon;
 };
 
 #endif

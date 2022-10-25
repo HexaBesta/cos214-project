@@ -51,6 +51,26 @@ public:
 	int getHealth();
 
 	/**
+	 * @brief Get the size of the platoon by counting the amount of vehicles and humans
+	 * 
+	 * @return int size
+	 */
+	int getSize();
+
+	/**
+	 * @brief Get the ammount of ammo for platoon
+	 * 
+	 * @return int[] returns an array where index 0 is the amount of pewpew bullets and index 1 is the amount of boomboom explosives
+	 */
+	int* getAmmo();
+
+	/**
+	 * @brief decreases the ammo of the platoon
+	 * 
+	 * @param pewpew checks if pewpew strat so that it can decrease the bullets by the amount shot. If boomboom only decreases by 1
+	 */
+	void decreaseAmmo();
+	/**
 	 * @brief Sets the total health of the current platoon using the human and vehicle vector
 	 * 
 	 */
@@ -138,7 +158,7 @@ public:
 	 * @brief Destroy the Platoon object
 	 * 
 	 */
-	~Platoon();
+	virtual ~Platoon();
 };
 
 #endif

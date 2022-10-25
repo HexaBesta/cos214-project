@@ -52,12 +52,12 @@ class Unit {
 		/**
 		 * @brief Returns the current health of the unit
 		 */
-		int getHealth();
+		virtual int getHealth();
 
 		/**
 		 * @brief Returns the current damage of the unit
 		 */
-		int getDamage();
+		virtual int getDamage();
 
 		/**
 		 * @brief Sets the units health to passed in parameter
@@ -72,6 +72,12 @@ class Unit {
 	 	*/
 		virtual int getMoral();
 
+		/**
+		 * @brief Get the size of the unit
+		 * 
+		 * @return int size
+		 */
+		virtual int getSize();
 
 		/**
 		 * @brief Set the current moral of the unit
@@ -84,7 +90,7 @@ class Unit {
 		 *
 		 * @param damage is the amount of damage the unit will take
 		 */
-		virtual bool takeDamage(int damage);
+		virtual bool takeDamage(int damage,bool typeStrat = true);
 
 		/**
 		 * @brief Splits the unit into equal halves if possible
