@@ -4,8 +4,9 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, vector<Weapon *>
 {
 	this->humans = human;
 	this->vehicles = vehicles;
-	this->weapons = weapons;
-	//this->strategy = new PewPewAttack();
+	this->pewpew = pewpew;
+	this->boomboom = boomboom;
+	this->strategy = new PewPewAttack(this);
 	cout << "Remember to pewpew in platoon contrsuctor" << endl;
 }
 
