@@ -51,10 +51,30 @@ public:
 	int getHealth();
 
 	/**
-	 * @brief Gets the total health of the current platoon using the human and vehicle vector
+	 * @brief Get the size of the platoon by counting the amount of vehicles and humans
+	 * 
+	 * @return int size
+	 */
+	int getSize();
+
+	/**
+	 * @brief Get the ammount of ammo for platoon
+	 * 
+	 * @return int[] returns an array where index 0 is the amount of pewpew bullets and index 1 is the amount of boomboom explosives
+	 */
+	int* getAmmo();
+
+	/**
+	 * @brief decreases the ammo of the platoon
+	 * 
+	 * @param pewpew checks if pewpew strat so that it can decrease the bullets by the amount shot. If boomboom only decreases by 1
+	 */
+	void decreaseAmmo();
+	/**
+	 * @brief Sets the total health of the current platoon using the human and vehicle vector
 	 * 
 	 */
-	void getAccumlateHealth();
+	void setAccumlateHealth();
 
 	/**
 	 * @brief This will allow for a platoon to receive goods from the factory created in the area
@@ -87,10 +107,10 @@ public:
 	int getMoral();
 	
 	/**
-	 * @brief Gets the total moral of the current platoon using the human vector
+	 * @brief Sets the total moral of the current platoon using the human vector
 	 * 
 	 */
-	void getAccumlateMoral();
+	void setAccumlateMoral();
 
 	/**
 	 * @brief Change the strategy of the current Platoon
@@ -125,7 +145,7 @@ public:
 	 * 
 	 * @param other is a pointer of the platoon that will be attacked 
 	 */
-	virtual void attack(Platoon *other);
+	virtual void attack(Unit *other);
 
 	/**
 	 * @brief function will take a random soldier or vehicle from the humans and vehicles vectors
@@ -138,7 +158,7 @@ public:
 	 * @brief Destroy the Platoon object
 	 * 
 	 */
-	~Platoon();
+	virtual ~Platoon();
 };
 
 #endif

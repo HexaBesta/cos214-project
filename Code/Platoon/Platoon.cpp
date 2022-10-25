@@ -6,8 +6,7 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, int pewpew, int 
 	this->vehicles = vehicles;
 	this->pewpew = pewpew;
 	this->boomboom = boomboom;
-	// this->strategy = new PewPewAttack();
-	cout << "Remeber to pewpew in platoon contrsuctor" << endl;
+	this->strategy = new PewPewAttack(this);
 }
 
 void Platoon::construct()
@@ -20,19 +19,15 @@ void Platoon::print()
 {
 	int health = 0;
 	int damage = 0;
-	int humanCounter = 0;
-	int vehiclesCounter = 0;
 	for (auto it : this->humans)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		humanCounter++;
 	}
 	for (auto it : this->vehicles)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		vehiclesCounter++;
 	}
 
 	this->health = health;
@@ -45,7 +40,7 @@ void Platoon::print()
 	}
 	else
 	{
-		cout << "Platoon\nHealth: " << health << "\nDamage: " << damage << "\nAmount of Soldiers: " << humanCounter << " Amount of Vehicles: " << vehiclesCounter << endl;
+		cout << "Platoon\nHealth: " << health << "\nDamage: " << damage << "\nAmount of Soldiers: " << humans.size() << " Amount of Vehicles: " << vehicles.size() << endl;
 	}
 }
 
@@ -90,9 +85,10 @@ void Platoon::retrieveMedic(People *medic)
 		int index = rand()%this->humans.size();
 		this->humans.at(index)->setHealth(medic->replenishHealth());
 	}
+	this->setAccumlateHealth();
 }
 
-void Platoon::getAccumlateMoral()
+void Platoon::setAccumlateMoral()
 {
 	int moral = 0;
 
@@ -106,11 +102,11 @@ void Platoon::getAccumlateMoral()
 
 int Platoon::getMoral()
 {
-	this->getAccumlateMoral();
+	this->setAccumlateMoral();
 	return this->moral;
 }
 
-void Platoon::getAccumlateHealth()
+void Platoon::setAccumlateHealth()
 {
 	int health = 0;
 
@@ -129,8 +125,29 @@ void Platoon::getAccumlateHealth()
 
 int Platoon::getHealth()
 {
-	this->getAccumlateHealth();
+	this->setAccumlateHealth();
 	return this->health;
+}
+
+int Platoon::getSize(){
+	int size = humans.size() + vehicles.size();
+	return size;
+}
+
+int* Platoon::getAmmo(){
+	int ammo[] = {this->pewpew, this->boomboom};
+	return ammo;  
+}
+
+void Platoon::decreaseAmmo(){
+	if(this->strategy==nullptr){
+		this->strategy = new PewPewAttack(this);
+		this->pewpew--;
+	}else if(this->strategy->getPlatoonStrategy().compare("pew")==true){
+		this->pewpew--;
+	}else if(this->strategy->getPlatoonStrategy().compare("boom")==true){
+		this->boomboom--;
+	}
 }
 
 Unit *Platoon::split()
@@ -170,25 +187,23 @@ void Platoon::join(Unit *platoon1)
 
 bool Platoon::takeDamage(int damage, bool checkPew)
 {
-	if (this->health > 0)
+	if (this->getHealth() > 0)
 	{
 		if (checkPew)
 		{
-			int random;
-			bool human = true;
-			do
-			{
-				random = std::rand() % (humans.size() + vehicles.size());
-				if (random >= humans.size())
-				{
-					random = random - humans.size();
-					human = false;
-				}
-			} while (!((human && this->humans.at(random)->getHealth() > 0) || (!human && this->vehicles.at(random)->getHealth() > 0)));
+			this->takeRandom()->takeDamage(damage);
 		}
 		else
 		{
-			this->health = this->health - damage;
+			int rand1 = rand()%humans.size()+1;
+			rand1 += rand()%vehicles.size();
+			int boomDamage = damage/rand1;
+			for(int x = 0; x<rand1; x++){
+				this->takeRandom()->takeDamage(boomDamage);
+				if(this->getHealth()<=0){
+					break;
+				}
+			}
 		}
 	}
 
@@ -217,6 +232,7 @@ Unit *Platoon::takeRandom()
 	}
 	return NULL;
 }
+
 
 void Platoon::attack(Unit *other)
 {
