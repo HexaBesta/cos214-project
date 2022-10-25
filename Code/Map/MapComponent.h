@@ -1,7 +1,7 @@
 #ifndef MAPCOMPONENT_H
 #define MAPCOMPONENT_H
 
-class Map;
+#include "Map.h"
 class Visitor;
 
 using namespace std;
@@ -9,10 +9,11 @@ using namespace std;
 class MapComponent
 {
 
-private:
+protected:
 	Map *map;
 
 public:
+
 	/**
 	 * @brief attaches/sets the map as an observer to this MapComponent
 	 * 
@@ -28,11 +29,11 @@ public:
 	void detach(Map *map);
 
 	/**
-	 * @brief Mark, please help😄
+	 * @brief The virtual function to accept the visitor
 	 * 
-	 * @param visitor 
+	 * @param visitor to accept the visitor that wants to see the areas and transport routes
 	 */
-	void accept(Visitor *visitor);
+	virtual void accept(Visitor *visitor)=0;
 
 };
 

@@ -1,7 +1,13 @@
+#ifndef MAP_CPP
+#define MAP_CPP
+#include "Area.h"
+#include "TransportRoute.h"
 #include "Map.h"
 
-Map::Map(string setupFile)
-{
+
+Map::Map(string setupFile){
+	
+
 	std::string filename(setupFile);
 	std::vector<std::string> lines;
 	std::string line;
@@ -152,8 +158,11 @@ Map::Map(string setupFile)
 		/*
 		Add area to all areas
 		*/
-		Area *currArea = new Area(areaParts.at(0),stoi(areaParts.at(1)),stoi(areaParts.at(2)));
+
+		Area *currArea = new Area(areaParts.at(0), stoi(areaParts.at(1)), stoi(areaParts.at(2)), stoi(areaParts.at(2)) != 94, stoi(areaParts.at(2)) != 94);
+		currArea->attach(this);
 		allAreas.push_back(currArea);
+		addCountry(currArea->getCountry());
 
 		/*
 		Set adjacencies in the adjacency matrix
@@ -201,21 +210,49 @@ void Map::update()
 	// TODO - implement Map::update
 	throw "Not yet implemented";
 }
-vector<Area *> Map::listAdjacent(Area *area)
+
+TransportFactory* Map::requestFactoryForArea(Area* area,int type){
+	vector<Area *> areas=listAdjacent(area,true);
+	for (int i = 0; i < areas.size(); i++)
+    {
+		TransportFactory* foundFactory=areas.at(i)->getFactory(type);
+		if (foundFactory!=NULL){
+			return foundFactory;
+		}
+	}
+	return NULL;
+}
+
+vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 {
-	string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
+	//string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
 	vector<Area *> adjacentAreas = {};
 	for (int i = 0; i < allAreas.size(); i++)
 	{
 		if (adjacencies[area->getIndex()][i] != NULL)
 		{
-			out += to_string(i) + ",";
-			adjacentAreas.push_back(allAreas.at(i));
+			if (transportRoute)
+			{
+				if (transportRouteisAvailable(area, allAreas.at(i)))
+				{
+					//out += to_string(i) + ",";
+					adjacentAreas.push_back(allAreas.at(i));
+				}
+			}
+			else
+			{
+				//out += to_string(i) + ",";
+				adjacentAreas.push_back(allAreas.at(i));
+			}
 		}
 	}
-	out += "\n";
-	cout << out;
+	//out += "\n";
+	//cout << out;
 	return adjacentAreas;
+}
+
+bool Map::areAdjacent(Area *to,Area* from){
+	return (adjacencies[to->getIndex()][from->getIndex()]!=NULL);
 }
 
 Area *Map::getAreaByIndex(int index)
@@ -266,6 +303,20 @@ void Map::setAllGridAreas()
 		{
 			grid[areaCoords.at(j)->x][areaCoords.at(j)->y] = to_string(allAreas.at(i)->getIndex());
 		}
+	}
+}
+
+void Map::addCountry(Country* country){
+	bool add=true;
+	if(!allCountries.empty()){
+	for(int i=0; i<allCountries.size();i++){
+		if(allCountries.at(i)==country){
+			add=false;
+		}
+	}
+	}
+	if(add){
+        allCountries.push_back(country);
 	}
 }
 
@@ -374,7 +425,7 @@ void Map::printMap()
 							output += "-\033[48;5;" + to_string((colour)) + "m" + "---\033[0m";
 							if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
 							{
-								output += "\033[48;5;" + to_string( (colour)) + "m" + "- \033[0m";
+								output += "\033[48;5;" + to_string((colour)) + "m" + "- \033[0m";
 							}
 							else
 							{
@@ -402,7 +453,7 @@ void Map::printMap()
 						output += "\033[48;5;" + to_string((colour)) + "m" + "----\033[0m";
 						if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
 						{
-							output += "\033[48;5;" + to_string( (colour)) + "m" + "- \033[0m";
+							output += "\033[48;5;" + to_string((colour)) + "m" + "- \033[0m";
 						}
 						else
 						{
@@ -414,7 +465,7 @@ void Map::printMap()
 						output += "-\033[48;5;" + to_string((colour)) + "m" + "---\033[0m";
 						if (i + 1 < gridXSize && grid[i][j] == grid[i + 1][j] && grid[i][j] == grid[i + 1][j + 1])
 						{
-							output += "\033[48;5;" + to_string( (colour)) + "m" + "- \033[0m";
+							output += "\033[48;5;" + to_string((colour)) + "m" + "- \033[0m";
 						}
 						else
 						{
@@ -431,7 +482,7 @@ void Map::printMap()
 				{
 					if (j < gridYSize && grid[i][j + 1] == grid[i][j])
 					{
-						output += "-\033[48;5;" + to_string( (colour)) + "m" + "---- \033[0m";
+						output += "-\033[48;5;" + to_string((colour)) + "m" + "---- \033[0m";
 					}
 					else
 					{
@@ -551,4 +602,12 @@ Map::~Map()
 		delete allAreas.back();
 		allAreas.pop_back();
 	}
+
+	while (!allCountries.empty())
+	{
+		delete allCountries.back();
+		allCountries.pop_back();
+	}
 }
+
+#endif

@@ -2,6 +2,7 @@
 #define LANDBRANCH_H
 
 #include "Branch.h"
+#include "../Unit/Unit.h"
 
 using namespace std;
 
@@ -22,6 +23,19 @@ public:
 	 *
 	 */
 	void print();
+
+	/**
+	 * @brief Get the Branch of the unit
+	 * 
+	 * @return string 
+	 */
+	string getBranch();
+
+	/**
+	 * @brief Destroy the Land Branch object
+	 * 
+	 */
+	virtual ~LandBranch();
 };
 
 #endif

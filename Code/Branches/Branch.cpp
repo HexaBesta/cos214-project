@@ -4,7 +4,7 @@ Branch::Branch(Unit* unit) {
 	this->unit = unit;
 }
 
-void Branch::attack(Platoon* pl){
+void Branch::attack(Unit* pl){
 	this->unit->attack(pl);
 }
 
@@ -16,6 +16,14 @@ void Branch::setUnitState(UnitsState* unitS){
 	this->unit->setUnitState(unitS);
 }
 
-int Branch::takeDamage(int damage){
+bool Branch::takeDamage(int damage){
 	return this->unit->takeDamage(damage);
+}
+
+string Branch::getBranch(){
+	return "BRANCH";
+}
+
+Branch::~Branch(){
+	delete this->unit;
 }

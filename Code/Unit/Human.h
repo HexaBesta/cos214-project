@@ -5,8 +5,9 @@ using namespace std;
 
 class Human : public Unit
 {
-	void attack(Platoon* other);
-    
+	virtual void attack(Unit* other);
+    virtual void print();
+	virtual ~Human();
 };
 
 #endif

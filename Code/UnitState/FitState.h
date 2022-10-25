@@ -33,6 +33,12 @@ class FitState : public DeployedState
          */
         virtual void request();
 
+        /**
+		 * @brief Returns the name of the state: "Fit"
+		 * 
+		 */
+		virtual string getState();
+
 };
 
 #endif

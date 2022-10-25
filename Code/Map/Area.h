@@ -4,19 +4,30 @@
 #include "../Platoon/Platoon.h"
 #include "Iterator.h"
 #include "Coordinate.h"
+#include "TheatreOfWar.h"
+#include "../TransportFactory/TransportFactory.h"
+#include "../TransportFactory/PTFactory.h"
+#include "../TransportFactory/ATFactory.h"
+#include "../TransportFactory/GTFactory.h"
+#include "Visitor.h"
+#include "../Country/Country.h"
 #include <string>
+
 class Battle;
 
 class Area : public MapComponent
 {
 
 private:
-	Platoon *defender;
 	vector<Coordinate*> areasCoordinates;
-	Platoon *attacker;
 	string name;
 	int index;
 	int colour;
+	TheatreOfWar* land;
+	TheatreOfWar* air;
+	TransportFactory* allFactories[3];
+	Country* country;
+	
 
 public:
 	/**
@@ -25,8 +36,10 @@ public:
 	 * @name name the name of the country
 	 * @param index the index of the area (used in the map's adjacency matrix)
 	 * @param colour the colour of the area on the map
+	 * @param factories indicates whether or not the area starts with factories
+	 * @param troops indicates whether or not the area starts with troops
 	 */
-	Area(string name,int index,int colour);
+	Area(string name,int index,int colour,bool factories,bool troops);
 
 	/**
 	 * @brief Gets the index of the area for the adjacency matrix
@@ -47,7 +60,24 @@ public:
 	 * @param type
 	 * @param platoonName
 	 */
+
+
+	/**
+	 * @brief Get the Name of the area
+	 * 
+	 * @return string 
+	 */
+	string getName();
+	
 	void updatePlatoons(int type, string platoonName);
+
+	/**
+	* @brief accept visitor 
+	* 
+	* @param visitor takes in the pointer visitor that will be accpeted
+	*/
+
+	virtual void accept(Visitor* visitor);
 
 	/**
 	 * @brief Create a Iterator object that can loop through the area (under review)
@@ -59,7 +89,8 @@ public:
 	/**
 	 * @brief Called when a platoon marches into this area, determines whether or not a battle takes place and returns a Battle pointer if it does, otherwise returns NULL
 	 * @details When a platoon marches into an area a few things could happen depending on the state of the area.
-	 * 	1) The area is unoccupied:
+	 * 	
+	 * 1) The area is unoccupied:
 	 * 		The platoon claims the area for their country/alliance.
 	 * 		A Transport route is set up between this area and the area the platoon came from.
 	 * 		No battle occurs so NULL is returned.
@@ -75,26 +106,33 @@ public:
 	 *
 	 *
 	 * @param platoon The platoon marching into this area.
-	 * @return returns a Battle pointer if a battle occurs when the platoon enters the area, returns NULL if not.
+	 * @param from The area that the unit came from
+	 * 
 	 */
-	Battle *marchIn(Platoon *platoon);
+	void marchIn(Unit *unit,Area* from);
 
 	/**
 	 * @brief Orders the platoon to leave the area and go to another area
 	 *
+	 * @param whereTo The area to marchTo
+	 * 
 	 * @return true if the destination area is valid
 	 * @return false if the destination area is invalid
 	 */
-	bool marchOut();
+	void marchOut(Area* whereTo);
 
 	/**
 	 * @brief This function can be called by the defending platoon during a battle, to get aid from adjecent friendly areas which are connected by active transport routes
 	 *
+	 * @details If an adjacent area has friendly air platoons, they will join air platoon of side requesting reinforcements 
+	 * 
+	 * @param type will be attack or defense (the side requesting reinforcements)
 	 * @return true if there were friendly platoons in adjecent areas which are connected by active transport routes
 	 * @return false if there were no friendly platoons in adjecent areas which are connected by active transport routes
 	 */
-	bool requestReinforcements();
+	bool requestReinforcements(string type);
 
+	
 	/**
 	 * @brief Adds a cell to the area to be printed
 	 * 
@@ -108,6 +146,83 @@ public:
 	 * @return vector<Coordinate*> 
 	 */
 	vector<Coordinate*> getAreaCoordinates();
+
+	/**
+	 * @brief Checks if a battle would happen if it does return a Battle object to resolve else return null.
+	 * 
+	 * A battle occurs if there is an attacker and a defender in either land, air or both
+	 * 
+	 * @return the battle holding combatants if it occurs 
+	 */
+	Battle* returnBattle();
+
+	/**
+	 * @brief Get the a specific type of factory if it exists here.
+	 * Used when another area is requeting a factory.
+	 * 
+	 * Types:
+	 * 0) Person
+	 * 1) Ammo
+	 * 2) Goods
+	 * 
+	 * @param type 
+	 * @return TransportFactory* 
+	 */
+	TransportFactory* getFactory(int type);
+
+	
+	/**
+	 * @brief requests a specific type of factory if it exists in an adjacent area.
+	 * 
+	 * @param type the type of factory to request.
+	 * @return true if an factory of the specified type exists, false otherwise
+	 * @return false 
+	 */
+	bool requestFactory(int type);
+	
+	/**
+	 * @brief Returns a string representation of the area
+	 * 
+	 * @return string 
+	 */
+	string toString();
+
+	/**
+	 * @brief Get the Country that owns the area
+	 * 
+	 * @return Country* 
+	 */
+	Country* getCountry();
+
+	/**
+	 * @brief Attempts to retreat from Area 
+	 * 
+	 * @details can retreat to any adjacent area that is empty or owned by its own alliance
+	 * 
+	 * @param type will be "attack" or "defense"
+	 * 
+	 */
+	bool retreat(string type);
+
+	/**
+	 * @brief Called when a platoon marches into this area
+	 *  * 1) The area is unoccupied:
+	 * 		The platoon claims the area for their country/alliance.
+	 *
+	 *  2) The area is occupied by allies:
+	 * 		The platoon joins with the platoon already in the area.
+	 * 
+	 * @param unit the unit retreating to the area
+	 */
+	void retreatInto(Unit * unit);
+
+	/**
+	 * @brief Sends reinforcements if there is an air unit of the alliance requesting reinforcements
+	 * 
+	 * @param color color of alliance requesting reinforcements
+	 * @return Unit* 
+	 */
+	Unit * sendReinforcements(int color);
 
 	/**
 	 * @brief Destroy the Area object

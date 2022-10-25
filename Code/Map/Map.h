@@ -1,13 +1,15 @@
 #ifndef MAP_H
 #define MAP_H
-#include "Area.h"
-#include "TransportRoute.h"
+
+#include "../TransportFactory/TransportFactory.h"
+#include "../Country/Country.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
-
+class Area;
+class TransportRoute;
 class Map
 {
 
@@ -62,12 +64,23 @@ public:
 	 * @param area the area being queried for adjacencies
 	 * @return returns a vector of area pointers, all areas in the vector are necessarily adjacent to the input area.
 	 */
-	vector<Area *> listAdjacent(Area *area);
+	vector<Area *> listAdjacent(Area *area,bool transportRoute);
+
+	/**
+	 * @brief Tests whether the given areas are adjacent to each other
+	 * 
+	 * @param to 
+	 * @param from 
+	 * @return true they are adjacent to each other
+	 * @return false they are not adjacent to each other
+	 */
+	bool areAdjacent(Area *to,Area* from);
 
 	/**
 	 * @brief Get the Area By its index member variable
 	 * 
-	 * @param index the index of the area as seen on the map
+	 * @param area the area to search for adjacencies
+	 * @param transportRoute whether or not transportRoutes must be active to be considered adjacent
 	 * @return returns the area if it is found, returns NULL if not
 	 */
 	Area* getAreaByIndex(int index);
@@ -90,6 +103,14 @@ public:
 	void update();
 
 	/**
+	 * @brief Given an area, return a factory of the requested type if it is available in any adjacent area of the same allinace, otherwise return null
+	 * 
+	 * @return Factory* return a factory of the requested type if it is available in any adjacent area of the same allinace, otherwise return null
+	 */
+	TransportFactory* requestFactoryForArea(Area* area,int type);
+
+	/**
+	 * 
 	 * @brief prints out a grid based reprsentation of the map
 	 * 
 	 */
@@ -102,6 +123,13 @@ public:
 	void printColourMap();
 
 	/**
+	 * @brief Adds a country to the map
+	 * 
+	 * @param country the country to be added
+	 */
+	void addCountry(Country* country);
+
+	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
 	 */
@@ -111,6 +139,7 @@ private:
 	vector<Area *> allAreas;
 	TransportRoute ***adjacencies;
 	string **grid;
+	vector<Country*> allCountries;
 	int gridXSize;
 	int gridYSize;
 

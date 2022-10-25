@@ -25,7 +25,7 @@ public:
 	 * @param other the platoon which the unit will attack
 	 * 
 	 */
-	virtual void attack(Platoon *other);
+	virtual void attack(Unit *other);
 	/**
 	 * @brief Calls the unit's requestState
 	 * 
@@ -44,7 +44,20 @@ public:
 	 * @param damage the amount of damage the unit should take, passed in as a parameter
 	 * 
 	 */
-	virtual int takeDamage(int damage);
+	virtual bool takeDamage(int damage);
+
+	/**
+	 * @brief Get the branch of the unit as a string
+	 * 
+	 * @return string 
+	 */
+	virtual string getBranch();
+
+	/**
+	 * @brief Destroy the Branch object
+	 * 
+	 */
+	virtual ~Branch();
 };
 
 #endif
