@@ -8,7 +8,11 @@ class BoomBoomAttack : public PlatoonStrategy
 {
 
 public:
-	virtual void attack(Unit * plankton) = 0;
+	virtual void attack(Platoon* plankton);
+
+	virtual PlatoonStrategy* toggleStrategy();
+
+	virtual string getPlatoonStrategy();
 };
 
 #endif
