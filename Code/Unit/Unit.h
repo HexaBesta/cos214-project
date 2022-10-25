@@ -13,7 +13,7 @@ class Unit {
 		UnitsState *unitState;
 		int health;
 		int moral;
-		virtual void print()=0;
+		//virtual void print()=0;
 		int damage;
 		Country* country;
 		

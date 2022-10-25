@@ -8,4 +8,8 @@ void  MapComponent::detach(Map *  map) {
 	this->map=NULL;
 }
 
+MapComponent::~MapComponent(){
+	
+}
+
 
