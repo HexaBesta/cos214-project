@@ -1,7 +1,10 @@
 #ifndef PLATOONSTRATEGY_H
 #define PLATOONSTRATEGY_H
 
-#include "../Platoon/Platoon.h"
+class Platoon;
+class Unit;
+
+#include <string>
 
 using namespace std;
 

@@ -67,6 +67,12 @@ class TransportRoute : public MapComponent
 		 */
 		Area* getTo();
 
+		/**
+		 * @brief Destroy the Transport Route object
+		 * 
+		 */
+		virtual ~TransportRoute();
+
 private:
 	Area *to;
 	Area *from;

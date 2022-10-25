@@ -2,7 +2,7 @@
 #include "Area.h"
 #include "../Unit/Human.h"
 #include "../Branches/LandBranch.h"
-Area::Area(string name, int index, int colour, bool factories, bool troops)
+Area::Area(string name, int index, int colour, bool factories, bool troops):MapComponent()
 {
 	this->name = name;
 	this->index = index;
@@ -31,8 +31,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops)
 		humans.push_back(new Human());
 
 		vector<Unit *> vehicles = {};
-		vector<Weapon *> weaps;
-		Unit *platoon = new LandBranch(new Platoon(humans, vehicles, weaps));
+		Unit *platoon = new LandBranch(new Platoon(humans, vehicles, 2, 2));
 		platoon->setCountry(country);
 		land->setDefender(platoon);
 	}
@@ -475,6 +474,10 @@ Unit *Area::sendReinforcements(int color)
 	}else{
 		return NULL;
 	}
+}
+
+void Area::accept(Visitor* visitor){
+	visitor->visit(this);
 }
 
 Area::~Area()
