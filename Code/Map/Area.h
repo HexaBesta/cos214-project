@@ -9,6 +9,7 @@
 #include "../TransportFactory/PTFactory.h"
 #include "../TransportFactory/ATFactory.h"
 #include "../TransportFactory/GTFactory.h"
+#include "Visitor.h"
 #include "../Country/Country.h"
 #include <string>
 
@@ -69,6 +70,14 @@ public:
 	string getName();
 	
 	void updatePlatoons(int type, string platoonName);
+
+	/**
+	* @brief accept visitor 
+	* 
+	* @param visitor takes in the pointer visitor that will be accpeted
+	*/
+
+	virtual void accept(Visitor* visitor);
 
 	/**
 	 * @brief Create a Iterator object that can loop through the area (under review)

@@ -1,6 +1,6 @@
 #include "Platoon.h"
 
-Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, vector<Weapon *> weapons)
+Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, int pewpew, int boomboom)
 {
 	this->humans = human;
 	this->vehicles = vehicles;
@@ -19,19 +19,15 @@ void Platoon::print()
 {
 	int health = 0;
 	int damage = 0;
-	int humanCounter = 0;
-	int vehiclesCounter = 0;
 	for (auto it : this->humans)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		humanCounter++;
 	}
 	for (auto it : this->vehicles)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		vehiclesCounter++;
 	}
 
 	this->health = health;
@@ -44,19 +40,119 @@ void Platoon::print()
 	}
 	else
 	{
-		cout << "Platoon\nHealth: " << health << "\nDamage: " << damage << "\nAmount of Soldiers: " << humanCounter << " Amount of Vehicles: " << vehiclesCounter << endl;
+		cout << "Platoon\nHealth: " << health << "\nDamage: " << damage << "\nAmount of Soldiers: " << humans.size() << " Amount of Vehicles: " << vehicles.size() << endl;
 	}
 }
 
 void Platoon::changeStrategy()
 {
-	PlatoonStrategy * newStrategy = this->strategy->toggleStrategy();
-	delete this->strategy;
-	this->strategy = newStrategy;
+	if (this->strategy->getPlatoonStrategy().compare("pew") == true && boomboom >= 10)
+	{
+		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
+		delete this->strategy;
+		this->strategy = newStrategy;
+	}
+	else if (this->strategy->getPlatoonStrategy().compare("boom") == true && pewpew >= 200)
+	{
+		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
+		delete this->strategy;
+		this->strategy = newStrategy;
+	}
 }
 
-Unit* Platoon::split()
+void Platoon::retrieveAmmo(Ammunition *ammo)
 {
+	while (!ammo->isEmpty())
+	{
+		this->boomboom += ammo->replenishBoomBoom();
+		this->pewpew += ammo->replenishPewPew();
+	}
+}
+
+void Platoon::retrieveGoods(Goods *good)
+{
+	while (!good->isEmpty())
+	{
+		int index = rand()%this->humans.size();
+		this->humans.at(index)->setMoral(good->replenishMoral());
+	}
+}
+
+void Platoon::retrieveMedic(People *medic)
+{
+	while (!medic->isEmpty())
+	{
+		int index = rand()%this->humans.size();
+		this->humans.at(index)->setHealth(medic->replenishHealth());
+	}
+	this->setAccumlateHealth();
+}
+
+void Platoon::setAccumlateMoral()
+{
+	int moral = 0;
+
+	for (auto it : this->humans)
+	{
+		moral += it->getMoral();
+	}
+
+	this->moral = moral;
+}
+
+int Platoon::getMoral()
+{
+	this->setAccumlateMoral();
+	return this->moral;
+}
+
+void Platoon::setAccumlateHealth()
+{
+	int health = 0;
+
+	for (auto it : this->humans)
+	{
+		health += it->getHealth();
+	}
+
+	for (auto it : this->vehicles)
+	{
+		health += it->getHealth();
+	}
+
+	this->health = health;
+}
+
+int Platoon::getHealth()
+{
+	this->setAccumlateHealth();
+	return this->health;
+}
+
+int Platoon::getSize(){
+	int size = humans.size() + vehicles.size();
+	return size;
+}
+
+int* Platoon::getAmmo(){
+	int ammo[] = {this->pewpew, this->boomboom};
+	return ammo;  
+}
+
+void Platoon::decreaseAmmo(){
+	if(this->strategy==nullptr){
+		this->strategy = new PewPewAttack(this);
+		this->pewpew--;
+	}else if(this->strategy->getPlatoonStrategy().compare("pew")==true){
+		this->pewpew--;
+	}else if(this->strategy->getPlatoonStrategy().compare("boom")==true){
+		this->boomboom--;
+	}
+}
+
+Unit *Platoon::split()
+{
+
 	size_t const half_sizeH = this->humans.size() / 2;
 	vector<Unit *> human1(this->humans.begin(), this->humans.begin() + half_sizeH);
 	vector<Unit *> human2(this->humans.begin() + half_sizeH, this->humans.end());
@@ -65,74 +161,86 @@ Unit* Platoon::split()
 	vector<Unit *> vehicles1(this->vehicles.begin(), this->vehicles.begin() + half_sizeV);
 	vector<Unit *> vehicles2(this->vehicles.begin() + half_sizeV, this->vehicles.end());
 
-	size_t const half_sizeW = this->weapons.size() / 2;
-	vector<Weapon *> weapon1(this->weapons.begin(), this->weapons.begin() + half_sizeW);
-	vector<Weapon *> weapon2(this->weapons.begin() + half_sizeW, this->weapons.end());
+	int halfpew = pewpew / 2;
+	int halfboom = boomboom / 2;
 
 	this->humans = human1;
 	this->vehicles = vehicles1;
-	this->weapons = weapon1;
+	this->pewpew = pewpew / 2;
+	this->boomboom = boomboom / 2;
 
-	Platoon *split = new Platoon(human2, vehicles2, weapon2);
+	Platoon *split = new Platoon(human2, vehicles2, halfpew, halfboom);
 	return split;
 }
 
-void Platoon::join(Unit *unit)
+void Platoon::join(Unit *platoon1)
 {
 
-	Platoon* platoon = dynamic_cast<Platoon*>(unit);
+	Platoon *platoon = dynamic_cast<Platoon *>(platoon1);
 	this->humans.insert(this->humans.end(), platoon->humans.begin(), platoon->humans.end());
 	this->vehicles.insert(this->vehicles.end(), platoon->vehicles.begin(), platoon->vehicles.end());
-	this->weapons.insert(this->weapons.end(), platoon->weapons.begin(), platoon->weapons.end());
+	this->pewpew = this->pewpew + platoon->pewpew;
+	this->boomboom = this->boomboom + platoon->boomboom;
 }
 
 // added
 
 bool Platoon::takeDamage(int damage, bool checkPew)
 {
-	if (this->health > 0)
+	if (this->getHealth() > 0)
 	{
 		if (checkPew)
 		{
-			int random;
-			bool human = true;
-			do{
-				random = std::rand()%(humans.size() + vehicles.size());
-				if(random>=humans.size()){
-					random = random - humans.size();
-					human = false;			
+			this->takeRandom()->takeDamage(damage);
+		}
+		else
+		{
+			int rand1 = rand()%humans.size()+1;
+			rand1 += rand()%vehicles.size();
+			int boomDamage = damage/rand1;
+			for(int x = 0; x<rand1; x++){
+				this->takeRandom()->takeDamage(boomDamage);
+				if(this->getHealth()<=0){
+					break;
 				}
-			}while(!((human && this->humans.at(random)->getHealth()>0) || (!human && this->vehicles.at(random)->getHealth()>0)));
+			}
 		}
 	}
-	if (this->health<=0)
+
+	if (this->getHealth() > 0)
 	{
 		return true;
-	}else{
+	}
+	else
+	{
 		return false;
 	}
-	
 }
 
-Unit* Platoon::takeRandom(){
-	int unit=rand()%2;
-	if (unit==0)
+Unit *Platoon::takeRandom()
+{
+	int unit = rand() % 2;
+	if (unit == 0)
 	{
-		int chosen=rand()%humans.size();
+		int chosen = rand() % humans.size();
 		return humans.at(chosen);
-	}else if(unit==1){
-		int chosen=rand()%vehicles.size();
+	}
+	else if (unit == 1)
+	{
+		int chosen = rand() % vehicles.size();
 		return vehicles.at(chosen);
 	}
 	return NULL;
-	
 }
 
-void Platoon:: attack(Unit *other){
+
+void Platoon::attack(Unit *other)
+{
 	this->strategy->attack(other);
 }
 
-Platoon::~Platoon(){
+Platoon::~Platoon()
+{
 	while (!humans.empty())
 	{
 		delete humans.back();
@@ -143,12 +251,6 @@ Platoon::~Platoon(){
 	{
 		delete vehicles.back();
 		vehicles.pop_back();
-	}
-
-	while (!weapons.empty())
-	{
-		delete weapons.back();
-		weapons.pop_back();
 	}
 
 	delete strategy;

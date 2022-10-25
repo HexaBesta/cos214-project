@@ -29,11 +29,11 @@ public:
 	void detach(Map *map);
 
 	/**
-	 * @brief Mark, please help😄
+	 * @brief The virtual function to accept the visitor
 	 * 
-	 * @param visitor 
+	 * @param visitor to accept the visitor that wants to see the areas and transport routes
 	 */
-	void accept(Visitor *visitor);
+	virtual void accept(Visitor *visitor)=0;
 
 };
 
