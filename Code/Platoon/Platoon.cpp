@@ -135,7 +135,9 @@ int Platoon::getSize(){
 }
 
 int* Platoon::getAmmo(){
-	int ammo[] = {this->pewpew, this->boomboom};
+	int * ammo  = new int[2];
+	ammo[0] = this->pewpew;
+	ammo[1] = this->boomboom;
 	return ammo;  
 }
 
