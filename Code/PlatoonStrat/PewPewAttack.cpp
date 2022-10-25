@@ -1,4 +1,5 @@
 #include "PewPewAttack.h"
+#include "../Platoon/Platoon.h"
 
 PewPewAttack::PewPewAttack(Platoon *plat) : PlatoonStrategy(plat){};
 

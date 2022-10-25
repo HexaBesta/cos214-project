@@ -228,7 +228,7 @@ public:
 	 * @brief Destroy the Area object
 	 * 
 	 */
-	~Area();
+	virtual ~Area();
 
 };
 
