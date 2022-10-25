@@ -1,6 +1,6 @@
 #include "BoomBoomAttack.h"
 
-void BoomBoomAttack::attack(Platoon* platoonAttacked){
+void BoomBoomAttack::attack(Unit* platoonAttacked){
     platoonAttacked->takeDamage(23,false);
 }
 

@@ -1,6 +1,6 @@
 #include "PewPewAttack.h"
 
-void PewPewAttack::attack(Platoon* platoonAttacked){
+void PewPewAttack::attack(Unit* platoonAttacked){
     platoonAttacked->takeDamage(23,true);
 }
 

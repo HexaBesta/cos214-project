@@ -15,7 +15,7 @@ public:
 	 * 
 	 * @param plankton is the platoon that will be attacked 
 	 */
-	virtual void attack(Platoon *plankton) = 0;
+	virtual void attack(Unit *plankton) = 0;
 
 	/**
 	 * @brief This method allows for a platoon to change its current strategy to the other strategy available

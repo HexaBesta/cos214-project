@@ -10,7 +10,7 @@ class PewPewAttack : public PlatoonStrategy
 
 public:
 
-	virtual void attack(Platoon *plankton);
+	virtual void attack(Unit *plankton);
 
 	virtual PlatoonStrategy* toggleStrategy();
 

@@ -60,6 +60,12 @@ class Unit {
 		int getDamage();
 
 		/**
+		 * @brief Sets the units health to passed in parameter
+		 * 
+		 * @param health takes in the health that will be set
+		 */
+		void setHealth(int health);
+		/**
 	 	* @brief Returns the current moral of the unit
 	 	* 
 	 	* @return int 

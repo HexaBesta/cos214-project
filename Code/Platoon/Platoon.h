@@ -51,10 +51,10 @@ public:
 	int getHealth();
 
 	/**
-	 * @brief Gets the total health of the current platoon using the human and vehicle vector
+	 * @brief Sets the total health of the current platoon using the human and vehicle vector
 	 * 
 	 */
-	void getAccumlateHealth();
+	void setAccumlateHealth();
 
 	/**
 	 * @brief This will allow for a platoon to receive goods from the factory created in the area
@@ -87,10 +87,10 @@ public:
 	int getMoral();
 	
 	/**
-	 * @brief Gets the total moral of the current platoon using the human vector
+	 * @brief Sets the total moral of the current platoon using the human vector
 	 * 
 	 */
-	void getAccumlateMoral();
+	void setAccumlateMoral();
 
 	/**
 	 * @brief Change the strategy of the current Platoon
@@ -125,7 +125,7 @@ public:
 	 * 
 	 * @param other is a pointer of the platoon that will be attacked 
 	 */
-	virtual void attack(Platoon *other);
+	virtual void attack(Unit *other);
 
 	/**
 	 * @brief function will take a random soldier or vehicle from the humans and vehicles vectors

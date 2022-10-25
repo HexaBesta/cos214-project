@@ -90,9 +90,10 @@ void Platoon::retrieveMedic(People *medic)
 		int index = rand()%this->humans.size();
 		this->humans.at(index)->setHealth(medic->replenishHealth());
 	}
+	this->setAccumlateHealth();
 }
 
-void Platoon::getAccumlateMoral()
+void Platoon::setAccumlateMoral()
 {
 	int moral = 0;
 
@@ -106,11 +107,11 @@ void Platoon::getAccumlateMoral()
 
 int Platoon::getMoral()
 {
-	this->getAccumlateMoral();
+	this->setAccumlateMoral();
 	return this->moral;
 }
 
-void Platoon::getAccumlateHealth()
+void Platoon::setAccumlateHealth()
 {
 	int health = 0;
 
@@ -129,7 +130,7 @@ void Platoon::getAccumlateHealth()
 
 int Platoon::getHealth()
 {
-	this->getAccumlateHealth();
+	this->setAccumlateHealth();
 	return this->health;
 }
 

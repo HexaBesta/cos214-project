@@ -34,6 +34,14 @@ int Unit::getHealth(){
 	return this->health;
 }
 
+void Unit::setHealth(int healthhhh){
+	this->health = healthhhh;
+}
+
+void Unit::setMoral(int moral){
+	this->moral = moral;
+}
+
 bool Unit::takeDamage(int damage) {
 	this->health = this->health - damage;
 	if(this->health <= 0 ){
