@@ -1,5 +1,17 @@
 #include "Unit.h"
 
+Unit::Unit(int health, int moral, int damage, Country* country, bool fitState){
+	this->health = health;
+	this->moral = moral;
+	this->damage = damage;
+	this->country = country;
+	if(fitState){
+		this->unitState = new FitState();
+	}else{
+		this->unitState = new CivilianState();
+	}
+}
+
 void Unit::requestState() {
 	if(this->unitState != NULL)
 		this->unitState->request();
