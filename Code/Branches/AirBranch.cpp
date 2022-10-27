@@ -3,8 +3,8 @@
 AirBranch::AirBranch(Unit* unit):Branch(unit) {
 }
 
-void AirBranch::print(){
-	cout<<"AIR BRANCH"<<endl;
+string AirBranch::toString(){
+	return "AIR BRANCH " + this->unit->toString();
 }
 
 string AirBranch::getBranch(){

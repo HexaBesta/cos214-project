@@ -28,7 +28,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops):MapC
 	if (troops)
 	{
 		vector<Unit *> humans = {};
-		humans.push_back(new Human());
+		// humans.push_back(new Human());
 
 		vector<Unit *> vehicles = {};
 		Unit *platoon = new LandBranch(new Platoon(humans, vehicles, 2, 2));
