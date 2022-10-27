@@ -2,9 +2,11 @@
 #define BATTLE_H
 
 #include "../Platoon/Platoon.h"
-#include "../Map/Area.h"
 #include "../Player/Player.h"
 #include <string>
+
+class Area;
+class TheatreOfWar;
 
 using namespace std;
 

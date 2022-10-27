@@ -3,6 +3,8 @@
 
 class Battle;
 class Unit;
+class Country;
+class Area;
 
 class Player 
 {
