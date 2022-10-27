@@ -104,6 +104,7 @@ Unit* TheatreOfWar::sendReinforcements(){
         defender=NULL;
         return curr;
     }
+    return NULL;
 }
 
 TheatreOfWar::~TheatreOfWar(){
