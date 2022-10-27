@@ -469,7 +469,11 @@ Unit *Area::sendReinforcements(int color)
 			if (this->air->getDefender()->getCountry()->getAlliances()->getColour() == color)
 			{
 				return this->air->sendReinforcements();
+			}else{
+				return NULL;
 			}
+		}else{
+			return NULL;
 		}
 	}else{
 		return NULL;

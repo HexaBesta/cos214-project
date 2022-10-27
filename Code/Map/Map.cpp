@@ -4,15 +4,19 @@
 #include "TransportRoute.h"
 #include "Map.h"
 
-
-Map::Map(string setupFile){
-	
+Map::Map(string setupFile)
+{
 
 	std::string filename(setupFile);
 	std::vector<std::string> lines;
 	std::string line;
 
 	std::ifstream inputFile(setupFile);
+
+	getline(inputFile, line);
+	while(line.at(0)!='#'){
+		getline(inputFile, line);
+	}
 
 	while (getline(inputFile, line))
 	{
@@ -211,12 +215,14 @@ void Map::update()
 	throw "Not yet implemented";
 }
 
-TransportFactory* Map::requestFactoryForArea(Area* area,int type){
-	vector<Area *> areas=listAdjacent(area,true);
+TransportFactory *Map::requestFactoryForArea(Area *area, int type)
+{
+	vector<Area *> areas = listAdjacent(area, true);
 	for (int i = 0; i < areas.size(); i++)
-    {
-		TransportFactory* foundFactory=areas.at(i)->getFactory(type);
-		if (foundFactory!=NULL){
+	{
+		TransportFactory *foundFactory = areas.at(i)->getFactory(type);
+		if (foundFactory != NULL)
+		{
 			return foundFactory;
 		}
 	}
@@ -225,7 +231,7 @@ TransportFactory* Map::requestFactoryForArea(Area* area,int type){
 
 vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 {
-	//string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
+	// string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
 	vector<Area *> adjacentAreas = {};
 	for (int i = 0; i < allAreas.size(); i++)
 	{
@@ -235,24 +241,25 @@ vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 			{
 				if (transportRouteisAvailable(area, allAreas.at(i)))
 				{
-					//out += to_string(i) + ",";
+					// out += to_string(i) + ",";
 					adjacentAreas.push_back(allAreas.at(i));
 				}
 			}
 			else
 			{
-				//out += to_string(i) + ",";
+				// out += to_string(i) + ",";
 				adjacentAreas.push_back(allAreas.at(i));
 			}
 		}
 	}
-	//out += "\n";
-	//cout << out;
+	// out += "\n";
+	// cout << out;
 	return adjacentAreas;
 }
 
-bool Map::areAdjacent(Area *to,Area* from){
-	return (adjacencies[to->getIndex()][from->getIndex()]!=NULL);
+bool Map::areAdjacent(Area *to, Area *from)
+{
+	return (adjacencies[to->getIndex()][from->getIndex()] != NULL);
 }
 
 Area *Map::getAreaByIndex(int index)
@@ -306,17 +313,22 @@ void Map::setAllGridAreas()
 	}
 }
 
-void Map::addCountry(Country* country){
-	bool add=true;
-	if(!allCountries.empty()){
-	for(int i=0; i<allCountries.size();i++){
-		if(allCountries.at(i)==country){
-			add=false;
+void Map::addCountry(Country *country)
+{
+	bool add = true;
+	if (!allCountries.empty())
+	{
+		for (int i = 0; i < allCountries.size(); i++)
+		{
+			if (allCountries.at(i) == country)
+			{
+				add = false;
+			}
 		}
 	}
-	}
-	if(add){
-        allCountries.push_back(country);
+	if (add)
+	{
+		allCountries.push_back(country);
 	}
 }
 
