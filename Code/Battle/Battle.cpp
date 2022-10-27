@@ -90,21 +90,21 @@ void Battle::getStateSummary()
 	{
 		cout << "Attacker" << endl;
 	}
-	cout << "Defender: add print" << endl;
+	cout << "Defender:" << endl;
 	if(this->air->getDefender()){
-		//this->air->getDefender()->print();
+		this->air->getDefender()->print();
 	}
 	if(this->land->getDefender()){
-		//this->land->getDefender()->print();
+		this->land->getDefender()->print();
 	}
 
-	cout << "Attacker: add print" << endl;
+	cout << "Attacker:" << endl;
 
 	if(this->air->getAttacker()){
-		//this->air->getAttacker()->print();
+		this->air->getAttacker()->print();
 	}
 	if(this->land->getAttacker()){
-		//this->land->getAttacker()->print();
+		this->land->getAttacker()->print();
 	}
 
 	cout << endl;
@@ -154,15 +154,11 @@ void Battle::takeTurn()
 			}
 			//Only air defender - request reinforcements
 			else{
-				cout<<"Add call to request reinforcements in Battle line 155"<<endl;
-				/*
-				Unit * reinforcements = this->area->requestReinforcements("attack");
-				if(reinforcements == NULL){
+				
+				if(!this->area->requestReinforcements("attack")){
 					this->area->retreat("attack");
-				}else{
-					this->air->setAttacker(reinforcements);
 				}	
-				*/
+				
 			}
 		}
 		//No attacker left
@@ -204,15 +200,11 @@ void Battle::takeTurn()
 			}
 			//Only air attacker - request reinforcements
 			else{
-				cout<<"Add call to request reinforcements in Battle line 199"<<endl;
-				/*
-				Unit * reinforcements = this->area->requestReinforcements("defense");
-				if(reinforcements == NULL){
+				
+				if(!this->area->requestReinforcements("defense")){
 					this->area->retreat("defense");
-				}else{
-					this->air->setDefender(reinforcements)	
-				}	
-				*/
+				}
+				
 			}
 		}
 		//No defender left
@@ -241,8 +233,7 @@ void Battle::takeTurn()
 	Print active platoon after attack
 	*/
 
-	// active->print();
-	cout << "!!!!!!!!!!!!!Remember to print platoon in Battle takeTurn" << endl;
+	active->print();
 
 	/*
 	Request reinforcements after printing state of platoon if battle active.
@@ -268,27 +259,15 @@ void Battle::takeTurn()
 bool Battle::requestReinforcements()
 {
 	if(this->player->requestReinforcements(this)){
-		/*
+		
 			if(this->turn){
-				Unit * reinforcements = this->area->requestReinforcements("attack");
-				
-				if(reinforcements == NULL){
-					return false;
-				}
-
-				this->air->setAttacker(reinforcements);
+				return this->area->requestReinforcements("attack");
 					
 			}
 			else{
-				Unit * reinforcements = this->area->requestReinforcements("defense");
-				
-				if(reinforcements == NULL){
-					return false;
-				}
-
-				this->air->setDefender(reinforcements);
+				return this->area->requestReinforcements("defense");
 			}
-		*/
+		
 	}
 }
 
@@ -298,7 +277,7 @@ void Battle::changeStrategy(Unit * active)
 	if (this->player->checkChangeStrategy(active))
 	{
 		cout<<"Add in call to unit change strategy Battle 299"<<endl;
-		//active->changeStrategy();
+		active->changeStrategy();
 	}
 }
 
@@ -306,9 +285,9 @@ void Battle::attack(Unit * active, Unit * passive)
 {
 	active->attack(passive);
 
-	/*
-	if(passive->getState.compare("Dead")==0){
+	
+	if(passive->getState().compare("Dead")==0){
 		this->active = false;
 	}
-	*/
+	
 }

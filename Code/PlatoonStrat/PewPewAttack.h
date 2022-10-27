@@ -9,8 +9,13 @@ class PewPewAttack : public PlatoonStrategy
 {
 
 public:
+	PewPewAttack(Platoon* thisPlatoon);
+
 	virtual void attack(Unit *plankton);
 
+	virtual PlatoonStrategy* toggleStrategy();
+
+	virtual string getPlatoonStrategy();
 };
 
 #endif

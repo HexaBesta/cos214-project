@@ -12,6 +12,8 @@ class Unit {
 	protected:
 		UnitsState *unitState;
 		int health;
+		int moral;
+		//virtual void print()=0;
 		int damage;
 		Country* country;
 		
@@ -22,6 +24,12 @@ class Unit {
 		 * @param other is the other platoon we are going to attack
 		 */
 		virtual void attack(Unit *other) = 0;
+
+		/**
+		 * @brief Stubbed method for changing strategy - only applicable to platoons
+		 * 
+		 */
+		virtual void changeStrategy();
 
 		/**
 		 * @brief prints the state of the currently set unit state 
@@ -44,19 +52,45 @@ class Unit {
 		/**
 		 * @brief Returns the current health of the unit
 		 */
-		int getHealth();
+		virtual int getHealth();
 
 		/**
 		 * @brief Returns the current damage of the unit
 		 */
-		int getDamage();
+		virtual int getDamage();
 
+		/**
+		 * @brief Sets the units health to passed in parameter
+		 * 
+		 * @param health takes in the health that will be set
+		 */
+		void setHealth(int health);
+		/**
+	 	* @brief Returns the current moral of the unit
+	 	* 
+	 	* @return int 
+	 	*/
+		virtual int getMoral();
+
+		/**
+		 * @brief Get the size of the unit
+		 * 
+		 * @return int size
+		 */
+		virtual int getSize();
+
+		/**
+		 * @brief Set the current moral of the unit
+		 * 
+		 * @param moral takes in the moral that will be set
+		 */
+		virtual void setMoral(int moral);
 		/**
 		 * @brief The unit takes damage
 		 *
 		 * @param damage is the amount of damage the unit will take
 		 */
-		virtual bool takeDamage(int damage);
+		virtual bool takeDamage(int damage,bool typeStrat = true);
 
 		/**
 		 * @brief Splits the unit into equal halves if possible

@@ -65,6 +65,13 @@ public:
     Unit* retreat(string side);
 
     /**
+     * @brief sends reinforcements (currently sends entire platoon, but we should consider splitting??)
+     * 
+     * @return Unit* the reinforcements
+     */
+    Unit * sendReinforcements();
+
+    /**
      * @brief Returns a string reprsentation of the units in the TheatreOfWar
      * 
      * @return string 
