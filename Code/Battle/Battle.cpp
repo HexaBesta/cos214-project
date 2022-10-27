@@ -268,6 +268,8 @@ bool Battle::requestReinforcements()
 				return this->area->requestReinforcements("defense");
 			}
 		
+	}else{
+		return false;
 	}
 }
 
