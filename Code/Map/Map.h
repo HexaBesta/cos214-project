@@ -8,6 +8,7 @@
 #include <fstream>
 #include <string>
 using namespace std;
+class Player;
 class Area;
 class TransportRoute;
 class Map
@@ -128,6 +129,22 @@ public:
 	 * @param country the country to be added
 	 */
 	void addCountry(Country* country);
+
+	/**
+	 * @brief Get the Countries of the alliance (found by colour)
+	 * 
+	 * @param colour Alliance colour 
+	 * @return vector<Country*> vector of countries of the alliance 
+	 */
+	vector<Country*> getCountriesByColour(int colour);
+
+	/**
+	 * @brief Get the Areas By Country object
+	 * 
+	 * @param country to list areas of
+	 * @return vector<Area*> all areas occupied by the passed in country
+	 */
+	vector<Area*> getAreasByCountry(Country * country);
 
 	/**
 	 * @brief Destroy the Map object for memory purposes
