@@ -2,7 +2,8 @@
 #define UNIT_H
 #include <string>
 #include <iostream>
-#include "../UnitState/DeadState.h"
+#include "../UnitState/FitState.h"
+#include "../UnitState/CivilianState.h"
 #include "../Country/Country.h"
 class Platoon;
 
@@ -18,6 +19,17 @@ class Unit {
 		Country* country;
 		
 	public:
+
+		/***
+		 * @brief Constructor for Unit
+		 * 
+		 * @param health the health of the unit
+		 * @param moral the moral of the unit
+		 * @param country sets the country in which the unit is associated to
+		 * @param fitState will check if the unit needs to be in the fitState or civilianState
+		*/
+		Unit(int health, int moral, int damage, Country* country, bool fitState);
+
 		/**
 		 * @brief pure virtual function used to return the attack method of each state
 		 * 
