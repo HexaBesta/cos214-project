@@ -54,6 +54,13 @@ public:
 	virtual string getBranch();
 
 	/**
+	 * @brief returns a string representation of the wrapped unit
+	 * 
+	 * @return string 
+	 */
+	virtual string toString(int lineLen =0);
+
+	/**
 	 * @brief Destroy the Branch object
 	 * 
 	 */

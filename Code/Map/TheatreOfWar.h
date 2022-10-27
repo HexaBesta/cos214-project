@@ -76,7 +76,7 @@ public:
      * 
      * @return string 
      */
-    string toString();
+    string toString(int& lineLen);
 
     /**
      * @brief Destroy the Theatre Of War object by detroying its attacker and defender

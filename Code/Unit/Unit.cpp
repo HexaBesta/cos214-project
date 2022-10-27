@@ -93,14 +93,15 @@ Country* Unit::getCountry(){
     return this->country;
 }
 
-void Unit::print(){
+string Unit::toString(int lineLen){
 	
-	cout<<"Add unit print statement"<<endl;
+	return "Add unit print statement";
 }
 
 Unit* Unit::takeRandom(){
 	return this;
 }
+
 
 Unit::~Unit(){
 	
