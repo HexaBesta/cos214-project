@@ -156,7 +156,7 @@ class Unit {
 		 * @details Pure virtual - implemented in subclasses
 		 * 
 		 */
-		virtual void print();
+		virtual string toString(int lineLen =0);
 
 		/**
 	 	* @brief Returns random member of platoon to take damage - in other Units, return this
@@ -164,6 +164,8 @@ class Unit {
 	 	* @return Unit* this
 	 	*/
 		virtual Unit * takeRandom();
+
+		
 
 		/**
 		 * @brief Destroy the Unit object

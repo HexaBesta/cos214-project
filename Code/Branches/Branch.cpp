@@ -24,6 +24,10 @@ string Branch::getBranch(){
 	return "BRANCH";
 }
 
+string Branch::toString(int lineLen){
+	return this->unit->toString(lineLen);
+}
+
 Branch::~Branch(){
 	delete this->unit;
 }

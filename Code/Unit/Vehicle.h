@@ -5,8 +5,12 @@
 
 using namespace std;
 
-class Vehicle : public Unit
-{
+class Vehicle : public Unit {
+    public:
+		Vehicle(int health, int moral, int damage, Country* country, bool fitState);
+		virtual void attack(Unit* other);
+		virtual string toString();
+		virtual ~Vehicle();
 };
 
 #endif

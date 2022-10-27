@@ -22,14 +22,14 @@ public:
 	 * @brief Prints the branch name
 	 *
 	 */
-	void print();
+	virtual string toString();
 
 	/**
 	 * @brief Get the Branch of the unit
 	 * 
 	 * @return string 
 	 */
-	string getBranch();
+	virtual string getBranch();
 
 	/**
 	 * @brief Destroy the Land Branch object

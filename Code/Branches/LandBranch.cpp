@@ -3,8 +3,8 @@
 LandBranch::LandBranch(Unit* unit):Branch(unit) {
 }
 
-void LandBranch::print(){
-	cout<<"LAND BRANCH"<<endl;
+string LandBranch::toString(){
+	return "LAND BRANCH " + this->unit->toString();
 }
 
 string LandBranch::getBranch(){

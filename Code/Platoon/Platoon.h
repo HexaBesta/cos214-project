@@ -26,7 +26,7 @@ private:
 	int boomboom;
 	int moral;
 	PlatoonStrategy * strategy;
-	virtual void print();
+	
 
 public:
 	/**
@@ -160,6 +160,13 @@ public:
 	 * @return Unit* will be returned to controll the randomly selected human or vehicle
 	 */
 	Unit* takeRandom();
+
+	/**
+	 * @brief return a string representation of the platoon
+	 * 
+	 * @return string 
+	 */
+	virtual string toString(int lineLen);
 
 	/**
 	 * @brief Destroy the Platoon object
