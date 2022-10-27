@@ -1,7 +1,7 @@
 #ifndef AREA_H
 #define AREA_H
 #include "MapComponent.h"
-#include "../Platoon/Platoon.h"
+#include "../Unit/Unit.h"
 #include "Iterator.h"
 #include "Coordinate.h"
 #include "TheatreOfWar.h"

@@ -4,9 +4,11 @@
 #include "TransportRoute.h"
 #include "Map.h"
 
-Map::Map(string setupFile)
+Map::Map(string setupFile, Player * player)
 {
 
+	this->player = player;
+	
 	std::string filename(setupFile);
 	std::vector<std::string> lines;
 	std::string line;
@@ -609,6 +611,14 @@ vector<Area*> Map::getAreasByCountry(Country * country){
 		}
 	}
 	return areas;
+}
+
+void Map::setPlayer(Player * player){
+	this->player = player;
+}
+
+Player * Map::getPlayer(){
+	return this->player;
 }
 
 Map::~Map()

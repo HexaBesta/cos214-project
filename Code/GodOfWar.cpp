@@ -3,6 +3,7 @@
 GodOfWar::GodOfWar(string setupFile)
 {
 
+    //this->player= new User();
     ifstream inputFile(setupFile);
     vector<string> lines;
     string line;
@@ -55,7 +56,7 @@ GodOfWar::GodOfWar(string setupFile)
     }
     groupTwo = new Alliances(name, colour);
 
-    map = new Map(setupFile);
+    map = new Map(setupFile, player);
 
     this->turn = true;
 }

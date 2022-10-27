@@ -1,5 +1,5 @@
-#include "../Map/Area.h"
 #include "Battle.h"
+#include "../Map/Area.h"
 
 Battle::Battle(TheatreOfWar *air, TheatreOfWar *land, Area *area, Player *player)
 {

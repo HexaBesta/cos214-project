@@ -19,8 +19,9 @@ public:
 	 * @brief Construct a new Map object given a text file with the areas and setup
 	 *
 	 * @param setupFile the name of the text files that contains the map layout
+	 * @param player the player object to start game with
 	 */
-	Map(string setupFile);
+	Map(string setupFile, Player * player = NULL);
 
 	/**
 	 * @brief Create a Transport Route between the two given areas of the map
@@ -147,6 +148,20 @@ public:
 	vector<Area*> getAreasByCountry(Country * country);
 
 	/**
+	 * @brief Set the Player object
+	 * 
+	 * @param player 
+	 */
+	void setPlayer(Player * player);
+
+	/**
+	 * @brief Get the Player object
+	 * 
+	 * @return Player* the current player
+	 */
+	Player * getPlayer();
+
+	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
 	 */
@@ -159,6 +174,7 @@ private:
 	vector<Country*> allCountries;
 	int gridXSize;
 	int gridYSize;
+	Player * player;
 
 	/**
 	 * @brief Set the All End Points of transport routes in the adjacency matrix

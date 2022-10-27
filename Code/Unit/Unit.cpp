@@ -12,6 +12,8 @@ Unit::Unit(int health, int moral, int damage, Country* country, bool fitState){
 	}
 }
 
+Unit::Unit(){}
+
 void Unit::requestState() {
 	if(this->unitState != NULL)
 		this->unitState->request();

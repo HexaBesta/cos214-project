@@ -2,6 +2,7 @@
 #include "Area.h"
 #include "../Unit/Human.h"
 #include "../Branches/LandBranch.h"
+#include "../Battle/Battle.h"
 Area::Area(string name, int index, int colour, bool factories, bool troops):MapComponent()
 {
 	this->name = name;
@@ -252,7 +253,7 @@ Battle *Area::returnBattle()
 
 	if (isBattle)
 	{
-		// return new Battle(air,land,this);
+		return new Battle(air,land,this, this->map->getPlayer());
 	}
 	return NULL;
 }
