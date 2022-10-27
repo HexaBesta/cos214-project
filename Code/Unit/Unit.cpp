@@ -106,6 +106,9 @@ Unit* Unit::takeRandom(){
 	return this;
 }
 
+int * Unit::getAmmo(){
+	return NULL;
+}
 
 Unit::~Unit(){
 	

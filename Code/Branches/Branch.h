@@ -60,11 +60,18 @@ class Branch : public Unit {
 		 */
 		virtual string getBranch();
 
-		/**
-		 * @brief Destroy the Branch object
-		 * 
-		 */
-		virtual ~Branch();
+	/**
+	 * @brief Calls the units getAmmo and returns result
+	 * 
+	 * @return int* ammo - [0] = pewPew, [1] = boomBoom
+	 */
+	virtual int * getAmmo();
+
+	/**
+	 * @brief Destroy the Branch object
+	 * 
+	 */
+	virtual ~Branch();
 };
 
 #endif

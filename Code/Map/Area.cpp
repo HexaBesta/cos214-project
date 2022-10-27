@@ -372,7 +372,7 @@ Country *Area::getCountry()
 bool Area::retreat(string side)
 {
 
-	vector<Area *> adjacent = this->map->listAdjacent(this, false);
+	vector<Area *> adjacent = this->map->listAdjacent(this, true);
 
 	int allianceColour = 0;
 	Unit *landUnit = NULL;

@@ -1,8 +1,5 @@
-kjdhaskjdf
-dsfkjdshkf
-dskufhdskf
-dsfkuhdskf
-dsfiudshf
+West,22
+East,160 
 #############################################
 32
 20

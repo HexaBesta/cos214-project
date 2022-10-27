@@ -9,6 +9,7 @@
 #include <fstream>
 #include <string>
 using namespace std;
+class Player;
 class Area;
 class TransportRoute;
 class Map
