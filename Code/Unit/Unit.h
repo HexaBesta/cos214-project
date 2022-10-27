@@ -162,6 +162,13 @@ class Unit {
 		virtual Unit * takeRandom();
 
 		/**
+		 * @brief Get the Ammo as an array - stubbed in unit
+		 * 
+		 * @return int* 
+		 */
+		virtual int* getAmmo();
+
+		/**
 		 * @brief Destroy the Unit object
 		 * 
 		 */

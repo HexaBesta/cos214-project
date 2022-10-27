@@ -76,6 +76,20 @@ public:
 	Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area, Player * player);
 
 	/**
+	 * @brief Get the Air  TheatreOfWar object
+	 * 
+	 * @return TheatreOfWar* of the air theatre
+	 */
+	TheatreOfWar * getAir();
+
+	/**
+	 * @brief Get the Land TheatreOfWar object
+	 * 
+	 * @return TheatreOfWar* of the land theatre
+	 */
+	TheatreOfWar * getLand();
+
+	/**
 	 * @brief Will print a summary of the current state of a battle
 	 * 
 	 * @details Each platoon's cumulative health and damage will be shown along with the currently active side
