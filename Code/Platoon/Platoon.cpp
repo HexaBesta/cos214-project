@@ -35,7 +35,7 @@ string Platoon::toString(int lineLen)
 	this->damage = damage;
 	string add="";
 
-	if (health != 0)
+	if (health == 0)
 	{
 		add+= "\n|                        Your platoon is dead";
 		while(add.length()<lineLen){

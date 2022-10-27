@@ -1,4 +1,4 @@
-#ifndef FITSTATAE_H
+#ifndef FITSTATE_H
 #define FITSTATE_H
 #include "InjuredState.h"
 using namespace std;
