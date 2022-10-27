@@ -3,7 +3,26 @@
 GodOfWar::GodOfWar(string setupFile)
 {
 
-    //this->player= new User();
+    int resp;
+	cout << "Choose your mode:" << endl
+		 << "1. Real \n2. Design" << endl;
+	cin >> resp;
+
+    // clear buffer
+	cin.ignore(30, '\n');
+
+    if(resp == 1){
+        this->real = true;
+    }else{
+        this->real = false;
+    }
+
+    if(this->real){
+        //this->player = new CPU();
+    }else{
+        //this->player= new User();
+    }
+    
     ifstream inputFile(setupFile);
     vector<string> lines;
     string line;
@@ -184,5 +203,46 @@ void GodOfWar::takeTurn(int actions)
             areas.at(areaIndex)->marchOut(adjacentAreas.at(adjAreaIndex));
        }
 
+    }
+}
+
+void GodOfWar::round(){
+
+    /*
+        First alliance turn
+    */
+    if(!this->real){
+        this->checkTogglePlayer();
+    }
+
+    this->turn = true;
+
+    this->takeTurn(3);
+
+    this->map->resolveBattles();
+
+    /*
+        Second alliance turn
+    */
+    this->turn = false;
+
+    if(!this->real){
+        this->checkTogglePlayer();
+    }
+
+    this->takeTurn(3);
+
+    this->map->resolveBattles();
+
+    //this->map->toStringCount();
+
+}
+
+void GodOfWar::checkTogglePlayer(){
+    if(this->player->changePlayer()){
+        Player * temp= this->player->togglePlayer();
+        delete this->player;
+        this->player = temp;
+        this->map->setPlayer(this->player);
     }
 }

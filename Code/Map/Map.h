@@ -3,6 +3,7 @@
 
 #include "../TransportFactory/TransportFactory.h"
 #include "../Country/Country.h"
+#include "../Battle/Battle.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -160,6 +161,12 @@ public:
 	 * @return Player* the current player
 	 */
 	Player * getPlayer();
+
+	/**
+	 * @brief Resolves all battles after each round
+	 * 
+	 */
+	void resolveBattles();
 
 	/**
 	 * @brief Destroy the Map object for memory purposes

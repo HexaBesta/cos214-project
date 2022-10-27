@@ -621,6 +621,28 @@ Player * Map::getPlayer(){
 	return this->player;
 }
 
+void Map::resolveBattles(){
+
+	/*
+	list of all battles to be resolved
+	*/
+	vector<Battle *> battlesToResolve;
+	for(auto area: this->allAreas){
+		Battle * battle = area->returnBattle();
+		if(battle != NULL){
+			battlesToResolve.push_back(battle);
+		}
+	}
+
+	/*
+	Loop through all battles and resolve them
+	*/
+	for(auto battle: battlesToResolve){
+		battle->battleLoop();
+	}
+	
+}
+
 Map::~Map()
 {
 	for (int i = 0; i < gridXSize; i++)

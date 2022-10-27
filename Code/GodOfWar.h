@@ -13,6 +13,13 @@ class GodOfWar{
 		Player * player;
 		Map * map;
 		bool  turn;
+		bool real;
+
+		/**
+		 * @brief Check whether to toggle between playing modes
+		 * 
+		 */
+		void checkTogglePlayer();
 
 	public:
 		/**

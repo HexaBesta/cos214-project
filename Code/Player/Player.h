@@ -75,6 +75,21 @@ class Player
          */
         virtual int chooseResource(Area * area) = 0;
 
+        /**
+         * @brief Check whether to change from CPU->User or User->CPU
+         * 
+         * @return true if change should occur
+         * @return false otherwise
+         */
+        virtual bool changePlayer() = 0;
+
+        /**
+         * @brief Change between player types
+         * 
+         * @return Player* new player object
+         */
+        virtual Player * togglePlayer() = 0;
+
 };
 
 #endif
