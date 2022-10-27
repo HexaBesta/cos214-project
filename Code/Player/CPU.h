@@ -2,6 +2,7 @@
 #define CPU_H
 
 #include "Player.h"
+#include "../Battle/Battle.h"
 
 class CPU : public Player
 {

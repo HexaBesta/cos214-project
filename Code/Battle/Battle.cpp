@@ -79,8 +79,7 @@ void Battle::getStateSummary()
 	cout << "\tPrinting Summary of State of Battle:" << endl;
 	cout << endl;
 	cout << "Area: " << endl;
-	cout << "Insert call to area details here once defined" << endl
-		 << endl;
+	this->area->toString();
 	cout << "Turn: ";
 	if (!this->turn)
 	{
@@ -278,7 +277,7 @@ void Battle::changeStrategy(Unit * active)
 
 	if (this->player->checkChangeStrategy(active))
 	{
-		cout<<"Add in call to unit change strategy Battle 299"<<endl;
+		//cout<<"Add in call to unit change strategy Battle 299"<<endl;
 		active->changeStrategy();
 	}
 }
