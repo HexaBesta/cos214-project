@@ -1,6 +1,6 @@
 #include "Branch.h"
 
-Branch::Branch(Unit* unit) {
+Branch::Branch(Unit* unit):Unit() {
 	this->unit = unit;
 }
 
@@ -26,6 +26,10 @@ string Branch::getBranch(){
 
 string Branch::toString(int lineLen){
 	return this->unit->toString(lineLen);
+}
+
+int * Branch::getAmmo(){
+	return this->unit->getAmmo();
 }
 
 Branch::~Branch(){

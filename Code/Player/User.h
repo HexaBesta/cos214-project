@@ -32,6 +32,8 @@ class User : public Player
          */
         virtual bool requestReinforcements(Battle * battle);
 
+        virtual int chooseCountry(vector <Country*> countries);
+
 };
 
 #endif

@@ -73,6 +73,18 @@ void Battle::setAttackerToDefender(){
 
 }
 
+TheatreOfWar * Battle::getAir(){
+	return this->air;
+}
+
+TheatreOfWar * Battle::getLand(){
+	return this->land;
+}
+
+bool Battle::getTurn(){
+	return this->turn;
+}
+
 void Battle::getStateSummary()
 {
 	cout << "-------------------------------------------" << endl;

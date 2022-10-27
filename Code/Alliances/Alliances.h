@@ -16,20 +16,28 @@ class Alliances {
          * @param name 
          * @param colour 
          */
-        Alliances(string name,int colour){this->name = name;this->colour=colour;};
+        Alliances(string name,int colour)
+        {
+            this->name = name;
+            this->colour=colour;
+        };
         /**
          * @brief Get the Name of the alliance
          * 
          * @return string 
          */
-        string getName(){return name;};
+        string getName(){
+            return name;
+        };
 
         /**
          * @brief Get the Colour of the alliance
          * 
          * @return int 
          */
-        int getColour(){return colour;};
+        int getColour(){
+            return colour;
+        };
 };
 
 #endif
