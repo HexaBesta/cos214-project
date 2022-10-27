@@ -35,6 +35,12 @@ public:
 	 */
 	virtual void accept(Visitor *visitor)=0;
 
+	/**
+	 * @brief Destroy the Map Component object
+	 * 
+	 */
+	virtual ~MapComponent();
+
 };
 
 

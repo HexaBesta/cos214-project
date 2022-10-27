@@ -46,8 +46,12 @@ void Unit::setMoral(int moral){
 	this->moral = moral;
 }
 
+int Unit::getMoral(){
+	return this->moral;
+}
 
-bool Unit::takeDamage(int damage, bool checkStrat = true) {
+
+bool Unit::takeDamage(int damage, bool checkStrat) {
 	this->health = this->health - damage;
 	if(this->health <= 0 ){
 		this->setUnitState(new DeadState());

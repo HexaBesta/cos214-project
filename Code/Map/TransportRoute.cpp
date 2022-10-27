@@ -1,6 +1,6 @@
 #include "TransportRoute.h"
 
-TransportRoute::TransportRoute(){
+TransportRoute::TransportRoute():MapComponent(){
     this->available=false;
 }
 
@@ -27,4 +27,12 @@ Area* TransportRoute::getFrom(){
 
 Area* TransportRoute::getTo(){
     return this->to;
+}
+
+void TransportRoute::accept(Visitor* visitor){
+	visitor->visit(this);
+}
+
+TransportRoute::~TransportRoute(){
+
 }
