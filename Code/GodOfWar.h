@@ -39,7 +39,10 @@ class GodOfWar{
 		 */
 		void takeTurn(int actions);
 
-		
+		/**
+		 * @brief one round of 
+		 * 
+		 */
 		void round();
 
 };
