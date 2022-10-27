@@ -1,14 +1,24 @@
 #ifndef DIRECTOR_H
 #define DIRECTOR_H
 
-#include "BobTheBuilder.h"
-#include "../Country/Country.h"
-#include "../Unit/Unit.h"
+#include "PlatoonBuilder.h"
+
+class Country;
 
 class Director {
     private:
         BobTheBuilder* builder;
     public:
+        /**
+         * @brief Default constructor for the Director
+         */
+        Director();
+
+        /**
+         * @brief Deconstructor for the Director
+         */
+        ~Director();
+        
     	/**
          * @brief Construct a new Platoon the builder
          * @param type represents the type of the Branch, true represents a land branch while false represents an air branch

@@ -1,5 +1,9 @@
 #include "Unit.h"
 
+Unit::Unit() {
+	
+}
+
 Unit::Unit(int health, int moral, int damage, Country* country, bool fitState){
 	this->health = health;
 	this->moral = moral;

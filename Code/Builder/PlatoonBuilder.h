@@ -51,6 +51,11 @@ class PlatoonBuilder : public BobTheBuilder {
 		 * @return a platoon of type unit
 		 */
         virtual Unit* getPlatoon();
+
+		/**
+		 * @brief Resets the builder.
+		 */
+        virtual void clearBuilder();
     private:
         vector<Unit*> vehicles;
         vector<Unit*> soldiers;

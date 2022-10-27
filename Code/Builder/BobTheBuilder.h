@@ -1,8 +1,9 @@
 #ifndef BOBTHEBUILDER_H
 #define BOBTHEBUILDER_H
 
-#include "../Unit/Unit.h"
-#include "../Country/Country.h"
+class Unit;
+class Country;
+
 #include <vector>
 
 using namespace std;
@@ -46,6 +47,11 @@ class BobTheBuilder {
 		 * @return a platoon of type unit
 		 */
 		virtual Unit* getPlatoon() = 0;
+
+		/**
+		 * @brief Resets the builder. This is a pure virtual function.
+		 */
+		virtual void clearBuilder() = 0;
 };
 
 #endif

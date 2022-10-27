@@ -1,16 +1,7 @@
 #include "PlatoonBuilder.h"
 using namespace std;
 
-PlatoonBuilder::PlatoonBuilder() {
-}
-
-Unit* PlatoonBuilder::buildPart() {
-
-}
-
-Unit* PlatoonBuilder::getResult() {
-    return this->buildPart();
-}
+int getRandomNumber(int min, int max);
 
 void PlatoonBuilder::createVehicles() {
     int size = getRandomNumber(5, 10);
@@ -38,7 +29,7 @@ void PlatoonBuilder::setCountry(Country* c) {
 }
 
 void PlatoonBuilder::createPlatoon() {
-    this->platoon = new Platoon(this->vehicles, this->soldiers, this->ammo[0], this->ammo[1]);
+    this->platoon = new Platoon(this->soldiers, this->vehicles, this->ammo[0], this->ammo[1]);
 }
 
 Unit* PlatoonBuilder::getPlatoon() {
@@ -55,7 +46,17 @@ void PlatoonBuilder::setBranch(bool type) {
     }
 }
 
-int getRandomNumber(int min, int max) {
+void PlatoonBuilder::clearBuilder() {
+    this->vehicles.clear();
+    this->soldiers.clear();
+    this->ammo[0] = 0;
+    this->ammo[1] = 0;
+    this->country = NULL;
+    this->branch = NULL;
+    this->platoon = NULL;
+}
+
+int getRandomNumber(int max, int min) {
     return rand() % max + min;
 }
 
