@@ -2,11 +2,10 @@
 
 TheatreOfWar::TheatreOfWar(string type)
 {
-    this->type=type;
-    this->attacker=NULL;
-    this->defender=NULL;
+    this->type = type;
+    this->attacker = NULL;
+    this->defender = NULL;
 }
-
 
 Unit *TheatreOfWar::getAttacker()
 {
@@ -17,102 +16,162 @@ Unit *TheatreOfWar::getDefender()
     return this->defender;
 }
 
-void TheatreOfWar::setAttacker(Unit *attacker){
-    if (this->attacker!=NULL)
+void TheatreOfWar::setAttacker(Unit *attacker)
+{
+    if (this->attacker != NULL)
     {
         this->attacker->join(attacker);
-    }else{
-        this->attacker=attacker;
     }
-    
+    else
+    {
+        this->attacker = attacker;
+    }
 }
-void TheatreOfWar::setDefender(Unit *defender){
-    if (this->defender!=NULL)
+void TheatreOfWar::setDefender(Unit *defender)
+{
+    if (this->defender != NULL)
     {
         this->defender->join(defender);
-    }else{
-        this->defender=defender;
+    }
+    else
+    {
+        this->defender = defender;
     }
 }
 
-Unit* TheatreOfWar::retreat(bool turn){
+Unit *TheatreOfWar::retreat(bool turn)
+{
     if (turn)
     {
-        Unit* curr=defender;
-        defender=attacker;
-        attacker=NULL;
-        return curr;
-    }else{
-        Unit* curr=attacker;
-        attacker=NULL;
+        Unit *curr = defender;
+        defender = attacker;
+        attacker = NULL;
         return curr;
     }
-    
+    else
+    {
+        Unit *curr = attacker;
+        attacker = NULL;
+        return curr;
+    }
 }
 
-string TheatreOfWar::toString(){
-        string out="    Defender:";
-        if(defender!=NULL){
-            out+="Yes";
-        }else{
-            out+="No";
-        }
-        out+="    Attacker:";
-        if(attacker!=NULL){
-            out+="Yes";
-        }else{
-            out+="No";
-        }
+string TheatreOfWar::toString(int &lineLen)
+{
+    string out = "";
+    string add = "|                   Defender:";
+    while (add.length() < lineLen)
+    {
+        add += " ";
+    }
+    add += "|\n";
+    out += add;
 
-        return out;
+    if (defender != NULL)
+    {
+        add = "" + defender->toString(lineLen);
+        out+=add+"\n";
+    }
+    else
+    {
+        add = "|                        None";
+        while (add.length() < lineLen)
+        {
+            add += " ";
+        }
+        add += "|\n";
+        out += add;
     }
 
-Unit* TheatreOfWar::MarchOut(bool split){
+    //Skip Line
+	add= "|";
+	for (int i = 0; i < lineLen - 1; i++)
+		add += " ";
+	add += "|\n";
+    out+= add;
+
+    add = "|                   Attacker:";
+    while (add.length() < lineLen)
+    {
+        add += " ";
+    }
+    add += "|\n";
+    out += add;
+
+    if (attacker != NULL)
+    {
+        add =  attacker->toString(lineLen);
+       
+        out += add+"\n";
+    }
+    else
+    {
+        add = "|                        None";
+        while (add.length() < lineLen)
+        {
+            add += " ";
+        }
+        add += "|\n";
+        out += add;
+    }
+
+    return out;
+}
+
+Unit *TheatreOfWar::MarchOut(bool split)
+{
     if (split)
     {
         return defender->split();
-    }else{
-        Unit* curr=defender;
-        defender=NULL;
+    }
+    else
+    {
+        Unit *curr = defender;
+        defender = NULL;
         return curr;
     }
-    
 }
 
-Unit * TheatreOfWar::retreat(string side){
-    if(side.compare("defense") == 0){
-        Unit * curr = defender;
+Unit *TheatreOfWar::retreat(string side)
+{
+    if (side.compare("defense") == 0)
+    {
+        Unit *curr = defender;
         defender = NULL;
-        if(attacker != NULL){
+        if (attacker != NULL)
+        {
             defender = attacker;
         }
         return curr;
     }
-    else if(side.compare("attack") == 0){
-        Unit * curr = attacker;
+    else if (side.compare("attack") == 0)
+    {
+        Unit *curr = attacker;
         attacker = NULL;
         return curr;
     }
-    else{
+    else
+    {
         return NULL;
     }
 }
 
-Unit* TheatreOfWar::sendReinforcements(){
-    if(this->defender != NULL){
-        Unit* curr=defender;
-        defender=NULL;
+Unit *TheatreOfWar::sendReinforcements()
+{
+    if (this->defender != NULL)
+    {
+        Unit *curr = defender;
+        defender = NULL;
         return curr;
     }
     return NULL;
 }
 
-TheatreOfWar::~TheatreOfWar(){
-    if (attacker!=NULL)
+TheatreOfWar::~TheatreOfWar()
+{
+    if (attacker != NULL)
         delete attacker;
-    
 
-    if (defender!=NULL)
+    if (defender != NULL)
         delete defender;
-    
 }
