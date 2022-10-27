@@ -100,6 +100,8 @@ void Platoon::changeStrategy()
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
+	}else{
+		cout<<"Cannot change strategy, insefficent ammo. Recommend calling for ammo"<<endl;
 	}
 }
 
@@ -170,6 +172,10 @@ int Platoon::getHealth()
 {
 	this->setAccumlateHealth();
 	return this->health;
+}
+
+string Platoon::getStrategyType(){
+	return this->strategy->getPlatoonStrategy();
 }
 
 int Platoon::getSize(){

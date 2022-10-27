@@ -33,6 +33,14 @@ class CPU : public Player
          */
         virtual bool requestReinforcements(Battle * battle);
 
+         /**
+         * @brief Choses a country to take a turn with
+         * 
+         * @param countries vector of countries of current alliance
+         * @return int index of country chosen
+         */
+        virtual int chooseCountry(vector <Country*> countries);
+
 };
 
 #endif

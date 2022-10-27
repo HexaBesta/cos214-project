@@ -90,6 +90,15 @@ public:
 	TheatreOfWar * getLand();
 
 	/**
+	 * @brief Get the turn of the batlle
+	 * 
+	 * @return true - attackers turn
+	 * @return false - defenders turn
+	 */
+	bool getTurn();
+
+
+	/**
 	 * @brief Will print a summary of the current state of a battle
 	 * 
 	 * @details Each platoon's cumulative health and damage will be shown along with the currently active side

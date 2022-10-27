@@ -53,6 +53,13 @@ class Unit {
 		virtual void requestState();
 
 		/**
+		 * @brief Stubbed method - will be used for platoon
+		 * 
+		 * @return string
+		 */
+		virtual string getStrategyType();
+		
+		/**
 		 * @brief Returns state of unit
 		 * 
 		 */

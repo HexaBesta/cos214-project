@@ -163,7 +163,7 @@ void Battle::takeTurn()
 			else if (!(this->air->getDefender() /* && (!this->air->getDefender()->getState().compare("Dead"))*/)){
 				this->active = false;
 			}
-			//Only air defender - request reinforcements
+			//If there is only an air defender - request reinforcements
 			else{
 				
 				if(!this->area->requestReinforcements("attack")){
@@ -209,7 +209,7 @@ void Battle::takeTurn()
 			else if (!(this->air->getAttacker() /* && (!this->air->getAttacker()->getState().compare("Dead"))*/)){
 				this->active = false;
 			}
-			//Only air attacker - request reinforcements
+			//If there is only an air attacker - request reinforcements
 			else{
 				
 				if(!this->area->requestReinforcements("defense")){
