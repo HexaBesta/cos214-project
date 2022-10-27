@@ -19,7 +19,11 @@ class Unit {
 		Country* country;
 		
 	public:
-
+		/**
+		 * @brief Construct a new Unit object
+		 * 
+		 */
+		Unit();
 		/***
 		 * @brief Constructor for Unit
 		 * 

@@ -134,6 +134,19 @@ int Platoon::getSize(){
 	return size;
 }
 
+int Platoon::getDamage(){
+	int damage = 0;
+	for (auto it : this->humans)
+	{
+		damage += it->getDamage();
+	}
+	for (auto it : this->vehicles)
+	{
+		damage += it->getDamage();
+	}
+	return damage;
+}
+
 int* Platoon::getAmmo(){
 	int * ammo  = new int[2];
 	ammo[0] = this->pewpew;

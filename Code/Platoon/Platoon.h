@@ -58,6 +58,13 @@ public:
 	int getSize();
 
 	/**
+	 * @brief Get the total damage of the platoon by accumulating the damage of humans and vehicles
+	 * 
+	 * @return int damage
+	 */
+	int getDamage();
+
+	/**
 	 * @brief Get the ammount of ammo for platoon
 	 * 
 	 * @return int[] returns an array where index 0 is the amount of pewpew bullets and index 1 is the amount of boomboom explosives
