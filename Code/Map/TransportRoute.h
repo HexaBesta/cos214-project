@@ -2,7 +2,7 @@
 #define TRANSPORTROUTE_H
 
 #include "Area.h"
-
+#include "Visitor.h"
 using namespace std;
 
 class TransportRoute : public MapComponent
@@ -25,6 +25,13 @@ class TransportRoute : public MapComponent
 		 */
 		bool isAvailable();
 
+		/**
+		 * @brief accept visitor 
+		 * 
+		 * @param visitor takes in the pointer visitor that will be accpeted
+		 */
+
+		virtual void accept(Visitor* visitor);
 		/**
 		 * @brief Sets the end points of the transport route
 		 * 
@@ -59,6 +66,12 @@ class TransportRoute : public MapComponent
 		 * @return Area* 
 		 */
 		Area* getTo();
+
+		/**
+		 * @brief Destroy the Transport Route object
+		 * 
+		 */
+		virtual ~TransportRoute();
 
 private:
 	Area *to;

@@ -28,8 +28,11 @@ void Unit::setUnitState(UnitsState *unitState)
 	}
 }
 
-int Unit::getDamage()
-{
+void Unit::changeStrategy(){
+	cout<<"This unit type cannot change strategy"<<endl;
+}
+
+int Unit::getDamage(){
 	return this->damage;
 }
 
@@ -38,8 +41,24 @@ int Unit::getHealth()
 	return this->health;
 }
 
-bool Unit::takeDamage(int damage)
-{
+int Unit::getSize(){
+	return 1;
+}
+
+void Unit::setHealth(int healthhhh){
+	this->health = healthhhh;
+}
+
+void Unit::setMoral(int moral){
+	this->moral = moral;
+}
+
+int Unit::getMoral(){
+	return this->moral;
+}
+
+
+bool Unit::takeDamage(int damage, bool checkStrat) {
 	this->health = this->health - damage;
 	if (this->health <= 0)
 	{
