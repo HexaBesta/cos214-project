@@ -591,6 +591,15 @@ void Map::printColourMap()
 	// -----
 }
 
+string Map::toStringCount(){
+	CountVisitor* countV = new CountVisitor();
+	for(auto it : this->allAreas){
+		it->accept(countV);
+	}
+	string total = countV->displayCount();
+	return total;
+}
+
 Map::~Map()
 {
 	for (int i = 0; i < gridXSize; i++)

@@ -3,6 +3,7 @@
 
 #include "../TransportFactory/TransportFactory.h"
 #include "../Country/Country.h"
+#include "../Map/CountVisitor.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -129,6 +130,12 @@ public:
 	 */
 	void addCountry(Country* country);
 
+	/**
+	 * @brief Returns the count of transport routes and areas for the alliances
+	 * 
+	 * @return string 
+	 */
+	string toStringCount();
 	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
