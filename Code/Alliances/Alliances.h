@@ -27,18 +27,14 @@ class Alliances {
          * 
          * @return string 
          */
-        string getName(){
-            return name;
-        };
+        string getName();
 
         /**
          * @brief Get the Colour of the alliance
          * 
          * @return int 
          */
-        int getColour(){
-            return colour;
-        };
+        int getColour();
 
         /**
          * @brief Adds a country to the array of countries
