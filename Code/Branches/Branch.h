@@ -75,11 +75,11 @@ class Branch : public Unit {
 	 */
 	virtual int * getAmmo();
 
-	/**
-	 * @brief Destroy the Branch object
-	 * 
-	 */
-	virtual ~Branch();
+		/**
+		 * @brief Destroy the Branch object
+		 * 
+		 */
+		virtual ~Branch();
 };
 
 #endif

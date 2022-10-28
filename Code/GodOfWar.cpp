@@ -119,11 +119,14 @@ void GodOfWar::takeTurn(int actions)
         */
         if (action == 0)
         {
+            /*
+            List of adjacent areas to destroy transport routes between
+            */
             vector<Area *> adjacentAreas = this->map->listAdjacent(areas.at(areaIndex), true);
             int adjAreaIndex = -1;
             if (adjacentAreas.size() == 0)
             {
-                cout << "No adjacent tranport routes to destroy" << endl;
+                cout << "No adjacent transport routes to destroy" << endl;
                 break;
             }
             else if (adjacentAreas.size() == 1)
@@ -146,7 +149,39 @@ void GodOfWar::takeTurn(int actions)
         */
         else if(action ==1){
             int resource = this->player->chooseResource(areas.at(areaIndex));
-            this->map->requestFactoryForArea(areas.at(areaIndex), resource);
+            if(areas.at(areaIndex)->requestFactory(resource)){
+                cout<<"Factory succesfully acquired"<<endl;
+                cout<<areas.at(areaIndex)->toString();
+            }else{
+                cout<<"Area could not acquire requested factory"<<endl;
+            }
         }
+        /*
+        March to adjacent area
+        */
+       else{
+            /*
+            List of adjacent areas to march to
+            */
+            vector<Area *> adjacentAreas = this->map->listAdjacent(areas.at(areaIndex), false);
+            int adjAreaIndex = -1;
+            if (adjacentAreas.size() == 0)
+            {
+                cout << "No adjacent areas" << endl;
+                break;
+            }
+            else if (adjacentAreas.size() == 1)
+            {
+                adjAreaIndex = 0;
+            }
+            else
+            {
+                adjAreaIndex = this->player->chooseAdjacentArea(adjacentAreas);
+            }
+
+            cout<<"Marching from "<<areas.at(areaIndex)->getName()<<" to "<<adjacentAreas.at(adjAreaIndex)->getName()<<endl;
+            areas.at(areaIndex)->marchOut(adjacentAreas.at(adjAreaIndex));
+       }
+
     }
 }
