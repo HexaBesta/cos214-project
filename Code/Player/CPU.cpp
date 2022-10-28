@@ -180,4 +180,7 @@ int CPU::chooseResource(Area *area)
             area->requestFactory(2);
             return 2;
         }
+        int randomV = rand()%(2+1);
+        area->getFactory(randomV);
+        return randomV;
 }
