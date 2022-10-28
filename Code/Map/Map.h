@@ -3,6 +3,7 @@
 
 #include "../TransportFactory/TransportFactory.h"
 #include "../Country/Country.h"
+#include "../Map/CountVisitor.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -131,21 +132,11 @@ public:
 	void addCountry(Country* country);
 
 	/**
-	 * @brief Get the Countries of the alliance (found by colour)
+	 * @brief Returns the count of transport routes and areas for the alliances
 	 * 
-	 * @param colour Alliance colour 
-	 * @return vector<Country*> vector of countries of the alliance 
+	 * @return string 
 	 */
-	vector<Country*> getCountriesByColour(int colour);
-
-	/**
-	 * @brief Get the Areas By Country object
-	 * 
-	 * @param country to list areas of
-	 * @return vector<Area*> all areas occupied by the passed in country
-	 */
-	vector<Area*> getAreasByCountry(Country * country);
-
+	string toStringCount();
 	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 

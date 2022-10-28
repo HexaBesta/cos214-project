@@ -63,7 +63,7 @@ class Player
          * @brief choose area from adjArea list
          * 
          * @param adjAreas 
-         * @return int 
+         * @return int index of chosen
          */
         virtual int chooseAdjacentArea(vector<Area *> adjAreas) = 0;
 

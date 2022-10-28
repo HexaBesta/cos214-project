@@ -24,12 +24,20 @@ string Branch::getBranch(){
 	return "BRANCH";
 }
 
-string Branch::toString(int lineLen){
-	return this->unit->toString(lineLen);
-}
-
 int * Branch::getAmmo(){
 	return this->unit->getAmmo();
+}
+
+string Branch::getStrategyType(){
+	return this->unit->getStrategyType();
+}
+
+string Branch::toString(int lineLen){
+	return this->unit->toString(lineLen);
+=========
+int * Branch::getAmmo(){
+	return this->unit->getAmmo();
+>>>>>>>>> Temporary merge branch 2
 }
 
 Branch::~Branch(){

@@ -48,21 +48,35 @@ public:
 	 * 
 	 * @return int
 	 */
-	int getHealth();
+	virtual int getHealth();
 
 	/**
 	 * @brief Get the size of the platoon by counting the amount of vehicles and humans
 	 * 
 	 * @return int size
 	 */
-	int getSize();
+	virtual int getSize();
+
+	/**
+	 * @brief Get the current strategy of the platoon
+	 * 
+	 * @return string - will either return pew or boom
+	 */
+	virtual string getStrategyType();
+
+	/**
+	 * @brief Get the total damage of the platoon by accumulating the damage of humans and vehicles
+	 * 
+	 * @return int damage
+	 */
+	virtual int getDamage();
 
 	/**
 	 * @brief Get the ammount of ammo for platoon
 	 * 
 	 * @return int[] returns an array where index 0 is the amount of pewpew bullets and index 1 is the amount of boomboom explosives
 	 */
-	int* getAmmo();
+	virtual int* getAmmo();
 
 	/**
 	 * @brief decreases the ammo of the platoon
@@ -104,7 +118,7 @@ public:
 	 * 
 	 * @return int
 	 */
-	int getMoral();
+	virtual int getMoral();
 	
 	/**
 	 * @brief Sets the total moral of the current platoon using the human vector
@@ -115,20 +129,20 @@ public:
 	/**
 	 * @brief Change the strategy of the current Platoon
 	 */
-	void changeStrategy();
+	virtual void changeStrategy();
 	
 	/**
 	 * @brief Split the current platoon in half
 	 * 
 	 * @return a unit pointer of one of the split platoons
 	 */
-	Unit *split();
+	virtual Unit *split();
 	
 	/**
 	 * @brief Join a platoon with a unit
 	 * @param platoon a pointer of the unit that will be joined with the current platoon
 	 */
-	void join(Unit *platoon);
+	virtual void join(Unit *platoon);
 	
 	/**
 	 * @brief function to take damage from another platoon and see what type of damage and how much
@@ -138,7 +152,7 @@ public:
 	 * 
 	 * @return boolean indicating if the platoon is alive or dead
 	 */
-	bool takeDamage(int damage, bool checkPewPew);
+	virtual bool takeDamage(int damage, bool checkPewPew);
 
 	/**
 	 * @brief virtual function to attack a certain platoon
@@ -152,7 +166,7 @@ public:
 	 * 
 	 * @return Unit* will be returned to controll the randomly selected human or vehicle
 	 */
-	Unit* takeRandom();
+	virtual Unit* takeRandom();
 
 	/**
 	 * @brief return a string representation of the platoon

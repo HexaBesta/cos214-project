@@ -591,24 +591,13 @@ void Map::printColourMap()
 	// -----
 }
 
-vector<Country*> Map::getCountriesByColour(int colour){
-	vector<Country*> countries;
-	for(auto country: allCountries){
-		if(country->getAlliances()->getColour() == colour){
-			countries.push_back(country);
-		}
+string Map::toStringCount(){
+	CountVisitor* countV = new CountVisitor();
+	for(auto it : this->allAreas){
+		it->accept(countV);
 	}
-	return countries;
-}
-
-vector<Area*> Map::getAreasByCountry(Country * country){
-	vector<Area*> areas;
-	for(auto area: this->allAreas){
-		if(area->getCountry() == country){
-			areas.push_back(area);
-		}
-	}
-	return areas;
+	string total = countV->displayCount();
+	return total;
 }
 
 Map::~Map()

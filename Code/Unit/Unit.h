@@ -19,11 +19,11 @@ class Unit {
 		Country* country;
 		
 	public:
-		/***
-		 * @brief Default constructor for Unit
-		*/
+		/**
+		 * @brief Construct a new Unit object
+		 * 
+		 */
 		Unit();
-
 		/***
 		 * @brief Constructor for Unit
 		 * 
@@ -52,6 +52,13 @@ class Unit {
 		 */
 		virtual void requestState();
 
+		/**
+		 * @brief Stubbed method - will be used for platoon
+		 * 
+		 * @return string
+		 */
+		virtual string getStrategyType();
+		
 		/**
 		 * @brief Returns state of unit
 		 * 
