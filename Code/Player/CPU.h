@@ -41,6 +41,39 @@ class CPU : public Player
          */
         virtual int chooseCountry(vector <Country*> countries);
 
+        /**
+         * @brief choose which action player wants to take with country
+         * 
+         * @return int:
+         *  - 0 if attack transport route
+         *  - 1 if requestResource
+         *  - 2 if march into area
+         */
+        virtual int chooseActionForCountry();
+
+        /**
+         * @brief choose which area to take action in
+         * 
+         * @param areas list of all areas
+         * @return int index of chosen 
+         */
+        virtual int chooseAreaForAction(vector<Area*> areas);
+
+        /**
+         * @brief choose area from adjArea list
+         * 
+         * @param adjAreas 
+         * @return int 
+         */
+        virtual int chooseAdjacentArea(vector<Area *> adjAreas);
+
+        /**
+         * @brief choose type of resource to request for area passed in
+         * 
+         * @param area 
+         * @return int type of resource
+         */
+        virtual int chooseResource(Area * area);
 };
 
 #endif

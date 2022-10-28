@@ -123,7 +123,61 @@ int CPU::chooseCountry(vector<Country *> country)
     {
         int index = rand() % country.size();
         return index;
-    }else{
+    }
+    else
+    {
         return -1;
     }
+}
+
+int CPU::chooseActionForCountry()
+{
+    int value = rand() % ((2 - 0 + 1) + 0);
+    return value;
+}
+
+int CPU::chooseAreaForAction(vector<Area *> area)
+{
+    if (!area.empty())
+    {
+        int index = rand() % area.size();
+        return index;
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+int CPU::chooseAdjacentArea(vector<Area *> adjacentArea)
+{
+    if (!adjacentArea.empty())
+    {
+        int index = rand() % adjacentArea.size();
+        return index;
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+int CPU::chooseResource(Area *area)
+{
+    
+        if (area->getFactory(0) == nullptr)
+        {
+            area->requestFactory(0);
+            return 0;
+        }
+        else if (area->getFactory(1) == nullptr)
+        {
+            area->requestFactory(1);
+            return 1;
+        }
+        else if (area->getFactory(2) == nullptr)
+        {
+            area->requestFactory(2);
+            return 2;
+        }
 }
