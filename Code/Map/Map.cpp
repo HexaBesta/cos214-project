@@ -1,5 +1,6 @@
 #ifndef MAP_CPP
 #define MAP_CPP
+
 #include "Area.h"
 #include "TransportRoute.h"
 #include "Map.h"
@@ -14,7 +15,8 @@ Map::Map(string setupFile)
 	std::ifstream inputFile(setupFile);
 
 	getline(inputFile, line);
-	while(line.at(0)!='#'){
+	while (line.at(0) != '#')
+	{
 		getline(inputFile, line);
 	}
 
@@ -592,62 +594,94 @@ void Map::printColourMap()
 	// -----
 }
 
-vector<Country*> Map::getCountriesByColour(int colour){
-	vector<Country*> countries;
-	for(auto country: allCountries){
-		if(country->getAlliances()->getColour() == colour){
+vector<Country *> Map::getCountriesByColour(int colour)
+{
+	vector<Country *> countries;
+	for (auto country : allCountries)
+	{
+		if (country->getAlliances()->getColour() == colour)
+		{
 			countries.push_back(country);
 		}
 	}
 	return countries;
 }
 
-vector<Area*> Map::getAreasByCountry(Country * country){
-	vector<Area*> areas;
-	for(auto area: this->allAreas){
-		if(area->getCountry() == country){
+vector<Area *> Map::getAreasByCountry(Country *country)
+{
+	vector<Area *> areas;
+	for (auto area : this->allAreas)
+	{
+		if (area->getCountry() == country)
+		{
 			areas.push_back(area);
 		}
 	}
 	return areas;
 }
 
-void Map::setAreaBorders(){
+void Map::setAreaBorders()
+{
 	for (int j = 0; j < gridYSize; j++)
 	{
-		for (int i = 0; i < gridXSize; i++){
+		for (int i = 0; i < gridXSize; i++)
+		{
 			bool left = false;
 			bool right = false;
 			bool top = false;
 			bool bottom = false;
-			if(grid[i][j] !="X"){
-				if(j>0 && grid[i][j-1]!=grid[i][j]){
-					left = true;
-				}
-				if(j<gridYSize-1 && grid[i][j+1]!=grid[i][j]){
-					right = true;
-				}
-
-				if(i>0 && grid[i-1][j]!=grid[i][j]){
-					top = true;
-				}
-
-				if(i<gridXSize-1 && grid[i+1][j]!=grid[i][j]){
-					bottom = true;
-				}
-				cout<<"j:"<<j<<"  i:"<<i<<" val:"<<grid[i][j]<<"   "<<left<<right<<top<<bottom<<endl;
-				(allAreas.at(stoi(grid[i][j])))->setCoordinateBorders(j,i,left,right,top,bottom);
+			if (j > 0 && grid[i][j - 1] != grid[i][j])
+			{
+				top = true;
+			}
+			if (j < gridYSize - 1 && grid[i][j + 1] != grid[i][j])
+			{
+				bottom = true;
 			}
 
+			if (i > 0 && grid[i - 1][j] != grid[i][j])
+			{
+				left = true;
+			}
+
+			if (i < gridXSize - 1 && grid[i + 1][j] != grid[i][j])
+			{
+				right = true;
+			}
+			if (grid[i][j] == "X")
+			{
+				Coordinate* terrainCoord = (new Coordinate(i, j, 0,NULL));
+				terrain.push_back(terrainCoord);
+				terrainCoord->setCoordinateBorders(i, j, left, right, top, bottom);
+			}else{
+				(allAreas.at(stoi(grid[i][j])))->setCoordinateBorders(i, j, left, right, top, bottom);
+			}
+			
 		}
 	}
-	
 }
 
-void Map::draw(sf::RenderWindow* r){
-	for(int i=0; i<allAreas.size(); i++){
+void Map::draw(sf::RenderWindow *r)
+{
+	for (int i = 0; i < allAreas.size(); i++)
+	{
 		allAreas.at(i)->draw(r);
 	}
+	for (size_t i = 0; i < terrain.size(); i++)
+	{
+		r->draw(terrain.at(i)->sprite);
+	}
+}
+
+Area* Map::getAreaClicked(sf::Vector2f click){
+	for (int i = 0; i < allAreas.size(); i++)
+	{
+		if(allAreas.at(i)->wasClicked(click)){
+			return allAreas.at(i);
+		}
+	}
+	return NULL;
+	
 }
 
 Map::~Map()
@@ -678,6 +712,12 @@ Map::~Map()
 	{
 		delete allCountries.back();
 		allCountries.pop_back();
+	}
+
+	while (!terrain.empty())
+	{
+		delete terrain.back();
+		terrain.pop_back();
 	}
 }
 

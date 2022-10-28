@@ -139,28 +139,38 @@ using namespace std;
 void testGui(){
 
     Map *m = new Map("../Maps/europe.txt");
-    m->printMap();
-    m->setAreaBorders();
+    //m->printMap();
    
 
     
-    const int WINDOW_X = 900;
-    const int WINDOW_Y = 700;
+    const int WINDOW_X = 1280;
+    const int WINDOW_Y = 640;
     sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "My window");
 
-
+int c=0;
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
             // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-              
+            if (event.type == sf::Event::Closed){
                 window.close();
+            }
+                
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                cout<<"clicked "<< c++<<endl;
+                Area* clicked=m->getAreaClicked(mouseClick);
+                if(clicked!=NULL){
+                    cout<<clicked->toString()<<endl;
+                }else{
+                    cout<<"No area clicked" << endl;
+                }
+            }
         }
 
-        window.clear(sf::Color::Cyan);
+        window.clear(sf::Color::Black);
         
         m->draw(&window);
         window.display();

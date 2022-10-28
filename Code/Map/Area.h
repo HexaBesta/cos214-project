@@ -245,6 +245,14 @@ public:
 	void draw(sf::RenderWindow* r);
 
 	/**
+	 * @brief returns true if the mouse was in the area when it was clicked, false if not
+	 * 
+	 * @return true 
+	 * @return false 
+	 */
+	bool wasClicked(sf::Vector2f click);
+
+	/**
 	 * @brief Destroy the Area object
 	 * 
 	 */

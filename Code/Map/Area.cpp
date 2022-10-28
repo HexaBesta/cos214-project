@@ -2,7 +2,7 @@
 #include "Area.h"
 #include "../Unit/Human.h"
 #include "../Branches/LandBranch.h"
-Area::Area(string name, int index, int colour, bool factories, bool troops):MapComponent()
+Area::Area(string name, int index, int colour, bool factories, bool troops) : MapComponent()
 {
 	this->name = name;
 	this->index = index;
@@ -153,43 +153,57 @@ bool Area::requestReinforcements(string type)
 
 	int allianceColor = 0;
 
-	if(type.compare("attack") == 0){
-		if(this->land->getAttacker() != NULL){
+	if (type.compare("attack") == 0)
+	{
+		if (this->land->getAttacker() != NULL)
+		{
 			allianceColor = this->land->getAttacker()->getCountry()->getAlliances()->getColour();
 		}
-		else if(this->air->getAttacker() != NULL){
+		else if (this->air->getAttacker() != NULL)
+		{
 			allianceColor = this->air->getAttacker()->getCountry()->getAlliances()->getColour();
 		}
-		else{
+		else
+		{
 			throw "No active attack side found to send reinforcements to";
 		}
 	}
-	else if(type.compare("defense") == 0){
-		if(this->land->getDefender() != NULL){
+	else if (type.compare("defense") == 0)
+	{
+		if (this->land->getDefender() != NULL)
+		{
 			allianceColor = this->land->getDefender()->getCountry()->getAlliances()->getColour();
 		}
-		else if(this->air->getDefender() != NULL){
+		else if (this->air->getDefender() != NULL)
+		{
 			allianceColor = this->air->getDefender()->getCountry()->getAlliances()->getColour();
 		}
-		else{
+		else
+		{
 			throw "No active defense side found to send reinforcements to";
 		}
 	}
-	else{
+	else
+	{
 		throw "Invalid paramater passed to requestReinforcements";
 	}
 
-	if(allianceColor == 0){
+	if (allianceColor == 0)
+	{
 		return false;
 	}
 
-	for(Area * area: adjacent){
-		Unit * unit = area->sendReinforcements(allianceColor);
-		if(unit != NULL){
-			if(type.compare("attack") == 0){
+	for (Area *area : adjacent)
+	{
+		Unit *unit = area->sendReinforcements(allianceColor);
+		if (unit != NULL)
+		{
+			if (type.compare("attack") == 0)
+			{
 				this->air->setAttacker(unit);
 			}
-			else{
+			else
+			{
 				this->air->setDefender(unit);
 			}
 			return true;
@@ -197,7 +211,6 @@ bool Area::requestReinforcements(string type)
 	}
 
 	return false;
-
 }
 
 void Area::addCell(string coord)
@@ -217,7 +230,7 @@ void Area::addCell(string coord)
 		pos++;
 	}
 
-	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr),colour));
+	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr), colour, this));
 }
 
 vector<Coordinate *> Area::getAreaCoordinates()
@@ -308,7 +321,7 @@ string Area::toString()
 
 	out += "|\033[48;5;" + to_string((this->colour)) + "m" + next + "\033[0m" + "|\n";
 
-	//BreakL Line
+	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
@@ -322,14 +335,13 @@ string Area::toString()
 	next += "|\n";
 	out += next;
 
-
-	//BreakL Line
+	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
 	out += "|\n";
 
-	next = "|     Air:     " ;
+	next = "|     Air:     ";
 	while (next.length() < lineChars)
 	{
 		next += " ";
@@ -337,16 +349,16 @@ string Area::toString()
 	next += "|\n";
 	out += next;
 
-	next=air->toString(lineChars);
-	out+=next;
+	next = air->toString(lineChars);
+	out += next;
 
-	//BreakL Line
+	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
 	out += "|\n";
 
-	next = "|     Land:     " ;
+	next = "|     Land:     ";
 	while (next.length() < lineChars)
 	{
 		next += " ";
@@ -354,8 +366,8 @@ string Area::toString()
 	next += "|\n";
 	out += next;
 
-	next=land->toString(lineChars);
-	out+=next;
+	next = land->toString(lineChars);
+	out += next;
 
 	for (int i = 0; i < lineChars + 1; i++)
 		out += "-";
@@ -489,48 +501,76 @@ Unit *Area::sendReinforcements(int color)
 			if (this->air->getDefender()->getCountry()->getAlliances()->getColour() == color)
 			{
 				return this->air->sendReinforcements();
-			}else{
+			}
+			else
+			{
 				return NULL;
 			}
-		}else{
+		}
+		else
+		{
 			return NULL;
 		}
-	}else{
+	}
+	else
+	{
 		return NULL;
 	}
 }
 
-void Area::accept(Visitor* visitor){
+void Area::accept(Visitor *visitor)
+{
 	visitor->visit(this);
 }
 
-void Area::setCoordinateBorders(int x, int y, bool left, bool right,bool top, bool bottom){
-	for(int i=0;i<areasCoordinates.size();i++){
-		if(areasCoordinates.at(i)->x==x && areasCoordinates.at(i)->y==y){
-			string borders="";
-			if(left){
-				borders+="Left";
+void Area::setCoordinateBorders(int x, int y, bool left, bool right, bool top, bool bottom)
+{
+	for (int i = 0; i < areasCoordinates.size(); i++)
+	{
+		if (areasCoordinates.at(i)->x == x && areasCoordinates.at(i)->y == y)
+		{
+			string borders = "";
+			if (left)
+			{
+				borders += "Left";
 			}
-			if(right){
-				borders+="Right";
+			if (right)
+			{
+				borders += "Right";
 			}
-			if(top){
-				borders+="Top";
+			if (top)
+			{
+				borders += "Top";
 			}
-			if(bottom){
-				borders+="Bottom";
+			if (bottom)
+			{
+				borders += "Bottom";
 			}
-			areasCoordinates.at(i)->setTextureBorders(borders,colour);
+			areasCoordinates.at(i)->setTextureBorders(borders, colour, false);
+			return;
 		}
 	}
 }
 
-void Area::draw(sf::RenderWindow* r){
+void Area::draw(sf::RenderWindow *r)
+{
 	for (size_t i = 0; i < areasCoordinates.size(); i++)
 	{
 		r->draw(areasCoordinates.at(i)->sprite);
 	}
-	
+}
+
+bool Area::wasClicked(sf::Vector2f click)
+{
+
+	for (size_t i = 0; i < areasCoordinates.size(); i++)
+	{
+		if (areasCoordinates.at(i)->sprite.getGlobalBounds().contains(click))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 Area::~Area()

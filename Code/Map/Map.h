@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "../TransportFactory/TransportFactory.h"
 #include "../Country/Country.h"
+#include "Coordinate.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -155,6 +156,13 @@ public:
 	void setAreaBorders();
 
 	/**
+	 * @brief Get the Area that was clicked
+	 * 
+	 * @return Area* 
+	 */
+	Area* getAreaClicked(sf::Vector2f click);
+
+	/**
 	 * @brief draws the Map on the render window
 	 * 
 	 * @param r 
@@ -173,6 +181,7 @@ private:
 	vector<Country*> allCountries;
 	int gridXSize;
 	int gridYSize;
+	vector<Coordinate *> terrain;
 
 	/**
 	 * @brief Set the All End Points of transport routes in the adjacency matrix

@@ -1,6 +1,9 @@
 #ifndef __COORDINATE_H__
 #define __COORDINATE_H__
 #include <SFML/Graphics.hpp>
+#include <iostream>
+class Area;
+using namespace std;
 class Coordinate
 {
 
@@ -9,8 +12,11 @@ public:
     int y;
     sf::Texture texture;
     sf::Sprite sprite;
-    Coordinate(int x, int y, int colour)
+    Area* area;
+
+    Coordinate(int x, int y, int colour,Area* area)
     {
+        this->area = area;
         this->x = x;
         this->y = y;
         sprite.setPosition(sf::Vector2f(x * 0.5 * 64, y * 0.5 * 64));
@@ -24,14 +30,44 @@ public:
         }
         else if (colour == 160)
         {
-            if (!texture.loadFromFile("../dalandTilesets/images/DesertTile_370_160.png"))
+            if (!texture.loadFromFile("../dalandTilesets/images/DesertTile_370_160_.png"))
+            {
+                cout << "Texture missing" << endl;
+            }
+        }
+        else if (colour == 0)
+        {
+            if (!texture.loadFromFile("../dalandTilesets/images/WaterTile_.png"))
             {
                 cout << "Texture missing" << endl;
             }
         }
         else
         {
-            if (!texture.loadFromFile("../dalandTilesets/images/DesertTile_370_94.png"))
+            if (!texture.loadFromFile("../dalandTilesets/images/DesertTile_370_94_.png"))
+            {
+                cout << "Texture missing" << endl;
+            }
+        }
+
+        texture.setSmooth(true);
+        // sprite.setTexture(texture);
+        sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
+        sprite.scale(0.5, 0.5);
+    }
+
+    void setTextureBorders(string borders, int colour, bool terrain)
+    {
+        if (!terrain)
+        {
+            if (!texture.loadFromFile("../dalandTilesets/images/DesertTile_370_" + to_string(colour) + "_" + borders + ".png"))
+            {
+                cout << "Texture missing" << endl;
+            }
+        }
+        else
+        {
+            if (!texture.loadFromFile("../dalandTilesets/images/WaterTile_" + borders + ".png"))
             {
                 cout << "Texture missing" << endl;
             }
@@ -40,18 +76,30 @@ public:
         texture.setSmooth(true);
         sprite.setTexture(texture);
         sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
-        sprite.scale(0.5, 0.5);
     }
 
-    void setTextureBorders(string borders,int colour)
+    void setCoordinateBorders(int x, int y, bool left, bool right, bool top, bool bottom)
     {
-        if (!texture.loadFromFile("../dalandTilesets/images/DesertTile_370_"+to_string(colour)+"_"+borders+".png"))
+
+        string borders = "";
+        if (left)
         {
-            cout << "Texture missing" << endl;
+             borders+="Left";
         }
-        texture.setSmooth(true);
-        sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
+        if (right)
+        {
+             borders+="Right";
+        }
+        if (top)
+        {
+             borders+="Top";
+        }
+        if (bottom)
+        {
+             borders+="Bottom";
+        }
+        setTextureBorders(borders, 0, true);
+        return;
     }
 };
 #endif // __COORDINATE_H__
