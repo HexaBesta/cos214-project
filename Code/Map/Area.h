@@ -12,6 +12,7 @@
 #include "Visitor.h"
 #include "../Country/Country.h"
 #include <string>
+#include <SFML/Graphics.hpp>
 
 class Battle;
 
@@ -223,6 +224,25 @@ public:
 	 * @return Unit* 
 	 */
 	Unit * sendReinforcements(int color);
+
+	/**
+	 * @brief Sets the correct texture for each coordite in the area
+	 * 
+	 * @param x 
+	 * @param y 
+	 * @param left 
+	 * @param right 
+	 * @param top 
+	 * @param bottom 
+	 */
+	void setCoordinateBorders(int x, int y, bool left, bool right,bool top, bool bottom);
+
+	/**
+	 * @brief draws the coordinates of the area on the render window
+	 * 
+	 * @param r 
+	 */
+	void draw(sf::RenderWindow* r);
 
 	/**
 	 * @brief Destroy the Area object

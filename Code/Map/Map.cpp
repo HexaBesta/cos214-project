@@ -183,6 +183,7 @@ Map::Map(string setupFile)
 
 	setAllEndPoints();
 	setAllGridAreas();
+	setAreaBorders();
 }
 
 void Map::createTransportRoute(Area *area1, Area *area2)
@@ -609,6 +610,44 @@ vector<Area*> Map::getAreasByCountry(Country * country){
 		}
 	}
 	return areas;
+}
+
+void Map::setAreaBorders(){
+	for (size_t i = 0; i < gridYSize; i++)
+	{
+		for (int j = 0; j < gridYSize; j++){
+			bool left = false;
+			bool right = false;
+			bool top = false;
+			bool bottom = false;
+			if(grid[i][j] !="X"){
+				if(j>0 && grid[i][j-1]!=grid[i][j]){
+					left = true;
+				}
+				if(j<gridYSize-1 && grid[i][j+1]!=grid[i][j]){
+					right = true;
+				}
+
+				if(i>0 && grid[i-1][j]!=grid[i][j]){
+					top = true;
+				}
+
+				if(i<gridXSize-1 && grid[i+1][j]!=grid[i][j]){
+					bottom = true;
+				}
+
+				(allAreas.at(stoi(grid[i][j])))->setCoordinateBorders(j,i,left,right,top,bottom);
+			}
+
+		}
+	}
+	
+}
+
+void Map::draw(sf::RenderWindow* r){
+	for(int i=0; i<allAreas.size(); i++){
+		allAreas.at(i)->draw(r);
+	}
 }
 
 Map::~Map()

@@ -217,7 +217,7 @@ void Area::addCell(string coord)
 		pos++;
 	}
 
-	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr)));
+	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr),colour));
 }
 
 vector<Coordinate *> Area::getAreaCoordinates()
@@ -502,6 +502,35 @@ Unit *Area::sendReinforcements(int color)
 
 void Area::accept(Visitor* visitor){
 	visitor->visit(this);
+}
+
+void Area::setCoordinateBorders(int x, int y, bool left, bool right,bool top, bool bottom){
+	for(int i=0;i<areasCoordinates.size();i++){
+		if(areasCoordinates.at(i)->x==x && areasCoordinates.at(i)->y==y){
+			string borders="";
+			if(left){
+				borders+="Left";
+			}
+			if(right){
+				borders+="Right";
+			}
+			if(top){
+				borders+="Top";
+			}
+			if(bottom){
+				borders+="Bottom";
+			}
+			areasCoordinates.at(i)->setTextureBorders(borders,colour);
+		}
+	}
+}
+
+void Area::draw(sf::RenderWindow* r){
+	for (size_t i = 0; i < areasCoordinates.size(); i++)
+	{
+		r->draw(areasCoordinates.at(i)->sprite);
+	}
+	
 }
 
 Area::~Area()

@@ -1,6 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
 
+
+#include <SFML/Graphics.hpp>
 #include "../TransportFactory/TransportFactory.h"
 #include "../Country/Country.h"
 #include <vector>
@@ -146,6 +148,18 @@ public:
 	 */
 	vector<Area*> getAreasByCountry(Country * country);
 
+	/**
+	 * @brief Sets the correct textures to area coordinates so that borders appear clear
+	 * 
+	 */
+	void setAreaBorders();
+
+	/**
+	 * @brief draws the Map on the render window
+	 * 
+	 * @param r 
+	 */
+	void draw(sf::RenderWindow* r);
 	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
