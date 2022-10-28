@@ -52,6 +52,10 @@ class GodOfWar{
 		 */
 		void round();
 
+		/**
+		 * @brief Calls functions in player to initialise sides with countries with platoons
+		 * 
+		 */
 		void initialiseSides();
 
 };

@@ -5,6 +5,7 @@ class Battle;
 class Unit;
 class Country;
 class Area;
+class Alliances;
 
 class Player 
 {
@@ -91,6 +92,50 @@ class Player
          * @return Player* new player object
          */
         virtual Player * togglePlayer() = 0;
+
+        /**
+         * @brief Template method to populate map
+         * 
+         * @param side1 
+         * @param side2 
+         */
+        virtual void initialise(Alliances * side1, Alliances * side2);
+
+        /**
+         * @brief Template method to get all input needed to populate Alliance
+         * 
+         */
+        virtual void initialiseSide(Alliances * alliance)=0;
+
+    protected:
+
+        /**
+         * @brief Create a new Country and add to map
+         * 
+         */
+        virtual void createCountry() =0;
+
+        /**
+         * @brief Choose a country to form part of alliance
+         * 
+         * @return Country *  to chosen country
+         */
+        virtual Country* chooseCountryToJoinAlliance() = 0;
+
+        /**
+         * @brief Adds a platoon to passed in country
+         * 
+         * @param country the country to which platoon should be added
+         * 
+         */
+        virtual void addPlatoons(Country * country)=0;
+
+        /**
+         * @brief Adds factories selecetd factories to selected areas
+         * 
+         */
+        virtual void initialiseFactories()=0;
+
 
 };
 
