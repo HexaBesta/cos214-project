@@ -613,9 +613,9 @@ vector<Area*> Map::getAreasByCountry(Country * country){
 }
 
 void Map::setAreaBorders(){
-	for (size_t i = 0; i < gridYSize; i++)
+	for (int j = 0; j < gridYSize; j++)
 	{
-		for (int j = 0; j < gridYSize; j++){
+		for (int i = 0; i < gridXSize; i++){
 			bool left = false;
 			bool right = false;
 			bool top = false;
@@ -635,7 +635,7 @@ void Map::setAreaBorders(){
 				if(i<gridXSize-1 && grid[i+1][j]!=grid[i][j]){
 					bottom = true;
 				}
-
+				cout<<"j:"<<j<<"  i:"<<i<<" val:"<<grid[i][j]<<"   "<<left<<right<<top<<bottom<<endl;
 				(allAreas.at(stoi(grid[i][j])))->setCoordinateBorders(j,i,left,right,top,bottom);
 			}
 

@@ -140,7 +140,7 @@ void testGui(){
 
     Map *m = new Map("../Maps/europe.txt");
     m->printMap();
-
+    m->setAreaBorders();
    
 
     
@@ -156,12 +156,12 @@ void testGui(){
         {
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
-                // delete ball1;
-                // delete ball2;
+              
                 window.close();
         }
 
         window.clear(sf::Color::Cyan);
+        
         m->draw(&window);
         window.display();
     }
