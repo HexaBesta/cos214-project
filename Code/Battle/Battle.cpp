@@ -104,19 +104,19 @@ void Battle::getStateSummary()
 	}
 	cout << "Defender:" << endl;
 	if(this->air->getDefender()){
-		this->air->getDefender()->print();
+		cout<<this->air->getDefender()->toString()<<endl;
 	}
 	if(this->land->getDefender()){
-		this->land->getDefender()->print();
+		cout<<this->land->getDefender()->toString()<<endl;
 	}
 
 	cout << "Attacker:" << endl;
 
 	if(this->air->getAttacker()){
-		this->air->getAttacker()->print();
+		cout<<this->air->getAttacker()->toString()<<endl;
 	}
 	if(this->land->getAttacker()){
-		this->land->getAttacker()->print();
+		cout<<this->land->getAttacker()->toString()<<endl;
 	}
 
 	cout << endl;
@@ -245,7 +245,7 @@ void Battle::takeTurn()
 	Print active platoon after attack
 	*/
 
-	active->print();
+	cout<< active->toString()<<endl;
 
 	/*
 	Request reinforcements after printing state of platoon if battle active.

@@ -1,5 +1,9 @@
 #include "Unit.h"
 
+Unit::Unit() {
+	
+}
+
 Unit::Unit(int health, int moral, int damage, Country* country, bool fitState){
 	this->health = health;
 	this->moral = moral;
@@ -95,9 +99,9 @@ Country* Unit::getCountry(){
     return this->country;
 }
 
-void Unit::print(){
+string Unit::toString(int lineLen){
 	
-	cout<<"Add unit print statement"<<endl;
+	return "Add unit print statement";
 }
 
 Unit* Unit::takeRandom(){
@@ -107,6 +111,7 @@ Unit* Unit::takeRandom(){
 int * Unit::getAmmo(){
 	return NULL;
 }
+
 
 Unit::~Unit(){
 	

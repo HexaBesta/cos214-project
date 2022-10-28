@@ -18,6 +18,10 @@ class Unit {
 		Country* country;
 		
 	public:
+		/***
+		 * @brief Default constructor for Unit
+		*/
+		Unit();
 
 		/***
 		 * @brief Constructor for Unit
@@ -157,7 +161,7 @@ class Unit {
 		 * @details Pure virtual - implemented in subclasses
 		 * 
 		 */
-		virtual void print();
+		virtual string toString(int lineLen =0);
 
 		/**
 	 	* @brief Returns random member of platoon to take damage - in other Units, return this
@@ -165,6 +169,8 @@ class Unit {
 	 	* @return Unit* this
 	 	*/
 		virtual Unit * takeRandom();
+
+		
 
 		/**
 		 * @brief Get the Ammo as an array - stubbed in unit

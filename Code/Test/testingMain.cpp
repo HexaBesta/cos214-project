@@ -1,5 +1,7 @@
 #include "../Map/Map.h"
 #include "../Map/Area.h"
+#include "../Builder/Director.h"
+#include "../Country/Country.h"
 using namespace std;
 
 void testEuropeMap()
@@ -104,10 +106,39 @@ void testMap1()
     delete m;
 }
 
+void testBuilder() {
+    Director* terrorist = new Director();
+    Country* c = new Country("Sandton", 22);
+
+    Unit* teetee = terrorist->construct(true, c);
+    cout << teetee->toString() << endl;
+
+    cout << "-------------" << endl;
+
+    teetee = terrorist->construct(true, c);
+    cout << teetee->toString() << endl;
+
+        cout << "-------------" << endl;
+
+    teetee = terrorist->construct(true, c);
+    cout << teetee->toString() << endl;
+
+            cout << "-------------" << endl;
+
+    teetee = terrorist->construct(true, c);
+    cout << teetee->toString() << endl;
+
+    delete terrorist;
+    delete c;
+    delete teetee;
+}
+
 int main()
 {
     // testMap1();
-    cout << endl
-         << endl;
-    testEuropeMap();
+    // cout << endl
+    //      << endl;
+    // testEuropeMap();
+
+    testBuilder();
 }

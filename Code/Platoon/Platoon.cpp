@@ -15,8 +15,9 @@ void Platoon::construct()
 	throw "Not yet implemented";
 }
 
-void Platoon::print()
+string Platoon::toString(int lineLen)
 {
+	string out="";
 	int health = 0;
 	int damage = 0;
 	for (auto it : this->humans)
@@ -32,16 +33,58 @@ void Platoon::print()
 
 	this->health = health;
 	this->damage = damage;
+	string add="";
 
 	if (health == 0)
 	{
-		cout << "Your platoon is dead" << endl;
+		add+= "\n|                        Your platoon is dead";
+		while(add.length()<lineLen){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
 		this->setUnitState(new DeadState());
 	}
 	else
-	{
-		cout << "Platoon\nHealth: " << health << "\nDamage: " << damage << "\nAmount of Soldiers: " << humans.size() << " Amount of Vehicles: " << vehicles.size() << endl;
+	{	
+
+		add= "|                        Platoon";
+		while(add.length()<lineLen){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add=" \n|                           Health: " + to_string(health);
+		while(add.length()<lineLen+2){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add= "\n|                           Damage: " + to_string(damage);
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add= "\n|                           Amount of Soldiers: " + to_string(humans.size());
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add= "\n|                           Amount of Vehicles: " + to_string(vehicles.size());
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
 	}
+
+	return out;
 }
 
 void Platoon::changeStrategy()
