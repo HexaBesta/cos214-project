@@ -4,6 +4,7 @@
 #include "../TransportFactory/TransportFactory.h"
 #include "../Country/Country.h"
 #include "../Battle/Battle.h"
+#include "../Alliances/Alliances.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -149,6 +150,14 @@ public:
 	vector<Area*> getAreasByCountry(Country * country);
 
 	/**
+	 * @brief Get the Areas By colour of alliance
+	 * 
+	 * @param colour of alliance
+	 * @return vector<Area*> all areas owned by that alliance
+	 */
+	vector<Area*> getAreasByColour(int colour);
+
+	/**
 	 * @brief Set the Player object
 	 * 
 	 * @param player 
@@ -167,6 +176,15 @@ public:
 	 * 
 	 */
 	void resolveBattles();
+
+	/**
+	 * @brief Attempts to add a newly constructed platoon to map
+	 * 
+	 * @param platoon to be added to map
+	 * @return true if platoon was sucesfully placed
+	 * @return false otherwise
+	 */
+	bool addPlatoonToMap(Unit * platoon);
 
 	/**
 	 * @brief Destroy the Map object for memory purposes

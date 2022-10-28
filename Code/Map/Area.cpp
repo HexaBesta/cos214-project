@@ -76,14 +76,16 @@ void Area::marchIn(Unit *unit, Area *from)
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
-				map->createTransportRoute(this, from);
+				if(from != NULL)
+					map->createTransportRoute(this, from);
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
-				map->createTransportRoute(this, from);
+				if(from != NULL)
+					map->createTransportRoute(this, from);
 			}
 			else if (air->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -95,7 +97,8 @@ void Area::marchIn(Unit *unit, Area *from)
 			land->setDefender(unit);
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
-			map->createTransportRoute(this, from);
+			if(from != NULL)
+				map->createTransportRoute(this, from);
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{

@@ -4,11 +4,11 @@
 #include "TransportRoute.h"
 #include "Map.h"
 
-Map::Map(string setupFile, Player * player)
+Map::Map(string setupFile, Player *player)
 {
 
 	this->player = player;
-	
+
 	std::string filename(setupFile);
 	std::vector<std::string> lines;
 	std::string line;
@@ -16,7 +16,8 @@ Map::Map(string setupFile, Player * player)
 	std::ifstream inputFile(setupFile);
 
 	getline(inputFile, line);
-	while(line.at(0)!='#'){
+	while (line.at(0) != '#')
+	{
 		getline(inputFile, line);
 	}
 
@@ -593,43 +594,67 @@ void Map::printColourMap()
 	// -----
 }
 
-vector<Country*> Map::getCountriesByColour(int colour){
-	vector<Country*> countries;
-	for(auto country: allCountries){
-		if(country->getAlliances()->getColour() == colour){
+vector<Country *> Map::getCountriesByColour(int colour)
+{
+	vector<Country *> countries;
+	for (auto country : allCountries)
+	{
+		if (country->getAlliances()->getColour() == colour)
+		{
 			countries.push_back(country);
 		}
 	}
 	return countries;
 }
 
-vector<Area*> Map::getAreasByCountry(Country * country){
-	vector<Area*> areas;
-	for(auto area: this->allAreas){
-		if(area->getCountry() == country){
+vector<Area *> Map::getAreasByCountry(Country *country)
+{
+	vector<Area *> areas;
+	for (auto area : this->allAreas)
+	{
+		if (area->getCountry() == country)
+		{
 			areas.push_back(area);
 		}
 	}
 	return areas;
 }
 
-void Map::setPlayer(Player * player){
+vector<Area *> Map::getAreasByColour(int colour)
+{
+	vector<Area *> areas;
+	for (auto area : this->allAreas)
+	{
+		if (area->getColour() == colour)
+		{
+			areas.push_back(area);
+		}
+	}
+	return areas;
+}
+
+void Map::setPlayer(Player *player)
+{
 	this->player = player;
 }
 
-Player * Map::getPlayer(){
+Player *Map::getPlayer()
+{
 	return this->player;
 }
 
-void Map::resolveBattles(){
+void Map::resolveBattles()
+{
 
 	/*
 	list of all battles to be resolved
 	*/
 	vector<Battle *> battlesToResolve;
-	for(auto area: this->allAreas){
-		Battle * battle = area->returnBattle();
-		if(battle != NULL){
+	for (auto area : this->allAreas)
+	{
+		Battle *battle = area->returnBattle();
+		if (battle != NULL)
+		{
 			battlesToResolve.push_back(battle);
 		}
 	}
@@ -637,10 +662,30 @@ void Map::resolveBattles(){
 	/*
 	Loop through all battles and resolve them
 	*/
-	for(auto battle: battlesToResolve){
+	for (auto battle : battlesToResolve)
+	{
 		battle->battleLoop();
 	}
-	
+}
+
+bool Map::addPlatoonToMap(Unit *platoon)
+{
+	vector<Area *> possibleAreas = this->getAreasByCountry(platoon->getCountry());
+	if (possibleAreas.size() == 0)
+	{
+		possibleAreas = this->getAreasByColour(platoon->getCountry()->getAlliances()->getColour());
+		if (possibleAreas.size() == 0)
+		{
+			possibleAreas = this->getAreasByColour(94);
+			if (possibleAreas.size() == 0)
+			{
+				return false;
+			}
+		}
+	}
+	int index = this->player->chooseAreaForAction(possibleAreas);
+
+	possibleAreas.at(index)->marchIn(platoon, NULL);
 }
 
 Map::~Map()

@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include "../Alliances/Alliances.h"
 
 Unit::Unit() {
 	
@@ -47,6 +48,8 @@ void Unit::changeStrategy(){
 int Unit::getDamage(){
 	return this->damage;
 }
+
+double Unit::getAverageMoral(){};
 
 int Unit::getHealth(){
 	return this->health;

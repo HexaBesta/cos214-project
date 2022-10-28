@@ -2,19 +2,24 @@
 #define COUNTRY_H
 #include <string>
 #include <iostream>
-#include "../CountryState/CountryState.h"
+#include <vector>
 #include "../CountryState/NeutralState.h"
+#include "../CountryState/JoinedState.h"
+#include "../CountryState/WithdrawnState.h"
 using namespace std;
 
-class Alliance;
+class Alliances;
+class Map;
 
 class Country {
 	private:
 		string name;
 		CountryState *countryState;
-		double moral;
+		double moraleAverage;
 		Alliances* alliance;
 		vector<Unit*> military;
+		Director * director;
+
 	public:
 		/**
 		 * @brief Constructs a new country object
@@ -30,7 +35,7 @@ class Country {
 		/**
 		 * @brief returns the state of the currently set country state. !! Need to implement in country state !!
 		 */
-		void requestState();
+		string requestState();
 
 		/**
 		 * @brief Sets the country state
@@ -39,11 +44,10 @@ class Country {
 		void setCountryState(CountryState* countryState);
 
 		/**
-		 * @brief Updates the country moral to the provided moral
-		 * @param moral is the moral we are updating to
-		 * @return Boolean that represents whether the countrys moral was updates or not
+		 * @brief Updates the country moral by recalculating aggregate of units' moral if country is joined
+		 * @return Boolean that represents whether the countries moral is above the accepted percentage
 		 */
-		bool updateCountryMoral(double moral);
+		bool updateCountryMoral();
 
 		/**
 		 * @brief Returns the country moral
@@ -58,12 +62,22 @@ class Country {
 		 */
 		Alliances* getAlliances();
 
+		void setAlliance(Alliances * alliance);
+
 		/**
 		 * @brief Get the Name of this country
 		 * 
 		 * @return string 
 		 */
 		string getName();
+
+		/**
+		 * @brief makes a new platoon and adds to existing platoon vector
+		 * 
+		 * @param map so that platoon can be placed on map
+		 */
+		void recruitPlatoon(Map * map);
+
 };
 
 #endif

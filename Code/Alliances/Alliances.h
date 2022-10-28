@@ -48,6 +48,13 @@ class Alliances {
         void addCountry(Country * country);
 
         /**
+         * @brief Withdraws coountry from alliance by removing country from vector
+         * 
+         * @param country 
+         */
+        void withdrawCountry(Country * country);
+
+        /**
          * @brief Accesses each country's moral, change to neureal state if moral too low
          * 
          * @return string describing changes made

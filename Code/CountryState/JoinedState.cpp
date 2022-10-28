@@ -12,3 +12,9 @@ CountryState* JoinedState::changeCountryState() {
 string JoinedState::requestState() {
     return "Joined";
 }
+
+Unit * JoinedState::recruitPlatoon(Director * director, Country * country){
+    srand(time(NULL));
+    bool type = rand()%2;
+    return director->construct(type, country);
+}

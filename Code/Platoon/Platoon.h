@@ -104,7 +104,14 @@ public:
 	 * 
 	 * @return int
 	 */
-	int getMoral();
+	virtual int getMoral();
+
+	/**
+	 * @brief Get the Average Moral based on the size of the platoon
+	 * 
+	 * @return double 
+	 */
+	virtual double getAverageMoral();
 	
 	/**
 	 * @brief Sets the total moral of the current platoon using the human vector

@@ -149,6 +149,10 @@ int Platoon::getMoral()
 	return this->moral;
 }
 
+double Platoon::getAverageMoral(){
+	return this->getMoral()/(this->humans.size()*1.0);
+}
+
 void Platoon::setAccumlateHealth()
 {
 	int health = 0;
