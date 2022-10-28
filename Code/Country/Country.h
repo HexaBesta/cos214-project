@@ -3,9 +3,10 @@
 #include <string>
 #include <iostream>
 #include "../CountryState/CountryState.h"
-#include "../Alliances/Alliances.h"
 #include "../CountryState/NeutralState.h"
 using namespace std;
+
+class Alliance;
 
 class Country {
 	private:
@@ -13,6 +14,7 @@ class Country {
 		CountryState *countryState;
 		double moral;
 		Alliances* alliance;
+		vector<Unit*> military;
 	public:
 		/**
 		 * @brief Constructs a new country object

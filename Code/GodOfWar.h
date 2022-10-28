@@ -52,6 +52,8 @@ class GodOfWar{
 		 */
 		void round();
 
+		void initialiseSides();
+
 };
 
 #endif

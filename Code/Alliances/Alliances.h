@@ -8,6 +8,7 @@ class Alliances {
     private:
         string name;
         int colour;
+        vector<Country*> countries;
 
     public:
         /**
@@ -38,6 +39,20 @@ class Alliances {
         int getColour(){
             return colour;
         };
+
+        /**
+         * @brief Adds a country to the array of countries
+         * 
+         * @param country 
+         */
+        void addCountry(Country * country);
+
+        /**
+         * @brief Accesses each country's moral, change to neureal state if moral too low
+         * 
+         * @return string describing changes made
+         */
+        string accessCountryMoral();
 };
 
 #endif
