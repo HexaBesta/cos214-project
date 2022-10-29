@@ -6,6 +6,7 @@ class Unit;
 class Country;
 class Area;
 class Alliances;
+class Map;
 
 class Player 
 {
@@ -99,28 +100,35 @@ class Player
          * @param side1 
          * @param side2 
          */
-        virtual void initialise(Alliances * side1, Alliances * side2);
+        virtual void initialise(Alliances * side1, Alliances * side2, Map* map);
 
         /**
          * @brief Template method to get all input needed to populate Alliance
          * 
          */
-        virtual void initialiseSide(Alliances * alliance)=0;
+        virtual void initialiseSide(Alliances * alliance, Map * map);
 
     protected:
 
         /**
-         * @brief Create a new Country and add to map
+         * @brief Creates new Countries and add to map country vector
          * 
          */
-        virtual void createCountry() =0;
+        virtual void createCountries(Map * map) =0;
+
+        /**
+         * @brief Allows user to choose the number of countries to join the alliance
+         * 
+         * @return int 
+         */
+        virtual int numberOfCountriesInAlliance(Map * map)=0;
 
         /**
          * @brief Choose a country to form part of alliance
          * 
          * @return Country *  to chosen country
          */
-        virtual Country* chooseCountryToJoinAlliance() = 0;
+        virtual Country* chooseCountryToJoinAlliance(Map * map) = 0;
 
         /**
          * @brief Adds a platoon to passed in country
@@ -131,10 +139,10 @@ class Player
         virtual void addPlatoons(Country * country)=0;
 
         /**
-         * @brief Adds factories selecetd factories to selected areas
+         * @brief Adds selected factories to selected areas
          * 
          */
-        virtual void initialiseFactories()=0;
+        virtual void initialiseFactories(Map * map, Alliances * alliance)=0;
 
 
 };

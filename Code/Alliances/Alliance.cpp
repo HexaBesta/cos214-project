@@ -47,3 +47,7 @@ string Alliances::accessCountryMoral(){
        }
     }
 }
+
+vector<Country*> Alliances::getCountries(){
+    return this->countries;
+}

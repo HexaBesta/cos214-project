@@ -246,3 +246,26 @@ void GodOfWar::checkTogglePlayer(){
         this->map->setPlayer(this->player);
     }
 }
+
+void GodOfWar::initialiseSides(){
+    this->player->initialise(this->groupOne, this->groupTwo, this->map);
+}
+
+GodOfWar::~GodOfWar(){
+    /*
+    Delete alliances
+    */
+    delete this->groupOne;
+    delete this->groupTwo;
+
+    /*
+    Delete map
+    */
+   delete this->map;
+
+   /*
+   Delete player
+   */
+  delete this->player;
+  
+}

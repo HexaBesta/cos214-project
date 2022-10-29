@@ -58,6 +58,12 @@ class GodOfWar{
 		 */
 		void initialiseSides();
 
+		/**
+		 * @brief Destroy the God Of War object and assigned memory
+		 * 
+		 */
+		~GodOfWar();
+
 };
 
 #endif

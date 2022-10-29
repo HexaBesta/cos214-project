@@ -56,6 +56,13 @@ class Alliances {
          * @return string describing changes made
          */
         string accessCountryMoral();
+
+        /**
+         * @brief Get the Countries object
+         * 
+         * @return vector<Country*> that holds the countries in this alliance
+         */
+        vector<Country*> getCountries();
 };
 
 #endif
