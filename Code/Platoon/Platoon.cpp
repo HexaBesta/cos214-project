@@ -43,7 +43,7 @@ string Platoon::toString(int lineLen)
 		}
 		add+= "|";
 		out+=add;
-		this->setUnitState(new DeadState());
+		//this->setUnitState(new DeadState());
 	}
 	else
 	{	
@@ -286,18 +286,25 @@ void Platoon::attack(Unit *other)
 
 Platoon::~Platoon()
 {
+	cout<<"289"<< endl;
 	while (!humans.empty())
 	{
 		delete humans.back();
 		humans.pop_back();
 	}
-
+	cout<<"295"<<endl;
 	while (!vehicles.empty())
 	{
 		delete vehicles.back();
 		vehicles.pop_back();
 	}
-
+	cout<<"301"<< endl;
 	delete strategy;
-	delete bob;
+	cout<<"303"<< endl;
+	if (bob!=NULL)
+	{
+		delete bob;
+	}
+	
+	
 }
