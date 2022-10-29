@@ -668,13 +668,14 @@ void Map::setAreaBorders()
 
 void Map::draw(sf::RenderWindow *r)
 {
+	
 	for (int i = 0; i < allAreas.size(); i++)
 	{
 		allAreas.at(i)->draw(r);
 	}
 	for (size_t i = 0; i < terrain.size(); i++)
 	{
-		r->draw(*((terrain.at(i)->sprite)));
+		r->draw((terrain.at(i)->sprite));
 	}
 }
 

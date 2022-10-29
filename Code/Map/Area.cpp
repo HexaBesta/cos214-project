@@ -560,7 +560,7 @@ void Area::draw(sf::RenderWindow *r)
 {
 	for (size_t i = 0; i < areasCoordinates.size(); i++)
 	{
-		r->draw(*(areasCoordinates.at(i)->sprite));
+		r->draw((areasCoordinates.at(i)->sprite));
 	}
 }
 
@@ -569,7 +569,7 @@ bool Area::wasClicked(sf::Vector2f click)
 
 	for (size_t i = 0; i < areasCoordinates.size(); i++)
 	{
-		if (areasCoordinates.at(i)->sprite->getGlobalBounds().contains(click))
+		if (areasCoordinates.at(i)->sprite.getGlobalBounds().contains(click))
 		{
 			return true;
 		}

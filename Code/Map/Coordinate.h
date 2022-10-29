@@ -10,7 +10,8 @@ class Coordinate
 public:
     int x;
     int y;
-    sf::Sprite* sprite=NULL;
+    sf::Texture texture;
+    sf::Sprite sprite;
     Area* area=NULL;
 
     Coordinate(int x, int y, int colour,Area* area);
@@ -19,7 +20,7 @@ public:
 
     void setCoordinateBorders(int x, int y, bool left, bool right, bool top, bool bottom);
 
-    ~Coordinate();
+    //~Coordinate();
 
     
 };

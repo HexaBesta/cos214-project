@@ -138,6 +138,8 @@ void testGui()
 
     Map *m = new Map("../Maps/europe.txt");
     // m->printMap();
+    m->setAreaBorders();
+
 
     const int WINDOW_X = 1280;
     const int WINDOW_Y = 640;
@@ -151,7 +153,7 @@ void testGui()
     sf::Sprite display;
     display.setTexture(displayTexture);
     display.setPosition(666, 0);
-    display.scale(2.8, 3);
+    display.scale(2.8, 4);
 
     sf::Texture moveBtnTexture;
     if (!moveBtnTexture.loadFromFile("../dalandTilesets/images/moveBtn.png"))
@@ -160,7 +162,7 @@ void testGui()
     }
     sf::Sprite moveBtn;
     moveBtn.setTexture(moveBtnTexture);
-    moveBtn.setPosition(666, 300);
+    moveBtn.setPosition(666, 400);
     moveBtn.scale(3, 3);
 
     sf::Text text;
@@ -184,7 +186,6 @@ void testGui()
         {
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
-            
             {
                 window.close();
             }
@@ -214,7 +215,9 @@ void testGui()
                     }else if(marchInto==NULL){
                         cout << "No selected area to march into" << endl;
                     }else{
+                        text.setString("Marched from "+selectedArea->getName()+" into "+marchInto->getName());
                          selectedArea->marchOut(marchInto);
+                         
                          moving=false;
                     }
                 }
@@ -233,9 +236,6 @@ void testGui()
         window.draw(display);
         window.draw(text);
         window.draw(moveBtn);
-        window.draw(display);
-        window.draw(text);
-        window.draw(moveBtn);
         window.display();
     }
     delete m;
@@ -248,7 +248,7 @@ int main()
     // cout << endl
     //      << endl;
     // testEuropeMap();
-
+    testGui();
     // testBuilder();
 
     cout<<"DONE"<<endl;
