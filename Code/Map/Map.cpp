@@ -696,6 +696,7 @@ bool Map::addPlatoonToMap(Unit *platoon)
 	int index = this->player->chooseAreaForAction(possibleAreas);
 
 	possibleAreas.at(index)->marchIn(platoon, NULL);
+	return true;
 }
 
 Map::~Map()

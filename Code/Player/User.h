@@ -32,81 +32,97 @@ public:
      */
     virtual bool requestReinforcements(Battle *battle);
 
+    /**
+     * @brief Choses a country to take a turn with
+     *
+     * @param countries vector of countries of current alliance
+     * @return int index of country chosen
+     */
     virtual int chooseCountry(vector<Country *> countries);
+
+    /**
+     * @brief choose which action player wants to take with country
+     *
+     * @return int:
+     *  - 0 if attack transport route
+     *  - 1 if requestResource
+     *  - 2 if march into area
+     */
+    virtual int chooseActionForCountry();
+
+    /**
+     * @brief choose which area to take action in
+     *
+     * @param areas list of all areas
+     * @return int index of chosen
+     */
+    virtual int chooseAreaForAction(vector<Area *> areas);
+
+    /**
+     * @brief choose area from adjArea list
+     *
+     * @param adjAreas
+     * @return int index of chosen
+     */
+    virtual int chooseAdjacentArea(vector<Area *> adjAreas);
+
+    /**
+     * @brief choose type of resource to request for area passed in
+     *
+     * @param area
+     * @return int type of resource
+     */
+    virtual int chooseResource(Area *area);
+
+    /**
+     * @brief Check whether to change from CPU->User or User->CPU
+     *
+     * @return true if change should occur
+     * @return false otherwise
+     */
+    virtual bool changePlayer();
+
+    /**
+     * @brief Change between player types
+     *
+     * @return Player* new player object
+     */
+    virtual Player *togglePlayer();
 
 protected:
     /**
      * @brief Creates new Countries and add to map country vector
      *
      */
-    virtual void createCountries(Map *map) = 0;
+    virtual void createCountries(Map *map);
 
     /**
      * @brief Allows user to choose the number of countries to join the alliance
      *
      * @return int
      */
-    virtual int numberOfCountriesInAlliance(Map *map) = 0;
+    virtual int numberOfCountriesInAlliance(Map *map);
 
     /**
      * @brief Choose a country to form part of alliance
      *
      * @return Country *  to chosen country
      */
-    virtual Country *chooseCountryToJoinAlliance(Map *map) = 0;
+    virtual Country *chooseCountryToJoinAlliance(Map *map);
 
-        /**
-         * @brief Choses a country to take a turn with
-         * 
-         * @param countries vector of countries of current alliance
-         * @return int index of country chosen
-         */
     /**
      * @brief Adds a platoon to passed in country
      *
      * @param country the country to which platoon should be added
      *
      */
-    virtual void addPlatoons(Country *country) = 0;
+    virtual void addPlatoons(Country *country);
 
-        /**
-         * @brief choose which action player wants to take with country
-         * 
-         * @return int:
-         *  - 0 if attack transport route
-         *  - 1 if requestResource
-         *  - 2 if march into area
-         */
-        virtual int chooseActionForCountry();
-
-        /**
-         * @brief choose which area to take action in
-         * 
-         * @param areas list of all areas
-         * @return int index of chosen 
-         */
-        virtual int chooseAreaForAction(vector<Area*> areas);
-
-        /**
-         * @brief choose area from adjArea list
-         * 
-         * @param adjAreas 
-         * @return int index of chosen
-         */
-        virtual int chooseAdjacentArea(vector<Area *> adjAreas);
-
-        /**
-         * @brief choose type of resource to request for area passed in
-         * 
-         * @param area 
-         * @return int type of resource
-         */
-        virtual int chooseResource(Area * area);
     /**
      * @brief Adds selected factories to selected areas
      *
      */
-    virtual void initialiseFactories(Map *map, Alliances *alliance) = 0;
+    virtual void initialiseFactories(Map *map, Alliances *alliance);
 };
 
 #endif

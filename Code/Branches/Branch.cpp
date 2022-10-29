@@ -34,10 +34,6 @@ string Branch::getStrategyType(){
 
 string Branch::toString(int lineLen){
 	return this->unit->toString(lineLen);
-=========
-int * Branch::getAmmo(){
-	return this->unit->getAmmo();
->>>>>>>>> Temporary merge branch 2
 }
 
 Branch::~Branch(){

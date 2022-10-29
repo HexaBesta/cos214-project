@@ -1,12 +1,16 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <vector>
+
 class Battle;
 class Unit;
 class Country;
 class Area;
 class Alliances;
 class Map;
+
+using namespace std;
 
 class Player 
 {
@@ -43,7 +47,7 @@ class Player
          * @param countries vector of countries of current alliance
          * @return int index of country chosen
          */
-        virtual int chooseCountry(vector <Country*> countries)=0;
+        virtual int chooseCountry(vector<Country*> countries)=0;
 
         /**
          * @brief choose which action player wants to take with country

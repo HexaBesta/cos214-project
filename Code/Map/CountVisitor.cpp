@@ -1,4 +1,6 @@
 #include "CountVisitor.h"
+#include "Area.h"
+#include "TransportRoute.h"
 
 void CountVisitor::visit(Area *area)
 {

@@ -2,8 +2,12 @@
 #define COUNTRYSTATE_H
 #include <string>
 #include <iostream>
-#include "../Builder/Director.h"
+
 using namespace std;
+
+class Director;
+class Unit;
+class Country;
 
 class CountryState {
 	public:

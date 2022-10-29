@@ -2,8 +2,8 @@
 #define COUNTVISITOR_H
 
 #include "Visitor.h"
-#include "Area.h"
-#include "TransportRoute.h"
+class TranportRoute;
+class Area;
 
 using namespace std;
 

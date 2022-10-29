@@ -1,4 +1,5 @@
 #include "../Battle/Battle.h"
+#include "../Map/Area.h"
 #include "User.h"
 
 bool User::playerRetreat(Battle *battle)

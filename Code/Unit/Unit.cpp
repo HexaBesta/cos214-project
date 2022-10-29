@@ -17,8 +17,6 @@ Unit::Unit(int health, int moral, int damage, Country* country, bool fitState){
 	}
 }
 
-Unit::Unit(){}
-
 void Unit::requestState() {
 	if(this->unitState != NULL)
 		this->unitState->request();
@@ -49,7 +47,9 @@ int Unit::getDamage(){
 	return this->damage;
 }
 
-double Unit::getAverageMoral(){};
+double Unit::getAverageMoral(){
+	return this->moral;
+};
 
 int Unit::getHealth(){
 	return this->health;

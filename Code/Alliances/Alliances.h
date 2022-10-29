@@ -2,7 +2,10 @@
 #define ALLIANCES_H
 
 #include <string>
+#include <vector>
 using namespace std;
+
+class Country;
 
 class Alliances {
     private:
@@ -17,11 +20,7 @@ class Alliances {
          * @param name 
          * @param colour 
          */
-        Alliances(string name,int colour)
-        {
-            this->name = name;
-            this->colour=colour;
-        };
+        Alliances(string name,int colour);
         /**
          * @brief Get the Name of the alliance
          * 

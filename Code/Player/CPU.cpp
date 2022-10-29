@@ -1,4 +1,5 @@
 #include "CPU.h"
+#include "../Map/Area.h"
 
 bool CPU::playerRetreat(Battle *battle)
 {
@@ -33,6 +34,7 @@ bool CPU::playerRetreat(Battle *battle)
             return false;
         }
     }
+    return false;
 }
 
 bool CPU::checkChangeStrategy(Unit *active)
@@ -46,6 +48,7 @@ bool CPU::checkChangeStrategy(Unit *active)
     {
         active->changeStrategy();
     }
+    return true;
 }
 
 bool CPU::requestReinforcements(Battle *battle)
@@ -115,6 +118,7 @@ bool CPU::requestReinforcements(Battle *battle)
             return false;
         }
     }
+    return false;
 }
 
 int CPU::chooseCountry(vector<Country *> country)
