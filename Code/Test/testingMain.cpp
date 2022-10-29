@@ -3,6 +3,7 @@
 #include "../Map/Area.h"
 #include "../Builder/Director.h"
 #include "../Country/Country.h"
+#include "../Map/Coordinate.h"
 
 using namespace std;
 
@@ -77,7 +78,7 @@ void testEuropeMap()
     cout << (m->getAreaByIndex(7)->toString()) << endl;
 
     m->printMap();
-
+    cout<<"Just before Inge"<<endl;
     //Added test - Inge (Retreat)
 
     m->getAreaByIndex(7)->retreat("defense");
@@ -85,18 +86,14 @@ void testEuropeMap()
 
     cout << (m->getAreaByIndex(7)->toString()) << endl;
     m->printMap();
-
+    cout<<"Just delete"<<endl;
     delete m;
 }
 
 void testMap1()
 {
     Map *m = new Map("../Maps/map1.txt");
-    m->createTransportRoute(m->getAreaByIndex(1), m->getAreaByIndex(2));
-    m->createTransportRoute(m->getAreaByIndex(0), m->getAreaByIndex(2));
-    m->createTransportRoute(m->getAreaByIndex(1), m->getAreaByIndex(3));
-    m->createTransportRoute(m->getAreaByIndex(5), m->getAreaByIndex(3));
-    m->printMap();
+   
 
     for (size_t i = 0; i < 6; i++)
     {
@@ -237,15 +234,34 @@ void testGui()
     delete m;
 }
 
+void testCoord(){
+    Coordinate* coord = new Coordinate(0,0,22,NULL);
+    delete coord;
+}
+
 int main()
 {
 
-    // testMap1();
+     //testMap1();
     // cout << endl
     //      << endl;
     // testEuropeMap();
 
     // testBuilder();
 
-    testGui();
+    //testGui();
+    //testCoord();
+    vector<sf::Texture*> test={};
+    for(int i=0;i<20000;i++){
+        test.push_back(new sf::Texture());
+    }
+    
+    for (int i = 0; i < 20000; i++)
+    {
+        delete test.back();
+        test.pop_back();
+    }
+    
+
+    cout<<"DONE"<<endl;
 }

@@ -60,9 +60,9 @@ class PlatoonBuilder : public BobTheBuilder {
         vector<Unit*> vehicles;
         vector<Unit*> soldiers;
         int ammo[2] = {0,0};
-        Country* country;
-        Branch* branch;
-        Unit* platoon;
+        Country* country=NULL;
+        Branch* branch=NULL;
+        Unit* platoon=NULL;
 };
 
 #endif

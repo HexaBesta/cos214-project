@@ -11,12 +11,12 @@ using namespace std;
 
 class Unit {
 	protected:
-		UnitsState *unitState;
+		UnitsState *unitState=NULL;
 		int health;
 		int moral;
 		//virtual void print()=0;
 		int damage;
-		Country* country;
+		Country* country=NULL;
 		
 	public:
 		/***
