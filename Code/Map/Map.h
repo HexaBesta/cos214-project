@@ -167,7 +167,7 @@ public:
 	 * 
 	 * @param r 
 	 */
-	void draw(sf::RenderWindow* r);
+	void draw(sf::RenderWindow* r, sf::Clock* c);
 	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 

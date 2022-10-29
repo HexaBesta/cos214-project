@@ -32,6 +32,10 @@ int * Branch::getAmmo(){
 	return this->unit->getAmmo();
 }
 
+sf::Sprite* Branch::getSprite(){
+	return this->unit->getSprite();
+}
+
 Branch::~Branch(){
 	delete this->unit;
 }

@@ -2,6 +2,7 @@
 #define UNIT_H
 #include <string>
 #include <iostream>
+#include <SFML/Graphics.hpp>
 #include "../UnitState/FitState.h"
 #include "../UnitState/CivilianState.h"
 #include "../Country/Country.h"
@@ -173,6 +174,21 @@ class Unit {
 		 * @return int* 
 		 */
 		virtual int* getAmmo();
+
+		/**
+	 * @brief Get the Sprite of this unit
+	 * 
+	 * @return sf::Sprite 
+	 */
+	virtual sf::Sprite* getSprite();
+
+	/**
+	 * @brief Set the Sprite Location of the unit's sprite
+	 * 
+	 * @param x The X coordinate of the sprite (unscaled)
+	 * @param y The Y coordinate of the sprite (unscaled)
+	 */
+	void setSpriteLocation(int x, int y){};
 
 		/**
 		 * @brief Destroy the Unit object

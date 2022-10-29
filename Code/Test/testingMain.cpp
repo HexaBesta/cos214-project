@@ -176,9 +176,9 @@ void testGui()
     text.setPosition(760, 20);
 
     bool moving = false;
-    int c = 0;
     Area *selectedArea = NULL;
 
+    sf::Clock* c =new sf::Clock();
     while (window.isOpen())
     {
         sf::Event event;
@@ -193,7 +193,7 @@ void testGui()
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-                cout << "clicked " << c++ << endl;
+                cout << "clicked " << endl;
 
                 if (!moving)
                 {
@@ -232,12 +232,19 @@ void testGui()
 
         window.clear(sf::Color::Black);
 
-        m->draw(&window);
+       
         window.draw(display);
         window.draw(text);
         window.draw(moveBtn);
+         m->draw(&window,c);
         window.display();
+        if (c->getElapsedTime().asMilliseconds()>100)
+        {
+            c->restart();
+        }
+        
     }
+    delete c;
     delete m;
 }
 

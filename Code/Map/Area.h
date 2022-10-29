@@ -28,6 +28,13 @@ private:
 	TheatreOfWar* air=NULL;
 	TransportFactory* allFactories[3];
 	Country* country=NULL;
+
+	/**
+	 * @brief Get the cooridnate in the middle of the areas list of coordinates
+	 * 
+	 * @return Coordinate* 
+	 */
+	Coordinate* getMiddleCooridnate();
 	
 
 public:
@@ -251,6 +258,13 @@ public:
 	 * @return false 
 	 */
 	bool wasClicked(sf::Vector2f click);
+
+	/**
+	 * @brief Cycles the sprite animation every 100 ms
+	 * 
+	 * @param c a clock timeing the sprite animation
+	 */
+	void updateSpriteAnimation(sf::Clock* c);
 
 	/**
 	 * @brief Destroy the Area object

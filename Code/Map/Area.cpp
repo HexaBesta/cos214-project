@@ -558,9 +558,35 @@ void Area::setCoordinateBorders(int x, int y, bool left, bool right, bool top, b
 
 void Area::draw(sf::RenderWindow *r)
 {
+	
 	for (size_t i = 0; i < areasCoordinates.size(); i++)
 	{
 		r->draw((areasCoordinates.at(i)->sprite));
+	}
+	if (land->getDefender() != NULL)
+	{
+			
+		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x*32, getMiddleCooridnate()->y*32);
+		r->draw(*(land->getDefender()->getSprite()));
+	}
+	
+}
+
+void Area::updateSpriteAnimation(sf::Clock* c){
+	if (land->getDefender() == NULL)
+	{
+		return;
+	}
+	
+	if(c->getElapsedTime().asMilliseconds()>=90){
+		sf::IntRect re=land->getDefender()->getSprite()->getTextureRect();
+		 if (re.left == 78){
+        	re.left=0;
+		 }else{
+			re.left+=26;
+		 }
+		 land->getDefender()->getSprite()->setTextureRect(re);
+		 
 	}
 }
 
@@ -575,6 +601,10 @@ bool Area::wasClicked(sf::Vector2f click)
 		}
 	}
 	return false;
+}
+
+Coordinate* Area::getMiddleCooridnate(){
+	return areasCoordinates.at((areasCoordinates.size()/2));
 }
 
 Area::~Area()
@@ -593,17 +623,13 @@ Area::~Area()
 			allFactories[i] = NULL;
 		}
 	}
-	cout<<"597"<<endl;
 	if (air != NULL)
 	{
-		cout<<"599"<<endl;
 		delete air;
 	}
 
 	if (land != NULL)
 	{
-		cout<<"605"<<endl;
 		delete land;
 	}
-		cout<<"608"<<endl;
 }

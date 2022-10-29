@@ -7,6 +7,15 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, int pewpew, int 
 	this->pewpew = pewpew;
 	this->boomboom = boomboom;
 	this->strategy = new PewPewAttack(this);
+	sprite=new sf::Sprite();
+	if(!this->texture.loadFromFile("../dalandTilesets/images/GroupIdleForward_1.png")){
+		cout<<"Nope"<<endl;
+	}
+	sprite->setPosition(sf::Vector2f(0,0));
+	texture.setSmooth(true);
+	sprite->setTexture(texture);
+    sprite->setTextureRect(sf::IntRect(0, 0, 26, 28));
+    sprite->scale(1.2, 1.2);
 }
 
 void Platoon::construct()
@@ -284,6 +293,14 @@ void Platoon::attack(Unit *other)
 	this->strategy->attack(other);
 }
 
+sf::Sprite* Platoon::getSprite(){
+	return this->sprite;
+}
+
+void Platoon::setSpriteLocation(int x, int y){
+	this->sprite->setPosition(x*0.5* 64,y*0.5* 64);
+}
+
 Platoon::~Platoon()
 {
 	while (!humans.empty())
@@ -306,5 +323,6 @@ Platoon::~Platoon()
 	{
 		delete bob;
 	}	
+	delete sprite;
 	
 }

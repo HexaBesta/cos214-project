@@ -1,120 +1,148 @@
 #include "Unit.h"
 
-Unit::Unit() {
-	
+Unit::Unit()
+{
 }
 
-Unit::Unit(int health, int moral, int damage, Country* country, bool fitState){
+Unit::Unit(int health, int moral, int damage, Country *country, bool fitState)
+{
 	this->health = health;
 	this->moral = moral;
 	this->damage = damage;
 	this->country = country;
-	if(fitState){
+	if (fitState)
+	{
 		this->unitState = new FitState();
-	}else{
+	}
+	else
+	{
 		this->unitState = new CivilianState();
 	}
 }
 
-void Unit::requestState() {
-	if(this->unitState != NULL)
+void Unit::requestState()
+{
+	if (this->unitState != NULL)
 		this->unitState->request();
 }
 
-string Unit::getState(){
-	if(this->unitState != NULL){
+string Unit::getState()
+{
+	if (this->unitState != NULL)
+	{
 		return this->unitState->getState();
 	}
 	return "";
 }
 
-void Unit::setUnitState(UnitsState * unitState) {
-	if(unitState == nullptr){
+void Unit::setUnitState(UnitsState *unitState)
+{
+	if (unitState == nullptr)
+	{
 		this->unitState = this->unitState->changeUnitState();
-	}else{
+	}
+	else
+	{
 		delete this->unitState;
 		this->unitState = unitState;
 	}
-	
 }
 
-void Unit::changeStrategy(){
-	cout<<"This unit type cannot change strategy"<<endl;
+void Unit::changeStrategy()
+{
+	cout << "This unit type cannot change strategy" << endl;
 }
 
-int Unit::getDamage(){
+int Unit::getDamage()
+{
 	return this->damage;
 }
 
-int Unit::getHealth(){
+int Unit::getHealth()
+{
 	return this->health;
 }
 
-int Unit::getSize(){
+int Unit::getSize()
+{
 	return 1;
 }
 
-void Unit::setHealth(int healthhhh){
+void Unit::setHealth(int healthhhh)
+{
 	this->health = healthhhh;
 }
 
-void Unit::setMoral(int moral){
+void Unit::setMoral(int moral)
+{
 	this->moral = moral;
 }
 
-int Unit::getMoral(){
+int Unit::getMoral()
+{
 	return this->moral;
 }
 
-
-bool Unit::takeDamage(int damage, bool checkStrat) {
+bool Unit::takeDamage(int damage, bool checkStrat)
+{
 	this->health = this->health - damage;
-	if(this->health <= 0 ){
+	if (this->health <= 0)
+	{
 		this->setUnitState(new DeadState());
 		return true;
 	}
 	return false;
 }
 
- Unit*  Unit::split(){return NULL;}
+Unit *Unit::split() { return NULL; }
 
+void Unit::join(Unit *others) {}
 
-void  Unit::join(Unit* others){}
-
-string Unit::getBranch(){
+string Unit::getBranch()
+{
 	return "NotAClue";
 }
 
-string Unit::getAlliance(){
+string Unit::getAlliance()
+{
 	return country->getAlliances()->getName();
 }
 
-void Unit::setCountry(Country* country){
+void Unit::setCountry(Country *country)
+{
 	this->country = country;
 }
 
-Country* Unit::getCountry(){
-    return this->country;
+Country *Unit::getCountry()
+{
+	return this->country;
 }
 
-string Unit::toString(int lineLen){
-	
+string Unit::toString(int lineLen)
+{
+
 	return "Add unit print statement";
 }
 
-Unit* Unit::takeRandom(){
+Unit *Unit::takeRandom()
+{
 	return this;
 }
 
-int * Unit::getAmmo(){
+int *Unit::getAmmo()
+{
 	return NULL;
 }
 
+sf::Sprite* Unit::getSprite()
+{
+	cout << "Not you" << endl;
+	return NULL;
+};
 
-Unit::~Unit(){
-	
-	//delete this->unitState;
-    //delete this->country;
+Unit::~Unit()
+{
+
+	// delete this->unitState;
+	// delete this->country;
 }
-
-
