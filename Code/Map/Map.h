@@ -178,6 +178,22 @@ public:
 	bool addPlatoonToMap(Unit * platoon);
 
 	/**
+	 * @brief Get the Areas that are owned by passed in Country object
+	 * 
+	 * @param country to be searched for
+	 * @return vector<Area *> 
+	 */
+	vector<Area *> getAreasByCountry(Country * country);
+
+	/**
+	 * @brief Get the Countries that match the colour passed in (thus by alliance)
+	 * 
+	 * @param colour 
+	 * @return vector<Country*> 
+	 */
+	vector<Country*> getCountriesByColour(int colour);
+
+	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
 	 */

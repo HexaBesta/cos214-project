@@ -118,7 +118,7 @@ public:
 	 * 
 	 * @return int
 	 */
-	virtual virtual int getMoral();
+	virtual int getMoral();
 
 	/**
 	 * @brief Get the Average Moral based on the size of the platoon
