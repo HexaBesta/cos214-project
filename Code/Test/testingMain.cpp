@@ -3,6 +3,10 @@
 #include "../Map/Area.h"
 #include "../Builder/Director.h"
 #include "../Country/Country.h"
+<<<<<<< HEAD
+=======
+#include "../Map/Coordinate.h"
+>>>>>>> 563a69fd069c725d38da6c618b4a87eef01c2063
 
 using namespace std;
 
@@ -77,6 +81,7 @@ void testEuropeMap()
     cout << (m->getAreaByIndex(7)->toString()) << endl;
 
     m->printMap();
+<<<<<<< HEAD
 
     //Added test - Inge (Retreat)
 
@@ -106,6 +111,33 @@ void testMap1()
     delete m;
 }
 
+=======
+    cout<<"Just before Inge"<<endl;
+    //Added test - Inge (Retreat)
+
+    m->getAreaByIndex(7)->retreat("defense");
+    cout << (m->getAreaByIndex(6)->toString()) << endl;
+
+    cout << (m->getAreaByIndex(7)->toString()) << endl;
+    m->printMap();
+    cout<<"Just delete"<<endl;
+    delete m;
+}
+
+void testMap1()
+{
+    Map *m = new Map("../Maps/map1.txt");
+   
+
+    for (size_t i = 0; i < 6; i++)
+    {
+        m->listAdjacent(m->getAreaByIndex(i), false);
+    }
+
+    delete m;
+}
+
+>>>>>>> 563a69fd069c725d38da6c618b4a87eef01c2063
 void testBuilder() {
     Director* terrorist = new Director();
     Country* c = new Country("Sandton", 22);
@@ -184,6 +216,7 @@ void testGui()
         {
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
+            
             {
                 window.close();
             }
@@ -232,20 +265,52 @@ void testGui()
         window.draw(display);
         window.draw(text);
         window.draw(moveBtn);
+        window.draw(display);
+        window.draw(text);
+        window.draw(moveBtn);
         window.display();
     }
     delete m;
+<<<<<<< HEAD
+=======
+}
+
+void testCoord(){
+    Coordinate* coord = new Coordinate(0,0,22,NULL);
+    delete coord;
+>>>>>>> 563a69fd069c725d38da6c618b4a87eef01c2063
 }
 
 int main()
 {
 
+<<<<<<< HEAD
     // testMap1();
+=======
+     //testMap1();
+>>>>>>> 563a69fd069c725d38da6c618b4a87eef01c2063
     // cout << endl
     //      << endl;
     // testEuropeMap();
 
     // testBuilder();
+<<<<<<< HEAD
+=======
 
-    testGui();
+    //testGui();
+    //testCoord();
+    vector<sf::Texture*> test={};
+    for(int i=0;i<20000;i++){
+        test.push_back(new sf::Texture());
+    }
+    
+    for (int i = 0; i < 20000; i++)
+    {
+        delete test.back();
+        test.pop_back();
+    }
+    
+>>>>>>> 563a69fd069c725d38da6c618b4a87eef01c2063
+
+    cout<<"DONE"<<endl;
 }

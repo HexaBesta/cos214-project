@@ -188,7 +188,7 @@ Map::Map(string setupFile)
 
 	setAllEndPoints();
 	setAllGridAreas();
-	setAreaBorders();
+	//setAreaBorders();
 }
 
 void Map::createTransportRoute(Area *area1, Area *area2)
@@ -321,6 +321,7 @@ void Map::setAllGridAreas()
 
 void Map::addCountry(Country *country)
 {
+	cout<<"Adding country "<<endl;
 	bool add = true;
 	if (!allCountries.empty())
 	{
@@ -673,7 +674,7 @@ void Map::draw(sf::RenderWindow *r)
 	}
 	for (size_t i = 0; i < terrain.size(); i++)
 	{
-		r->draw((terrain.at(i)->sprite));
+		r->draw(*((terrain.at(i)->sprite)));
 	}
 }
 
@@ -696,7 +697,7 @@ Map::~Map()
 		delete[] grid[i];
 	}
 	delete[] grid;
-
+	cout<<"694"<<endl;
 	for (int i = 0; i < allAreas.size(); i++)
 	{
 		for (int j = 0; j < allAreas.size(); j++)
@@ -706,19 +707,19 @@ Map::~Map()
 		delete[] adjacencies[i];
 	}
 	delete[] adjacencies;
-
+	cout<<"704"<<endl;
 	while (!allAreas.empty())
 	{
 		delete allAreas.back();
 		allAreas.pop_back();
 	}
-	cout << "713" << endl;
+	cout<<"710 size:"<<allCountries.size()<<endl;
 	while (!allCountries.empty())
 	{
 		delete allCountries.back();
 		allCountries.pop_back();
 	}
-	cout<<"710 size:"<<allCountries.size()<<endl;
+	cout<<"new guy"<<endl;
 	while (!terrain.empty())
 	{
 		delete terrain.back();
