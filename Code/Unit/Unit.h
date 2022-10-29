@@ -8,37 +8,30 @@ class Platoon;
 
 using namespace std;
 
-class Unit
-{
-protected:
-	UnitsState *unitState;
-	int health;
-	int moral;
-	// virtual void print()=0;
-	int damage;
-	Country *country;
-
-public:
-	/***
-	 * @brief Default constructor for Unit
-	 */
-	Unit();
-
-	/***
-	 * @brief Constructor for Unit
-	 *
-	 * @param health the health of the unit
-	 * @param moral the moral of the unit
-	 * @param country sets the country in which the unit is associated to
-	 * @param fitState will check if the unit needs to be in the fitState or civilianState
-	 */
-	Unit(int health, int moral, int damage, Country *country, bool fitState);
-
-	/**
-	 * @brief Construct a new Unit object
-	 *
-	 */
-	Unit();
+class Unit {
+	protected:
+		UnitsState *unitState;
+		int health;
+		int moral;
+		//virtual void print()=0;
+		int damage;
+		Country* country;
+		
+	public:
+		/**
+		 * @brief Construct a new Unit object
+		 * 
+		 */
+		Unit();
+		/***
+		 * @brief Constructor for Unit
+		 * 
+		 * @param health the health of the unit
+		 * @param moral the moral of the unit
+		 * @param country sets the country in which the unit is associated to
+		 * @param fitState will check if the unit needs to be in the fitState or civilianState
+		*/
+		Unit(int health, int moral, int damage, Country* country, bool fitState);
 
 	/**
 	 * @brief pure virtual function used to return the attack method of each state
@@ -58,6 +51,13 @@ public:
 	 */
 	virtual void requestState();
 
+		/**
+		 * @brief Stubbed method - will be used for platoon
+		 * 
+		 * @return string
+		 */
+		virtual string getStrategyType();
+		
 	/**
 	 * @brief Returns state of unit
 	 *

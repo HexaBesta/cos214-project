@@ -115,7 +115,6 @@ int * Unit::getAmmo(){
 	return NULL;
 }
 
-
 Unit::~Unit(){
 	
 	delete this->unitState;

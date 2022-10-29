@@ -92,12 +92,13 @@ public:
 	TheatreOfWar * getLand();
 
 	/**
-	 * @brief Get the Turn object
+	 * @brief Get the turn of the batlle
 	 * 
-	 * @return true 
-	 * @return false 
+	 * @return true - attackers turn
+	 * @return false - defenders turn
 	 */
-	bool getTurn(); 
+	bool getTurn();
+
 
 	/**
 	 * @brief Will print a summary of the current state of a battle

@@ -2,11 +2,11 @@
 
 void CountVisitor::visit(Area *area)
 {
-    if (area->getColour() == 1)
+    if (area->getColour() == 22)
     {
         alliance1Count++;
     }
-    else if (area->getColour() == 2)
+    else if (area->getColour() == 160)
     {
         alliance2Count++;
     }
@@ -26,3 +26,13 @@ void CountVisitor::visit(TransportRoute *transport)
         }
     }
 };
+
+string CountVisitor::displayCount(){
+    string display = "Alliance 1:\n";
+    display+=" Areas: ";
+    display+=alliance1Count;
+    display = "Alliance 2:\n";
+    display+=" Areas: ";
+    display+=alliance2Count;
+    return display;
+}

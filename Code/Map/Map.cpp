@@ -594,6 +594,29 @@ void Map::printColourMap()
 	// -----
 }
 
+string Map::toStringCount(){
+	CountVisitor* countV = new CountVisitor();
+	for(auto it : this->allAreas){
+		it->accept(countV);
+	}
+	string total = countV->displayCount();
+	return total;
+}
+
+
+vector<Area *> Map::getAreasByColour(int colour)
+{
+	vector<Area *> areas;
+	for (auto area : this->allAreas)
+	{
+		if (area->getColour() == colour)
+		{
+			areas.push_back(area);
+		}
+	}
+	return areas;
+}
+
 vector<Country *> Map::getCountriesByColour(int colour)
 {
 	vector<Country *> countries;
@@ -613,19 +636,6 @@ vector<Area *> Map::getAreasByCountry(Country *country)
 	for (auto area : this->allAreas)
 	{
 		if (area->getCountry() == country)
-		{
-			areas.push_back(area);
-		}
-	}
-	return areas;
-}
-
-vector<Area *> Map::getAreasByColour(int colour)
-{
-	vector<Area *> areas;
-	for (auto area : this->allAreas)
-	{
-		if (area->getColour() == colour)
 		{
 			areas.push_back(area);
 		}
