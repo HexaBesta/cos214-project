@@ -631,36 +631,73 @@ void Map::setAreaBorders()
 		for (int i = 0; i < gridXSize; i++)
 		{
 			bool left = false;
+			bool leftCon = false;
 			bool right = false;
+			bool rightCon =false;
 			bool top = false;
+			bool topCon=false;
 			bool bottom = false;
+			bool bottomCon=false;
 			if (j > 0 && grid[i][j - 1] != grid[i][j])
 			{
 				top = true;
+				if (grid[i][j] != "X" && grid[i][j - 1]!= "X")
+				{
+					if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])),getAreaByIndex(stoi(grid[i][j-1]))))
+					{
+						topCon=true;
+					}
+					
+				}
+				
 			}
 			if (j < gridYSize - 1 && grid[i][j + 1] != grid[i][j])
 			{
 				bottom = true;
+				if (grid[i][j] != "X" && grid[i][j + 1]!= "X")
+				{
+					if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])),getAreaByIndex(stoi(grid[i][j+1]))))
+					{
+						bottomCon=true;
+					}
+					
+				}
 			}
 
 			if (i > 0 && grid[i - 1][j] != grid[i][j])
 			{
 				left = true;
+				if (grid[i][j] != "X" && grid[i-1][j]!= "X")
+				{
+					if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])),getAreaByIndex(stoi(grid[i-1][j]))))
+					{
+						leftCon=true;
+					}
+					
+				}
 			}
 
 			if (i < gridXSize - 1 && grid[i + 1][j] != grid[i][j])
 			{
 				right = true;
+				if (grid[i][j] != "X" && grid[i+1][j]!= "X")
+				{
+					if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])),getAreaByIndex(stoi(grid[i+1][j]))))
+					{
+						rightCon=true;
+					}
+					
+				}
 			}
 			if (grid[i][j] == "X")
 			{
 				Coordinate *terrainCoord = (new Coordinate(i, j, 0, NULL));
 				terrain.push_back(terrainCoord);
-				terrainCoord->setCoordinateBorders(i, j, left, right, top, bottom);
+				terrainCoord->setCoordinateBorders(i, j, left,leftCon, right,rightCon, top,topCon, bottom,bottomCon);
 			}
 			else
 			{
-				(allAreas.at(stoi(grid[i][j])))->setCoordinateBorders(i, j, left, right, top, bottom);
+				(allAreas.at(stoi(grid[i][j])))->setCoordinateBorders(i, j, left,leftCon, right,rightCon, top,topCon, bottom,bottomCon);
 			}
 		}
 	}

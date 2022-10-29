@@ -242,7 +242,7 @@ public:
 	 * @param top 
 	 * @param bottom 
 	 */
-	void setCoordinateBorders(int x, int y, bool left, bool right,bool top, bool bottom);
+	void setCoordinateBorders(int x, int y, bool left,bool leftCon, bool right, bool rightCon, bool top, bool topCon, bool bottom,bool bottomCon);
 
 	/**
 	 * @brief draws the coordinates of the area on the render window

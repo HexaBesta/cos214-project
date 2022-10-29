@@ -22,14 +22,15 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 		allFactories[2] = NULL;
 	}
 
-	if (this->colour != 94){
+	if (this->colour != 94)
+	{
 		country = new Country(name, colour);
 	}
 
 	if (troops)
 	{
 		vector<Unit *> humans = {};
-		humans.push_back(new Human( 10,  100,  5,  country, true));
+		humans.push_back(new Human(10, 100, 5, country, true));
 
 		vector<Unit *> vehicles = {};
 		Unit *platoon = new LandBranch(new Platoon(humans, vehicles, 2, 2));
@@ -316,7 +317,7 @@ string Area::toString()
 	{
 		owner = country->getName();
 	}
-	cout<<"318"<<endl;
+	cout << "318" << endl;
 	next = "           Name:" + name + "  ID:" + to_string(index) + "  Colour:" + to_string(colour) + "  Owner:" + owner;
 	while (next.length() < lineChars - 1)
 	{
@@ -324,7 +325,7 @@ string Area::toString()
 	}
 
 	out += "|\033[48;5;" + to_string((this->colour)) + "m" + next + "\033[0m" + "|\n";
-	
+
 	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
@@ -338,7 +339,7 @@ string Area::toString()
 	}
 	next += "|\n";
 	out += next;
-	cout<<"340"<<endl;
+	cout << "340" << endl;
 	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
@@ -355,7 +356,7 @@ string Area::toString()
 
 	next = air->toString(lineChars);
 	out += next;
-	cout<<"357"<<endl;
+	cout << "357" << endl;
 	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
@@ -369,14 +370,14 @@ string Area::toString()
 	}
 	next += "|\n";
 	out += next;
-cout<<"371"<<endl;
+	cout << "371" << endl;
 	next = land->toString(lineChars);
 	out += next;
-	cout<<"374"<<endl;
+	cout << "374" << endl;
 	for (int i = 0; i < lineChars + 1; i++)
 		out += "-";
 	out += "\n";
-	cout<<"378"<<endl;
+	cout << "378" << endl;
 	return out;
 }
 
@@ -527,28 +528,46 @@ void Area::accept(Visitor *visitor)
 	visitor->visit(this);
 }
 
-void Area::setCoordinateBorders(int x, int y, bool left, bool right, bool top, bool bottom)
+void Area::setCoordinateBorders(int x, int y, bool left, bool leftCon, bool right, bool rightCon, bool top, bool topCon, bool bottom, bool bottomCon)
 {
 	for (int i = 0; i < areasCoordinates.size(); i++)
 	{
 		if (areasCoordinates.at(i)->x == x && areasCoordinates.at(i)->y == y)
 		{
+			
 			string borders = "";
 			if (left)
 			{
 				borders += "Left";
 			}
+			if (leftCon)
+			{
+				borders += "C";
+			}
+
 			if (right)
 			{
 				borders += "Right";
+			}
+			if (rightCon)
+			{
+				borders += "C";
 			}
 			if (top)
 			{
 				borders += "Top";
 			}
+			if (topCon)
+			{
+				borders += "C";
+			}
 			if (bottom)
 			{
 				borders += "Bottom";
+			}
+			if (bottomCon)
+			{
+				borders += "C";
 			}
 			areasCoordinates.at(i)->setTextureBorders(borders, colour, false);
 			return;
@@ -558,35 +577,38 @@ void Area::setCoordinateBorders(int x, int y, bool left, bool right, bool top, b
 
 void Area::draw(sf::RenderWindow *r)
 {
-	
+
 	for (size_t i = 0; i < areasCoordinates.size(); i++)
 	{
 		r->draw((areasCoordinates.at(i)->sprite));
 	}
 	if (land->getDefender() != NULL)
 	{
-			
-		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x*32, getMiddleCooridnate()->y*32);
+
+		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * 32, getMiddleCooridnate()->y * 32);
 		r->draw(*(land->getDefender()->getSprite()));
 	}
-	
 }
 
-void Area::updateSpriteAnimation(sf::Clock* c){
+void Area::updateSpriteAnimation(sf::Clock *c)
+{
 	if (land->getDefender() == NULL)
 	{
 		return;
 	}
-	
-	if(c->getElapsedTime().asMilliseconds()>=90){
-		sf::IntRect re=land->getDefender()->getSprite()->getTextureRect();
-		 if (re.left == 78){
-        	re.left=0;
-		 }else{
-			re.left+=26;
-		 }
-		 land->getDefender()->getSprite()->setTextureRect(re);
-		 
+
+	if (c->getElapsedTime().asMilliseconds() >= 90)
+	{
+		sf::IntRect re = land->getDefender()->getSprite()->getTextureRect();
+		if (re.left == 78)
+		{
+			re.left = 0;
+		}
+		else
+		{
+			re.left += 26;
+		}
+		land->getDefender()->getSprite()->setTextureRect(re);
 	}
 }
 
@@ -603,8 +625,9 @@ bool Area::wasClicked(sf::Vector2f click)
 	return false;
 }
 
-Coordinate* Area::getMiddleCooridnate(){
-	return areasCoordinates.at((areasCoordinates.size()/2));
+Coordinate *Area::getMiddleCooridnate()
+{
+	return areasCoordinates.at((areasCoordinates.size() / 2));
 }
 
 Area::~Area()

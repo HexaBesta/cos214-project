@@ -165,6 +165,18 @@ void testGui()
     moveBtn.setPosition(666, 400);
     moveBtn.scale(3, 3);
 
+
+    sf::Texture buildBtnTexture;
+    if (!buildBtnTexture.loadFromFile("../dalandTilesets/images/buildBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite buildBtn;
+    buildBtn.setTexture(buildBtnTexture);
+    buildBtn.setPosition(762, 400);
+    buildBtn.scale(3, 3);
+
+
     sf::Text text;
     sf::Font font;
     if (!font.loadFromFile("../dalandTilesets/images/Terminus.ttf"))
@@ -176,6 +188,7 @@ void testGui()
     text.setPosition(760, 20);
 
     bool moving = false;
+
     Area *selectedArea = NULL;
 
     sf::Clock* c =new sf::Clock();
@@ -227,6 +240,14 @@ void testGui()
                     moving = true;
                     cout<<"Clicked moveBtn"<<endl;
                 }
+
+                if (buildBtn.getGlobalBounds().contains(mouseClick))
+                {
+                    selectedArea->requestFactory(0);
+                    selectedArea->requestFactory(1);
+                    selectedArea->requestFactory(2);
+                    text.setString(selectedArea->toString());
+                }
             }
         }
 
@@ -236,11 +257,13 @@ void testGui()
         window.draw(display);
         window.draw(text);
         window.draw(moveBtn);
+        window.draw(buildBtn);
          m->draw(&window,c);
         window.display();
         if (c->getElapsedTime().asMilliseconds()>100)
         {
-            c->restart();
+            delete c;
+            c =new sf::Clock();
         }
         
     }

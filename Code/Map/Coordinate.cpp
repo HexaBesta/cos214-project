@@ -64,7 +64,7 @@ Coordinate::Coordinate(int x, int y, int colour,Area* area)
         sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
     }
 
-    void Coordinate::setCoordinateBorders(int x, int y, bool left, bool right, bool top, bool bottom)
+    void Coordinate::setCoordinateBorders(int x, int y, bool left,bool leftCon, bool right, bool rightCon, bool top, bool topCon, bool bottom,bool bottomCon)
     {
 
         string borders = "";
@@ -72,17 +72,34 @@ Coordinate::Coordinate(int x, int y, int colour,Area* area)
         {
              borders+="Left";
         }
+        if (leftCon)
+        {
+            borders+="C";
+        }
+        
         if (right)
         {
              borders+="Right";
+        }
+        if (rightCon)
+        {
+            borders+="C";
         }
         if (top)
         {
              borders+="Top";
         }
+        if (topCon)
+        {
+            borders+="C";
+        }
         if (bottom)
         {
              borders+="Bottom";
+        }
+        if (bottomCon)
+        {
+            borders+="C";
         }
         setTextureBorders(borders, 0, true);
         return;
