@@ -24,10 +24,10 @@ private:
 	string name;
 	int index;
 	int colour;
-	TheatreOfWar* land;
-	TheatreOfWar* air;
+	TheatreOfWar* land=NULL;
+	TheatreOfWar* air=NULL;
 	TransportFactory* allFactories[3];
-	Country* country;
+	Country* country=NULL;
 	
 
 public:

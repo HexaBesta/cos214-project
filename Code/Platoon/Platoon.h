@@ -19,13 +19,13 @@ using namespace std;
 class Platoon : public Unit {
 
 private:
-	BobTheBuilder *bob;
+	BobTheBuilder *bob=NULL;
 	vector<Unit *> humans;
 	vector<Unit *> vehicles;
 	int pewpew;
 	int boomboom;
 	int moral;
-	PlatoonStrategy * strategy;
+	PlatoonStrategy * strategy=NULL;
 	
 
 public:

@@ -43,7 +43,7 @@ string Platoon::toString(int lineLen)
 		}
 		add+= "|";
 		out+=add;
-		this->setUnitState(new DeadState());
+		//this->setUnitState(new DeadState());
 	}
 	else
 	{	
@@ -299,5 +299,5 @@ Platoon::~Platoon()
 	}
 
 	delete strategy;
-	delete bob;
+		delete bob;
 }

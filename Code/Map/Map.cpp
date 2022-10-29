@@ -168,7 +168,10 @@ Map::Map(string setupFile)
 		Area *currArea = new Area(areaParts.at(0), stoi(areaParts.at(1)), stoi(areaParts.at(2)), stoi(areaParts.at(2)) != 94, stoi(areaParts.at(2)) != 94);
 		currArea->attach(this);
 		allAreas.push_back(currArea);
-		addCountry(currArea->getCountry());
+		if(currArea->getCountry()!=NULL){
+			addCountry(currArea->getCountry());
+		}
+		
 
 		/*
 		Set adjacencies in the adjacency matrix
@@ -185,7 +188,7 @@ Map::Map(string setupFile)
 
 	setAllEndPoints();
 	setAllGridAreas();
-	setAreaBorders();
+	//setAreaBorders();
 }
 
 void Map::createTransportRoute(Area *area1, Area *area2)
@@ -318,6 +321,7 @@ void Map::setAllGridAreas()
 
 void Map::addCountry(Country *country)
 {
+	cout<<"Adding country "<<endl;
 	bool add = true;
 	if (!allCountries.empty())
 	{
@@ -669,7 +673,7 @@ void Map::draw(sf::RenderWindow *r)
 	}
 	for (size_t i = 0; i < terrain.size(); i++)
 	{
-		r->draw(terrain.at(i)->sprite);
+		r->draw(*(terrain.at(i)->sprite));
 	}
 }
 
@@ -691,7 +695,7 @@ Map::~Map()
 		delete[] grid[i];
 	}
 	delete[] grid;
-
+	cout<<"694"<<endl;
 	for (int i = 0; i < allAreas.size(); i++)
 	{
 		for (int j = 0; j < allAreas.size(); j++)
@@ -701,19 +705,19 @@ Map::~Map()
 		delete[] adjacencies[i];
 	}
 	delete[] adjacencies;
-
+	cout<<"704"<<endl;
 	while (!allAreas.empty())
 	{
 		delete allAreas.back();
 		allAreas.pop_back();
 	}
-
+	cout<<"710 size:"<<allCountries.size()<<endl;
 	while (!allCountries.empty())
 	{
 		delete allCountries.back();
 		allCountries.pop_back();
 	}
-
+	cout<<"new guy"<<endl;
 	while (!terrain.empty())
 	{
 		delete terrain.back();

@@ -10,9 +10,9 @@ using namespace std;
 class Country {
 	private:
 		string name;
-		CountryState *countryState;
+		CountryState *countryState=NULL;
 		double moral;
-		Alliances* alliance;
+		Alliances* alliance=NULL;
 	public:
 		/**
 		 * @brief Constructs a new country object

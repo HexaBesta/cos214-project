@@ -22,13 +22,15 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 		allFactories[2] = NULL;
 	}
 
-	if (this->colour != 94)
+	if (this->colour != 94){
 		country = new Country(name, colour);
+	}
+		
 
 	if (troops)
 	{
 		vector<Unit *> humans = {};
-		// humans.push_back(new Human());
+		humans.push_back(new Human( 10,  100,  5,  country, true));
 
 		vector<Unit *> vehicles = {};
 		Unit *platoon = new LandBranch(new Platoon(humans, vehicles, 2, 2));
@@ -76,6 +78,7 @@ void Area::marchIn(Unit *unit, Area *from)
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
 				map->createTransportRoute(this, from);
+				map->setAreaBorders();
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
@@ -83,6 +86,7 @@ void Area::marchIn(Unit *unit, Area *from)
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
 				map->createTransportRoute(this, from);
+				map->setAreaBorders();
 			}
 			else if (air->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -95,6 +99,7 @@ void Area::marchIn(Unit *unit, Area *from)
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
 			map->createTransportRoute(this, from);
+			map->setAreaBorders();
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -312,7 +317,7 @@ string Area::toString()
 	{
 		owner = country->getName();
 	}
-
+	cout<<"318"<<endl;
 	next = "           Name:" + name + "  ID:" + to_string(index) + "  Colour:" + to_string(colour) + "  Owner:" + owner;
 	while (next.length() < lineChars - 1)
 	{
@@ -320,7 +325,7 @@ string Area::toString()
 	}
 
 	out += "|\033[48;5;" + to_string((this->colour)) + "m" + next + "\033[0m" + "|\n";
-
+	
 	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
@@ -334,7 +339,7 @@ string Area::toString()
 	}
 	next += "|\n";
 	out += next;
-
+	cout<<"340"<<endl;
 	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
@@ -351,7 +356,7 @@ string Area::toString()
 
 	next = air->toString(lineChars);
 	out += next;
-
+	cout<<"357"<<endl;
 	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
@@ -365,14 +370,14 @@ string Area::toString()
 	}
 	next += "|\n";
 	out += next;
-
+cout<<"371"<<endl;
 	next = land->toString(lineChars);
 	out += next;
-
+	cout<<"374"<<endl;
 	for (int i = 0; i < lineChars + 1; i++)
 		out += "-";
 	out += "\n";
-
+	cout<<"378"<<endl;
 	return out;
 }
 
@@ -556,7 +561,7 @@ void Area::draw(sf::RenderWindow *r)
 {
 	for (size_t i = 0; i < areasCoordinates.size(); i++)
 	{
-		r->draw(areasCoordinates.at(i)->sprite);
+		r->draw(*(areasCoordinates.at(i)->sprite));
 	}
 }
 
@@ -565,7 +570,7 @@ bool Area::wasClicked(sf::Vector2f click)
 
 	for (size_t i = 0; i < areasCoordinates.size(); i++)
 	{
-		if (areasCoordinates.at(i)->sprite.getGlobalBounds().contains(click))
+		if (areasCoordinates.at(i)->sprite->getGlobalBounds().contains(click))
 		{
 			return true;
 		}
@@ -589,7 +594,7 @@ Area::~Area()
 			allFactories[i] = NULL;
 		}
 	}
-
+	cout<<"597"<<endl;
 	if (air != NULL)
 	{
 		delete air;
