@@ -298,6 +298,13 @@ Platoon::~Platoon()
 		vehicles.pop_back();
 	}
 
-	delete strategy;
+	if (strategy!=NULL)
+	{
+		delete strategy;
+	}
+	if(bob!=NULL)
+	{
 		delete bob;
+	}	
+	
 }

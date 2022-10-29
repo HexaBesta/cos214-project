@@ -7,7 +7,7 @@ using namespace std;
 
 class Military {
 	private:
-		Platoon* platoon=NULL;
+		Platoon* platoon;
 	public:
 		void constructPlatoon();
 };

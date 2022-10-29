@@ -69,9 +69,8 @@ string TheatreOfWar::toString(int &lineLen)
 
     if (defender != NULL)
     {
-        cout<<"72"<< endl;
         add = "" + defender->toString(lineLen);
-        cout<<"74"<<endl; out+=add+"\n";
+        out+=add+"\n";
     }
     else
     {
@@ -83,7 +82,7 @@ string TheatreOfWar::toString(int &lineLen)
         add += "|\n";
         out += add;
     }
-cout<<"86"<< endl;
+
     //Skip Line
 	add= "|";
 	for (int i = 0; i < lineLen - 1; i++)

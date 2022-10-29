@@ -113,7 +113,7 @@ int * Unit::getAmmo(){
 
 Unit::~Unit(){
 	
-	delete this->unitState;
+	//delete this->unitState;
     //delete this->country;
 }
 
