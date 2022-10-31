@@ -602,10 +602,23 @@ string Map::toStringCount(){
 	for(auto it : this->allAreas){
 		it->accept(countV);
 	}
+	for(int x = 0; x<this->allAreas.size();x++){
+		for(int y = 0; y<this->allAreas.size();y++){
+			this->adjacencies[this->allAreas.at(x)->getIndex()][this->allAreas.at(y)->getIndex()]->accept(countV);
+		}
+	}
 	string total = countV->displayCount();
 	return total;
 }
 
+int Map::checkIfEnd(){
+	CountVisitor* countV = new CountVisitor();
+	for(auto it : this->allAreas){
+		it->accept(countV);
+	}
+	int check = countV->warLoopComplete();
+	return check;
+}
 
 vector<Area *> Map::getAreasByColour(int colour)
 {
