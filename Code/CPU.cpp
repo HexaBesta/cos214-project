@@ -180,7 +180,7 @@ int CPU::chooseResource(Area *area)
     {
         return 2;
     }
-    int randomV = rand() % (2 + 1);
+    int randomV = rand() % (3);
     return randomV;
 }
 
@@ -211,42 +211,53 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    int ranNum = rand() % (5) + 1;
+    int ranNum = rand() % ((10) + 4);
     cout<<"--------------------------------------------"<<endl;
     cout<<"Creating "<< ranNum << " countries"<<endl;
     for (int i = 0; i < ranNum; i++)
     {
-        int random = rand() % (1 + 1);
-        int countryNumber = rand() % (100 - 50 + 1) + 50;
+        int random = rand() % (2);
+        int countryNumber = rand() % ((100 - 50 + 1) + 50);
         string countryName = "Country";
         countryName += countryNumber;
         if (random == 0)
         {
             Country *country = new Country(countryName, 22, this);
             map->addCountry(country);
+            int randomArea =rand()% map->getAreasByColour(94).size();
+            Area* area = nullptr;
+            area = map->getAreaByIndex(randomArea);
+            if(area != nullptr){
+                area->setCountry(country);
+            }
         }
         else if (random == 1)
         {
             Country *country = new Country(countryName, 160, this);
             map->addCountry(country);
+             int randomArea =rand()% map->getAreasByColour(94).size();
+            Area* area = nullptr;
+            area = map->getAreaByIndex(randomArea);
+            if(area != nullptr){
+                area->setCountry(country);
+            }
         }
         cout<<endl;
+        map->printMap();
     }
 }
 
 int CPU::numberOfCountriesInAlliance(Map *map)
 {
     vector<Country *> country = map->getCountriesByColour(94);
-    int size = country.size();
-    int random = rand() % size;
+    int random = rand() % country.size();;
     return random;
 }
 
 Country *CPU::chooseCountryToJoinAlliance(Map *map)
 {
     vector<Country *> country = map->getCountriesByColour(94);
-    int size = country.size();
-    int random = rand() % size;
+    int random = rand() % country.size();;
     return country.at(random);
 }
 

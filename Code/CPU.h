@@ -91,6 +91,10 @@ public:
      */
     virtual Player *togglePlayer();
 
+    /**
+     * @brief Lets the cpu either create an Air branch or Land branch
+     *
+     */
     virtual int platoonType();
 
 protected:
