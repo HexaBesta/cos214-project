@@ -1,5 +1,6 @@
 #ifndef MAP_CPP
 #define MAP_CPP
+
 #include "Area.h"
 #include "TransportRoute.h"
 #include "Map.h"
@@ -169,7 +170,10 @@ Map::Map(string setupFile, Player *player)
 		Area *currArea = new Area(areaParts.at(0), stoi(areaParts.at(1)), stoi(areaParts.at(2)), stoi(areaParts.at(2)) != 94, stoi(areaParts.at(2)) != 94);
 		currArea->attach(this);
 		allAreas.push_back(currArea);
-		addCountry(currArea->getCountry());
+		if (currArea->getCountry() != NULL)
+		{
+			addCountry(currArea->getCountry());
+		}
 
 		/*
 		Set adjacencies in the adjacency matrix
@@ -186,6 +190,7 @@ Map::Map(string setupFile, Player *player)
 
 	setAllEndPoints();
 	setAllGridAreas();
+	// setAreaBorders();
 }
 
 void Map::createTransportRoute(Area *area1, Area *area2)
@@ -336,6 +341,14 @@ void Map::addCountry(Country *country)
 	{
 		allCountries.push_back(country);
 	}
+}
+
+int Map::getGridXSize(){
+	return gridXSize;
+}
+
+int Map::getGridYSize(){
+	return gridYSize;
 }
 
 void Map::printMap()
@@ -597,6 +610,139 @@ void Map::printColourMap()
 	// -----
 }
 
+vector<Country *> Map::getCountriesByColour(int colour)
+{
+	vector<Country *> countries;
+	for (auto country : allCountries)
+	{
+		if (country->getAlliances()->getColour() == colour)
+		{
+			countries.push_back(country);
+		}
+	}
+	return countries;
+}
+
+vector<Area *> Map::getAreasByCountry(Country *country)
+{
+	vector<Area *> areas;
+	for (auto area : this->allAreas)
+	{
+		if (area->getCountry() == country)
+		{
+			areas.push_back(area);
+		}
+	}
+	return areas;
+}
+
+void Map::setAreaBorders()
+{
+	for (int j = 0; j < gridYSize; j++)
+	{
+		for (int i = 0; i < gridXSize; i++)
+		{
+			bool left = false;
+			bool leftCon = false;
+			bool right = false;
+			bool rightCon =false;
+			bool top = false;
+			bool topCon=false;
+			bool bottom = false;
+			bool bottomCon=false;
+			if (j > 0 && grid[i][j - 1] != grid[i][j])
+			{
+				top = true;
+				if (grid[i][j] != "X" && grid[i][j - 1]!= "X")
+				{
+					if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])),getAreaByIndex(stoi(grid[i][j-1]))))
+					{
+						topCon=true;
+					}
+					
+				}
+				
+			}
+			if (j < gridYSize - 1 && grid[i][j + 1] != grid[i][j])
+			{
+				bottom = true;
+				if (grid[i][j] != "X" && grid[i][j + 1]!= "X")
+				{
+					if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])),getAreaByIndex(stoi(grid[i][j+1]))))
+					{
+						bottomCon=true;
+					}
+					
+				}
+			}
+
+			if (i > 0 && grid[i - 1][j] != grid[i][j])
+			{
+				left = true;
+				if (grid[i][j] != "X" && grid[i-1][j]!= "X")
+				{
+					if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])),getAreaByIndex(stoi(grid[i-1][j]))))
+					{
+						leftCon=true;
+					}
+					
+				}
+			}
+
+			if (i < gridXSize - 1 && grid[i + 1][j] != grid[i][j])
+			{
+				right = true;
+				if (grid[i][j] != "X" && grid[i+1][j]!= "X")
+				{
+					if (transportRouteisAvailable(getAreaByIndex(stoi(grid[i][j])),getAreaByIndex(stoi(grid[i+1][j]))))
+					{
+						rightCon=true;
+					}
+					
+				}
+			}
+			if (grid[i][j] == "X")
+			{
+				Coordinate *terrainCoord = (new Coordinate(i, j, 0, NULL,gridXSize,gridYSize));
+				terrain.push_back(terrainCoord);
+				terrainCoord->setCoordinateBorders(i, j, left,leftCon, right,rightCon, top,topCon, bottom,bottomCon);
+			}
+			else
+			{
+				(allAreas.at(stoi(grid[i][j])))->setCoordinateBorders(i, j, left,leftCon, right,rightCon, top,topCon, bottom,bottomCon);
+			}
+		}
+	}
+}
+
+void Map::draw(sf::RenderWindow *r, sf::Clock *c)
+{
+
+	for (int i = 0; i < allAreas.size(); i++)
+	{
+		allAreas.at(i)->draw(r);
+		allAreas.at(i)->updateLandSpriteAnimation(c);
+		allAreas.at(i)->updateAirSpriteAnimation(c);
+	}
+	
+	for (size_t i = 0; i < terrain.size(); i++)
+	{
+		r->draw((terrain.at(i)->sprite));
+	}
+}
+
+Area *Map::getAreaClicked(sf::Vector2f click)
+{
+	for (int i = 0; i < allAreas.size(); i++)
+	{
+		if (allAreas.at(i)->wasClicked(click))
+		{
+			return allAreas.at(i);
+		}
+	}
+	return NULL;
+}
+
 string Map::toStringCount(){
 	CountVisitor* countV = new CountVisitor();
 	for(auto it : this->allAreas){
@@ -744,7 +890,7 @@ Map::~Map()
 		delete[] grid[i];
 	}
 	delete[] grid;
-
+	
 	for (int i = 0; i < allAreas.size(); i++)
 	{
 		for (int j = 0; j < allAreas.size(); j++)
@@ -754,17 +900,21 @@ Map::~Map()
 		delete[] adjacencies[i];
 	}
 	delete[] adjacencies;
-
+	
 	while (!allAreas.empty())
 	{
 		delete allAreas.back();
 		allAreas.pop_back();
 	}
-
 	while (!allCountries.empty())
 	{
 		delete allCountries.back();
 		allCountries.pop_back();
+	}
+	while (!terrain.empty())
+	{
+		delete terrain.back();
+		terrain.pop_back();
 	}
 }
 

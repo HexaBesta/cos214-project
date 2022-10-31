@@ -32,6 +32,12 @@ public:
 	virtual string getBranch();
 
 	/**
+		 * @brief Set the Texture of this unit to the land texture
+		 * 
+		 */
+		virtual void setTexture();
+
+	/**
 	 * @brief Destroy the Land Branch object
 	 * 
 	 */

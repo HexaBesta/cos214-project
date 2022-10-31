@@ -11,6 +11,10 @@ string LandBranch::getBranch(){
 	return "LAND BRANCH";
 }
 
+void LandBranch::setTexture(){
+	unit->setLandTexture();
+}
+
  LandBranch::~LandBranch(){
 	
  }

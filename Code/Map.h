@@ -136,6 +136,55 @@ public:
 	void addCountry(Country* country);
 
 	/**
+	 * @brief Get the X Dimension of the grid that represents the map
+	 * 
+	 * @return int 
+	 */
+	int getGridXSize();
+
+	/**
+	 * @brief Get the Y Dimension of the grid that represents the map
+	 * 
+	 * @return int 
+	 */
+	int getGridYSize();
+
+	/**
+	 * @brief Get the Countries of the alliance (found by colour)
+	 * 
+	 * @param colour Alliance colour 
+	 * @return vector<Country*> vector of countries of the alliance 
+	 */
+	vector<Country*> getCountriesByColour(int colour);
+
+	/**
+	 * @brief Get the Areas By Country object
+	 * 
+	 * @param country to list areas of
+	 * @return vector<Area*> all areas occupied by the passed in country
+	 */
+	vector<Area*> getAreasByCountry(Country * country);
+
+	/**
+	 * @brief Sets the correct textures to area coordinates so that borders appear clear
+	 * 
+	 */
+	void setAreaBorders();
+
+	/**
+	 * @brief Get the Area that was clicked
+	 * 
+	 * @return Area* 
+	 */
+	Area* getAreaClicked(sf::Vector2f click);
+
+	/**
+	 * @brief draws the Map on the render window
+	 * 
+	 * @param r 
+	 */
+	void draw(sf::RenderWindow* r, sf::Clock* c);
+	/**
 	 * @brief Returns the count of transport routes and areas for the alliances
 	 * 
 	 * @return string 
@@ -220,6 +269,7 @@ private:
 	vector<Country*> allCountries;
 	int gridXSize;
 	int gridYSize;
+	vector<Coordinate *> terrain;
 	Player * player;
 
 	/**

@@ -10,3 +10,7 @@ string AirBranch::toString(){
 string AirBranch::getBranch(){
 	return "AIR BRANCH";
 }
+
+void AirBranch::setTexture(){
+	unit->setAirTexture();
+}

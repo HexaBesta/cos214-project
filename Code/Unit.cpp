@@ -155,6 +155,28 @@ int *Unit::getAmmo()
 
 void Unit::replenish(Transport ** transport){}
 
+sf::Sprite *Unit::getSprite()
+{
+	cout << "Not you" << endl;
+	return NULL;
+}
+
+void Unit::setTexture()
+{
+	cout << "Not this one" << endl;
+}
+
+void Unit::setAirTexture()
+{
+	cout << "Not this one - Air" << endl;
+}
+
+void Unit::setLandTexture()
+{
+	cout << "Not this one - Land" << endl;
+}
+
+
 Unit::~Unit()
 {
 

@@ -195,6 +195,27 @@ public:
 	 */
 	virtual void replenish(Transport ** transport);
 
+		/**
+	 * @brief Get the Sprite of this unit
+	 * 
+	 * @return sf::Sprite 
+	 */
+	virtual sf::Sprite* getSprite();
+
+	/**
+	 * @brief Set the Sprite Location of the unit's sprite
+	 * 
+	 * @param x The X coordinate of the sprite (unscaled)
+	 * @param y The Y coordinate of the sprite (unscaled)
+	 */
+	void setSpriteLocation(int x, int y){};
+	
+	virtual void setTexture();
+
+	virtual void setAirTexture();
+
+	virtual void setLandTexture();
+
 	/**
 	 * @brief Destroy the Unit object
 	 *

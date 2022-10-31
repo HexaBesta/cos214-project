@@ -26,6 +26,12 @@ class AirBranch : public Branch {
 		 * @return string 
 		 */
 		virtual string getBranch();
+
+		/**
+		 * @brief Set the Texture of this unit to the air texture
+		 * 
+		 */
+		virtual void setTexture();
 };
 
 #endif
