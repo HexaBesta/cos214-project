@@ -83,6 +83,20 @@ string Platoon::toString(int lineLen)
 		}
 		add+= "|";
 		out+=add;
+
+		add= "\n|                           Amount of Bullets: " + to_string(pewpew);
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add= "\n|                           Amount of Explosives: " + to_string(boomboom);
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
 	}
 
 	return out;
@@ -90,13 +104,13 @@ string Platoon::toString(int lineLen)
 
 void Platoon::changeStrategy()
 {
-	if (this->strategy->getPlatoonStrategy().compare("pew") == true && boomboom >= 10)
+	if (this->strategy->getPlatoonStrategy().compare("pew") == 0 && boomboom >= 10)
 	{
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
 	}
-	else if (this->strategy->getPlatoonStrategy().compare("boom") == true && pewpew >= 200)
+	else if (this->strategy->getPlatoonStrategy().compare("boom") == 0 && pewpew >= 200)
 	{
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
@@ -216,9 +230,9 @@ void Platoon::decreaseAmmo(){
 	if(this->strategy==nullptr){
 		this->strategy = new PewPewAttack(this);
 		this->pewpew--;
-	}else if(this->strategy->getPlatoonStrategy().compare("pew")==true){
+	}else if(this->strategy->getPlatoonStrategy().compare("pew")==0){
 		this->pewpew--;
-	}else if(this->strategy->getPlatoonStrategy().compare("boom")==true){
+	}else if(this->strategy->getPlatoonStrategy().compare("boom")==0){
 		this->boomboom--;
 	}
 }
