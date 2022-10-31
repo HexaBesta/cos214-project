@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include "../Alliances/Alliances.h"
 
 Unit::Unit() {
 	
@@ -16,26 +17,32 @@ Unit::Unit(int health, int moral, int damage, Country* country, bool fitState){
 	}
 }
 
-void Unit::requestState() {
-	if(this->unitState != NULL)
+void Unit::requestState()
+{
+	if (this->unitState != NULL)
 		this->unitState->request();
 }
 
-string Unit::getState(){
-	if(this->unitState != NULL){
+string Unit::getState()
+{
+	if (this->unitState != NULL)
+	{
 		return this->unitState->getState();
 	}
 	return "";
 }
 
-void Unit::setUnitState(UnitsState * unitState) {
-	if(unitState == nullptr){
+void Unit::setUnitState(UnitsState *unitState)
+{
+	if (unitState == nullptr)
+	{
 		this->unitState = this->unitState->changeUnitState();
-	}else{
+	}
+	else
+	{
 		delete this->unitState;
 		this->unitState = unitState;
 	}
-	
 }
 
 void Unit::changeStrategy(){
@@ -45,6 +52,10 @@ void Unit::changeStrategy(){
 int Unit::getDamage(){
 	return this->damage;
 }
+
+double Unit::getAverageMoral(){
+	return this->moral;
+};
 
 int Unit::getHealth(){
 	return this->health;
@@ -69,7 +80,8 @@ int Unit::getMoral(){
 
 bool Unit::takeDamage(int damage, bool checkStrat) {
 	this->health = this->health - damage;
-	if(this->health <= 0 ){
+	if (this->health <= 0)
+	{
 		this->setUnitState(new DeadState());
 		return true;
 	}
@@ -78,39 +90,51 @@ bool Unit::takeDamage(int damage, bool checkStrat) {
 
  Unit*  Unit::split(){return NULL;}
 
+void Unit::join(Unit *others) {}
 
-void  Unit::join(Unit* others){}
+void Unit::join(Unit *others) {}
 
-string Unit::getBranch(){
+string Unit::getBranch()
+{
 	return "NotAClue";
 }
 
-string Unit::getAlliance(){
+string Unit::getAlliance()
+{
 	return country->getAlliances()->getName();
 }
 
-void Unit::setCountry(Country* country){
+void Unit::setCountry(Country *country)
+{
 	this->country = country;
 }
 
-Country* Unit::getCountry(){
-    return this->country;
+Country *Unit::getCountry()
+{
+	return this->country;
 }
 
-string Unit::toString(int lineLen){
-	
-	return "Add unit print statement";
+string Unit::toString(int lineLen)
+{
+
+	cout << "Current State of " << getCountry() << ": "<< getState() << endl
+		 << "Current Health: " << getHealth() << endl
+		 << "Damage sustained: " << getDamage() << endl;
+
+	// return "Add unit print statement";
 }
 
-Unit* Unit::takeRandom(){
+Unit *Unit::takeRandom()
+{
 	return this;
 }
 
+int * Unit::getAmmo(){
+	return NULL;
+}
 
 Unit::~Unit(){
 	
 	delete this->unitState;
-    //delete this->country;
+	// delete this->country;
 }
-
-

@@ -1,10 +1,10 @@
 #ifndef AREA_H
 #define AREA_H
+#include "TheatreOfWar.h"
 #include "MapComponent.h"
-#include "../Platoon/Platoon.h"
+#include "../Unit/Unit.h"
 #include "Iterator.h"
 #include "Coordinate.h"
-#include "TheatreOfWar.h"
 #include "../TransportFactory/TransportFactory.h"
 #include "../TransportFactory/PTFactory.h"
 #include "../TransportFactory/ATFactory.h"

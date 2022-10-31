@@ -2,9 +2,11 @@
 #define BATTLE_H
 
 #include "../Platoon/Platoon.h"
-#include "../Map/Area.h"
 #include "../Player/Player.h"
 #include <string>
+
+class Area;
+class TheatreOfWar;
 
 using namespace std;
 
@@ -74,6 +76,29 @@ public:
 	 * @param area 
 	 */
 	Battle(TheatreOfWar * air, TheatreOfWar * land, Area * area, Player * player);
+
+	/**
+	 * @brief Get the Air  TheatreOfWar object
+	 * 
+	 * @return TheatreOfWar* of the air theatre
+	 */
+	TheatreOfWar * getAir();
+
+	/**
+	 * @brief Get the Land TheatreOfWar object
+	 * 
+	 * @return TheatreOfWar* of the land theatre
+	 */
+	TheatreOfWar * getLand();
+
+	/**
+	 * @brief Get the turn of the batlle
+	 * 
+	 * @return true - attackers turn
+	 * @return false - defenders turn
+	 */
+	bool getTurn();
+
 
 	/**
 	 * @brief Will print a summary of the current state of a battle

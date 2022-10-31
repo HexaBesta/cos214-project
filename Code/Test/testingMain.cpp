@@ -6,7 +6,7 @@ using namespace std;
 
 void testEuropeMap()
 {
-    Map *m = new Map("../Maps/europe.txt");
+    Map *m = new Map("../Maps/europe.txt" );
 
     m->printMap();
     cout << (m->getAreaByIndex(6)->toString()) << endl;

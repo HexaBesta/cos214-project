@@ -2,6 +2,7 @@
 #include "Area.h"
 #include "../Unit/Human.h"
 #include "../Branches/LandBranch.h"
+
 Area::Area(string name, int index, int colour, bool factories, bool troops):MapComponent()
 {
 	this->name = name;
@@ -75,14 +76,16 @@ void Area::marchIn(Unit *unit, Area *from)
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
-				map->createTransportRoute(this, from);
+				if(from != NULL)
+					map->createTransportRoute(this, from);
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
-				map->createTransportRoute(this, from);
+				if(from != NULL)
+					map->createTransportRoute(this, from);
 			}
 			else if (air->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -94,7 +97,8 @@ void Area::marchIn(Unit *unit, Area *from)
 			land->setDefender(unit);
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
-			map->createTransportRoute(this, from);
+			if(from != NULL)
+				map->createTransportRoute(this, from);
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -252,7 +256,7 @@ Battle *Area::returnBattle()
 
 	if (isBattle)
 	{
-		// return new Battle(air,land,this);
+		return new Battle(air,land,this, this->map->getPlayer());
 	}
 	return NULL;
 }
@@ -372,7 +376,7 @@ Country *Area::getCountry()
 bool Area::retreat(string side)
 {
 
-	vector<Area *> adjacent = this->map->listAdjacent(this, false);
+	vector<Area *> adjacent = this->map->listAdjacent(this, true);
 
 	int allianceColour = 0;
 	Unit *landUnit = NULL;

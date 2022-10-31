@@ -2,13 +2,14 @@
 #define COUNTVISITOR_H
 
 #include "Visitor.h"
-#include "Area.h"
-#include "TransportRoute.h"
+class TranportRoute;
+class Area;
 
 using namespace std;
 
 class CountVisitor : public Visitor
 {
+    public:
     /**
      * @brief this function will count how many areas are occupied by different alliances
      * 
@@ -22,6 +23,13 @@ class CountVisitor : public Visitor
      * @param transport will take in the transport route to iterate through the adjacent transport routes
      */
     virtual void visit(TransportRoute* transport);
+
+    /**
+     * @brief Returns the counts of the Areas and TransportRoutes
+     * 
+     * @return string 
+     */
+    string displayCount();
 
     private:
         int alliance2Count = 0;

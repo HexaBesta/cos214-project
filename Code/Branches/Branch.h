@@ -21,6 +21,7 @@ class Branch : public Unit {
 		 */
 		virtual string toString() = 0;
 
+
 		string toString(int);
 
 		/**
@@ -36,6 +37,13 @@ class Branch : public Unit {
 		 * 
 		 */
 		virtual void requestState();
+
+		/**
+		 * @brief Get the strategy of the unit
+		 * 
+		 * @return string - return pew or boom
+		 */
+		virtual string getStrategyType();
 
 		/**
 		 * @brief Calls the unit's setUnitState
@@ -59,6 +67,13 @@ class Branch : public Unit {
 		 * @return string 
 		 */
 		virtual string getBranch();
+
+	/**
+	 * @brief Calls the units getAmmo and returns result
+	 * 
+	 * @return int* ammo - [0] = pewPew, [1] = boomBoom
+	 */
+	virtual int * getAmmo();
 
 		/**
 		 * @brief Destroy the Branch object

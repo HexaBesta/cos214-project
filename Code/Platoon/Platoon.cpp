@@ -100,6 +100,8 @@ void Platoon::changeStrategy()
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
+	}else{
+		cout<<"Cannot change strategy, insefficent ammo. Recommend calling for ammo"<<endl;
 	}
 }
 
@@ -149,6 +151,10 @@ int Platoon::getMoral()
 	return this->moral;
 }
 
+double Platoon::getAverageMoral(){
+	return this->getMoral()/(this->humans.size()*1.0);
+}
+
 void Platoon::setAccumlateHealth()
 {
 	int health = 0;
@@ -172,9 +178,26 @@ int Platoon::getHealth()
 	return this->health;
 }
 
+string Platoon::getStrategyType(){
+	return this->strategy->getPlatoonStrategy();
+}
+
 int Platoon::getSize(){
 	int size = humans.size() + vehicles.size();
 	return size;
+}
+
+int Platoon::getDamage(){
+	int damage = 0;
+	for (auto it : this->humans)
+	{
+		damage += it->getDamage();
+	}
+	for (auto it : this->vehicles)
+	{
+		damage += it->getDamage();
+	}
+	return damage;
 }
 
 int* Platoon::getAmmo(){
