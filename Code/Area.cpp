@@ -21,6 +21,9 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 	}
 
 
+	if(colour != 94){
+		country = new Country(name, colour, NULL);
+	}
 	country = NULL;
 
 
