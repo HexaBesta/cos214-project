@@ -7,6 +7,30 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, int pewpew, int 
 	this->pewpew = pewpew;
 	this->boomboom = boomboom;
 	this->strategy = new PewPewAttack(this);
+	sprite=new sf::Sprite();
+	if(!this->texture.loadFromFile("../dalandTilesets/images/GroupIdleForward_1.png")){
+		cout<<"Nope"<<endl;
+	}
+	sprite->setPosition(sf::Vector2f(0,0));
+	texture.setSmooth(true);
+	sprite->setTexture(texture);
+    sprite->setTextureRect(sf::IntRect(0, 0, 26, 28));
+    sprite->scale(1.2, 1.2);
+}
+
+void Platoon::setAirTexture(){
+	if(!this->texture.loadFromFile("../dalandTilesets/images/PlaneIdleForward_1.png")){
+		cout<<"Nope"<<endl;
+	}
+	sprite->setTextureRect(sf::IntRect(0, 0, 256, 256));
+	sprite->scale(0.15, 0.15);
+}
+
+void Platoon::setLandTexture(){
+	if(!this->texture.loadFromFile("../dalandTilesets/images/GroupIdleForward_1.png")){
+		cout<<"Nope"<<endl;
+	}
+	sprite->setTextureRect(sf::IntRect(0, 0, 26, 28));
 	this->country = NULL;
 }
 
@@ -45,13 +69,13 @@ string Platoon::toString(int lineLen)
 
 	if (health <= 0)
 	{
-		add+= "\n|                        Your platoon is dead";
+		add+= "|                        Your platoon is dead";
 		while(add.length()<lineLen){
 			add+= " ";
 		}
 		add+= "|";
 		out+=add;
-		this->setUnitState(new DeadState());
+		//this->setUnitState(new DeadState());
 	}
 	else
 	{	
@@ -363,6 +387,14 @@ void Platoon::attack(Unit *other)
 	this->strategy->attack(other);
 }
 
+sf::Sprite* Platoon::getSprite(){
+	return this->sprite;
+}
+
+void Platoon::setSpriteLocation(int x, int y){
+	this->sprite->setPosition(x*0.5* 64,y*0.5* 64);
+}
+
 Platoon::~Platoon()
 {
 	while (!humans.empty())
@@ -377,5 +409,14 @@ Platoon::~Platoon()
 		vehicles.pop_back();
 	}
 
-	delete strategy;
+	if (strategy!=NULL)
+	{
+		delete strategy;
+	}
+	if(bob!=NULL)
+	{
+		delete bob;
+	}	
+	delete sprite;
+	
 }

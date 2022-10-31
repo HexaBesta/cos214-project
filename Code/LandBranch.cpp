@@ -1,3 +1,4 @@
+
 #include "LandBranch.h"
 
 LandBranch::LandBranch(Unit* unit):Branch(unit) {
@@ -20,6 +21,11 @@ Unit *LandBranch::split(){
 	}
 }
 
+void LandBranch::setTexture(){
+	unit->setLandTexture();
+}
+
  LandBranch::~LandBranch(){
 	
+
  }

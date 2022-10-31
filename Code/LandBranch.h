@@ -1,3 +1,4 @@
+
 #ifndef LANDBRANCH_H
 #define LANDBRANCH_H
 
@@ -37,6 +38,13 @@ public:
 	 * @return Unit*
 	 */
 	virtual Unit * split();
+  
+  
+	/**
+		 * @brief Set the Texture of this unit to the land texture
+		 * 
+		 */
+		virtual void setTexture();
 
 	/**
 	 * @brief Destroy the Land Branch object

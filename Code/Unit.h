@@ -1,9 +1,11 @@
+
 #ifndef UNIT_H
 #define UNIT_H
 #include <string>
 #include <iostream>
 #include "CivilianState.h"
 #include "Country.h"
+#include <SFML/Graphics.hpp>
 class Platoon;
 
 class Transport;
@@ -200,6 +202,27 @@ public:
 	 * @param transport 
 	 */
 	virtual void replenish(Transport ** transport);
+  
+     /**		
+	     * @brief Get the Sprite of this unit		
+	     *		
+	     * @return sf::Sprite		
+	     */		
+	    virtual sf::Sprite* getSprite();		
+			
+	    /**		
+	     * @brief Set the Sprite Location of the unit's sprite		
+	     *		
+	     * @param x The X coordinate of the sprite (unscaled)		
+	     * @param y The Y coordinate of the sprite (unscaled)		
+	     */		
+	    void setSpriteLocation(int x, int y){};		
+	    		
+	    virtual void setTexture();		
+			
+	    virtual void setAirTexture();		
+			
+	    virtual void setLandTexture();
 
 	/**
 	 * @brief Destroy the Unit object
@@ -209,3 +232,4 @@ public:
 };
 
 #endif
+

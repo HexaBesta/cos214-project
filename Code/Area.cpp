@@ -1,9 +1,8 @@
-
 #include "Area.h"
 #include "Human.h"
 #include "LandBranch.h"
-
-Area::Area(string name, int index, int colour, bool factories, bool troops):MapComponent()
+#include "AirBranch.h"
+Area::Area(string name, int index, int colour, bool factories, bool troops) : MapComponent()
 {
 	this->name = name;
 	this->index = index;
@@ -28,12 +27,22 @@ Area::Area(string name, int index, int colour, bool factories, bool troops):MapC
 	if (troops)
 	{
 		vector<Unit *> humans = {};
-		// humans.push_back(new Human());
+		humans.push_back(new Human(10, 100, 5, country, true));
 
 		vector<Unit *> vehicles = {};
-		Unit *platoon = new LandBranch(new Platoon(humans, vehicles, 2, 2));
+		Unit *platoon = new AirBranch(new Platoon(humans, vehicles, 2, 2));
 		platoon->setCountry(country);
-		land->setDefender(platoon);
+		platoon->setTexture();
+		air->setDefender(platoon);
+
+		vector<Unit *> humans2 = {};
+		humans2.push_back(new Human(10, 100, 5, country, true));
+
+		vector<Unit *> vehicles2 = {};
+		Unit *platoon2 = new LandBranch(new Platoon(humans2, vehicles2, 2, 2));
+		platoon2->setCountry(country);
+		platoon2->setTexture();
+		land->setDefender(platoon2);
 	}
 }
 
@@ -75,16 +84,20 @@ void Area::marchIn(Unit *unit, Area *from)
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
+				map->setAreaBorders();
 				if(from != NULL)
 					map->createTransportRoute(this, from);
+				
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
+				map->setAreaBorders();
 				if(from != NULL)
 					map->createTransportRoute(this, from);
+				
 			}
 			else if (air->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -96,8 +109,10 @@ void Area::marchIn(Unit *unit, Area *from)
 			land->setDefender(unit);
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
+			map->setAreaBorders();
 			if(from != NULL)
 				map->createTransportRoute(this, from);
+			
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -158,43 +173,57 @@ bool Area::requestReinforcements(string type)
 
 	int allianceColor = 0;
 
-	if(type.compare("attack") == 0){
-		if(this->land->getAttacker() != NULL){
+	if (type.compare("attack") == 0)
+	{
+		if (this->land->getAttacker() != NULL)
+		{
 			allianceColor = this->land->getAttacker()->getCountry()->getAlliances()->getColour();
 		}
-		else if(this->air->getAttacker() != NULL){
+		else if (this->air->getAttacker() != NULL)
+		{
 			allianceColor = this->air->getAttacker()->getCountry()->getAlliances()->getColour();
 		}
-		else{
+		else
+		{
 			throw "No active attack side found to send reinforcements to";
 		}
 	}
-	else if(type.compare("defense") == 0){
-		if(this->land->getDefender() != NULL){
+	else if (type.compare("defense") == 0)
+	{
+		if (this->land->getDefender() != NULL)
+		{
 			allianceColor = this->land->getDefender()->getCountry()->getAlliances()->getColour();
 		}
-		else if(this->air->getDefender() != NULL){
+		else if (this->air->getDefender() != NULL)
+		{
 			allianceColor = this->air->getDefender()->getCountry()->getAlliances()->getColour();
 		}
-		else{
+		else
+		{
 			throw "No active defense side found to send reinforcements to";
 		}
 	}
-	else{
+	else
+	{
 		throw "Invalid paramater passed to requestReinforcements";
 	}
 
-	if(allianceColor == 0){
+	if (allianceColor == 0)
+	{
 		return false;
 	}
 
-	for(Area * area: adjacent){
-		Unit * unit = area->sendReinforcements(allianceColor);
-		if(unit != NULL){
-			if(type.compare("attack") == 0){
+	for (Area *area : adjacent)
+	{
+		Unit *unit = area->sendReinforcements(allianceColor);
+		if (unit != NULL)
+		{
+			if (type.compare("attack") == 0)
+			{
 				this->air->setAttacker(unit);
 			}
-			else{
+			else
+			{
 				this->air->setDefender(unit);
 			}
 			return true;
@@ -202,7 +231,6 @@ bool Area::requestReinforcements(string type)
 	}
 
 	return false;
-
 }
 
 void Area::addCell(string coord)
@@ -222,7 +250,7 @@ void Area::addCell(string coord)
 		pos++;
 	}
 
-	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr)));
+	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr), colour, this,map->getGridXSize(),map->getGridYSize()));
 }
 
 vector<Coordinate *> Area::getAreaCoordinates()
@@ -304,7 +332,6 @@ string Area::toString()
 	{
 		owner = country->getName();
 	}
-
 	next = "           Name:" + name + "  ID:" + to_string(index) + "  Colour:" + to_string(colour) + "  Owner:" + owner;
 	while (next.length() < lineChars - 1)
 	{
@@ -326,15 +353,13 @@ string Area::toString()
 	}
 	next += "|\n";
 	out += next;
-
-
-	//BreakL Line
+	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
 	out += "|\n";
 
-	next = "|     Air:     " ;
+	next = "|     Air:     ";
 	while (next.length() < lineChars)
 	{
 		next += " ";
@@ -342,30 +367,30 @@ string Area::toString()
 	next += "|\n";
 	out += next;
 
-	next=air->toString(lineChars);
-	out+=next;
-
-	//BreakL Line
+	next = air->toString(lineChars);
+	out += next;
+	
+	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
 	out += "|\n";
 
-	next = "|     Land:     " ;
+	next = "|     Land:     ";
 	while (next.length() < lineChars)
 	{
 		next += " ";
 	}
 	next += "|\n";
 	out += next;
-
-	next=land->toString(lineChars);
-	out+=next;
-
+	
+	next = land->toString(lineChars);
+	out += next;
+	
 	for (int i = 0; i < lineChars + 1; i++)
 		out += "-";
 	out += "\n";
-
+	
 	return out;
 }
 
@@ -497,17 +522,151 @@ Unit *Area::sendReinforcements(int color)
 			}else{
 				return NULL;
 			}
-		}else{
+		}
+		else
+		{
 			return NULL;
 		}
-	}else{
+	}
+	else
+	{
 		return NULL;
 	}
 }
 
-void Area::accept(Visitor* visitor){
+void Area::accept(Visitor *visitor)
+{
 	visitor->visit(this);
 }
+
+void Area::setCoordinateBorders(int x, int y, bool left, bool leftCon, bool right, bool rightCon, bool top, bool topCon, bool bottom, bool bottomCon)
+{
+	for (int i = 0; i < areasCoordinates.size(); i++)
+	{
+		if (areasCoordinates.at(i)->x == x && areasCoordinates.at(i)->y == y)
+		{
+			
+			string borders = "";
+			if (left)
+			{
+				borders += "Left";
+			}
+			if (leftCon)
+			{
+				borders += "C";
+			}
+
+			if (right)
+			{
+				borders += "Right";
+			}
+			if (rightCon)
+			{
+				borders += "C";
+			}
+			if (top)
+			{
+				borders += "Top";
+			}
+			if (topCon)
+			{
+				borders += "C";
+			}
+			if (bottom)
+			{
+				borders += "Bottom";
+			}
+			if (bottomCon)
+			{
+				borders += "C";
+			}
+			areasCoordinates.at(i)->setTextureBorders(borders, colour, false);
+			return;
+		}
+	}
+}
+
+void Area::draw(sf::RenderWindow *r)
+{
+
+	for (size_t i = 0; i < areasCoordinates.size(); i++)
+	{
+		r->draw((areasCoordinates.at(i)->sprite));
+	}
+	if (land->getDefender() != NULL)
+	{
+		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640/map->getGridXSize()), getMiddleCooridnate()->y * (640/map->getGridYSize()));
+		r->draw(*(land->getDefender()->getSprite()));
+	}
+	if (air->getDefender() != NULL)
+	{
+		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640/map->getGridXSize()), getMiddleCooridnate()->y * (640/map->getGridYSize())-32);
+		r->draw(*(air->getDefender()->getSprite()));
+	}
+}
+
+void Area::updateLandSpriteAnimation(sf::Clock *c)
+{
+	if (land->getDefender() == NULL)
+	{
+		return;
+	}
+
+	if (c->getElapsedTime().asMilliseconds() >= 90)
+	{
+		sf::IntRect re = land->getDefender()->getSprite()->getTextureRect();
+		if (re.left == 78)
+		{
+			re.left = 0;
+		}
+		else
+		{
+			re.left += 26;
+		}
+		land->getDefender()->getSprite()->setTextureRect(re);
+	}
+}
+
+void Area::updateAirSpriteAnimation(sf::Clock *c)
+{
+	if (air->getDefender() == NULL)
+	{
+		return;
+	}
+
+	if (c->getElapsedTime().asMilliseconds() >= 90)
+	{
+		sf::IntRect re = air->getDefender()->getSprite()->getTextureRect();
+		if (re.left == 512)
+		{
+			re.left = 0;
+		}
+		else
+		{
+			re.left += 256;
+		}
+		air->getDefender()->getSprite()->setTextureRect(re);
+	}
+}
+
+bool Area::wasClicked(sf::Vector2f click)
+{
+
+	for (size_t i = 0; i < areasCoordinates.size(); i++)
+	{
+		if (areasCoordinates.at(i)->sprite.getGlobalBounds().contains(click))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+Coordinate *Area::getMiddleCooridnate()
+{
+	return areasCoordinates.at((areasCoordinates.size() / 2));
+}
+
 
 bool Area::setCountry(Country * country){
 	if(this->country == NULL){
@@ -573,7 +732,6 @@ Area::~Area()
 			allFactories[i] = NULL;
 		}
 	}
-
 	if (air != NULL)
 	{
 		delete air;

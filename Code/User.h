@@ -1,6 +1,6 @@
 #ifndef USER_H
 #define USER_H
-
+#include <SFML/Graphics.hpp>
 #include "Player.h"
 #include "CPU.h"
 class User : public Player

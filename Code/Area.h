@@ -2,9 +2,10 @@
 #define AREA_H
 #include "TheatreOfWar.h"
 #include "MapComponent.h"
-#include "Unit.h"
+#include "Platoon.h"
 #include "Iterator.h"
 #include "Coordinate.h"
+#include "TheatreOfWar.h"
 #include "TransportFactory.h"
 #include "PTFactory.h"
 #include "ATFactory.h"
@@ -12,6 +13,7 @@
 #include "Visitor.h"
 #include "Country.h"
 #include <string>
+#include <SFML/Graphics.hpp>
 
 class Battle;
 
@@ -23,10 +25,18 @@ private:
 	string name;
 	int index;
 	int colour;
-	TheatreOfWar *land;
-	TheatreOfWar *air;
-	TransportFactory *allFactories[3];
-	Country *country;
+	TheatreOfWar* land=NULL;
+	TheatreOfWar* air=NULL;
+	TransportFactory* allFactories[3];
+	Country* country=NULL;
+
+	/**
+	 * @brief Get the cooridnate in the middle of the areas list of coordinates
+	 * 
+	 * @return Coordinate* 
+	 */
+	Coordinate* getMiddleCooridnate();
+	
 
 public:
 	/**
@@ -240,6 +250,49 @@ public:
 	 *
 	 */
 	void setColour();
+
+	/**
+	 * @brief Sets the correct texture for each coordite in the area
+	 * 
+	 * @param x 
+	 * @param y 
+	 * @param left 
+	 * @param right 
+	 * @param top 
+	 * @param bottom 
+	 */
+	void setCoordinateBorders(int x, int y, bool left,bool leftCon, bool right, bool rightCon, bool top, bool topCon, bool bottom,bool bottomCon);
+
+	/**
+	 * @brief draws the coordinates of the area on the render window
+	 * 
+	 * @param r 
+	 */
+	void draw(sf::RenderWindow* r);
+
+	/**
+	 * @brief returns true if the mouse was in the area when it was clicked, false if not
+	 * 
+	 * @return true 
+	 * @return false 
+	 */
+	bool wasClicked(sf::Vector2f click);
+
+	/**
+	 * @brief Cycles the sprite animation every 100 ms
+	 * 
+	 * @param c a clock timeing the sprite animation
+	 */
+	void updateLandSpriteAnimation(sf::Clock* c);
+
+	/**
+	 * @brief Cycles the sprite animation every 100 ms
+	 * 
+	 * @param c a clock timeing the sprite animation
+	 */
+	void updateAirSpriteAnimation(sf::Clock* c);
+
+
 
 	/**
 	 * @brief Destroy the Area object

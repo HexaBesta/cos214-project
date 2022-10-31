@@ -1,8 +1,14 @@
 all: clear compile run clean
 
+gui: clear guiComp run clean
+
+guiComp:
+	g++ -c *.cpp
+	g++ -o main *.o -LC:/dev/lib -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network
+
 compile:
-	g++ -g -c *.cpp
-	g++ -o main *.o 
+	g++ -c *.cpp
+	g++ -o main *.o -LC:/dev/lib -lsfml-system -lsfml-window -lsfml-graphics
 
 clean:
 	rm *.o
@@ -14,7 +20,7 @@ run:
 	./main
 
 mem: clear compile clean
-	 valgrind --leak-check=yes ./main
+	 valgrind --leak-check=full --show-leak-kinds=all ./main
 
 debug:
 	g++ -g */*.cpp
