@@ -2,6 +2,6 @@
 
 People::People(int supply):Transport(supply){};
 
-int People::replenishHealth(){
+int People::replenish(bool doublePre = false){
     return this->getAmount();
 }

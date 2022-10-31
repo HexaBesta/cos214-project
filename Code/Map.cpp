@@ -696,6 +696,7 @@ void Map::resolveBattles()
 	{
 		battle->battleLoop();
 	}
+	
 }
 
 bool Map::addPlatoonToMap(Unit *platoon)

@@ -26,10 +26,10 @@ GodOfWar::GodOfWar(string setupFile)
     }
     else
     {
-        this->player= new User();
+        this->player = new User();
     }
 
-    cout<<"Initialising map"<<endl;
+    cout << "Initialising map" << endl;
 
     ifstream inputFile(setupFile);
     vector<string> lines;
@@ -99,8 +99,8 @@ void GodOfWar::takeTurn(int actions)
         /*
         Inspect
         */
-       this->player->inspect(this->map);
-        
+        this->player->inspect(this->map);
+
         /*
         Choose a country
         */
@@ -198,7 +198,7 @@ void GodOfWar::takeTurn(int actions)
         /*
         March to adjacent area
         */
-        else if(action == 2)
+        else if (action == 2)
         {
             /*
             List of adjacent areas to march to
@@ -221,7 +221,9 @@ void GodOfWar::takeTurn(int actions)
 
             cout << "Marching from " << areas.at(areaIndex)->getName() << " to " << adjacentAreas.at(adjAreaIndex)->getName() << endl;
             areas.at(areaIndex)->marchOut(adjacentAreas.at(adjAreaIndex));
-        }else{
+        }
+        else
+        {
             actions = 0;
         }
         actions--;
@@ -234,14 +236,31 @@ void GodOfWar::warLoop()
     do
     {
         round();
+        if (this->map->checkIfEnd() != 94)
+        {
+            resp = 0;
+        }else{
         cout << "Continue:" << endl
              << "1. Yes " << endl;
         cin >> resp;
 
         // clear buffer
         cin.ignore(30, '\n');
-    }while(resp == 1);
+        }
+    } while (resp == 1);
 
+    int colour = this->map->checkIfEnd();
+    cout<<"---------------------------------------------------------------"<<endl;
+    cout<<"---------------------------------------------------------------"<<endl;
+    if(colour == 94){
+        cout<<"WAR ENDS WITH PEACE TREATY"<<endl;
+    }else{
+        if(colour == this->groupOne->getColour()){
+            cout<<"WAR ENDS WITH "<<this->groupOne->getName()<<" AS THE GLOBAL SUPERPOWER"<<endl;
+        }else{
+            cout<<"WAR ENDS WITH "<<this->groupTwo->getName()<<" AS THE GLOBAL SUPERPOWER"<<endl;
+        }
+    }
 }
 
 void GodOfWar::round()
@@ -260,6 +279,11 @@ void GodOfWar::round()
     this->takeTurn(3);
 
     this->map->resolveBattles();
+
+    if (this->map->checkIfEnd() != 94)
+    {
+        return;
+    }
 
     /*
         Second alliance turn
@@ -291,13 +315,14 @@ void GodOfWar::checkTogglePlayer()
 
 void GodOfWar::initialiseSides()
 {
-    cout<<"--------------------------------------------------------------"<<endl;
-    cout<<"INITIALISING SIDES"<<endl;
-    cout<<"--------------------------------------------------------------"<<endl;
+    cout << "--------------------------------------------------------------" << endl;
+    cout << "INITIALISING SIDES" << endl;
+    cout << "--------------------------------------------------------------" << endl;
     this->player->initialise(this->groupOne, this->groupTwo, this->map);
 }
 
-void GodOfWar::printMap(){
+void GodOfWar::printMap()
+{
     this->map->printMap();
 }
 

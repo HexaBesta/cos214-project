@@ -28,7 +28,8 @@ Country::~Country()
 
 	while (!military.empty())
 	{
-		delete military.back();
+		if(military.back() != NULL)
+			delete military.back();
 		military.pop_back();
 	}
 

@@ -9,7 +9,7 @@ void BoomBoomAttack::attack(Unit *platoonAttacked)
 {
     if (this->thePlatoon->getAmmo()[1] > 0)
     {
-        int damage = this->thePlatoon->getDamage() / 2;
+        int damage = this->thePlatoon->getDamage()*1.5 ;
         platoonAttacked->takeDamage(damage, false);
         this->thePlatoon->decreaseAmmo();
     }

@@ -221,6 +221,12 @@ public:
 	Unit *sendReinforcements(int color);
 
 	/**
+	 * @brief Replenish all units 
+	 * 
+	 */
+	void replenish();
+
+	/**
 	 * @brief Set the Country object if the country is null
 	 *
 	 * @param country

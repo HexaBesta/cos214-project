@@ -534,6 +534,31 @@ void Area::initialiseAllFactories(){
 	allFactories[2] = new GTFactory();
 }
 
+void Area::replenish(){
+	Transport * resources[3];
+
+	if(allFactories[0] == NULL){
+		resources[0] == NULL;
+	}else{
+		resources[0] == allFactories[0]->makeTypeTransport();
+	}
+
+	if(allFactories[1] == NULL){
+		resources[1] == NULL;
+	}else{
+		resources[1] == allFactories[1]->makeTypeTransport();
+	}
+
+	if(allFactories[2] == NULL){
+		resources[2] == NULL;
+	}else{
+		resources[2] == allFactories[2]->makeTypeTransport();
+	}
+
+	this->air->replenish(resources);
+	this->land->replenish(resources);
+}
+
 Area::~Area()
 {
 	while (!areasCoordinates.empty())

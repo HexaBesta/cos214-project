@@ -21,22 +21,29 @@ string Platoon::toString(int lineLen)
 	string out="";
 	int health = 0;
 	int damage = 0;
+	int deadUnits = 0;
 	for (auto it : this->humans)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
+		if(it->getState().compare("Dead") == 0){
+			deadUnits++;
+		}
 	}
 	for (auto it : this->vehicles)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
+		if(it->getState().compare("Dead") == 0){
+			deadUnits++;
+		}
 	}
 
 	this->health = health;
 	this->damage = damage;
 	string add="";
 
-	if (health == 0)
+	if (health <= 0)
 	{
 		add+= "\n|                        Your platoon is dead";
 		while(add.length()<lineLen){
@@ -84,6 +91,13 @@ string Platoon::toString(int lineLen)
 		add+= "|";
 		out+=add;
 
+		add= "\n|                           Amount of Dead Units: " + to_string(deadUnits);
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
 		add= "\n|                           Amount of Bullets: " + to_string(pewpew);
 		while(add.length()<lineLen+1){
 			add+= " ";
@@ -120,30 +134,45 @@ void Platoon::changeStrategy()
 	}
 }
 
-void Platoon::retrieveAmmo(Ammunition *ammo)
+void Platoon::replenish(Transport ** transport){
+	if(transport[0] != NULL){
+		this->retrieveHealth(transport[0]);
+	}
+
+	if(transport[1] != NULL){
+		this->retrieveAmmo(transport[1]);
+	}
+
+	if(transport[2] != NULL){
+		this->retrieveGoods(transport[2]);
+	}
+
+}
+
+void Platoon::retrieveAmmo(Transport *ammo)
 {
 	while (!ammo->isEmpty())
 	{
-		this->boomboom += ammo->replenishBoomBoom();
-		this->pewpew += ammo->replenishPewPew();
+		this->boomboom += ammo->replenish();
+		this->pewpew += ammo->replenish(true);
 	}
 }
 
-void Platoon::retrieveGoods(Goods *good)
+void Platoon::retrieveGoods(Transport *good)
 {
 	while (!good->isEmpty())
 	{
 		int index = rand()%this->humans.size();
-		this->humans.at(index)->setMoral(good->replenishMoral());
+		this->humans.at(index)->setMoral(good->replenish());
 	}
 }
 
-void Platoon::retrieveMedic(People *medic)
+void Platoon::retrieveHealth(Transport *medic)
 {
 	while (!medic->isEmpty())
 	{
 		int index = rand()%this->humans.size();
-		this->humans.at(index)->setHealth(medic->replenishHealth());
+		this->humans.at(index)->setHealth(medic->replenish());
 	}
 	this->setAccumlateHealth();
 }
@@ -279,6 +308,10 @@ bool Platoon::takeDamage(int damage, bool checkPew)
 		if (checkPew)
 		{
 			this->takeRandom()->takeDamage(damage);
+			if(this->getHealth()<=0){
+				DeadState* deadState = new DeadState();
+				this->setUnitState(deadState);
+			}
 		}
 		else
 		{

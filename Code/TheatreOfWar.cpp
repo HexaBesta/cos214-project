@@ -1,4 +1,5 @@
 #include "TheatreOfWar.h"
+#include "Transport.h"
 
 TheatreOfWar::TheatreOfWar(string type)
 {
@@ -167,11 +168,13 @@ Unit *TheatreOfWar::sendReinforcements()
     return NULL;
 }
 
+void TheatreOfWar::replenish(Transport** good){
+    if(this->defender!= NULL){
+        this->replenish(good);
+    }
+}
+
 TheatreOfWar::~TheatreOfWar()
 {
-    if (attacker != NULL)
-        delete attacker;
-
-    if (defender != NULL)
-        delete defender;
+    
 }
