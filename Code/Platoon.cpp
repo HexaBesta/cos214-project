@@ -288,6 +288,8 @@ bool Platoon::takeDamage(int damage, bool checkPew)
 			for(int x = 0; x<rand1; x++){
 				this->takeRandom()->takeDamage(boomDamage);
 				if(this->getHealth()<=0){
+					DeadState* deadState = new DeadState();
+					this->setUnitState(deadState);
 					break;
 				}
 			}
