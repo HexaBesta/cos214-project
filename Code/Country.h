@@ -94,6 +94,13 @@ class Country {
 		 */
 		void setPlayer(Player* player);
 
+		/**
+		 * @brief Get the Player object
+		 * 
+		 * @return Player* 
+		 */
+		Player * getPlayer();
+
 };
 
 #endif

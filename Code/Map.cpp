@@ -3,6 +3,7 @@
 #include "Area.h"
 #include "TransportRoute.h"
 #include "Map.h"
+#include "AreaVisitor.h"
 
 Map::Map(string setupFile, Player *player)
 {

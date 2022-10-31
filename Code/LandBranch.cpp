@@ -11,6 +11,15 @@ string LandBranch::getBranch(){
 	return "LAND BRANCH";
 }
 
+Unit *LandBranch::split(){
+	if(this->unit != NULL){
+		return new LandBranch(this->unit->split());
+	}
+	else{
+		return NULL;
+	}
+}
+
  LandBranch::~LandBranch(){
 	
  }

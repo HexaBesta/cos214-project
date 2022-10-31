@@ -146,6 +146,12 @@ public:
 	virtual string getBranch();
 
 	/**
+	 * @brief Stubbed method used by Branch
+	 * @return this
+	 */
+	virtual Unit * getUnit();
+
+	/**
 	 * @brief Get the Alliance that the unit beloings to.
 	 * @attention Units  needs to be able to return some indication of which allaince they belong to
 	 * @return string

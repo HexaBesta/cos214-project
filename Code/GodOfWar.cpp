@@ -221,6 +221,8 @@ void GodOfWar::takeTurn(int actions)
 
             cout << "Marching from " << areas.at(areaIndex)->getName() << " to " << adjacentAreas.at(adjAreaIndex)->getName() << endl;
             areas.at(areaIndex)->marchOut(adjacentAreas.at(adjAreaIndex));
+        }else if( action == 3){
+            countries.at(countryIndex)->recruitPlatoon(this->map);
         }
         else
         {
