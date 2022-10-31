@@ -16,18 +16,11 @@ class Ammunition : public Transport
      */
     Ammunition(int supply = 150);
      /**
-     * @brief Returns an integer value of how much PewPew ammo returned
+     * @brief Returns an integer value of how much to return
      *
-     * @return int amount of PewPew ammo
+     * @return int amount of ammo
      */
-    int replenishPewPew();
-
-     /**
-     * @brief Returns an integer value of how much BoomBoom ammo returned
-     *
-     * @return int amount of BoomBoom ammo
-     */
-    int replenishBoomBoom();
+    virtual int replenish(bool doublePew = false);
 };
 
 #endif

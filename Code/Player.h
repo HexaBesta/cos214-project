@@ -119,6 +119,12 @@ class Player
          */
         virtual void inspect(Map * map);
 
+        /**
+         * @brief Destroy the Player object
+         * 
+         */
+        virtual ~Player(){};
+
     protected:
 
         /**

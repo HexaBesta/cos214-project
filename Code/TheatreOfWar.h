@@ -3,6 +3,7 @@
 
 #include "Unit.h"
 
+
 class TheatreOfWar
 {
 private:
@@ -77,6 +78,14 @@ public:
      * @return string 
      */
     string toString(int& lineLen);
+
+    /**
+	 * @brief Replenish defending platoons if not null
+	 * 
+	 * @param good 
+	 */
+	void replenish(Transport** good);
+
 
     /**
      * @brief Destroy the Theatre Of War object by detroying its attacker and defender

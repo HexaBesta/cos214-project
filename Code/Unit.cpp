@@ -1,6 +1,8 @@
 #include "Unit.h"
 #include "Alliances.h"
 
+class Transport;
+
 Unit::Unit()
 {
 	this->unitState = new FitState();
@@ -150,6 +152,8 @@ int *Unit::getAmmo()
 {
 	return NULL;
 }
+
+void Unit::replenish(Transport ** transport){}
 
 Unit::~Unit()
 {

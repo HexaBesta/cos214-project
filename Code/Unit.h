@@ -6,6 +6,8 @@
 #include "Country.h"
 class Platoon;
 
+class Transport;
+
 using namespace std;
 
 class Unit
@@ -185,6 +187,13 @@ public:
 	 * @return int*
 	 */
 	virtual int *getAmmo();
+
+	/**
+	 * @brief Stupped function used in platoon to replenish units
+	 * 
+	 * @param transport 
+	 */
+	virtual void replenish(Transport ** transport);
 
 	/**
 	 * @brief Destroy the Unit object

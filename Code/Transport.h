@@ -39,6 +39,8 @@ public:
 	 * @return false otherwise
 	 */
 	virtual bool isEmpty();
+
+	virtual int replenish(bool doubleRep = false) = 0;
 };
 
 #endif

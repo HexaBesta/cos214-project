@@ -94,14 +94,14 @@ public:
 	 * 
 	 * @param good 
 	 */
-	void retrieveGoods(Goods* good);
+	void retrieveGoods(Transport * good);
 
 	/**
 	 * @brief This will allow for a platoon to receive ammo from the factory created in the area
 	 * 
 	 * @param good 
 	 */
-	void retrieveAmmo(Ammunition* ammo);
+	void retrieveAmmo(Transport * ammo);
 
 	/**
 	 * @brief This will allow for a platoon to receive medicial help from the factory created in the area
@@ -109,7 +109,14 @@ public:
 	 * 
 	 * @param good 
 	 */
-	void retrieveMedic(People* medic);
+	void retrieveHealth(Transport* medic);
+
+	/**
+	 * @brief Calls all replenish functions
+	 * 
+	 * @param transport 
+	 */
+	virtual void replenish(Transport ** transport);
 
 	/**
 	 * @brief Get the moral of the platoon

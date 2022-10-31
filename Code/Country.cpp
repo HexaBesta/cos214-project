@@ -26,12 +26,12 @@ Country::~Country()
 		countryState = NULL;
 	}
 
-	for(auto unit: this->military){
-		delete unit;
-		unit = NULL;
+	while (!military.empty())
+	{
+		if(military.back() != NULL)
+			delete military.back();
+		military.pop_back();
 	}
-
-	this->military.clear();
 
 	cout << "Deleted country " << this->name << endl;
 }
