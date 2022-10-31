@@ -1,0 +1,95 @@
+\hypertarget{classBoomBoomAttack}{}\doxysection{Boom\+Boom\+Attack Class Reference}
+\label{classBoomBoomAttack}\index{BoomBoomAttack@{BoomBoomAttack}}
+
+
+Inheritance diagram for Boom\+Boom\+Attack\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{classBoomBoomAttack__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Boom\+Boom\+Attack\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classBoomBoomAttack__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBoomBoomAttack_a9ae35a0dbb78dd8ccc15bd89f709fc2a}\label{classBoomBoomAttack_a9ae35a0dbb78dd8ccc15bd89f709fc2a}} 
+{\bfseries Boom\+Boom\+Attack} (\mbox{\hyperlink{classPlatoon}{Platoon}} $\ast$this\+Platoon)
+\item 
+virtual void \mbox{\hyperlink{classBoomBoomAttack_a76afb1d5ecf9414ac88885b9e5a1bf07}{attack}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$plankton)
+\begin{DoxyCompactList}\small\item\em This is a pure virtual method which will attack a platoon from a different alliance baised on the current strategy of the chosen platoon. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPlatoonStrategy}{Platoon\+Strategy}} $\ast$ \mbox{\hyperlink{classBoomBoomAttack_a0a63c70ebd2b38b12927659ea53af774}{toggle\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em This method allows for a platoon to change its current strategy to the other strategy available. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classBoomBoomAttack_a1913234ab198fb2ab3de01ff126a36cf}{get\+Platoon\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classPlatoon}{Platoon}} Strategy string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBoomBoomAttack_a76afb1d5ecf9414ac88885b9e5a1bf07}\label{classBoomBoomAttack_a76afb1d5ecf9414ac88885b9e5a1bf07}} 
+\index{BoomBoomAttack@{BoomBoomAttack}!attack@{attack}}
+\index{attack@{attack}!BoomBoomAttack@{BoomBoomAttack}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily void Boom\+Boom\+Attack\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{plankton }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+This is a pure virtual method which will attack a platoon from a different alliance baised on the current strategy of the chosen platoon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em plankton} & is the platoon that will be attacked \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classPlatoonStrategy_a2fc593db743e417a54c9d0f176f1f730}{Platoon\+Strategy}}.
+
+\mbox{\Hypertarget{classBoomBoomAttack_a1913234ab198fb2ab3de01ff126a36cf}\label{classBoomBoomAttack_a1913234ab198fb2ab3de01ff126a36cf}} 
+\index{BoomBoomAttack@{BoomBoomAttack}!getPlatoonStrategy@{getPlatoonStrategy}}
+\index{getPlatoonStrategy@{getPlatoonStrategy}!BoomBoomAttack@{BoomBoomAttack}}
+\doxysubsubsection{\texorpdfstring{getPlatoonStrategy()}{getPlatoonStrategy()}}
+{\footnotesize\ttfamily string Boom\+Boom\+Attack\+::get\+Platoon\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classPlatoon}{Platoon}} Strategy string. 
+
+\begin{DoxyReturn}{Returns}
+string of the current strategy 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlatoonStrategy_a48c650f6967ca5f6e66a27e34a5146fd}{Platoon\+Strategy}}.
+
+\mbox{\Hypertarget{classBoomBoomAttack_a0a63c70ebd2b38b12927659ea53af774}\label{classBoomBoomAttack_a0a63c70ebd2b38b12927659ea53af774}} 
+\index{BoomBoomAttack@{BoomBoomAttack}!toggleStrategy@{toggleStrategy}}
+\index{toggleStrategy@{toggleStrategy}!BoomBoomAttack@{BoomBoomAttack}}
+\doxysubsubsection{\texorpdfstring{toggleStrategy()}{toggleStrategy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlatoonStrategy}{Platoon\+Strategy}} $\ast$ Boom\+Boom\+Attack\+::toggle\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+This method allows for a platoon to change its current strategy to the other strategy available. 
+
+\begin{DoxyReturn}{Returns}
+Platoon\+Strategy$\ast$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlatoonStrategy_a0cb9c56973270aa7fe13059a77e36e42}{Platoon\+Strategy}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Platoon\+Strat/Boom\+Boom\+Attack.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Platoon\+Strat/Boom\+Boom\+Attack.\+cpp\end{DoxyCompactItemize}

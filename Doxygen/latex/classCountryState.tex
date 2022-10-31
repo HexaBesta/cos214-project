@@ -1,0 +1,88 @@
+\hypertarget{classCountryState}{}\doxysection{Country\+State Class Reference}
+\label{classCountryState}\index{CountryState@{CountryState}}
+
+
+Inheritance diagram for Country\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCountryState__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCountryState_a8335a59049c4f2df0ef5951a563def6d}\label{classCountryState_a8335a59049c4f2df0ef5951a563def6d}} 
+virtual void \mbox{\hyperlink{classCountryState_a8335a59049c4f2df0ef5951a563def6d}{handle\+Country}} ()=0
+\begin{DoxyCompactList}\small\item\em A pure virtual function that handles was the country does. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCountryState}{Country\+State}} $\ast$ \mbox{\hyperlink{classCountryState_a8677d902a4b9cb760d9c503fb355009c}{change\+Country\+State}} ()=0
+\begin{DoxyCompactList}\small\item\em A pure virtual function that changes the country state. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classCountryState_a404d96b704b4dbc46ce95b4c316687fa}{request\+State}} ()=0
+\begin{DoxyCompactList}\small\item\em A pure virtual function that returns the current country state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classCountryState_a299fa1c37e83344a999f4bd4a32dd205}{recruit\+Platoon}} (\mbox{\hyperlink{classDirector}{Director}} $\ast$director, \mbox{\hyperlink{classCountry}{Country}} $\ast$country)
+\begin{DoxyCompactList}\small\item\em Stubbed method to construct platoon, implemented only in join. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCountryState_a8677d902a4b9cb760d9c503fb355009c}\label{classCountryState_a8677d902a4b9cb760d9c503fb355009c}} 
+\index{CountryState@{CountryState}!changeCountryState@{changeCountryState}}
+\index{changeCountryState@{changeCountryState}!CountryState@{CountryState}}
+\doxysubsubsection{\texorpdfstring{changeCountryState()}{changeCountryState()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classCountryState}{Country\+State}}$\ast$ Country\+State\+::change\+Country\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A pure virtual function that changes the country state. 
+
+\begin{DoxyReturn}{Returns}
+The required \mbox{\hyperlink{classCountryState}{Country\+State}} class 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classJoinedState_a2b7b3f0f270cbd73c174c5e8f798b0c5}{Joined\+State}}, \mbox{\hyperlink{classNeutralState_af6afff2bfe3a3b078583a18a6370e5ff}{Neutral\+State}}, and \mbox{\hyperlink{classWithdrawnState_a69dc351cbf2cf05c199a3d5f8523d141}{Withdrawn\+State}}.
+
+\mbox{\Hypertarget{classCountryState_a299fa1c37e83344a999f4bd4a32dd205}\label{classCountryState_a299fa1c37e83344a999f4bd4a32dd205}} 
+\index{CountryState@{CountryState}!recruitPlatoon@{recruitPlatoon}}
+\index{recruitPlatoon@{recruitPlatoon}!CountryState@{CountryState}}
+\doxysubsubsection{\texorpdfstring{recruitPlatoon()}{recruitPlatoon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Country\+State\+::recruit\+Platoon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDirector}{Director}} $\ast$}]{director,  }\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Stubbed method to construct platoon, implemented only in join. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em director} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classJoinedState_a7aefda58a6f14e62efab05ae0db02d1a}{Joined\+State}}.
+
+\mbox{\Hypertarget{classCountryState_a404d96b704b4dbc46ce95b4c316687fa}\label{classCountryState_a404d96b704b4dbc46ce95b4c316687fa}} 
+\index{CountryState@{CountryState}!requestState@{requestState}}
+\index{requestState@{requestState}!CountryState@{CountryState}}
+\doxysubsubsection{\texorpdfstring{requestState()}{requestState()}}
+{\footnotesize\ttfamily virtual string Country\+State\+::request\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A pure virtual function that returns the current country state. 
+
+\begin{DoxyReturn}{Returns}
+A string that represents the current country state 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classJoinedState_aaac8eb87785a92978790bc8d0c16edd2}{Joined\+State}}, \mbox{\hyperlink{classNeutralState_ad0fdb3208e1c2be8b05cba0a214bd465}{Neutral\+State}}, and \mbox{\hyperlink{classWithdrawnState_a949e2406cf436111a36acf6fc7e7a36d}{Withdrawn\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Country\+State/Country\+State.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Country\+State/Country\+State.\+cpp\end{DoxyCompactItemize}

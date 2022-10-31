@@ -1,0 +1,186 @@
+\hypertarget{classTheatreOfWar}{}\doxysection{Theatre\+Of\+War Class Reference}
+\label{classTheatreOfWar}\index{TheatreOfWar@{TheatreOfWar}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTheatreOfWar_a7393bb387f3a844e3515e3f1becc5a61}\label{classTheatreOfWar_a7393bb387f3a844e3515e3f1becc5a61}} 
+{\bfseries Theatre\+Of\+War} (string type)
+\item 
+\mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classTheatreOfWar_a8909cfdd384ec93f00f1b48523c33cda}{get\+Attacker}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classUnit}{Unit}} pointer that is in the attacker slot. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classTheatreOfWar_a5c0e4077e622cd59eb8e7f00e82cd0f0}{get\+Defender}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classUnit}{Unit}} pointer that is in the defender slot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTheatreOfWar_ac74083d807834caaa537d534fe35ff6f}{set\+Attacker}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$attacker)
+\begin{DoxyCompactList}\small\item\em Set the Defender pointer, merging if neccesary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTheatreOfWar_aeccd15cf02193cd74594d8d8db02959b}{set\+Defender}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$defender)
+\begin{DoxyCompactList}\small\item\em Set the Defender pointer, merging if neccesary. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classTheatreOfWar_ad8cffa5450500ca02cb8dcce8e1b6c81}{retreat}} (bool turn)
+\begin{DoxyCompactList}\small\item\em Removes the attacker(false) or defender(true) based on the turn. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classTheatreOfWar_aab5e79975abf84d2898917b8a63390e8}{March\+Out}} (bool split)
+\begin{DoxyCompactList}\small\item\em Return the defender, or part of the defender, to move them to another area. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classTheatreOfWar_ae873a49e31362c74c18287315544314a}{retreat}} (string side)
+\begin{DoxyCompactList}\small\item\em Return the attacker/defender to retreat to other area. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classTheatreOfWar_a7748a5321f9688fcc377bfa737d39810}{send\+Reinforcements}} ()
+\begin{DoxyCompactList}\small\item\em sends reinforcements (currently sends entire platoon, but we should consider splitting??) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classTheatreOfWar_a573aa26146150b5571f4041e508596dc}{to\+String}} (int \&line\+Len)
+\begin{DoxyCompactList}\small\item\em Returns a string reprsentation of the units in the \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTheatreOfWar_a81a031fba6357018ef1829c5177cdf18}{$\sim$\+Theatre\+Of\+War}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Theatre Of War object by detroying its attacker and defender. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTheatreOfWar_a81a031fba6357018ef1829c5177cdf18}\label{classTheatreOfWar_a81a031fba6357018ef1829c5177cdf18}} 
+\index{TheatreOfWar@{TheatreOfWar}!````~TheatreOfWar@{$\sim$TheatreOfWar}}
+\index{````~TheatreOfWar@{$\sim$TheatreOfWar}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{$\sim$TheatreOfWar()}{~TheatreOfWar()}}
+{\footnotesize\ttfamily Theatre\+Of\+War\+::$\sim$\+Theatre\+Of\+War (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the Theatre Of War object by detroying its attacker and defender. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTheatreOfWar_a8909cfdd384ec93f00f1b48523c33cda}\label{classTheatreOfWar_a8909cfdd384ec93f00f1b48523c33cda}} 
+\index{TheatreOfWar@{TheatreOfWar}!getAttacker@{getAttacker}}
+\index{getAttacker@{getAttacker}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{getAttacker()}{getAttacker()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Theatre\+Of\+War\+::get\+Attacker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classUnit}{Unit}} pointer that is in the attacker slot. 
+
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTheatreOfWar_a5c0e4077e622cd59eb8e7f00e82cd0f0}\label{classTheatreOfWar_a5c0e4077e622cd59eb8e7f00e82cd0f0}} 
+\index{TheatreOfWar@{TheatreOfWar}!getDefender@{getDefender}}
+\index{getDefender@{getDefender}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{getDefender()}{getDefender()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Theatre\+Of\+War\+::get\+Defender (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classUnit}{Unit}} pointer that is in the defender slot. 
+
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTheatreOfWar_aab5e79975abf84d2898917b8a63390e8}\label{classTheatreOfWar_aab5e79975abf84d2898917b8a63390e8}} 
+\index{TheatreOfWar@{TheatreOfWar}!MarchOut@{MarchOut}}
+\index{MarchOut@{MarchOut}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{MarchOut()}{MarchOut()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Theatre\+Of\+War\+::\+March\+Out (\begin{DoxyParamCaption}\item[{bool}]{split }\end{DoxyParamCaption})}
+
+
+
+Return the defender, or part of the defender, to move them to another area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em split} & whether or not unit should be split and only the split part should move \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ the enite defender or a portion of the defender (The portion that is returned from the split function is returned) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTheatreOfWar_ad8cffa5450500ca02cb8dcce8e1b6c81}\label{classTheatreOfWar_ad8cffa5450500ca02cb8dcce8e1b6c81}} 
+\index{TheatreOfWar@{TheatreOfWar}!retreat@{retreat}}
+\index{retreat@{retreat}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{retreat()}{retreat()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Theatre\+Of\+War\+::retreat (\begin{DoxyParamCaption}\item[{bool}]{turn }\end{DoxyParamCaption})}
+
+
+
+Removes the attacker(false) or defender(true) based on the turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em turn} & the turn of the person retreating \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ the \mbox{\hyperlink{classUnit}{Unit}} that retreated 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTheatreOfWar_ae873a49e31362c74c18287315544314a}\label{classTheatreOfWar_ae873a49e31362c74c18287315544314a}} 
+\index{TheatreOfWar@{TheatreOfWar}!retreat@{retreat}}
+\index{retreat@{retreat}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{retreat()}{retreat()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Theatre\+Of\+War\+::retreat (\begin{DoxyParamCaption}\item[{string}]{side }\end{DoxyParamCaption})}
+
+
+
+Return the attacker/defender to retreat to other area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em side} & can be \char`\"{}attack\char`\"{} or \char`\"{}defense\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ the entire \mbox{\hyperlink{classUnit}{Unit}} if exists 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTheatreOfWar_a7748a5321f9688fcc377bfa737d39810}\label{classTheatreOfWar_a7748a5321f9688fcc377bfa737d39810}} 
+\index{TheatreOfWar@{TheatreOfWar}!sendReinforcements@{sendReinforcements}}
+\index{sendReinforcements@{sendReinforcements}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{sendReinforcements()}{sendReinforcements()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Theatre\+Of\+War\+::send\+Reinforcements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sends reinforcements (currently sends entire platoon, but we should consider splitting??) 
+
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ the reinforcements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTheatreOfWar_ac74083d807834caaa537d534fe35ff6f}\label{classTheatreOfWar_ac74083d807834caaa537d534fe35ff6f}} 
+\index{TheatreOfWar@{TheatreOfWar}!setAttacker@{setAttacker}}
+\index{setAttacker@{setAttacker}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{setAttacker()}{setAttacker()}}
+{\footnotesize\ttfamily void Theatre\+Of\+War\+::set\+Attacker (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{attacker }\end{DoxyParamCaption})}
+
+
+
+Set the Defender pointer, merging if neccesary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attacker} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTheatreOfWar_aeccd15cf02193cd74594d8d8db02959b}\label{classTheatreOfWar_aeccd15cf02193cd74594d8d8db02959b}} 
+\index{TheatreOfWar@{TheatreOfWar}!setDefender@{setDefender}}
+\index{setDefender@{setDefender}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{setDefender()}{setDefender()}}
+{\footnotesize\ttfamily void Theatre\+Of\+War\+::set\+Defender (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{defender }\end{DoxyParamCaption})}
+
+
+
+Set the Defender pointer, merging if neccesary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em defender} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTheatreOfWar_a573aa26146150b5571f4041e508596dc}\label{classTheatreOfWar_a573aa26146150b5571f4041e508596dc}} 
+\index{TheatreOfWar@{TheatreOfWar}!toString@{toString}}
+\index{toString@{toString}!TheatreOfWar@{TheatreOfWar}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily string Theatre\+Of\+War\+::to\+String (\begin{DoxyParamCaption}\item[{int \&}]{line\+Len }\end{DoxyParamCaption})}
+
+
+
+Returns a string reprsentation of the units in the \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}}. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Map/Theatre\+Of\+War.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Map/Theatre\+Of\+War.\+cpp\end{DoxyCompactItemize}

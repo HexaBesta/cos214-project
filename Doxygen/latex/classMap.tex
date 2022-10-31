@@ -1,0 +1,415 @@
+\hypertarget{classMap}{}\doxysection{Map Class Reference}
+\label{classMap}\index{Map@{Map}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMap_a85281e82aea8e7e2f1e1f66ba36317f1}{Map}} (string setup\+File, \mbox{\hyperlink{classPlayer}{Player}} $\ast$player=N\+U\+LL)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classMap}{Map}} object given a text file with the areas and setup. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMap_a81b46ae06959a367b793b8fd38de15a9}{create\+Transport\+Route}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area1, \mbox{\hyperlink{classArea}{Area}} $\ast$area2)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{classTransport}{Transport}} Route between the two given areas of the map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classArea}{Area}} $\ast$ \mbox{\hyperlink{classMap_a54a5e067ed22b852db624d3a50a7f459}{choose\+Area}} ()
+\begin{DoxyCompactList}\small\item\em Allows the client to choose an area on the map for further action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMap_a6df20c7978c249e4a21b68e6f9b4fab1}{destroy\+Transport\+Route}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area1, \mbox{\hyperlink{classArea}{Area}} $\ast$area2)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{classTransport}{Transport}} Route between the two given areas of the map. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ \mbox{\hyperlink{classMap_a313f81b92eb4eb9dbce9f81ea6706b36}{list\+Adjacent}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area, bool transport\+Route)
+\begin{DoxyCompactList}\small\item\em Lists the areas adjacent to the given area. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMap_af518fafc87eb9e779d2eb8e7b7bad477}{are\+Adjacent}} (\mbox{\hyperlink{classArea}{Area}} $\ast$to, \mbox{\hyperlink{classArea}{Area}} $\ast$from)
+\begin{DoxyCompactList}\small\item\em Tests whether the given areas are adjacent to each other. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classArea}{Area}} $\ast$ \mbox{\hyperlink{classMap_afbeacf4b981dc989c2a205561021ff47}{get\+Area\+By\+Index}} (int index)
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classArea}{Area}} By its index member variable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMap_a8cd109e305645e3ec323d77d3a78aa76}{transport\+Routeis\+Available}} (\mbox{\hyperlink{classArea}{Area}} $\ast$point1, \mbox{\hyperlink{classArea}{Area}} $\ast$point2)
+\begin{DoxyCompactList}\small\item\em returns whether or not there is an available transport route between two areas \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMap_ab12643cc3a8d5e48f566c1abb571e9bf}{update}} ()
+\begin{DoxyCompactList}\small\item\em The update method realting to the observer pattern, will be called when areas or transport routes \textquotesingle{}notify\textquotesingle{} the map of change (not sure what exactly it does yet) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTransportFactory}{Transport\+Factory}} $\ast$ \mbox{\hyperlink{classMap_a32744424acf9d2f9d789b8e81c6b27b7}{request\+Factory\+For\+Area}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area, int type)
+\begin{DoxyCompactList}\small\item\em Given an area, return a factory of the requested type if it is available in any adjacent area of the same allinace, otherwise return null. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMap_a1cefc1b8ed6692667e2019f64acc0f5a}{print\+Map}} ()
+\begin{DoxyCompactList}\small\item\em prints out a grid based reprsentation of the map \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMap_a8ad7ccfcc7f6ef9ec9bd2d547a91206d}{print\+Colour\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Print the map with areas coloured differntly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMap_ad58956e94b551b4c07297995d88951d7}{add\+Country}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$country)
+\begin{DoxyCompactList}\small\item\em Adds a country to the map. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classMap_a15f7190f93998dc6739d5277c26742e7}{to\+String\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Returns the count of transport routes and areas for the alliances. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ \mbox{\hyperlink{classMap_aaae32c4b85c123d778b3f202ab763ed3}{get\+Areas\+By\+Colour}} (int colour)
+\begin{DoxyCompactList}\small\item\em Get the Areas By colour of alliance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMap_ab3f54c0da7482a2bb483e2472c067828}{set\+Player}} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Set the \mbox{\hyperlink{classPlayer}{Player}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlayer}{Player}} $\ast$ \mbox{\hyperlink{classMap_a21be29c77840492d55f6a81f47925a26}{get\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classPlayer}{Player}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMap_aea5476eb8f21353798f2f099cee27328}{resolve\+Battles}} ()
+\begin{DoxyCompactList}\small\item\em Resolves all battles after each round. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMap_a43ca80eb4e5d84b00220bb77ce4adb03}{add\+Platoon\+To\+Map}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$platoon)
+\begin{DoxyCompactList}\small\item\em Attempts to add a newly constructed platoon to map. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ \mbox{\hyperlink{classMap_a7d76b407aa67b04bd1b99fc80a504055}{get\+Areas\+By\+Country}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$country)
+\begin{DoxyCompactList}\small\item\em Get the Areas that are owned by passed in \mbox{\hyperlink{classCountry}{Country}} object. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$ \mbox{\hyperlink{classMap_a4d0b620b0a9fabb5a5f1c9d78eec73df}{get\+Countries\+By\+Colour}} (int colour)
+\begin{DoxyCompactList}\small\item\em Get the Countries that match the colour passed in (thus by alliance) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMap_aa403fbe09394ccf39747588f5168e3b2}{$\sim$\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classMap}{Map}} object for memory purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMap_a85281e82aea8e7e2f1e1f66ba36317f1}\label{classMap_a85281e82aea8e7e2f1e1f66ba36317f1}} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}\item[{string}]{setup\+File,  }\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classMap}{Map}} object given a text file with the areas and setup. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setup\+File} & the name of the text files that contains the map layout \\
+\hline
+{\em player} & the player object to start game with \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMap_aa403fbe09394ccf39747588f5168e3b2}\label{classMap_aa403fbe09394ccf39747588f5168e3b2}} 
+\index{Map@{Map}!````~Map@{$\sim$Map}}
+\index{````~Map@{$\sim$Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{$\sim$Map()}{~Map()}}
+{\footnotesize\ttfamily Map\+::$\sim$\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the \mbox{\hyperlink{classMap}{Map}} object for memory purposes. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMap_ad58956e94b551b4c07297995d88951d7}\label{classMap_ad58956e94b551b4c07297995d88951d7}} 
+\index{Map@{Map}!addCountry@{addCountry}}
+\index{addCountry@{addCountry}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{addCountry()}{addCountry()}}
+{\footnotesize\ttfamily void Map\+::add\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country }\end{DoxyParamCaption})}
+
+
+
+Adds a country to the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country} & the country to be added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMap_a43ca80eb4e5d84b00220bb77ce4adb03}\label{classMap_a43ca80eb4e5d84b00220bb77ce4adb03}} 
+\index{Map@{Map}!addPlatoonToMap@{addPlatoonToMap}}
+\index{addPlatoonToMap@{addPlatoonToMap}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{addPlatoonToMap()}{addPlatoonToMap()}}
+{\footnotesize\ttfamily bool Map\+::add\+Platoon\+To\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{platoon }\end{DoxyParamCaption})}
+
+
+
+Attempts to add a newly constructed platoon to map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em platoon} & to be added to map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if platoon was sucesfully placed 
+
+false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_af518fafc87eb9e779d2eb8e7b7bad477}\label{classMap_af518fafc87eb9e779d2eb8e7b7bad477}} 
+\index{Map@{Map}!areAdjacent@{areAdjacent}}
+\index{areAdjacent@{areAdjacent}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{areAdjacent()}{areAdjacent()}}
+{\footnotesize\ttfamily bool Map\+::are\+Adjacent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{to,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{from }\end{DoxyParamCaption})}
+
+
+
+Tests whether the given areas are adjacent to each other. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to} & \\
+\hline
+{\em from} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true they are adjacent to each other 
+
+false they are not adjacent to each other 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_a54a5e067ed22b852db624d3a50a7f459}\label{classMap_a54a5e067ed22b852db624d3a50a7f459}} 
+\index{Map@{Map}!chooseArea@{chooseArea}}
+\index{chooseArea@{chooseArea}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{chooseArea()}{chooseArea()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArea}{Area}} $\ast$ Map\+::choose\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Allows the client to choose an area on the map for further action. 
+
+\begin{DoxyReturn}{Returns}
+returns the \mbox{\hyperlink{classArea}{Area}} chosen by the client as a pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_a81b46ae06959a367b793b8fd38de15a9}\label{classMap_a81b46ae06959a367b793b8fd38de15a9}} 
+\index{Map@{Map}!createTransportRoute@{createTransportRoute}}
+\index{createTransportRoute@{createTransportRoute}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{createTransportRoute()}{createTransportRoute()}}
+{\footnotesize\ttfamily void Map\+::create\+Transport\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area1,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area2 }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{classTransport}{Transport}} Route between the two given areas of the map. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classTransport}{Transport}} routes should be created automatically when troops take over a new area. The route should be made between the area they left and the area the took over
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em area1} & The first end point of the transport route \\
+\hline
+{\em area2} & The second end point of the transport route\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Since the map is a bidirectional graph the order of area1 and area2 does not matter 
+\end{DoxyNote}
+\mbox{\Hypertarget{classMap_a6df20c7978c249e4a21b68e6f9b4fab1}\label{classMap_a6df20c7978c249e4a21b68e6f9b4fab1}} 
+\index{Map@{Map}!destroyTransportRoute@{destroyTransportRoute}}
+\index{destroyTransportRoute@{destroyTransportRoute}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{destroyTransportRoute()}{destroyTransportRoute()}}
+{\footnotesize\ttfamily void Map\+::destroy\+Transport\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area1,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area2 }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{classTransport}{Transport}} Route between the two given areas of the map. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classTransport}{Transport}} routes should be destryoed automatically when troops take over a new area. The route should be destroyed between the this areas and the area that belongs to enemies
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em area1} & The first end point of the transport route \\
+\hline
+{\em area2} & The second end point of the transport route\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Since the map is a bidirectional graph the order of area1 and area2 does not matter 
+\end{DoxyNote}
+\mbox{\Hypertarget{classMap_afbeacf4b981dc989c2a205561021ff47}\label{classMap_afbeacf4b981dc989c2a205561021ff47}} 
+\index{Map@{Map}!getAreaByIndex@{getAreaByIndex}}
+\index{getAreaByIndex@{getAreaByIndex}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getAreaByIndex()}{getAreaByIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArea}{Area}} $\ast$ Map\+::get\+Area\+By\+Index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classArea}{Area}} By its index member variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em area} & the area to search for adjacencies \\
+\hline
+{\em transport\+Route} & whether or not transport\+Routes must be active to be considered adjacent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the area if it is found, returns N\+U\+LL if not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_aaae32c4b85c123d778b3f202ab763ed3}\label{classMap_aaae32c4b85c123d778b3f202ab763ed3}} 
+\index{Map@{Map}!getAreasByColour@{getAreasByColour}}
+\index{getAreasByColour@{getAreasByColour}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getAreasByColour()}{getAreasByColour()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ Map\+::get\+Areas\+By\+Colour (\begin{DoxyParamCaption}\item[{int}]{colour }\end{DoxyParamCaption})}
+
+
+
+Get the Areas By colour of alliance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em colour} & of alliance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Area$\ast$$>$ all areas owned by that alliance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_a7d76b407aa67b04bd1b99fc80a504055}\label{classMap_a7d76b407aa67b04bd1b99fc80a504055}} 
+\index{Map@{Map}!getAreasByCountry@{getAreasByCountry}}
+\index{getAreasByCountry@{getAreasByCountry}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getAreasByCountry()}{getAreasByCountry()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ Map\+::get\+Areas\+By\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country }\end{DoxyParamCaption})}
+
+
+
+Get the Areas that are owned by passed in \mbox{\hyperlink{classCountry}{Country}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country} & to be searched for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Area $\ast$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_a4d0b620b0a9fabb5a5f1c9d78eec73df}\label{classMap_a4d0b620b0a9fabb5a5f1c9d78eec73df}} 
+\index{Map@{Map}!getCountriesByColour@{getCountriesByColour}}
+\index{getCountriesByColour@{getCountriesByColour}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getCountriesByColour()}{getCountriesByColour()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$ Map\+::get\+Countries\+By\+Colour (\begin{DoxyParamCaption}\item[{int}]{colour }\end{DoxyParamCaption})}
+
+
+
+Get the Countries that match the colour passed in (thus by alliance) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em colour} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Country$\ast$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_a21be29c77840492d55f6a81f47925a26}\label{classMap_a21be29c77840492d55f6a81f47925a26}} 
+\index{Map@{Map}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlayer}{Player}} $\ast$ Map\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classPlayer}{Player}} object. 
+
+\begin{DoxyReturn}{Returns}
+Player$\ast$ the current player 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_a313f81b92eb4eb9dbce9f81ea6706b36}\label{classMap_a313f81b92eb4eb9dbce9f81ea6706b36}} 
+\index{Map@{Map}!listAdjacent@{listAdjacent}}
+\index{listAdjacent@{listAdjacent}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{listAdjacent()}{listAdjacent()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ Map\+::list\+Adjacent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area,  }\item[{bool}]{transport\+Route }\end{DoxyParamCaption})}
+
+
+
+Lists the areas adjacent to the given area. 
+
+\begin{DoxyNote}{Note}
+Areas are adjacent when connected by a transport route (this transport route could be active or inactive/destroyed)
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em area} & the area being queried for adjacencies \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a vector of area pointers, all areas in the vector are necessarily adjacent to the input area. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_a8ad7ccfcc7f6ef9ec9bd2d547a91206d}\label{classMap_a8ad7ccfcc7f6ef9ec9bd2d547a91206d}} 
+\index{Map@{Map}!printColourMap@{printColourMap}}
+\index{printColourMap@{printColourMap}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{printColourMap()}{printColourMap()}}
+{\footnotesize\ttfamily void Map\+::print\+Colour\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print the map with areas coloured differntly. 
+
+\mbox{\Hypertarget{classMap_a1cefc1b8ed6692667e2019f64acc0f5a}\label{classMap_a1cefc1b8ed6692667e2019f64acc0f5a}} 
+\index{Map@{Map}!printMap@{printMap}}
+\index{printMap@{printMap}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{printMap()}{printMap()}}
+{\footnotesize\ttfamily void Map\+::print\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints out a grid based reprsentation of the map 
+
+\mbox{\Hypertarget{classMap_a32744424acf9d2f9d789b8e81c6b27b7}\label{classMap_a32744424acf9d2f9d789b8e81c6b27b7}} 
+\index{Map@{Map}!requestFactoryForArea@{requestFactoryForArea}}
+\index{requestFactoryForArea@{requestFactoryForArea}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{requestFactoryForArea()}{requestFactoryForArea()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTransportFactory}{Transport\+Factory}} $\ast$ Map\+::request\+Factory\+For\+Area (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+Given an area, return a factory of the requested type if it is available in any adjacent area of the same allinace, otherwise return null. 
+
+\begin{DoxyReturn}{Returns}
+Factory$\ast$ return a factory of the requested type if it is available in any adjacent area of the same allinace, otherwise return null 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_aea5476eb8f21353798f2f099cee27328}\label{classMap_aea5476eb8f21353798f2f099cee27328}} 
+\index{Map@{Map}!resolveBattles@{resolveBattles}}
+\index{resolveBattles@{resolveBattles}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{resolveBattles()}{resolveBattles()}}
+{\footnotesize\ttfamily void Map\+::resolve\+Battles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resolves all battles after each round. 
+
+\mbox{\Hypertarget{classMap_ab3f54c0da7482a2bb483e2472c067828}\label{classMap_ab3f54c0da7482a2bb483e2472c067828}} 
+\index{Map@{Map}!setPlayer@{setPlayer}}
+\index{setPlayer@{setPlayer}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{setPlayer()}{setPlayer()}}
+{\footnotesize\ttfamily void Map\+::set\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Set the \mbox{\hyperlink{classPlayer}{Player}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMap_a15f7190f93998dc6739d5277c26742e7}\label{classMap_a15f7190f93998dc6739d5277c26742e7}} 
+\index{Map@{Map}!toStringCount@{toStringCount}}
+\index{toStringCount@{toStringCount}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{toStringCount()}{toStringCount()}}
+{\footnotesize\ttfamily string Map\+::to\+String\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the count of transport routes and areas for the alliances. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_a8cd109e305645e3ec323d77d3a78aa76}\label{classMap_a8cd109e305645e3ec323d77d3a78aa76}} 
+\index{Map@{Map}!transportRouteisAvailable@{transportRouteisAvailable}}
+\index{transportRouteisAvailable@{transportRouteisAvailable}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{transportRouteisAvailable()}{transportRouteisAvailable()}}
+{\footnotesize\ttfamily bool Map\+::transport\+Routeis\+Available (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{point1,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{point2 }\end{DoxyParamCaption})}
+
+
+
+returns whether or not there is an available transport route between two areas 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point1} & \\
+\hline
+{\em point2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is an available transport route 
+
+false if there is no transport route or if the transport route is unavialable 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMap_ab12643cc3a8d5e48f566c1abb571e9bf}\label{classMap_ab12643cc3a8d5e48f566c1abb571e9bf}} 
+\index{Map@{Map}!update@{update}}
+\index{update@{update}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Map\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The update method realting to the observer pattern, will be called when areas or transport routes \textquotesingle{}notify\textquotesingle{} the map of change (not sure what exactly it does yet) 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Map/Map.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Map/Map.\+cpp\end{DoxyCompactItemize}

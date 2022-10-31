@@ -1,0 +1,416 @@
+\hypertarget{classArea}{}\doxysection{Area Class Reference}
+\label{classArea}\index{Area@{Area}}
+
+
+Inheritance diagram for Area\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classArea__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Area\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classArea__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{Indent}\textbf{ name the name of the country}\par
+{\em Construct a new \mbox{\hyperlink{classArea}{Area}} object with the given index
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the area (used in the map\textquotesingle{}s adjacency matrix) \\
+\hline
+{\em colour} & the colour of the area on the map \\
+\hline
+{\em factories} & indicates whether or not the area starts with factories \\
+\hline
+{\em troops} & indicates whether or not the area starts with troops \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classArea_a5409e6f322548705ed3c3154c573dbe6}\label{classArea_a5409e6f322548705ed3c3154c573dbe6}} 
+{\bfseries Area} (string name, int index, int colour, bool factories, bool troops)
+\item 
+int \mbox{\hyperlink{classArea_aa0ec36a2ccb48499d6747b4b9cf7833a}{get\+Index}} ()
+\begin{DoxyCompactList}\small\item\em Gets the index of the area for the adjacency matrix. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classArea_a4d6fdfc10ee8cf822c73e6a25051a20c}{get\+Colour}} ()
+\begin{DoxyCompactList}\small\item\em Get the Colour object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classArea_a3e4eb0ed8a85ae42e5e6e5dd104fb370}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Not a clue right now. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classArea_ae4448a1f0cd0e66efb12e239f65b9dea}\label{classArea_ae4448a1f0cd0e66efb12e239f65b9dea}} 
+void {\bfseries update\+Platoons} (int type, string platoon\+Name)
+\item 
+virtual void \mbox{\hyperlink{classArea_ae8c961de688e778cfd0f4a7b74ecafdd}{accept}} (\mbox{\hyperlink{classVisitor}{Visitor}} $\ast$visitor)
+\begin{DoxyCompactList}\small\item\em accept visitor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classIterator}{Iterator}} $\ast$ \mbox{\hyperlink{classArea_af81629e98a20493275347b1d74820c7a}{create\+Iterator}} ()
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{classIterator}{Iterator}} object that can loop through the area (under review) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArea_a5025c03256218fb2f324070e92100657}{march\+In}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$unit, \mbox{\hyperlink{classArea}{Area}} $\ast$from)
+\begin{DoxyCompactList}\small\item\em Called when a platoon marches into this area, determines whether or not a battle takes place and returns a \mbox{\hyperlink{classBattle}{Battle}} pointer if it does, otherwise returns N\+U\+LL. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArea_aeb6dec81b22076d1b24da532c20537fb}{march\+Out}} (\mbox{\hyperlink{classArea}{Area}} $\ast$where\+To)
+\begin{DoxyCompactList}\small\item\em Orders the platoon to leave the area and go to another area. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classArea_a17da578fb33f52ff4abbb4484facc878}{request\+Reinforcements}} (string type)
+\begin{DoxyCompactList}\small\item\em This function can be called by the defending platoon during a battle, to get aid from adjecent friendly areas which are connected by active transport routes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArea_ade2b7290e0e034fb1b71c0ebe11e5625}{add\+Cell}} (string coord)
+\begin{DoxyCompactList}\small\item\em Adds a cell to the area to be printed. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classCoordinate}{Coordinate}} $\ast$ $>$ \mbox{\hyperlink{classArea_ad9dc500895970739e4f6ac1f102ebd17}{get\+Area\+Coordinates}} ()
+\begin{DoxyCompactList}\small\item\em Get the vector of Coordinates that this area takes up on the map grid. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBattle}{Battle}} $\ast$ \mbox{\hyperlink{classArea_a57aab9611d0edc3743cc82562afabd0e}{return\+Battle}} ()
+\begin{DoxyCompactList}\small\item\em Checks if a battle would happen if it does return a \mbox{\hyperlink{classBattle}{Battle}} object to resolve else return null. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTransportFactory}{Transport\+Factory}} $\ast$ \mbox{\hyperlink{classArea_a4e7e402fff85f4dd0c3a90f7fd95b84d}{get\+Factory}} (int type)
+\begin{DoxyCompactList}\small\item\em Get the a specific type of factory if it exists here. Used when another area is requeting a factory. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classArea_ae71cda3de8a29c8f47dd7d3d14225d6a}{request\+Factory}} (int type)
+\begin{DoxyCompactList}\small\item\em requests a specific type of factory if it exists in an adjacent area. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classArea_aefe215e5a8d18993ba1f036d35ff21ae}{to\+String}} ()
+\begin{DoxyCompactList}\small\item\em Returns a string representation of the area. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCountry}{Country}} $\ast$ \mbox{\hyperlink{classArea_a3cbc1de2303e0be43db0e1aa0ffbe80b}{get\+Country}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classCountry}{Country}} that owns the area. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classArea_aa5f4ded87f313cd2d5cb839067cce129}{retreat}} (string type)
+\begin{DoxyCompactList}\small\item\em Attempts to retreat from \mbox{\hyperlink{classArea}{Area}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArea_aff817aed4b8e551d803bad5231f25a1d}{retreat\+Into}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$unit)
+\begin{DoxyCompactList}\small\item\em Called when a platoon marches into this area. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classArea_a79430a2dfa87d76ea1330a01081947e4}{send\+Reinforcements}} (int color)
+\begin{DoxyCompactList}\small\item\em Sends reinforcements if there is an air unit of the alliance requesting reinforcements. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classArea_ace0975982b61a16746c564a0d43a4cc8}{$\sim$\+Area}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classArea}{Area}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classArea_ace0975982b61a16746c564a0d43a4cc8}\label{classArea_ace0975982b61a16746c564a0d43a4cc8}} 
+\index{Area@{Area}!````~Area@{$\sim$Area}}
+\index{````~Area@{$\sim$Area}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{$\sim$Area()}{~Area()}}
+{\footnotesize\ttfamily Area\+::$\sim$\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classArea}{Area}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classArea_ae8c961de688e778cfd0f4a7b74ecafdd}\label{classArea_ae8c961de688e778cfd0f4a7b74ecafdd}} 
+\index{Area@{Area}!accept@{accept}}
+\index{accept@{accept}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Area\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVisitor}{Visitor}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+accept visitor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & takes in the pointer visitor that will be accpeted \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classMapComponent_a6b554f8a7aec501f0906ea10ccd27d29}{Map\+Component}}.
+
+\mbox{\Hypertarget{classArea_ade2b7290e0e034fb1b71c0ebe11e5625}\label{classArea_ade2b7290e0e034fb1b71c0ebe11e5625}} 
+\index{Area@{Area}!addCell@{addCell}}
+\index{addCell@{addCell}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{addCell()}{addCell()}}
+{\footnotesize\ttfamily void Area\+::add\+Cell (\begin{DoxyParamCaption}\item[{string}]{coord }\end{DoxyParamCaption})}
+
+
+
+Adds a cell to the area to be printed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord} & the coordinate of the a cell to be added in the format \char`\"{}x,y\char`\"{} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArea_af81629e98a20493275347b1d74820c7a}\label{classArea_af81629e98a20493275347b1d74820c7a}} 
+\index{Area@{Area}!createIterator@{createIterator}}
+\index{createIterator@{createIterator}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{createIterator()}{createIterator()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classIterator}{Iterator}} $\ast$ Area\+::create\+Iterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{classIterator}{Iterator}} object that can loop through the area (under review) 
+
+\begin{DoxyReturn}{Returns}
+Iterator$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_ad9dc500895970739e4f6ac1f102ebd17}\label{classArea_ad9dc500895970739e4f6ac1f102ebd17}} 
+\index{Area@{Area}!getAreaCoordinates@{getAreaCoordinates}}
+\index{getAreaCoordinates@{getAreaCoordinates}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{getAreaCoordinates()}{getAreaCoordinates()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classCoordinate}{Coordinate}} $\ast$ $>$ Area\+::get\+Area\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the vector of Coordinates that this area takes up on the map grid. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$\+Coordinate$\ast$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_a4d6fdfc10ee8cf822c73e6a25051a20c}\label{classArea_a4d6fdfc10ee8cf822c73e6a25051a20c}} 
+\index{Area@{Area}!getColour@{getColour}}
+\index{getColour@{getColour}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{getColour()}{getColour()}}
+{\footnotesize\ttfamily int Area\+::get\+Colour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Colour object. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_a3cbc1de2303e0be43db0e1aa0ffbe80b}\label{classArea_a3cbc1de2303e0be43db0e1aa0ffbe80b}} 
+\index{Area@{Area}!getCountry@{getCountry}}
+\index{getCountry@{getCountry}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{getCountry()}{getCountry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCountry}{Country}} $\ast$ Area\+::get\+Country (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classCountry}{Country}} that owns the area. 
+
+\begin{DoxyReturn}{Returns}
+Country$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_a4e7e402fff85f4dd0c3a90f7fd95b84d}\label{classArea_a4e7e402fff85f4dd0c3a90f7fd95b84d}} 
+\index{Area@{Area}!getFactory@{getFactory}}
+\index{getFactory@{getFactory}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{getFactory()}{getFactory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTransportFactory}{Transport\+Factory}} $\ast$ Area\+::get\+Factory (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+Get the a specific type of factory if it exists here. Used when another area is requeting a factory. 
+
+Types\+: 0) Person 1) Ammo 2) \mbox{\hyperlink{classGoods}{Goods}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Transport\+Factory$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_aa0ec36a2ccb48499d6747b4b9cf7833a}\label{classArea_aa0ec36a2ccb48499d6747b4b9cf7833a}} 
+\index{Area@{Area}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily int Area\+::get\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the index of the area for the adjacency matrix. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_a3e4eb0ed8a85ae42e5e6e5dd104fb370}\label{classArea_a3e4eb0ed8a85ae42e5e6e5dd104fb370}} 
+\index{Area@{Area}!getName@{getName}}
+\index{getName@{getName}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Area\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Not a clue right now. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+{\em platoon\+Name} & Get the Name of the area\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_a5025c03256218fb2f324070e92100657}\label{classArea_a5025c03256218fb2f324070e92100657}} 
+\index{Area@{Area}!marchIn@{marchIn}}
+\index{marchIn@{marchIn}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{marchIn()}{marchIn()}}
+{\footnotesize\ttfamily void Area\+::march\+In (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{unit,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{from }\end{DoxyParamCaption})}
+
+
+
+Called when a platoon marches into this area, determines whether or not a battle takes place and returns a \mbox{\hyperlink{classBattle}{Battle}} pointer if it does, otherwise returns N\+U\+LL. 
+
+When a platoon marches into an area a few things could happen depending on the state of the area.
+
+1) The area is unoccupied\+: The platoon claims the area for their country/alliance. A \mbox{\hyperlink{classTransport}{Transport}} route is set up between this area and the area the platoon came from. No battle occurs so N\+U\+LL is returned.
+
+2) The area is occupied by allies\+: The platoon joins with the platoon already in the area. No battle occurs so N\+U\+LL is returned.
+
+3) The area is occupied by enemies\+: The platoon that \char`\"{}marched in\char`\"{} is set as the attacker whilst the troop that preexisted is the defender. The attacking platoon fights the defending platoon in a battle. A pointer to the battle object is returned for resoltion.
+
+
+\begin{DoxyParams}{Parameters}
+{\em platoon} & The platoon marching into this area. \\
+\hline
+{\em from} & The area that the unit came from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArea_aeb6dec81b22076d1b24da532c20537fb}\label{classArea_aeb6dec81b22076d1b24da532c20537fb}} 
+\index{Area@{Area}!marchOut@{marchOut}}
+\index{marchOut@{marchOut}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{marchOut()}{marchOut()}}
+{\footnotesize\ttfamily void Area\+::march\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{where\+To }\end{DoxyParamCaption})}
+
+
+
+Orders the platoon to leave the area and go to another area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em where\+To} & The area to march\+To\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the destination area is valid 
+
+false if the destination area is invalid 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_ae71cda3de8a29c8f47dd7d3d14225d6a}\label{classArea_ae71cda3de8a29c8f47dd7d3d14225d6a}} 
+\index{Area@{Area}!requestFactory@{requestFactory}}
+\index{requestFactory@{requestFactory}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{requestFactory()}{requestFactory()}}
+{\footnotesize\ttfamily bool Area\+::request\+Factory (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+requests a specific type of factory if it exists in an adjacent area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & the type of factory to request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if an factory of the specified type exists, false otherwise 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_a17da578fb33f52ff4abbb4484facc878}\label{classArea_a17da578fb33f52ff4abbb4484facc878}} 
+\index{Area@{Area}!requestReinforcements@{requestReinforcements}}
+\index{requestReinforcements@{requestReinforcements}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{requestReinforcements()}{requestReinforcements()}}
+{\footnotesize\ttfamily bool Area\+::request\+Reinforcements (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})}
+
+
+
+This function can be called by the defending platoon during a battle, to get aid from adjecent friendly areas which are connected by active transport routes. 
+
+If an adjacent area has friendly air platoons, they will join air platoon of side requesting reinforcements
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & will be attack or defense (the side requesting reinforcements) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there were friendly platoons in adjecent areas which are connected by active transport routes 
+
+false if there were no friendly platoons in adjecent areas which are connected by active transport routes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_aa5f4ded87f313cd2d5cb839067cce129}\label{classArea_aa5f4ded87f313cd2d5cb839067cce129}} 
+\index{Area@{Area}!retreat@{retreat}}
+\index{retreat@{retreat}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{retreat()}{retreat()}}
+{\footnotesize\ttfamily bool Area\+::retreat (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})}
+
+
+
+Attempts to retreat from \mbox{\hyperlink{classArea}{Area}}. 
+
+can retreat to any adjacent area that is empty or owned by its own alliance
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & will be \char`\"{}attack\char`\"{} or \char`\"{}defense\char`\"{} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArea_aff817aed4b8e551d803bad5231f25a1d}\label{classArea_aff817aed4b8e551d803bad5231f25a1d}} 
+\index{Area@{Area}!retreatInto@{retreatInto}}
+\index{retreatInto@{retreatInto}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{retreatInto()}{retreatInto()}}
+{\footnotesize\ttfamily void Area\+::retreat\+Into (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{unit }\end{DoxyParamCaption})}
+
+
+
+Called when a platoon marches into this area. 
+
+
+\begin{DoxyItemize}
+\item 1) The area is unoccupied\+: The platoon claims the area for their country/alliance.
+\end{DoxyItemize}
+
+2) The area is occupied by allies\+: The platoon joins with the platoon already in the area.
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit} & the unit retreating to the area \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArea_a57aab9611d0edc3743cc82562afabd0e}\label{classArea_a57aab9611d0edc3743cc82562afabd0e}} 
+\index{Area@{Area}!returnBattle@{returnBattle}}
+\index{returnBattle@{returnBattle}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{returnBattle()}{returnBattle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBattle}{Battle}} $\ast$ Area\+::return\+Battle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if a battle would happen if it does return a \mbox{\hyperlink{classBattle}{Battle}} object to resolve else return null. 
+
+A battle occurs if there is an attacker and a defender in either land, air or both
+
+\begin{DoxyReturn}{Returns}
+the battle holding combatants if it occurs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_a79430a2dfa87d76ea1330a01081947e4}\label{classArea_a79430a2dfa87d76ea1330a01081947e4}} 
+\index{Area@{Area}!sendReinforcements@{sendReinforcements}}
+\index{sendReinforcements@{sendReinforcements}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{sendReinforcements()}{sendReinforcements()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Area\+::send\+Reinforcements (\begin{DoxyParamCaption}\item[{int}]{color }\end{DoxyParamCaption})}
+
+
+
+Sends reinforcements if there is an air unit of the alliance requesting reinforcements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & color of alliance requesting reinforcements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArea_aefe215e5a8d18993ba1f036d35ff21ae}\label{classArea_aefe215e5a8d18993ba1f036d35ff21ae}} 
+\index{Area@{Area}!toString@{toString}}
+\index{toString@{toString}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily string Area\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a string representation of the area. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Map/Area.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Map/Area.\+cpp\end{DoxyCompactItemize}

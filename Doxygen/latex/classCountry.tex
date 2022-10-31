@@ -1,0 +1,137 @@
+\hypertarget{classCountry}{}\doxysection{Country Class Reference}
+\label{classCountry}\index{Country@{Country}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCountry_a577551781857d80642b11d1f4fe2f33d}{Country}} (string name, int colour)
+\begin{DoxyCompactList}\small\item\em Constructs a new country object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCountry_a5013557e0d93fabc976bfa0d7f0564a3}\label{classCountry_a5013557e0d93fabc976bfa0d7f0564a3}} 
+\mbox{\hyperlink{classCountry_a5013557e0d93fabc976bfa0d7f0564a3}{$\sim$\+Country}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classCountry}{Country}} Deconstructor, will delete the country\+State? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCountry_a0584ebf410b196f2e70fa121f06eccec}\label{classCountry_a0584ebf410b196f2e70fa121f06eccec}} 
+string \mbox{\hyperlink{classCountry_a0584ebf410b196f2e70fa121f06eccec}{request\+State}} ()
+\begin{DoxyCompactList}\small\item\em returns the state of the currently set country state. !! Need to implement in country state !! \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_a3b4ed83e780cf0bcf4f54c2d530c95c2}{set\+Country\+State}} (\mbox{\hyperlink{classCountryState}{Country\+State}} $\ast$country\+State)
+\begin{DoxyCompactList}\small\item\em Sets the country state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCountry_a1c1e2b5b8d21f83c31c2752321618c23}{update\+Country\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Updates the country moral by recalculating aggregate of units\textquotesingle{} moral if country is joined. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCountry_a258bd65f342e9e36c77cdbdfb76a7890}{get\+Country\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Returns the country moral. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$ \mbox{\hyperlink{classCountry_ac7c7fb3c51af95af19b7f16c34ad3d6f}{get\+Alliances}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classAlliances}{Alliances}} of this country. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCountry_a5821381f87b3af46641ce7e6d64b87c1}\label{classCountry_a5821381f87b3af46641ce7e6d64b87c1}} 
+void {\bfseries set\+Alliance} (\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$alliance)
+\item 
+string \mbox{\hyperlink{classCountry_a61ed563237fcc7df21b6bb092b86507b}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the Name of this country. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_aa4d0be270396d26827d2ce3ed7b318d1}{recruit\+Platoon}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em makes a new platoon and adds to existing platoon vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCountry_a577551781857d80642b11d1f4fe2f33d}\label{classCountry_a577551781857d80642b11d1f4fe2f33d}} 
+\index{Country@{Country}!Country@{Country}}
+\index{Country@{Country}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{Country()}{Country()}}
+{\footnotesize\ttfamily Country\+::\+Country (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{int}]{colour }\end{DoxyParamCaption})}
+
+
+
+Constructs a new country object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & is the name of the country \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCountry_ac7c7fb3c51af95af19b7f16c34ad3d6f}\label{classCountry_ac7c7fb3c51af95af19b7f16c34ad3d6f}} 
+\index{Country@{Country}!getAlliances@{getAlliances}}
+\index{getAlliances@{getAlliances}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getAlliances()}{getAlliances()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAlliances}{Alliances}} $\ast$ Country\+::get\+Alliances (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classAlliances}{Alliances}} of this country. 
+
+\begin{DoxyReturn}{Returns}
+Alliances$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_a258bd65f342e9e36c77cdbdfb76a7890}\label{classCountry_a258bd65f342e9e36c77cdbdfb76a7890}} 
+\index{Country@{Country}!getCountryMoral@{getCountryMoral}}
+\index{getCountryMoral@{getCountryMoral}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getCountryMoral()}{getCountryMoral()}}
+{\footnotesize\ttfamily double Country\+::get\+Country\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the country moral. 
+
+\begin{DoxyReturn}{Returns}
+Double that represents the moral of the country 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_a61ed563237fcc7df21b6bb092b86507b}\label{classCountry_a61ed563237fcc7df21b6bb092b86507b}} 
+\index{Country@{Country}!getName@{getName}}
+\index{getName@{getName}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Country\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Name of this country. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_aa4d0be270396d26827d2ce3ed7b318d1}\label{classCountry_aa4d0be270396d26827d2ce3ed7b318d1}} 
+\index{Country@{Country}!recruitPlatoon@{recruitPlatoon}}
+\index{recruitPlatoon@{recruitPlatoon}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{recruitPlatoon()}{recruitPlatoon()}}
+{\footnotesize\ttfamily void Country\+::recruit\+Platoon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+makes a new platoon and adds to existing platoon vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & so that platoon can be placed on map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_a3b4ed83e780cf0bcf4f54c2d530c95c2}\label{classCountry_a3b4ed83e780cf0bcf4f54c2d530c95c2}} 
+\index{Country@{Country}!setCountryState@{setCountryState}}
+\index{setCountryState@{setCountryState}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{setCountryState()}{setCountryState()}}
+{\footnotesize\ttfamily void Country\+::set\+Country\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountryState}{Country\+State}} $\ast$}]{country\+State }\end{DoxyParamCaption})}
+
+
+
+Sets the country state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country\+State} & is the state we are changing to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_a1c1e2b5b8d21f83c31c2752321618c23}\label{classCountry_a1c1e2b5b8d21f83c31c2752321618c23}} 
+\index{Country@{Country}!updateCountryMoral@{updateCountryMoral}}
+\index{updateCountryMoral@{updateCountryMoral}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{updateCountryMoral()}{updateCountryMoral()}}
+{\footnotesize\ttfamily bool Country\+::update\+Country\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the country moral by recalculating aggregate of units\textquotesingle{} moral if country is joined. 
+
+\begin{DoxyReturn}{Returns}
+Boolean that represents whether the countries moral is above the accepted percentage 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Country/Country.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Country/Country.\+cpp\end{DoxyCompactItemize}

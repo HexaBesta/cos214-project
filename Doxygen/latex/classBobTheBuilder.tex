@@ -1,0 +1,98 @@
+\hypertarget{classBobTheBuilder}{}\doxysection{Bob\+The\+Builder Class Reference}
+\label{classBobTheBuilder}\index{BobTheBuilder@{BobTheBuilder}}
+
+
+Inheritance diagram for Bob\+The\+Builder\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classBobTheBuilder__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBobTheBuilder_a061a02763e13435448c060b89c134230}\label{classBobTheBuilder_a061a02763e13435448c060b89c134230}} 
+virtual void \mbox{\hyperlink{classBobTheBuilder_a061a02763e13435448c060b89c134230}{create\+Vehicles}} ()=0
+\begin{DoxyCompactList}\small\item\em Creates new vehicles for the platoon. This is a pure virtual function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBobTheBuilder_a2953bf2e6b9f0e7825862dac4fdcb339}\label{classBobTheBuilder_a2953bf2e6b9f0e7825862dac4fdcb339}} 
+virtual void \mbox{\hyperlink{classBobTheBuilder_a2953bf2e6b9f0e7825862dac4fdcb339}{create\+Soldiers}} ()=0
+\begin{DoxyCompactList}\small\item\em Creates new soldiers for the platoon. This is a pure virtual function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBobTheBuilder_a9bd24e0b82026be734eb45ec58d1642d}\label{classBobTheBuilder_a9bd24e0b82026be734eb45ec58d1642d}} 
+virtual void \mbox{\hyperlink{classBobTheBuilder_a9bd24e0b82026be734eb45ec58d1642d}{create\+Ammo}} ()=0
+\begin{DoxyCompactList}\small\item\em Creates the ammo for the platoon. This is a pure virtual function. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBobTheBuilder_a3ec3cb9ea8477229c871fb6d47ff1d1a}{set\+Country}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$c)=0
+\begin{DoxyCompactList}\small\item\em Creates new vehicles for the platoon. This is a pure virtual function. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBobTheBuilder_ab78e3cb28ae1c02a7beb36ea6bc113a6}{set\+Branch}} (bool type)=0
+\begin{DoxyCompactList}\small\item\em Creates new vehicles for the platoon. This is a pure virtual function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBobTheBuilder_a88289ba06f263bf861a5a88029f0fab5}\label{classBobTheBuilder_a88289ba06f263bf861a5a88029f0fab5}} 
+virtual void \mbox{\hyperlink{classBobTheBuilder_a88289ba06f263bf861a5a88029f0fab5}{create\+Platoon}} ()=0
+\begin{DoxyCompactList}\small\item\em Creates the platoon. This is a pure virtual function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classBobTheBuilder_afc01f4c2a04780a3d8ad76162db8e3d4}{get\+Platoon}} ()=0
+\begin{DoxyCompactList}\small\item\em Function to return the platoon. This is a pure virtual function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBobTheBuilder_adbad3c303ecc2d95e54d4f4942693103}\label{classBobTheBuilder_adbad3c303ecc2d95e54d4f4942693103}} 
+virtual void \mbox{\hyperlink{classBobTheBuilder_adbad3c303ecc2d95e54d4f4942693103}{clear\+Builder}} ()=0
+\begin{DoxyCompactList}\small\item\em Resets the builder. This is a pure virtual function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBobTheBuilder_afc01f4c2a04780a3d8ad76162db8e3d4}\label{classBobTheBuilder_afc01f4c2a04780a3d8ad76162db8e3d4}} 
+\index{BobTheBuilder@{BobTheBuilder}!getPlatoon@{getPlatoon}}
+\index{getPlatoon@{getPlatoon}!BobTheBuilder@{BobTheBuilder}}
+\doxysubsubsection{\texorpdfstring{getPlatoon()}{getPlatoon()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classUnit}{Unit}}$\ast$ Bob\+The\+Builder\+::get\+Platoon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Function to return the platoon. This is a pure virtual function. 
+
+\begin{DoxyReturn}{Returns}
+a platoon of type unit 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classPlatoonBuilder_aa45269f2e44528c999299e451f011a1f}{Platoon\+Builder}}.
+
+\mbox{\Hypertarget{classBobTheBuilder_ab78e3cb28ae1c02a7beb36ea6bc113a6}\label{classBobTheBuilder_ab78e3cb28ae1c02a7beb36ea6bc113a6}} 
+\index{BobTheBuilder@{BobTheBuilder}!setBranch@{setBranch}}
+\index{setBranch@{setBranch}!BobTheBuilder@{BobTheBuilder}}
+\doxysubsubsection{\texorpdfstring{setBranch()}{setBranch()}}
+{\footnotesize\ttfamily virtual void Bob\+The\+Builder\+::set\+Branch (\begin{DoxyParamCaption}\item[{bool}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Creates new vehicles for the platoon. This is a pure virtual function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & represents the type of the \mbox{\hyperlink{classBranch}{Branch}}, true represents a land branch while false represents an air branch \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classPlatoonBuilder_a7dd88c9d6fff0e6f6c9bca33b5531c19}{Platoon\+Builder}}.
+
+\mbox{\Hypertarget{classBobTheBuilder_a3ec3cb9ea8477229c871fb6d47ff1d1a}\label{classBobTheBuilder_a3ec3cb9ea8477229c871fb6d47ff1d1a}} 
+\index{BobTheBuilder@{BobTheBuilder}!setCountry@{setCountry}}
+\index{setCountry@{setCountry}!BobTheBuilder@{BobTheBuilder}}
+\doxysubsubsection{\texorpdfstring{setCountry()}{setCountry()}}
+{\footnotesize\ttfamily virtual void Bob\+The\+Builder\+::set\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Creates new vehicles for the platoon. This is a pure virtual function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & represents the country of the platoon \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classPlatoonBuilder_aae0db0b2c489a595a6deeadf34eeb5eb}{Platoon\+Builder}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Builder/Bob\+The\+Builder.\+h\end{DoxyCompactItemize}

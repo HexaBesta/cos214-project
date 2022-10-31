@@ -1,0 +1,111 @@
+\hypertarget{classCivilianState}{}\doxysection{Civilian\+State Class Reference}
+\label{classCivilianState}\index{CivilianState@{CivilianState}}
+
+
+Inheritance diagram for Civilian\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classCivilianState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Civilian\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classCivilianState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{classCivilianState_ab49e38146e4ce9110031fb05fff67456}{attack\+Strength}} (double damage)
+\begin{DoxyCompactList}\small\item\em Returns the actual damage that can be inflicted by a unit based on their state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ \mbox{\hyperlink{classCivilianState_a137c37ce81c5d46d07ed93390581eab0}{change\+Unit\+State}} ()
+\begin{DoxyCompactList}\small\item\em change \mbox{\hyperlink{classUnit}{Unit}}\textquotesingle{}s state to the default next state \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classCivilianState_afa82cc7d63245236196105daac7c5b9a}{request}} ()
+\begin{DoxyCompactList}\small\item\em Prints the current state \char`\"{}\+C\+I\+V\+I\+L\+I\+A\+N\char`\"{}. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classCivilianState_ae24c18ea3581ff303694ae2e4d66f6fd}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the name of the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCivilianState_ab49e38146e4ce9110031fb05fff67456}\label{classCivilianState_ab49e38146e4ce9110031fb05fff67456}} 
+\index{CivilianState@{CivilianState}!attackStrength@{attackStrength}}
+\index{attackStrength@{attackStrength}!CivilianState@{CivilianState}}
+\doxysubsubsection{\texorpdfstring{attackStrength()}{attackStrength()}}
+{\footnotesize\ttfamily double Civilian\+State\+::attack\+Strength (\begin{DoxyParamCaption}\item[{double}]{damage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the actual damage that can be inflicted by a unit based on their state. 
+
+In the Civilian State units deal 1/3 of their potential full damage
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & the unadjusted damage of the unit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the adjusted damage of the unit 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUnitsState_a6c32ab64e2d0e4c1880a4f57fe1620c1}{Units\+State}}.
+
+\mbox{\Hypertarget{classCivilianState_a137c37ce81c5d46d07ed93390581eab0}\label{classCivilianState_a137c37ce81c5d46d07ed93390581eab0}} 
+\index{CivilianState@{CivilianState}!changeUnitState@{changeUnitState}}
+\index{changeUnitState@{changeUnitState}!CivilianState@{CivilianState}}
+\doxysubsubsection{\texorpdfstring{changeUnitState()}{changeUnitState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ Civilian\+State\+::change\+Unit\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+change \mbox{\hyperlink{classUnit}{Unit}}\textquotesingle{}s state to the default next state 
+
+Civilian State will change to (Deployed) Fit State
+
+\begin{DoxyReturn}{Returns}
+Units\+State$\ast$ the new \mbox{\hyperlink{classFitState}{Fit\+State}} state of the unit 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUnitsState_a7421e9735dcdae2fe4538c9241de0cf2}{Units\+State}}.
+
+\mbox{\Hypertarget{classCivilianState_ae24c18ea3581ff303694ae2e4d66f6fd}\label{classCivilianState_ae24c18ea3581ff303694ae2e4d66f6fd}} 
+\index{CivilianState@{CivilianState}!getState@{getState}}
+\index{getState@{getState}!CivilianState@{CivilianState}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily string Civilian\+State\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the name of the state. 
+
+
+
+Implements \mbox{\hyperlink{classUnitsState_abf11db2e27c2d78ba15174327ae5ff02}{Units\+State}}.
+
+\mbox{\Hypertarget{classCivilianState_afa82cc7d63245236196105daac7c5b9a}\label{classCivilianState_afa82cc7d63245236196105daac7c5b9a}} 
+\index{CivilianState@{CivilianState}!request@{request}}
+\index{request@{request}!CivilianState@{CivilianState}}
+\doxysubsubsection{\texorpdfstring{request()}{request()}}
+{\footnotesize\ttfamily void Civilian\+State\+::request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Prints the current state \char`\"{}\+C\+I\+V\+I\+L\+I\+A\+N\char`\"{}. 
+
+
+
+Implements \mbox{\hyperlink{classUnitsState_a644227be199daccde81f23fe65fb31c1}{Units\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Unit\+State/Civilian\+State.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Unit\+State/Civilian\+State.\+cpp\end{DoxyCompactItemize}

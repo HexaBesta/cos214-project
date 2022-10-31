@@ -1,0 +1,456 @@
+\hypertarget{classUnit}{}\doxysection{Unit Class Reference}
+\label{classUnit}\index{Unit@{Unit}}
+
+
+Inheritance diagram for Unit\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classUnit__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Unit\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classUnit__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUnit_a8e46f663a95736c8002d85ab271a7581}{Unit}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classUnit}{Unit}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUnit_a07e1114d440eb25ec26c4f71105b6551}\label{classUnit_a07e1114d440eb25ec26c4f71105b6551}} 
+{\bfseries Unit} (int health, int moral, int damage, \mbox{\hyperlink{classCountry}{Country}} $\ast$country, bool fit\+State)
+\item 
+virtual void \mbox{\hyperlink{classUnit_ad7e7e6db39c68e4852b7a3b165362bf1}{attack}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$other)=0
+\begin{DoxyCompactList}\small\item\em pure virtual function used to return the attack method of each state \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classUnit_a16a2b3dcab30982b90ec86cfe156cbc4}{change\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Stubbed method for changing strategy -\/ only applicable to platoons. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUnit_ab65200c8f1dd263d8dc14f14a20c2ba7}\label{classUnit_ab65200c8f1dd263d8dc14f14a20c2ba7}} 
+virtual void \mbox{\hyperlink{classUnit_ab65200c8f1dd263d8dc14f14a20c2ba7}{request\+State}} ()
+\begin{DoxyCompactList}\small\item\em prints the state of the currently set unit state \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classUnit_afb022c8d2b9f4c0f634bffdd633b85a9}{get\+Strategy\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Stubbed method -\/ will be used for platoon. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classUnit_a39e63d8bcdee33328b9e704e475f6fde}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns state of unit. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classUnit_a69d7b9201e098e5e9a8852c0bcf6bb53}{set\+Unit\+State}} (\mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$unit\+State=nullptr)
+\begin{DoxyCompactList}\small\item\em Sets the unit state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUnit_a610a98a68a3e99227b15af4161f26b70}\label{classUnit_a610a98a68a3e99227b15af4161f26b70}} 
+virtual int \mbox{\hyperlink{classUnit_a610a98a68a3e99227b15af4161f26b70}{get\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current health of the unit. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classUnit_a57cb678c776bdd06cae30b2776610fdf}{get\+Average\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Stubbed function used in \mbox{\hyperlink{classPlatoon}{Platoon}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUnit_a7b0dbed96660669a2234b715018781fa}\label{classUnit_a7b0dbed96660669a2234b715018781fa}} 
+virtual int \mbox{\hyperlink{classUnit_a7b0dbed96660669a2234b715018781fa}{get\+Damage}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current damage of the unit. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUnit_aaec88b40541cf3eed9e3ab4780fe937e}{set\+Health}} (int health)
+\begin{DoxyCompactList}\small\item\em Sets the units health to passed in parameter. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classUnit_adadbc1651dbd3f652f9974c3dcd75fc8}{get\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current moral of the unit. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classUnit_a63fe82ecf12df209d0d7ee2e97b62a7e}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the size of the unit. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classUnit_ad7167b0e3f736be1fee0f21c6b9604a4}{set\+Moral}} (int moral)
+\begin{DoxyCompactList}\small\item\em Set the current moral of the unit. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classUnit_a63f98bd1ee4dfeb6babdf8bec56f4482}{take\+Damage}} (int damage, bool type\+Strat=true)
+\begin{DoxyCompactList}\small\item\em The unit takes damage. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classUnit_ab42f0cacd995893681338a3b18b32e09}{split}} ()
+\begin{DoxyCompactList}\small\item\em Splits the unit into equal halves if possible. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classUnit_a59eeecc450c8d37c3cd7389f72f0d51b}{join}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$others)
+\begin{DoxyCompactList}\small\item\em Merges two units together. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classUnit_a59552d2d4730661866fe2d245f49f738}{get\+Branch}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classBranch}{Branch}} of the unit. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classUnit_a893f290ef47c7b99ab79bd136e035e1f}{get\+Alliance}} ()
+\begin{DoxyCompactList}\small\item\em Get the Alliance that the unit beloings to. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classUnit_a09136c0e4fdb9090d0f46539306d4e53}{set\+Country}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$country)
+\begin{DoxyCompactList}\small\item\em Set the \mbox{\hyperlink{classCountry}{Country}} of this unit. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCountry}{Country}} $\ast$ \mbox{\hyperlink{classUnit_a1cebb65d61d34d00201d5e77859b1e64}{get\+Country}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classCountry}{Country}} of this unit. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classUnit_a7d6a3742cd7cd9440fa609c0b11fd3ef}{to\+String}} (int line\+Len=0)
+\begin{DoxyCompactList}\small\item\em Prints all the details about \mbox{\hyperlink{classUnit}{Unit}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classUnit_afe5e69df8c64e6a5036ea836bf6099c7}{take\+Random}} ()
+\begin{DoxyCompactList}\small\item\em Returns random member of platoon to take damage -\/ in other Units, return this. \end{DoxyCompactList}\item 
+virtual int $\ast$ \mbox{\hyperlink{classUnit_a76f7f59056481fea62b968679a107b48}{get\+Ammo}} ()
+\begin{DoxyCompactList}\small\item\em Get the Ammo as an array -\/ stubbed in unit. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit_a6353fc4c0a329997ad4abcf0dcb4eb27}{$\sim$\+Unit}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classUnit}{Unit}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUnit_a673a97e84115e1fecdeee39b790829aa}\label{classUnit_a673a97e84115e1fecdeee39b790829aa}} 
+\mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ {\bfseries unit\+State}
+\item 
+\mbox{\Hypertarget{classUnit_aa0d11313f047316fc48c7b523d2fc206}\label{classUnit_aa0d11313f047316fc48c7b523d2fc206}} 
+int {\bfseries health}
+\item 
+\mbox{\Hypertarget{classUnit_aecd3dba85b701023d58e7fd178249e5f}\label{classUnit_aecd3dba85b701023d58e7fd178249e5f}} 
+int {\bfseries moral}
+\item 
+\mbox{\Hypertarget{classUnit_a92bfb1430ab13e69d4c703a7fc8bafdb}\label{classUnit_a92bfb1430ab13e69d4c703a7fc8bafdb}} 
+int {\bfseries damage}
+\item 
+\mbox{\Hypertarget{classUnit_a0c305d60062972ebf455becaf97dd7c4}\label{classUnit_a0c305d60062972ebf455becaf97dd7c4}} 
+\mbox{\hyperlink{classCountry}{Country}} $\ast$ {\bfseries country}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUnit_a8e46f663a95736c8002d85ab271a7581}\label{classUnit_a8e46f663a95736c8002d85ab271a7581}} 
+\index{Unit@{Unit}!Unit@{Unit}}
+\index{Unit@{Unit}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{Unit()}{Unit()}}
+{\footnotesize\ttfamily Unit\+::\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classUnit}{Unit}} object. 
+
+\mbox{\Hypertarget{classUnit_a6353fc4c0a329997ad4abcf0dcb4eb27}\label{classUnit_a6353fc4c0a329997ad4abcf0dcb4eb27}} 
+\index{Unit@{Unit}!````~Unit@{$\sim$Unit}}
+\index{````~Unit@{$\sim$Unit}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{$\sim$Unit()}{~Unit()}}
+{\footnotesize\ttfamily Unit\+::$\sim$\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classUnit}{Unit}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnit_ad7e7e6db39c68e4852b7a3b165362bf1}\label{classUnit_ad7e7e6db39c68e4852b7a3b165362bf1}} 
+\index{Unit@{Unit}!attack@{attack}}
+\index{attack@{attack}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily virtual void Unit\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+pure virtual function used to return the attack method of each state 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & is the other platoon we are going to attack \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classPlatoon_ad7f3e69631e737f5a672e2df271c9b4f}{Platoon}}, \mbox{\hyperlink{classBranch_aef2280c91527a93a325338192579e8ea}{Branch}}, \mbox{\hyperlink{classVehicle_a941255a8807c8d66b644907725cfb2fd}{Vehicle}}, and \mbox{\hyperlink{classHuman_ad5cdbb9c1ced86ca9685e00184855589}{Human}}.
+
+\mbox{\Hypertarget{classUnit_a16a2b3dcab30982b90ec86cfe156cbc4}\label{classUnit_a16a2b3dcab30982b90ec86cfe156cbc4}} 
+\index{Unit@{Unit}!changeStrategy@{changeStrategy}}
+\index{changeStrategy@{changeStrategy}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{changeStrategy()}{changeStrategy()}}
+{\footnotesize\ttfamily void Unit\+::change\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Stubbed method for changing strategy -\/ only applicable to platoons. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_af5a06be132ed4da3058ab4b30802c929}{Platoon}}.
+
+\mbox{\Hypertarget{classUnit_a893f290ef47c7b99ab79bd136e035e1f}\label{classUnit_a893f290ef47c7b99ab79bd136e035e1f}} 
+\index{Unit@{Unit}!getAlliance@{getAlliance}}
+\index{getAlliance@{getAlliance}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getAlliance()}{getAlliance()}}
+{\footnotesize\ttfamily string Unit\+::get\+Alliance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Alliance that the unit beloings to. 
+
+\begin{DoxyAttention}{Attention}
+Units needs to be able to return some indication of which allaince they belong to 
+\end{DoxyAttention}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUnit_a76f7f59056481fea62b968679a107b48}\label{classUnit_a76f7f59056481fea62b968679a107b48}} 
+\index{Unit@{Unit}!getAmmo@{getAmmo}}
+\index{getAmmo@{getAmmo}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getAmmo()}{getAmmo()}}
+{\footnotesize\ttfamily int $\ast$ Unit\+::get\+Ammo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Ammo as an array -\/ stubbed in unit. 
+
+\begin{DoxyReturn}{Returns}
+int$\ast$ 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_a76ad3961ebaa170b8330bfff3af4fe8a}{Platoon}}, and \mbox{\hyperlink{classBranch_ab4b55f8ced0b6850400b3cd06beca897}{Branch}}.
+
+\mbox{\Hypertarget{classUnit_a57cb678c776bdd06cae30b2776610fdf}\label{classUnit_a57cb678c776bdd06cae30b2776610fdf}} 
+\index{Unit@{Unit}!getAverageMoral@{getAverageMoral}}
+\index{getAverageMoral@{getAverageMoral}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getAverageMoral()}{getAverageMoral()}}
+{\footnotesize\ttfamily double Unit\+::get\+Average\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Stubbed function used in \mbox{\hyperlink{classPlatoon}{Platoon}}. 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_a0c6b7011dac108b0b983e39fbf3f0630}{Platoon}}.
+
+\mbox{\Hypertarget{classUnit_a59552d2d4730661866fe2d245f49f738}\label{classUnit_a59552d2d4730661866fe2d245f49f738}} 
+\index{Unit@{Unit}!getBranch@{getBranch}}
+\index{getBranch@{getBranch}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getBranch()}{getBranch()}}
+{\footnotesize\ttfamily string Unit\+::get\+Branch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classBranch}{Branch}} of the unit. 
+
+\begin{DoxyAttention}{Attention}
+\mbox{\hyperlink{classBranch}{Branch}} class needs to be able to return some indication of which branch 
+\end{DoxyAttention}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classBranch_a05ad231f948bbc870b9b3f29cedac93a}{Branch}}, \mbox{\hyperlink{classLandBranch_ab5175d75055d6acc76086a493dfbcf10}{Land\+Branch}}, and \mbox{\hyperlink{classAirBranch_a941582344db4099aab263f84edf72ad7}{Air\+Branch}}.
+
+\mbox{\Hypertarget{classUnit_a1cebb65d61d34d00201d5e77859b1e64}\label{classUnit_a1cebb65d61d34d00201d5e77859b1e64}} 
+\index{Unit@{Unit}!getCountry@{getCountry}}
+\index{getCountry@{getCountry}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getCountry()}{getCountry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCountry}{Country}} $\ast$ Unit\+::get\+Country (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classCountry}{Country}} of this unit. 
+
+\begin{DoxyReturn}{Returns}
+Country$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUnit_adadbc1651dbd3f652f9974c3dcd75fc8}\label{classUnit_adadbc1651dbd3f652f9974c3dcd75fc8}} 
+\index{Unit@{Unit}!getMoral@{getMoral}}
+\index{getMoral@{getMoral}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getMoral()}{getMoral()}}
+{\footnotesize\ttfamily int Unit\+::get\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the current moral of the unit. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_aaf0076ca5be71a3020a20fb6a31c25fd}{Platoon}}.
+
+\mbox{\Hypertarget{classUnit_a63fe82ecf12df209d0d7ee2e97b62a7e}\label{classUnit_a63fe82ecf12df209d0d7ee2e97b62a7e}} 
+\index{Unit@{Unit}!getSize@{getSize}}
+\index{getSize@{getSize}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Unit\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the size of the unit. 
+
+\begin{DoxyReturn}{Returns}
+int size 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_ad35e59dd8c35e5ab3d90669cdb92b8ca}{Platoon}}.
+
+\mbox{\Hypertarget{classUnit_a39e63d8bcdee33328b9e704e475f6fde}\label{classUnit_a39e63d8bcdee33328b9e704e475f6fde}} 
+\index{Unit@{Unit}!getState@{getState}}
+\index{getState@{getState}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily string Unit\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns state of unit. 
+
+\mbox{\Hypertarget{classUnit_afb022c8d2b9f4c0f634bffdd633b85a9}\label{classUnit_afb022c8d2b9f4c0f634bffdd633b85a9}} 
+\index{Unit@{Unit}!getStrategyType@{getStrategyType}}
+\index{getStrategyType@{getStrategyType}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{getStrategyType()}{getStrategyType()}}
+{\footnotesize\ttfamily virtual string Unit\+::get\+Strategy\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Stubbed method -\/ will be used for platoon. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_aaf7b8ae08fe425a9d80debdeb2640999}{Platoon}}, and \mbox{\hyperlink{classBranch_aed855e11852e3ebd5f652c64eba132fe}{Branch}}.
+
+\mbox{\Hypertarget{classUnit_a59eeecc450c8d37c3cd7389f72f0d51b}\label{classUnit_a59eeecc450c8d37c3cd7389f72f0d51b}} 
+\index{Unit@{Unit}!join@{join}}
+\index{join@{join}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily void Unit\+::join (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{others }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Merges two units together. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em others} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_ac61beafca0d681de68b3557c47f52516}{Platoon}}.
+
+\mbox{\Hypertarget{classUnit_a09136c0e4fdb9090d0f46539306d4e53}\label{classUnit_a09136c0e4fdb9090d0f46539306d4e53}} 
+\index{Unit@{Unit}!setCountry@{setCountry}}
+\index{setCountry@{setCountry}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{setCountry()}{setCountry()}}
+{\footnotesize\ttfamily void Unit\+::set\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the \mbox{\hyperlink{classCountry}{Country}} of this unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUnit_aaec88b40541cf3eed9e3ab4780fe937e}\label{classUnit_aaec88b40541cf3eed9e3ab4780fe937e}} 
+\index{Unit@{Unit}!setHealth@{setHealth}}
+\index{setHealth@{setHealth}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{setHealth()}{setHealth()}}
+{\footnotesize\ttfamily void Unit\+::set\+Health (\begin{DoxyParamCaption}\item[{int}]{health }\end{DoxyParamCaption})}
+
+
+
+Sets the units health to passed in parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em health} & takes in the health that will be set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUnit_ad7167b0e3f736be1fee0f21c6b9604a4}\label{classUnit_ad7167b0e3f736be1fee0f21c6b9604a4}} 
+\index{Unit@{Unit}!setMoral@{setMoral}}
+\index{setMoral@{setMoral}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{setMoral()}{setMoral()}}
+{\footnotesize\ttfamily void Unit\+::set\+Moral (\begin{DoxyParamCaption}\item[{int}]{moral }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the current moral of the unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em moral} & takes in the moral that will be set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUnit_a69d7b9201e098e5e9a8852c0bcf6bb53}\label{classUnit_a69d7b9201e098e5e9a8852c0bcf6bb53}} 
+\index{Unit@{Unit}!setUnitState@{setUnitState}}
+\index{setUnitState@{setUnitState}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{setUnitState()}{setUnitState()}}
+{\footnotesize\ttfamily void Unit\+::set\+Unit\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$}]{unit\+State = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the unit state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+State} & is the state you are changing to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classBranch_ac61702dc07b1c2ee2216cf077ccd358c}{Branch}}.
+
+\mbox{\Hypertarget{classUnit_ab42f0cacd995893681338a3b18b32e09}\label{classUnit_ab42f0cacd995893681338a3b18b32e09}} 
+\index{Unit@{Unit}!split@{split}}
+\index{split@{split}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Unit\+::split (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Splits the unit into equal halves if possible. 
+
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_a10951b4fcef0372f107a1816e9ee96fa}{Platoon}}.
+
+\mbox{\Hypertarget{classUnit_a63f98bd1ee4dfeb6babdf8bec56f4482}\label{classUnit_a63f98bd1ee4dfeb6babdf8bec56f4482}} 
+\index{Unit@{Unit}!takeDamage@{takeDamage}}
+\index{takeDamage@{takeDamage}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{takeDamage()}{takeDamage()}}
+{\footnotesize\ttfamily bool Unit\+::take\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage,  }\item[{bool}]{type\+Strat = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The unit takes damage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & is the amount of damage the unit will take \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_a41e43d756ff68fa17ff8484df816f691}{Platoon}}.
+
+\mbox{\Hypertarget{classUnit_afe5e69df8c64e6a5036ea836bf6099c7}\label{classUnit_afe5e69df8c64e6a5036ea836bf6099c7}} 
+\index{Unit@{Unit}!takeRandom@{takeRandom}}
+\index{takeRandom@{takeRandom}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{takeRandom()}{takeRandom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Unit\+::take\+Random (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns random member of platoon to take damage -\/ in other Units, return this. 
+
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ this 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPlatoon_ad83b516cbf0970445d05101acf3239a2}{Platoon}}.
+
+\mbox{\Hypertarget{classUnit_a7d6a3742cd7cd9440fa609c0b11fd3ef}\label{classUnit_a7d6a3742cd7cd9440fa609c0b11fd3ef}} 
+\index{Unit@{Unit}!toString@{toString}}
+\index{toString@{toString}!Unit@{Unit}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily string Unit\+::to\+String (\begin{DoxyParamCaption}\item[{int}]{line\+Len = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Prints all the details about \mbox{\hyperlink{classUnit}{Unit}}. 
+
+Pure virtual -\/ implemented in subclasses 
+
+Reimplemented in \mbox{\hyperlink{classBranch_a06238cab4a212e1ce77112f90cbb86d7}{Branch}}, and \mbox{\hyperlink{classPlatoon_a7e21c39752e5d898f9e3f6117577dcfe}{Platoon}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Unit/Unit.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Unit/Unit.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,111 @@
+\hypertarget{classInjuredState}{}\doxysection{Injured\+State Class Reference}
+\label{classInjuredState}\index{InjuredState@{InjuredState}}
+
+
+Inheritance diagram for Injured\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classInjuredState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Injured\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classInjuredState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{classInjuredState_a0f124ed34b273eafd18954ffa6b24f03}{attack\+Strength}} (double damage)
+\begin{DoxyCompactList}\small\item\em Returns the actual damage that can be inflicted by a unit based on their state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ \mbox{\hyperlink{classInjuredState_a0b74844ddfd1209a1ec4e0ff83bdd386}{change\+Unit\+State}} ()
+\begin{DoxyCompactList}\small\item\em change \mbox{\hyperlink{classUnit}{Unit}}\textquotesingle{}s state to the default next state \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classInjuredState_a5eff5f83ee7d76c277ad1187652dea3e}{request}} ()
+\begin{DoxyCompactList}\small\item\em Prints the current state. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classInjuredState_a64726053d9ff35816efe07f3392fdece}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the name of the state\+: \char`\"{}\+Injured\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classInjuredState_a0f124ed34b273eafd18954ffa6b24f03}\label{classInjuredState_a0f124ed34b273eafd18954ffa6b24f03}} 
+\index{InjuredState@{InjuredState}!attackStrength@{attackStrength}}
+\index{attackStrength@{attackStrength}!InjuredState@{InjuredState}}
+\doxysubsubsection{\texorpdfstring{attackStrength()}{attackStrength()}}
+{\footnotesize\ttfamily double Injured\+State\+::attack\+Strength (\begin{DoxyParamCaption}\item[{double}]{damage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the actual damage that can be inflicted by a unit based on their state. 
+
+In the Injured State units deal 1/2 their full potential damage
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & the unadjusted damage of the unit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the adjusted damage of the unit (1/2 damage) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUnitsState_a6c32ab64e2d0e4c1880a4f57fe1620c1}{Units\+State}}.
+
+\mbox{\Hypertarget{classInjuredState_a0b74844ddfd1209a1ec4e0ff83bdd386}\label{classInjuredState_a0b74844ddfd1209a1ec4e0ff83bdd386}} 
+\index{InjuredState@{InjuredState}!changeUnitState@{changeUnitState}}
+\index{changeUnitState@{changeUnitState}!InjuredState@{InjuredState}}
+\doxysubsubsection{\texorpdfstring{changeUnitState()}{changeUnitState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ Injured\+State\+::change\+Unit\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+change \mbox{\hyperlink{classUnit}{Unit}}\textquotesingle{}s state to the default next state 
+
+Injured State will change to the Dead State
+
+\begin{DoxyReturn}{Returns}
+Units\+State$\ast$ the new \mbox{\hyperlink{classInjuredState}{Injured\+State}} state of the unit 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUnitsState_a7421e9735dcdae2fe4538c9241de0cf2}{Units\+State}}.
+
+\mbox{\Hypertarget{classInjuredState_a64726053d9ff35816efe07f3392fdece}\label{classInjuredState_a64726053d9ff35816efe07f3392fdece}} 
+\index{InjuredState@{InjuredState}!getState@{getState}}
+\index{getState@{getState}!InjuredState@{InjuredState}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily string Injured\+State\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the name of the state\+: \char`\"{}\+Injured\char`\"{}. 
+
+
+
+Implements \mbox{\hyperlink{classUnitsState_abf11db2e27c2d78ba15174327ae5ff02}{Units\+State}}.
+
+\mbox{\Hypertarget{classInjuredState_a5eff5f83ee7d76c277ad1187652dea3e}\label{classInjuredState_a5eff5f83ee7d76c277ad1187652dea3e}} 
+\index{InjuredState@{InjuredState}!request@{request}}
+\index{request@{request}!InjuredState@{InjuredState}}
+\doxysubsubsection{\texorpdfstring{request()}{request()}}
+{\footnotesize\ttfamily void Injured\+State\+::request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Prints the current state. 
+
+Calls the parent class request before completing own print I\+N\+J\+U\+R\+ED 
+
+Reimplemented from \mbox{\hyperlink{classDeployedState_a5b3cd54acd90973a66c48ac955c22f70}{Deployed\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Unit\+State/Injured\+State.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Unit\+State/Injured\+State.\+cpp\end{DoxyCompactItemize}

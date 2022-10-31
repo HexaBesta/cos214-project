@@ -1,0 +1,101 @@
+\hypertarget{classGodOfWar}{}\doxysection{God\+Of\+War Class Reference}
+\label{classGodOfWar}\index{GodOfWar@{GodOfWar}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGodOfWar_acd753047a12783759a99b09af8a18e21}{God\+Of\+War}} (string setup\+File)
+\begin{DoxyCompactList}\small\item\em Construct a new God Of War object using setup file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGodOfWar_a5084da15f0df634ce7f7a19776053422}{take\+Turn}} (int actions)
+\begin{DoxyCompactList}\small\item\em allows alliance to take a turn \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGodOfWar_aa70bb32f63e652804f624af9a611001a}{round}} ()
+\begin{DoxyCompactList}\small\item\em one round of \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGodOfWar_aac3e0527f302d34b584a3077d3ae1968}{initialise\+Sides}} ()
+\begin{DoxyCompactList}\small\item\em Calls functions in player to initialise sides with countries with platoons. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGodOfWar_abb48fd77722044d92a1487787200d038}{$\sim$\+God\+Of\+War}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the God Of War object and assigned memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGodOfWar_acd753047a12783759a99b09af8a18e21}\label{classGodOfWar_acd753047a12783759a99b09af8a18e21}} 
+\index{GodOfWar@{GodOfWar}!GodOfWar@{GodOfWar}}
+\index{GodOfWar@{GodOfWar}!GodOfWar@{GodOfWar}}
+\doxysubsubsection{\texorpdfstring{GodOfWar()}{GodOfWar()}}
+{\footnotesize\ttfamily God\+Of\+War\+::\+God\+Of\+War (\begin{DoxyParamCaption}\item[{string}]{setup\+File }\end{DoxyParamCaption})}
+
+
+
+Construct a new God Of War object using setup file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setup\+File} & name of the textfile used to set up game \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGodOfWar_abb48fd77722044d92a1487787200d038}\label{classGodOfWar_abb48fd77722044d92a1487787200d038}} 
+\index{GodOfWar@{GodOfWar}!````~GodOfWar@{$\sim$GodOfWar}}
+\index{````~GodOfWar@{$\sim$GodOfWar}!GodOfWar@{GodOfWar}}
+\doxysubsubsection{\texorpdfstring{$\sim$GodOfWar()}{~GodOfWar()}}
+{\footnotesize\ttfamily God\+Of\+War\+::$\sim$\+God\+Of\+War (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroy the God Of War object and assigned memory. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGodOfWar_aac3e0527f302d34b584a3077d3ae1968}\label{classGodOfWar_aac3e0527f302d34b584a3077d3ae1968}} 
+\index{GodOfWar@{GodOfWar}!initialiseSides@{initialiseSides}}
+\index{initialiseSides@{initialiseSides}!GodOfWar@{GodOfWar}}
+\doxysubsubsection{\texorpdfstring{initialiseSides()}{initialiseSides()}}
+{\footnotesize\ttfamily void God\+Of\+War\+::initialise\+Sides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calls functions in player to initialise sides with countries with platoons. 
+
+\mbox{\Hypertarget{classGodOfWar_aa70bb32f63e652804f624af9a611001a}\label{classGodOfWar_aa70bb32f63e652804f624af9a611001a}} 
+\index{GodOfWar@{GodOfWar}!round@{round}}
+\index{round@{round}!GodOfWar@{GodOfWar}}
+\doxysubsubsection{\texorpdfstring{round()}{round()}}
+{\footnotesize\ttfamily void God\+Of\+War\+::round (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+one round of 
+
+\mbox{\Hypertarget{classGodOfWar_a5084da15f0df634ce7f7a19776053422}\label{classGodOfWar_a5084da15f0df634ce7f7a19776053422}} 
+\index{GodOfWar@{GodOfWar}!takeTurn@{takeTurn}}
+\index{takeTurn@{takeTurn}!GodOfWar@{GodOfWar}}
+\doxysubsubsection{\texorpdfstring{takeTurn()}{takeTurn()}}
+{\footnotesize\ttfamily void God\+Of\+War\+::take\+Turn (\begin{DoxyParamCaption}\item[{int}]{actions }\end{DoxyParamCaption})}
+
+
+
+allows alliance to take a turn 
+
+While there are action points remaining\+:
+\begin{DoxyItemize}
+\item Pick a country\+:
+\item Select action\+:
+\begin{DoxyItemize}
+\item Destroy transport route
+\item Choose area\+:
+\begin{DoxyItemize}
+\item March into adjacent areas OR
+\item Choose resource to clone factory of When no more action points remaining -\/ resolve\+All\+Battles
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em actions} & number of action points available \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/God\+Of\+War.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/God\+Of\+War.\+cpp\end{DoxyCompactItemize}

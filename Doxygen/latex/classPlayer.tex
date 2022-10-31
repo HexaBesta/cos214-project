@@ -1,0 +1,381 @@
+\hypertarget{classPlayer}{}\doxysection{Player Class Reference}
+\label{classPlayer}\index{Player@{Player}}
+
+
+Inheritance diagram for Player\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classPlayer__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classPlayer_a85b65d724e693ff145ada66e1d079727}{player\+Retreat}} (\mbox{\hyperlink{classBattle}{Battle}} $\ast$battle)=0
+\begin{DoxyCompactList}\small\item\em Check whether the active player will retreat in this turn. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classPlayer_ac3f6d3947e0cf8f6a6802784de40e8a7}{check\+Change\+Strategy}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$active)=0
+\begin{DoxyCompactList}\small\item\em Check whether the active player wants to change strategy in this turn. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classPlayer_a6e99dce143c6effc43edf3d172bfdcb6}{request\+Reinforcements}} (\mbox{\hyperlink{classBattle}{Battle}} $\ast$battle)=0
+\begin{DoxyCompactList}\small\item\em Checks whether active side will request reinforcements in their turn. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlayer_a30d56d1b2f79896a4a8ad9ca0ef1f44c}{choose\+Country}} (vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$ countries)=0
+\begin{DoxyCompactList}\small\item\em Choses a country to take a turn with. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlayer_a43582b98f8f184b39d8ef9b06278cc52}{choose\+Action\+For\+Country}} ()=0
+\begin{DoxyCompactList}\small\item\em choose which action player wants to take with country \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlayer_a37a879245dfd508ea99c1ce43ae7c445}{choose\+Area\+For\+Action}} (vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ areas)=0
+\begin{DoxyCompactList}\small\item\em choose which area to take action in \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlayer_a280329899debb93a4ddd5b92d323f14f}{choose\+Adjacent\+Area}} (vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ adj\+Areas)=0
+\begin{DoxyCompactList}\small\item\em choose area from adj\+Area list \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlayer_a3ed50cfd54e166c3b780a020188883cb}{choose\+Resource}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area)=0
+\begin{DoxyCompactList}\small\item\em choose type of resource to request for area passed in \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classPlayer_ac5300319a91446ff291ffa7fbe079b17}{change\+Player}} ()=0
+\begin{DoxyCompactList}\small\item\em Check whether to change from C\+P\+U-\/$>$\mbox{\hyperlink{classUser}{User}} or User-\/$>$\mbox{\hyperlink{classCPU}{C\+PU}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPlayer}{Player}} $\ast$ \mbox{\hyperlink{classPlayer_a79b752b312e16c47f2193ebd0d9fe607}{toggle\+Player}} ()=0
+\begin{DoxyCompactList}\small\item\em Change between player types. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlayer_aa33482887e94e2294f9f55171628e003}{initialise}} (\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$side1, \mbox{\hyperlink{classAlliances}{Alliances}} $\ast$side2, \mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Template method to populate map. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlayer_a7b4b9360675ae98773156264ed6a3e8b}{initialise\+Side}} (\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$alliance, \mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Template method to get all input needed to populate Alliance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classPlayer_adb6fd9eeaff6ba9003f15414232fafb4}{create\+Countries}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)=0
+\begin{DoxyCompactList}\small\item\em Creates new Countries and add to map country vector. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlayer_ad84801b0e7db7f299d84275c172bd8b5}{number\+Of\+Countries\+In\+Alliance}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)=0
+\begin{DoxyCompactList}\small\item\em Allows user to choose the number of countries to join the alliance. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCountry}{Country}} $\ast$ \mbox{\hyperlink{classPlayer_a2355c5c0e8db64ae4bbacc5d779094b5}{choose\+Country\+To\+Join\+Alliance}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)=0
+\begin{DoxyCompactList}\small\item\em Choose a country to form part of alliance. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlayer_a21cbdf560003f6120571cda38702ade1}{add\+Platoons}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$country)=0
+\begin{DoxyCompactList}\small\item\em Adds a platoon to passed in country. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlayer_a979a41dc78551d6a07e6be5a3d12084d}{initialise\+Factories}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map, \mbox{\hyperlink{classAlliances}{Alliances}} $\ast$alliance)=0
+\begin{DoxyCompactList}\small\item\em Adds selected factories to selected areas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlayer_a21cbdf560003f6120571cda38702ade1}\label{classPlayer_a21cbdf560003f6120571cda38702ade1}} 
+\index{Player@{Player}!addPlatoons@{addPlatoons}}
+\index{addPlatoons@{addPlatoons}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{addPlatoons()}{addPlatoons()}}
+{\footnotesize\ttfamily virtual void Player\+::add\+Platoons (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Adds a platoon to passed in country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country} & the country to which platoon should be added \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCPU_a9515fa5beea6b615865db29bc859343e}{C\+PU}}, and \mbox{\hyperlink{classUser_a74f4ee1da12173b59cba9703bb4af41b}{User}}.
+
+\mbox{\Hypertarget{classPlayer_ac5300319a91446ff291ffa7fbe079b17}\label{classPlayer_ac5300319a91446ff291ffa7fbe079b17}} 
+\index{Player@{Player}!changePlayer@{changePlayer}}
+\index{changePlayer@{changePlayer}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{changePlayer()}{changePlayer()}}
+{\footnotesize\ttfamily virtual bool Player\+::change\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check whether to change from C\+P\+U-\/$>$\mbox{\hyperlink{classUser}{User}} or User-\/$>$\mbox{\hyperlink{classCPU}{C\+PU}}. 
+
+\begin{DoxyReturn}{Returns}
+true if change should occur 
+
+false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_ab63fa67a8d21aa40bacc4661bb525fa2}{C\+PU}}, and \mbox{\hyperlink{classUser_aa19a00226e8b063e5025afb0f3835119}{User}}.
+
+\mbox{\Hypertarget{classPlayer_ac3f6d3947e0cf8f6a6802784de40e8a7}\label{classPlayer_ac3f6d3947e0cf8f6a6802784de40e8a7}} 
+\index{Player@{Player}!checkChangeStrategy@{checkChangeStrategy}}
+\index{checkChangeStrategy@{checkChangeStrategy}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{checkChangeStrategy()}{checkChangeStrategy()}}
+{\footnotesize\ttfamily virtual bool Player\+::check\+Change\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{active }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check whether the active player wants to change strategy in this turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em active,the} & unit\textquotesingle{}s whose turn it is \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if unit wants to change strategy 
+
+false if unit does not want to change strategy 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_a7b6a798fc60e56d484275fe15dbeb2cf}{C\+PU}}, and \mbox{\hyperlink{classUser_ae62b0a49d9536a75bb3e6af3d49bb2b5}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a43582b98f8f184b39d8ef9b06278cc52}\label{classPlayer_a43582b98f8f184b39d8ef9b06278cc52}} 
+\index{Player@{Player}!chooseActionForCountry@{chooseActionForCountry}}
+\index{chooseActionForCountry@{chooseActionForCountry}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{chooseActionForCountry()}{chooseActionForCountry()}}
+{\footnotesize\ttfamily virtual int Player\+::choose\+Action\+For\+Country (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+choose which action player wants to take with country 
+
+\begin{DoxyReturn}{Returns}
+int\+:
+\begin{DoxyItemize}
+\item 0 if attack transport route
+\item 1 if request\+Resource
+\item 2 if march into area 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_adb0f9d0f65d1a5e3668e7fcb49675e61}{C\+PU}}, and \mbox{\hyperlink{classUser_a7b55efedcfeffb9192a2706418cd6d7a}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a280329899debb93a4ddd5b92d323f14f}\label{classPlayer_a280329899debb93a4ddd5b92d323f14f}} 
+\index{Player@{Player}!chooseAdjacentArea@{chooseAdjacentArea}}
+\index{chooseAdjacentArea@{chooseAdjacentArea}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{chooseAdjacentArea()}{chooseAdjacentArea()}}
+{\footnotesize\ttfamily virtual int Player\+::choose\+Adjacent\+Area (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$}]{adj\+Areas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+choose area from adj\+Area list 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adj\+Areas} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int index of chosen 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_ae1af8489d14b40302abf820112fe42cb}{C\+PU}}, and \mbox{\hyperlink{classUser_a5ce7c81794c6fa6040bd223dbfe4efea}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a37a879245dfd508ea99c1ce43ae7c445}\label{classPlayer_a37a879245dfd508ea99c1ce43ae7c445}} 
+\index{Player@{Player}!chooseAreaForAction@{chooseAreaForAction}}
+\index{chooseAreaForAction@{chooseAreaForAction}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{chooseAreaForAction()}{chooseAreaForAction()}}
+{\footnotesize\ttfamily virtual int Player\+::choose\+Area\+For\+Action (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$}]{areas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+choose which area to take action in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em areas} & list of all areas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int index of chosen 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_adfebbc855767a17ff0e4c2d79f9d4651}{C\+PU}}, and \mbox{\hyperlink{classUser_a3dd64118086d761564b4854ddc800325}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a30d56d1b2f79896a4a8ad9ca0ef1f44c}\label{classPlayer_a30d56d1b2f79896a4a8ad9ca0ef1f44c}} 
+\index{Player@{Player}!chooseCountry@{chooseCountry}}
+\index{chooseCountry@{chooseCountry}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{chooseCountry()}{chooseCountry()}}
+{\footnotesize\ttfamily virtual int Player\+::choose\+Country (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$}]{countries }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Choses a country to take a turn with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em countries} & vector of countries of current alliance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int index of country chosen 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_a13e6362d444f2635becf70e058787774}{C\+PU}}, and \mbox{\hyperlink{classUser_af45d1901627a7803bb866d27eaf0fe58}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a2355c5c0e8db64ae4bbacc5d779094b5}\label{classPlayer_a2355c5c0e8db64ae4bbacc5d779094b5}} 
+\index{Player@{Player}!chooseCountryToJoinAlliance@{chooseCountryToJoinAlliance}}
+\index{chooseCountryToJoinAlliance@{chooseCountryToJoinAlliance}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{chooseCountryToJoinAlliance()}{chooseCountryToJoinAlliance()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classCountry}{Country}}$\ast$ Player\+::choose\+Country\+To\+Join\+Alliance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Choose a country to form part of alliance. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classCountry}{Country}} $\ast$ to chosen country 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_acc47a5ce291cba0178c9d54cad2af452}{C\+PU}}, and \mbox{\hyperlink{classUser_a04b51dc9d70006c3052054c815cccee0}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a3ed50cfd54e166c3b780a020188883cb}\label{classPlayer_a3ed50cfd54e166c3b780a020188883cb}} 
+\index{Player@{Player}!chooseResource@{chooseResource}}
+\index{chooseResource@{chooseResource}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{chooseResource()}{chooseResource()}}
+{\footnotesize\ttfamily virtual int Player\+::choose\+Resource (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+choose type of resource to request for area passed in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em area} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int type of resource 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_a467eef768c4738076ca09caafe75a352}{C\+PU}}, and \mbox{\hyperlink{classUser_acf4ede92e2de94562a761e2e274bc5ce}{User}}.
+
+\mbox{\Hypertarget{classPlayer_adb6fd9eeaff6ba9003f15414232fafb4}\label{classPlayer_adb6fd9eeaff6ba9003f15414232fafb4}} 
+\index{Player@{Player}!createCountries@{createCountries}}
+\index{createCountries@{createCountries}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{createCountries()}{createCountries()}}
+{\footnotesize\ttfamily virtual void Player\+::create\+Countries (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Creates new Countries and add to map country vector. 
+
+
+
+Implemented in \mbox{\hyperlink{classCPU_abe83518f6ea344876d5e112c2b84ace4}{C\+PU}}, and \mbox{\hyperlink{classUser_a5e76115ec19b8b3043217cc65be2dda3}{User}}.
+
+\mbox{\Hypertarget{classPlayer_aa33482887e94e2294f9f55171628e003}\label{classPlayer_aa33482887e94e2294f9f55171628e003}} 
+\index{Player@{Player}!initialise@{initialise}}
+\index{initialise@{initialise}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{initialise()}{initialise()}}
+{\footnotesize\ttfamily void Player\+::initialise (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$}]{side1,  }\item[{\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$}]{side2,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Template method to populate map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em side1} & \\
+\hline
+{\em side2} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlayer_a979a41dc78551d6a07e6be5a3d12084d}\label{classPlayer_a979a41dc78551d6a07e6be5a3d12084d}} 
+\index{Player@{Player}!initialiseFactories@{initialiseFactories}}
+\index{initialiseFactories@{initialiseFactories}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{initialiseFactories()}{initialiseFactories()}}
+{\footnotesize\ttfamily virtual void Player\+::initialise\+Factories (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$}]{alliance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Adds selected factories to selected areas. 
+
+
+
+Implemented in \mbox{\hyperlink{classCPU_a36709454eaf0eccbd65a21049cdfc03f}{C\+PU}}, and \mbox{\hyperlink{classUser_a38c6821aca8379f42f31d00a4cd1acca}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a7b4b9360675ae98773156264ed6a3e8b}\label{classPlayer_a7b4b9360675ae98773156264ed6a3e8b}} 
+\index{Player@{Player}!initialiseSide@{initialiseSide}}
+\index{initialiseSide@{initialiseSide}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{initialiseSide()}{initialiseSide()}}
+{\footnotesize\ttfamily void Player\+::initialise\+Side (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$}]{alliance,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Template method to get all input needed to populate Alliance. 
+
+\mbox{\Hypertarget{classPlayer_ad84801b0e7db7f299d84275c172bd8b5}\label{classPlayer_ad84801b0e7db7f299d84275c172bd8b5}} 
+\index{Player@{Player}!numberOfCountriesInAlliance@{numberOfCountriesInAlliance}}
+\index{numberOfCountriesInAlliance@{numberOfCountriesInAlliance}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{numberOfCountriesInAlliance()}{numberOfCountriesInAlliance()}}
+{\footnotesize\ttfamily virtual int Player\+::number\+Of\+Countries\+In\+Alliance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Allows user to choose the number of countries to join the alliance. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_a695eb8493d22200ae29cd936c3d2ab9e}{C\+PU}}, and \mbox{\hyperlink{classUser_a8460f2cf40b39f7143937c5229ca7219}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a85b65d724e693ff145ada66e1d079727}\label{classPlayer_a85b65d724e693ff145ada66e1d079727}} 
+\index{Player@{Player}!playerRetreat@{playerRetreat}}
+\index{playerRetreat@{playerRetreat}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{playerRetreat()}{playerRetreat()}}
+{\footnotesize\ttfamily virtual bool Player\+::player\+Retreat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBattle}{Battle}} $\ast$}]{battle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check whether the active player will retreat in this turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em turn} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_ae3b62621e2ae928674f5a70bab74c1f3}{C\+PU}}, and \mbox{\hyperlink{classUser_a66fa6ca46aa5eab30ef1e705467c91cc}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a6e99dce143c6effc43edf3d172bfdcb6}\label{classPlayer_a6e99dce143c6effc43edf3d172bfdcb6}} 
+\index{Player@{Player}!requestReinforcements@{requestReinforcements}}
+\index{requestReinforcements@{requestReinforcements}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{requestReinforcements()}{requestReinforcements()}}
+{\footnotesize\ttfamily virtual bool Player\+::request\+Reinforcements (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBattle}{Battle}} $\ast$}]{battle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Checks whether active side will request reinforcements in their turn. 
+
+\begin{DoxyReturn}{Returns}
+true if reinforcements will be requested 
+
+false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_a415fa153e81030d25b7f82a0d1952b69}{C\+PU}}, and \mbox{\hyperlink{classUser_a174bdef2b2d4020c40fc4f3ff99a6e60}{User}}.
+
+\mbox{\Hypertarget{classPlayer_a79b752b312e16c47f2193ebd0d9fe607}\label{classPlayer_a79b752b312e16c47f2193ebd0d9fe607}} 
+\index{Player@{Player}!togglePlayer@{togglePlayer}}
+\index{togglePlayer@{togglePlayer}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{togglePlayer()}{togglePlayer()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classPlayer}{Player}}$\ast$ Player\+::toggle\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Change between player types. 
+
+\begin{DoxyReturn}{Returns}
+Player$\ast$ new player object 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCPU_a8534f18c577d7d0379e9ef3134ac1f1b}{C\+PU}}, and \mbox{\hyperlink{classUser_a297ded3f4c8bec9f2c00e32e0bc8ddb5}{User}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Player/Player.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Player/Player.\+cpp\end{DoxyCompactItemize}

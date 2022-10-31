@@ -1,0 +1,359 @@
+\hypertarget{classCPU}{}\doxysection{C\+PU Class Reference}
+\label{classCPU}\index{CPU@{CPU}}
+
+
+Inheritance diagram for C\+PU\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=127pt]{classCPU__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+PU\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=127pt]{classCPU__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classCPU_ae3b62621e2ae928674f5a70bab74c1f3}{player\+Retreat}} (\mbox{\hyperlink{classBattle}{Battle}} $\ast$battle)
+\begin{DoxyCompactList}\small\item\em Check whether the active player will retreat in this turn. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCPU_a7b6a798fc60e56d484275fe15dbeb2cf}{check\+Change\+Strategy}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$active)
+\begin{DoxyCompactList}\small\item\em Check whether the active player wants to change strategy in this turn. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCPU_a415fa153e81030d25b7f82a0d1952b69}{request\+Reinforcements}} (\mbox{\hyperlink{classBattle}{Battle}} $\ast$battle)
+\begin{DoxyCompactList}\small\item\em Checks whether active side will request reinforcements in their turn. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classCPU_a13e6362d444f2635becf70e058787774}{choose\+Country}} (vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$ countries)
+\begin{DoxyCompactList}\small\item\em Choses a country to take a turn with. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classCPU_adb0f9d0f65d1a5e3668e7fcb49675e61}{choose\+Action\+For\+Country}} ()
+\begin{DoxyCompactList}\small\item\em choose which action player wants to take with country \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classCPU_adfebbc855767a17ff0e4c2d79f9d4651}{choose\+Area\+For\+Action}} (vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ areas)
+\begin{DoxyCompactList}\small\item\em choose which area to take action in \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classCPU_ae1af8489d14b40302abf820112fe42cb}{choose\+Adjacent\+Area}} (vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ adj\+Areas)
+\begin{DoxyCompactList}\small\item\em choose area from adj\+Area list \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classCPU_a467eef768c4738076ca09caafe75a352}{choose\+Resource}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area)
+\begin{DoxyCompactList}\small\item\em choose type of resource to request for area passed in \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCPU_ab63fa67a8d21aa40bacc4661bb525fa2}{change\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Check whether to change from C\+P\+U-\/$>$\mbox{\hyperlink{classUser}{User}} or User-\/$>$\mbox{\hyperlink{classCPU}{C\+PU}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPlayer}{Player}} $\ast$ \mbox{\hyperlink{classCPU_a8534f18c577d7d0379e9ef3134ac1f1b}{toggle\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Change between player types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classCPU_abe83518f6ea344876d5e112c2b84ace4}{create\+Countries}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)=0
+\begin{DoxyCompactList}\small\item\em Creates new Countries and add to map country vector. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classCPU_a695eb8493d22200ae29cd936c3d2ab9e}{number\+Of\+Countries\+In\+Alliance}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)=0
+\begin{DoxyCompactList}\small\item\em Allows user to choose the number of countries to join the alliance. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCountry}{Country}} $\ast$ \mbox{\hyperlink{classCPU_acc47a5ce291cba0178c9d54cad2af452}{choose\+Country\+To\+Join\+Alliance}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)=0
+\begin{DoxyCompactList}\small\item\em Choose a country to form part of alliance. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classCPU_a9515fa5beea6b615865db29bc859343e}{add\+Platoons}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$country)=0
+\begin{DoxyCompactList}\small\item\em Adds a platoon to passed in country. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classCPU_a36709454eaf0eccbd65a21049cdfc03f}{initialise\+Factories}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map, \mbox{\hyperlink{classAlliances}{Alliances}} $\ast$alliance)=0
+\begin{DoxyCompactList}\small\item\em Adds selected factories to selected areas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCPU_a9515fa5beea6b615865db29bc859343e}\label{classCPU_a9515fa5beea6b615865db29bc859343e}} 
+\index{CPU@{CPU}!addPlatoons@{addPlatoons}}
+\index{addPlatoons@{addPlatoons}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{addPlatoons()}{addPlatoons()}}
+{\footnotesize\ttfamily virtual void C\+P\+U\+::add\+Platoons (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Adds a platoon to passed in country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country} & the country to which platoon should be added \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classPlayer_a21cbdf560003f6120571cda38702ade1}{Player}}.
+
+\mbox{\Hypertarget{classCPU_ab63fa67a8d21aa40bacc4661bb525fa2}\label{classCPU_ab63fa67a8d21aa40bacc4661bb525fa2}} 
+\index{CPU@{CPU}!changePlayer@{changePlayer}}
+\index{changePlayer@{changePlayer}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{changePlayer()}{changePlayer()}}
+{\footnotesize\ttfamily virtual bool C\+P\+U\+::change\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check whether to change from C\+P\+U-\/$>$\mbox{\hyperlink{classUser}{User}} or User-\/$>$\mbox{\hyperlink{classCPU}{C\+PU}}. 
+
+\begin{DoxyReturn}{Returns}
+true if change should occur 
+
+false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_ac5300319a91446ff291ffa7fbe079b17}{Player}}.
+
+\mbox{\Hypertarget{classCPU_a7b6a798fc60e56d484275fe15dbeb2cf}\label{classCPU_a7b6a798fc60e56d484275fe15dbeb2cf}} 
+\index{CPU@{CPU}!checkChangeStrategy@{checkChangeStrategy}}
+\index{checkChangeStrategy@{checkChangeStrategy}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{checkChangeStrategy()}{checkChangeStrategy()}}
+{\footnotesize\ttfamily bool C\+P\+U\+::check\+Change\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{active }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check whether the active player wants to change strategy in this turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em active,the} & unit\textquotesingle{}s whose turn it is \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if unit wants to change strategy 
+
+false if unit does not want to change strategy 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_ac3f6d3947e0cf8f6a6802784de40e8a7}{Player}}.
+
+\mbox{\Hypertarget{classCPU_adb0f9d0f65d1a5e3668e7fcb49675e61}\label{classCPU_adb0f9d0f65d1a5e3668e7fcb49675e61}} 
+\index{CPU@{CPU}!chooseActionForCountry@{chooseActionForCountry}}
+\index{chooseActionForCountry@{chooseActionForCountry}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{chooseActionForCountry()}{chooseActionForCountry()}}
+{\footnotesize\ttfamily int C\+P\+U\+::choose\+Action\+For\+Country (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose which action player wants to take with country 
+
+\begin{DoxyReturn}{Returns}
+int\+:
+\begin{DoxyItemize}
+\item 0 if attack transport route
+\item 1 if request\+Resource
+\item 2 if march into area 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a43582b98f8f184b39d8ef9b06278cc52}{Player}}.
+
+\mbox{\Hypertarget{classCPU_ae1af8489d14b40302abf820112fe42cb}\label{classCPU_ae1af8489d14b40302abf820112fe42cb}} 
+\index{CPU@{CPU}!chooseAdjacentArea@{chooseAdjacentArea}}
+\index{chooseAdjacentArea@{chooseAdjacentArea}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{chooseAdjacentArea()}{chooseAdjacentArea()}}
+{\footnotesize\ttfamily int C\+P\+U\+::choose\+Adjacent\+Area (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$}]{adj\+Areas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose area from adj\+Area list 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adj\+Areas} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a280329899debb93a4ddd5b92d323f14f}{Player}}.
+
+\mbox{\Hypertarget{classCPU_adfebbc855767a17ff0e4c2d79f9d4651}\label{classCPU_adfebbc855767a17ff0e4c2d79f9d4651}} 
+\index{CPU@{CPU}!chooseAreaForAction@{chooseAreaForAction}}
+\index{chooseAreaForAction@{chooseAreaForAction}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{chooseAreaForAction()}{chooseAreaForAction()}}
+{\footnotesize\ttfamily int C\+P\+U\+::choose\+Area\+For\+Action (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$}]{areas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose which area to take action in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em areas} & list of all areas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int index of chosen 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a37a879245dfd508ea99c1ce43ae7c445}{Player}}.
+
+\mbox{\Hypertarget{classCPU_a13e6362d444f2635becf70e058787774}\label{classCPU_a13e6362d444f2635becf70e058787774}} 
+\index{CPU@{CPU}!chooseCountry@{chooseCountry}}
+\index{chooseCountry@{chooseCountry}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{chooseCountry()}{chooseCountry()}}
+{\footnotesize\ttfamily int C\+P\+U\+::choose\+Country (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$}]{countries }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Choses a country to take a turn with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em countries} & vector of countries of current alliance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int index of country chosen 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a30d56d1b2f79896a4a8ad9ca0ef1f44c}{Player}}.
+
+\mbox{\Hypertarget{classCPU_acc47a5ce291cba0178c9d54cad2af452}\label{classCPU_acc47a5ce291cba0178c9d54cad2af452}} 
+\index{CPU@{CPU}!chooseCountryToJoinAlliance@{chooseCountryToJoinAlliance}}
+\index{chooseCountryToJoinAlliance@{chooseCountryToJoinAlliance}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{chooseCountryToJoinAlliance()}{chooseCountryToJoinAlliance()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classCountry}{Country}}$\ast$ C\+P\+U\+::choose\+Country\+To\+Join\+Alliance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Choose a country to form part of alliance. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classCountry}{Country}} $\ast$ to chosen country 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a2355c5c0e8db64ae4bbacc5d779094b5}{Player}}.
+
+\mbox{\Hypertarget{classCPU_a467eef768c4738076ca09caafe75a352}\label{classCPU_a467eef768c4738076ca09caafe75a352}} 
+\index{CPU@{CPU}!chooseResource@{chooseResource}}
+\index{chooseResource@{chooseResource}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{chooseResource()}{chooseResource()}}
+{\footnotesize\ttfamily int C\+P\+U\+::choose\+Resource (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose type of resource to request for area passed in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em area} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int type of resource 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a3ed50cfd54e166c3b780a020188883cb}{Player}}.
+
+\mbox{\Hypertarget{classCPU_abe83518f6ea344876d5e112c2b84ace4}\label{classCPU_abe83518f6ea344876d5e112c2b84ace4}} 
+\index{CPU@{CPU}!createCountries@{createCountries}}
+\index{createCountries@{createCountries}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{createCountries()}{createCountries()}}
+{\footnotesize\ttfamily virtual void C\+P\+U\+::create\+Countries (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Creates new Countries and add to map country vector. 
+
+
+
+Implements \mbox{\hyperlink{classPlayer_adb6fd9eeaff6ba9003f15414232fafb4}{Player}}.
+
+\mbox{\Hypertarget{classCPU_a36709454eaf0eccbd65a21049cdfc03f}\label{classCPU_a36709454eaf0eccbd65a21049cdfc03f}} 
+\index{CPU@{CPU}!initialiseFactories@{initialiseFactories}}
+\index{initialiseFactories@{initialiseFactories}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{initialiseFactories()}{initialiseFactories()}}
+{\footnotesize\ttfamily virtual void C\+P\+U\+::initialise\+Factories (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$}]{alliance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Adds selected factories to selected areas. 
+
+
+
+Implements \mbox{\hyperlink{classPlayer_a979a41dc78551d6a07e6be5a3d12084d}{Player}}.
+
+\mbox{\Hypertarget{classCPU_a695eb8493d22200ae29cd936c3d2ab9e}\label{classCPU_a695eb8493d22200ae29cd936c3d2ab9e}} 
+\index{CPU@{CPU}!numberOfCountriesInAlliance@{numberOfCountriesInAlliance}}
+\index{numberOfCountriesInAlliance@{numberOfCountriesInAlliance}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{numberOfCountriesInAlliance()}{numberOfCountriesInAlliance()}}
+{\footnotesize\ttfamily virtual int C\+P\+U\+::number\+Of\+Countries\+In\+Alliance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Allows user to choose the number of countries to join the alliance. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_ad84801b0e7db7f299d84275c172bd8b5}{Player}}.
+
+\mbox{\Hypertarget{classCPU_ae3b62621e2ae928674f5a70bab74c1f3}\label{classCPU_ae3b62621e2ae928674f5a70bab74c1f3}} 
+\index{CPU@{CPU}!playerRetreat@{playerRetreat}}
+\index{playerRetreat@{playerRetreat}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{playerRetreat()}{playerRetreat()}}
+{\footnotesize\ttfamily bool C\+P\+U\+::player\+Retreat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBattle}{Battle}} $\ast$}]{battle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check whether the active player will retreat in this turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em turn} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a85b65d724e693ff145ada66e1d079727}{Player}}.
+
+\mbox{\Hypertarget{classCPU_a415fa153e81030d25b7f82a0d1952b69}\label{classCPU_a415fa153e81030d25b7f82a0d1952b69}} 
+\index{CPU@{CPU}!requestReinforcements@{requestReinforcements}}
+\index{requestReinforcements@{requestReinforcements}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{requestReinforcements()}{requestReinforcements()}}
+{\footnotesize\ttfamily bool C\+P\+U\+::request\+Reinforcements (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBattle}{Battle}} $\ast$}]{battle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks whether active side will request reinforcements in their turn. 
+
+\begin{DoxyReturn}{Returns}
+true if reinforcements will be requested 
+
+false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a6e99dce143c6effc43edf3d172bfdcb6}{Player}}.
+
+\mbox{\Hypertarget{classCPU_a8534f18c577d7d0379e9ef3134ac1f1b}\label{classCPU_a8534f18c577d7d0379e9ef3134ac1f1b}} 
+\index{CPU@{CPU}!togglePlayer@{togglePlayer}}
+\index{togglePlayer@{togglePlayer}!CPU@{CPU}}
+\doxysubsubsection{\texorpdfstring{togglePlayer()}{togglePlayer()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classPlayer}{Player}}$\ast$ C\+P\+U\+::toggle\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Change between player types. 
+
+\begin{DoxyReturn}{Returns}
+Player$\ast$ new player object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a79b752b312e16c47f2193ebd0d9fe607}{Player}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Player/C\+P\+U.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Player/C\+P\+U.\+cpp\end{DoxyCompactItemize}

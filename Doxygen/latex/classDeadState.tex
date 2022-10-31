@@ -1,0 +1,111 @@
+\hypertarget{classDeadState}{}\doxysection{Dead\+State Class Reference}
+\label{classDeadState}\index{DeadState@{DeadState}}
+
+
+Inheritance diagram for Dead\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classDeadState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Dead\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{classDeadState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{classDeadState_ac75f9c2b0f28c3f1ebcc9d14df4402cc}{attack\+Strength}} (double damage)
+\begin{DoxyCompactList}\small\item\em Returns the actual damage that can be inflicted by a unit based on their state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ \mbox{\hyperlink{classDeadState_a79fc87bae3e984cc996c193c3b3a650b}{change\+Unit\+State}} ()
+\begin{DoxyCompactList}\small\item\em change \mbox{\hyperlink{classUnit}{Unit}}\textquotesingle{}s state to the default next state \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classDeadState_a49174f842209b71bab2d7a7cfbc0ecfb}{request}} ()
+\begin{DoxyCompactList}\small\item\em Prints the current state \char`\"{}\+D\+E\+A\+D\char`\"{}. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classDeadState_ae7c34511cafc1d38111126d911ee9a16}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the name of the state\+: \char`\"{}\+Dead\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDeadState_ac75f9c2b0f28c3f1ebcc9d14df4402cc}\label{classDeadState_ac75f9c2b0f28c3f1ebcc9d14df4402cc}} 
+\index{DeadState@{DeadState}!attackStrength@{attackStrength}}
+\index{attackStrength@{attackStrength}!DeadState@{DeadState}}
+\doxysubsubsection{\texorpdfstring{attackStrength()}{attackStrength()}}
+{\footnotesize\ttfamily double Dead\+State\+::attack\+Strength (\begin{DoxyParamCaption}\item[{double}]{damage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the actual damage that can be inflicted by a unit based on their state. 
+
+In the Dead State units do not deal damage
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & the unadjusted damage of the unit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUnitsState_a6c32ab64e2d0e4c1880a4f57fe1620c1}{Units\+State}}.
+
+\mbox{\Hypertarget{classDeadState_a79fc87bae3e984cc996c193c3b3a650b}\label{classDeadState_a79fc87bae3e984cc996c193c3b3a650b}} 
+\index{DeadState@{DeadState}!changeUnitState@{changeUnitState}}
+\index{changeUnitState@{changeUnitState}!DeadState@{DeadState}}
+\doxysubsubsection{\texorpdfstring{changeUnitState()}{changeUnitState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ Dead\+State\+::change\+Unit\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+change \mbox{\hyperlink{classUnit}{Unit}}\textquotesingle{}s state to the default next state 
+
+Dead State cannot change State
+
+\begin{DoxyReturn}{Returns}
+this 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUnitsState_a7421e9735dcdae2fe4538c9241de0cf2}{Units\+State}}.
+
+\mbox{\Hypertarget{classDeadState_ae7c34511cafc1d38111126d911ee9a16}\label{classDeadState_ae7c34511cafc1d38111126d911ee9a16}} 
+\index{DeadState@{DeadState}!getState@{getState}}
+\index{getState@{getState}!DeadState@{DeadState}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily string Dead\+State\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the name of the state\+: \char`\"{}\+Dead\char`\"{}. 
+
+
+
+Implements \mbox{\hyperlink{classUnitsState_abf11db2e27c2d78ba15174327ae5ff02}{Units\+State}}.
+
+\mbox{\Hypertarget{classDeadState_a49174f842209b71bab2d7a7cfbc0ecfb}\label{classDeadState_a49174f842209b71bab2d7a7cfbc0ecfb}} 
+\index{DeadState@{DeadState}!request@{request}}
+\index{request@{request}!DeadState@{DeadState}}
+\doxysubsubsection{\texorpdfstring{request()}{request()}}
+{\footnotesize\ttfamily void Dead\+State\+::request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Prints the current state \char`\"{}\+D\+E\+A\+D\char`\"{}. 
+
+
+
+Implements \mbox{\hyperlink{classUnitsState_a644227be199daccde81f23fe65fb31c1}{Units\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Unit\+State/Dead\+State.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Unit\+State/Dead\+State.\+cpp\end{DoxyCompactItemize}

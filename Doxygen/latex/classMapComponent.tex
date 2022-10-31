@@ -1,0 +1,108 @@
+\hypertarget{classMapComponent}{}\doxysection{Map\+Component Class Reference}
+\label{classMapComponent}\index{MapComponent@{MapComponent}}
+
+
+Inheritance diagram for Map\+Component\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{classMapComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Map\+Component\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classMapComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMapComponent_a761f30cb41016cb6a6bff1e80afa916a}{attach}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em attaches/sets the map as an observer to this \mbox{\hyperlink{classMapComponent}{Map\+Component}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapComponent_a676d04d597ab7ae7e469f1eb5a0747a9}{detach}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em detaches/unsets the map as an observer to this \mbox{\hyperlink{classMapComponent}{Map\+Component}} \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classMapComponent_a6b554f8a7aec501f0906ea10ccd27d29}{accept}} (\mbox{\hyperlink{classVisitor}{Visitor}} $\ast$visitor)=0
+\begin{DoxyCompactList}\small\item\em The virtual function to accept the visitor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classMapComponent_a5a57c15672e47d1a564558046bb1ab69}{$\sim$\+Map\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classMap}{Map}} Component object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMapComponent_a65815c8bbe9555622bb6cb0f78d69f41}\label{classMapComponent_a65815c8bbe9555622bb6cb0f78d69f41}} 
+\mbox{\hyperlink{classMap}{Map}} $\ast$ {\bfseries map}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMapComponent_a5a57c15672e47d1a564558046bb1ab69}\label{classMapComponent_a5a57c15672e47d1a564558046bb1ab69}} 
+\index{MapComponent@{MapComponent}!````~MapComponent@{$\sim$MapComponent}}
+\index{````~MapComponent@{$\sim$MapComponent}!MapComponent@{MapComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$MapComponent()}{~MapComponent()}}
+{\footnotesize\ttfamily Map\+Component\+::$\sim$\+Map\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classMap}{Map}} Component object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMapComponent_a6b554f8a7aec501f0906ea10ccd27d29}\label{classMapComponent_a6b554f8a7aec501f0906ea10ccd27d29}} 
+\index{MapComponent@{MapComponent}!accept@{accept}}
+\index{accept@{accept}!MapComponent@{MapComponent}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily virtual void Map\+Component\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVisitor}{Visitor}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+The virtual function to accept the visitor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & to accept the visitor that wants to see the areas and transport routes \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classArea_ae8c961de688e778cfd0f4a7b74ecafdd}{Area}}, and \mbox{\hyperlink{classTransportRoute_a5ba041d87932a556028fb315bb7822a4}{Transport\+Route}}.
+
+\mbox{\Hypertarget{classMapComponent_a761f30cb41016cb6a6bff1e80afa916a}\label{classMapComponent_a761f30cb41016cb6a6bff1e80afa916a}} 
+\index{MapComponent@{MapComponent}!attach@{attach}}
+\index{attach@{attach}!MapComponent@{MapComponent}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily void Map\+Component\+::attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+attaches/sets the map as an observer to this \mbox{\hyperlink{classMapComponent}{Map\+Component}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & the map object that will observe this \mbox{\hyperlink{classMapComponent}{Map\+Component}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMapComponent_a676d04d597ab7ae7e469f1eb5a0747a9}\label{classMapComponent_a676d04d597ab7ae7e469f1eb5a0747a9}} 
+\index{MapComponent@{MapComponent}!detach@{detach}}
+\index{detach@{detach}!MapComponent@{MapComponent}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}}
+{\footnotesize\ttfamily void Map\+Component\+::detach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+detaches/unsets the map as an observer to this \mbox{\hyperlink{classMapComponent}{Map\+Component}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & the map object that will be detached from this \mbox{\hyperlink{classMapComponent}{Map\+Component}} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Map/Map\+Component.\+h\item 
+/mnt/c/\+Users/mrmrm/\+One\+Drive/\+Documents/\+Repositories/\+Uni/cos214-\/project/\+Code/\+Map/Map\+Component.\+cpp\end{DoxyCompactItemize}
