@@ -289,10 +289,10 @@ Unit *Platoon::split()
 	return split;
 }
 
-void Platoon::join(Unit *platoon1)
+void Platoon::join(Unit *platoonBranch)
 {
 
-	Platoon *platoon = dynamic_cast<Platoon *>(platoon1);
+	Platoon *platoon = dynamic_cast<Platoon *>(platoonBranch->getUnit());
 	this->humans.insert(this->humans.end(), platoon->humans.begin(), platoon->humans.end());
 	this->vehicles.insert(this->vehicles.end(), platoon->vehicles.begin(), platoon->vehicles.end());
 	this->pewpew = this->pewpew + platoon->pewpew;

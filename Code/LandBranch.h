@@ -32,6 +32,13 @@ public:
 	virtual string getBranch();
 
 	/**
+	 * @brief Splits the unit into equal halves if possible
+	 *
+	 * @return Unit*
+	 */
+	virtual Unit * split();
+
+	/**
 	 * @brief Destroy the Land Branch object
 	 * 
 	 */

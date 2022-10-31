@@ -155,6 +155,10 @@ int *Unit::getAmmo()
 
 void Unit::replenish(Transport ** transport){}
 
+Unit * Unit::getUnit(){
+	this;
+}
+
 Unit::~Unit()
 {
 
