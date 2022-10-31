@@ -20,8 +20,8 @@ void PlatoonBuilder::createSoldiers() {
 }
 
 void PlatoonBuilder::createAmmo() {
-    this->ammo[0] = getRandomNumber(50, 70); // pewpewAmmo
-    this->ammo[1] = getRandomNumber(20, 30); // boomboomAmmo
+    this->ammo[0] = getRandomNumber(120, 250); // pewpewAmmo
+    this->ammo[1] = getRandomNumber(30, 50); // boomboomAmmo
 }
 
 void PlatoonBuilder::setCountry(Country* c) {

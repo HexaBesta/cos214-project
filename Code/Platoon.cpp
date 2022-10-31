@@ -83,6 +83,20 @@ string Platoon::toString(int lineLen)
 		}
 		add+= "|";
 		out+=add;
+
+		add= "\n|                           Amount of Bullets: " + to_string(pewpew);
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add= "\n|                           Amount of Explosives: " + to_string(boomboom);
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
 	}
 
 	return out;
@@ -216,9 +230,9 @@ void Platoon::decreaseAmmo(){
 	if(this->strategy==nullptr){
 		this->strategy = new PewPewAttack(this);
 		this->pewpew--;
-	}else if(this->strategy->getPlatoonStrategy().compare("pew")==true){
+	}else if(this->strategy->getPlatoonStrategy().compare("pew")==0){
 		this->pewpew--;
-	}else if(this->strategy->getPlatoonStrategy().compare("boom")==true){
+	}else if(this->strategy->getPlatoonStrategy().compare("boom")==0){
 		this->boomboom--;
 	}
 }
@@ -274,6 +288,8 @@ bool Platoon::takeDamage(int damage, bool checkPew)
 			for(int x = 0; x<rand1; x++){
 				this->takeRandom()->takeDamage(boomDamage);
 				if(this->getHealth()<=0){
+					DeadState* deadState = new DeadState();
+					this->setUnitState(deadState);
 					break;
 				}
 			}
