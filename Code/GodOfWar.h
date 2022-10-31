@@ -1,9 +1,9 @@
 #ifndef GODOFWAR_H
 #define GODOFWAR_H
-#include "./Alliances/Alliances.h"
-#include "./Map/Area.h"
-#include "./Player/CPU.h"
-#include "./Player/User.h"
+#include "Alliances.h"
+#include "Area.h"
+#include "CPU.h"
+#include "User.h"
 using namespace std;
 
 class GodOfWar{

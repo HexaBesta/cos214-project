@@ -3,11 +3,11 @@ all: clear compile run clean
 gui: clear guiComp run clean
 
 guiComp:
-	g++ -c */*.cpp
+	g++ -c *.cpp
 	g++ -o main *.o -LC:/dev/lib -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network
 
 compile:
-	g++ -c */*.cpp
+	g++ -c *.cpp
 	g++ -o main *.o -LC:/dev/lib -lsfml-system -lsfml-window -lsfml-graphics
 
 clean:
