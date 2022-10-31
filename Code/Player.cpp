@@ -35,9 +35,6 @@ void Player::initialiseSide(Alliances * alliance, Map* map){
     for(int i = 0; i<countries.size(); i++){
         this->addPlatoons(countries.at(i),map);
     }
-
-    cout<<"- - - - - - - - - Initialise factories- - - - - - - - - -"<<endl;
-    this->initialiseFactories(map, alliance);
 }
 
 void Player::inspect(Map * map){}

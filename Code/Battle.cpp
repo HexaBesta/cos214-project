@@ -56,18 +56,18 @@ void Battle::setAttackerToDefender(){
 	Unit * oldAttacker = this->air->getAttacker();
 	Unit * oldDefender = this->air->getDefender();
 	if(oldAttacker != NULL){
-		if(oldDefender){
-			this->area->retreat("defense");
-		}
+		// if(oldDefender){
+		// 	this->area->retreat("defense");
+		// }
 		this->air->setDefender(oldAttacker);
 		this->air->setAttacker(NULL);
 	}
 	oldAttacker = this->land->getAttacker();
 	oldDefender = this->land->getDefender();
 	if(oldAttacker != NULL){
-		if(oldDefender){
-			this->area->retreat("defense");
-		}
+		// if(oldDefender){
+		// 	this->area->retreat("defense");
+		// }
 		this->land->setDefender(oldAttacker);
 		this->land->setAttacker(NULL);
 	}
@@ -166,10 +166,8 @@ void Battle::takeTurn()
 			}
 			//If there is only an air defender - request reinforcements
 			else{
-				
-				if(!this->area->requestReinforcements("attack")){
-					this->area->retreat("attack");
-				}	
+				cout<<"You have no shot - request air reinforcements... This is suicide"<<endl;
+				this->requestReinforcements();
 				cout<<"------------------------------------------"<<endl<<endl;
 				
 			}
@@ -214,13 +212,9 @@ void Battle::takeTurn()
 			//If there is only an air attacker - request reinforcements
 			else{
 				
-				if(!this->area->requestReinforcements("defense")){
-					if(this->area->retreat("defense")){
-						cout<<this->land->getDefender()->getCountry()->getName()<<" retreating"<<endl;
-					}else{
-						cout<<this->land->getDefender()->getCountry()->getName()<<" has nowhere to go... They screwed"<<endl;
-					}
-				}
+				cout<<"You have no shot - request air reinforcements... This is suicide"<<endl;
+				this->requestReinforcements();
+				cout<<"------------------------------------------"<<endl<<endl;
 				
 			}
 		}

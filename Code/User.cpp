@@ -232,7 +232,7 @@ void User::initialiseFactories(Map *map, Alliances *alliances)
     cout << "Now choose what factory you want to create at the chosen area: \n0 - Medics\n1 - Ammo\n2 - Goods" << endl;
     int resp1 = 0;
     cin >> resp1;
-    map->requestFactoryForArea(areas.at(resp), resp1);
+    //areas.at(resp), resp1);
 }
 
 void User::inspect(Map *map)
