@@ -1,3 +1,4 @@
+
 #ifndef UNIT_H
 #define UNIT_H
 #include <string>
@@ -6,6 +7,7 @@
 #include "Country.h"
 #include <SFML/Graphics.hpp>
 class Platoon;
+
 class Transport;
 
 using namespace std;
@@ -146,6 +148,12 @@ public:
 	virtual string getBranch();
 
 	/**
+	 * @brief Stubbed method used by Branch
+	 * @return this
+	 */
+	virtual Unit * getUnit();
+
+	/**
 	 * @brief Get the Alliance that the unit beloings to.
 	 * @attention Units  needs to be able to return some indication of which allaince they belong to
 	 * @return string
@@ -194,27 +202,27 @@ public:
 	 * @param transport 
 	 */
 	virtual void replenish(Transport ** transport);
-
-		/**
-	 * @brief Get the Sprite of this unit
-	 * 
-	 * @return sf::Sprite 
-	 */
-	virtual sf::Sprite* getSprite();
-
-	/**
-	 * @brief Set the Sprite Location of the unit's sprite
-	 * 
-	 * @param x The X coordinate of the sprite (unscaled)
-	 * @param y The Y coordinate of the sprite (unscaled)
-	 */
-	void setSpriteLocation(int x, int y){};
-	
-	virtual void setTexture();
-
-	virtual void setAirTexture();
-
-	virtual void setLandTexture();
+  
+     /**		
+	     * @brief Get the Sprite of this unit		
+	     *		
+	     * @return sf::Sprite		
+	     */		
+	    virtual sf::Sprite* getSprite();		
+			
+	    /**		
+	     * @brief Set the Sprite Location of the unit's sprite		
+	     *		
+	     * @param x The X coordinate of the sprite (unscaled)		
+	     * @param y The Y coordinate of the sprite (unscaled)		
+	     */		
+	    void setSpriteLocation(int x, int y){};		
+	    		
+	    virtual void setTexture();		
+			
+	    virtual void setAirTexture();		
+			
+	    virtual void setLandTexture();
 
 	/**
 	 * @brief Destroy the Unit object
@@ -224,3 +232,4 @@ public:
 };
 
 #endif
+

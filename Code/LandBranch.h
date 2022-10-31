@@ -1,3 +1,4 @@
+
 #ifndef LANDBRANCH_H
 #define LANDBRANCH_H
 
@@ -31,6 +32,14 @@ public:
 	 */
 	virtual string getBranch();
 
+	/**
+	 * @brief Splits the unit into equal halves if possible
+	 *
+	 * @return Unit*
+	 */
+	virtual Unit * split();
+  
+  
 	/**
 		 * @brief Set the Texture of this unit to the land texture
 		 * 

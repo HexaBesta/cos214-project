@@ -99,7 +99,10 @@ class Country {
 		 * 
 		 * @return Player* 
 		 */
-		Player* getPlayer();
+
+
+		Player * getPlayer();
+
 
 };
 

@@ -11,6 +11,7 @@
 #include <fstream>
 #include <string>
 using namespace std;
+class AreaVisitor;
 class Player;
 class Area;
 class TransportRoute;

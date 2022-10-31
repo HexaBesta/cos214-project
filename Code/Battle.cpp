@@ -163,6 +163,7 @@ void Battle::takeTurn()
 			//No defender
 			else if (!(this->air->getDefender()  && (!this->air->getDefender()->getState().compare("Dead")  == 0 ))){
 				this->battleActive = false;
+				this->setAttackerToDefender();
 			}
 			//If there is only an air defender - request reinforcements
 			else{
@@ -310,7 +311,6 @@ void Battle::attack(Unit * active, Unit * passive)
 	//std::cout<<passive->getState()<<endl;
 	if(passive->getState().compare("Dead")==0){
 		passive = NULL;
-		this->battleActive = false;
 	}
 	
 }

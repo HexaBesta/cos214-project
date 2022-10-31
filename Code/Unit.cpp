@@ -1,3 +1,4 @@
+
 #include "Unit.h"
 #include "Alliances.h"
 
@@ -175,6 +176,10 @@ void Unit::setLandTexture()
 {
 	cout << "Not this one - Land" << endl;
 }
+
+Unit * Unit::getUnit(){
+	    return this;
+ }
 
 
 Unit::~Unit()

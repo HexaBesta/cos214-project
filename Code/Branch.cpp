@@ -53,6 +53,16 @@ string Branch::toString(int lineLen){
 	return this->unit->toString(lineLen);
 }
 
+void Branch::join(Unit *others){
+	if(this->unit != NULL){
+		this->unit->join(others);
+	}
+}
+
+Unit * Branch::getUnit(){
+	return this->unit->getUnit();
+}
+
 Branch::~Branch(){
 	delete this->unit;
 }

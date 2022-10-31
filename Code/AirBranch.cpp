@@ -14,3 +14,12 @@ string AirBranch::getBranch(){
 void AirBranch::setTexture(){
 	unit->setAirTexture();
 }
+
+Unit *AirBranch::split(){
+	if(this->unit != NULL){
+		return new AirBranch(this->unit->split());
+	}
+	else{
+		return NULL;
+	}
+}

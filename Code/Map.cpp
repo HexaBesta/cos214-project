@@ -1,3 +1,4 @@
+
 #ifndef MAP_CPP
 #define MAP_CPP
 
@@ -344,6 +345,36 @@ void Map::addCountry(Country *country)
 		allCountries.push_back(country);
 	}
 }
+
+vector<Country *> Map::getCountriesByColour(int colour)
+	{
+	    vector<Country *> countries;
+	    for (auto country : allCountries)
+	    {
+	        if(country->getAlliances() == NULL){
+	            if(colour == 94)
+	                countries.push_back(country);
+	        }
+	        else if (country->getAlliances()->getColour() == colour)
+	        {
+	            countries.push_back(country);
+	        }
+	    }
+	    return countries;
+	}
+	
+	vector<Area *> Map::getAreasByCountry(Country *country)
+	{
+	    vector<Area *> areas;
+	    for (auto area : this->allAreas)
+	    {
+	        if (area->getCountry() == country)
+	        {
+	            areas.push_back(area);
+	        }
+	    }
+	    return areas;
+	}
 
 int Map::getGridXSize(){
 	return gridXSize;
@@ -892,4 +923,3 @@ Map::~Map()
 	}
 }
 
-#endif
