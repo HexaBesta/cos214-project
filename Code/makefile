@@ -1,8 +1,8 @@
 all: clear compile run clean
 
 compile:
-	g++ -c */*.cpp
-	g++ -o main *.o
+	g++ -g -c *.cpp
+	g++ -o main *.o 
 
 clean:
 	rm *.o
