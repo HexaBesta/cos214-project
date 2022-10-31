@@ -15,8 +15,9 @@ void Platoon::construct()
 	throw "Not yet implemented";
 }
 
-void Platoon::print()
+string Platoon::toString(int lineLen)
 {
+	string out="";
 	int health = 0;
 	int damage = 0;
 	for (auto it : this->humans)
@@ -32,16 +33,58 @@ void Platoon::print()
 
 	this->health = health;
 	this->damage = damage;
+	string add="";
 
 	if (health == 0)
 	{
-		cout << "Your platoon is dead" << endl;
+		add+= "\n|                        Your platoon is dead";
+		while(add.length()<lineLen){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
 		this->setUnitState(new DeadState());
 	}
 	else
-	{
-		cout << "Platoon\nHealth: " << health << "\nDamage: " << damage << "\nAmount of Soldiers: " << humans.size() << " Amount of Vehicles: " << vehicles.size() << endl;
+	{	
+
+		add= "|                        Platoon";
+		while(add.length()<lineLen){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add=" \n|                           Health: " + to_string(health);
+		while(add.length()<lineLen+2){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add= "\n|                           Damage: " + to_string(damage);
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add= "\n|                           Amount of Soldiers: " + to_string(humans.size());
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add= "\n|                           Amount of Vehicles: " + to_string(vehicles.size());
+		while(add.length()<lineLen+1){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
 	}
+
+	return out;
 }
 
 void Platoon::changeStrategy()
@@ -57,6 +100,8 @@ void Platoon::changeStrategy()
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
+	}else{
+		cout<<"Cannot change strategy, insefficent ammo. Recommend calling for ammo"<<endl;
 	}
 }
 
@@ -106,6 +151,10 @@ int Platoon::getMoral()
 	return this->moral;
 }
 
+double Platoon::getAverageMoral(){
+	return this->getMoral()/(this->humans.size()*1.0);
+}
+
 void Platoon::setAccumlateHealth()
 {
 	int health = 0;
@@ -129,13 +178,32 @@ int Platoon::getHealth()
 	return this->health;
 }
 
+string Platoon::getStrategyType(){
+	return this->strategy->getPlatoonStrategy();
+}
+
 int Platoon::getSize(){
 	int size = humans.size() + vehicles.size();
 	return size;
 }
 
+int Platoon::getDamage(){
+	int damage = 0;
+	for (auto it : this->humans)
+	{
+		damage += it->getDamage();
+	}
+	for (auto it : this->vehicles)
+	{
+		damage += it->getDamage();
+	}
+	return damage;
+}
+
 int* Platoon::getAmmo(){
-	int ammo[] = {this->pewpew, this->boomboom};
+	int * ammo  = new int[2];
+	ammo[0] = this->pewpew;
+	ammo[1] = this->boomboom;
 	return ammo;  
 }
 

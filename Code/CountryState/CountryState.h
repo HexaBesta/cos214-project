@@ -2,7 +2,12 @@
 #define COUNTRYSTATE_H
 #include <string>
 #include <iostream>
+
 using namespace std;
+
+class Director;
+class Unit;
+class Country;
 
 class CountryState {
 	public:
@@ -20,6 +25,14 @@ class CountryState {
 		 * @return A string that represents the current country state
 		 */
 		virtual string requestState() = 0;
+
+		/**
+		 * @brief Stubbed method to construct platoon, implemented only in join
+		 * 
+		 * @param director 
+		 * @return Unit* 
+		 */
+		virtual Unit * recruitPlatoon(Director * director, Country * country);
 };
 
 #endif

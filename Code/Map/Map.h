@@ -3,11 +3,15 @@
 
 #include "../TransportFactory/TransportFactory.h"
 #include "../Country/Country.h"
+#include "../Map/CountVisitor.h"
+#include "../Battle/Battle.h"
+#include "../Alliances/Alliances.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
+class Player;
 class Area;
 class TransportRoute;
 class Map
@@ -18,8 +22,9 @@ public:
 	 * @brief Construct a new Map object given a text file with the areas and setup
 	 *
 	 * @param setupFile the name of the text files that contains the map layout
+	 * @param player the player object to start game with
 	 */
-	Map(string setupFile);
+	Map(string setupFile, Player * player = NULL);
 
 	/**
 	 * @brief Create a Transport Route between the two given areas of the map
@@ -130,6 +135,65 @@ public:
 	void addCountry(Country* country);
 
 	/**
+	 * @brief Returns the count of transport routes and areas for the alliances
+	 * 
+	 * @return string 
+	 */
+	string toStringCount();
+	/**
+	 * @brief Get the Areas By colour of alliance
+	 * 
+	 * @param colour of alliance
+	 * @return vector<Area*> all areas owned by that alliance
+	 */
+	vector<Area*> getAreasByColour(int colour);
+
+	/**
+	 * @brief Set the Player object
+	 * 
+	 * @param player 
+	 */
+	void setPlayer(Player * player);
+
+	/**
+	 * @brief Get the Player object
+	 * 
+	 * @return Player* the current player
+	 */
+	Player * getPlayer();
+
+	/**
+	 * @brief Resolves all battles after each round
+	 * 
+	 */
+	void resolveBattles();
+
+	/**
+	 * @brief Attempts to add a newly constructed platoon to map
+	 * 
+	 * @param platoon to be added to map
+	 * @return true if platoon was sucesfully placed
+	 * @return false otherwise
+	 */
+	bool addPlatoonToMap(Unit * platoon);
+
+	/**
+	 * @brief Get the Areas that are owned by passed in Country object
+	 * 
+	 * @param country to be searched for
+	 * @return vector<Area *> 
+	 */
+	vector<Area *> getAreasByCountry(Country * country);
+
+	/**
+	 * @brief Get the Countries that match the colour passed in (thus by alliance)
+	 * 
+	 * @param colour 
+	 * @return vector<Country*> 
+	 */
+	vector<Country*> getCountriesByColour(int colour);
+
+	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
 	 */
@@ -142,6 +206,7 @@ private:
 	vector<Country*> allCountries;
 	int gridXSize;
 	int gridYSize;
+	Player * player;
 
 	/**
 	 * @brief Set the All End Points of transport routes in the adjacency matrix

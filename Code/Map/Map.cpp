@@ -4,15 +4,22 @@
 #include "TransportRoute.h"
 #include "Map.h"
 
+Map::Map(string setupFile, Player *player)
+{
 
-Map::Map(string setupFile){
-	
+	this->player = player;
 
 	std::string filename(setupFile);
 	std::vector<std::string> lines;
 	std::string line;
 
 	std::ifstream inputFile(setupFile);
+
+	getline(inputFile, line);
+	while (line.at(0) != '#')
+	{
+		getline(inputFile, line);
+	}
 
 	while (getline(inputFile, line))
 	{
@@ -211,12 +218,14 @@ void Map::update()
 	throw "Not yet implemented";
 }
 
-TransportFactory* Map::requestFactoryForArea(Area* area,int type){
-	vector<Area *> areas=listAdjacent(area,true);
+TransportFactory *Map::requestFactoryForArea(Area *area, int type)
+{
+	vector<Area *> areas = listAdjacent(area, true);
 	for (int i = 0; i < areas.size(); i++)
-    {
-		TransportFactory* foundFactory=areas.at(i)->getFactory(type);
-		if (foundFactory!=NULL){
+	{
+		TransportFactory *foundFactory = areas.at(i)->getFactory(type);
+		if (foundFactory != NULL)
+		{
 			return foundFactory;
 		}
 	}
@@ -225,7 +234,7 @@ TransportFactory* Map::requestFactoryForArea(Area* area,int type){
 
 vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 {
-	//string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
+	// string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
 	vector<Area *> adjacentAreas = {};
 	for (int i = 0; i < allAreas.size(); i++)
 	{
@@ -235,24 +244,25 @@ vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 			{
 				if (transportRouteisAvailable(area, allAreas.at(i)))
 				{
-					//out += to_string(i) + ",";
+					// out += to_string(i) + ",";
 					adjacentAreas.push_back(allAreas.at(i));
 				}
 			}
 			else
 			{
-				//out += to_string(i) + ",";
+				// out += to_string(i) + ",";
 				adjacentAreas.push_back(allAreas.at(i));
 			}
 		}
 	}
-	//out += "\n";
-	//cout << out;
+	// out += "\n";
+	// cout << out;
 	return adjacentAreas;
 }
 
-bool Map::areAdjacent(Area *to,Area* from){
-	return (adjacencies[to->getIndex()][from->getIndex()]!=NULL);
+bool Map::areAdjacent(Area *to, Area *from)
+{
+	return (adjacencies[to->getIndex()][from->getIndex()] != NULL);
 }
 
 Area *Map::getAreaByIndex(int index)
@@ -306,17 +316,22 @@ void Map::setAllGridAreas()
 	}
 }
 
-void Map::addCountry(Country* country){
-	bool add=true;
-	if(!allCountries.empty()){
-	for(int i=0; i<allCountries.size();i++){
-		if(allCountries.at(i)==country){
-			add=false;
+void Map::addCountry(Country *country)
+{
+	bool add = true;
+	if (!allCountries.empty())
+	{
+		for (int i = 0; i < allCountries.size(); i++)
+		{
+			if (allCountries.at(i) == country)
+			{
+				add = false;
+			}
 		}
 	}
-	}
-	if(add){
-        allCountries.push_back(country);
+	if (add)
+	{
+		allCountries.push_back(country);
 	}
 }
 
@@ -577,6 +592,111 @@ void Map::printColourMap()
 	// ---- -----
 	// | 4 |
 	// -----
+}
+
+string Map::toStringCount(){
+	CountVisitor* countV = new CountVisitor();
+	for(auto it : this->allAreas){
+		it->accept(countV);
+	}
+	string total = countV->displayCount();
+	return total;
+}
+
+
+vector<Area *> Map::getAreasByColour(int colour)
+{
+	vector<Area *> areas;
+	for (auto area : this->allAreas)
+	{
+		if (area->getColour() == colour)
+		{
+			areas.push_back(area);
+		}
+	}
+	return areas;
+}
+
+vector<Country *> Map::getCountriesByColour(int colour)
+{
+	vector<Country *> countries;
+	for (auto country : allCountries)
+	{
+		if (country->getAlliances()->getColour() == colour)
+		{
+			countries.push_back(country);
+		}
+	}
+	return countries;
+}
+
+vector<Area *> Map::getAreasByCountry(Country *country)
+{
+	vector<Area *> areas;
+	for (auto area : this->allAreas)
+	{
+		if (area->getCountry() == country)
+		{
+			areas.push_back(area);
+		}
+	}
+	return areas;
+}
+
+void Map::setPlayer(Player *player)
+{
+	this->player = player;
+}
+
+Player *Map::getPlayer()
+{
+	return this->player;
+}
+
+void Map::resolveBattles()
+{
+
+	/*
+	list of all battles to be resolved
+	*/
+	vector<Battle *> battlesToResolve;
+	for (auto area : this->allAreas)
+	{
+		Battle *battle = area->returnBattle();
+		if (battle != NULL)
+		{
+			battlesToResolve.push_back(battle);
+		}
+	}
+
+	/*
+	Loop through all battles and resolve them
+	*/
+	for (auto battle : battlesToResolve)
+	{
+		battle->battleLoop();
+	}
+}
+
+bool Map::addPlatoonToMap(Unit *platoon)
+{
+	vector<Area *> possibleAreas = this->getAreasByCountry(platoon->getCountry());
+	if (possibleAreas.size() == 0)
+	{
+		possibleAreas = this->getAreasByColour(platoon->getCountry()->getAlliances()->getColour());
+		if (possibleAreas.size() == 0)
+		{
+			possibleAreas = this->getAreasByColour(94);
+			if (possibleAreas.size() == 0)
+			{
+				return false;
+			}
+		}
+	}
+	int index = this->player->chooseAreaForAction(possibleAreas);
+
+	possibleAreas.at(index)->marchIn(platoon, NULL);
+	return true;
 }
 
 Map::~Map()

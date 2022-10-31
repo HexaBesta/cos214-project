@@ -18,6 +18,14 @@ class JoinedState : public CountryState {
          * @return A string that represents the Joined Country state
 		 */
         string requestState();
+
+        /**
+         * @brief Makes a platoon for the country using builder
+         * 
+         * @return newly made Platoon
+         * 
+         */
+        virtual Unit * recruitPlatoon(Director * director, Country * country);
 };
 
 #endif

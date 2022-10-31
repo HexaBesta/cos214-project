@@ -1,5 +1,5 @@
-#include "../Map/Area.h"
 #include "Battle.h"
+#include "../Map/Area.h"
 
 Battle::Battle(TheatreOfWar *air, TheatreOfWar *land, Area *area, Player *player)
 {
@@ -73,14 +73,25 @@ void Battle::setAttackerToDefender(){
 
 }
 
+TheatreOfWar * Battle::getAir(){
+	return this->air;
+}
+
+TheatreOfWar * Battle::getLand(){
+	return this->land;
+}
+
+bool Battle::getTurn(){
+	return this->turn;
+}
+
 void Battle::getStateSummary()
 {
 	cout << "-------------------------------------------" << endl;
 	cout << "\tPrinting Summary of State of Battle:" << endl;
 	cout << endl;
 	cout << "Area: " << endl;
-	cout << "Insert call to area details here once defined" << endl
-		 << endl;
+	this->area->toString();
 	cout << "Turn: ";
 	if (!this->turn)
 	{
@@ -92,19 +103,19 @@ void Battle::getStateSummary()
 	}
 	cout << "Defender:" << endl;
 	if(this->air->getDefender()){
-		this->air->getDefender()->print();
+		cout<<this->air->getDefender()->toString()<<endl;
 	}
 	if(this->land->getDefender()){
-		this->land->getDefender()->print();
+		cout<<this->land->getDefender()->toString()<<endl;
 	}
 
 	cout << "Attacker:" << endl;
 
 	if(this->air->getAttacker()){
-		this->air->getAttacker()->print();
+		cout<<this->air->getAttacker()->toString()<<endl;
 	}
 	if(this->land->getAttacker()){
-		this->land->getAttacker()->print();
+		cout<<this->land->getAttacker()->toString()<<endl;
 	}
 
 	cout << endl;
@@ -152,7 +163,7 @@ void Battle::takeTurn()
 			else if (!(this->air->getDefender() /* && (!this->air->getDefender()->getState().compare("Dead"))*/)){
 				this->active = false;
 			}
-			//Only air defender - request reinforcements
+			//If there is only an air defender - request reinforcements
 			else{
 				
 				if(!this->area->requestReinforcements("attack")){
@@ -198,7 +209,7 @@ void Battle::takeTurn()
 			else if (!(this->air->getAttacker() /* && (!this->air->getAttacker()->getState().compare("Dead"))*/)){
 				this->active = false;
 			}
-			//Only air attacker - request reinforcements
+			//If there is only an air attacker - request reinforcements
 			else{
 				
 				if(!this->area->requestReinforcements("defense")){
@@ -233,7 +244,7 @@ void Battle::takeTurn()
 	Print active platoon after attack
 	*/
 
-	active->print();
+	cout<< active->toString()<<endl;
 
 	/*
 	Request reinforcements after printing state of platoon if battle active.
@@ -268,6 +279,8 @@ bool Battle::requestReinforcements()
 				return this->area->requestReinforcements("defense");
 			}
 		
+	}else{
+		return false;
 	}
 }
 
@@ -276,7 +289,7 @@ void Battle::changeStrategy(Unit * active)
 
 	if (this->player->checkChangeStrategy(active))
 	{
-		cout<<"Add in call to unit change strategy Battle 299"<<endl;
+		//cout<<"Add in call to unit change strategy Battle 299"<<endl;
 		active->changeStrategy();
 	}
 }

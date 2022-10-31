@@ -1,4 +1,21 @@
 #include "Unit.h"
+#include "../Alliances/Alliances.h"
+
+Unit::Unit() {
+	
+}
+
+Unit::Unit(int health, int moral, int damage, Country* country, bool fitState){
+	this->health = health;
+	this->moral = moral;
+	this->damage = damage;
+	this->country = country;
+	if(fitState){
+		this->unitState = new FitState();
+	}else{
+		this->unitState = new CivilianState();
+	}
+}
 
 void Unit::requestState()
 {
@@ -36,8 +53,11 @@ int Unit::getDamage(){
 	return this->damage;
 }
 
-int Unit::getHealth()
-{
+double Unit::getAverageMoral(){
+	return this->moral;
+};
+
+int Unit::getHealth(){
 	return this->health;
 }
 
@@ -68,7 +88,9 @@ bool Unit::takeDamage(int damage, bool checkStrat) {
 	return false;
 }
 
-Unit *Unit::split() { return NULL; }
+ Unit*  Unit::split(){return NULL;}
+
+void Unit::join(Unit *others) {}
 
 void Unit::join(Unit *others) {}
 
@@ -92,14 +114,14 @@ Country *Unit::getCountry()
 	return this->country;
 }
 
-void Unit::print()
+string Unit::toString(int lineLen)
 {
 
 	cout << "Current State of " << getCountry() << ": "<< getState() << endl
 		 << "Current Health: " << getHealth() << endl
 		 << "Damage sustained: " << getDamage() << endl;
 
-	// cout<<"Add unit print statement"<<endl;
+	// return "Add unit print statement";
 }
 
 Unit *Unit::takeRandom()
@@ -107,9 +129,12 @@ Unit *Unit::takeRandom()
 	return this;
 }
 
-Unit::~Unit()
-{
+int * Unit::getAmmo(){
+	return NULL;
+}
 
+Unit::~Unit(){
+	
 	delete this->unitState;
 	// delete this->country;
 }

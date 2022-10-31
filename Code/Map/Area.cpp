@@ -2,6 +2,7 @@
 #include "Area.h"
 #include "../Unit/Human.h"
 #include "../Branches/LandBranch.h"
+
 Area::Area(string name, int index, int colour, bool factories, bool troops):MapComponent()
 {
 	this->name = name;
@@ -28,7 +29,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops):MapC
 	if (troops)
 	{
 		vector<Unit *> humans = {};
-		humans.push_back(new Human());
+		// humans.push_back(new Human());
 
 		vector<Unit *> vehicles = {};
 		Unit *platoon = new LandBranch(new Platoon(humans, vehicles, 2, 2));
@@ -75,14 +76,16 @@ void Area::marchIn(Unit *unit, Area *from)
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
-				map->createTransportRoute(this, from);
+				if(from != NULL)
+					map->createTransportRoute(this, from);
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
-				map->createTransportRoute(this, from);
+				if(from != NULL)
+					map->createTransportRoute(this, from);
 			}
 			else if (air->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -94,7 +97,8 @@ void Area::marchIn(Unit *unit, Area *from)
 			land->setDefender(unit);
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
-			map->createTransportRoute(this, from);
+			if(from != NULL)
+				map->createTransportRoute(this, from);
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -252,7 +256,7 @@ Battle *Area::returnBattle()
 
 	if (isBattle)
 	{
-		// return new Battle(air,land,this);
+		return new Battle(air,land,this, this->map->getPlayer());
 	}
 	return NULL;
 }
@@ -308,6 +312,7 @@ string Area::toString()
 
 	out += "|\033[48;5;" + to_string((this->colour)) + "m" + next + "\033[0m" + "|\n";
 
+	//BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
@@ -321,7 +326,14 @@ string Area::toString()
 	next += "|\n";
 	out += next;
 
-	next = "|     Land:     " + land->toString();
+
+	//BreakL Line
+	out += "|";
+	for (int i = 0; i < lineChars - 1; i++)
+		out += "-";
+	out += "|\n";
+
+	next = "|     Air:     " ;
 	while (next.length() < lineChars)
 	{
 		next += " ";
@@ -329,13 +341,25 @@ string Area::toString()
 	next += "|\n";
 	out += next;
 
-	next = "|     Air:      " + air->toString();
+	next=air->toString(lineChars);
+	out+=next;
+
+	//BreakL Line
+	out += "|";
+	for (int i = 0; i < lineChars - 1; i++)
+		out += "-";
+	out += "|\n";
+
+	next = "|     Land:     " ;
 	while (next.length() < lineChars)
 	{
 		next += " ";
 	}
 	next += "|\n";
 	out += next;
+
+	next=land->toString(lineChars);
+	out+=next;
 
 	for (int i = 0; i < lineChars + 1; i++)
 		out += "-";
@@ -352,7 +376,7 @@ Country *Area::getCountry()
 bool Area::retreat(string side)
 {
 
-	vector<Area *> adjacent = this->map->listAdjacent(this, false);
+	vector<Area *> adjacent = this->map->listAdjacent(this, true);
 
 	int allianceColour = 0;
 	Unit *landUnit = NULL;
@@ -469,7 +493,11 @@ Unit *Area::sendReinforcements(int color)
 			if (this->air->getDefender()->getCountry()->getAlliances()->getColour() == color)
 			{
 				return this->air->sendReinforcements();
+			}else{
+				return NULL;
 			}
+		}else{
+			return NULL;
 		}
 	}else{
 		return NULL;

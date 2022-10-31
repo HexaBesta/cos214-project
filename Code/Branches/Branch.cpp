@@ -1,6 +1,6 @@
 #include "Branch.h"
 
-Branch::Branch(Unit* unit) {
+Branch::Branch(Unit* unit):Unit() {
 	this->unit = unit;
 }
 
@@ -22,6 +22,18 @@ bool Branch::takeDamage(int damage){
 
 string Branch::getBranch(){
 	return "BRANCH";
+}
+
+int * Branch::getAmmo(){
+	return this->unit->getAmmo();
+}
+
+string Branch::getStrategyType(){
+	return this->unit->getStrategyType();
+}
+
+string Branch::toString(int lineLen){
+	return this->unit->toString(lineLen);
 }
 
 Branch::~Branch(){
