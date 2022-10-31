@@ -20,7 +20,7 @@ class Ammunition : public Transport
      *
      * @return int amount of ammo
      */
-    virtual int replenish(bool doublePew = false);
+    virtual int replenish(bool doublePew);
 };
 
 #endif

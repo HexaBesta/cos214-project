@@ -2,6 +2,6 @@
 
 Goods::Goods(int supply):Transport(supply){};
 
-int Goods::replenish(bool doubleRep = false){
+int Goods::replenish(bool doubleRep){
     return this->getAmount();
 }

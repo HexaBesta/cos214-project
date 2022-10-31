@@ -176,7 +176,7 @@ void User::createCountries(Map *map)
         // int alliance = 0;
         // cout << "Choose the alliance: \nGreen - 0\nRed - 1" << endl;
         // cin >> alliance;
-        Country *country = new Country(countryName, 94);
+        Country *country = new Country(countryName, 94, this);
         if (map == NULL)
         {
             cout << "Map is NULL in User" << endl;

@@ -273,6 +273,6 @@ void CPU::initialiseFactories(Map *map, Alliances *alliance)
     }
 }
 
-int User::platoonType(){
+int CPU::platoonType(){
     return rand()%2;
 }
