@@ -140,6 +140,13 @@ public:
 	 * @return string 
 	 */
 	string toStringCount();
+
+	/**
+	 * @brief Check if an alliance has won the war
+	 * 
+	 * @return int returns the colour of the map with accordiance to their colour on the map, 22 Alliance 1, 160 Alliance 2, 94 Netural
+	 */
+	int checkIfEnd();
 	/**
 	 * @brief Get the Areas By colour of alliance
 	 * 

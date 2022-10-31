@@ -31,6 +31,13 @@ class CountVisitor : public Visitor
      */
     string displayCount();
 
+    /**
+     * @brief Returns if either alliance has won
+     * 
+     * @return int 
+     */
+    int warLoopComplete();
+    
     private:
         int alliance2Count = 0;
         int alliance1Count = 0;
