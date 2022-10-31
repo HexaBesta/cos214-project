@@ -620,6 +620,13 @@ int Map::checkIfEnd(){
 	return check;
 }
 
+void Map::replenishAllPlatoons(){
+	AreaVisitor* areaV = new AreaVisitor();
+	for(auto it : this->allAreas){
+		it->accept(areaV);
+	}
+}
+
 vector<Area *> Map::getAreasByColour(int colour)
 {
 	vector<Area *> areas;
@@ -666,6 +673,9 @@ vector<Area *> Map::getAreasByCountry(Country *country)
 void Map::setPlayer(Player *player)
 {
 	this->player = player;
+	for(auto it: allCountries){
+		it->setPlayer(player);
+	}
 }
 
 Player *Map::getPlayer()

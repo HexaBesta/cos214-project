@@ -1,7 +1,10 @@
 #include "AreaVisitor.h"
 
 void AreaVisitor::visit(Area* area){
-    cout<<"Area index: "<<area->getIndex()<<"\nArea Colour: "<<area->getColour()<<endl;
+    area->replenish();
+    if(area->getColour()!=94){
+        cout<<area->getName()<<" replenished troops"<<endl;
+    }
 };
 
 void AreaVisitor::visit(TransportRoute* transport){

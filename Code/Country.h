@@ -20,7 +20,7 @@ class Country {
 		Alliances* alliance;
 		vector<Unit*> military;
 		Director * director;
-		Player * player;
+		Player* player;
 
 	public:
 		/**
@@ -86,6 +86,13 @@ class Country {
 		 * @param unit 
 		 */
 		void removeDeadPlatoons();
+
+		/**
+		 * @brief Sets the player of the country to the passed in player
+		 * 
+		 * @param player passed in from map
+		 */
+		void setPlayer(Player* player);
 
 };
 
