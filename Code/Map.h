@@ -4,6 +4,7 @@
 #include "TransportFactory.h"
 #include "Country.h"
 #include "CountVisitor.h"
+#include "AreaVisitor.h"
 #include "Battle.h"
 #include "Alliances.h"
 #include <vector>
@@ -147,6 +148,12 @@ public:
 	 * @return int returns the colour of the map with accordiance to their colour on the map, 22 Alliance 1, 160 Alliance 2, 94 Netural
 	 */
 	int checkIfEnd();
+
+	/**
+	 * @brief replenishes the areas platoons
+	 * 
+	 */
+	void replenishAllPlatoons();
 	/**
 	 * @brief Get the Areas By colour of alliance
 	 * 
