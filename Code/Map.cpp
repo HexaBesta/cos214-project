@@ -673,6 +673,9 @@ vector<Area *> Map::getAreasByCountry(Country *country)
 void Map::setPlayer(Player *player)
 {
 	this->player = player;
+	for(auto it: allCountries){
+		it->setPlayer(player);
+	}
 }
 
 Player *Map::getPlayer()
