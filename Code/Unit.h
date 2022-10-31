@@ -4,8 +4,8 @@
 #include <iostream>
 #include "CivilianState.h"
 #include "Country.h"
+#include <SFML/Graphics.hpp>
 class Platoon;
-
 class Transport;
 
 using namespace std;

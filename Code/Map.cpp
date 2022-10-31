@@ -3,7 +3,9 @@
 
 #include "Area.h"
 #include "TransportRoute.h"
+#include "AreaVisitor.h"
 #include "Map.h"
+
 
 Map::Map(string setupFile, Player *player)
 {
@@ -786,35 +788,7 @@ vector<Area *> Map::getAreasByColour(int colour)
 	return areas;
 }
 
-vector<Country *> Map::getCountriesByColour(int colour)
-{
-	vector<Country *> countries;
-	for (auto country : allCountries)
-	{
-		if(country->getAlliances() == NULL){
-			if(colour == 94)
-				countries.push_back(country);
-		}
-		else if (country->getAlliances()->getColour() == colour)
-		{
-			countries.push_back(country);
-		}
-	}
-	return countries;
-}
 
-vector<Area *> Map::getAreasByCountry(Country *country)
-{
-	vector<Area *> areas;
-	for (auto area : this->allAreas)
-	{
-		if (area->getCountry() == country)
-		{
-			areas.push_back(area);
-		}
-	}
-	return areas;
-}
 
 void Map::setPlayer(Player *player)
 {

@@ -107,32 +107,32 @@ void testMap1()
     delete m;
 }
 
-void testBuilder() {
-    Director* terrorist = new Director();
-    Country* c = new Country("Sandton", 22);
+// void testBuilder() {
+//     Director* terrorist = new Director();
+//     //Country* c = new Country("Sandton", 22);
 
-    Unit* teetee = terrorist->construct(true, c);
-    cout << teetee->toString() << endl;
+//     Unit* teetee = terrorist->construct(true, c);
+//     cout << teetee->toString() << endl;
 
-    cout << "-------------" << endl;
+//     cout << "-------------" << endl;
 
-    teetee = terrorist->construct(true, c);
-    cout << teetee->toString() << endl;
+//     teetee = terrorist->construct(true, c);
+//     cout << teetee->toString() << endl;
 
-        cout << "-------------" << endl;
+//         cout << "-------------" << endl;
 
-    teetee = terrorist->construct(true, c);
-    cout << teetee->toString() << endl;
+//     teetee = terrorist->construct(true, c);
+//     cout << teetee->toString() << endl;
 
-            cout << "-------------" << endl;
+//             cout << "-------------" << endl;
 
-    teetee = terrorist->construct(true, c);
-    cout << teetee->toString() << endl;
+//     teetee = terrorist->construct(true, c);
+//     cout << teetee->toString() << endl;
 
-    delete terrorist;
-    delete c;
-    delete teetee;
-}
+//     delete terrorist;
+//     delete c;
+//     delete teetee;
+// }
 
 void testGui()
 {
@@ -294,9 +294,9 @@ int main()
     // cout << endl
     //      << endl;
     // testEuropeMap();
-    //testGui();
+    testGui();
     // testBuilder();
-    testLoop();
+    //testLoop();
 
     cout<<"DONE"<<endl;
 }

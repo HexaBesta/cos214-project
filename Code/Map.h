@@ -1,10 +1,9 @@
 #ifndef MAP_H
 #define MAP_H
-
+#include "Coordinate.h"
 #include "TransportFactory.h"
 #include "Country.h"
 #include "CountVisitor.h"
-#include "AreaVisitor.h"
 #include "Battle.h"
 #include "Alliances.h"
 #include <vector>
@@ -15,6 +14,7 @@ using namespace std;
 class Player;
 class Area;
 class TransportRoute;
+class AreaVisitor;
 class Map
 {
 
@@ -240,21 +240,7 @@ public:
 	 */
 	bool addPlatoonToMap(Unit * platoon);
 
-	/**
-	 * @brief Get the Areas that are owned by passed in Country object
-	 * 
-	 * @param country to be searched for
-	 * @return vector<Area *> 
-	 */
-	vector<Area *> getAreasByCountry(Country * country);
-
-	/**
-	 * @brief Get the Countries that match the colour passed in (thus by alliance)
-	 * 
-	 * @param colour 
-	 * @return vector<Country*> 
-	 */
-	vector<Country*> getCountriesByColour(int colour);
+	
 
 	/**
 	 * @brief Destroy the Map object for memory purposes

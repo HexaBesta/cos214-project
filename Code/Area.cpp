@@ -1,4 +1,3 @@
-
 #include "Area.h"
 #include "Human.h"
 #include "LandBranch.h"
@@ -668,9 +667,6 @@ Coordinate *Area::getMiddleCooridnate()
 	return areasCoordinates.at((areasCoordinates.size() / 2));
 }
 
-void Area::accept(Visitor* visitor){
-	visitor->visit(this);
-}
 
 bool Area::setCountry(Country * country){
 	if(this->country == NULL){

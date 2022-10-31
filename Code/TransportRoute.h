@@ -1,8 +1,8 @@
 #ifndef TRANSPORTROUTE_H
 #define TRANSPORTROUTE_H
-
 #include "Area.h"
 #include "Visitor.h"
+#include "MapComponent.h"
 using namespace std;
 
 class TransportRoute : public MapComponent

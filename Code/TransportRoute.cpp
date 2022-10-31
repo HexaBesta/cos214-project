@@ -1,6 +1,6 @@
 #include "TransportRoute.h"
 
-TransportRoute::TransportRoute():MapComponent():MapComponent(){
+TransportRoute::TransportRoute():MapComponent(){
     this->available=false;
 }
 
