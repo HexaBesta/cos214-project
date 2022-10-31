@@ -120,6 +120,12 @@ class Player
         virtual void inspect(Map * map);
 
         /**
+         * @brief Asks Player whether it should create Air or Land Platoon
+         * 
+        */
+       virtual int platoonType()=0;
+
+        /**
          * @brief Destroy the Player object
          * 
          */

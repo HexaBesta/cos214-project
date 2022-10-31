@@ -10,6 +10,7 @@ using namespace std;
 
 class BobTheBuilder {
 	public:
+
 		/**
 		 * @brief Creates new vehicles for the platoon. This is a pure virtual function.
 		 */

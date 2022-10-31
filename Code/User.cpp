@@ -84,7 +84,7 @@ int User::chooseCountry(vector<Country *> country)
 int User::chooseActionForCountry()
 {
     int resp = 0;
-    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - end turn" << endl;
+    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - Recruit platoons \n 4 - end turn" << endl;
     cin >> resp;
     cin.ignore(30, '\n');
     return resp;
@@ -265,4 +265,12 @@ void User::inspect(Map *map)
             }
         }
     } while (resp != 2);
+}
+
+int User::platoonType(){
+    int resp = 0;
+    cout << endl
+                 << "Which branch do you want to create?\n0. Land\n1. Air "<<endl;
+            cin >> resp;
+    return resp;
 }

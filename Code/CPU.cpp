@@ -135,7 +135,7 @@ int CPU::chooseCountry(vector<Country *> country)
 
 int CPU::chooseActionForCountry()
 {
-    int value = rand() % ((2 - 0 + 1) + 0);
+    int value = rand() % (5);
     return value;
 }
 
@@ -222,12 +222,12 @@ void CPU::createCountries(Map *map)
         countryName += countryNumber;
         if (random == 0)
         {
-            Country *country = new Country(countryName, 22);
+            Country *country = new Country(countryName, 22, this);
             map->addCountry(country);
         }
         else if (random == 1)
         {
-            Country *country = new Country(countryName, 160);
+            Country *country = new Country(countryName, 160, this);
             map->addCountry(country);
         }
         cout<<endl;
@@ -271,4 +271,8 @@ void CPU::initialiseFactories(Map *map, Alliances *alliance)
     {
         map->requestFactoryForArea(areas.at(random), 2);
     }
+}
+
+int User::platoonType(){
+    return rand()%2;
 }

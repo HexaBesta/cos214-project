@@ -91,6 +91,8 @@ public:
      */
     virtual Player *togglePlayer();
 
+    virtual int platoonType();
+
 protected:
     /**
      * @brief Creates new Countries and add to map country vector

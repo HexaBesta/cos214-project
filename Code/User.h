@@ -91,10 +91,16 @@ public:
 
     /**
      * @brief Allows user to inspect areas of interest
-     * 
-     * @param map 
+     *
+     * @param map
      */
-    virtual void inspect(Map * map);
+    virtual void inspect(Map *map);
+
+    /**
+     * @brief Asks Player whether it should create Air or Land Platoon
+     *
+     */
+    virtual int platoonType();
 
 protected:
     /**
@@ -123,13 +129,13 @@ protected:
      * @param country the country to which platoon should be added
      *
      */
-    virtual void addPlatoons(Country *country, Map* map);
+    virtual void addPlatoons(Country *country, Map *map);
 
     /**
      * @brief Adds selected factories to selected areas
      *
      */
-    virtual void initialiseFactories(Map *map, Alliances * alliance);
+    virtual void initialiseFactories(Map *map, Alliances *alliance);
 };
 
 #endif

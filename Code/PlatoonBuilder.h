@@ -7,6 +7,7 @@
 #include "LandBranch.h"
 #include "AirBranch.h"
 #include "Platoon.h"
+class Player;
 
 #include <time.h>
 

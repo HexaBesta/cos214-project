@@ -10,6 +10,7 @@ using namespace std;
 
 class Alliances;
 class Map;
+class Player;
 
 class Country {
 	private:
@@ -19,13 +20,14 @@ class Country {
 		Alliances* alliance;
 		vector<Unit*> military;
 		Director * director;
+		Player * player;
 
 	public:
 		/**
 		 * @brief Constructs a new country object
 		 * @param name is the name of the country
 		 */
-		Country(string name,int colour);
+		Country(string name,int colour, Player * player);
 
 		/**
 		 * @brief Country Deconstructor, will delete the countryState?

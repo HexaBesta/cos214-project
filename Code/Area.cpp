@@ -21,11 +21,9 @@ Area::Area(string name, int index, int colour, bool factories, bool troops):MapC
 		allFactories[2] = NULL;
 	}
 
-	if (this->colour != 94)
-		country = new Country(name, colour);
-	else{
-		country = NULL;
-	}
+
+	country = NULL;
+
 
 	if (troops)
 	{
