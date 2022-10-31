@@ -703,6 +703,8 @@ bool Map::addPlatoonToMap(Unit *platoon)
 	vector<Area *> possibleAreas = this->getAreasByCountry(platoon->getCountry());
 	if (possibleAreas.size() == 0)
 	{
+		return false;
+		/*
 		if(platoon->getCountry() == NULL){
 			return false;
 		}
@@ -717,7 +719,7 @@ bool Map::addPlatoonToMap(Unit *platoon)
 			{
 				return false;
 			}
-		}
+		}*/
 	}
 	int index = this->player->chooseAreaForAction(possibleAreas);
 	possibleAreas.at(index)->marchIn(platoon, NULL);

@@ -182,6 +182,15 @@ void User::createCountries(Map *map)
             cout << "Map is NULL in User" << endl;
         }
         map->addCountry(country);
+        map->printMap();
+        Area *area = NULL;
+        do
+        {
+            cout << "Where must " << country->getName() << " start? ";
+            int areaIn = -1;
+            cin >> areaIn;
+            area = map->getAreaByIndex(areaIn);
+        } while (area == NULL || !area->setCountry(country));
         // cout<<"Country added to map"<<endl;
         resp--;
     }
@@ -224,7 +233,8 @@ void User::initialiseFactories(Map *map, Alliances *alliances)
     int x = 0;
     for (auto it : areas)
     {
-        cout << it->getName() <<" ("<< it->getIndex()<<")" << "|| Index: " << x << endl;
+        cout << it->getName() << " (" << it->getIndex() << ")"
+             << "|| Index: " << x << endl;
         x++;
     }
     int resp = 0;
@@ -232,7 +242,7 @@ void User::initialiseFactories(Map *map, Alliances *alliances)
     cout << "Now choose what factory you want to create at the chosen area: \n0 - Medics\n1 - Ammo\n2 - Goods" << endl;
     int resp1 = 0;
     cin >> resp1;
-    //areas.at(resp), resp1);
+    map->requestFactoryForArea(areas.at(resp), resp1);
 }
 
 void User::inspect(Map *map)
@@ -241,7 +251,7 @@ void User::inspect(Map *map)
     do
     {
         cout << "-------------------------------------------------------" << endl;
-        cout << "Would you like to inspect an area?\n1. Yes \n2. No"<<endl;
+        cout << "Would you like to inspect an area?\n1. Yes \n2. No" << endl;
         cin >> resp;
         if (resp == 1)
         {
