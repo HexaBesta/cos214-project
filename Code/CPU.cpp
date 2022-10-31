@@ -76,7 +76,7 @@ bool CPU::requestReinforcements(Battle *battle)
             totalDamage += battle->getLand()->getDefender()->getDamage();
         }
 
-        if (totalHealth <= (totalDamage * 2))
+        if (totalHealth <= (totalDamage * 3))
         {
             return true;
         }
@@ -108,7 +108,7 @@ bool CPU::requestReinforcements(Battle *battle)
             totalHealth += battle->getLand()->getDefender()->getDamage();
         }
 
-        if (totalHealth <= (totalDamage * 2))
+        if (totalHealth <= (totalDamage * 3))
         {
             return true;
         }
@@ -120,7 +120,7 @@ bool CPU::requestReinforcements(Battle *battle)
     return false;
 }
 
-int CPU::chooseCountry(vector<Country *> country)
+int CPU::chooseCountry(vector<Country *> country, Map* map )
 {
     if (!country.empty())
     {

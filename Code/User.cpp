@@ -66,15 +66,16 @@ bool User::requestReinforcements(Battle *battle)
     }
 }
 
-int User::chooseCountry(vector<Country *> country)
+int User::chooseCountry(vector<Country *> country, Map* map)
 {
     int resp = 0;
     cout << "Choose country index to take turn:" << endl;
-    int x = 0;
     for (auto it : country)
     {
-        cout << it->getName() << " || Index: " << x << endl;
-        x++;
+        vector<Area*> areas =  map->getAreasByCountry(it);
+        for(auto areasIt : areas){
+            cout << it->getName() << " || Index: "<< areasIt->getIndex() << endl;
+        }
     }
     cin >> resp;
     cin.ignore(30, '\n');
