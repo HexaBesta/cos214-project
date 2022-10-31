@@ -240,7 +240,7 @@ void GodOfWar::warLoop()
 
         // clear buffer
         cin.ignore(30, '\n');
-    }while(resp != 1);
+    }while(resp == 1);
 
 }
 

@@ -90,13 +90,13 @@ string Platoon::toString(int lineLen)
 
 void Platoon::changeStrategy()
 {
-	if (this->strategy->getPlatoonStrategy().compare("pew") == true && boomboom >= 10)
+	if (this->strategy->getPlatoonStrategy().compare("pew") == 0 && boomboom >= 10)
 	{
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
 	}
-	else if (this->strategy->getPlatoonStrategy().compare("boom") == true && pewpew >= 200)
+	else if (this->strategy->getPlatoonStrategy().compare("boom") == 0 && pewpew >= 200)
 	{
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
