@@ -39,7 +39,8 @@ string CountVisitor::displayCount()
     display += alliance1Count;
     display += "Transports: ";
     display += alliance1CountTransport;
-    display = "Alliance 2:\n";
+    display += "Alliance 2:\n";
+    display += "Areas: ";
     display += " Areas: ";
     display += alliance2Count;
     return display;
