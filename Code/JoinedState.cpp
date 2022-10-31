@@ -1,5 +1,6 @@
 #include "JoinedState.h"
 #include "Director.h"
+#include "Player.h"
 using namespace std;
 
 void JoinedState::handleCountry() {
@@ -16,7 +17,7 @@ string JoinedState::requestState() {
 
 Unit * JoinedState::recruitPlatoon(Director * director, Country * country){
     srand(time(NULL));
-    bool type = rand()%2;
+    bool type = country->getPlayer()->platoonType()%2;
 	cout<<"Recruiting platoons from "<<this->requestState()<<" state"<<endl;
     return director->construct(type, country);
 }

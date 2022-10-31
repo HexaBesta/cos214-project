@@ -133,3 +133,7 @@ void Country::removeDeadPlatoons(){
 void Country::setPlayer(Player* player){
 	this->player = player;
 }
+
+Player * Country::getPlayer(){
+	return this->player;
+}
