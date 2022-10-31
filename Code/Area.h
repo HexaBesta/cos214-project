@@ -225,6 +225,12 @@ public:
 	Unit * sendReinforcements(int color);
 
 	/**
+	 * @brief Initialises all factories in the area
+	 * 
+	 */
+	void initialiseAllFactories();
+
+	/**
 	 * @brief Destroy the Area object
 	 * 
 	 */
