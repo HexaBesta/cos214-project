@@ -599,6 +599,13 @@ string Map::toStringCount(){
 	for(auto it : this->allAreas){
 		it->accept(countV);
 	}
+	for (int x = 0; x<this->allAreas.size();x++){
+		for (int y = 0;y<this->allAreas.size();y++){
+			this->adjacencies[this->allAreas.at(x)->getIndex()][this->allAreas.at(y)->getIndex()]->accept(countV);
+		}
+		
+	}
+	
 	string total = countV->displayCount();
 	return total;
 }

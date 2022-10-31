@@ -16,25 +16,33 @@ void CountVisitor::visit(Area *area)
 
 void CountVisitor::visit(TransportRoute *transport)
 {
-    if (transport->isAvailable())
+    if (transport != nullptr)
     {
-        if (transport->getTo()->getColour() == 22)
+        if (transport->isAvailable())
         {
-            alliance1CountTransport++;
-        }
-        else if (transport->getTo()->getColour() == 160)
-        {
-            alliance2CountTransport++;
+            if (transport->getTo()->getColour() == 22)
+            {
+                alliance1CountTransport++;
+            }
+            else if (transport->getTo()->getColour() == 160)
+            {
+                alliance2CountTransport++;
+            }
         }
     }
 };
 
-string CountVisitor::displayCount(){
+string CountVisitor::displayCount()
+{
     string display = "Alliance 1:\n";
-    display+=" Areas: ";
-    display+=alliance1Count;
-    display = "Alliance 2:\n";
-    display+=" Areas: ";
-    display+=alliance2Count;
+    display += " Areas: ";
+    display += alliance1Count;
+    display += "Transports: ";
+    display += alliance1CountTransport;
+    display += "Alliance 2:\n";
+    display += "Areas: ";
+    display += alliance2Count;
+    display += " Transports: ";
+    display += alliance2CountTransport;
     return display;
 }
