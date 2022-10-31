@@ -60,7 +60,7 @@ void Branch::join(Unit *others){
 }
 
 Unit * Branch::getUnit(){
-	this->unit->getUnit();
+	return this->unit->getUnit();
 }
 
 Branch::~Branch(){

@@ -70,12 +70,15 @@ int User::chooseCountry(vector<Country *> country, Map* map)
 {
     int resp = 0;
     cout << "Choose country index to take turn:" << endl;
+    int x = 0;
     for (auto it : country)
     {
         vector<Area*> areas =  map->getAreasByCountry(it);
+        cout<<it->getName()<<": \tAreas: {";
         for(auto areasIt : areas){
-            cout << it->getName() << " || Index: "<< areasIt->getIndex() << endl;
+            cout << "( " <<areasIt->getName() <<","<< areasIt->getIndex() << ") ";
         }
+        cout<<"} || Index: "<<x++<<endl;
     }
     cin >> resp;
     cin.ignore(30, '\n');
@@ -214,8 +217,12 @@ Country *User::chooseCountryToJoinAlliance(Map *map)
     int resp = 0;
     for (auto it : country)
     {
-        cout << it->getName() << "|| Index: " << x << endl;
-        x++;
+        vector<Area*> areas =  map->getAreasByCountry(it);
+        cout<<it->getName()<<": \tAreas: {";
+        for(auto areasIt : areas){
+            cout << "( " <<areasIt->getName() <<","<< areasIt->getIndex() << ") ";
+        }
+        cout<<"} || Index: "<<x++<<endl;
     }
     cin >> resp;
     return country.at(resp);
