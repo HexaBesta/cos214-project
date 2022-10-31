@@ -33,8 +33,22 @@ string CountVisitor::displayCount(){
     string display = "Alliance 1:\n";
     display+=" Areas: ";
     display+=alliance1Count;
-    display = "Alliance 2:\n";
+    display+=" Transports: ";
+    display+=alliance1CountTransport;
+    display += "Alliance 2:\n";
     display+=" Areas: ";
     display+=alliance2Count;
+    display+=" Transports: ";
+    display+=alliance2CountTransport;
     return display;
+}
+
+int CountVisitor::warLoopComplete(){
+    if(this->alliance1Count == 0){
+        return 160;
+    }else if(this->alliance2Count == 0){
+        return 22;
+    }else{
+        return 94;
+    }
 }
