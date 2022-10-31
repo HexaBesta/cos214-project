@@ -4,7 +4,6 @@
 #include "TransportFactory.h"
 #include "Country.h"
 #include "CountVisitor.h"
-#include "AreaVisitor.h"
 #include "Battle.h"
 #include "Alliances.h"
 #include <vector>
@@ -12,6 +11,7 @@
 #include <fstream>
 #include <string>
 using namespace std;
+class AreaVisitor;
 class Player;
 class Area;
 class TransportRoute;
