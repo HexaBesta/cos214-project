@@ -137,7 +137,7 @@ void testMap1()
 void testGui()
 {
 
-    Map *m = new Map("../Maps/europe.txt");
+    Map *m = new Map("../Maps/europewithCountries.txt");
     // m->printMap();
     m->setAreaBorders();
 
