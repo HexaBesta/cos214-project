@@ -177,6 +177,16 @@ void testGui()
     buildBtn.setPosition(762, 500);
     buildBtn.scale(3, 3);
 
+    sf::Texture endTurnBtnTexture;
+    if (!endTurnBtnTexture.loadFromFile("../dalandTilesets/images/endTurnBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite endTurnBtn;
+    endTurnBtn.setTexture(endTurnBtnTexture);
+    endTurnBtn.setPosition(1200, 500);
+    endTurnBtn.scale(4, 4);
+
 
     sf::Text text;
     sf::Font font;
@@ -259,6 +269,7 @@ void testGui()
         window.draw(text);
         window.draw(moveBtn);
         window.draw(buildBtn);
+        window.draw(endTurnBtn);
          m->draw(&window,c);
         window.display();
         if (c->getElapsedTime().asMilliseconds()>100)
