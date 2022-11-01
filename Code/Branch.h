@@ -117,6 +117,19 @@ public:
 	virtual Unit * getUnit();
 
 	/**
+	 * @brief Set the Texture of the branch's unit (overridden)
+	 * 
+	 */
+	virtual void setTexture();
+
+	/**
+	 * @brief Returns the sprite of trhe unit wrapped by the branch. Used for drawing and positioning the platoon on the GUI map
+	 * 
+	 * @return sf::Sprire* 
+	 */
+	virtual sf::Sprite* getSprite();
+	
+	/**
 	 * @brief Destroy the Branch object
 	 *
 	 */

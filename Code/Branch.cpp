@@ -63,6 +63,14 @@ Unit * Branch::getUnit(){
 	return this->unit->getUnit();
 }
 
+void Branch::setTexture(){
+	cout<<"Not you either"<<endl;
+}
+
+ sf::Sprite* Branch::getSprite(){
+	return this->unit->getSprite();
+}
+
 Branch::~Branch(){
 	delete this->unit;
 }

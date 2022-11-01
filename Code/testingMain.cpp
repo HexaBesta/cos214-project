@@ -154,7 +154,7 @@ void testGui()
     sf::Sprite display;
     display.setTexture(displayTexture);
     display.setPosition(666, 0);
-    display.scale(2.8, 4);
+    display.scale(2.8, 5.5);
 
     sf::Texture moveBtnTexture;
     if (!moveBtnTexture.loadFromFile("../dalandTilesets/images/moveBtn.png"))
@@ -163,7 +163,7 @@ void testGui()
     }
     sf::Sprite moveBtn;
     moveBtn.setTexture(moveBtnTexture);
-    moveBtn.setPosition(666, 400);
+    moveBtn.setPosition(666, 500);
     moveBtn.scale(3, 3);
 
 
@@ -174,7 +174,7 @@ void testGui()
     }
     sf::Sprite buildBtn;
     buildBtn.setTexture(buildBtnTexture);
-    buildBtn.setPosition(762, 400);
+    buildBtn.setPosition(762, 500);
     buildBtn.scale(3, 3);
 
 

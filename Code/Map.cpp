@@ -898,4 +898,5 @@ Map::~Map()
 		terrain.pop_back();
 	}
 }
+#endif
 
