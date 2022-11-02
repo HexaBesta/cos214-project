@@ -439,6 +439,7 @@ void Platoon::setSpriteLocation(int x, int y)
 Platoon::~Platoon()
 {
 	cout<<"Deleting Platoon"<<endl;
+	cout<<"Delete humans - Platoon"<<endl;
 	while (!humans.empty())
 	{
 		if (humans.back() != NULL)
@@ -447,7 +448,7 @@ Platoon::~Platoon()
 		}
 		humans.pop_back();
 	}
-
+cout<<"Delete vehicles - Platoon"<<endl;
 	while (!vehicles.empty())
 	{
 		if (vehicles.back() != NULL)
@@ -456,11 +457,11 @@ Platoon::~Platoon()
 		}
 		vehicles.pop_back();
 	}
-
+cout<<"Delete strategy - Platoon"<<endl;
 	if (strategy != NULL)
 	{
 		delete strategy;
 	}
-	
+	cout<<"Delete sprite - Platoon"<<endl;
 	delete sprite;
 }

@@ -76,11 +76,19 @@ Iterator *Area::createIterator()
 	throw "Not yet implemented";
 }
 
-void Area::updateOwner(Unit* unit)
+void Area::updateOwner(Unit *unit)
 {
 	country = unit->getCountry();
 	colour = country->getAlliances()->getColour();
 	map->setAreaBorders();
+	if (land->getDefender() != NULL)
+	{
+		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
+	}
+	if (air->getDefender() != NULL)
+	{
+		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
+	}
 }
 
 void Area::marchIn(Unit *unit, Area *from)
@@ -92,7 +100,7 @@ void Area::marchIn(Unit *unit, Area *from)
 			if (air->getDefender() == NULL)
 			{
 				land->setDefender(unit);
-
+				land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
 
@@ -105,6 +113,7 @@ void Area::marchIn(Unit *unit, Area *from)
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				land->setDefender(unit);
+				land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
 				if (from != NULL)
@@ -121,6 +130,7 @@ void Area::marchIn(Unit *unit, Area *from)
 		else if (land->getDefender()->getAlliance() == unit->getAlliance())
 		{
 			land->setDefender(unit);
+			land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
 			if (from != NULL)
@@ -141,12 +151,14 @@ void Area::marchIn(Unit *unit, Area *from)
 			if (land->getDefender() == NULL)
 			{
 				air->setDefender(unit);
+				air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
 			}
 			else if (land->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				air->setDefender(unit);
+				air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 			}
 			else if (land->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -156,6 +168,7 @@ void Area::marchIn(Unit *unit, Area *from)
 		else if (air->getDefender()->getAlliance() == unit->getAlliance())
 		{
 			air->setDefender(unit);
+			air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 		}
 		else if (air->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -174,15 +187,14 @@ void Area::marchOut(Area *whereTo)
 
 	if (land->getDefender() != NULL)
 	{
-		cout << "Area 164" << endl;
 		whereTo->marchIn(land->MarchOut(false), this);
-		cout << "Area 166" << endl;
+		
 	}
 	if (air->getDefender() != NULL)
 	{
-		cout << "Area 170" << endl;
+		
 		whereTo->marchIn(air->MarchOut(false), this);
-		cout << "Area 172" << endl;
+		
 	}
 }
 
@@ -618,13 +630,13 @@ void Area::draw(sf::RenderWindow *r)
 	}
 	if (land->getDefender() != NULL)
 	{
-		land->getDefender()->setTexture();
-		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
+		// land->getDefender()->setTexture();
+		// land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
 		r->draw(*(land->getDefender()->getSprite()));
 	}
 	if (air->getDefender() != NULL)
 	{
-		air->getDefender()->setTexture();
+		// air->getDefender()->setTexture();
 		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 		r->draw(*(air->getDefender()->getSprite()));
 	}
@@ -637,19 +649,21 @@ void Area::updateLandSpriteAnimation(sf::Clock *c)
 		return;
 	}
 
-	if (c->getElapsedTime().asMilliseconds() >= 90)
-	{
-		sf::IntRect re = land->getDefender()->getSprite()->getTextureRect();
-		if (re.left == 78)
-		{
-			re.left = 0;
-		}
-		else
-		{
-			re.left += 26;
-		}
-		land->getDefender()->getSprite()->setTextureRect(re);
-	}
+	land->getDefender()->setTexture();
+
+	// if (c->getElapsedTime().asMilliseconds() >= 90)
+	// {
+	// 	sf::IntRect re = land->getDefender()->getSprite()->getTextureRect();
+	// 	if (re.left == 78)
+	// 	{
+	// 		re.left = 0;
+	// 	}
+	// 	else
+	// 	{
+	// 		re.left += 26;
+	// 	}
+	// 	land->getDefender()->getSprite()->setTextureRect(re);
+	// }
 }
 
 void Area::updateAirSpriteAnimation(sf::Clock *c)
@@ -659,19 +673,21 @@ void Area::updateAirSpriteAnimation(sf::Clock *c)
 		return;
 	}
 
-	if (c->getElapsedTime().asMilliseconds() >= 90)
-	{
-		sf::IntRect re = air->getDefender()->getSprite()->getTextureRect();
-		if (re.left == 512)
-		{
-			re.left = 0;
-		}
-		else
-		{
-			re.left += 256;
-		}
-		air->getDefender()->getSprite()->setTextureRect(re);
-	}
+	air->getDefender()->setTexture();
+
+	// if (c->getElapsedTime().asMilliseconds() >= 90)
+	// {
+	// 	sf::IntRect re = air->getDefender()->getSprite()->getTextureRect();
+	// 	if (re.left == 512)
+	// 	{
+	// 		re.left = 0;
+	// 	}
+	// 	else
+	// 	{
+	// 		re.left += 256;
+	// 	}
+	// 	air->getDefender()->getSprite()->setTextureRect(re);
+	// }
 }
 
 bool Area::wasClicked(sf::Vector2f click)
@@ -758,7 +774,7 @@ void Area::replenish()
 
 Area::~Area()
 {
-	cout<<"Deleting Tranport Route"<<endl;
+	cout << "Deleting Tranport Route" << endl;
 	while (!areasCoordinates.empty())
 	{
 		delete areasCoordinates.back();

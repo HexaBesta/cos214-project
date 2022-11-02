@@ -867,6 +867,8 @@ bool Map::addPlatoonToMap(Unit *platoon)
 	}
 	int index = this->player->chooseAreaForAction(possibleAreas);
 	possibleAreas.at(index)->marchIn(platoon, NULL);
+	possibleAreas.at(index)->updateLandSpriteAnimation(NULL);
+	possibleAreas.at(index)->updateAirSpriteAnimation(NULL);
 	return true;
 }
 

@@ -92,27 +92,27 @@ GodOfWar::GodOfWar(string setupFile)
 
 void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
 {
-    this->map->printMap();
+    // //this->map->printMap();
     window->clear(sf::Color::Black);
-    sf::Clock c = sf::Clock();
+     sf::Clock c = sf::Clock();
     //map->setAreaBorders();
     map->draw(window, &c);
     window->display();
     Alliances *active = (turn) ? this->groupOne : this->groupTwo;
     while (actions > 0)
     {
-         window->clear(sf::Color::Black);
-        map->setAreaBorders();
-        map->draw(window, &c);
-        window->display();
+        // window->clear(sf::Color::Black);
+        // map->setAreaBorders();
+        // map->draw(window, &c);
+        // window->display();
         /*
         Inspect
         */
         this->player->inspect(this->map);
-         window->clear(sf::Color::Black);
-        //map->setAreaBorders();
-        map->draw(window, &c);
-        window->display();
+        //  window->clear(sf::Color::Black);
+        // //map->setAreaBorders();
+        // map->draw(window, &c);
+        // window->display();
 
         /*
         Choose a country
@@ -249,10 +249,10 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         map->draw(window, &c);
         window->display();
     }
-    window->clear(sf::Color::Black);
-        //map->setAreaBorders();
-        map->draw(window, &c);
-        window->display();
+    // window->clear(sf::Color::Black);
+    //     //map->setAreaBorders();
+    //     map->draw(window, &c);
+    //     window->display();
 }
 
 void GodOfWar::warLoop()
@@ -264,21 +264,23 @@ void GodOfWar::warLoop()
     map->setAreaBorders();
     do
     {
+        resp--;
         round(&window);
         if (this->map->checkIfEnd() != 94)
         {
-            resp = 0;
+            //resp = 0;
+            break;
         }
-        else
+        else if (resp==0)
         {
-            cout << "Continue:" << endl
-                 << "1. Yes " << endl;
+            
+            cout << "Continue for how many: " << endl;
             cin >> resp;
 
             // clear buffer
             cin.ignore(30, '\n');
         }
-    } while (resp == 1);
+    } while (resp >0);
 
     int colour = this->map->checkIfEnd();
     cout << "---------------------------------------------------------------" << endl;
