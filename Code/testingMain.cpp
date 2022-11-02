@@ -140,7 +140,11 @@ void testGui()
     Map *m = new Map("../Maps/europewithCountries.txt");
     // m->printMap();
     m->setAreaBorders();
-
+    // Player* p = new User();
+    // Alliances* a1=new Alliances("West",22);
+    // Alliances* a2=new Alliances("East",160);
+    // p->initialiseSide(a1,m);
+    //     p->initialiseSide(a2,m);
 
     const int WINDOW_X = 1280;
     const int WINDOW_Y = 640;
@@ -239,9 +243,11 @@ void testGui()
                     }else if(marchInto==NULL){
                         cout << "No selected area to march into" << endl;
                     }else{
-                        text.setString("Marched from "+selectedArea->getName()+" into "+marchInto->getName());
+                        cout<<"TestingMain 242"<< endl;
+                         text.setString("Marched from "+selectedArea->getName()+" into "+marchInto->getName());
+                         cout<<"TestingMain 244"<< endl;
                          selectedArea->marchOut(marchInto);
-                         
+                         cout<<"TestingMain 246"<< endl;
                          moving=false;
                     }
                 }
@@ -279,6 +285,9 @@ void testGui()
         }
         
     }
+    // delete p;
+    // delete a1;
+    // delete a2;
     delete c;
     delete m;
 }
@@ -305,9 +314,9 @@ int main()
     // cout << endl
     //      << endl;
     // testEuropeMap();
-    testGui();
+    //testGui();
     // testBuilder();
-    //testLoop();
+    testLoop();
 
     cout<<"DONE"<<endl;
 }

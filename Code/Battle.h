@@ -105,7 +105,7 @@ public:
 	 * 
 	 * @details Each platoon's cumulative health and damage will be shown along with the currently active side
 	 */
-	void getStateSummary();
+	string getStateSummary();
 
 	/**
 	 * @brief Template method to initiate turn taken by active side

@@ -14,6 +14,18 @@ Battle::Battle(TheatreOfWar *air, TheatreOfWar *land, Area *area, Player *player
 
 void Battle::battleLoop()
 {
+	const int WINDOW_X = 1280;
+    const int WINDOW_Y = 640;
+    sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "My window2");
+	sf::Text text;
+    sf::Font font;
+    if (!font.loadFromFile("../dalandTilesets/images/Terminus.ttf"))
+    {
+    }
+    text.setFont(font);
+    text.setString("Hello world");
+    text.setCharacterSize(12);
+    text.setPosition(0, 20);
 	while (this->battleActive)
 	{
 		if(this->checkRetreat()){
@@ -22,8 +34,13 @@ void Battle::battleLoop()
 		}
 		this->takeTurn();
 		this->turn = (this->turn + 1) % 2;
-		this->getStateSummary();
+		cout<<this->getStateSummary();
+		text.setString(this->getStateSummary());
+		window.clear(sf::Color::Black);
+        window.draw(text);
+        window.display();
 	}
+	window.close();
 }
 
 bool Battle::checkRetreat()
@@ -86,22 +103,23 @@ bool Battle::getTurn(){
 	return this->turn;
 }
 
-void Battle::getStateSummary()
+string Battle::getStateSummary()
 {
-	cout << "-------------------------------------------" << endl;
-	cout << "\tPrinting Summary of State of Battle:" << endl;
-	cout << endl;
-	cout << "Turn: ";
+	string out="";
+	out+= "-------------------------------------------\n";
+	out+= "\tPrinting Summary of State of Battle:\n";
+	out+= "\n";
+	out+= "Turn: ";
 	if (!this->turn)
 	{
-		cout << "Defender" << endl;
+		out+= "Defender\n";
 	}
 	else
 	{
-		cout << "Attacker" << endl;
+		out+= "Attacker\n";
 	}
-	cout << "Area: " << endl;
-	cout<<this->area->toString();
+	out+= "Area: \n";
+	out+=this->area->toString();
 	// cout << "Defender:" << endl;
 	// if(this->air->getDefender()){
 	// 	cout<<this->air->getDefender()->toString()<<endl;
@@ -120,7 +138,8 @@ void Battle::getStateSummary()
 	// }
 
 	// cout << endl;
-	cout << "-------------------------------------------" << endl;
+	out+= "-------------------------------------------\n";
+	return out;
 }
 
 void Battle::takeTurn()

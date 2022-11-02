@@ -329,11 +329,14 @@ void Map::addCountry(Country *country)
 	if(country == NULL){
 		return;
 	}
+	cout<<" 332 Map"<<endl;
 	bool add = true;
+	cout<<" 334 Map"<<endl;
 	if (!allCountries.empty())
 	{
 		for (int i = 0; i < allCountries.size(); i++)
 		{
+			cout<<" 339 Map"<<endl;
 			if (allCountries.at(i) == country)
 			{
 				add = false;
@@ -342,8 +345,10 @@ void Map::addCountry(Country *country)
 	}
 	if (add)
 	{
+		cout<<" 348 Map"<<endl;
 		allCountries.push_back(country);
 	}
+	cout<<" 351 Map"<<endl;
 }
 
 vector<Country *> Map::getCountriesByColour(int colour)

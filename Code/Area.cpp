@@ -19,10 +19,14 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 		allFactories[1] = NULL;
 		allFactories[2] = NULL;
 	}
-
-
-	country = NULL;
-
+	if (colour != 94)
+	{
+		country = new Country(name, colour, NULL);
+	}
+	else
+	{
+		country = NULL;
+	}
 
 	if (troops)
 	{
@@ -34,7 +38,6 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 		platoon->setCountry(country);
 		platoon->setTexture();
 		air->setDefender(platoon);
-
 		vector<Unit *> humans2 = {};
 		humans2.push_back(new Human(10, 100, 5, country, true));
 
@@ -79,25 +82,34 @@ void Area::marchIn(Unit *unit, Area *from)
 	{
 		if (land->getDefender() == NULL)
 		{
+			cout << "Area 83" << endl;
 			if (air->getDefender() == NULL)
 			{
+				cout << "Area 85" << endl;
 				land->setDefender(unit);
+				cout << "Area 86" << endl;
 				country = unit->getCountry();
+				cout << "Area 87" << endl;
 				colour = country->getAlliances()->getColour();
-				map->setAreaBorders();
-				if(from != NULL)
+				cout << "Area 88" << endl;
+
+				if (from != NULL)
+				{
 					map->createTransportRoute(this, from);
-				
+				}
+				map->setAreaBorders();
+				cout << "Area 89" << endl;
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
 				land->setDefender(unit);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
-				map->setAreaBorders();
-				if(from != NULL)
+				if (from != NULL)
+				{
 					map->createTransportRoute(this, from);
-				
+				}
+				map->setAreaBorders();
 			}
 			else if (air->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -109,10 +121,11 @@ void Area::marchIn(Unit *unit, Area *from)
 			land->setDefender(unit);
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
-			map->setAreaBorders();
-			if(from != NULL)
-				map->createTransportRoute(this, from);
-			
+			if (from != NULL)
+				{
+					map->createTransportRoute(this, from);
+				}
+				map->setAreaBorders();
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -159,11 +172,15 @@ void Area::marchOut(Area *whereTo)
 
 	if (land->getDefender() != NULL)
 	{
+		cout << "Area 164" << endl;
 		whereTo->marchIn(land->MarchOut(false), this);
+		cout << "Area 166" << endl;
 	}
 	if (air->getDefender() != NULL)
 	{
+		cout << "Area 170" << endl;
 		whereTo->marchIn(air->MarchOut(false), this);
+		cout << "Area 172" << endl;
 	}
 }
 
@@ -250,7 +267,7 @@ void Area::addCell(string coord)
 		pos++;
 	}
 
-	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr), colour, this,map->getGridXSize(),map->getGridYSize()));
+	this->areasCoordinates.push_back(new Coordinate(stoi(xStr), stoi(yStr), colour, this, map->getGridXSize(), map->getGridYSize()));
 }
 
 vector<Coordinate *> Area::getAreaCoordinates()
@@ -285,7 +302,7 @@ Battle *Area::returnBattle()
 
 	if (isBattle)
 	{
-		return new Battle(air,land,this, this->map->getPlayer());
+		return new Battle(air, land, this, this->map->getPlayer());
 	}
 	return NULL;
 }
@@ -340,7 +357,7 @@ string Area::toString()
 
 	out += "|\033[48;5;" + to_string((this->colour)) + "m" + next + "\033[0m" + "|\n";
 
-	//BreakL Line
+	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
@@ -369,7 +386,7 @@ string Area::toString()
 
 	next = air->toString(lineChars);
 	out += next;
-	
+
 	// BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
@@ -383,14 +400,14 @@ string Area::toString()
 	}
 	next += "|\n";
 	out += next;
-	
+
 	next = land->toString(lineChars);
 	out += next;
-	
+
 	for (int i = 0; i < lineChars + 1; i++)
 		out += "-";
 	out += "\n";
-	
+
 	return out;
 }
 
@@ -519,7 +536,9 @@ Unit *Area::sendReinforcements(int color)
 			if (this->air->getDefender()->getCountry()->getAlliances()->getColour() == color)
 			{
 				return this->air->sendReinforcements();
-			}else{
+			}
+			else
+			{
 				return NULL;
 			}
 		}
@@ -545,7 +564,7 @@ void Area::setCoordinateBorders(int x, int y, bool left, bool leftCon, bool righ
 	{
 		if (areasCoordinates.at(i)->x == x && areasCoordinates.at(i)->y == y)
 		{
-			
+
 			string borders = "";
 			if (left)
 			{
@@ -595,12 +614,12 @@ void Area::draw(sf::RenderWindow *r)
 	}
 	if (land->getDefender() != NULL)
 	{
-		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640/map->getGridXSize()), getMiddleCooridnate()->y * (640/map->getGridYSize()));
+		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
 		r->draw(*(land->getDefender()->getSprite()));
 	}
 	if (air->getDefender() != NULL)
 	{
-		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640/map->getGridXSize()), getMiddleCooridnate()->y * (640/map->getGridYSize())-32);
+		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 		r->draw(*(air->getDefender()->getSprite()));
 	}
 }
@@ -667,48 +686,63 @@ Coordinate *Area::getMiddleCooridnate()
 	return areasCoordinates.at((areasCoordinates.size() / 2));
 }
 
-
-bool Area::setCountry(Country * country){
-	if(this->country == NULL){
+bool Area::setCountry(Country *country)
+{
+	if (this->country == NULL)
+	{
 		this->country = country;
 		this->initialiseAllFactories();
 		return true;
 	}
-	else{
+	else
+	{
 		return false;
 	}
 }
 
-void Area::setColour(){
-	if(this->country != NULL){
+void Area::setColour()
+{
+	if (this->country != NULL)
+	{
 		this->colour = this->country->getAlliances()->getColour();
 	}
 }
 
-void Area::initialiseAllFactories(){
+void Area::initialiseAllFactories()
+{
 	allFactories[0] = new PTFactory();
 	allFactories[1] = new ATFactory();
 	allFactories[2] = new GTFactory();
 }
 
-void Area::replenish(){
-	Transport * resources[3];
+void Area::replenish()
+{
+	Transport *resources[3];
 
-	if(allFactories[0] == NULL){
+	if (allFactories[0] == NULL)
+	{
 		resources[0] == NULL;
-	}else{
+	}
+	else
+	{
 		resources[0] == allFactories[0]->makeTypeTransport();
 	}
 
-	if(allFactories[1] == NULL){
+	if (allFactories[1] == NULL)
+	{
 		resources[1] == NULL;
-	}else{
+	}
+	else
+	{
 		resources[1] == allFactories[1]->makeTypeTransport();
 	}
 
-	if(allFactories[2] == NULL){
+	if (allFactories[2] == NULL)
+	{
 		resources[2] == NULL;
-	}else{
+	}
+	else
+	{
 		resources[2] == allFactories[2]->makeTypeTransport();
 	}
 
