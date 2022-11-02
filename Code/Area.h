@@ -130,6 +130,12 @@ public:
 	void marchOut(Area *whereTo);
 
 	/**
+	 * @brief Used to manually set the country, colour and texture of an area to the appropriate values
+	 * @param unit-unit the unit that now occupies the area
+	 */
+	void updateOwner(Unit* unit);
+
+	/**
 	 * @brief This function can be called by the defending platoon during a battle, to get aid from adjecent friendly areas which are connected by active transport routes
 	 *
 	 * @details If an adjacent area has friendly air platoons, they will join air platoon of side requesting reinforcements

@@ -26,16 +26,18 @@ void Battle::battleLoop()
     text.setString("Hello world");
     text.setCharacterSize(12);
     text.setPosition(0, 20);
+	
 	while (this->battleActive)
 	{
 		if(this->checkRetreat()){
 			this->battleActive = false;
-			break;
+			//break;
 		}
-		this->takeTurn();
+		cout<<"Battle 36"<<endl;
+		this->takeTurn();cout<<"Battle 37"<<endl;
 		this->turn = (this->turn + 1) % 2;
-		cout<<this->getStateSummary();
-		text.setString(this->getStateSummary());
+		cout<<this->getStateSummary();cout<<"Battle 39"<<endl;
+		text.setString(this->getStateSummary());cout<<"Battle 40"<<endl;
 		window.clear(sf::Color::Black);
         window.draw(text);
         window.display();
@@ -73,20 +75,22 @@ void Battle::setAttackerToDefender(){
 	Unit * oldAttacker = this->air->getAttacker();
 	Unit * oldDefender = this->air->getDefender();
 	if(oldAttacker != NULL){
-		if(oldDefender){
+		if(oldDefender!=NULL && oldDefender->getState().compare("Dead")!=0){
 			this->area->retreat("defense");
 		}
 		this->air->setDefender(oldAttacker);
 		this->air->setAttacker(NULL);
+		this->area->updateOwner(oldAttacker);
 	}
 	oldAttacker = this->land->getAttacker();
 	oldDefender = this->land->getDefender();
 	if(oldAttacker != NULL){
-		if(oldDefender){
+		if(oldDefender!=NULL && oldDefender->getState().compare("Dead")!=0){
 			this->area->retreat("defense");
 		}
 		this->land->setDefender(oldAttacker);
 		this->land->setAttacker(NULL);
+		this->area->updateOwner(oldAttacker);
 	}
 
 }
@@ -158,17 +162,19 @@ void Battle::takeTurn()
 			active = this->air->getAttacker();
 
 			//Defender in air
-			if(this->air->getDefender() && (!this->air->getDefender()->getState().compare("Dead")  == 0 )){
+			if(this->air->getDefender()!=NULL && (!this->air->getDefender()->getState().compare("Dead")  == 0 )){
 				passive = this->air->getDefender();
 			}
 			//Defender on land
-			else if(this->land->getDefender()  && (!this->land->getDefender()->getState().compare("Dead")  == 0 )){
+			else if(this->land->getDefender()!=NULL  && (!this->land->getDefender()->getState().compare("Dead")  == 0 )){
 				passive = this->land->getDefender();
 			}
 			//No defender
 			else{
+				cout<<"End battle"<<endl;
 				this->battleActive = false;
 				this->setAttackerToDefender();
+				cout<<"End battle2"<<endl;
 			}
 
 		}
@@ -246,8 +252,10 @@ void Battle::takeTurn()
 		}
 		//No defender left
 		else{
+			cout<<"Battle 253"<<endl;
 			this->battleActive = false;
 			this->setAttackerToDefender();
+			cout<<"Battle 256"<<endl;
 		}
 	}
 
@@ -328,8 +336,8 @@ void Battle::attack(Unit * active, Unit * passive)
 	active->attack(passive);
 
 	//std::cout<<passive->getState()<<endl;
-	if(passive->getState().compare("Dead")==0){
-		passive = NULL;
-	}
+	// if(passive->getState().compare("Dead")==0){
+	// 	passive = NULL;
+	// }
 	
 }

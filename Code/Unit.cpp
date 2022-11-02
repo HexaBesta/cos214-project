@@ -154,7 +154,7 @@ int *Unit::getAmmo()
 	return NULL;
 }
 
-void Unit::replenish(Transport ** transport){}
+void Unit::replenish(Transport **transport) {}
 
 sf::Sprite *Unit::getSprite()
 {
@@ -177,14 +177,15 @@ void Unit::setLandTexture()
 	cout << "Not this one - Land" << endl;
 }
 
-Unit * Unit::getUnit(){
-	    return this;
- }
-
+Unit *Unit::getUnit()
+{
+	return this;
+}
 
 Unit::~Unit()
 {
-
-	delete this->unitState;
-	// delete this->country;
+	if (unitState != NULL)
+	{
+		delete this->unitState;
+	}
 }

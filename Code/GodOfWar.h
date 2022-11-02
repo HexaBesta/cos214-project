@@ -4,6 +4,7 @@
 #include "Area.h"
 #include "CPU.h"
 #include "User.h"
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 class GodOfWar{
@@ -36,13 +37,13 @@ class GodOfWar{
 		 * 
 		 * @param actions number of action points available
 		 */
-		void takeTurn(int actions);
+		void takeTurn(int actions,sf::RenderWindow* window);
 
 		/**
 		 * @brief one round consisting of two seperate turns
 		 * 
 		 */
-		void round();
+		void round(sf::RenderWindow* window);
 
 	public:
 		/**

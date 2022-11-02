@@ -76,29 +76,31 @@ Iterator *Area::createIterator()
 	throw "Not yet implemented";
 }
 
+void Area::updateOwner(Unit* unit)
+{
+	country = unit->getCountry();
+	colour = country->getAlliances()->getColour();
+	map->setAreaBorders();
+}
+
 void Area::marchIn(Unit *unit, Area *from)
 {
 	if (unit->getBranch() == "LAND BRANCH")
 	{
 		if (land->getDefender() == NULL)
 		{
-			cout << "Area 83" << endl;
 			if (air->getDefender() == NULL)
 			{
-				cout << "Area 85" << endl;
 				land->setDefender(unit);
-				cout << "Area 86" << endl;
+
 				country = unit->getCountry();
-				cout << "Area 87" << endl;
 				colour = country->getAlliances()->getColour();
-				cout << "Area 88" << endl;
 
 				if (from != NULL)
 				{
 					map->createTransportRoute(this, from);
 				}
 				map->setAreaBorders();
-				cout << "Area 89" << endl;
 			}
 			else if (air->getDefender()->getAlliance() == unit->getAlliance())
 			{
@@ -122,10 +124,10 @@ void Area::marchIn(Unit *unit, Area *from)
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
 			if (from != NULL)
-				{
-					map->createTransportRoute(this, from);
-				}
-				map->setAreaBorders();
+			{
+				map->createTransportRoute(this, from);
+			}
+			map->setAreaBorders();
 		}
 		else if (land->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -442,6 +444,7 @@ bool Area::retreat(string side)
 		}
 		else
 		{
+			cout << "No defending units to retreat" << endl;
 			throw "No defending units to retreat";
 		}
 	}
@@ -460,6 +463,7 @@ bool Area::retreat(string side)
 		}
 		else
 		{
+
 			throw "No attacking units to retreat";
 		}
 	}
@@ -614,11 +618,13 @@ void Area::draw(sf::RenderWindow *r)
 	}
 	if (land->getDefender() != NULL)
 	{
+		land->getDefender()->setTexture();
 		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
 		r->draw(*(land->getDefender()->getSprite()));
 	}
 	if (air->getDefender() != NULL)
 	{
+		air->getDefender()->setTexture();
 		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 		r->draw(*(air->getDefender()->getSprite()));
 	}
@@ -752,6 +758,7 @@ void Area::replenish()
 
 Area::~Area()
 {
+	cout<<"Deleting Tranport Route"<<endl;
 	while (!areasCoordinates.empty())
 	{
 		delete areasCoordinates.back();

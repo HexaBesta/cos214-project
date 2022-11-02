@@ -14,5 +14,5 @@ string Human::toString(){
 }
 
 Human::~Human(){
-    
+    cout<<"Deleting Human"<<endl;
 }

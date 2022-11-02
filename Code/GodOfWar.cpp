@@ -90,16 +90,29 @@ GodOfWar::GodOfWar(string setupFile)
     this->turn = true;
 }
 
-void GodOfWar::takeTurn(int actions)
+void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
 {
     this->map->printMap();
+    window->clear(sf::Color::Black);
+    sf::Clock c = sf::Clock();
+    //map->setAreaBorders();
+    map->draw(window, &c);
+    window->display();
     Alliances *active = (turn) ? this->groupOne : this->groupTwo;
     while (actions > 0)
     {
+         window->clear(sf::Color::Black);
+        map->setAreaBorders();
+        map->draw(window, &c);
+        window->display();
         /*
         Inspect
         */
         this->player->inspect(this->map);
+         window->clear(sf::Color::Black);
+        //map->setAreaBorders();
+        map->draw(window, &c);
+        window->display();
 
         /*
         Choose a country
@@ -221,7 +234,9 @@ void GodOfWar::takeTurn(int actions)
 
             cout << "Marching from " << areas.at(areaIndex)->getName() << " to " << adjacentAreas.at(adjAreaIndex)->getName() << endl;
             areas.at(areaIndex)->marchOut(adjacentAreas.at(adjAreaIndex));
-        }else if( action == 3){
+        }
+        else if (action == 3)
+        {
             countries.at(countryIndex)->recruitPlatoon(this->map);
         }
         else
@@ -229,43 +244,63 @@ void GodOfWar::takeTurn(int actions)
             actions = 0;
         }
         actions--;
+        window->clear(sf::Color::Black);
+        //map->setAreaBorders();
+        map->draw(window, &c);
+        window->display();
     }
+    window->clear(sf::Color::Black);
+        //map->setAreaBorders();
+        map->draw(window, &c);
+        window->display();
 }
 
 void GodOfWar::warLoop()
 {
-    int resp = 0;
+    const int WINDOW_X = 1280;
+    const int WINDOW_Y = 640;
+    sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "My window");
+    int resp = 1;
+    map->setAreaBorders();
     do
     {
-        round();
+        round(&window);
         if (this->map->checkIfEnd() != 94)
         {
             resp = 0;
-        }else{
-        cout << "Continue:" << endl
-             << "1. Yes " << endl;
-        cin >> resp;
+        }
+        else
+        {
+            cout << "Continue:" << endl
+                 << "1. Yes " << endl;
+            cin >> resp;
 
-        // clear buffer
-        cin.ignore(30, '\n');
+            // clear buffer
+            cin.ignore(30, '\n');
         }
     } while (resp == 1);
 
     int colour = this->map->checkIfEnd();
-    cout<<"---------------------------------------------------------------"<<endl;
-    cout<<"---------------------------------------------------------------"<<endl;
-    if(colour == 94){
-        cout<<"WAR ENDS WITH PEACE TREATY"<<endl;
-    }else{
-        if(colour == this->groupOne->getColour()){
-            cout<<"WAR ENDS WITH "<<this->groupOne->getName()<<" AS THE GLOBAL SUPERPOWER"<<endl;
-        }else{
-            cout<<"WAR ENDS WITH "<<this->groupTwo->getName()<<" AS THE GLOBAL SUPERPOWER"<<endl;
+    cout << "---------------------------------------------------------------" << endl;
+    cout << "---------------------------------------------------------------" << endl;
+    if (colour == 94)
+    {
+        cout << "WAR ENDS WITH PEACE TREATY" << endl;
+    }
+    else
+    {
+        if (colour == this->groupOne->getColour())
+        {
+            cout << "WAR ENDS WITH " << this->groupOne->getName() << " AS THE GLOBAL SUPERPOWER" << endl;
+        }
+        else
+        {
+            cout << "WAR ENDS WITH " << this->groupTwo->getName() << " AS THE GLOBAL SUPERPOWER" << endl;
         }
     }
 }
 
-void GodOfWar::round()
+void GodOfWar::round(sf::RenderWindow *window)
 {
 
     /*
@@ -278,7 +313,7 @@ void GodOfWar::round()
 
     this->turn = true;
 
-    this->takeTurn(3);
+    this->takeTurn(3, window);
 
     this->map->resolveBattles();
 
@@ -297,7 +332,7 @@ void GodOfWar::round()
         this->checkTogglePlayer();
     }
 
-    this->takeTurn(3);
+    this->takeTurn(3, window);
 
     this->map->resolveBattles();
 

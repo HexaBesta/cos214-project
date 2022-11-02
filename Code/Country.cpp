@@ -24,10 +24,10 @@ Country::Country(string name,int colour, Player * player)
 
 Country::~Country()
 {
+	cout << "Deleted country " << this->name << endl;
 	if (countryState != NULL)
 	{
 		delete countryState;
-		countryState = NULL;
 	}
 
 	while (!military.empty())
@@ -37,7 +37,7 @@ Country::~Country()
 		military.pop_back();
 	}
 
-	cout << "Deleted country " << this->name << endl;
+	
 }
 
 string Country::requestState()

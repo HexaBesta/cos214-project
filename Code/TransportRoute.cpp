@@ -34,5 +34,5 @@ void TransportRoute::accept(Visitor* visitor){
 }
 
 TransportRoute::~TransportRoute(){
-
+    cout<<"Deleting Tranport Route"<<endl;
 }

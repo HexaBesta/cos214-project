@@ -14,5 +14,5 @@ string Vehicle::toString(){
 }
 
 Vehicle::~Vehicle(){
-    
+    cout<<"Deleting Tranport Route"<<endl;
 }

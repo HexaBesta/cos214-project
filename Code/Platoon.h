@@ -19,7 +19,6 @@ class Platoon : public Unit
 {
 
 private:
-	BobTheBuilder *bob;
 	vector<Unit *> humans;
 	vector<Unit *> vehicles;
 	int pewpew;

@@ -5,17 +5,17 @@ int getRandomNumber(int min, int max);
 
 void PlatoonBuilder::createVehicles() {
     int size = getRandomNumber(5, 10);
-    this->vehicles.reserve(size);
-    for(int i = 0; i < size; i++) {
-        this->vehicles.push_back(new Vehicle(getRandomNumber(100, 200), 100, getRandomNumber(15, 20), this->country, true));
+    this->vehicles.reserve(5);
+    for(int i = 0; i < 5; i++) {
+        this->vehicles.push_back(new Vehicle(200, 100, 15, this->country, true));
     }
 }
 
 void PlatoonBuilder::createSoldiers() {
     int size = getRandomNumber(20, 30);
-    this->soldiers.reserve(size);
-    for(int i = 0; i < size; i++) {
-        this->soldiers.push_back(new Human(100, 100, getRandomNumber(5, 10), this->country, true));
+    this->soldiers.reserve(20);
+    for(int i = 0; i < 20; i++) {
+        this->soldiers.push_back(new Human(100, 100, 7, this->country, true));
     }
 }
 

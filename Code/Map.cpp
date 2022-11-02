@@ -731,18 +731,19 @@ void Map::setAreaBorders()
 
 void Map::draw(sf::RenderWindow *r, sf::Clock *c)
 {
-
-	for (int i = 0; i < allAreas.size(); i++)
-	{
-		allAreas.at(i)->draw(r);
-		allAreas.at(i)->updateLandSpriteAnimation(c);
-		allAreas.at(i)->updateAirSpriteAnimation(c);
-	}
-	
 	for (size_t i = 0; i < terrain.size(); i++)
 	{
 		r->draw((terrain.at(i)->sprite));
 	}
+
+	for (int i = 0; i < allAreas.size(); i++)
+	{
+		allAreas.at(i)->draw(r);
+		//allAreas.at(i)->updateLandSpriteAnimation(c);
+		//allAreas.at(i)->updateAirSpriteAnimation(c);
+	}
+	
+	
 }
 
 Area *Map::getAreaClicked(sf::Vector2f click)
@@ -871,6 +872,7 @@ bool Map::addPlatoonToMap(Unit *platoon)
 
 Map::~Map()
 {
+	cout<<"Deleting Map"<<endl;
 	for (int i = 0; i < gridXSize; i++)
 	{
 		delete[] grid[i];
