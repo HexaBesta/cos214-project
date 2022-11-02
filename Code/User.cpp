@@ -8,21 +8,53 @@ bool User::playerRetreat(Battle *battle)
 {
     battle->getStateSummary();
 
-    int resp;
-    cout << "Retreat" << endl
-         << "1. Yes \n2. Not necessary" << endl;
-    cin >> resp;
+    // int resp;
+    // cout << "Retreat" << endl
+    //      << "1. Yes \n2. Not necessary" << endl;
+    // cin >> resp;
 
-    // clear buffer
-    cin.ignore(30, '\n');
+    // // clear buffer
+    // cin.ignore(30, '\n');
 
-    if (resp == 1)
+    // if (resp == 1)
+    // {
+    //     return true;
+    // }
+    // else
+    // {
+    //     return false;
+    // }
+
+    string resp = "";
+
+    cout << "Retreat?" << endl
+         << "1 - Yes" << endl
+         << "2 - Not necessary" << endl;
+
+    while (1)
     {
-        return true;
-    }
-    else
-    {
-        return false;
+
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "1" || resp == "2"))
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp == "1")
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
     }
 }
 
@@ -68,19 +100,20 @@ bool User::requestReinforcements(Battle *battle)
     }
 }
 
-int User::chooseCountry(vector<Country *> country, Map* map)
+int User::chooseCountry(vector<Country *> country, Map *map)
 {
     int resp = 0;
     cout << "Choose country index to take turn:" << endl;
     int x = 0;
     for (auto it : country)
     {
-        vector<Area*> areas =  map->getAreasByCountry(it);
-        cout<<it->getName()<<": \tAreas: {";
-        for(auto areasIt : areas){
-            cout << "( " <<areasIt->getName() <<","<< areasIt->getIndex() << ") ";
+        vector<Area *> areas = map->getAreasByCountry(it);
+        cout << it->getName() << ": \tAreas: {";
+        for (auto areasIt : areas)
+        {
+            cout << "( " << areasIt->getName() << "," << areasIt->getIndex() << ") ";
         }
-        cout<<"} || Index: "<<x++<<endl;
+        cout << "} || Index: " << x++ << endl;
     }
     cin >> resp;
     cin.ignore(30, '\n');
@@ -100,10 +133,10 @@ int User::chooseActionForCountry()
     int intResp = 0;
 
     cout << "Choose action to perform:" << endl
-         << "0 - Attack transport route" << endl
-         << "1 - Request resources" << endl
-         << "2 - March into area" << endl
-         << "3 - End turn" << endl
+         << "1 - Attack transport route" << endl
+         << "2 - Request resources" << endl
+         << "3 - March into area" << endl
+         << "4 - End turn" << endl
          << "Press Q/q to quit" << endl;
 
     while (1)
@@ -115,7 +148,7 @@ int User::chooseActionForCountry()
             cout << "Invalid input - try again" << endl;
         }
 
-        else if (!(resp == "0" || resp == "1" || resp == "2" || resp == "3" || resp == "Q" || resp == "q"))
+        else if (!(resp == "1" || resp == "2" || resp == "3" || resp == "4" || resp == "Q" || resp == "q"))
         {
 
             cout << "Invalid input - try again" << endl;
@@ -185,9 +218,9 @@ int User::chooseResource(Area *area)
     int intResp = 0;
 
     cout << "Choose what resource to request for area:" << endl
-         << "0 - Medics" << endl
-         << "1 - Ammunition" << endl
-         << "2 - Goods" << endl;
+         << "1 - Medics" << endl
+         << "2 - Ammunition" << endl
+         << "3 - Goods" << endl;
 
     while (1)
     {
@@ -199,15 +232,10 @@ int User::chooseResource(Area *area)
             cout << "Invalid input - try again" << endl;
         }
 
-        else if (!(resp == "0" || resp == "1" || resp == "2" || resp == "3" || resp == "Q" || resp == "q"))
+        else if (!(resp == "1" || resp == "2" || resp == "3"))
         {
 
             cout << "Invalid input - try again" << endl;
-        }
-
-        else if (resp == "Q" || resp == "q")
-        {
-            return -1;
         }
 
         else
@@ -242,8 +270,8 @@ bool User::changePlayer()
     int intResp = 0;
 
     cout << "Would you like to change from User -> CPU:" << endl
-         << "0 - No" << endl
-         << "1 - Yes" << endl;
+         << "1 - No" << endl
+         << "2 - Yes" << endl;
 
     while (1)
     {
@@ -255,22 +283,19 @@ bool User::changePlayer()
             cout << "Invalid input - try again" << endl;
         }
 
-        else if (!(resp == "0" || resp == "1" || resp == "Q" || resp == "q"))
+        else if (!(resp == "1" || resp == "2"))
         {
 
             cout << "Invalid input - try again" << endl;
         }
 
-        else if (resp == "Q" || resp == "q")
+        else if (resp == "1")
         {
-            return -1;
-        }
-
-        else if (resp == "0") {
             return false;
         }
 
-        else if (resp == "1"){
+        else if (resp == "2")
+        {
             return true;
         }
     }
@@ -334,12 +359,13 @@ Country *User::chooseCountryToJoinAlliance(Map *map)
     int resp = 0;
     for (auto it : country)
     {
-        vector<Area*> areas =  map->getAreasByCountry(it);
-        cout<<it->getName()<<": \tAreas: {";
-        for(auto areasIt : areas){
-            cout << "( " <<areasIt->getName() <<","<< areasIt->getIndex() << ") ";
+        vector<Area *> areas = map->getAreasByCountry(it);
+        cout << it->getName() << ": \tAreas: {";
+        for (auto areasIt : areas)
+        {
+            cout << "( " << areasIt->getName() << "," << areasIt->getIndex() << ") ";
         }
-        cout<<"} || Index: "<<x++<<endl;
+        cout << "} || Index: " << x++ << endl;
     }
     cin >> resp;
     return country.at(resp);
@@ -392,10 +418,40 @@ void User::inspect(Map *map)
     } while (resp != 2);
 }
 
-int User::platoonType(){
-    int resp = 0;
-    cout << endl
-                 << "Which branch do you want to create?\n0. Land\n1. Air "<<endl;
-            cin >> resp;
-    return resp;
+int User::platoonType()
+{
+    // int resp = 0;
+    // cout << endl
+    //      << "Which branch do you want to create?\n0. Land\n1. Air " << endl;
+    // cin >> resp;
+    // return resp;
+
+    string resp = "";
+    int intResp = 0;
+
+    cout << "Which branch do you want to crate?\n1 - Land\n2 - Air " << endl;
+
+    while (1)
+    {
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "1" || resp == "2"))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else
+        {
+            stringstream ss;
+            ss << resp;
+            ss >> intResp;
+            return 0;
+        }
+    }
 }
