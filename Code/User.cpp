@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include "Battle.h"
 #include "Area.h"
 #include "User.h"
@@ -87,11 +89,51 @@ int User::chooseCountry(vector<Country *> country, Map* map)
 
 int User::chooseActionForCountry()
 {
-    int resp = 0;
-    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - Recruit platoons \n 4 - end turn" << endl;
-    cin >> resp;
-    cin.ignore(30, '\n');
-    return resp;
+    // int resp = 0;
+    // cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - end turn" << endl;
+    // cin >> resp;
+    // cin.ignore(30, '\n');
+    // return resp;
+
+    string resp = "";
+    stringstream ss;
+    int intResp = 0;
+
+    cout << "Choose action to perform:" << endl
+         << "0 - Attack transport route" << endl
+         << "1 - Request resources" << endl
+         << "2 - March into area" << endl
+         << "3 - End turn" << endl
+         << "Press Q/q to quit" << endl;
+
+    while (1)
+    {
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "0" || resp == "1" || resp == "2" || resp == "3" || resp == "Q" || resp == "q"))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp == "Q" || resp == "q")
+        {
+            return -1;
+        }
+
+        else
+        {
+            ss << resp;
+            ss >> intResp;
+
+            return intResp;
+        }
+    }
 }
 
 int User::chooseAreaForAction(vector<Area *> areas)
@@ -124,39 +166,114 @@ int User::chooseAdjacentArea(vector<Area *> areas)
 
 int User::chooseResource(Area *area)
 {
-    int resp = 0;
-    cout << "Choose what resource to request for area: \n 0 - Medics  \n 1 - Ammo \n 2 - Goods" << endl;
-    cin >> resp;
-    cin.ignore(30, '\n');
-    if (area->getFactory(resp) == nullptr)
+    // int resp = 0;
+    // cout << "Choose what resource to request for area: \n 0 - Medics  \n 1 - Ammo \n 2 - Goods" << endl;
+    // cin >> resp;
+    // cin.ignore(30, '\n');
+    // if (area->getFactory(resp) == nullptr)
+    // {
+    //     area->requestFactory(resp);
+    //     return resp;
+    // }
+    // else
+    // {
+    //     area->getFactory(resp);
+    //     return resp;
+    // }
+
+    string resp = "";
+    int intResp = 0;
+
+    cout << "Choose what resource to request for area:" << endl
+         << "0 - Medics" << endl
+         << "1 - Ammunition" << endl
+         << "2 - Goods" << endl;
+
+    while (1)
     {
-        area->requestFactory(resp);
-        return resp;
-    }
-    else
-    {
-        area->getFactory(resp);
-        return resp;
+
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "0" || resp == "1" || resp == "2" || resp == "3" || resp == "Q" || resp == "q"))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp == "Q" || resp == "q")
+        {
+            return -1;
+        }
+
+        else
+        {
+            stringstream ss;
+            ss << resp;
+            ss >> intResp;
+            return intResp;
+        }
     }
 }
 
 bool User::changePlayer()
 {
-    int resp = 0;
-    do
+    // int resp = 0;
+    // do
+    // {
+    //     cout << "Would you like to change from User -> CPU: \n0 - No\n1 - Yes" << endl;
+    //     cin >> resp;
+    //     if (resp == 0)
+    //     {
+    //         return false;
+    //     }
+    //     else if (resp == 1)
+    //     {
+    //         return true;
+    //     }
+    // } while (resp != 0 || resp != 1);
+    // return false;
+
+    string resp = "";
+    int intResp = 0;
+
+    cout << "Would you like to change from User -> CPU:" << endl
+         << "0 - No" << endl
+         << "1 - Yes" << endl;
+
+    while (1)
     {
-        cout << "Would you like to change from User -> CPU: \n0 - No\n1 - Yes" << endl;
-        cin >> resp;
-        if (resp == 0)
+
+        getline(cin, resp);
+
+        if (resp == "")
         {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "0" || resp == "1" || resp == "Q" || resp == "q"))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp == "Q" || resp == "q")
+        {
+            return -1;
+        }
+
+        else if (resp == "0") {
             return false;
         }
-        else if (resp == 1)
-        {
+
+        else if (resp == "1"){
             return true;
         }
-    } while (resp != 0 || resp != 1);
-    return false;
+    }
 }
 
 Player *User::togglePlayer()
