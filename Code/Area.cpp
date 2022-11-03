@@ -156,7 +156,7 @@ void Area::marchOut(Area *whereTo)
 
 bool Area::requestReinforcements(string type)
 {
-	vector<Area *> adjacent = this->map->listAdjacent(this, true);
+			vector<Area *> adjacent = this->map->listAdjacent(this, false);
 
 	int allianceColor = 0;
 

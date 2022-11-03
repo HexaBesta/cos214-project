@@ -308,8 +308,8 @@ void Battle::attack(Unit * active, Unit * passive)
 
 	std::cout<<passive->getState()<<endl;
 	if(passive->getState().compare("Dead")==0){
-		passive = NULL;
-		this->battleActive = false;
+		// passive = NULL;
+		// this->battleActive = false;
 	}
 	
 }
