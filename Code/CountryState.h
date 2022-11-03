@@ -8,6 +8,7 @@ using namespace std;
 class Director;
 class Unit;
 class Country;
+class Player;
 
 class CountryState {
 	public:
@@ -32,7 +33,7 @@ class CountryState {
 		 * @param director 
 		 * @return Unit* 
 		 */
-		virtual Unit * recruitPlatoon(Director * director, Country * country);
+		virtual Unit * recruitPlatoon(Director * director, Country * country, Player * player);
 
 		/**
 		 * @brief Destroy the Country State object

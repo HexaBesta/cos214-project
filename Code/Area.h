@@ -250,6 +250,13 @@ public:
 	bool setCountry(Country *country);
 
 	/**
+	 * @brief Set the Country object to the new defenders if old defenders were defeated in battle
+	 * 
+	 * @param country 
+	 */
+	void changeCountry(Country * country);
+	
+	/**
 	 * @brief
 	 *
 	 */

@@ -135,7 +135,7 @@ int CPU::chooseCountry(vector<Country *> country, Map *map)
 
 int CPU::chooseActionForCountry()
 {
-    int value = rand() % ((2 - 0 + 1) + 0);
+    int value = rand() % (4);
     return value;
 }
 

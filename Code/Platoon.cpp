@@ -63,11 +63,11 @@ string Platoon::toString(int lineLen)
 		add+= "|";
 		out+=add;
 
-		add= "|                        Country: " + country->getName();
+		add= "\n|                        Country: " + country->getName();
 		while(add.length()<lineLen){
 			add+= " ";
 		}
-		add+= "|";
+		add+= " |";
 		out+=add;
 
 		add=" \n|                           Health: " + to_string(health);

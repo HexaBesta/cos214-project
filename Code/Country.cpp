@@ -99,7 +99,7 @@ void Country::recruitPlatoon(Map * map){
 		cout<<"No new recruits are lining up... "<<this->getName()<<"'s moral is running low, better send those troops some goods"<<endl;
 		return;
 	}
-	Unit * unit = this->countryState->recruitPlatoon(this->director, this);
+	Unit * unit = this->countryState->recruitPlatoon(this->director, this, player);
 	if(unit){
 		unit->setCountry(this);
 		this->military.push_back(unit);

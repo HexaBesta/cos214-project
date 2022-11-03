@@ -49,8 +49,7 @@ Unit *TheatreOfWar::retreat(bool turn)
     if (turn)
     {
         Unit *curr = defender;
-        defender = attacker;
-        attacker = NULL;
+        defender = NULL;
         return curr;
     }
     else
@@ -143,10 +142,6 @@ Unit *TheatreOfWar::retreat(string side)
     {
         Unit *curr = defender;
         defender = NULL;
-        if (attacker != NULL)
-        {
-            defender = attacker;
-        }
         return curr;
     }
     else if (side.compare("attack") == 0)
