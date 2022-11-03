@@ -26,7 +26,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 	else
 	{
 		country = NULL;
-	// }
+	}
 
 	if (troops)
 	{

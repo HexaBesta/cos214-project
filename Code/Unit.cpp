@@ -181,18 +181,12 @@ void Unit::setLandTexture()
 	cout << "Not this one - Land" << endl;
 }
 
-Unit *Unit::getUnit()
-{
-	return this;
-}
+
 
 Unit * Unit::getUnit(){
 	return this;
 }
 
-Unit * Unit::getUnit(){
-	return this;
-}
 
 Unit::~Unit()
 {

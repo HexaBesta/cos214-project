@@ -139,12 +139,7 @@ class Player
          */
         virtual ~Player(){};
 
-        /**
-         * @brief Assigns the platoon as a land or air branch
-         * 
-         * @return int 
-         */
-        virtual int platoonType()=0;
+    
 
     protected:
 
