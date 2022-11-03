@@ -148,7 +148,6 @@ string Battle::getStateSummary()
 
 void Battle::takeTurn()
 {
-
 	Unit * active = NULL;
 	Unit * passive = NULL;
 
@@ -280,8 +279,8 @@ void Battle::takeTurn()
 	Print active platoon after attack
 	*/
 
-	std::cout<< active->toString()<<endl;
-
+	// std::cout<< active->toString()<<endl;
+	// std::cout<<passive->toString()<<endl;
 	/*
 	Request reinforcements after printing state of platoon if battle active.
 	*/
@@ -335,9 +334,10 @@ void Battle::attack(Unit * active, Unit * passive)
 {
 	active->attack(passive);
 
-	//std::cout<<passive->getState()<<endl;
-	// if(passive->getState().compare("Dead")==0){
-	// 	passive = NULL;
-	// }
+	std::cout<<passive->getState()<<endl;
+	if(passive->getState().compare("Dead")==0){
+		passive = NULL;
+		this->battleActive = false;
+	}
 	
 }

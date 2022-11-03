@@ -2,7 +2,7 @@
 
 double InjuredState::attackStrength(double damage){
 
-    cout<<"You are injured, you only deal half damage: "<<(damage/2)<<endl;
+    //cout<<"You are injured, you only deal half damage: "<<(damage/2)<<endl;
     return (damage/2);
 
 }

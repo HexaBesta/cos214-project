@@ -70,7 +70,11 @@ void Unit::changeStrategy()
 
 int Unit::getDamage()
 {
-	return this->damage;
+	if(this->unitState == NULL)
+		return this->damage;
+	else{
+		return (int)this->unitState->attackStrength(this->damage);
+	}
 }
 
 double Unit::getAverageMoral()
@@ -179,6 +183,14 @@ void Unit::setLandTexture()
 
 Unit *Unit::getUnit()
 {
+	return this;
+}
+
+Unit * Unit::getUnit(){
+	return this;
+}
+
+Unit * Unit::getUnit(){
 	return this;
 }
 

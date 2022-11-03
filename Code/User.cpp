@@ -73,12 +73,13 @@ int User::chooseCountry(vector<Country *> country, Map* map)
     int x = 0;
     for (auto it : country)
     {
-        vector<Area*> areas =  map->getAreasByCountry(it);
-        cout<<it->getName()<<": \tAreas: {";
-        for(auto areasIt : areas){
-            cout << "( " <<areasIt->getName() <<","<< areasIt->getIndex() << ") ";
+        vector<Area *> areas = map->getAreasByCountry(it);
+        cout << it->getName() << ": \tAreas: {";
+        for (auto areasIt : areas)
+        {
+            cout << "( " << areasIt->getName() << "," << areasIt->getIndex() << ") ";
         }
-        cout<<"} || Index: "<<x++<<endl;
+        cout << "} || Index: " << x++ << endl;
     }
     cin >> resp;
     cin.ignore(30, '\n');
@@ -88,7 +89,7 @@ int User::chooseCountry(vector<Country *> country, Map* map)
 int User::chooseActionForCountry()
 {
     int resp = 0;
-    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - Recruit platoons \n 4 - end turn" << endl;
+    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - recruit troops\n 4 - end turn" << endl;
     cin >> resp;
     cin.ignore(30, '\n');
     return resp;
@@ -120,6 +121,21 @@ int User::chooseAdjacentArea(vector<Area *> areas)
     cin >> resp;
     cin.ignore(30, '\n');
     return resp;
+}
+
+int* User::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current){
+    int * indexes= new int[2];
+    indexes[0] = indexes[1] = -1;
+    indexes[0] = this->chooseAdjacentArea(adjAreas);
+    if(indexes[0] != -1 && indexes[0] < otherAdj.size()){
+        indexes[1] = this->chooseAdjacentArea(otherAdj.at(indexes[0]));
+        if(indexes[1] != -1 && indexes[1] < otherAdj.at(indexes[0]).size()){
+            return indexes;
+        }
+    }
+    delete [] indexes;
+    indexes = NULL;
+    return NULL;
 }
 
 int User::chooseResource(Area *area)
@@ -251,6 +267,14 @@ void User::initialiseFactories(Map *map, Alliances *alliances)
     int resp1 = 0;
     cin >> resp1;
     map->requestFactoryForArea(areas.at(resp), resp1);
+}
+
+int User::platoonType(){
+    int resp = 0;
+    cout << endl
+                 << "Which branch do you want to create?\n0. Air\n1. Land "<<endl;
+            cin >> resp;
+    return resp;
 }
 
 void User::inspect(Map *map)

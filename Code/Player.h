@@ -76,6 +76,14 @@ class Player
         virtual int chooseAdjacentArea(vector<Area *> adjAreas) = 0;
 
         /**
+         * @brief choose two areas to destroy transport routes between
+         * 
+         * @param adjAreas of immediatly adjacent area
+         * @return int array with index 0 containing the first array index and index 1 the second array index of chosen
+         */
+        virtual int* chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current = nullptr) = 0;
+
+        /**
          * @brief choose type of resource to request for area passed in
          * 
          * @param area 
@@ -130,6 +138,13 @@ class Player
          * 
          */
         virtual ~Player(){};
+
+        /**
+         * @brief Assigns the platoon as a land or air branch
+         * 
+         * @return int 
+         */
+        virtual int platoonType()=0;
 
     protected:
 

@@ -98,7 +98,7 @@ public:
 	 *
 	 * @param health takes in the health that will be set
 	 */
-	void setHealth(int health);
+	virtual void setHealth(int health);
 	/**
 	 * @brief Returns the current moral of the unit
 	 *
@@ -148,10 +148,11 @@ public:
 	virtual string getBranch();
 
 	/**
-	 * @brief Stubbed method used by Branch
-	 * @return this
+	 * @brief Returns the current Units pointer
+	 * 
+	 * @return Unit* 
 	 */
-	virtual Unit * getUnit();
+	virtual Unit* getUnit();
 
 	/**
 	 * @brief Get the Alliance that the unit beloings to.

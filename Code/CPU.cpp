@@ -6,11 +6,11 @@ bool CPU::playerRetreat(Battle *battle)
     battle->getStateSummary();
     if (battle->getTurn())
     {
-        if (battle->getAir()->getAttacker()->getHealth() <= 500)
+        if (battle->getAir()->getAttacker()!=nullptr && battle->getAir()->getAttacker()->getHealth() <= 500)
         {
             return true;
         }
-        else if (battle->getLand()->getAttacker()->getHealth() <= 500)
+        else if (battle->getLand()->getAttacker()!=nullptr && battle->getLand()->getAttacker()->getHealth() <= 500)
         {
             return true;
         }
@@ -21,11 +21,11 @@ bool CPU::playerRetreat(Battle *battle)
     }
     else
     {
-        if (battle->getAir()->getDefender()->getHealth() <= 500)
+        if (battle->getAir()->getDefender()!=nullptr && battle->getAir()->getDefender()->getHealth() <= 500)
         {
             return true;
         }
-        else if (battle->getLand()->getDefender()->getHealth() <= 500)
+        else if (battle->getLand()->getDefender()!=nullptr && battle->getLand()->getDefender()->getHealth() <= 500)
         {
             return true;
         }
@@ -120,7 +120,7 @@ bool CPU::requestReinforcements(Battle *battle)
     return false;
 }
 
-int CPU::chooseCountry(vector<Country *> country, Map* map )
+int CPU::chooseCountry(vector<Country *> country, Map *map)
 {
     if (!country.empty())
     {
@@ -163,6 +163,52 @@ int CPU::chooseAdjacentArea(vector<Area *> adjacentArea)
     {
         return -1;
     }
+}
+
+int* CPU::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current){
+    int * indexes= new int[2];
+    indexes[0] = indexes[1] = -1;
+    int destroyColour = 22;
+    if(current->getColour() == 22){
+        destroyColour = 160;
+    }
+    for(int i = 0; i<adjAreas.size(); i++){
+        if(adjAreas.at(i)->getColour() == destroyColour){
+            indexes[0] = i;
+            for(int j = 0; j<otherAdj.at(i).size(); j++){
+                if(otherAdj.at(i).at(j)->getColour() == destroyColour){
+                    indexes[1] = j;
+                    return indexes;
+                }
+            }
+            for(int j = 0; j<otherAdj.at(i).size(); j++){
+                if(otherAdj.at(i).at(j)->getColour() == 94){
+                    indexes[1] = j;
+                    return indexes;
+                }
+            }
+        }
+    }
+    for(int i = 0; i<adjAreas.size(); i++){
+        if(adjAreas.at(i)->getColour() == 94){
+            indexes[0] = i;
+            for(int j = 0; j<otherAdj.at(i).size(); j++){
+                if(otherAdj.at(i).at(j)->getColour() == destroyColour){
+                    indexes[1] = j;
+                    return indexes;
+                }
+            }
+            for(int j = 0; j<otherAdj.at(i).size(); j++){
+                if(otherAdj.at(i).at(j)->getColour() == 94){
+                    indexes[1] = j;
+                    return indexes;
+                }
+            }
+        }
+    }
+    delete [] indexes;
+    indexes = NULL;
+    return NULL;
 }
 
 int CPU::chooseResource(Area *area)
@@ -211,53 +257,45 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    int ranNum = rand() % ((10) + 6);
-    cout<<"--------------------------------------------"<<endl;
-    cout<<"Creating "<< ranNum << " countries"<<endl;
+    srand(0);
+    int ranNum = rand() % ((8)) + 6;
+    cout << "--------------------------------------------" << endl;
+    cout << "Creating " << ranNum << " countries" << endl;
     for (int i = 0; i < ranNum; i++)
     {
-        int random = rand() % (2);
         int countryNumber = rand() % ((100 - 50 + 1) + 50);
         string countryName = "Country";
-        countryName += countryNumber;
-        if (random == 0)
+        countryName += to_string(countryNumber);
+        Country *country = new Country(countryName, 94, this);
+        map->addCountry(country);
+        vector<Area *> possibleAreas = map->getAreasByColour(94);
+        int randomArea = rand() % possibleAreas.size();
+        Area *area = nullptr;
+        area = possibleAreas.at(randomArea);
+        if (area != nullptr)
         {
-            Country *country = new Country(countryName, 22, this);
-            map->addCountry(country);
-            int randomArea =rand()% map->getAreasByColour(94).size();
-            Area* area = nullptr;
-            area = map->getAreaByIndex(randomArea);
-            if(area != nullptr){
-                area->setCountry(country);
-            }
+            area->setCountry(country);
+            cout << area->toString() << endl;
         }
-        else if (random == 1)
-        {
-            Country *country = new Country(countryName, 160, this);
-            map->addCountry(country);
-             int randomArea =rand()% map->getAreasByColour(94).size();
-            Area* area = nullptr;
-            area = map->getAreaByIndex(randomArea);
-            if(area != nullptr){
-                area->setCountry(country);
-            }
-        }
-        cout<<endl;
-        map->printMap();
     }
+    cout << endl;
+    map->printMap();
 }
 
 int CPU::numberOfCountriesInAlliance(Map *map)
 {
-    vector<Country *> country = map->getCountriesByColour(94);
-    int random =  country.size()/2;
+    vector<Country *> country = map->getCountries();
+    int random = rand() % (country.size()/2);
+    if(random<3){
+        random+=3;
+    }
     return random;
 }
 
 Country *CPU::chooseCountryToJoinAlliance(Map *map)
 {
     vector<Country *> country = map->getCountriesByColour(94);
-    int random = rand() % country.size();;
+    int random = rand() % country.size();
     return country.at(random);
 }
 
@@ -284,6 +322,21 @@ void CPU::initialiseFactories(Map *map, Alliances *alliance)
     }
 }
 
-int CPU::platoonType(){
-    return rand()%2;
+int CPU::platoonType()
+{
+    int random = (rand() % 3) + 1;
+    return (random % 2);
 }
+
+// int CPU::chooseCountry(vector<Country *> country, Map *map)
+// {
+//     if (!country.empty())
+//     {
+//         int index = rand() % country.size();
+//         return index;
+//     }
+//     else
+//     {
+//         return -1;
+//     }
+// }

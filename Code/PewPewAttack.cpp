@@ -12,7 +12,11 @@ void PewPewAttack::attack(Unit *platoonAttacked)
         {
             int damage = this->thePlatoon->getDamage() / (platoonAttacked->getSize()/3);
             platoonAttacked->takeDamage(damage, true);
-            this->thePlatoon->decreaseAmmo();
+            if(platoonAttacked->getState().compare("Dead")==0){
+                break;
+            }else{
+                this->thePlatoon->decreaseAmmo();
+            }
         }
     }
 }

@@ -33,6 +33,12 @@ class CountryState {
 		 * @return Unit* 
 		 */
 		virtual Unit * recruitPlatoon(Director * director, Country * country);
+
+		/**
+		 * @brief Destroy the Country State object
+		 * 
+		 */
+		virtual ~CountryState(){};
 };
 
 #endif

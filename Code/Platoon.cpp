@@ -96,10 +96,16 @@ string Platoon::toString(int lineLen)
 		add += "|";
 		out += add;
 
-		add = " \n|                           Health: " + to_string(health);
-		while (add.length() < lineLen + 2)
-		{
-			add += " ";
+		add= "|                        Country: " + country->getName();
+		while(add.length()<lineLen){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
+		add=" \n|                           Health: " + to_string(health);
+		while(add.length()<lineLen+2){
+			add+= " ";
 		}
 		add += "|";
 		out += add;
@@ -444,19 +450,15 @@ Platoon::~Platoon()
 	cout<<"Delete humans - Platoon"<<endl;
 	while (!humans.empty())
 	{
-		if (humans.back() != NULL)
-		{
+		if(humans.back() != NULL)
 			delete humans.back();
-		}
 		humans.pop_back();
 	}
 cout<<"Delete vehicles - Platoon"<<endl;
 	while (!vehicles.empty())
 	{
-		if (vehicles.back() != NULL)
-		{
+		if(humans.back() != NULL)
 			delete vehicles.back();
-		}
 		vehicles.pop_back();
 	}
 cout<<"Delete strategy - Platoon"<<endl;

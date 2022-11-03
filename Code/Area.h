@@ -63,6 +63,20 @@ public:
 	 * @return int
 	 */
 	int getColour();
+
+	/**
+	 * @brief Get the areas theatre of war land pointers
+	 * 
+	 * @return TheatreOfWar* 
+	 */
+	TheatreOfWar* getLand();
+
+	/**
+	 * @brief Get the areas theatre of war air pointers
+	 * 
+	 * @return TheatreOfWar* 
+	 */
+	TheatreOfWar* getAir();
 	/**
 	 * @brief Not a clue right now
 	 *

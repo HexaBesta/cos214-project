@@ -2,7 +2,7 @@
 
 double DeadState::attackStrength(double damage){
 
-    cout<<"You are dead. You cannot deal damage"<<endl;
+    //cout<<"You are dead. You cannot deal damage"<<endl;
     return 0;
 
 }

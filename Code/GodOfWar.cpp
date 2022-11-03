@@ -131,7 +131,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         }
         else
         {
-            countryIndex = this->player->chooseCountry(countries, map);
+            countryIndex = this->player->chooseCountry(countries, this->map);
         }
 
         /*
@@ -170,27 +170,43 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
             /*
             List of adjacent areas to destroy transport routes between
             */
-            vector<Area *> adjacentAreas = this->map->listAdjacent(areas.at(areaIndex), true);
-            int adjAreaIndex = -1;
+            vector<Area *> adjacentAreas = this->map->listAdjacent(areas.at(areaIndex), false);
+            vector<vector<Area *>> adjacentOfAdjAreas;
+            int *index = NULL;
             if (adjacentAreas.size() == 0)
             {
-                cout << "No adjacent transport routes to destroy" << endl;
+                cout << "No adjacent areas" << endl;
                 break;
             }
-            else if (adjacentAreas.size() == 1)
+            // else if (adjacentAreas.size() == 1)
+            // {
+            //     adjAreaIndex = 0;
+            // }
+            else
             {
-                adjAreaIndex = 0;
+                for (auto it : adjacentAreas)
+                {
+                    adjacentOfAdjAreas.push_back(this->map->listAdjacent(it, true));
+                }
+
+                index = player->chooseAreasToDestroyTransportRoutes(adjacentAreas, adjacentOfAdjAreas, areas.at(areaIndex));
+            }
+
+            if (index != NULL)
+            {
+
+                cout <<areas.at(areaIndex)->getIndex()<< "("<<areas.at(areaIndex)->getColour()<<")"<< "Destroying route between:" << endl
+                     << adjacentAreas.at(index[0])->toString() << endl
+                     << adjacentOfAdjAreas.at(index[0]).at(index[1])->toString() << endl;
+
+                this->map->destroyTransportRoute(adjacentAreas.at(index[0]), adjacentOfAdjAreas.at(index[0]).at(index[1]));
+                delete[] index;
+                index = NULL;
             }
             else
             {
-                adjAreaIndex = this->player->chooseAdjacentArea(adjacentAreas);
+                cout << "No transport routes to destroy" << endl;
             }
-
-            cout << "Destroying route between:" << endl
-                 << areas.at(areaIndex)->toString() << endl
-                 << adjacentAreas.at(adjAreaIndex)->toString() << endl;
-
-            this->map->destroyTransportRoute(areas.at(areaIndex), adjacentAreas.at(adjAreaIndex));
         }
         /*
         Request resources
@@ -268,13 +284,12 @@ void GodOfWar::warLoop()
         round(&window);
         if (this->map->checkIfEnd() != 94)
         {
-            //resp = 0;
-            break;
+            resp = 0;
         }
-        else if (resp==0)
+        else
         {
-            
-            cout << "Continue for how many: " << endl;
+            cout << "Continue:" << endl
+                 << "1. Yes " << endl;
             cin >> resp;
 
             // clear buffer
@@ -304,7 +319,7 @@ void GodOfWar::warLoop()
 
 void GodOfWar::round(sf::RenderWindow *window)
 {
-
+    this->map->replenishAllPlatoons();
     /*
         First alliance turn
     */
@@ -318,12 +333,13 @@ void GodOfWar::round(sf::RenderWindow *window)
     this->takeTurn(3, window);
 
     this->map->resolveBattles();
+    this->map->cleanBattles();
 
     if (this->map->checkIfEnd() != 94)
     {
         return;
     }
-
+    this->map->replenishAllPlatoons();
     /*
         Second alliance turn
     */
@@ -337,6 +353,7 @@ void GodOfWar::round(sf::RenderWindow *window)
     this->takeTurn(3, window);
 
     this->map->resolveBattles();
+    this->map->cleanBattles();
 
     // this->map->toStringCount();
 }

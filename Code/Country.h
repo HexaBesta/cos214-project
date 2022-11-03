@@ -27,7 +27,7 @@ class Country {
 		 * @brief Constructs a new country object
 		 * @param name is the name of the country
 		 */
-		Country(string name,int colour, Player * player);
+		Country(string name,int colour, Player* player);
 
 		/**
 		 * @brief Country Deconstructor, will delete the countryState?
@@ -95,14 +95,11 @@ class Country {
 		void setPlayer(Player* player);
 
 		/**
-		 * @brief Get the Player object
+		 * @brief Get the current player from the country
 		 * 
 		 * @return Player* 
 		 */
-
-
-		Player * getPlayer();
-
+		Player* getPlayer();
 
 };
 

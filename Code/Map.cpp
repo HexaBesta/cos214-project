@@ -6,6 +6,8 @@
 #include "TransportRoute.h"
 #include "AreaVisitor.h"
 #include "Map.h"
+#include "AreaVisitor.h"
+#include "CleanUpVisitor.h"
 
 
 Map::Map(string setupFile, Player *player)
@@ -803,6 +805,10 @@ vector<Area *> Map::getAreasByColour(int colour)
 
 
 
+vector<Country*> Map::getCountries(){
+	return this->allCountries;
+}
+
 void Map::setPlayer(Player *player)
 {
 	this->player = player;
@@ -840,6 +846,13 @@ void Map::resolveBattles()
 		battle->battleLoop();
 	}
 	
+}
+
+void Map::cleanBattles(){
+	CleanUpVisitor* cleanUp = new CleanUpVisitor();
+	for(auto it: allAreas){
+		it->accept(cleanUp);
+	}
 }
 
 bool Map::addPlatoonToMap(Unit *platoon)

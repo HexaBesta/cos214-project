@@ -19,12 +19,10 @@ Unit *TheatreOfWar::getDefender()
 
 void TheatreOfWar::setAttacker(Unit *attacker)
 {
-
-    if(attacker==NULL){
-        this->attacker=NULL;
+    if(attacker==nullptr){
+        this->attacker = nullptr;
         return;
     }
-
     if (this->attacker != NULL)
     {
         this->attacker->join(attacker);
@@ -176,7 +174,7 @@ Unit *TheatreOfWar::sendReinforcements()
 
 void TheatreOfWar::replenish(Transport** good){
     if(this->defender!= NULL){
-        this->replenish(good);
+        this->defender->replenish(good);
     }
 }
 
