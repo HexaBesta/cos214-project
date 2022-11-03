@@ -256,7 +256,7 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    srand(5);
+    srand(8);
     int ranNum = rand() % ((8)) + 6;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;
@@ -283,10 +283,13 @@ void CPU::createCountries(Map *map)
 
 int CPU::numberOfCountriesInAlliance(Map *map)
 {
-    vector<Country *> country = map->getCountries();
-    int random = rand() % (country.size()/2);
+    vector<Country *> country = map->getCountriesByColour(94);
+    int random = rand() % country.size();
     if(random<3){
         random+=3;
+        if(random > country.size()){
+            random = country.size();
+        }
     }
     return random;
 }
