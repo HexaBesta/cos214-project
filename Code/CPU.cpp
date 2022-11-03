@@ -226,8 +226,7 @@ int CPU::chooseResource(Area *area)
     {
         return 2;
     }
-    int randomV = rand() % (2 + 1);
-    return randomV;
+    return -1;
 }
 
 bool CPU::changePlayer()
@@ -257,7 +256,7 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    srand(0);
+    srand(5);
     int ranNum = rand() % ((8)) + 6;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;

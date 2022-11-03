@@ -202,7 +202,10 @@ void GodOfWar::takeTurn(int actions)
         else if (action == 1)
         {
             int resource = this->player->chooseResource(areas.at(areaIndex));
-            if (areas.at(areaIndex)->requestFactory(resource))
+            if(resource == -1){
+                cout<<"This area already has all factories"<<endl;
+            }
+            else if (areas.at(areaIndex)->requestFactory(resource))
             {
                 cout << "Factory succesfully acquired" << endl;
                 cout << areas.at(areaIndex)->toString();
@@ -267,12 +270,12 @@ void GodOfWar::warLoop()
             if (skip == 0)
             {
                 cout << "Continue:" << endl
-                     << "1. Yes \n2. Fast Forward 5 rounds" << endl;
+                     << "1. Yes \n2. Fast Forward 100 rounds" << endl;
                 cin >> resp;
 
                 if (resp == 2)
                 {
-                    skip += 5;
+                    skip += 100;
                     resp = 1;
                 }
 

@@ -18,7 +18,7 @@ void Platoon::construct()
 
 string Platoon::toString(int lineLen)
 {
-	string out="";
+	string out = "";
 	int health = 0;
 	int damage = 0;
 	int deadUnits = 0;
@@ -26,7 +26,8 @@ string Platoon::toString(int lineLen)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		if(it->getState().compare("Dead") == 0){
+		if (it->getState().compare("Dead") == 0)
+		{
 			deadUnits++;
 		}
 	}
@@ -34,90 +35,101 @@ string Platoon::toString(int lineLen)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		if(it->getState().compare("Dead") == 0){
+		if (it->getState().compare("Dead") == 0)
+		{
 			deadUnits++;
 		}
 	}
 
 	this->health = health;
 	this->damage = damage;
-	string add="";
+	string add = "";
 
 	if (health <= 0)
 	{
-		add+= "\n|                        Your platoon is dead";
-		while(add.length()<lineLen){
-			add+= " ";
+		add += "\n|                        Your platoon is dead";
+		while (add.length() < lineLen)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 		this->setUnitState(new DeadState());
 	}
 	else
-	{	
+	{
 
-		add= "|                        Platoon";
-		while(add.length()<lineLen){
-			add+= " ";
+		add = "|                        Platoon";
+		while (add.length() < lineLen)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 
-		add= "\n|                        Country: " + country->getName();
-		while(add.length()<lineLen){
-			add+= " ";
+		add = "\n|                        Country: " + country->getName();
+		while (add.length() < lineLen)
+		{
+			add += " ";
 		}
-		add+= " |";
-		out+=add;
+		add += " |";
+		out += add;
 
-		add=" \n|                           Health: " + to_string(health);
-		while(add.length()<lineLen+2){
-			add+= " ";
+		add = " \n|                           Health: " + to_string(health);
+		while (add.length() < lineLen + 2)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 
-		add= "\n|                           Damage: " + to_string(damage);
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add = "\n|                           Damage: " + to_string(damage);
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 
-		add= "\n|                           Amount of Soldiers: " + to_string(humans.size());
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add = "\n|                           Amount of Soldiers: " + to_string(humans.size());
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 
-		add= "\n|                           Amount of Vehicles: " + to_string(vehicles.size());
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add = "\n|                           Amount of Vehicles: " + to_string(vehicles.size());
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 
-		add= "\n|                           Amount of Dead Units: " + to_string(deadUnits);
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add = "\n|                           Amount of Dead Units: " + to_string(deadUnits);
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 
-		add= "\n|                           Amount of Bullets: " + to_string(pewpew);
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add = "\n|                           Amount of Bullets: " + to_string(pewpew);
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 
-		add= "\n|                           Amount of Explosives: " + to_string(boomboom);
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add = "\n|                           Amount of Explosives: " + to_string(boomboom);
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 	}
 
 	return out;
@@ -136,24 +148,29 @@ void Platoon::changeStrategy()
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
-	}else{
-		cout<<"Cannot change strategy, insefficent ammo. Recommend calling for ammo"<<endl;
+	}
+	else
+	{
+		cout << "Cannot change strategy, insefficent ammo. Recommend calling for ammo" << endl;
 	}
 }
 
-void Platoon::replenish(Transport ** transport){
-	if(transport[0] != NULL){
+void Platoon::replenish(Transport **transport)
+{
+	if (transport[0] != NULL)
+	{
 		this->retrieveHealth(transport[0]);
 	}
 
-	if(transport[1] != NULL){
+	if (transport[1] != NULL)
+	{
 		this->retrieveAmmo(transport[1]);
 	}
 
-	if(transport[2] != NULL){
+	if (transport[2] != NULL)
+	{
 		this->retrieveGoods(transport[2]);
 	}
-
 }
 
 void Platoon::retrieveAmmo(Transport *ammo)
@@ -169,7 +186,7 @@ void Platoon::retrieveGoods(Transport *good)
 {
 	while (!good->isEmpty())
 	{
-		int index = rand()%this->humans.size();
+		int index = rand() % this->humans.size();
 		this->humans.at(index)->setMoral(good->replenish());
 	}
 }
@@ -178,7 +195,7 @@ void Platoon::retrieveHealth(Transport *medic)
 {
 	while (!medic->isEmpty())
 	{
-		int index = rand()%this->humans.size();
+		int index = rand() % this->humans.size();
 		this->humans.at(index)->setHealth(medic->replenish());
 	}
 	this->setAccumlateHealth();
@@ -202,8 +219,9 @@ int Platoon::getMoral()
 	return this->moral;
 }
 
-double Platoon::getAverageMoral(){
-	return this->getMoral()/(this->humans.size()*1.0);
+double Platoon::getAverageMoral()
+{
+	return this->getMoral() / (this->humans.size() * 1.0);
 }
 
 void Platoon::setAccumlateHealth()
@@ -222,7 +240,8 @@ void Platoon::setAccumlateHealth()
 
 	this->health = health;
 
-	if(health<0){
+	if (health < 0)
+	{
 		this->health = 0;
 	}
 }
@@ -233,16 +252,19 @@ int Platoon::getHealth()
 	return this->health;
 }
 
-string Platoon::getStrategyType(){
+string Platoon::getStrategyType()
+{
 	return this->strategy->getPlatoonStrategy();
 }
 
-int Platoon::getSize(){
+int Platoon::getSize()
+{
 	int size = humans.size() + vehicles.size();
 	return size;
 }
 
-int Platoon::getDamage(){
+int Platoon::getDamage()
+{
 	int damage = 0;
 	for (auto it : this->humans)
 	{
@@ -255,20 +277,27 @@ int Platoon::getDamage(){
 	return damage;
 }
 
-int* Platoon::getAmmo(){
-	int * ammo  = new int[2];
+int *Platoon::getAmmo()
+{
+	int *ammo = new int[2];
 	ammo[0] = this->pewpew;
 	ammo[1] = this->boomboom;
-	return ammo;  
+	return ammo;
 }
 
-void Platoon::decreaseAmmo(){
-	if(this->strategy==nullptr){
+void Platoon::decreaseAmmo()
+{
+	if (this->strategy == nullptr)
+	{
 		this->strategy = new PewPewAttack(this);
 		this->pewpew--;
-	}else if(this->strategy->getPlatoonStrategy().compare("pew")==0){
+	}
+	else if (this->strategy->getPlatoonStrategy().compare("pew") == 0)
+	{
 		this->pewpew--;
-	}else if(this->strategy->getPlatoonStrategy().compare("boom")==0){
+	}
+	else if (this->strategy->getPlatoonStrategy().compare("boom") == 0)
+	{
 		this->boomboom--;
 	}
 }
@@ -310,44 +339,89 @@ void Platoon::join(Unit *platoon1)
 
 bool Platoon::takeDamage(int damage, bool checkPew)
 {
+	vector<Unit *> aliveOnes;
+	for (auto it : this->humans)
+	{
+		if (it->getState().compare("Dead") != 0)
+			aliveOnes.push_back(it);
+	}
+	for (auto it : this->vehicles)
+	{
+		if (it->getState().compare("Dead") != 0)
+			aliveOnes.push_back(it);
+	}
 	if (this->getHealth() > 0)
 	{
 		if (checkPew)
 		{
-			this->takeRandom()->takeDamage(damage);
-			if(this->getHealth()<=0){
-				DeadState* deadState = new DeadState();
-				this->setUnitState(deadState);
+			int randomIn = rand() % aliveOnes.size();
+			Unit *random = aliveOnes.at(randomIn);
+			if (random->getHealth() > 0)
+			{
+				random->takeDamage(damage);
+				if (random->getState().compare("Dead") == 0)
+				{
+					for (int i = 0; i < aliveOnes.size(); i++)
+					{
+						if (aliveOnes.at(0) == random)
+						{
+							aliveOnes.erase(aliveOnes.begin() + i);
+						}
+					}
+				}
+				if (this->getHealth() <= 0)
+				{
+					DeadState *deadState = new DeadState();
+					this->setUnitState(deadState);
+				}
 			}
 		}
 		else
 		{
-			int rand1 = rand()%humans.size()+1;
-			rand1 += rand()%vehicles.size();
-			int boomDamage = damage/rand1;
-			for(int x = 0; x<rand1; x++){
-				this->takeRandom()->takeDamage(boomDamage);
-				if(this->getHealth()<=0){
-					DeadState* deadState = new DeadState();
-					this->setUnitState(deadState);
-					break;
+			int rand1 = rand() % aliveOnes.size() + 1;
+			int boomDamage = damage / rand1;
+			for (int x = 0; x < rand1; x++)
+			{
+				int randomIn = rand() % aliveOnes.size();
+				Unit *random = aliveOnes.at(randomIn);
+
+				if (random->getHealth() > 0)
+				{
+					random->takeDamage(boomDamage);
+
+					if (random->getState().compare("Dead") == 0)
+					{
+						for (int i = 0; i < aliveOnes.size(); i++)
+						{
+							if (aliveOnes.at(0) == random)
+							{
+								aliveOnes.erase(aliveOnes.begin() + i);
+							}
+						}
+					}
+
+					if (this->getHealth() <= 0)
+					{
+						DeadState *deadState = new DeadState();
+						this->setUnitState(deadState);
+						break;
+					}
 				}
 			}
 		}
-	}
 
-	if (this->getHealth() > 0)
-	{
-		this->setUnitState(new InjuredState());
-		return true;
-	}
-	else
-	{
-		this->setUnitState(new DeadState());
-		return false;
+		if (this->getHealth() > 0)
+		{
+			this->setUnitState(new InjuredState());
+			return true;
+		}
+		else
+		{
+			this->setUnitState(new DeadState());
+			return false;
+		}
 	}
 }
-
 Unit *Platoon::takeRandom()
 {
 	int unit = rand() % 2;
@@ -364,7 +438,6 @@ Unit *Platoon::takeRandom()
 	return NULL;
 }
 
-
 void Platoon::attack(Unit *other)
 {
 	this->strategy->attack(other);
@@ -374,14 +447,14 @@ Platoon::~Platoon()
 {
 	while (!humans.empty())
 	{
-		if(humans.back() != NULL)
+		if (humans.back() != NULL)
 			delete humans.back();
 		humans.pop_back();
 	}
 
 	while (!vehicles.empty())
 	{
-		if(humans.back() != NULL)
+		if (humans.back() != NULL)
 			delete vehicles.back();
 		vehicles.pop_back();
 	}

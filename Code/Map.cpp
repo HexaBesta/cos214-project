@@ -225,10 +225,13 @@ TransportFactory *Map::requestFactoryForArea(Area *area, int type)
 	vector<Area *> areas = listAdjacent(area, true);
 	for (int i = 0; i < areas.size(); i++)
 	{
-		TransportFactory *foundFactory = areas.at(i)->getFactory(type);
-		if (foundFactory != NULL)
+		if (areas.at(i)->getColour() == area->getColour())
 		{
-			return foundFactory;
+			TransportFactory *foundFactory = areas.at(i)->getFactory(type);
+			if (foundFactory != NULL)
+			{
+				return foundFactory;
+			}
 		}
 	}
 	return NULL;
@@ -320,7 +323,8 @@ void Map::setAllGridAreas()
 
 void Map::addCountry(Country *country)
 {
-	if(country == NULL){
+	if (country == NULL)
+	{
 		return;
 	}
 	bool add = true;
@@ -599,13 +603,17 @@ void Map::printColourMap()
 	// -----
 }
 
-string Map::toStringCount(){
-	CountVisitor* countV = new CountVisitor();
-	for(auto it : this->allAreas){
+string Map::toStringCount()
+{
+	CountVisitor *countV = new CountVisitor();
+	for (auto it : this->allAreas)
+	{
 		it->accept(countV);
 	}
-	for(int x = 0; x<this->allAreas.size();x++){
-		for(int y = 0; y<this->allAreas.size();y++){
+	for (int x = 0; x < this->allAreas.size(); x++)
+	{
+		for (int y = 0; y < this->allAreas.size(); y++)
+		{
 			this->adjacencies[this->allAreas.at(x)->getIndex()][this->allAreas.at(y)->getIndex()]->accept(countV);
 		}
 	}
@@ -613,18 +621,22 @@ string Map::toStringCount(){
 	return total;
 }
 
-int Map::checkIfEnd(){
-	CountVisitor* countV = new CountVisitor();
-	for(auto it : this->allAreas){
+int Map::checkIfEnd()
+{
+	CountVisitor *countV = new CountVisitor();
+	for (auto it : this->allAreas)
+	{
 		it->accept(countV);
 	}
 	int check = countV->warLoopComplete();
 	return check;
 }
 
-void Map::replenishAllPlatoons(){
-	AreaVisitor* areaV = new AreaVisitor();
-	for(auto it : this->allAreas){
+void Map::replenishAllPlatoons()
+{
+	AreaVisitor *areaV = new AreaVisitor();
+	for (auto it : this->allAreas)
+	{
 		it->accept(areaV);
 	}
 }
@@ -647,8 +659,9 @@ vector<Country *> Map::getCountriesByColour(int colour)
 	vector<Country *> countries;
 	for (auto country : allCountries)
 	{
-		if(country->getAlliances() == NULL){
-			if(colour == 94)
+		if (country->getAlliances() == NULL)
+		{
+			if (colour == 94)
 				countries.push_back(country);
 		}
 		else if (country->getAlliances()->getColour() == colour)
@@ -672,14 +685,16 @@ vector<Area *> Map::getAreasByCountry(Country *country)
 	return areas;
 }
 
-vector<Country*> Map::getCountries(){
+vector<Country *> Map::getCountries()
+{
 	return this->allCountries;
 }
 
 void Map::setPlayer(Player *player)
 {
 	this->player = player;
-	for(auto it: allCountries){
+	for (auto it : allCountries)
+	{
 		it->setPlayer(player);
 	}
 }
@@ -712,12 +727,13 @@ void Map::resolveBattles()
 	{
 		battle->battleLoop();
 	}
-	
 }
 
-void Map::cleanBattles(){
-	CleanUpVisitor* cleanUp = new CleanUpVisitor();
-	for(auto it: allAreas){
+void Map::cleanBattles()
+{
+	CleanUpVisitor *cleanUp = new CleanUpVisitor();
+	for (auto it : allAreas)
+	{
 		it->accept(cleanUp);
 	}
 }
@@ -732,7 +748,7 @@ bool Map::addPlatoonToMap(Unit *platoon)
 		if(platoon->getCountry() == NULL){
 			return false;
 		}
-		
+
 		if(platoon->getCountry()->getAlliances() != NULL){
 			possibleAreas = this->getAreasByColour(platoon->getCountry()->getAlliances()->getColour());
 		}
