@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include "Battle.h"
 #include "Area.h"
 #include "User.h"
@@ -6,21 +8,53 @@ bool User::playerRetreat(Battle *battle)
 {
     battle->getStateSummary();
 
-    int resp;
-    cout << "Retreat" << endl
-         << "1. Yes \n2. Not necessary" << endl;
-    cin >> resp;
+    // int resp;
+    // cout << "Retreat" << endl
+    //      << "1. Yes \n2. Not necessary" << endl;
+    // cin >> resp;
 
-    // clear buffer
-    cin.ignore(30, '\n');
+    // // clear buffer
+    // cin.ignore(30, '\n');
 
-    if (resp == 1)
+    // if (resp == 1)
+    // {
+    //     return true;
+    // }
+    // else
+    // {
+    //     return false;
+    // }
+
+    string resp = "";
+
+    cout << "Retreat?" << endl
+         << "1 - Yes" << endl
+         << "2 - Not necessary" << endl;
+
+    while (1)
     {
-        return true;
-    }
-    else
-    {
-        return false;
+
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "1" || resp == "2"))
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp == "1")
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
     }
 }
 
@@ -66,19 +100,20 @@ bool User::requestReinforcements(Battle *battle)
     }
 }
 
-int User::chooseCountry(vector<Country *> country, Map* map)
+int User::chooseCountry(vector<Country *> country, Map *map)
 {
     int resp = 0;
     cout << "Choose country index to take turn:" << endl;
     int x = 0;
     for (auto it : country)
     {
-        vector<Area*> areas =  map->getAreasByCountry(it);
-        cout<<it->getName()<<": \tAreas: {";
-        for(auto areasIt : areas){
-            cout << "( " <<areasIt->getName() <<","<< areasIt->getIndex() << ") ";
+        vector<Area *> areas = map->getAreasByCountry(it);
+        cout << it->getName() << ": \tAreas: {";
+        for (auto areasIt : areas)
+        {
+            cout << "( " << areasIt->getName() << "," << areasIt->getIndex() << ") ";
         }
-        cout<<"} || Index: "<<x++<<endl;
+        cout << "} || Index: " << x++ << endl;
     }
     cin >> resp;
     cin.ignore(30, '\n');
@@ -87,11 +122,51 @@ int User::chooseCountry(vector<Country *> country, Map* map)
 
 int User::chooseActionForCountry()
 {
-    int resp = 0;
-    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - Recruit platoons \n 4 - end turn" << endl;
-    cin >> resp;
-    cin.ignore(30, '\n');
-    return resp;
+    // int resp = 0;
+    // cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - end turn" << endl;
+    // cin >> resp;
+    // cin.ignore(30, '\n');
+    // return resp;
+
+    string resp = "";
+    stringstream ss;
+    int intResp = 0;
+
+    cout << "Choose action to perform:" << endl
+         << "1 - Attack transport route" << endl
+         << "2 - Request resources" << endl
+         << "3 - March into area" << endl
+         << "4 - End turn" << endl
+         << "Press Q/q to quit" << endl;
+
+    while (1)
+    {
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "1" || resp == "2" || resp == "3" || resp == "4" || resp == "Q" || resp == "q"))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp == "Q" || resp == "q")
+        {
+            return -1;
+        }
+
+        else
+        {
+            ss << resp;
+            ss >> intResp;
+
+            return intResp;
+        }
+    }
 }
 
 int User::chooseAreaForAction(vector<Area *> areas)
@@ -130,13 +205,27 @@ int User::chooseResource(Area *area)
     cin.ignore(30, '\n');
     if (area->getFactory(resp) == nullptr)
     {
-        area->requestFactory(resp);
-        return resp;
-    }
-    else
-    {
-        area->getFactory(resp);
-        return resp;
+
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "1" || resp == "2" || resp == "3"))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else
+        {
+            stringstream ss;
+            ss << resp;
+            ss >> intResp;
+            return intResp;
+        }
     }
 }
 
@@ -145,18 +234,30 @@ bool User::changePlayer()
     int resp = 0;
     do
     {
-        cout << "Would you like to change from User -> CPU: \n0 - No\n1 - Yes" << endl;
-        cin >> resp;
-        if (resp == 0)
+
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "1" || resp == "2"))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp == "1")
         {
             return false;
         }
-        else if (resp == 1)
+
+        else if (resp == "2")
         {
             return true;
         }
-    } while (resp != 0 || resp != 1);
-    return false;
+    }
 }
 
 Player *User::togglePlayer()
@@ -217,12 +318,13 @@ Country *User::chooseCountryToJoinAlliance(Map *map)
     int resp = 0;
     for (auto it : country)
     {
-        vector<Area*> areas =  map->getAreasByCountry(it);
-        cout<<it->getName()<<": \tAreas: {";
-        for(auto areasIt : areas){
-            cout << "( " <<areasIt->getName() <<","<< areasIt->getIndex() << ") ";
+        vector<Area *> areas = map->getAreasByCountry(it);
+        cout << it->getName() << ": \tAreas: {";
+        for (auto areasIt : areas)
+        {
+            cout << "( " << areasIt->getName() << "," << areasIt->getIndex() << ") ";
         }
-        cout<<"} || Index: "<<x++<<endl;
+        cout << "} || Index: " << x++ << endl;
     }
     cin >> resp;
     return country.at(resp);
@@ -275,10 +377,40 @@ void User::inspect(Map *map)
     } while (resp != 2);
 }
 
-int User::platoonType(){
-    int resp = 0;
-    cout << endl
-                 << "Which branch do you want to create?\n0. Air\n1. Land "<<endl;
-            cin >> resp;
-    return resp;
+int User::platoonType()
+{
+    // int resp = 0;
+    // cout << endl
+    //      << "Which branch do you want to create?\n0. Land\n1. Air " << endl;
+    // cin >> resp;
+    // return resp;
+
+    string resp = "";
+    int intResp = 0;
+
+    cout << "Which branch do you want to crate?\n1 - Land\n2 - Air " << endl;
+
+    while (1)
+    {
+        getline(cin, resp);
+
+        if (resp == "")
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!(resp == "1" || resp == "2"))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else
+        {
+            stringstream ss;
+            ss << resp;
+            ss >> intResp;
+            return 0;
+        }
+    }
 }
