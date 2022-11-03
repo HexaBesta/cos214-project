@@ -354,6 +354,8 @@ void Platoon::join(Unit *platoonBranch)
 	this->vehicles.insert(this->vehicles.end(), platoon->vehicles.begin(), platoon->vehicles.end());
 	this->pewpew = this->pewpew + platoon->pewpew;
 	this->boomboom = this->boomboom + platoon->boomboom;
+	platoon->humans.clear();
+	platoon->vehicles.clear();
 }
 
 // added
