@@ -1,13 +1,14 @@
 #ifndef GODOFWAR_H
 #define GODOFWAR_H
 #include "Alliances.h"
+#include "War.h"
 #include "Area.h"
 #include "CPU.h"
 #include "User.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
 
-class GodOfWar{
+class GodOfWar: public War{
 	private:
 		Alliances *groupOne;
 		Alliances *groupTwo;
@@ -20,7 +21,7 @@ class GodOfWar{
 		 * @brief Check whether to toggle between playing modes
 		 * 
 		 */
-		void checkTogglePlayer();
+		virtual void checkTogglePlayer();
 
 		/**
 		 * @brief allows alliance to take a turn
@@ -37,13 +38,13 @@ class GodOfWar{
 		 * 
 		 * @param actions number of action points available
 		 */
-		void takeTurn(int actions,sf::RenderWindow* window);
+		virtual void takeTurn(int actions,sf::RenderWindow* window);
 
 		/**
 		 * @brief one round consisting of two seperate turns
 		 * 
 		 */
-		void round(sf::RenderWindow* window);
+		virtual void round(sf::RenderWindow* window);
 
 	public:
 		/**
@@ -58,25 +59,25 @@ class GodOfWar{
 		 * @brief Calls functions in player to initialise sides with countries with platoons
 		 * 
 		 */
-		void initialiseSides();
+		virtual void initialiseSides();
 
 		/**
 		 * @brief Loop that continues while war is active
 		 * 
 		 */
-		void warLoop();
+		virtual void warLoop();
 
 		/**
 		 * @brief Print the Map object
 		 * 
 		 */
-		void printMap();
+		virtual void printMap();
 
 		/**
 		 * @brief Destroy the God Of War object and assigned memory
 		 * 
 		 */
-		~GodOfWar();
+		virtual ~GodOfWar();
 
 };
 
