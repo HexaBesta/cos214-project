@@ -72,21 +72,34 @@ bool Battle::checkRetreat()
 }
 
 void Battle::setAttackerToDefender(){
-	Unit * oldAttacker = this->air->getAttacker();
-	Unit * oldDefender = this->air->getDefender();
-	if(oldAttacker != NULL){
-		if(oldDefender!=NULL && oldDefender->getState().compare("Dead")!=0){
-			this->area->retreat("defense");
-		}
-		this->air->setDefender(oldAttacker);
-		this->air->setAttacker(NULL);
-		this->area->updateOwner(oldAttacker);
-	}
-	oldAttacker = this->land->getAttacker();
-	oldDefender = this->land->getDefender();
-	if(oldAttacker != NULL){
-		if(oldDefender!=NULL && oldDefender->getState().compare("Dead")!=0){
-			this->area->retreat("defense");
+	Unit * oldAirAttacker = this->air->getAttacker();
+	Unit * oldAirDefender = this->air->getDefender();
+	Unit * oldLandAttacker = this->land->getAttacker();
+	Unit * oldLandDefender = this->land->getDefender();
+	/*
+	Check that there is an attacker thats alive
+	*/
+	if((oldAirAttacker != NULL && oldAirAttacker->getState().compare("Dead") != 0) || (oldLandAttacker != NULL && oldLandAttacker->getState().compare("Dead") != 0)){
+		
+		/*
+		Check that no defender alive
+		*/
+		if((oldAirDefender == NULL || oldAirDefender->getState().compare("Dead") == 0) && (oldLandDefender != NULL && oldLandDefender->getState().compare("Dead") == 0 )){
+			this->air->setDefender(oldAirAttacker);
+			this->air->setAttacker(NULL);
+			this->land->setDefender(oldLandAttacker);
+			this->land->setAttacker(NULL);
+			/*
+			Set area colour
+			*/
+			this->area->updateOwner(oldAttacker);
+			if(oldAirAttacker != NULL){
+				this->area->setCountry(oldAirAttacker->getCountry());
+				this->area->setColour();
+			}else{
+				this->area->setCountry(oldLandAttacker->getCountry());
+				this->area->setColour();
+			}
 		}
 		this->land->setDefender(oldAttacker);
 		this->land->setAttacker(NULL);
@@ -336,8 +349,8 @@ void Battle::attack(Unit * active, Unit * passive)
 
 	std::cout<<passive->getState()<<endl;
 	if(passive->getState().compare("Dead")==0){
-		passive = NULL;
-		this->battleActive = false;
+		// passive = NULL;
+		// this->battleActive = false;
 	}
 	
 }
