@@ -66,6 +66,15 @@ public:
      */
     virtual int chooseAdjacentArea(vector<Area *> adjAreas);
 
+    
+    /**
+     * @brief choose two areas to destroy transport routes between
+     *
+     * @param adjAreas of immediatly adjacent area
+     * @return int array with index 0 containing the first array index and index 1 the second array index of chosen
+     */
+    virtual int* chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current);
+
     /**
      * @brief choose type of resource to request for area passed in
      *

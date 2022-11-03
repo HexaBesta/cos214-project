@@ -19,6 +19,10 @@ Unit *TheatreOfWar::getDefender()
 
 void TheatreOfWar::setAttacker(Unit *attacker)
 {
+    if(attacker==nullptr){
+        this->attacker = nullptr;
+        return;
+    }
     if (this->attacker != NULL)
     {
         this->attacker->join(attacker);
@@ -30,7 +34,7 @@ void TheatreOfWar::setAttacker(Unit *attacker)
 }
 void TheatreOfWar::setDefender(Unit *defender)
 {
-    if (this->defender != NULL)
+    if (this->defender != NULL && this->defender->getState().compare("Dead")!=0)
     {
         this->defender->join(defender);
     }
@@ -68,7 +72,7 @@ string TheatreOfWar::toString(int &lineLen)
     add += "|\n";
     out += add;
 
-    if (defender != NULL && defender->getState().compare("Dead") != 0)
+    if (defender != NULL)
     {
         add = "" + defender->toString(lineLen);
         out+=add+"\n";
@@ -170,7 +174,7 @@ Unit *TheatreOfWar::sendReinforcements()
 
 void TheatreOfWar::replenish(Transport** good){
     if(this->defender!= NULL){
-        this->replenish(good);
+        this->defender->replenish(good);
     }
 }
 

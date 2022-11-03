@@ -40,7 +40,11 @@ public:
      * @param countries vector of countries of current alliance
      * @return int index of country chosen
      */
+<<<<<<< Updated upstream
     virtual int chooseCountry(vector<Country *> countries);
+=======
+    virtual int chooseCountry(vector<Country *> countries, Map *map);
+>>>>>>> Stashed changes
 
     /**
      * @brief choose which action player wants to take with country
@@ -67,6 +71,14 @@ public:
      * @return int
      */
     virtual int chooseAdjacentArea(vector<Area *> adjAreas);
+
+    /**
+     * @brief choose two areas to destroy transport routes between
+     *
+     * @param adjAreas of immediatly adjacent area
+     * @return int array with index 0 containing the first array index and index 1 the second array index of chosen
+     */
+    virtual int* chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current);
 
     /**
      * @brief choose type of resource to request for area passed in
@@ -118,13 +130,13 @@ protected:
      * @param country the country to which platoon should be added
      *
      */
-    virtual void addPlatoons(Country *country, Map* map);
+    virtual void addPlatoons(Country *country, Map *map);
 
     /**
      * @brief Adds selected factories to selected areas
      *
      */
-    virtual void initialiseFactories(Map *map, Alliances* alliance);
+    virtual void initialiseFactories(Map *map, Alliances *alliance);
 };
 
 #endif

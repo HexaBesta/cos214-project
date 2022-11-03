@@ -63,6 +63,13 @@ string Platoon::toString(int lineLen)
 		add+= "|";
 		out+=add;
 
+		add= "|                        Country: " + country->getName();
+		while(add.length()<lineLen){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+
 		add=" \n|                           Health: " + to_string(health);
 		while(add.length()<lineLen+2){
 			add+= " ";
@@ -367,13 +374,15 @@ Platoon::~Platoon()
 {
 	while (!humans.empty())
 	{
-		delete humans.back();
+		if(humans.back() != NULL)
+			delete humans.back();
 		humans.pop_back();
 	}
 
 	while (!vehicles.empty())
 	{
-		delete vehicles.back();
+		if(humans.back() != NULL)
+			delete vehicles.back();
 		vehicles.pop_back();
 	}
 

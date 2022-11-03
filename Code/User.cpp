@@ -118,6 +118,21 @@ int User::chooseAdjacentArea(vector<Area *> areas)
     return resp;
 }
 
+int* User::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current){
+    int * indexes= new int[2];
+    indexes[0] = indexes[1] = -1;
+    indexes[0] = this->chooseAdjacentArea(adjAreas);
+    if(indexes[0] != -1 && indexes[0] < otherAdj.size()){
+        indexes[1] = this->chooseAdjacentArea(otherAdj.at(indexes[0]));
+        if(indexes[1] != -1 && indexes[1] < otherAdj.at(indexes[0]).size()){
+            return indexes;
+        }
+    }
+    delete [] indexes;
+    indexes = NULL;
+    return NULL;
+}
+
 int User::chooseResource(Area *area)
 {
     int resp = 0;

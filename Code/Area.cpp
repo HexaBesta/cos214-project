@@ -586,3 +586,11 @@ Area::~Area()
 		delete land;
 	}
 }
+
+TheatreOfWar* Area::getLand(){
+	return this->land;
+}
+
+TheatreOfWar* Area::getAir(){
+	return this->air;
+}

@@ -3,6 +3,11 @@
 #include "Area.h"
 #include "TransportRoute.h"
 #include "Map.h"
+<<<<<<< Updated upstream
+=======
+#include "AreaVisitor.h"
+#include "CleanUpVisitor.h"
+>>>>>>> Stashed changes
 
 Map::Map(string setupFile, Player *player)
 {
@@ -670,6 +675,10 @@ vector<Area *> Map::getAreasByCountry(Country *country)
 	return areas;
 }
 
+vector<Country*> Map::getCountries(){
+	return this->allCountries;
+}
+
 void Map::setPlayer(Player *player)
 {
 	this->player = player;
@@ -707,6 +716,13 @@ void Map::resolveBattles()
 		battle->battleLoop();
 	}
 	
+}
+
+void Map::cleanBattles(){
+	CleanUpVisitor* cleanUp = new CleanUpVisitor();
+	for(auto it: allAreas){
+		it->accept(cleanUp);
+	}
 }
 
 bool Map::addPlatoonToMap(Unit *platoon)

@@ -96,7 +96,7 @@ public:
 	 *
 	 * @param health takes in the health that will be set
 	 */
-	void setHealth(int health);
+	virtual void setHealth(int health);
 	/**
 	 * @brief Returns the current moral of the unit
 	 *

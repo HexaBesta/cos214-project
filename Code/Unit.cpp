@@ -69,7 +69,11 @@ void Unit::changeStrategy()
 
 int Unit::getDamage()
 {
-	return this->damage;
+	if(this->unitState == NULL)
+		return this->damage;
+	else{
+		return (int)this->unitState->attackStrength(this->damage);
+	}
 }
 
 double Unit::getAverageMoral()
@@ -155,6 +159,13 @@ int *Unit::getAmmo()
 
 void Unit::replenish(Transport ** transport){}
 
+<<<<<<< Updated upstream
+=======
+Unit * Unit::getUnit(){
+	return this;
+}
+
+>>>>>>> Stashed changes
 Unit::~Unit()
 {
 

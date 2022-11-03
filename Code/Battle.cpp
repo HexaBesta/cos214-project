@@ -56,7 +56,7 @@ void Battle::setAttackerToDefender(){
 	Unit * oldAttacker = this->air->getAttacker();
 	Unit * oldDefender = this->air->getDefender();
 	if(oldAttacker != NULL){
-		if(oldDefender){
+		if(oldDefender!=NULL && oldDefender->getState().compare("Dead")!=0){
 			this->area->retreat("defense");
 		}
 		this->air->setDefender(oldAttacker);
@@ -65,7 +65,7 @@ void Battle::setAttackerToDefender(){
 	oldAttacker = this->land->getAttacker();
 	oldDefender = this->land->getDefender();
 	if(oldAttacker != NULL){
-		if(oldDefender){
+		if(oldDefender!=NULL && oldDefender->getState().compare("Dead")!=0){
 			this->area->retreat("defense");
 		}
 		this->land->setDefender(oldAttacker);
@@ -125,7 +125,6 @@ void Battle::getStateSummary()
 
 void Battle::takeTurn()
 {
-
 	Unit * active = NULL;
 	Unit * passive = NULL;
 
@@ -252,8 +251,8 @@ void Battle::takeTurn()
 	Print active platoon after attack
 	*/
 
-	std::cout<< active->toString()<<endl;
-
+	// std::cout<< active->toString()<<endl;
+	// std::cout<<passive->toString()<<endl;
 	/*
 	Request reinforcements after printing state of platoon if battle active.
 	*/
@@ -307,7 +306,7 @@ void Battle::attack(Unit * active, Unit * passive)
 {
 	active->attack(passive);
 
-	//std::cout<<passive->getState()<<endl;
+	std::cout<<passive->getState()<<endl;
 	if(passive->getState().compare("Dead")==0){
 		passive = NULL;
 		this->battleActive = false;

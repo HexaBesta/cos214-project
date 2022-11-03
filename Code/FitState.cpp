@@ -2,7 +2,7 @@
 
 double FitState::attackStrength(double damage){
 
-    cout<<"You are fit and healthy. You deal full damage: "<<damage<<endl;
+    //cout<<"You are fit and healthy. You deal full damage: "<<damage<<endl;
     return damage;
 
 }

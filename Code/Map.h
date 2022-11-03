@@ -12,6 +12,11 @@
 #include <fstream>
 #include <string>
 using namespace std;
+<<<<<<< Updated upstream
+=======
+class AreaVisitor;
+class CleanUpVisitor;
+>>>>>>> Stashed changes
 class Player;
 class Area;
 class TransportRoute;
@@ -183,6 +188,12 @@ public:
 	void resolveBattles();
 
 	/**
+	 * @brief cleans up all the pointers of the area after each battle round
+	 * 
+	 */
+	void cleanBattles();
+
+	/**
 	 * @brief Attempts to add a newly constructed platoon to map
 	 * 
 	 * @param platoon to be added to map
@@ -207,6 +218,12 @@ public:
 	 */
 	vector<Country*> getCountriesByColour(int colour);
 
+	/**
+	 * @brief Returns all the countries of map
+	 * 
+	 * @return vector<Country*> will return all the countries in the map
+	 */
+	vector<Country*> getCountries();
 	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 
