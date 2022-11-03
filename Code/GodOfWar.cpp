@@ -288,8 +288,7 @@ void GodOfWar::warLoop()
         }
         else
         {
-            cout << "Continue:" << endl
-                 << "1. Yes " << endl;
+            cout << "Continue for how many?: " << endl;
             cin >> resp;
 
             // clear buffer
