@@ -120,11 +120,7 @@ bool CPU::requestReinforcements(Battle *battle)
     return false;
 }
 
-<<<<<<< Updated upstream
-int CPU::chooseCountry(vector<Country *> country)
-=======
 int CPU::chooseCountry(vector<Country *> country, Map *map)
->>>>>>> Stashed changes
 {
     if (!country.empty())
     {
@@ -261,15 +257,6 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-<<<<<<< Updated upstream
-    int ranNum = rand() % (5) + 1;
-    cout<<"--------------------------------------------"<<endl;
-    cout<<"Creating "<< ranNum << " countries"<<endl;
-    for (int i = 0; i < ranNum; i++)
-    {
-        int random = rand() % (1 + 1);
-        int countryNumber = rand() % (100 - 50 + 1) + 50;
-=======
     srand(0);
     int ranNum = rand() % ((8)) + 6;
     cout << "--------------------------------------------" << endl;
@@ -277,7 +264,6 @@ void CPU::createCountries(Map *map)
     for (int i = 0; i < ranNum; i++)
     {
         int countryNumber = rand() % ((100 - 50 + 1) + 50);
->>>>>>> Stashed changes
         string countryName = "Country";
         countryName += to_string(countryNumber);
         Country *country = new Country(countryName, 94, this);
@@ -288,21 +274,9 @@ void CPU::createCountries(Map *map)
         area = possibleAreas.at(randomArea);
         if (area != nullptr)
         {
-<<<<<<< Updated upstream
-            Country *country = new Country(countryName, 22);
-            map->addCountry(country);
-        }
-        else if (random == 1)
-        {
-            Country *country = new Country(countryName, 160);
-            map->addCountry(country);
-        }
-        cout<<endl;
-=======
             area->setCountry(country);
             cout << area->toString() << endl;
         }
->>>>>>> Stashed changes
     }
     cout << endl;
     map->printMap();
@@ -310,29 +284,18 @@ void CPU::createCountries(Map *map)
 
 int CPU::numberOfCountriesInAlliance(Map *map)
 {
-<<<<<<< Updated upstream
-    vector<Country *> country = map->getCountriesByColour(94);
-    int size = country.size();
-    int random = rand() % size;
-=======
     vector<Country *> country = map->getCountries();
     int random = rand() % (country.size()/2);
     if(random<3){
         random+=3;
     }
->>>>>>> Stashed changes
     return random;
 }
 
 Country *CPU::chooseCountryToJoinAlliance(Map *map)
 {
     vector<Country *> country = map->getCountriesByColour(94);
-<<<<<<< Updated upstream
-    int size = country.size();
-    int random = rand() % size;
-=======
     int random = rand() % country.size();
->>>>>>> Stashed changes
     return country.at(random);
 }
 
@@ -357,13 +320,10 @@ void CPU::initialiseFactories(Map *map, Alliances *alliance)
     {
         map->requestFactoryForArea(areas.at(random), 2);
     }
-<<<<<<< Updated upstream
-=======
 }
 
 int CPU::platoonType()
 {
     int random = (rand() % 3) + 1;
     return (random % 2);
->>>>>>> Stashed changes
 }

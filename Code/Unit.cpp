@@ -159,13 +159,10 @@ int *Unit::getAmmo()
 
 void Unit::replenish(Transport ** transport){}
 
-<<<<<<< Updated upstream
-=======
 Unit * Unit::getUnit(){
 	return this;
 }
 
->>>>>>> Stashed changes
 Unit::~Unit()
 {
 

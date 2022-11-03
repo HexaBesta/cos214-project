@@ -12,11 +12,8 @@
 #include <fstream>
 #include <string>
 using namespace std;
-<<<<<<< Updated upstream
-=======
 class AreaVisitor;
 class CleanUpVisitor;
->>>>>>> Stashed changes
 class Player;
 class Area;
 class TransportRoute;

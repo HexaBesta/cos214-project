@@ -3,11 +3,8 @@
 #include "Area.h"
 #include "TransportRoute.h"
 #include "Map.h"
-<<<<<<< Updated upstream
-=======
 #include "AreaVisitor.h"
 #include "CleanUpVisitor.h"
->>>>>>> Stashed changes
 
 Map::Map(string setupFile, Player *player)
 {

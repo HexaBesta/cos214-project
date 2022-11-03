@@ -40,11 +40,7 @@ public:
      * @param countries vector of countries of current alliance
      * @return int index of country chosen
      */
-<<<<<<< Updated upstream
-    virtual int chooseCountry(vector<Country *> countries);
-=======
     virtual int chooseCountry(vector<Country *> countries, Map *map);
->>>>>>> Stashed changes
 
     /**
      * @brief choose which action player wants to take with country
