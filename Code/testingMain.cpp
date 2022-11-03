@@ -294,9 +294,9 @@ int main()
     // cout << endl
     //      << endl;
     // testEuropeMap();
-    testGui();
+    //testGui();
     // testBuilder();
-    //testLoop();
+    testLoop();
 
     cout<<"DONE"<<endl;
 }

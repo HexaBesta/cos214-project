@@ -278,7 +278,7 @@ void User::inspect(Map *map)
 int User::platoonType(){
     int resp = 0;
     cout << endl
-                 << "Which branch do you want to create?\n0. Land\n1. Air "<<endl;
+                 << "Which branch do you want to create?\n0. Air\n1. Land "<<endl;
             cin >> resp;
     return resp;
 }
