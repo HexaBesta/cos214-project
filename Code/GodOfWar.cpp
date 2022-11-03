@@ -182,7 +182,8 @@ void GodOfWar::takeTurn(int actions)
             if (index != NULL)
             {
 
-                cout <<areas.at(areaIndex)->getIndex()<< "("<<areas.at(areaIndex)->getColour()<<")"<< "Destroying route between:" << endl
+                cout << areas.at(areaIndex)->getIndex() << "(" << areas.at(areaIndex)->getColour() << ")"
+                     << "Destroying route between:" << endl
                      << adjacentAreas.at(index[0])->toString() << endl
                      << adjacentOfAdjAreas.at(index[0]).at(index[1])->toString() << endl;
 
@@ -252,7 +253,8 @@ void GodOfWar::takeTurn(int actions)
 
 void GodOfWar::warLoop()
 {
-    int resp = 0;
+    int resp = 1;
+    int skip = 0;
     do
     {
         round();
@@ -262,12 +264,25 @@ void GodOfWar::warLoop()
         }
         else
         {
-            cout << "Continue:" << endl
-                 << "1. Yes " << endl;
-            cin >> resp;
+            if (skip == 0)
+            {
+                cout << "Continue:" << endl
+                     << "1. Yes \n2. Fast Forward 5 rounds" << endl;
+                cin >> resp;
 
-            // clear buffer
-            cin.ignore(30, '\n');
+                if (resp == 2)
+                {
+                    skip += 5;
+                    resp = 1;
+                }
+
+                // clear buffer
+                cin.ignore(30, '\n');
+            }
+            else
+            {
+                skip--;
+            }
         }
     } while (resp == 1);
 
