@@ -20,7 +20,7 @@ class People : public Transport
          * 
          * @return int - health improvement
          */
-        virtual int replenish(bool doubleRep = false);
+        virtual int replenish(bool doubleRep);
 
 };
 

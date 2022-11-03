@@ -118,7 +118,7 @@ void GodOfWar::takeTurn(int actions)
         }
         else
         {
-            countryIndex = this->player->chooseCountry(countries);
+            countryIndex = this->player->chooseCountry(countries, this->map);
         }
 
         /*

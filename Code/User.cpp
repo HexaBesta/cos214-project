@@ -66,15 +66,20 @@ bool User::requestReinforcements(Battle *battle)
     }
 }
 
-int User::chooseCountry(vector<Country *> country)
+int User::chooseCountry(vector<Country *> country, Map* map)
 {
     int resp = 0;
     cout << "Choose country index to take turn:" << endl;
     int x = 0;
     for (auto it : country)
     {
-        cout << it->getName() << " || Index: " << x << endl;
-        x++;
+        vector<Area *> areas = map->getAreasByCountry(it);
+        cout << it->getName() << ": \tAreas: {";
+        for (auto areasIt : areas)
+        {
+            cout << "( " << areasIt->getName() << "," << areasIt->getIndex() << ") ";
+        }
+        cout << "} || Index: " << x++ << endl;
     }
     cin >> resp;
     cin.ignore(30, '\n');
@@ -84,7 +89,7 @@ int User::chooseCountry(vector<Country *> country)
 int User::chooseActionForCountry()
 {
     int resp = 0;
-    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - end turn" << endl;
+    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - recruit troops\n 4 - end turn" << endl;
     cin >> resp;
     cin.ignore(30, '\n');
     return resp;
@@ -191,7 +196,7 @@ void User::createCountries(Map *map)
         // int alliance = 0;
         // cout << "Choose the alliance: \nGreen - 0\nRed - 1" << endl;
         // cin >> alliance;
-        Country *country = new Country(countryName, 94);
+        Country *country = new Country(countryName, 94, this);
         if (map == NULL)
         {
             cout << "Map is NULL in User" << endl;
@@ -258,6 +263,14 @@ void User::initialiseFactories(Map *map, Alliances *alliances)
     int resp1 = 0;
     cin >> resp1;
     map->requestFactoryForArea(areas.at(resp), resp1);
+}
+
+int User::platoonType(){
+    int resp = 0;
+    cout << endl
+                 << "Which branch do you want to create?\n0. Air\n1. Land "<<endl;
+            cin >> resp;
+    return resp;
 }
 
 void User::inspect(Map *map)

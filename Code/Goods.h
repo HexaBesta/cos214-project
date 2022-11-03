@@ -17,7 +17,7 @@ public:
      *
      * @return int - health improvement
      */
-    int replenish(bool doubleRep = false);
+    int replenish(bool doubleRep);
 };
 
 #endif

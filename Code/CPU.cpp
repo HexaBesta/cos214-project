@@ -327,3 +327,16 @@ int CPU::platoonType()
     int random = (rand() % 3) + 1;
     return (random % 2);
 }
+
+// int CPU::chooseCountry(vector<Country *> country, Map *map)
+// {
+//     if (!country.empty())
+//     {
+//         int index = rand() % country.size();
+//         return index;
+//     }
+//     else
+//     {
+//         return -1;
+//     }
+// }

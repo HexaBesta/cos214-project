@@ -1,6 +1,6 @@
 #ifndef TRANSPORTROUTE_H
 #define TRANSPORTROUTE_H
-
+#include "MapComponent.h"
 #include "Area.h"
 #include "Visitor.h"
 using namespace std;

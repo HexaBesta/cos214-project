@@ -99,6 +99,13 @@ public:
      */
     virtual Player *togglePlayer();
 
+    /**
+     * @brief randomly assignes a platoon either a land or air branch
+     * 
+     * @return int 
+     */
+    virtual int platoonType();
+
 protected:
     /**
      * @brief Creates new Countries and add to map country vector

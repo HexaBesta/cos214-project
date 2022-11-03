@@ -38,7 +38,7 @@ public:
      * @param countries vector of countries of current alliance
      * @return int index of country chosen
      */
-    virtual int chooseCountry(vector<Country *> countries);
+    virtual int chooseCountry(vector<Country *> countries, Map* map);
 
     /**
      * @brief choose which action player wants to take with country
@@ -104,6 +104,13 @@ public:
      * @param map 
      */
     virtual void inspect(Map * map);
+
+    /**
+     * @brief Allows the user to choose what branch the platoon must be, either air or land
+     * 
+     * @return int 
+     */
+    virtual int platoonType();
 
 protected:
     /**

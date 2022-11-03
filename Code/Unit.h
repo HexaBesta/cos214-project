@@ -146,6 +146,13 @@ public:
 	virtual string getBranch();
 
 	/**
+	 * @brief Returns the current Units pointer
+	 * 
+	 * @return Unit* 
+	 */
+	virtual Unit* getUnit();
+
+	/**
 	 * @brief Get the Alliance that the unit beloings to.
 	 * @attention Units  needs to be able to return some indication of which allaince they belong to
 	 * @return string

@@ -47,7 +47,7 @@ class Player
          * @param countries vector of countries of current alliance
          * @return int index of country chosen
          */
-        virtual int chooseCountry(vector<Country*> countries)=0;
+        virtual int chooseCountry(vector<Country*> countries, Map* map)=0;
 
         /**
          * @brief choose which action player wants to take with country
@@ -132,6 +132,13 @@ class Player
          * 
          */
         virtual ~Player(){};
+
+        /**
+         * @brief Assigns the platoon as a land or air branch
+         * 
+         * @return int 
+         */
+        virtual int platoonType()=0;
 
     protected:
 

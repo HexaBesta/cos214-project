@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Country::Country(string name,int colour)
+Country::Country(string name,int colour, Player* player)
 {
 	this->name = name;
 	this->countryState = new NeutralState();
@@ -15,6 +15,7 @@ Country::Country(string name,int colour)
 	this->military.push_back(NULL);
 	this->military.clear();
 	this->moraleAverage = 100;
+	this->player = player;
 	// default state
 }
 
@@ -131,4 +132,8 @@ void Country::removeDeadPlatoons(){
 
 void Country::setPlayer(Player* player){
 	this->player = player;
+}
+
+Player* Country::getPlayer(){
+	return this->player;
 }
