@@ -8,54 +8,54 @@ bool User::playerRetreat(Battle *battle)
 {
     battle->getStateSummary();
 
-    // int resp;
-    // cout << "Retreat" << endl
-    //      << "1. Yes \n2. Not necessary" << endl;
-    // cin >> resp;
+    int resp;
+    cout << "Retreat" << endl
+         << "1. Yes \n2. Not necessary" << endl;
+    cin >> resp;
 
-    // // clear buffer
-    // cin.ignore(30, '\n');
+    // clear buffer
+    cin.ignore(30, '\n');
 
-    // if (resp == 1)
-    // {
-    //     return true;
-    // }
-    // else
-    // {
-    //     return false;
-    // }
-
-    string resp = "";
-
-    cout << "Retreat?" << endl
-         << "1 - Yes" << endl
-         << "2 - Not necessary" << endl;
-
-    while (1)
+    if (resp == 1)
     {
-
-        getline(cin, resp);
-
-        if (resp == "")
-        {
-            cout << "Invalid input - try again" << endl;
-        }
-
-        else if (!(resp == "1" || resp == "2"))
-        {
-            cout << "Invalid input - try again" << endl;
-        }
-
-        else if (resp == "1")
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
+        return true;
     }
+    else
+    {
+        return false;
+    }
+
+    // string resp = "";
+
+    // cout << "Retreat?" << endl
+    //      << "1 - Yes" << endl
+    //      << "2 - Not necessary" << endl;
+
+    // while (1)
+    // {
+
+    //     getline(cin, resp);
+
+    //     if (resp == "")
+    //     {
+    //         cout << "Invalid input - try again" << endl;
+    //     }
+
+    //     else if (!(resp == "1" || resp == "2"))
+    //     {
+    //         cout << "Invalid input - try again" << endl;
+    //     }
+
+    //     else if (resp == "1")
+    //     {
+    //         return true;
+    //     }
+
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
 }
 
 bool User::checkChangeStrategy(Unit *active)
@@ -122,51 +122,51 @@ int User::chooseCountry(vector<Country *> country, Map *map)
 
 int User::chooseActionForCountry()
 {
-    // int resp = 0;
-    // cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - end turn" << endl;
-    // cin >> resp;
-    // cin.ignore(30, '\n');
-    // return resp;
+    int resp = 0;
+    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - end turn" << endl;
+    cin >> resp;
+    cin.ignore(30, '\n');
+    return resp;
 
-    string resp = "";
-    stringstream ss;
-    int intResp = 0;
+    // string resp = "";
+    // stringstream ss;
+    // int intResp = 0;
 
-    cout << "Choose action to perform:" << endl
-         << "1 - Attack transport route" << endl
-         << "2 - Request resources" << endl
-         << "3 - March into area" << endl
-         << "4 - End turn" << endl
-         << "Press Q/q to quit" << endl;
+    // cout << "Choose action to perform:" << endl
+    //      << "1 - Attack transport route" << endl
+    //      << "2 - Request resources" << endl
+    //      << "3 - March into area" << endl
+    //      << "4 - End turn" << endl
+    //      << "Press Q/q to quit" << endl;
 
-    while (1)
-    {
-        getline(cin, resp);
+    // while (1)
+    // {
+    //     getline(cin, resp);
 
-        if (resp == "")
-        {
-            cout << "Invalid input - try again" << endl;
-        }
+    //     if (resp == "")
+    //     {
+    //         cout << "Invalid input - try again" << endl;
+    //     }
 
-        else if (!(resp == "1" || resp == "2" || resp == "3" || resp == "4" || resp == "Q" || resp == "q"))
-        {
+    //     else if (!(resp == "1" || resp == "2" || resp == "3" || resp == "4" || resp == "Q" || resp == "q"))
+    //     {
 
-            cout << "Invalid input - try again" << endl;
-        }
+    //         cout << "Invalid input - try again" << endl;
+    //     }
 
-        else if (resp == "Q" || resp == "q")
-        {
-            return -1;
-        }
+    //     else if (resp == "Q" || resp == "q")
+    //     {
+    //         return -1;
+    //     }
 
-        else
-        {
-            ss << resp;
-            ss >> intResp;
+    //     else
+    //     {
+    //         ss << resp;
+    //         ss >> intResp;
 
-            return intResp;
-        }
-    }
+    //         return intResp;
+    //     }
+    // }
 }
 
 int User::chooseAreaForAction(vector<Area *> areas)
@@ -203,30 +203,35 @@ int User::chooseResource(Area *area)
     cout << "Choose what resource to request for area: \n 0 - Medics  \n 1 - Ammo \n 2 - Goods" << endl;
     cin >> resp;
     cin.ignore(30, '\n');
-    if (area->getFactory(resp) == nullptr)
-    {
-
-        getline(cin, resp);
-
-        if (resp == "")
-        {
-            cout << "Invalid input - try again" << endl;
-        }
-
-        else if (!(resp == "1" || resp == "2" || resp == "3"))
-        {
-
-            cout << "Invalid input - try again" << endl;
-        }
-
-        else
-        {
-            stringstream ss;
-            ss << resp;
-            ss >> intResp;
-            return intResp;
-        }
+    if(resp >=0 && resp<=2){
+        return resp;
+    }else{
+        return 0;
     }
+    // if (area->getFactory(resp) == nullptr)
+    // {
+
+    //     getline(cin, resp);
+
+    //     if (resp == "")
+    //     {
+    //         cout << "Invalid input - try again" << endl;
+    //     }
+
+    //     else if (!(resp == "1" || resp == "2" || resp == "3"))
+    //     {
+
+    //         cout << "Invalid input - try again" << endl;
+    //     }
+
+    //     else
+    //     {
+    //         stringstream ss;
+    //         ss << resp;
+    //         ss >> intResp;
+    //         return intResp;
+    //     }
+    // }
 }
 
 bool User::changePlayer()
@@ -234,30 +239,46 @@ bool User::changePlayer()
     int resp = 0;
     do
     {
-
-        getline(cin, resp);
-
-        if (resp == "")
-        {
-            cout << "Invalid input - try again" << endl;
-        }
-
-        else if (!(resp == "1" || resp == "2"))
-        {
-
-            cout << "Invalid input - try again" << endl;
-        }
-
-        else if (resp == "1")
+        cout << "Would you like to change from User -> CPU: \n0 - No\n1 - Yes" << endl;
+        cin >> resp;
+        if (resp == 0)
         {
             return false;
         }
-
-        else if (resp == "2")
+        else if (resp == 1)
         {
             return true;
         }
-    }
+    } while (resp != 0 || resp != 1);
+    return false;
+    
+    // int resp = 0;
+    // do
+    // {
+
+    //     getline(cin, resp);
+
+    //     if (resp == "")
+    //     {
+    //         cout << "Invalid input - try again" << endl;
+    //     }
+
+    //     else if (!(resp == "1" || resp == "2"))
+    //     {
+
+    //         cout << "Invalid input - try again" << endl;
+    //     }
+
+    //     else if (resp == "1")
+    //     {
+    //         return false;
+    //     }
+
+    //     else if (resp == "2")
+    //     {
+    //         return true;
+    //     }
+    // }
 }
 
 Player *User::togglePlayer()
@@ -379,38 +400,38 @@ void User::inspect(Map *map)
 
 int User::platoonType()
 {
-    // int resp = 0;
-    // cout << endl
-    //      << "Which branch do you want to create?\n0. Land\n1. Air " << endl;
-    // cin >> resp;
-    // return resp;
+    int resp = 0;
+    cout << endl
+         << "Which branch do you want to create?\n0. Land\n1. Air " << endl;
+    cin >> resp;
+    return resp;
 
-    string resp = "";
-    int intResp = 0;
+    // string resp = "";
+    // int intResp = 0;
 
-    cout << "Which branch do you want to crate?\n1 - Land\n2 - Air " << endl;
+    // cout << "Which branch do you want to crate?\n1 - Land\n2 - Air " << endl;
 
-    while (1)
-    {
-        getline(cin, resp);
+    // while (1)
+    // {
+    //     getline(cin, resp);
 
-        if (resp == "")
-        {
-            cout << "Invalid input - try again" << endl;
-        }
+    //     if (resp == "")
+    //     {
+    //         cout << "Invalid input - try again" << endl;
+    //     }
 
-        else if (!(resp == "1" || resp == "2"))
-        {
+    //     else if (!(resp == "1" || resp == "2"))
+    //     {
 
-            cout << "Invalid input - try again" << endl;
-        }
+    //         cout << "Invalid input - try again" << endl;
+    //     }
 
-        else
-        {
-            stringstream ss;
-            ss << resp;
-            ss >> intResp;
-            return 0;
-        }
-    }
+    //     else
+    //     {
+    //         stringstream ss;
+    //         ss << resp;
+    //         ss >> intResp;
+    //         return 0;
+    //     }
+    // }
 }
