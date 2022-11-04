@@ -450,9 +450,37 @@ void User::initialiseFactories(Map *map, Alliances *alliances)
     int resp = 0;
     cin >> resp;
     cout << "Now choose what factory you want to create at the chosen area: \n0 - Medics\n1 - Ammo\n2 - Goods" << endl;
-    int resp1 = 0;
-    cin >> resp1;
-    map->requestFactoryForArea(areas.at(resp), resp1);
+
+    // int resp1 = 0;
+    // cin >> resp1;
+
+    string resp1 = "";
+
+    while (1)
+    {
+        getline(cin, resp1);
+
+        if (resp1.compare("") == 0)
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!((resp1.compare("0") == 0) || (resp1.compare("1") == 0) || (resp1.compare("2") == 0)))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else
+        {
+            stringstream ss;
+            int intResp1 = 0;
+            ss << resp;
+            ss >> intResp1;
+            cin.ignore(30, '\n');
+            map->requestFactoryForArea(areas.at(resp), intResp1);
+        }
+    }
 }
 
 void User::inspect(Map *map)
@@ -461,7 +489,7 @@ void User::inspect(Map *map)
     do
     {
         cout << "-------------------------------------------------------" << endl;
-        cout << "Would you like to inspect an area?\n1. Yes \n2. No" << endl;
+        cout << "Would you like to inspect an area?\n1 - Yes \n2 - No" << endl;
         cin >> resp;
         if (resp == 1)
         {
@@ -488,8 +516,8 @@ int User::platoonType()
     string resp = "";
 
     cout << "Which branch do you want to create?" << endl
-    << "0 - Land" << endl
-    << "1 - Air"  << endl;
+         << "0 - Land" << endl
+         << "1 - Air" << endl;
 
     while (1)
     {
