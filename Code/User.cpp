@@ -346,13 +346,13 @@ bool User::changePlayer()
             cout << "Invalid input - try again" << endl;
         }
 
-        else if (resp.compare("0") == 0) //RETURNS FALSE
+        else if (resp.compare("0") == 0) // RETURNS FALSE
         {
             cin.ignore(30, '\n');
             return false;
         }
 
-        else //RETURNS TRUE
+        else // RETURNS TRUE
         {
             cin.ignore(30, '\n');
             return true;
@@ -479,38 +479,40 @@ void User::inspect(Map *map)
 
 int User::platoonType()
 {
-    int resp = 0;
-    cout << endl
-         << "Which branch do you want to create?\n0. Land\n1. Air " << endl;
-    cin >> resp;
-    return resp;
+    // int resp = 0;
+    // cout << endl
+    //      << "Which branch do you want to create?\n0. Land\n1. Air " << endl;
+    // cin >> resp;
+    // return resp;
 
-    // string resp = "";
-    // int intResp = 0;
+    string resp = "";
 
-    // cout << "Which branch do you want to crate?\n1 - Land\n2 - Air " << endl;
+    cout << "Which branch do you want to crate?" << endl
+    << "0 - Land" << endl
+    << "1 - Air"  << endl;
 
-    // while (1)
-    // {
-    //     getline(cin, resp);
+    while (1)
+    {
+        getline(cin, resp);
 
-    //     if (resp == "")
-    //     {
-    //         cout << "Invalid input - try again" << endl;
-    //     }
+        if (resp.compare("") == 0)
+        {
+            cout << "Invalid input - try again" << endl;
+        }
 
-    //     else if (!(resp == "1" || resp == "2"))
-    //     {
+        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0)))
+        {
 
-    //         cout << "Invalid input - try again" << endl;
-    //     }
+            cout << "Invalid input - try again" << endl;
+        }
 
-    //     else
-    //     {
-    //         stringstream ss;
-    //         ss << resp;
-    //         ss >> intResp;
-    //         return 0;
-    //     }
-    // }
+        else
+        {
+            stringstream ss;
+            int intResp = 0;
+            ss << resp;
+            ss >> intResp;
+            return 0;
+        }
+    }
 }
