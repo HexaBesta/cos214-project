@@ -1,6 +1,9 @@
 #ifndef JOINEDSTATE_H
 #define JOINEDSTATE_H
 #include "CountryState.h"
+
+class Player;
+
 using namespace std;
 
 class JoinedState : public CountryState {
@@ -25,7 +28,7 @@ class JoinedState : public CountryState {
          * @return newly made Platoon
          * 
          */
-        virtual Unit * recruitPlatoon(Director * director, Country * country);
+        virtual Unit * recruitPlatoon(Director * director, Country * country, Player * player);
 };
 
 #endif

@@ -76,7 +76,7 @@ bool CPU::requestReinforcements(Battle *battle)
             totalDamage += battle->getLand()->getDefender()->getDamage();
         }
 
-        if (totalHealth <= (totalDamage * 3))
+        if (totalHealth <= (totalDamage * 2))
         {
             return true;
         }
@@ -108,7 +108,7 @@ bool CPU::requestReinforcements(Battle *battle)
             totalHealth += battle->getLand()->getDefender()->getDamage();
         }
 
-        if (totalHealth <= (totalDamage * 3))
+        if (totalHealth <= (totalDamage * 2))
         {
             return true;
         }
@@ -135,7 +135,7 @@ int CPU::chooseCountry(vector<Country *> country, Map *map)
 
 int CPU::chooseActionForCountry()
 {
-    int value = rand() % (5);
+    int value = rand() % (4);
     return value;
 }
 
@@ -226,8 +226,7 @@ int CPU::chooseResource(Area *area)
     {
         return 2;
     }
-    int randomV = rand() % (3);
-    return randomV;
+    return -1;
 }
 
 bool CPU::changePlayer()
@@ -257,7 +256,7 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    srand(0);
+    srand(2345);
     int ranNum = rand() % ((8)) + 6;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;
@@ -284,10 +283,16 @@ void CPU::createCountries(Map *map)
 
 int CPU::numberOfCountriesInAlliance(Map *map)
 {
-    vector<Country *> country = map->getCountries();
-    int random = rand() % (country.size()/2);
+    vector<Country *> country = map->getCountriesByColour(94);
+    int random = rand() % country.size();
     if(random<3){
         random+=3;
+        if(random > country.size()){
+            random = country.size();
+        }
+    }
+    if(random == map->getCountries().size()){
+        random = random*0.7;
     }
     return random;
 }

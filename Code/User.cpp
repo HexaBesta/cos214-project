@@ -4,7 +4,7 @@
 
 bool User::playerRetreat(Battle *battle)
 {
-    battle->getStateSummary();
+    //battle->getStateSummary();
 
     int resp;
     cout << "Retreat" << endl
@@ -47,7 +47,7 @@ bool User::checkChangeStrategy(Unit *active)
 bool User::requestReinforcements(Battle *battle)
 {
 
-    battle->getStateSummary();
+    //battle->getStateSummary();
     int resp;
     cout << "Request Reinforcements" << endl
          << "1. Yes \n2. Not necessary" << endl;

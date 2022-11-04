@@ -15,9 +15,8 @@ string JoinedState::requestState() {
     return "Joined";
 }
 
-Unit * JoinedState::recruitPlatoon(Director * director, Country * country){
-    
-    bool type = country->getPlayer()->platoonType()%2;
+Unit * JoinedState::recruitPlatoon(Director * director, Country * country, Player * player){
+    bool type = player->platoonType();
 	cout<<"Recruiting platoons from "<<this->requestState()<<" state"<<endl;
     return director->construct(type, country);
 }

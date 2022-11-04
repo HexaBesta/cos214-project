@@ -147,8 +147,8 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         int areaIndex = -1;
         if (areas.size() == 0)
         {
-            cout << "This country occupies no areas - lose turn" << endl;
-            break;
+            cout << "This country occupies no areas - lose Action Point" << endl;
+            continue;
         }
         else if (areas.size() == 1)
         {
@@ -196,8 +196,9 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
 
             if (index != NULL)
             {
-                
-                cout <<areas.at(areaIndex)->getIndex()<< "("<<areas.at(areaIndex)->getColour()<<")"<< "Destroying route between:" << endl
+
+                cout << areas.at(areaIndex)->getIndex() << "(" << areas.at(areaIndex)->getColour() << ")"
+                     << "Destroying route between:" << endl
                      << adjacentAreas.at(index[0])->toString() << endl
                      << adjacentOfAdjAreas.at(index[0]).at(index[1])->toString() << endl;
 
@@ -216,7 +217,10 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         else if (action == 1)
         {
             int resource = this->player->chooseResource(areas.at(areaIndex));
-            if (areas.at(areaIndex)->requestFactory(resource))
+            if(resource == -1){
+                cout<<"This area already has all factories"<<endl;
+            }
+            else if (areas.at(areaIndex)->requestFactory(resource))
             {
                 cout << "Factory succesfully acquired" << endl;
                 cout << areas.at(areaIndex)->toString();
@@ -280,23 +284,37 @@ void GodOfWar::warLoop()
     sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "My window");
     int resp = 1;
     map->setAreaBorders();
+    int skip = 0;
     do
     {
-        resp--;
         round(&window);
         if (this->map->checkIfEnd() != 94)
         {
             resp = 0;
         }
-        else if(resp==0)
+        else
         {
-            cout << "Continue for how many?: " << endl;
-            cin >> resp;
+            if (skip == 0)
+            {
+                cout << "Continue:" << endl
+                     << "1. Yes \n2. Fast Forward 100 rounds" << endl;
+                cin >> resp;
 
-            // clear buffer
-            cin.ignore(30, '\n');
+                if (resp == 2)
+                {
+                    skip += 100;
+                    resp = 1;
+                }
+
+                // clear buffer
+                cin.ignore(30, '\n');
+            }
+            else
+            {
+                skip--;
+            }
         }
-    } while (resp >0);
+    } while (resp == 1);
 
     int colour = this->map->checkIfEnd();
     cout << "---------------------------------------------------------------" << endl;
@@ -331,7 +349,7 @@ void GodOfWar::round(sf::RenderWindow *window)
 
     this->turn = true;
 
-    this->takeTurn(3, window);
+    this->takeTurn(this->map->getCountriesByColour(22).size()/2 + 1, window);
 
     this->map->resolveBattles();
     this->map->cleanBattles();
@@ -351,7 +369,7 @@ void GodOfWar::round(sf::RenderWindow *window)
         this->checkTogglePlayer();
     }
 
-    this->takeTurn(3, window);
+    this->takeTurn(this->map->getCountriesByColour(160).size()/2 + 1,window);
 
     this->map->resolveBattles();
     this->map->cleanBattles();

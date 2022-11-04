@@ -29,6 +29,9 @@ void Battle::battleLoop()
 	
 	while (this->battleActive)
 	{
+		cout<<"-------------------------------------------------------------------"<<endl;
+		cout<<"Start of turn: "<<endl;
+		this->getStateSummary();
 		if(this->checkRetreat()){
 			this->battleActive = false;
 			//break;
@@ -42,6 +45,11 @@ void Battle::battleLoop()
         window.draw(text);
         window.display();
 	}
+	this->setAttackerToDefender();
+	cout<<"-------------------------------------------------------------------"<<endl;
+	cout<<"Battle over"<<endl;
+	this->getStateSummary();
+	cout<<"-------------------------------------------------------------------"<<endl;
 	window.close();
 }
 
@@ -51,7 +59,8 @@ bool Battle::checkRetreat()
 	{
 		if (this->player->playerRetreat(this))
 		{
-			return this->area->retreat("attack");
+			bool retreated = this->area->retreat("attack");
+			return retreated;
 		}
 		else
 		{
@@ -62,7 +71,8 @@ bool Battle::checkRetreat()
 	{
 		if (this->player->playerRetreat(this))
 		{
-			return this->area->retreat("defense");
+			bool retreated = this->area->retreat("defense");
+			return retreated;
 		}
 		else
 		{
@@ -84,7 +94,7 @@ void Battle::setAttackerToDefender(){
 		/*
 		Check that no defender alive
 		*/
-		if((oldAirDefender == NULL || oldAirDefender->getState().compare("Dead") == 0) && (oldLandDefender != NULL && oldLandDefender->getState().compare("Dead") == 0 )){
+		if((oldAirDefender == NULL || oldAirDefender->getState().compare("Dead") == 0) && (oldLandDefender == NULL || oldLandDefender->getState().compare("Dead") == 0 )){
 			this->air->setDefender(oldAirAttacker);
 			this->air->setAttacker(NULL);
 			this->land->setDefender(oldLandAttacker);
@@ -93,11 +103,11 @@ void Battle::setAttackerToDefender(){
 			Set area colour
 			*/
 			if(oldAirAttacker != NULL){
-				this->area->setCountry(oldAirAttacker->getCountry());
+				this->area->changeCountry(oldAirAttacker->getCountry());
 				this->area->setColour();
 				this->area->updateOwner(oldAirAttacker);
 			}else{
-				this->area->setCountry(oldLandAttacker->getCountry());
+				this->area->changeCountry(oldLandAttacker->getCountry());
 				this->area->setColour();
 				this->area->updateOwner(oldLandAttacker);
 			}
@@ -181,10 +191,8 @@ void Battle::takeTurn()
 			}
 			//No defender
 			else{
-				cout<<"End battle"<<endl;
 				this->battleActive = false;
-				this->setAttackerToDefender();
-				cout<<"End battle2"<<endl;
+				//this->setAttackerToDefender();
 			}
 
 		}
@@ -253,6 +261,7 @@ void Battle::takeTurn()
 				if(!this->area->requestReinforcements("defense")){
 					if(this->area->retreat("defense")){
 						cout<<this->land->getDefender()->getCountry()->getName()<<" retreating"<<endl;
+						//this->setAttackerToDefender();
 					}else{
 						cout<<this->land->getDefender()->getCountry()->getName()<<" has nowhere to go... They screwed"<<endl;
 					}
@@ -262,10 +271,8 @@ void Battle::takeTurn()
 		}
 		//No defender left
 		else{
-			cout<<"Battle 253"<<endl;
 			this->battleActive = false;
-			this->setAttackerToDefender();
-			cout<<"Battle 256"<<endl;
+			//this->setAttackerToDefender();
 		}
 	}
 

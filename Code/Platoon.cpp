@@ -43,7 +43,7 @@ void Platoon::construct()
 
 string Platoon::toString(int lineLen)
 {
-	string out="";
+	string out = "";
 	int health = 0;
 	int damage = 0;
 	int deadUnits = 0; cout<<"Platoon - 53"<<endl;
@@ -51,7 +51,8 @@ string Platoon::toString(int lineLen)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		if(it->getState().compare("Dead") == 0){
+		if (it->getState().compare("Dead") == 0)
+		{
 			deadUnits++;
 		}
 	}cout<<"Platoon - 61"<<endl;
@@ -59,94 +60,101 @@ string Platoon::toString(int lineLen)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		if(it->getState().compare("Dead") == 0){
+		if (it->getState().compare("Dead") == 0)
+		{
 			deadUnits++;
 		}
 	}
 
 	this->health = health;
 	this->damage = damage;
-	string add="";
-	cout<<"Platoon - 74"<<endl;
+	string add = "";
+
 	if (health <= 0)
 	{
-		add+= "\n|                        Your platoon is dead";
-		while(add.length()<lineLen){
-			add+= " ";
+		add += "\n|                        Your platoon is dead";
+		while (add.length() < lineLen)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 		this->setUnitState(new DeadState());
 	}
 	else
-	{	
+	{
 
-		add= "|                        Platoon";
-		while(add.length()<lineLen){
-			add+= " ";
+		add = "|                        Platoon";
+		while (add.length() < lineLen)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
-		cout<<"Platoon - 94"<<endl;
-		string countryStr="No country";
-		if(country!=NULL){
-			countryStr=country->getName();
+		add += "|";
+		out += add;
+
+		add = "\n|                        Country: " + country->getName();
+		while (add.length() < lineLen)
+		{
+			add += " ";
 		}
-		add= "\n|                        Country: " + countryStr;
-		while(add.length()<lineLen){
-			add+= " ";
+		add += " |";
+		out += add;
+
+		add = " \n|                           Health: " + to_string(health);
+		while (add.length() < lineLen + 2)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
-		cout<<"Platoon - 101"<<endl;
-		add=" \n|                           Health: " + to_string(health);
-		while(add.length()<lineLen+2){
-			add+= " ";
+		add += "|";
+		out += add;
+
+		add = "\n|                           Damage: " + to_string(damage);
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
-		cout<<"Platoon - 108"<<endl;
-		add= "\n|                           Damage: " + to_string(damage);
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add += "|";
+		out += add;
+
+		add = "\n|                           Amount of Soldiers: " + to_string(humans.size());
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
-		cout<<"Platoon - 115"<<endl;
-		add= "\n|                           Amount of Soldiers: " + to_string(humans.size());
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add += "|";
+		out += add;
+
+		add = "\n|                           Amount of Vehicles: " + to_string(vehicles.size());
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
-		cout<<"Platoon - 122"<<endl;
-		add= "\n|                           Amount of Vehicles: " + to_string(vehicles.size());
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add += "|";
+		out += add;
+
+		add = "\n|                           Amount of Dead Units: " + to_string(deadUnits);
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
-		cout<<"Platoon - 129"<<endl;
-		add= "\n|                           Amount of Dead Units: " + to_string(deadUnits);
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add += "|";
+		out += add;
+
+		add = "\n|                           Amount of Bullets: " + to_string(pewpew);
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
-		cout<<"Platoon - 136"<<endl;
-		add= "\n|                           Amount of Bullets: " + to_string(pewpew);
-		while(add.length()<lineLen+1){
-			add+= " ";
+		add += "|";
+		out += add;
+
+		add = "\n|                           Amount of Explosives: " + to_string(boomboom);
+		while (add.length() < lineLen + 1)
+		{
+			add += " ";
 		}
-		add+= "|";
-		out+=add;
-		cout<<"Platoon - 143"<<endl;
-		add= "\n|                           Amount of Explosives: " + to_string(boomboom);
-		while(add.length()<lineLen+1){
-			add+= " ";
-		}
-		add+= "|";
-		out+=add;
+		add += "|";
+		out += add;
 	}
 
 	return out;
@@ -358,51 +366,89 @@ void Platoon::join(Unit *platoonBranch)
 
 bool Platoon::takeDamage(int damage, bool checkPew)
 {
-	cout << "Take damage" << endl;
+	vector<Unit *> aliveOnes;
+	for (auto it : this->humans)
+	{
+		if (it->getState().compare("Dead") != 0)
+			aliveOnes.push_back(it);
+	}
+	for (auto it : this->vehicles)
+	{
+		if (it->getState().compare("Dead") != 0)
+			aliveOnes.push_back(it);
+	}
 	if (this->getHealth() > 0)
 	{
 		if (checkPew)
 		{
-			Unit *temp = this->takeRandom();
-			temp->takeDamage(damage);
-			if (temp->getHealth() <= 0)
+			int randomIn = rand() % aliveOnes.size();
+			Unit *random = aliveOnes.at(randomIn);
+			if (random->getHealth() > 0)
 			{
-				DeadState *deadState = new DeadState();
-				temp->setUnitState(deadState);
+				random->takeDamage(damage);
+				if (random->getState().compare("Dead") == 0)
+				{
+					for (int i = 0; i < aliveOnes.size(); i++)
+					{
+						if (aliveOnes.at(0) == random)
+						{
+							aliveOnes.erase(aliveOnes.begin() + i);
+						}
+					}
+				}
+				if (this->getHealth() <= 0)
+				{
+					DeadState *deadState = new DeadState();
+					this->setUnitState(deadState);
+				}
 			}
 		}
 		else
 		{
-			int rand1 = rand() % humans.size() + 1;
-			rand1 += rand() % vehicles.size();
+			int rand1 = rand() % aliveOnes.size() + 1;
 			int boomDamage = damage / rand1;
 			for (int x = 0; x < rand1; x++)
 			{
-				Unit *temp = this->takeRandom();
-				temp->takeDamage(boomDamage);
-				if (temp->getHealth() <= 0)
+				int randomIn = rand() % aliveOnes.size();
+				Unit *random = aliveOnes.at(randomIn);
+
+				if (random->getHealth() > 0)
 				{
-					DeadState *deadState = new DeadState();
-					temp->setUnitState(deadState);
-					break;
+					random->takeDamage(boomDamage);
+
+					if (random->getState().compare("Dead") == 0)
+					{
+						for (int i = 0; i < aliveOnes.size(); i++)
+						{
+							if (aliveOnes.at(0) == random)
+							{
+								aliveOnes.erase(aliveOnes.begin() + i);
+							}
+						}
+					}
+
+					if (this->getHealth() <= 0)
+					{
+						DeadState *deadState = new DeadState();
+						this->setUnitState(deadState);
+						break;
+					}
 				}
 			}
 		}
-	}
 
-	if (this->getHealth() > 0)
-	{
-		this->setUnitState(new InjuredState());
-		return true;
-	}
-	else
-	{
-		cout << "DIED - Area 365" << endl;
-		this->setUnitState(new DeadState());
-		return false;
+		if (this->getHealth() > 0)
+		{
+			this->setUnitState(new InjuredState());
+			return true;
+		}
+		else
+		{
+			this->setUnitState(new DeadState());
+			return false;
+		}
 	}
 }
-
 Unit *Platoon::takeRandom()
 {
 	int unit = rand() % 2;
@@ -440,14 +486,14 @@ Platoon::~Platoon()
 	cout<<"Delete humans - Platoon"<<endl;
 	while (!humans.empty())
 	{
-		if(humans.back() != NULL)
+		if (humans.back() != NULL)
 			delete humans.back();
 		humans.pop_back();
 	}
 cout<<"Delete vehicles - Platoon"<<endl;
 	while (!vehicles.empty())
 	{
-		if(humans.back() != NULL)
+		if (humans.back() != NULL)
 			delete vehicles.back();
 		vehicles.pop_back();
 	}

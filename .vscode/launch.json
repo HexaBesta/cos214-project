@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/mnt/c/Users/Marc/Documents/GitHub/cos214-project/Code",
-      "program": "/mnt/c/Users/Marc/Documents/GitHub/cos214-project/Code/build/Debug/outDebug",
+      "cwd": "/mnt/c/Users/ienks/Documents/A. Second Year/S2/COS 214/A. Project/cos214-project/Code",
+      "program": "/mnt/c/Users/ienks/Documents/A. Second Year/S2/COS 214/A. Project/cos214-project/Code/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
