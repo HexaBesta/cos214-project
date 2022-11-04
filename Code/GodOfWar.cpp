@@ -132,8 +132,8 @@ void GodOfWar::takeTurn(int actions)
         int areaIndex = -1;
         if (areas.size() == 0)
         {
-            cout << "This country occupies no areas - lose turn" << endl;
-            break;
+            cout << "This country occupies no areas - lose Action Point" << endl;
+            continue;
         }
         else if (areas.size() == 1)
         {
@@ -322,7 +322,7 @@ void GodOfWar::round()
 
     this->turn = true;
 
-    this->takeTurn(3);
+    this->takeTurn(this->map->getCountriesByColour(22).size()/2 + 1);
 
     this->map->resolveBattles();
     this->map->cleanBattles();
@@ -342,7 +342,7 @@ void GodOfWar::round()
         this->checkTogglePlayer();
     }
 
-    this->takeTurn(3);
+    this->takeTurn(this->map->getCountriesByColour(160).size()/2 + 1);
 
     this->map->resolveBattles();
     this->map->cleanBattles();
