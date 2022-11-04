@@ -10,7 +10,7 @@ void PlatoonBuilder::createVehicles() {
     if(minDraw < 0){
         minDraw = 0;
     }
-    int size = getRandomNumber(minDraw, maxDraw);
+    int size = getRandomNumber(maxDraw, minDraw);
     this->vehicles.reserve(size);
     for(int i = 0; i < size; i++) {
         this->vehicles.push_back(new Vehicle(getRandomNumber(100, 200), 0, getRandomNumber(15, 20), this->country, true));
@@ -26,9 +26,12 @@ void PlatoonBuilder::createSoldiers() {
             minDraw = population;
         }else{
             minDraw = 5;
+            if(minDraw = maxDraw){
+                maxDraw = 4;
+            }
         }
     }
-    int size = getRandomNumber(minDraw, maxDraw);
+    int size = getRandomNumber(maxDraw, minDraw);
     this->soldiers.reserve(size);
     for(int i = 0; i < size; i++) {
         this->soldiers.push_back(new Human(100, 100, getRandomNumber(5, 10), this->country, true));
