@@ -153,7 +153,7 @@ void GodOfWar::takeTurn(int actions)
         /*
         Select an action
         */
-        int action = this->player->chooseActionForCountry();
+        int action = this->player->chooseActionForCountry(areas.at(areaIndex), this->map);
 
         /*
         Chosen to attack transport route
@@ -242,7 +242,7 @@ void GodOfWar::takeTurn(int actions)
             }
             else
             {
-                adjAreaIndex = this->player->chooseAdjacentArea(adjacentAreas);
+                adjAreaIndex = this->player->chooseAdjacentArea(adjacentAreas, areas.at(areaIndex));
             }
 
             cout << "Marching from " << areas.at(areaIndex)->getName() << " to " << adjacentAreas.at(adjAreaIndex)->getName() << endl;

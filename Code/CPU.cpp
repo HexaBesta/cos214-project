@@ -150,8 +150,20 @@ int CPU::chooseCountry(vector<Country *> country, Map *map)
     }
 }
 
-int CPU::chooseActionForCountry()
+int CPU::chooseActionForCountry(Area * area, Map * map)
 {
+    vector<Area *> adj = map->listAdjacent(area, false);
+    int colour = area->getColour();
+    if(colour == 22){
+        colour = 160;
+    }else{
+        colour = 22;
+    }
+    for(auto it: adj){
+        if(it->getColour() == colour){
+            return 0;
+        }
+    }
     int value = (rand()%5) % (4);
     return value;
 }
@@ -169,8 +181,21 @@ int CPU::chooseAreaForAction(vector<Area *> area)
     }
 }
 
-int CPU::chooseAdjacentArea(vector<Area *> adjacentArea)
+int CPU::chooseAdjacentArea(vector<Area *> adjacentArea, Area * area)
 {
+    int colour = area->getColour();
+    if(colour == 22){
+        colour = 160;
+    }else{
+        colour = 22;
+    }
+    int x = 0;
+    for(auto it: adjacentArea){
+        if(it->getColour() == colour){
+            return x;
+        }
+        x++;
+    }
     if (!adjacentArea.empty())
     {
         int index = rand() % adjacentArea.size();
@@ -273,7 +298,7 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    srand(2345);
+    srand(0);
     int ranNum = rand() % ((8)) + 6;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;

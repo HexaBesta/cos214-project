@@ -48,7 +48,7 @@ public:
      *  - 1 if requestResource
      *  - 2 if march into area
      */
-    virtual int chooseActionForCountry();
+    virtual int chooseActionForCountry(Area * area, Map * map);
 
     /**
      * @brief choose which area to take action in
@@ -64,7 +64,7 @@ public:
      * @param adjAreas
      * @return int index of chosen
      */
-    virtual int chooseAdjacentArea(vector<Area *> adjAreas);
+    virtual int chooseAdjacentArea(vector<Area *> adjAreas, Area * area = NULL);
 
     
     /**
