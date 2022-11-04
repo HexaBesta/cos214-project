@@ -140,7 +140,8 @@ void GodOfWar::takeTurn(int actions)
                 break;
             }
         }
-        else if (areas.size() == 1)
+
+        if (areas.size() == 1)
         {
             areaIndex = 0;
         }
@@ -157,7 +158,7 @@ void GodOfWar::takeTurn(int actions)
         /*
         Chosen to attack transport route
         */
-        if (action == 0)
+        if (action == 1)
         {
             /*
             List of adjacent areas to destroy transport routes between
@@ -204,7 +205,7 @@ void GodOfWar::takeTurn(int actions)
         /*
         Request resources
         */
-        else if (action == 1)
+        else if (action == 2)
         {
             int resource = this->player->chooseResource(areas.at(areaIndex));
             if(resource == -1){
@@ -223,7 +224,7 @@ void GodOfWar::takeTurn(int actions)
         /*
         March to adjacent area
         */
-        else if (action == 2)
+        else if (action == 0)
         {
             /*
             List of adjacent areas to march to

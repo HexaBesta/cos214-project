@@ -1,5 +1,6 @@
 #include "CPU.h"
 #include "Area.h"
+#include <random>
 
 bool CPU::playerRetreat(Battle *battle)
 {
@@ -151,7 +152,7 @@ int CPU::chooseCountry(vector<Country *> country, Map *map)
 
 int CPU::chooseActionForCountry()
 {
-    int value = rand() % (4);
+    int value = (rand()%5) % (4);
     return value;
 }
 
