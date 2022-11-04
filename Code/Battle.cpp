@@ -185,8 +185,9 @@ void Battle::takeTurn()
 			}
 			//If there is only an air defender - request reinforcements
 			else{
-				
+				cout<<"Requesting reinforcements - land cannot fight air"<<endl;
 				if(!this->area->requestReinforcements("attack")){
+					cout<<"Requesting reinforcements failed-trying to retreat"<<endl;
 					this->area->retreat("attack");
 				}	
 				cout<<"------------------------------------------"<<endl<<endl;
@@ -235,8 +236,9 @@ void Battle::takeTurn()
 				
 				if(!this->area->requestReinforcements("defense")){
 					if(this->area->retreat("defense")){
-						cout<<this->land->getDefender()->getCountry()->getName()<<" retreating"<<endl;
+						//cout<<this->land->getDefender()->getCountry()->getName()<<" retreating"<<endl;
 						//this->setAttackerToDefender();
+						this->battleActive = false;
 					}else{
 						cout<<this->land->getDefender()->getCountry()->getName()<<" has nowhere to go... They screwed"<<endl;
 					}
