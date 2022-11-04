@@ -3,16 +3,24 @@
 
 bool CPU::playerRetreat(Battle *battle)
 {
-    battle->getStateSummary();
+    //battle->getStateSummary();
     if (battle->getTurn())
     {
-        if (battle->getAir()->getAttacker()!=nullptr && battle->getAir()->getAttacker()->getHealth() <= 500)
+        if (battle->getAir()->getAttacker()!=nullptr)
         {
-            return true;
+            int healthAir = battle->getAir()->getAttacker()->getHealth();
+            int moralAir = battle->getAir()->getAttacker()->getMoral();
+            if(healthAir<=500 || moralAir<= 30){
+                return true;
+            }
         }
-        else if (battle->getLand()->getAttacker()!=nullptr && battle->getLand()->getAttacker()->getHealth() <= 500)
+        else if (battle->getLand()->getAttacker()!=nullptr)
         {
-            return true;
+            int healthLand = battle->getLand()->getAttacker()->getHealth();
+            int moralLand = battle->getLand()->getAttacker()->getMoral();
+            if(healthLand<=500 || moralLand<= 30){
+                return true;
+            }
         }
         else
         {
@@ -21,13 +29,21 @@ bool CPU::playerRetreat(Battle *battle)
     }
     else
     {
-        if (battle->getAir()->getDefender()!=nullptr && battle->getAir()->getDefender()->getHealth() <= 500)
+        if (battle->getAir()->getDefender()!=nullptr)
         {
-            return true;
+            int healthAir = battle->getAir()->getDefender()->getHealth();
+            int moralAir = battle->getAir()->getDefender()->getMoral();
+            if(healthAir<=500 || moralAir<= 30){
+                return true;
+            }
         }
-        else if (battle->getLand()->getDefender()!=nullptr && battle->getLand()->getDefender()->getHealth() <= 500)
+        else if (battle->getLand()->getDefender()!=nullptr)
         {
-            return true;
+            int healthLand = battle->getLand()->getDefender()->getHealth();
+            int moralLand = battle->getLand()->getDefender()->getMoral();
+            if(healthLand<=500 || moralLand<= 30){
+                return true;
+            }
         }
         else
         {
