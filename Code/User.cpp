@@ -487,7 +487,7 @@ int User::platoonType()
 
     string resp = "";
 
-    cout << "Which branch do you want to crate?" << endl
+    cout << "Which branch do you want to create?" << endl
     << "0 - Land" << endl
     << "1 - Air"  << endl;
 
@@ -512,6 +512,7 @@ int User::platoonType()
             int intResp = 0;
             ss << resp;
             ss >> intResp;
+            cin.ignore(30, '\n');
             return 0;
         }
     }
