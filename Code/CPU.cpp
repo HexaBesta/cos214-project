@@ -3,14 +3,14 @@
 
 bool CPU::playerRetreat(Battle *battle)
 {
-    battle->getStateSummary();
+    //battle->getStateSummary();
     if (battle->getTurn())
     {
-        if (battle->getAir()->getAttacker()!=nullptr && battle->getAir()->getAttacker()->getHealth() <= 500)
+        if (battle->getAir()->getAttacker()!=nullptr && (battle->getAir()->getAttacker()->getHealth() <= 500 || battle->getAir()->getAttacker()->getAverageMoral() <= 20))
         {
             return true;
         }
-        else if (battle->getLand()->getAttacker()!=nullptr && battle->getLand()->getAttacker()->getHealth() <= 500)
+        else if (battle->getLand()->getAttacker()!=nullptr && (battle->getLand()->getAttacker()->getHealth() <= 500 || battle->getLand()->getAttacker()->getAverageMoral() <= 30))
         {
             return true;
         }
@@ -21,11 +21,11 @@ bool CPU::playerRetreat(Battle *battle)
     }
     else
     {
-        if (battle->getAir()->getDefender()!=nullptr && battle->getAir()->getDefender()->getHealth() <= 500)
+        if (battle->getAir()->getDefender()!=nullptr && (battle->getAir()->getDefender()->getHealth() <= 500 || battle->getAir()->getDefender()->getAverageMoral() <= 20))
         {
             return true;
         }
-        else if (battle->getLand()->getDefender()!=nullptr && battle->getLand()->getDefender()->getHealth() <= 500)
+        else if (battle->getLand()->getDefender()!=nullptr && (battle->getLand()->getDefender()->getHealth() <= 500 || battle->getLand()->getDefender()->getAverageMoral() <= 30))
         {
             return true;
         }
@@ -256,8 +256,8 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    srand(8);
-    int ranNum = rand() % ((8)) + 6;
+    srand(2345);
+    int ranNum = rand() % ((8)) + 8;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;
     for (int i = 0; i < ranNum; i++)

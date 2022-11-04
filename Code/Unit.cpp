@@ -115,6 +115,7 @@ int Unit::getMoral()
 bool Unit::takeDamage(int damage, bool checkStrat)
 {
 	this->health = this->health - damage;
+	this->moral = this->moral - (damage*(1.25));
 	if (this->health <= 0)
 	{
 		this->health = 0;

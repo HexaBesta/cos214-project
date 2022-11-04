@@ -213,6 +213,7 @@ void Platoon::setAccumlateMoral()
 	this->moral = moral;
 }
 
+
 int Platoon::getMoral()
 {
 	this->setAccumlateMoral();
