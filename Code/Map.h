@@ -220,6 +220,13 @@ public:
 	 * @return vector<Country*> will return all the countries in the map
 	 */
 	vector<Country*> getCountries();
+
+	/**
+	 * @brief Update country's moral and population growth
+	 * 
+	 */
+	void updateCountries();
+
 	/**
 	 * @brief Destroy the Map object for memory purposes
 	 * 

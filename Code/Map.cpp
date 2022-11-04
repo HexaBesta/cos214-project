@@ -743,28 +743,34 @@ bool Map::addPlatoonToMap(Unit *platoon)
 	vector<Area *> possibleAreas = this->getAreasByCountry(platoon->getCountry());
 	if (possibleAreas.size() == 0)
 	{
-		return false;
-		/*
 		if(platoon->getCountry() == NULL){
+			return false;
+		}else if(platoon->getCountry()->getAlliances() == NULL){
 			return false;
 		}
 
-		if(platoon->getCountry()->getAlliances() != NULL){
-			possibleAreas = this->getAreasByColour(platoon->getCountry()->getAlliances()->getColour());
+		possibleAreas = this->getAreasByColour(platoon->getCountry()->getAlliances()->getColour());
+		
+		if(possibleAreas.size() == 0){
+			return false;
 		}
-		if (possibleAreas.size() == 0)
-		{
-			possibleAreas = this->getAreasByColour(94);
-			if (possibleAreas.size() == 0)
-			{
-				return false;
-			}
-		}*/
 	}
 	int index = this->player->chooseAreaForAction(possibleAreas);
 	possibleAreas.at(index)->marchIn(platoon, NULL);
 	return true;
 }
+
+void Map::updateCountries()
+{
+	for(auto c: this->allCountries){
+		if(c){
+			c->babiesGrowUpNow();
+			c->updateCountryMoral();
+		}
+	}
+}
+
+
 
 Map::~Map()
 {

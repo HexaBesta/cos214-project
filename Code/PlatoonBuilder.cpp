@@ -4,15 +4,31 @@ using namespace std;
 int getRandomNumber(int min, int max);
 
 void PlatoonBuilder::createVehicles() {
-    int size = getRandomNumber(5, 10);
+    int population = this->country->getPopulation();
+    int maxDraw = (int)(population*0.05 + 1);
+    int minDraw = maxDraw -5;
+    if(minDraw < 0){
+        minDraw = 0;
+    }
+    int size = getRandomNumber(minDraw, maxDraw);
     this->vehicles.reserve(size);
     for(int i = 0; i < size; i++) {
-        this->vehicles.push_back(new Vehicle(getRandomNumber(100, 200), 100, getRandomNumber(15, 20), this->country, true));
+        this->vehicles.push_back(new Vehicle(getRandomNumber(100, 200), 0, getRandomNumber(15, 20), this->country, true));
     }
 }
 
 void PlatoonBuilder::createSoldiers() {
-    int size = getRandomNumber(20, 30);
+    int population = this->country->getPopulation();
+    int maxDraw = (int)(population*0.15 + 1);
+    int minDraw = maxDraw - 10;
+    if(minDraw < 0){
+        if(population<5){
+            minDraw = population;
+        }else{
+            minDraw = 5;
+        }
+    }
+    int size = getRandomNumber(minDraw, maxDraw);
     this->soldiers.reserve(size);
     for(int i = 0; i < size; i++) {
         this->soldiers.push_back(new Human(100, 100, getRandomNumber(5, 10), this->country, true));
@@ -58,7 +74,7 @@ void PlatoonBuilder::clearBuilder() {
 }
 
 int getRandomNumber(int max, int min) {
-    return rand() % max + min;
+    return ((rand() % (max - min)) + min);
 }
 
 // health, 

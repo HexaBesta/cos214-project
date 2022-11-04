@@ -21,6 +21,7 @@ class Country {
 		vector<Unit*> military;
 		Director * director;
 		Player* player;
+		int civilianPopulation;
 
 	public:
 		/**
@@ -28,11 +29,6 @@ class Country {
 		 * @param name is the name of the country
 		 */
 		Country(string name,int colour, Player* player);
-
-		/**
-		 * @brief Country Deconstructor, will delete the countryState?
-		 */
-		~Country();
 
 		/**
 		 * @brief returns the state of the currently set country state. !! Need to implement in country state !!
@@ -64,6 +60,11 @@ class Country {
 		 */
 		Alliances* getAlliances();
 
+		/**
+		 * @brief Set the Alliance object of 
+		 * 
+		 * @param alliance 
+		 */
 		void setAlliance(Alliances * alliance);
 
 		/**
@@ -100,6 +101,33 @@ class Country {
 		 * @return Player* 
 		 */
 		Player* getPlayer();
+
+		/**
+		 * @brief Get the Civilian population of the country
+		 * 
+		 * @return int 
+		 */
+		int getPopulation();
+
+		/**
+		 * @brief Decrease the civilianPopulation of the country
+		 * 
+		 * @param toDec 
+		 * @return int amount to decrese by 
+		 */
+		int decreasePopulation(int toDec);
+
+		
+		/**
+		 * @brief Increases population by 10%
+		 * 
+		 */
+		void babiesGrowUpNow();
+
+		/**
+		 * @brief Country Deconstructor, will delete the countryState and military vector
+		 */
+		~Country();
 
 };
 
