@@ -132,8 +132,13 @@ void GodOfWar::takeTurn(int actions)
         int areaIndex = -1;
         if (areas.size() == 0)
         {
-            cout << "This country occupies no areas - lose Action Point" << endl;
-            continue;
+            cout << "This country occupies no areas - look for areas in your alliance" << endl;
+            if(countries.at(countryIndex)->getAlliances() != NULL)
+                areas = this->map->getAreasByColour(countries.at(countryIndex)->getAlliances()->getColour());
+            if(areas.size() == 0){
+                cout<<"Looks like there's nowhere to go... END TURN"<<endl;
+                break;
+            }
         }
         else if (areas.size() == 1)
         {
@@ -291,6 +296,9 @@ void GodOfWar::warLoop()
 
     int colour = this->map->checkIfEnd();
     cout << "---------------------------------------------------------------" << endl;
+    
+    this->map->printMap();
+
     cout << "---------------------------------------------------------------" << endl;
     if (colour == 94)
     {
