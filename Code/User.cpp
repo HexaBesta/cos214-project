@@ -261,42 +261,50 @@ int User::chooseAdjacentArea(vector<Area *> areas)
 
 int User::chooseResource(Area *area)
 {
-    int resp = 0;
-    cout << "Choose what resource to request for area: \n 0 - Medics  \n 1 - Ammo \n 2 - Goods" << endl;
-    cin >> resp;
-    cin.ignore(30, '\n');
-    if (resp >= 0 && resp <= 2)
-    {
-        return resp;
-    }
-    else
-    {
-        return 0;
-    }
-    // if (area->getFactory(resp) == nullptr)
+    // int resp = 0;
+    // cout << "Choose what resource to request for area: \n 0 - Medics  \n 1 - Ammo \n 2 - Goods" << endl;
+    // cin >> resp;
+    // cin.ignore(30, '\n');
+    // if (resp >= 0 && resp <= 2)
     // {
-
-    //     getline(cin, resp);
-
-    //     if (resp == "")
-    //     {
-    //         cout << "Invalid input - try again" << endl;
-    //     }
-
-    //     else if (!(resp == "1" || resp == "2" || resp == "3"))
-    //     {
-
-    //         cout << "Invalid input - try again" << endl;
-    //     }
-
-    //     else
-    //     {
-    //         stringstream ss;
-    //         ss << resp;
-    //         ss >> intResp;
-    //         return intResp;
-    //     }
+    //     return resp;
     // }
+    // else
+    // {
+    //     return 0;
+    // }
+
+    string resp = "";
+
+    cout << "Choose what resource to request for area: " << endl
+         << "0 - Medics" << endl
+         << "1 - Ammunition" << endl
+         << "2 - Goods" << endl;
+
+    while (1)
+    {
+        getline(cin, resp);
+
+        if (resp.compare("") == 0)
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0) || (resp.compare("2") == 0) || (resp.compare("3") == 0)))
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else
+        {
+            stringstream ss;
+            int intResp = 0;
+            ss << resp;
+            ss >> intResp;
+            cin.ignore(30, '\n');
+            return intResp;
+        }
+    }
 }
 
 bool User::changePlayer()
