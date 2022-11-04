@@ -1,5 +1,5 @@
 # The War Games by Segmentation Fault
-![https://www.pcgamesn.com/wp-content/sites/pcgamesn/2021/09/the-best-war-games-on-pc-2021.jpg](Arma 3 War Games)
+![Arma 3](https://www.pcgamesn.com/wp-content/sites/pcgamesn/2021/09/the-best-war-games-on-pc-2021.jpg)
 
 Run a simulation or create your own war. Let it run by itself or be the commander of your forces.
 
