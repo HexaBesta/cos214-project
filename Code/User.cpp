@@ -8,54 +8,54 @@ bool User::playerRetreat(Battle *battle)
 {
     battle->getStateSummary();
 
-    int resp;
-    cout << "Retreat" << endl
-         << "1. Yes \n2. Not necessary" << endl;
-    cin >> resp;
+    // int resp;
+    // cout << "Retreat" << endl
+    //      << "1. Yes \n2. Not necessary" << endl;
+    // cin >> resp;
 
-    // clear buffer
-    cin.ignore(30, '\n');
+    // // clear buffer
+    // cin.ignore(30, '\n');
 
-    if (resp == 1)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-
-    // string resp = "";
-
-    // cout << "Retreat?" << endl
-    //      << "1 - Yes" << endl
-    //      << "2 - Not necessary" << endl;
-
-    // while (1)
+    // if (resp == 1)
     // {
-
-    //     getline(cin, resp);
-
-    //     if (resp == "")
-    //     {
-    //         cout << "Invalid input - try again" << endl;
-    //     }
-
-    //     else if (!(resp == "1" || resp == "2"))
-    //     {
-    //         cout << "Invalid input - try again" << endl;
-    //     }
-
-    //     else if (resp == "1")
-    //     {
-    //         return true;
-    //     }
-
-    //     else
-    //     {
-    //         return false;
-    //     }
+    //     return true;
     // }
+    // else
+    // {
+    //     return false;
+    // }
+
+    string resp;
+
+    cout << "Retreat?" << endl
+         << "0 - Yes" << endl
+         << "1 - No" << endl;
+
+    while (1)
+    {
+        getline(cin, resp);
+
+        if (resp.compare("") == 0)
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0)))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp.compare("0") == 0)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
 }
 
 bool User::checkChangeStrategy(Unit *active)
@@ -203,9 +203,12 @@ int User::chooseResource(Area *area)
     cout << "Choose what resource to request for area: \n 0 - Medics  \n 1 - Ammo \n 2 - Goods" << endl;
     cin >> resp;
     cin.ignore(30, '\n');
-    if(resp >=0 && resp<=2){
+    if (resp >= 0 && resp <= 2)
+    {
         return resp;
-    }else{
+    }
+    else
+    {
         return 0;
     }
     // if (area->getFactory(resp) == nullptr)
@@ -251,7 +254,7 @@ bool User::changePlayer()
         }
     } while (resp != 0 || resp != 1);
     return false;
-    
+
     // int resp = 0;
     // do
     // {
