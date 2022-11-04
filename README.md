@@ -19,3 +19,7 @@ This only applies if you are running this project in WSL.
 5. To run the project, just run the make command in the terminal, `make`, and the GUI will open inside of a XLaunch window.
 
 We do recromend running this project inside of Native Linux, wether it being a Linux Virtual Machine or an actaul instance of Linux running. There is a lot less setup and is easier to run.
+
+# Documentation
+- You can read our project documentation [here](https://docs.google.com/document/d/1wIGAnmKmzZtf5SyiAyfpMH3J3QU_R3UXf-i8mV9dXS0/).
+- You can also view our project board [here](https://github.com/users/sloththedev/projects/6)].
