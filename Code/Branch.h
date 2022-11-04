@@ -150,12 +150,7 @@ public:
 	 */
 	virtual sf::Sprite* getSprite();
 	
-	/**
-	 * @brief Destroy the Branch object
-	 *
-	 */
-	virtual ~Branch();
-	virtual int *getAmmo();
+	
 
 	/**
 	 * @brief Returns the average moral of the branch

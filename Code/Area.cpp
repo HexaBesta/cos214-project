@@ -30,7 +30,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 	sprite->setTexture(texture);
 	 sprite->setTextureRect(sf::IntRect(0, 0, 310, 115));
 	setFactoryTexture();
-    sprite->setScale(0.15,0.10);
+    sprite->setScale(0.1,0.15);
 	
 	if (colour != 94)
 	{

@@ -93,11 +93,13 @@ GodOfWar::GodOfWar(string setupFile)
 void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
 {
     sf::Event event;
-     while (window->pollEvent(event)){}
+    while (window->pollEvent(event))
+    {
+    }
     // //this->map->printMap();
     window->clear(sf::Color::Black);
-     sf::Clock c = sf::Clock();
-    //map->setAreaBorders();
+    sf::Clock c = sf::Clock();
+    // map->setAreaBorders();
     map->draw(window, &c);
     window->display();
     Alliances *active = (turn) ? this->groupOne : this->groupTwo;
@@ -148,10 +150,11 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         if (areas.size() == 0)
         {
             cout << "This country occupies no areas - look for areas in your alliance" << endl;
-            if(countries.at(countryIndex)->getAlliances() != NULL)
+            if (countries.at(countryIndex)->getAlliances() != NULL)
                 areas = this->map->getAreasByColour(countries.at(countryIndex)->getAlliances()->getColour());
-            if(areas.size() == 0){
-                cout<<"Looks like there's nowhere to go... END TURN"<<endl;
+            if (areas.size() == 0)
+            {
+                cout << "Looks like there's nowhere to go... END TURN" << endl;
                 break;
             }
         }
@@ -197,7 +200,6 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
                     adjacentOfAdjAreas.push_back(this->map->listAdjacent(it, true));
                 }
                 index = player->chooseAreasToDestroyTransportRoutes(adjacentAreas, adjacentOfAdjAreas, areas.at(areaIndex));
-               
             }
 
             if (index != NULL)
@@ -223,8 +225,9 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         else if (action == 2)
         {
             int resource = this->player->chooseResource(areas.at(areaIndex));
-            if(resource == -1){
-                cout<<"This area already has all factories"<<endl;
+            if (resource == -1)
+            {
+                cout << "This area already has all factories" << endl;
             }
             else if (areas.at(areaIndex)->requestFactory(resource))
             {
@@ -273,7 +276,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         }
         actions--;
         window->clear(sf::Color::Black);
-        //map->setAreaBorders();
+        // map->setAreaBorders();
         map->draw(window, &c);
         window->display();
     }
@@ -293,7 +296,7 @@ void GodOfWar::warLoop()
     int skip = 0;
     do
     {
-        round(&window);
+
         if (this->map->checkIfEnd() != 94)
         {
             resp = 0;
@@ -311,6 +314,10 @@ void GodOfWar::warLoop()
                     skip += 100;
                     resp = 1;
                 }
+                else if (resp != 1)
+                {
+                    break;
+                }
 
                 // clear buffer
                 cin.ignore(30, '\n');
@@ -320,11 +327,12 @@ void GodOfWar::warLoop()
                 skip--;
             }
         }
+        round(&window);
     } while (resp == 1);
 
     int colour = this->map->checkIfEnd();
     cout << "---------------------------------------------------------------" << endl;
-    
+
     this->map->printMap();
 
     cout << "---------------------------------------------------------------" << endl;
@@ -343,6 +351,19 @@ void GodOfWar::warLoop()
             cout << "WAR ENDS WITH " << this->groupTwo->getName() << " AS THE GLOBAL SUPERPOWER" << endl;
         }
     }
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+            }
+        }
+    }
 }
 
 void GodOfWar::round(sf::RenderWindow *window)
@@ -358,7 +379,7 @@ void GodOfWar::round(sf::RenderWindow *window)
 
     this->turn = true;
 
-    this->takeTurn(this->map->getCountriesByColour(22).size()/2 + 1, window);
+    this->takeTurn(this->map->getCountriesByColour(22).size() / 2 + 1, window);
 
     this->map->resolveBattles();
     this->map->cleanBattles();
@@ -378,7 +399,7 @@ void GodOfWar::round(sf::RenderWindow *window)
         this->checkTogglePlayer();
     }
 
-    this->takeTurn(this->map->getCountriesByColour(160).size()/2 + 1,window);
+    this->takeTurn(this->map->getCountriesByColour(160).size() / 2 + 1, window);
 
     this->map->resolveBattles();
     this->map->cleanBattles();
@@ -431,5 +452,5 @@ GodOfWar::~GodOfWar()
     /*
     Destroy ImageLibrary
     */
-   ImageLibrary::DestroyInstance();
+    ImageLibrary::DestroyInstance();
 }
