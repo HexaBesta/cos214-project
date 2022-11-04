@@ -1,18 +1,27 @@
 #include "CPU.h"
 #include "Area.h"
+#include <random>
 
 bool CPU::playerRetreat(Battle *battle)
 {
-    battle->getStateSummary();
+    //battle->getStateSummary();
     if (battle->getTurn())
     {
-        if (battle->getAir()->getAttacker()!=nullptr && battle->getAir()->getAttacker()->getHealth() <= 500)
+        if (battle->getAir()->getAttacker()!=nullptr)
         {
-            return true;
+            int healthAir = battle->getAir()->getAttacker()->getHealth();
+            int moralAir = battle->getAir()->getAttacker()->getMoral();
+            if(healthAir<=500 || moralAir<= 30){
+                return true;
+            }
         }
-        else if (battle->getLand()->getAttacker()!=nullptr && battle->getLand()->getAttacker()->getHealth() <= 500)
+        else if (battle->getLand()->getAttacker()!=nullptr)
         {
-            return true;
+            int healthLand = battle->getLand()->getAttacker()->getHealth();
+            int moralLand = battle->getLand()->getAttacker()->getMoral();
+            if(healthLand<=500 || moralLand<= 30){
+                return true;
+            }
         }
         else
         {
@@ -21,13 +30,21 @@ bool CPU::playerRetreat(Battle *battle)
     }
     else
     {
-        if (battle->getAir()->getDefender()!=nullptr && battle->getAir()->getDefender()->getHealth() <= 500)
+        if (battle->getAir()->getDefender()!=nullptr)
         {
-            return true;
+            int healthAir = battle->getAir()->getDefender()->getHealth();
+            int moralAir = battle->getAir()->getDefender()->getMoral();
+            if(healthAir<=500 || moralAir<= 30){
+                return true;
+            }
         }
-        else if (battle->getLand()->getDefender()!=nullptr && battle->getLand()->getDefender()->getHealth() <= 500)
+        else if (battle->getLand()->getDefender()!=nullptr)
         {
-            return true;
+            int healthLand = battle->getLand()->getDefender()->getHealth();
+            int moralLand = battle->getLand()->getDefender()->getMoral();
+            if(healthLand<=500 || moralLand<= 30){
+                return true;
+            }
         }
         else
         {
@@ -133,9 +150,21 @@ int CPU::chooseCountry(vector<Country *> country, Map *map)
     }
 }
 
-int CPU::chooseActionForCountry()
+int CPU::chooseActionForCountry(Area * area, Map * map)
 {
-    int value = rand() % (4);
+    vector<Area *> adj = map->listAdjacent(area, false);
+    int colour = area->getColour();
+    if(colour == 22){
+        colour = 160;
+    }else{
+        colour = 22;
+    }
+    for(auto it: adj){
+        if(it->getColour() == colour){
+            return 0;
+        }
+    }
+    int value = (rand()%5) % (4);
     return value;
 }
 
@@ -152,8 +181,21 @@ int CPU::chooseAreaForAction(vector<Area *> area)
     }
 }
 
-int CPU::chooseAdjacentArea(vector<Area *> adjacentArea)
+int CPU::chooseAdjacentArea(vector<Area *> adjacentArea, Area * area)
 {
+    int colour = area->getColour();
+    if(colour == 22){
+        colour = 160;
+    }else{
+        colour = 22;
+    }
+    int x = 0;
+    for(auto it: adjacentArea){
+        if(it->getColour() == colour){
+            return x;
+        }
+        x++;
+    }
     if (!adjacentArea.empty())
     {
         int index = rand() % adjacentArea.size();
@@ -256,7 +298,7 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    srand(2345);
+    srand(0);
     int ranNum = rand() % ((8)) + 6;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;

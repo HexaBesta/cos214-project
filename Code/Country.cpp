@@ -16,6 +16,7 @@ Country::Country(string name,int colour, Player* player)
 	this->military.push_back(NULL);
 	this->military.clear();
 	this->moraleAverage = 100;
+	this->civilianPopulation = rand()%(100) + 150;
 	this->player = player;
 	// default state
 }
@@ -96,12 +97,17 @@ string Country::getName()
 }
 
 void Country::recruitPlatoon(Map * map){
-	if(this->getCountryMoral()<40){
+	/*
+	Check country moral
+	*/
+	if(this->getCountryMoral()<30){
 		cout<<"No new recruits are lining up... "<<this->getName()<<"'s moral is running low, better send those troops some goods"<<endl;
 		return;
 	}
 	Unit * unit = this->countryState->recruitPlatoon(this->director, this, player);
+
 	if(unit){
+		this->decreasePopulation(unit->getSize());
 		unit->setCountry(this);
 		this->military.push_back(unit);
 		this->updateCountryMoral();
@@ -137,4 +143,18 @@ void Country::setPlayer(Player* player){
 
 Player* Country::getPlayer(){
 	return this->player;
+}
+
+int Country::getPopulation(){
+	return this->civilianPopulation;
+}
+
+void Country::decreasePopulation(int toDec){
+	this->civilianPopulation -= toDec;
+}
+
+void Country::babiesGrowUpNow(){
+	double increase = this->civilianPopulation*1.1;
+	int inc = (int)(increase+1);
+	this->civilianPopulation = this->civilianPopulation+inc;
 }

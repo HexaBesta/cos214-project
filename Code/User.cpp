@@ -86,10 +86,10 @@ int User::chooseCountry(vector<Country *> country, Map* map)
     return resp;
 }
 
-int User::chooseActionForCountry()
+int User::chooseActionForCountry(Area * area, Map * map)
 {
     int resp = 0;
-    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - recruit troops\n 4 - end turn" << endl;
+    cout << "Choose action to perform: \n 0 - march in \n 1 - destroy transport \n 2 - request transport factories \n 3 - recruit troops\n 4 - end turn" << endl;
     cin >> resp;
     cin.ignore(30, '\n');
     return resp;
@@ -109,7 +109,7 @@ int User::chooseAreaForAction(vector<Area *> areas)
     return resp;
 }
 
-int User::chooseAdjacentArea(vector<Area *> areas)
+int User::chooseAdjacentArea(vector<Area *> areas, Area * area)
 {
     int resp = 0;
     cout << "Choose adjacent area from the list below:" << endl;

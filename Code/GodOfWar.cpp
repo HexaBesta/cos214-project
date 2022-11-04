@@ -147,10 +147,16 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         int areaIndex = -1;
         if (areas.size() == 0)
         {
-            cout << "This country occupies no areas - lose Action Point" << endl;
-            continue;
+            cout << "This country occupies no areas - look for areas in your alliance" << endl;
+            if(countries.at(countryIndex)->getAlliances() != NULL)
+                areas = this->map->getAreasByColour(countries.at(countryIndex)->getAlliances()->getColour());
+            if(areas.size() == 0){
+                cout<<"Looks like there's nowhere to go... END TURN"<<endl;
+                break;
+            }
         }
-        else if (areas.size() == 1)
+
+        if (areas.size() == 1)
         {
             areaIndex = 0;
         }
@@ -162,12 +168,12 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         /*
         Select an action
         */
-        int action = this->player->chooseActionForCountry();
+        int action = this->player->chooseActionForCountry(areas.at(areaIndex), this->map);
 
         /*
         Chosen to attack transport route
         */
-        if (action == 0)
+        if (action == 1)
         {
             /*
             List of adjacent areas to destroy transport routes between
@@ -214,7 +220,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         /*
         Request resources
         */
-        else if (action == 1)
+        else if (action == 2)
         {
             int resource = this->player->chooseResource(areas.at(areaIndex));
             if(resource == -1){
@@ -233,7 +239,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         /*
         March to adjacent area
         */
-        else if (action == 2)
+        else if (action == 0)
         {
             /*
             List of adjacent areas to march to
@@ -251,7 +257,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
             }
             else
             {
-                adjAreaIndex = this->player->chooseAdjacentArea(adjacentAreas);
+                adjAreaIndex = this->player->chooseAdjacentArea(adjacentAreas, areas.at(areaIndex));
             }
 
             cout << "Marching from " << areas.at(areaIndex)->getName() << " to " << adjacentAreas.at(adjAreaIndex)->getName() << endl;
@@ -318,6 +324,9 @@ void GodOfWar::warLoop()
 
     int colour = this->map->checkIfEnd();
     cout << "---------------------------------------------------------------" << endl;
+    
+    this->map->printMap();
+
     cout << "---------------------------------------------------------------" << endl;
     if (colour == 94)
     {

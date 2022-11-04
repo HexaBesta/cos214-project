@@ -43,14 +43,20 @@ public:
     virtual int chooseCountry(vector<Country *> countries, Map *map);
 
     /**
-     * @brief choose which action player wants to take with country
-     *
-     * @return int:
-     *  - 0 if attack transport route
-     *  - 1 if requestResource
-     *  - 2 if march into area
-     */
-    virtual int chooseActionForCountry();
+         * @brief choose which action player wants to take with country
+         * 
+         * @param area the area who will take the action
+         * @param map the map in use
+         * 
+         * @return int:
+         *  - 0 if march into area
+         *  - 1 if attack transport route
+         *  - 2 if requestResource
+         *  - 3 if recruit
+         *  - other end turn
+         *  
+         */
+    virtual int chooseActionForCountry(Area * area, Map * map);
 
     /**
      * @brief choose which area to take action in
@@ -66,7 +72,7 @@ public:
      * @param adjAreas
      * @return int
      */
-    virtual int chooseAdjacentArea(vector<Area *> adjAreas);
+    virtual int chooseAdjacentArea(vector<Area *> adjAreas, Area * area);
 
     /**
      * @brief choose two areas to destroy transport routes between

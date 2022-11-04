@@ -61,6 +61,14 @@ void Branch::changeStrategy(){
 	this->unit->changeStrategy();
 }
 
+int Branch::getMoral(){
+	return this->unit->getMoral();
+}
+
+int Branch::getHealth(){
+	return this->unit->getHealth();
+}
+
 string Branch::toString(int lineLen){
 	return this->unit->toString(lineLen);
 }

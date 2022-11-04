@@ -17,6 +17,9 @@ string JoinedState::requestState() {
 
 Unit * JoinedState::recruitPlatoon(Director * director, Country * country, Player * player){
     bool type = player->platoonType();
+    if(country->getPopulation()<15){
+        return NULL;
+    }
 	cout<<"Recruiting platoons from "<<this->requestState()<<" state"<<endl;
     return director->construct(type, country);
 }

@@ -86,7 +86,7 @@ public:
 	 *
 	 * @return double
 	 */
-	virtual double getAverageMoral();
+	virtual int getAverageMoral();
 
 	/**
 	 * @brief Returns the current damage of the unit

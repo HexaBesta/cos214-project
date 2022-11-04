@@ -155,6 +155,27 @@ public:
 	 *
 	 */
 	virtual ~Branch();
+	virtual int *getAmmo();
+
+	/**
+	 * @brief Returns the average moral of the branch
+	 * 
+	 * @return int 
+	 */
+	virtual int getMoral();
+
+	/**
+	 * @brief Get the total health of the current branch
+	 * 
+	 * @return int 
+	 */
+	virtual int getHealth();
+
+	/**
+	 * @brief Destroy the Branch object
+	 *
+	 */
+	virtual ~Branch();
 };
 
 #endif
