@@ -60,21 +60,53 @@ bool User::playerRetreat(Battle *battle)
 
 bool User::checkChangeStrategy(Unit *active)
 {
-    // active->print();
-    int resp;
-    cout << "Change Strategy" << endl
-         << "1. Yes \n2. Not necessary" << endl;
-    cin >> resp;
+    // // active->print();
+    // int resp;
+    // cout << "Change Strategy" << endl
+    //      << "1. Yes \n2. Not necessary" << endl;
+    // cin >> resp;
 
-    cin.ignore(30, '\n');
+    // cin.ignore(30, '\n');
 
-    if (resp == 1)
+    // if (resp == 1)
+    // {
+    //     return true;
+    // }
+    // else
+    // {
+    //     return false;
+    // }
+
+    string resp;
+
+    cout << "Change Strategy?" << endl
+         << "0 - Yes" << endl
+         << "1 - Not necessary" << endl;
+
+    while (1)
     {
-        return true;
-    }
-    else
-    {
-        return false;
+        getline(cin, resp);
+
+        if (resp.compare("") == 0)
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0)))
+        {
+
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp.compare("0") == 0)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
     }
 }
 
