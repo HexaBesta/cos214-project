@@ -76,7 +76,7 @@ int Unit::getDamage()
 	}
 }
 
-double Unit::getAverageMoral()
+int Unit::getAverageMoral()
 {
 	return this->moral;
 };

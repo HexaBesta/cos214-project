@@ -96,6 +96,7 @@ public:
 	 */
 	void retrieveGoods(Transport * good);
 
+
 	/**
 	 * @brief This will allow for a platoon to receive ammo from the factory created in the area
 	 * 
@@ -130,7 +131,7 @@ public:
 	 * 
 	 * @return double 
 	 */
-	virtual double getAverageMoral();
+	virtual int getAverageMoral();
 	
 	/**
 	 * @brief Sets the total moral of the current platoon using the human vector
