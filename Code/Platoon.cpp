@@ -448,6 +448,7 @@ bool Platoon::takeDamage(int damage, bool checkPew)
 			return false;
 		}
 	}
+	return false;
 }
 Unit *Platoon::takeRandom()
 {

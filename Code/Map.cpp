@@ -191,6 +191,7 @@ Map::Map(string setupFile, Player *player)
 		{
 			currArea->addCell(areaCoordinates.at(i));
 		}
+		currArea->updateFactorySpriteLocation();
 	}
 
 	setAllEndPoints();
@@ -727,6 +728,7 @@ void Map::setAreaBorders()
 			else
 			{
 				(allAreas.at(stoi(grid[i][j])))->setCoordinateBorders(i, j, left,leftCon, right,rightCon, top,topCon, bottom,bottomCon);
+
 			}
 		}
 	}

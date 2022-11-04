@@ -9,6 +9,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 	this->colour = colour;
 	this->land = new TheatreOfWar("Land");
 	this->air = new TheatreOfWar("Air");
+	sprite=new sf::Sprite();
 	if (factories)
 	{
 		this->initialiseAllFactories();
@@ -19,9 +20,21 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 		allFactories[1] = NULL;
 		allFactories[2] = NULL;
 	}
+
+	 if (!texture.loadFromFile("../dalandTilesets/images/Factories_111.png"))
+            {
+                cout << "Texture missing" << endl;
+            }
+
+	texture.setSmooth(true);
+	sprite->setTexture(texture);
+	 sprite->setTextureRect(sf::IntRect(0, 0, 310, 115));
+	setFactoryTexture();
+    sprite->setScale(0.15,0.10);
+	
 	if (colour != 94)
 	{
-		cout<<"Yep"<<endl;
+		cout << "Yep" << endl;
 		country = new Country(name, colour, NULL);
 	}
 	else
@@ -47,7 +60,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 		platoon2->setCountry(country);
 		platoon2->setTexture();
 		land->setDefender(platoon2);
-		cout<<platoon2->getCountry()->getName()<<endl;
+		cout << platoon2->getCountry()->getName() << endl;
 	}
 }
 
@@ -192,13 +205,11 @@ void Area::marchOut(Area *whereTo)
 	if (land->getDefender() != NULL)
 	{
 		whereTo->marchIn(land->MarchOut(false), this);
-		
 	}
 	if (air->getDefender() != NULL)
 	{
-		
+
 		whereTo->marchIn(air->MarchOut(false), this);
-		
 	}
 }
 
@@ -348,6 +359,7 @@ bool Area::requestFactory(int type)
 	else
 	{
 		allFactories[type] = foundFactory;
+		setFactoryTexture();
 		return true;
 	}
 }
@@ -519,12 +531,12 @@ bool Area::retreat(string side)
 
 			if (landUnit != NULL)
 			{
-				cout<<landUnit->getCountry()->getName()<<" land unit retreating from "<<this->getName()<<" to "<<area->getName()<<endl;
+				cout << landUnit->getCountry()->getName() << " land unit retreating from " << this->getName() << " to " << area->getName() << endl;
 				area->marchIn(land->retreat(side), this);
 			}
 			if (airUnit != NULL)
 			{
-				cout<<airUnit->getCountry()->getName()<<" air unit retreating from "<<this->getName()<<" to "<<area->getName()<<endl;
+				cout << airUnit->getCountry()->getName() << " air unit retreating from " << this->getName() << " to " << area->getName() << endl;
 				area->marchIn(air->retreat(side), this);
 			}
 
@@ -562,11 +574,12 @@ bool Area::retreat(string side)
 
 				if (airUnit != NULL)
 				{
-					cout<<airUnit->getCountry()->getName()<<" air unit retreating from "<<this->getName()<<" to "<<area->getName()<<endl;
+					cout << airUnit->getCountry()->getName() << " air unit retreating from " << this->getName() << " to " << area->getName() << endl;
 					area->marchIn(air->retreat(side), this);
 				}
-				if(landUnit != NULL){
-					cout<<landUnit->getCountry()->getName()<<" land unit are left stranded in "<<this->getName()<<endl;
+				if (landUnit != NULL)
+				{
+					cout << landUnit->getCountry()->getName() << " land unit are left stranded in " << this->getName() << endl;
 					return false;
 				}
 
@@ -679,6 +692,9 @@ void Area::draw(sf::RenderWindow *r)
 	{
 		r->draw((areasCoordinates.at(i)->sprite));
 	}
+
+	
+
 	if (land->getDefender() != NULL)
 	{
 		// land->getDefender()->setTexture();
@@ -691,6 +707,14 @@ void Area::draw(sf::RenderWindow *r)
 		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 		r->draw(*(air->getDefender()->getSprite()));
 	}
+
+	r->draw(*sprite);
+}
+
+void Area::setFactoryTexture(){
+	string out="../dalandTilesets/images/Factories_"+to_string(allFactories[0]!=NULL)+to_string(allFactories[1]!=NULL)+to_string(allFactories[2]!=NULL)+".png";
+	ImageLibrary* im = ImageLibrary::getInstance();
+	this->texture.update(*(im->findTexture(out)));
 }
 
 void Area::updateLandSpriteAnimation(sf::Clock *c)
@@ -765,6 +789,7 @@ bool Area::setCountry(Country *country)
 	{
 		this->country = country;
 		this->initialiseAllFactories();
+		setFactoryTexture();
 		return true;
 	}
 	else
@@ -773,14 +798,12 @@ bool Area::setCountry(Country *country)
 	}
 }
 
-void Area::changeCountry(Country * country){
+void Area::changeCountry(Country *country)
+{
 	this->country = country;
 }
 
-void Area::setColour()
-{
-	if (this->country != NULL)
-	{
+
 void Area::setColour()
 {
 	if (this->country != NULL)
@@ -831,6 +854,10 @@ void Area::replenish()
 	this->land->replenish(resources);
 }
 
+void Area::updateFactorySpriteLocation(){
+	sprite->setPosition(sf::Vector2f(areasCoordinates.at(0)->x * (640/map->getGridXSize()), areasCoordinates.at(0)->y * (640/map->getGridYSize())));
+}
+
 Area::~Area()
 {
 	cout << "Deleting Tranport Route" << endl;
@@ -857,6 +884,8 @@ Area::~Area()
 	{
 		delete land;
 	}
+
+	delete sprite;
 }
 
 TheatreOfWar *Area::getLand()

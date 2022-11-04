@@ -29,6 +29,8 @@ private:
 	TheatreOfWar* air=NULL;
 	TransportFactory* allFactories[3];
 	Country* country=NULL;
+	sf::Sprite* sprite;
+	sf::Texture texture;
 
 	/**
 	 * @brief Get the cooridnate in the middle of the areas list of coordinates
@@ -37,6 +39,11 @@ private:
 	 */
 	Coordinate* getMiddleCooridnate();
 	
+	/**
+	 * @brief Set the correct factory texture based on the current factories
+	 * 
+	 */
+	void setFactoryTexture();
 
 public:
 	/**
@@ -319,7 +326,11 @@ public:
 	 */
 	void updateAirSpriteAnimation(sf::Clock* c);
 
-
+	/**
+	 * @brief Sets the location of the factory sprite to the first tile in the area
+	 * 
+	 */
+	void updateFactorySpriteLocation();
 
 	/**
 	 * @brief Destroy the Area object
