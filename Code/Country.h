@@ -113,9 +113,8 @@ class Country {
 		 * @brief Decrease the civilianPopulation of the country
 		 * 
 		 * @param toDec 
-		 * @return int amount to decrese by 
 		 */
-		int decreasePopulation(int toDec);
+		void decreasePopulation(int toDec);
 
 		
 		/**

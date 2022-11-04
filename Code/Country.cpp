@@ -145,10 +145,10 @@ Player* Country::getPlayer(){
 }
 
 int Country::getPopulation(){
-	this->civilianPopulation;
+	return this->civilianPopulation;
 }
 
-int Country::decreasePopulation(int toDec){
+void Country::decreasePopulation(int toDec){
 	this->civilianPopulation -= toDec;
 }
 
