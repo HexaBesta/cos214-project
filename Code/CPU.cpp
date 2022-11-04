@@ -4,22 +4,24 @@
 
 bool CPU::playerRetreat(Battle *battle)
 {
-    //battle->getStateSummary();
+    // battle->getStateSummary();
     if (battle->getTurn())
     {
-        if (battle->getAir()->getAttacker()!=nullptr)
+        if (battle->getAir()->getAttacker() != nullptr)
         {
             int healthAir = battle->getAir()->getAttacker()->getHealth();
             int moralAir = battle->getAir()->getAttacker()->getMoral();
-            if(healthAir<=500 || moralAir<= 30){
+            if (healthAir <= 500 || moralAir <= 30)
+            {
                 return true;
             }
         }
-        else if (battle->getLand()->getAttacker()!=nullptr)
+        else if (battle->getLand()->getAttacker() != nullptr)
         {
             int healthLand = battle->getLand()->getAttacker()->getHealth();
             int moralLand = battle->getLand()->getAttacker()->getMoral();
-            if(healthLand<=500 || moralLand<= 30){
+            if (healthLand <= 500 || moralLand <= 30)
+            {
                 return true;
             }
         }
@@ -30,19 +32,21 @@ bool CPU::playerRetreat(Battle *battle)
     }
     else
     {
-        if (battle->getAir()->getDefender()!=nullptr)
+        if (battle->getAir()->getDefender() != nullptr)
         {
             int healthAir = battle->getAir()->getDefender()->getHealth();
             int moralAir = battle->getAir()->getDefender()->getMoral();
-            if(healthAir<=500 || moralAir<= 30){
+            if (healthAir <= 500 || moralAir <= 30)
+            {
                 return true;
             }
         }
-        else if (battle->getLand()->getDefender()!=nullptr)
+        else if (battle->getLand()->getDefender() != nullptr)
         {
             int healthLand = battle->getLand()->getDefender()->getHealth();
             int moralLand = battle->getLand()->getDefender()->getMoral();
-            if(healthLand<=500 || moralLand<= 30){
+            if (healthLand <= 500 || moralLand <= 30)
+            {
                 return true;
             }
         }
@@ -150,22 +154,44 @@ int CPU::chooseCountry(vector<Country *> country, Map *map)
     }
 }
 
-int CPU::chooseActionForCountry(Area * area, Map * map)
+int CPU::chooseActionForCountry(Area *area, Map *map)
 {
-    vector<Area *> adj = map->listAdjacent(area, false);
-    int colour = area->getColour();
-    if(colour == 22){
-        colour = 160;
-    }else{
-        colour = 22;
-    }
-    for(auto it: adj){
-        if(it->getColour() == colour){
-            return 0;
+    vector<int> possibleReturn;
+    if (area->getAir()->getDefender() != NULL || area->getLand()->getDefender() != NULL)
+    {
+        vector<Area *> adj = map->listAdjacent(area, false);
+        int colour = area->getColour();
+        if (colour == 22)
+        {
+            colour = 160;
         }
+        else
+        {
+            colour = 22;
+        }
+        for (auto it : adj)
+        {
+            if (it->getColour() == colour)
+            {
+                return 0;
+            }
+        }
+        
+        possibleReturn.push_back(0);
+        possibleReturn.push_back(0);
+        possibleReturn.push_back(1);
+        possibleReturn.push_back(3);
+        if(area->getFactory(0) != NULL || area->getFactory(1) != NULL || area->getFactory(2) != NULL){
+            possibleReturn.push_back(2);
+        }
+        return possibleReturn.at(rand()%possibleReturn.size());
     }
-    int value = (rand()%5) % (4);
-    return value;
+    possibleReturn.push_back(3);
+    possibleReturn.push_back(3);
+    if(area->getFactory(0) != NULL || area->getFactory(1) != NULL || area->getFactory(2) != NULL){
+        possibleReturn.push_back(2);
+    }
+    return possibleReturn.at(rand()%possibleReturn.size());
 }
 
 int CPU::chooseAreaForAction(vector<Area *> area)
@@ -181,17 +207,22 @@ int CPU::chooseAreaForAction(vector<Area *> area)
     }
 }
 
-int CPU::chooseAdjacentArea(vector<Area *> adjacentArea, Area * area)
+int CPU::chooseAdjacentArea(vector<Area *> adjacentArea, Area *area)
 {
     int colour = area->getColour();
-    if(colour == 22){
+    if (colour == 22)
+    {
         colour = 160;
-    }else{
+    }
+    else
+    {
         colour = 22;
     }
     int x = 0;
-    for(auto it: adjacentArea){
-        if(it->getColour() == colour){
+    for (auto it : adjacentArea)
+    {
+        if (it->getColour() == colour)
+        {
             return x;
         }
         x++;
@@ -207,48 +238,62 @@ int CPU::chooseAdjacentArea(vector<Area *> adjacentArea, Area * area)
     }
 }
 
-int* CPU::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current){
-    int * indexes= new int[2];
+int *CPU::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area *>> otherAdj, Area *current)
+{
+    int *indexes = new int[2];
     indexes[0] = indexes[1] = -1;
     int destroyColour = 22;
-    if(current->getColour() == 22){
+    if (current->getColour() == 22)
+    {
         destroyColour = 160;
     }
-    for(int i = 0; i<adjAreas.size(); i++){
-        if(adjAreas.at(i)->getColour() == destroyColour){
+    for (int i = 0; i < adjAreas.size(); i++)
+    {
+        if (adjAreas.at(i)->getColour() == destroyColour)
+        {
             indexes[0] = i;
-            for(int j = 0; j<otherAdj.at(i).size(); j++){
-                if(otherAdj.at(i).at(j)->getColour() == destroyColour){
+            for (int j = 0; j < otherAdj.at(i).size(); j++)
+            {
+                if (otherAdj.at(i).at(j)->getColour() == destroyColour)
+                {
                     indexes[1] = j;
                     return indexes;
                 }
             }
-            for(int j = 0; j<otherAdj.at(i).size(); j++){
-                if(otherAdj.at(i).at(j)->getColour() == 94){
+            for (int j = 0; j < otherAdj.at(i).size(); j++)
+            {
+                if (otherAdj.at(i).at(j)->getColour() == 94)
+                {
                     indexes[1] = j;
                     return indexes;
                 }
             }
         }
     }
-    for(int i = 0; i<adjAreas.size(); i++){
-        if(adjAreas.at(i)->getColour() == 94){
+    for (int i = 0; i < adjAreas.size(); i++)
+    {
+        if (adjAreas.at(i)->getColour() == 94)
+        {
             indexes[0] = i;
-            for(int j = 0; j<otherAdj.at(i).size(); j++){
-                if(otherAdj.at(i).at(j)->getColour() == destroyColour){
+            for (int j = 0; j < otherAdj.at(i).size(); j++)
+            {
+                if (otherAdj.at(i).at(j)->getColour() == destroyColour)
+                {
                     indexes[1] = j;
                     return indexes;
                 }
             }
-            for(int j = 0; j<otherAdj.at(i).size(); j++){
-                if(otherAdj.at(i).at(j)->getColour() == 94){
+            for (int j = 0; j < otherAdj.at(i).size(); j++)
+            {
+                if (otherAdj.at(i).at(j)->getColour() == 94)
+                {
                     indexes[1] = j;
                     return indexes;
                 }
             }
         }
     }
-    delete [] indexes;
+    delete[] indexes;
     indexes = NULL;
     return NULL;
 }
@@ -327,14 +372,17 @@ int CPU::numberOfCountriesInAlliance(Map *map)
 {
     vector<Country *> country = map->getCountriesByColour(94);
     int random = rand() % country.size();
-    if(random<3){
-        random+=3;
-        if(random > country.size()){
+    if (random < 3)
+    {
+        random += 3;
+        if (random > country.size())
+        {
             random = country.size();
         }
     }
-    if(random == map->getCountries().size()){
-        random = random*0.7;
+    if (random == map->getCountries().size())
+    {
+        random = random * 0.7;
     }
     return random;
 }
