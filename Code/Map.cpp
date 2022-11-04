@@ -220,6 +220,7 @@ void Map::destroyTransportRoute(Area *area1, Area *area2)
 		adjacencies[area1->getIndex()][area2->getIndex()]->destroy();
 		adjacencies[area2->getIndex()][area1->getIndex()]->destroy();
 	}
+	setAreaBorders();
 }
 
 void Map::update()

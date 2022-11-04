@@ -133,6 +133,7 @@ int* User::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<v
             return indexes;
         }
     }
+    cout<<"Yep"<<endl;
     delete [] indexes;
     indexes = NULL;
     return NULL;

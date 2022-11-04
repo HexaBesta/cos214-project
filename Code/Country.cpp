@@ -11,8 +11,8 @@ Country::Country(string name,int colour, Player* player)
 	this->countryState = new NeutralState();
 	cout << "Created country " << this->name << endl;
 	this->director = new Director();
-	//this->alliance = new Alliances(name,colour);
-	this->alliance=NULL;
+	this->alliance = new Alliances(name,colour);
+	//this->alliance=NULL;
 	this->military.push_back(NULL);
 	this->military.clear();
 	this->moraleAverage = 100;

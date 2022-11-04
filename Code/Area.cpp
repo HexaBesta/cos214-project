@@ -21,6 +21,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 	}
 	if (colour != 94)
 	{
+		cout<<"Yep"<<endl;
 		country = new Country(name, colour, NULL);
 	}
 	else
@@ -46,6 +47,7 @@ Area::Area(string name, int index, int colour, bool factories, bool troops) : Ma
 		platoon2->setCountry(country);
 		platoon2->setTexture();
 		land->setDefender(platoon2);
+		cout<<platoon2->getCountry()->getName()<<endl;
 	}
 }
 
@@ -89,6 +91,8 @@ void Area::updateOwner(Unit *unit)
 	{
 		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 	}
+	updateAirSpriteAnimation(NULL);
+	updateLandSpriteAnimation(NULL);
 }
 
 void Area::marchIn(Unit *unit, Area *from)
@@ -363,6 +367,7 @@ string Area::toString()
 	{
 		owner = country->getName();
 	}
+
 	next = "           Name:" + name + "  ID:" + to_string(index) + "  Colour:" + to_string(colour) + "  Owner:" + owner;
 	while (next.length() < lineChars - 1)
 	{
@@ -371,7 +376,7 @@ string Area::toString()
 
 	out += "|\033[48;5;" + to_string((this->colour)) + "m" + next + "\033[0m" + "|\n";
 
-	// BreakL Line
+	//BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
@@ -384,13 +389,15 @@ string Area::toString()
 	}
 	next += "|\n";
 	out += next;
-	// BreakL Line
+
+
+	//BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
 	out += "|\n";
 
-	next = "|     Air:     ";
+	next = "|     Air:     " ;
 	while (next.length() < lineChars)
 	{
 		next += " ";
@@ -398,16 +405,16 @@ string Area::toString()
 	next += "|\n";
 	out += next;
 
-	next = air->toString(lineChars);
-	out += next;
+	next=air->toString(lineChars);
+	out+=next;
 
-	// BreakL Line
+	//BreakL Line
 	out += "|";
 	for (int i = 0; i < lineChars - 1; i++)
 		out += "-";
 	out += "|\n";
 
-	next = "|     Land:     ";
+	next = "|     Land:     " ;
 	while (next.length() < lineChars)
 	{
 		next += " ";
@@ -415,8 +422,8 @@ string Area::toString()
 	next += "|\n";
 	out += next;
 
-	next = land->toString(lineChars);
-	out += next;
+	next=land->toString(lineChars);
+	out+=next;
 
 	for (int i = 0; i < lineChars + 1; i++)
 		out += "-";

@@ -2,6 +2,8 @@
 #define __COORDINATE_H__
 #include <SFML/Graphics.hpp>
 #include <iostream>
+
+#include "ImageLibrary.h"
 class Area;
 using namespace std;
 class Coordinate

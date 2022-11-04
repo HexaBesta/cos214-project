@@ -8,7 +8,8 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, int pewpew, int 
 	this->boomboom = boomboom;
 	this->strategy = new PewPewAttack(this);
 	sprite = new sf::Sprite();
-	if (!this->texture.loadFromFile("../dalandTilesets/images/PlaneIdleForward_1.png"))
+	ImageLibrary* i = ImageLibrary::getInstance();
+	if (!this->texture.loadFromImage(*(i->findTexture("../dalandTilesets/images/PlaneIdleForward_1.png"))))
 	{
 		cout << "Nope" << endl;
 	}
@@ -20,23 +21,18 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, int pewpew, int 
 }
 
 void Platoon::setAirTexture()
-{
-	if (!this->texture.loadFromFile("../dalandTilesets/images/PlaneIdleForward_1.png"))
-	{
-		cout << "Nope" << endl;
-	}
+{	
+	ImageLibrary* i = ImageLibrary::getInstance();
+	this->texture.update(*(i->findTexture("../dalandTilesets/images/PlaneIdleForward_1.png")));
 	sprite->setTextureRect(sf::IntRect(0, 0, 256, 256));
 	sprite->setScale(0.2, 0.2);
 }
 
 void Platoon::setLandTexture()
 {
-	if (!this->texture.loadFromFile("../dalandTilesets/images/GroupIdleForward_1.png"))
-	{
-		cout << "Nope" << endl;
-	}
+	ImageLibrary* i = ImageLibrary::getInstance();
+	this->texture.update(*(i->findTexture("../dalandTilesets/images/GroupIdleForward_1.png")));
 	sprite->setTextureRect(sf::IntRect(0, 0, 26, 28));
-	this->country = NULL;
 }
 
 void Platoon::construct()
@@ -47,116 +43,110 @@ void Platoon::construct()
 
 string Platoon::toString(int lineLen)
 {
-	string out = "";
+	string out="";
 	int health = 0;
 	int damage = 0;
-	int deadUnits = 0;
+	int deadUnits = 0; cout<<"Platoon - 53"<<endl;
 	for (auto it : this->humans)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		if (it->getState().compare("Dead") == 0)
-		{
+		if(it->getState().compare("Dead") == 0){
 			deadUnits++;
 		}
-	}
+	}cout<<"Platoon - 61"<<endl;
 	for (auto it : this->vehicles)
 	{
 		health += it->getHealth();
 		damage += it->getDamage();
-		if (it->getState().compare("Dead") == 0)
-		{
+		if(it->getState().compare("Dead") == 0){
 			deadUnits++;
 		}
 	}
 
 	this->health = health;
 	this->damage = damage;
-	string add = "";
-
+	string add="";
+	cout<<"Platoon - 74"<<endl;
 	if (health <= 0)
 	{
-		add += "|                        Your platoon is dead";
-		while (add.length() < lineLen)
-		{
-			add += " ";
-		}
-		add += "|";
-		out += add;
-		// this->setUnitState(new DeadState());
-	}
-	else
-	{
-
-		add = "|                        Platoon";
-		while (add.length() < lineLen)
-		{
-			add += " ";
-		}
-		add += "|";
-		out += add;
-
-		add= "|                        Country: " + country->getName();
+		add+= "\n|                        Your platoon is dead";
 		while(add.length()<lineLen){
 			add+= " ";
 		}
 		add+= "|";
 		out+=add;
+		this->setUnitState(new DeadState());
+	}
+	else
+	{	
 
+		add= "|                        Platoon";
+		while(add.length()<lineLen){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+		cout<<"Platoon - 94"<<endl;
+		string countryStr="No country";
+		if(country!=NULL){
+			countryStr=country->getName();
+		}
+		add= "\n|                        Country: " + countryStr;
+		while(add.length()<lineLen){
+			add+= " ";
+		}
+		add+= "|";
+		out+=add;
+		cout<<"Platoon - 101"<<endl;
 		add=" \n|                           Health: " + to_string(health);
 		while(add.length()<lineLen+2){
 			add+= " ";
 		}
-		add += "|";
-		out += add;
-
-		add = "\n|                           Damage: " + to_string(damage);
-		while (add.length() < lineLen + 1)
-		{
-			add += " ";
+		add+= "|";
+		out+=add;
+		cout<<"Platoon - 108"<<endl;
+		add= "\n|                           Damage: " + to_string(damage);
+		while(add.length()<lineLen+1){
+			add+= " ";
 		}
-		add += "|";
-		out += add;
-
-		add = "\n|                           Amount of Soldiers: " + to_string(humans.size());
-		while (add.length() < lineLen + 1)
-		{
-			add += " ";
+		add+= "|";
+		out+=add;
+		cout<<"Platoon - 115"<<endl;
+		add= "\n|                           Amount of Soldiers: " + to_string(humans.size());
+		while(add.length()<lineLen+1){
+			add+= " ";
 		}
-		add += "|";
-		out += add;
-
-		add = "\n|                           Amount of Vehicles: " + to_string(vehicles.size());
-		while (add.length() < lineLen + 1)
-		{
-			add += " ";
+		add+= "|";
+		out+=add;
+		cout<<"Platoon - 122"<<endl;
+		add= "\n|                           Amount of Vehicles: " + to_string(vehicles.size());
+		while(add.length()<lineLen+1){
+			add+= " ";
 		}
-		add += "|";
-		out += add;
-
-		add = "\n|                           Amount of Dead Units: " + to_string(deadUnits);
-		while (add.length() < lineLen + 1)
-		{
-			add += " ";
+		add+= "|";
+		out+=add;
+		cout<<"Platoon - 129"<<endl;
+		add= "\n|                           Amount of Dead Units: " + to_string(deadUnits);
+		while(add.length()<lineLen+1){
+			add+= " ";
 		}
-		add += "|";
-		out += add;
-
-		add = "\n|                           Amount of Bullets: " + to_string(pewpew);
-		while (add.length() < lineLen + 1)
-		{
-			add += " ";
+		add+= "|";
+		out+=add;
+		cout<<"Platoon - 136"<<endl;
+		add= "\n|                           Amount of Bullets: " + to_string(pewpew);
+		while(add.length()<lineLen+1){
+			add+= " ";
 		}
-		add += "|";
-		out += add;
-
-		add = "\n|                           Amount of Explosives: " + to_string(boomboom);
-		while (add.length() < lineLen + 1)
-		{
-			add += " ";
+		add+= "|";
+		out+=add;
+		cout<<"Platoon - 143"<<endl;
+		add= "\n|                           Amount of Explosives: " + to_string(boomboom);
+		while(add.length()<lineLen+1){
+			add+= " ";
 		}
-		add += "|";
-		out += add;
+		add+= "|";
+		out+=add;
 	}
 
 	return out;

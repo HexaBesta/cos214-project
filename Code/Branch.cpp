@@ -16,6 +16,18 @@ void Branch::setUnitState(UnitsState* unitS){
 	this->unit->setUnitState(unitS);
 }
 
+void Branch::setCountry(Country* c){
+	this->unit->setCountry(c);
+}
+
+Country* Branch::getCountry(){
+	return this->unit->getCountry();
+}
+
+string Branch::getAlliance(){
+	return this->unit->getAlliance();
+}
+
 string Branch::getState()
 {
 	if (this->unit != NULL)

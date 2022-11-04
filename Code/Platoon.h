@@ -13,6 +13,8 @@
 #include "Goods.h"
 #include "People.h"
 
+#include "ImageLibrary.h"
+
 using namespace std;
 
 class Platoon : public Unit

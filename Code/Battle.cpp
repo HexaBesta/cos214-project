@@ -92,18 +92,16 @@ void Battle::setAttackerToDefender(){
 			/*
 			Set area colour
 			*/
-			this->area->updateOwner(oldAttacker);
 			if(oldAirAttacker != NULL){
 				this->area->setCountry(oldAirAttacker->getCountry());
 				this->area->setColour();
+				this->area->updateOwner(oldAirAttacker);
 			}else{
 				this->area->setCountry(oldLandAttacker->getCountry());
 				this->area->setColour();
+				this->area->updateOwner(oldLandAttacker);
 			}
 		}
-		this->land->setDefender(oldAttacker);
-		this->land->setAttacker(NULL);
-		this->area->updateOwner(oldAttacker);
 	}
 
 }

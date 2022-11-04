@@ -92,6 +92,8 @@ GodOfWar::GodOfWar(string setupFile)
 
 void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
 {
+    sf::Event event;
+     while (window->pollEvent(event)){}
     // //this->map->printMap();
     window->clear(sf::Color::Black);
      sf::Clock c = sf::Clock();
@@ -188,13 +190,13 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
                 {
                     adjacentOfAdjAreas.push_back(this->map->listAdjacent(it, true));
                 }
-
                 index = player->chooseAreasToDestroyTransportRoutes(adjacentAreas, adjacentOfAdjAreas, areas.at(areaIndex));
+               
             }
 
             if (index != NULL)
             {
-
+                
                 cout <<areas.at(areaIndex)->getIndex()<< "("<<areas.at(areaIndex)->getColour()<<")"<< "Destroying route between:" << endl
                      << adjacentAreas.at(index[0])->toString() << endl
                      << adjacentOfAdjAreas.at(index[0]).at(index[1])->toString() << endl;
@@ -286,7 +288,7 @@ void GodOfWar::warLoop()
         {
             resp = 0;
         }
-        else
+        else if(resp==0)
         {
             cout << "Continue for how many?: " << endl;
             cin >> resp;
@@ -398,4 +400,9 @@ GodOfWar::~GodOfWar()
     Delete player
     */
     delete this->player;
+
+    /*
+    Destroy ImageLibrary
+    */
+   ImageLibrary::DestroyInstance();
 }

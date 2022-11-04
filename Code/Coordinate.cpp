@@ -1,5 +1,4 @@
 #include "Coordinate.h"
-
 Coordinate::Coordinate(int x, int y, int colour,Area* area,int scaleX,int scaleY)
     {
         this->area = area;
@@ -9,6 +8,7 @@ Coordinate::Coordinate(int x, int y, int colour,Area* area,int scaleX,int scaleY
 
         if (colour == 22)
         {
+            
             if (!texture.loadFromFile("../dalandTilesets/images/DesertTile_370_22_.png"))
             {
                 cout << "Texture missing" << endl;
@@ -46,17 +46,13 @@ Coordinate::Coordinate(int x, int y, int colour,Area* area,int scaleX,int scaleY
     {
         if (!terrain)
         {
-            if (!texture.loadFromFile("../dalandTilesets/images/DesertTile_370_" + to_string(colour) + "_" + borders + ".png"))
-            {
-                cout << "Texture missing" << endl;
-            }
+            ImageLibrary* im = ImageLibrary::getInstance();
+	        this->texture.update(*(im->findTexture("../dalandTilesets/images/DesertTile_370_" + to_string(colour) + "_" + borders + ".png")));
         }
         else
         {
-            if (!texture.loadFromFile("../dalandTilesets/images/WaterTile_" + borders + ".png"))
-            {
-                cout << "Texture missing" << endl;
-            }
+            ImageLibrary* im = ImageLibrary::getInstance();
+	        this->texture.update(*(im->findTexture("../dalandTilesets/images/WaterTile_" + borders + ".png")));
         }
 
         texture.setSmooth(true);

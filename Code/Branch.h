@@ -103,6 +103,27 @@ public:
 	virtual Unit *split()=0;
 
 	/**
+	 * @brief Sets the country of the wrapped unit
+	 * 
+	 * @param c 
+	 */
+	virtual void setCountry(Country* c);
+
+	/**
+	 * @brief Get the Country of the wrapped unit
+	 * 
+	 * @return Country* 
+	 */
+	virtual Country* getCountry();
+
+	/**
+	 * @brief Get the Alliance of the wrapped unit
+	 * 
+	 * @return Alliances* 
+	 */
+	virtual string getAlliance();
+
+	/**
 	 * @brief Merges two units together
 	 *
 	 * @param others

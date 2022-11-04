@@ -30,6 +30,9 @@ void PlatoonBuilder::setCountry(Country* c) {
 
 void PlatoonBuilder::createPlatoon() {
     this->platoon = new Platoon(this->soldiers, this->vehicles, this->ammo[0], this->ammo[1]);
+    if(this->country!=NULL){
+        cout<<"Country is "<<this->country->getName()<<endl;
+    }
     this->platoon->setCountry(this->country);
 }
 
