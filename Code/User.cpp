@@ -10,13 +10,13 @@ bool User::playerRetreat(Battle *battle)
 
     // int resp;
     // cout << "Retreat" << endl
-    //      << "1. Yes \n2. Not necessary" << endl;
+    //      << "0. Yes \n1. Not necessary" << endl;
     // cin >> resp;
 
     // // clear buffer
     // cin.ignore(30, '\n');
 
-    // if (resp == 1)
+    // if (resp == 0)
     // {
     //     return true;
     // }
@@ -25,7 +25,7 @@ bool User::playerRetreat(Battle *battle)
     //     return false;
     // }
 
-    string resp;
+    string resp = "";
 
     cout << "Retreat?" << endl
          << "0 - Yes" << endl
@@ -48,11 +48,13 @@ bool User::playerRetreat(Battle *battle)
 
         else if (resp.compare("0") == 0)
         {
+            cin.ignore(30, '\n');
             return true;
         }
 
         else
         {
+            cin.ignore(30, '\n');
             return false;
         }
     }
@@ -63,12 +65,12 @@ bool User::checkChangeStrategy(Unit *active)
     // // active->print();
     // int resp;
     // cout << "Change Strategy" << endl
-    //      << "1. Yes \n2. Not necessary" << endl;
+    //      << "0. Yes \n1. Not necessary" << endl;
     // cin >> resp;
 
     // cin.ignore(30, '\n');
 
-    // if (resp == 1)
+    // if (resp == 0)
     // {
     //     return true;
     // }
@@ -77,7 +79,7 @@ bool User::checkChangeStrategy(Unit *active)
     //     return false;
     // }
 
-    string resp;
+    string resp = "";
 
     cout << "Change Strategy?" << endl
          << "0 - Yes" << endl
@@ -100,11 +102,13 @@ bool User::checkChangeStrategy(Unit *active)
 
         else if (resp.compare("0") == 0)
         {
+            cin.ignore(30, '\n');
             return true;
         }
 
         else
         {
+            cin.ignore(30, '\n');
             return false;
         }
     }
@@ -114,21 +118,54 @@ bool User::requestReinforcements(Battle *battle)
 {
 
     battle->getStateSummary();
-    int resp;
-    cout << "Request Reinforcements" << endl
-         << "1. Yes \n2. Not necessary" << endl;
-    cin >> resp;
+    // int resp;
+    // cout << "Request Reinforcements" << endl
+    //      << "0. Yes \n1. Not necessary" << endl;
+    // cin >> resp;
 
-    // clear buffer
-    cin.ignore(30, '\n');
+    // // clear buffer
+    // cin.ignore(30, '\n');
 
-    if (resp == 1)
+    // if (resp == 0)
+    // {
+    //     return true;
+    // }
+    // else
+    // {
+    //     return false;
+    // }
+
+    string resp = "";
+
+    cout << "Request Reinforcements?" << endl
+         << "0 - Yes" << endl
+         << "1 - Not necessary" << endl;
+
+    while (1)
     {
-        return true;
-    }
-    else
-    {
-        return false;
+        getline(cin, resp);
+
+        if (resp.compare("") == 0)
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0)))
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp.compare("0") == 0)
+        {
+            cin.ignore(30, '\n');
+            return true;
+        }
+
+        else
+        {
+            cin.ignore(30, '\n');
+            return false;
+        }
     }
 }
 
@@ -154,51 +191,44 @@ int User::chooseCountry(vector<Country *> country, Map *map)
 
 int User::chooseActionForCountry()
 {
-    int resp = 0;
-    cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - end turn" << endl;
-    cin >> resp;
-    cin.ignore(30, '\n');
-    return resp;
+    // int resp = 0;
+    // cout << "Choose action to perform: \n 0 - attack transport route \n 1 - request resources \n 2 - march into an area \n 3 - end turn" << endl;
+    // cin >> resp;
+    // cin.ignore(30, '\n');
+    // return resp;
 
-    // string resp = "";
-    // stringstream ss;
-    // int intResp = 0;
+    string resp = "";
 
-    // cout << "Choose action to perform:" << endl
-    //      << "1 - Attack transport route" << endl
-    //      << "2 - Request resources" << endl
-    //      << "3 - March into area" << endl
-    //      << "4 - End turn" << endl
-    //      << "Press Q/q to quit" << endl;
+    cout << "Choose action to perform:" << endl
+         << "0 - Attack transport route" << endl
+         << "1 - Request resources" << endl
+         << "2 - March into area" << endl
+         << "3 - End turn" << endl;
 
-    // while (1)
-    // {
-    //     getline(cin, resp);
+    while (1)
+    {
+        getline(cin, resp);
 
-    //     if (resp == "")
-    //     {
-    //         cout << "Invalid input - try again" << endl;
-    //     }
+        if (resp.compare("") == 0)
+        {
+            cout << "Invalid input - try again" << endl;
+        }
 
-    //     else if (!(resp == "1" || resp == "2" || resp == "3" || resp == "4" || resp == "Q" || resp == "q"))
-    //     {
+        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0) || (resp.compare("2") == 0) || (resp.compare("3") == 0)))
+        {
+            cout << "Invalid input - try again" << endl;
+        }
 
-    //         cout << "Invalid input - try again" << endl;
-    //     }
-
-    //     else if (resp == "Q" || resp == "q")
-    //     {
-    //         return -1;
-    //     }
-
-    //     else
-    //     {
-    //         ss << resp;
-    //         ss >> intResp;
-
-    //         return intResp;
-    //     }
-    // }
+        else
+        {
+            stringstream ss;
+            int intResp = 0;
+            ss << resp;
+            ss >> intResp;
+            cin.ignore(30, '\n');
+            return intResp;
+        }
+    }
 }
 
 int User::chooseAreaForAction(vector<Area *> areas)
