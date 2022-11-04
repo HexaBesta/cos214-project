@@ -290,7 +290,7 @@ int User::chooseResource(Area *area)
             cout << "Invalid input - try again" << endl;
         }
 
-        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0) || (resp.compare("2") == 0) || (resp.compare("3") == 0)))
+        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0) || (resp.compare("2") == 0)))
         {
             cout << "Invalid input - try again" << endl;
         }
@@ -309,49 +309,55 @@ int User::chooseResource(Area *area)
 
 bool User::changePlayer()
 {
-    int resp = 0;
-    do
-    {
-        cout << "Would you like to change from User -> CPU: \n0 - No\n1 - Yes" << endl;
-        cin >> resp;
-        if (resp == 0)
-        {
-            return false;
-        }
-        else if (resp == 1)
-        {
-            return true;
-        }
-    } while (resp != 0 || resp != 1);
-    return false;
-
     // int resp = 0;
     // do
     // {
-
-    //     getline(cin, resp);
-
-    //     if (resp == "")
-    //     {
-    //         cout << "Invalid input - try again" << endl;
-    //     }
-
-    //     else if (!(resp == "1" || resp == "2"))
-    //     {
-
-    //         cout << "Invalid input - try again" << endl;
-    //     }
-
-    //     else if (resp == "1")
+    //     cout << "Would you like to change from User -> CPU: \n0 - No\n1 - Yes" << endl;
+    //     cin >> resp;
+    //     if (resp == 0)
     //     {
     //         return false;
     //     }
-
-    //     else if (resp == "2")
+    //     else if (resp == 1)
     //     {
     //         return true;
     //     }
-    // }
+    // } while (resp != 0 || resp != 1);
+    // return false;
+
+    string resp = "";
+
+    cout << "Would you like to change from User -> CPU" << endl
+         << "0 - No" << endl
+         << "1 - Yes" << endl;
+
+    while (1)
+    {
+
+        getline(cin, resp);
+
+        if (resp.compare("") == 0)
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (!((resp.compare("0") == 0) || (resp.compare("1") == 0)))
+        {
+            cout << "Invalid input - try again" << endl;
+        }
+
+        else if (resp.compare("0") == 0) //RETURNS FALSE
+        {
+            cin.ignore(30, '\n');
+            return false;
+        }
+
+        else //RETURNS TRUE
+        {
+            cin.ignore(30, '\n');
+            return true;
+        }
+    }
 }
 
 Player *User::togglePlayer()
