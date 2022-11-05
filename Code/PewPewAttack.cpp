@@ -30,6 +30,7 @@ void PewPewAttack::attack(Unit *platoonAttacked)
     else
     {
         platoonAttacked->takeDamage(2, true);
+        cout<<"Platoon will now throw rocks - You do not have ammo. If you survive...we recommend replenishing ammo"<<endl;
     }
 }
 
