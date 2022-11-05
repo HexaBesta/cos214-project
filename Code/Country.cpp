@@ -158,3 +158,15 @@ void Country::babiesGrowUpNow(){
 	int inc = (int)(increase+1);
 	this->civilianPopulation = this->civilianPopulation+inc;
 }
+
+int Country::getEconomy(){
+	return this->economy;
+}
+
+void Country::spendMoney(int dec){
+	this->economy -= dec;
+}
+
+void Country::increaseEconomy(double increase){
+	this->economy = (int)(this->economy * increase+1);
+}
