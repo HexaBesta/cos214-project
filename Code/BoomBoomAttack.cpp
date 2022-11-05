@@ -12,6 +12,8 @@ void BoomBoomAttack::attack(Unit *platoonAttacked)
         int damage = this->thePlatoon->getDamage()*1.5 ;
         platoonAttacked->takeDamage(damage, false);
         this->thePlatoon->decreaseAmmo();
+    }else{
+        platoonAttacked->takeDamage(10, true);
     }
 }
 

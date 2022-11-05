@@ -22,6 +22,8 @@ void PewPewAttack::attack(Unit *platoonAttacked)
                 this->thePlatoon->decreaseAmmo();
             }
         }
+    }else{
+         platoonAttacked->takeDamage(2, true);
     }
 }
 
