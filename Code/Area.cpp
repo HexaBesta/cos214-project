@@ -518,26 +518,6 @@ bool Area::retreat(string side)
 	{
 		if (area->getColour() == allianceColour || area->getColour() == 94)
 		{
-			// if (side.compare("defense") == 0)
-			// {
-			// 	if (this->land->getAttacker() != NULL)
-			// 	{
-			// 		Country *country = this->land->getAttacker()->getCountry();
-			// 		this->colour = country->getAlliances()->getColour();
-			// 		this->country = country;
-			// 	}
-			// 	else if (this->air->getAttacker() != NULL)
-			// 	{
-			// 		Country *country = this->air->getAttacker()->getCountry();
-			// 		this->colour = country->getAlliances()->getColour();
-			// 		this->country = country;
-			// 	}
-			// 	else
-			// 	{
-			// 		this->colour = 94;
-			// 		this->country = NULL;
-			// 	}
-			// }
 
 			if (landUnit != NULL)
 			{
@@ -561,26 +541,6 @@ bool Area::retreat(string side)
 		{
 			if (area->getColour() == allianceColour || area->getColour() == 94)
 			{
-				// if (side.compare("defense") == 0)
-				// {
-				// 	if (this->land->getAttacker() != NULL)
-				// 	{
-				// 		Country *country = this->land->getAttacker()->getCountry();
-				// 		this->colour = country->getAlliances()->getColour();
-				// 		this->country = country;
-				// 	}
-				// 	else if (this->air->getAttacker() != NULL)
-				// 	{
-				// 		Country *country = this->air->getAttacker()->getCountry();
-				// 		this->colour = country->getAlliances()->getColour();
-				// 		this->country = country;
-				// 	}
-				// 	else
-				// 	{
-				// 		this->colour = 94;
-				// 		this->country = NULL;
-				// 	}
-				// }
 
 				if (airUnit != NULL)
 				{
@@ -834,7 +794,13 @@ void Area::initialiseAllFactories()
 void Area::replenish()
 {
 	Transport *resources[3];
-
+	int economy=0;
+	if(this->country !=nullptr){
+		economy = this->country->getEconomy();
+	}
+	if(economy<500||(this->air->getDefender()==nullptr&&this->land->getDefender()==nullptr)){
+		return;
+	}
 	if (allFactories[0] == NULL)
 	{
 		resources[0] == NULL;
@@ -842,6 +808,7 @@ void Area::replenish()
 	else
 	{
 		resources[0] == allFactories[0]->makeTypeTransport();
+		this->country->spendMoney(50);
 	}
 
 	if (allFactories[1] == NULL)
@@ -851,6 +818,7 @@ void Area::replenish()
 	else
 	{
 		resources[1] == allFactories[1]->makeTypeTransport();
+		this->country->spendMoney(50);
 	}
 
 	if (allFactories[2] == NULL)
@@ -860,6 +828,7 @@ void Area::replenish()
 	else
 	{
 		resources[2] == allFactories[2]->makeTypeTransport();
+		this->country->spendMoney(50);
 	}
 	cout<<"Here Area 863"<<endl;
 	this->air->replenish(resources);

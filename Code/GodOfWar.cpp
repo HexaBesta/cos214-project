@@ -388,6 +388,7 @@ void GodOfWar::warLoop()
 
 void GodOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
+    this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
         First alliance turn
@@ -411,6 +412,8 @@ void GodOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
     {
         return;
     }
+    
+    this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
         Second alliance turn

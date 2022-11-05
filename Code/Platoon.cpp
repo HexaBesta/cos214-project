@@ -173,13 +173,13 @@ string Platoon::toString(int lineLen)
 
 void Platoon::changeStrategy()
 {
-	if (this->strategy->getPlatoonStrategy().compare("pew") == 0 && boomboom >= 10)
+	if (this->strategy->getPlatoonStrategy().compare("pew") == 0 && (boomboom >= 10||pewpew==0))
 	{
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
 		this->strategy = newStrategy;
 	}
-	else if (this->strategy->getPlatoonStrategy().compare("boom") == 0 && pewpew >= 200)
+	else if (this->strategy->getPlatoonStrategy().compare("boom") == 0 && (pewpew >= 200||boomboom == 0))
 	{
 		PlatoonStrategy *newStrategy = this->strategy->toggleStrategy();
 		delete this->strategy;
@@ -520,7 +520,7 @@ Platoon::~Platoon()
 	cout << "Delete vehicles - Platoon" << endl;
 	while (!vehicles.empty())
 	{
-		if (humans.back() != NULL)
+		if (vehicles.back() != NULL)
 			delete vehicles.back();
 		vehicles.pop_back();
 	}
