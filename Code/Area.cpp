@@ -446,26 +446,6 @@ bool Area::retreat(string side)
 	{
 		if (area->getColour() == allianceColour || area->getColour() == 94)
 		{
-			// if (side.compare("defense") == 0)
-			// {
-			// 	if (this->land->getAttacker() != NULL)
-			// 	{
-			// 		Country *country = this->land->getAttacker()->getCountry();
-			// 		this->colour = country->getAlliances()->getColour();
-			// 		this->country = country;
-			// 	}
-			// 	else if (this->air->getAttacker() != NULL)
-			// 	{
-			// 		Country *country = this->air->getAttacker()->getCountry();
-			// 		this->colour = country->getAlliances()->getColour();
-			// 		this->country = country;
-			// 	}
-			// 	else
-			// 	{
-			// 		this->colour = 94;
-			// 		this->country = NULL;
-			// 	}
-			// }
 
 			if (landUnit != NULL)
 			{
@@ -489,26 +469,6 @@ bool Area::retreat(string side)
 		{
 			if (area->getColour() == allianceColour || area->getColour() == 94)
 			{
-				// if (side.compare("defense") == 0)
-				// {
-				// 	if (this->land->getAttacker() != NULL)
-				// 	{
-				// 		Country *country = this->land->getAttacker()->getCountry();
-				// 		this->colour = country->getAlliances()->getColour();
-				// 		this->country = country;
-				// 	}
-				// 	else if (this->air->getAttacker() != NULL)
-				// 	{
-				// 		Country *country = this->air->getAttacker()->getCountry();
-				// 		this->colour = country->getAlliances()->getColour();
-				// 		this->country = country;
-				// 	}
-				// 	else
-				// 	{
-				// 		this->colour = 94;
-				// 		this->country = NULL;
-				// 	}
-				// }
 
 				if (airUnit != NULL)
 				{

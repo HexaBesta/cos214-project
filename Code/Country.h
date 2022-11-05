@@ -22,6 +22,7 @@ class Country {
 		Director * director;
 		Player* player;
 		int civilianPopulation;
+		int economy;
 
 	public:
 		/**
@@ -122,6 +123,26 @@ class Country {
 		 * 
 		 */
 		void babiesGrowUpNow();
+
+		/**
+		 * @brief Returns the total economy of the Coountry
+		 * 
+		 * @return int 
+		 */
+		int getEconomy();
+
+		/**
+		 * @brief Decreases the economy based on the amount spent
+		 * 
+		 */
+		void spendMoney(int amount);
+
+		/**
+		 * @brief increase the economy by passed in percentage
+		 * 
+		 * @param growth percentage to grow by
+		 */
+		void increaseEconomy(double growth);
 
 		/**
 		 * @brief Country Deconstructor, will delete the countryState and military vector
