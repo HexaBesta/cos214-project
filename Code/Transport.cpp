@@ -12,7 +12,7 @@ bool Transport::isEmpty()
 
 int Transport::getAmount()
 {
-    srand(time(0));
+    //srand(time(0));
 
     int max = (this->supply < 10) ? this->supply : 10;
     int amount = rand() % max + 1;
