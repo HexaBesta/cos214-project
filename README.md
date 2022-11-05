@@ -4,7 +4,8 @@
 Run a simulation or create your own war. Let it run by itself or be the commander of your forces.
 
 # Directory Structure
-```.
+```
+.
 ├── Code                    # Source code folder
 ├── Docs                    # Documentation files
 ├── Maps                    # Map textfile templates
