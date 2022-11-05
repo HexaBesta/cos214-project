@@ -157,6 +157,7 @@ int CPU::chooseCountry(vector<Country *> country, Map *map, sf::RenderWindow *wi
 int CPU::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
     vector<int> possibleReturn;
+    cout<<possibleReturn.size()<<"endl";
     if (area->getAir()->getDefender() != NULL || area->getLand()->getDefender() != NULL)
     {
         vector<Area *> adj = map->listAdjacent(area, false);
@@ -193,6 +194,7 @@ int CPU::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *window, 
     {
         possibleReturn.push_back(2);
     }
+    cout<<possibleReturn.size()<<"endl";
     return possibleReturn.at(rand() % possibleReturn.size());
 }
 

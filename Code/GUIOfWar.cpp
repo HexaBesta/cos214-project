@@ -175,9 +175,15 @@ void GUIOfWar::takeTurn(int actions, sf::RenderWindow *window, vector<sf::Drawab
             }
         }
         cout << "escaped" << endl;
+        if (areaIndex==-1)
+        {
+            break;
+        }
+        
         /*
         Select an action
         */
+        cout<<"going in "<<areaIndex<<endl;
         int action = this->player->chooseActionForCountry(areas.at(areaIndex), this->map, window, ui);
         cout << "action is " << action << endl;
         /*

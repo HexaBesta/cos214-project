@@ -6,13 +6,60 @@ bool GUIUser::playerRetreat(Battle *battle)
 {
     // battle->getStateSummary();
 
-    int resp;
-    cout << "Retreat" << endl
-         << "1. Yes \n2. Not necessary" << endl;
-    cin >> resp;
+    const int WINDOW_X = 222;
+    const int WINDOW_Y = 39;
+    sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Retreat?");
 
-    // clear buffer
-    cin.ignore(30, '\n');
+    // Create Land Button
+    sf::Texture okayBtnTexture;
+    if (!okayBtnTexture.loadFromFile("../dalandTilesets/images/okayBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite okayBtn;
+    okayBtn.setTexture(okayBtnTexture);
+    okayBtn.setPosition(0, 0);
+    okayBtn.scale(3, 3);
+
+    // Create air button
+    sf::Texture cancelBtnTexture;
+    if (!cancelBtnTexture.loadFromFile("../dalandTilesets/images/cancelBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite cancelBtn;
+    cancelBtn.setTexture(cancelBtnTexture);
+    cancelBtn.setPosition(111, 0);
+    cancelBtn.scale(3, 3);
+    int resp = -1;
+    while (resp == -1)
+    {
+
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                cout << "clicked " << endl;
+
+                if (okayBtn.getGlobalBounds().contains(mouseClick))
+                {
+                    resp = 1;
+                }
+                if (cancelBtn.getGlobalBounds().contains(mouseClick))
+                {
+                    resp = 0;
+                }
+            }
+        }
+
+        window.clear(sf::Color::Black);
+        window.draw(okayBtn);
+        window.draw(cancelBtn);
+        window.display();
+    }
+    window.close();
 
     if (resp == 1)
     {
@@ -27,12 +74,60 @@ bool GUIUser::playerRetreat(Battle *battle)
 bool GUIUser::checkChangeStrategy(Unit *active)
 {
     // active->print();
-    int resp;
-    cout << "Change Strategy" << endl
-         << "1. Yes \n2. Not necessary" << endl;
-    cin >> resp;
+    const int WINDOW_X = 222;
+    const int WINDOW_Y = 39;
+    sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Strat Change?");
 
-    cin.ignore(30, '\n');
+    // Create Land Button
+    sf::Texture okayBtnTexture;
+    if (!okayBtnTexture.loadFromFile("../dalandTilesets/images/okayBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite okayBtn;
+    okayBtn.setTexture(okayBtnTexture);
+    okayBtn.setPosition(0, 0);
+    okayBtn.scale(3, 3);
+
+    // Create air button
+    sf::Texture cancelBtnTexture;
+    if (!cancelBtnTexture.loadFromFile("../dalandTilesets/images/cancelBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite cancelBtn;
+    cancelBtn.setTexture(cancelBtnTexture);
+    cancelBtn.setPosition(111, 0);
+    cancelBtn.scale(3, 3);
+    int resp = -1;
+    while (resp == -1)
+    {
+
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                cout << "clicked " << endl;
+
+                if (okayBtn.getGlobalBounds().contains(mouseClick))
+                {
+                    resp = 1;
+                }
+                if (cancelBtn.getGlobalBounds().contains(mouseClick))
+                {
+                    resp = 0;
+                }
+            }
+        }
+
+        window.clear(sf::Color::Black);
+        window.draw(okayBtn);
+        window.draw(cancelBtn);
+        window.display();
+    }
+    window.close();
 
     if (resp == 1)
     {
@@ -47,14 +142,60 @@ bool GUIUser::checkChangeStrategy(Unit *active)
 bool GUIUser::requestReinforcements(Battle *battle)
 {
 
-    // battle->getStateSummary();
-    int resp;
-    cout << "Request Reinforcements" << endl
-         << "1. Yes \n2. Not necessary" << endl;
-    cin >> resp;
+    const int WINDOW_X = 222;
+    const int WINDOW_Y = 39;
+    sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Reinforcements?");
 
-    // clear buffer
-    cin.ignore(30, '\n');
+    // Create Land Button
+    sf::Texture okayBtnTexture;
+    if (!okayBtnTexture.loadFromFile("../dalandTilesets/images/okayBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite okayBtn;
+    okayBtn.setTexture(okayBtnTexture);
+    okayBtn.setPosition(0, 0);
+    okayBtn.scale(3, 3);
+
+    // Create air button
+    sf::Texture cancelBtnTexture;
+    if (!cancelBtnTexture.loadFromFile("../dalandTilesets/images/cancelBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite cancelBtn;
+    cancelBtn.setTexture(cancelBtnTexture);
+    cancelBtn.setPosition(111, 0);
+    cancelBtn.scale(3, 3);
+    int resp = -1;
+    while (resp == -1)
+    {
+
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+                cout << "clicked " << endl;
+
+                if (okayBtn.getGlobalBounds().contains(mouseClick))
+                {
+                    resp = 1;
+                }
+                if (cancelBtn.getGlobalBounds().contains(mouseClick))
+                {
+                    resp = 0;
+                }
+            }
+        }
+
+        window.clear(sf::Color::Black);
+        window.draw(okayBtn);
+        window.draw(cancelBtn);
+        window.display();
+    }
+    window.close();
 
     if (resp == 1)
     {
