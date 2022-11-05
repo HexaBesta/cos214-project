@@ -768,8 +768,11 @@ void Map::updateCountries()
 			c->babiesGrowUpNow();
 			c->updateCountryMoral();
 			int countryAreas = this->getAreasByCountry(c).size();
-			double increaseEconomy = 1 + (countryAreas/(allAreasSize*1.0))*2;
-			cout<<c->getName()<<" economy grew by "<<((increaseEconomy-1)*100)<<"% from "<<c->getEconomy()<<" to ";
+			double increaseEconomy =(countryAreas/(allAreasSize*1.0))/10;
+			if(increaseEconomy > 0.005){
+				increaseEconomy = 0.005;
+			}
+			cout<<c->getName()<<" economy grew by "<<((increaseEconomy)*100)<<"% from "<<c->getEconomy()<<" to ";
 			c->increaseEconomy(increaseEconomy);
 			cout<<c->getEconomy()<<endl;
 		}

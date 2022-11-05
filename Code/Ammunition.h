@@ -14,7 +14,7 @@ class Ammunition : public Transport
      * 
      * @param supply parameter to call super constructor
      */
-    Ammunition(int supply = 150);
+    Ammunition(int supply = 300);
      /**
      * @brief Returns an integer value of how much to return
      *
