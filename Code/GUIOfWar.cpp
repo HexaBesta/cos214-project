@@ -175,15 +175,15 @@ void GUIOfWar::takeTurn(int actions, sf::RenderWindow *window, vector<sf::Drawab
             }
         }
         cout << "escaped" << endl;
-        if (areaIndex==-1)
+        if (areaIndex == -1)
         {
             break;
         }
-        
+
         /*
         Select an action
         */
-        cout<<"going in "<<areaIndex<<endl;
+        cout << "going in " << areaIndex << endl;
         int action = this->player->chooseActionForCountry(areas.at(areaIndex), this->map, window, ui);
         cout << "action is " << action << endl;
         /*
@@ -212,7 +212,7 @@ void GUIOfWar::takeTurn(int actions, sf::RenderWindow *window, vector<sf::Drawab
                 {
                     adjacentOfAdjAreas.push_back(this->map->listAdjacent(it, true));
                 }
-                index = player->chooseAreasToDestroyTransportRoutes(adjacentAreas, adjacentOfAdjAreas, areas.at(areaIndex),window,ui,map);
+                index = player->chooseAreasToDestroyTransportRoutes(adjacentAreas, adjacentOfAdjAreas, areas.at(areaIndex), window, ui, map);
             }
 
             if (index != NULL)
@@ -300,15 +300,32 @@ void GUIOfWar::takeTurn(int actions, sf::RenderWindow *window, vector<sf::Drawab
         }
         else if (action == 3)
         {
-            countries.at(countryIndex)->recruitPlatoon(this->map, window,ui);
+            countries.at(countryIndex)->recruitPlatoon(this->map, window, ui);
+        }
+        else if (action == 5)
+        {
+            Area *selected = NULL;
+            while (selected == NULL)
+            {
+                selected = player->chooseAreaForAction(areas, window, map, ui);
+            }
+            dynamic_cast<sf::Text *>(ui.at(4))->setString(selected->toString());
+            window->clear(sf::Color::Black);
+            map->draw(window, NULL);
+            for (int i = 0; i < ui.size(); i++)
+            {
+                window->draw(*(ui.at(i)));
+            }
+            window->display();
+            actions = actions + 1;
         }
         else
         {
             actions = 0;
         }
         actions--;
+        cout << "actions remaining " << actions << endl;
         window->clear(sf::Color::Black);
-        // map->setAreaBorders();
         map->draw(window, NULL);
         for (int i = 0; i < ui.size(); i++)
         {
@@ -378,19 +395,19 @@ void GUIOfWar::warLoop()
     cout << "---------------------------------------------------------------" << endl;
     if (colour == 94)
     {
-        dynamic_cast<sf::Text*>(ui.at(4))->setString("WAR ENDS WITH PEACE TREATY");
+        dynamic_cast<sf::Text *>(ui.at(4))->setString("WAR ENDS WITH PEACE TREATY");
         cout << "WAR ENDS WITH PEACE TREATY" << endl;
     }
     else
     {
         if (colour == this->groupOne->getColour())
-        {   
-            dynamic_cast<sf::Text*>(ui.at(4))->setString("WAR ENDS WITH " + this->groupOne->getName() +" AS THE GLOBAL SUPERPOWER" );
+        {
+            dynamic_cast<sf::Text *>(ui.at(4))->setString("WAR ENDS WITH " + this->groupOne->getName() + " AS THE GLOBAL SUPERPOWER");
             cout << "WAR ENDS WITH " << this->groupOne->getName() << " AS THE GLOBAL SUPERPOWER" << endl;
         }
         else
         {
-            dynamic_cast<sf::Text*>(ui.at(4))->setString("WAR ENDS WITH " + this->groupTwo->getName() +" AS THE GLOBAL SUPERPOWER" );
+            dynamic_cast<sf::Text *>(ui.at(4))->setString("WAR ENDS WITH " + this->groupTwo->getName() + " AS THE GLOBAL SUPERPOWER");
             cout << "WAR ENDS WITH " << this->groupTwo->getName() << " AS THE GLOBAL SUPERPOWER" << endl;
         }
     }
@@ -406,8 +423,8 @@ void GUIOfWar::warLoop()
                 window.close();
             }
         }
-          window.clear(sf::Color::Black);
-        map->draw(&window,NULL);
+        window.clear(sf::Color::Black);
+        map->draw(&window, NULL);
         for (int i = 0; i < ui.size(); i++)
         {
             window.draw(*ui.at(i));
@@ -429,7 +446,7 @@ void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
     /*
         First alliance turn
     */
-    dynamic_cast<sf::Text*>(ui.at(4))->setString(groupOne->getName()+"'s turn");
+    dynamic_cast<sf::Text *>(ui.at(4))->setString(groupOne->getName() + "'s turn");
     if (!this->real)
     {
         window->clear(sf::Color::Black);
@@ -458,7 +475,7 @@ void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
         Second alliance turn
     */
     this->turn = false;
-    dynamic_cast<sf::Text*>(ui.at(4))->setString(groupTwo->getName()+"'s turn");
+    dynamic_cast<sf::Text *>(ui.at(4))->setString(groupTwo->getName() + "'s turn");
     if (!this->real)
     {
         window->clear(sf::Color::Black);
@@ -557,7 +574,7 @@ void GUIOfWar::initUI(vector<sf::Drawable *> &ui)
     sf::Sprite *recruitBtn = new sf::Sprite();
     recruitBtn->setTexture(*recruitBtnTexture);
     recruitBtn->setPosition(954, 560);
-    recruitBtn->scale(3,3);
+    recruitBtn->scale(3, 3);
 
     sf::Texture *endTurnBtnTexture = new sf::Texture();
     if (!endTurnBtnTexture->loadFromFile("../dalandTilesets/images/endTurnBtn.png"))
@@ -568,6 +585,16 @@ void GUIOfWar::initUI(vector<sf::Drawable *> &ui)
     endTurnBtn->setTexture(*endTurnBtnTexture);
     endTurnBtn->setPosition(1200, 560);
     endTurnBtn->scale(4, 4);
+
+    sf::Texture *inspectBtnTexture = new sf::Texture();
+    if (!inspectBtnTexture->loadFromFile("../dalandTilesets/images/inspectBtn.png"))
+    {
+        cout << "Texture missing" << endl;
+    }
+    sf::Sprite *inspectBtn = new sf::Sprite();
+    inspectBtn->setTexture(*inspectBtnTexture);
+    inspectBtn->setPosition(1050, 560);
+    inspectBtn->scale(3.1, 3.1);
 
     sf::Text *text = new sf::Text();
     sf::Font *font = new sf::Font();
@@ -586,6 +613,7 @@ void GUIOfWar::initUI(vector<sf::Drawable *> &ui)
     ui.push_back(text);
     ui.push_back(destroyRouteBtn);
     ui.push_back(recruitBtn);
+    ui.push_back(inspectBtn);
 }
 
 GUIOfWar::~GUIOfWar()

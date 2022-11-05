@@ -276,6 +276,11 @@ int GUIUser::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *wind
                     action = 4;
                     dynamic_cast<sf::Text *>(ui.at(4))->setString("Turn skipped");
                 }
+                if (dynamic_cast<sf::Sprite *>(ui.at(7))->getGlobalBounds().contains(mouseClick))
+                {
+                    action = 5;
+                    dynamic_cast<sf::Text *>(ui.at(4))->setString("Choose area to inspect");
+                }
             }
         }
 
