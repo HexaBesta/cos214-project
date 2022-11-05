@@ -183,9 +183,8 @@ void GUIOfWar::takeTurn(int actions, sf::RenderWindow *window, vector<sf::Drawab
         /*
         Select an action
         */
-        cout << "going in " << areaIndex << endl;
         int action = this->player->chooseActionForCountry(areas.at(areaIndex), this->map, window, ui);
-        cout << "action is " << action << endl;
+
         /*
         Chosen to attack transport route
         */
@@ -324,7 +323,6 @@ void GUIOfWar::takeTurn(int actions, sf::RenderWindow *window, vector<sf::Drawab
             actions = 0;
         }
         actions--;
-        cout << "actions remaining " << actions << endl;
         window->clear(sf::Color::Black);
         map->draw(window, NULL);
         for (int i = 0; i < ui.size(); i++)

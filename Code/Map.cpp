@@ -783,9 +783,7 @@ int Map::checkIfEnd(){
 void Map::replenishAllPlatoons(){
 	AreaVisitor* areaV = new AreaVisitor();
 	for(auto it : this->allAreas){
-		cout<<"hey"<<endl;
 		it->accept(areaV);
-		cout<<"hi"<<endl;
 	}
 }
 
