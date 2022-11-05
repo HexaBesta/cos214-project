@@ -320,6 +320,7 @@ void GodOfWar::warLoop()
 
 void GodOfWar::round()
 {
+    this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
         First alliance turn
@@ -340,6 +341,8 @@ void GodOfWar::round()
     {
         return;
     }
+    
+    this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
         Second alliance turn
