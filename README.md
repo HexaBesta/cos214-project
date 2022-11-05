@@ -3,6 +3,15 @@
 
 Run a simulation or create your own war. Let it run by itself or be the commander of your forces.
 
+# Directory Structure
+```.
+├── Code                    # Source code folder
+├── Docs                    # Documentation files
+├── Maps                    # Map textfile templates
+├── vpp                     # Visual Paradigm files
+├── Report                  # Project Reports
+└── README.md```
+
 # Installation
 ## Linux
 1. You will need to install [SFML](https://www.sfml-dev.org/tutorials/2.5/start-linux.php) to run out GUI. You can run `sudo apt-get install libsfml-dev` in your terminal to install it.
