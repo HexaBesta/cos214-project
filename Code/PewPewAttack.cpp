@@ -10,7 +10,11 @@ void PewPewAttack::attack(Unit *platoonAttacked)
     {
         for (int x = 0; x < minAmmoUse; x++)
         {
-            int damage = this->thePlatoon->getDamage() / (platoonAttacked->getSize()/3);
+            int denominator = (platoonAttacked->getSize()/3);
+            if(denominator == 0){
+                denominator++;
+            }
+            int damage = this->thePlatoon->getDamage() / (denominator);
             platoonAttacked->takeDamage(damage, true);
             if(platoonAttacked->getState().compare("Dead")==0){
                 break;
