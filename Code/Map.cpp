@@ -762,10 +762,16 @@ bool Map::addPlatoonToMap(Unit *platoon)
 
 void Map::updateCountries()
 {
+	int allAreasSize = this->allAreas.size();
 	for(auto c: this->allCountries){
 		if(c){
 			c->babiesGrowUpNow();
 			c->updateCountryMoral();
+			int countryAreas = this->getAreasByCountry(c).size();
+			double increaseEconomy = 1 + (countryAreas/(allAreasSize*1.0))*2;
+			cout<<c->getName()<<" economy grew by "<<((increaseEconomy-1)*100)<<"% from "<<c->getEconomy()<<" to ";
+			c->increaseEconomy(increaseEconomy);
+			cout<<c->getEconomy()<<endl;
 		}
 	}
 }

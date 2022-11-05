@@ -17,6 +17,7 @@ Country::Country(string name,int colour, Player* player)
 	this->moraleAverage = 100;
 	this->civilianPopulation = rand()%(100) + 150;
 	this->player = player;
+	this->economy = rand()%(200) + 1400;
 	// default state
 }
 
