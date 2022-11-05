@@ -150,7 +150,20 @@ public:
 	 */
 	virtual sf::Sprite* getSprite();
 	
-	
+	/**
+	 * @brief Set the Text Location of the wrapped unit
+	 * 
+	 * @param x 
+	 * @param y 
+	 */
+	virtual void setTextLocation(int x,int y);
+
+	/**
+	 * @brief Calls the draw function of the wrapped unit
+	 * 
+	 * @param r 
+	 */
+	virtual void draw(sf::RenderWindow* r);
 
 	/**
 	 * @brief Returns the average moral of the branch

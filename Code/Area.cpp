@@ -99,10 +99,12 @@ void Area::updateOwner(Unit *unit)
 	if (land->getDefender() != NULL)
 	{
 		land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
+		land->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+7, getMiddleCooridnate()->y * (640 / map->getGridYSize())+7);
 	}
 	if (air->getDefender() != NULL)
 	{
 		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
+		air->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+10, getMiddleCooridnate()->y * (640 / map->getGridYSize())-10);
 	}
 	updateAirSpriteAnimation(NULL);
 	updateLandSpriteAnimation(NULL);
@@ -118,6 +120,7 @@ void Area::marchIn(Unit *unit, Area *from)
 			{
 				land->setDefender(unit);
 				land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
+				land->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+7, getMiddleCooridnate()->y * (640 / map->getGridYSize())+7);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
 
@@ -131,6 +134,7 @@ void Area::marchIn(Unit *unit, Area *from)
 			{
 				land->setDefender(unit);
 				land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
+				land->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+7, getMiddleCooridnate()->y * (640 / map->getGridYSize())+7);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
 				if (from != NULL)
@@ -148,6 +152,7 @@ void Area::marchIn(Unit *unit, Area *from)
 		{
 			land->setDefender(unit);
 			land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
+			land->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+7, getMiddleCooridnate()->y * (640 / map->getGridYSize())+7);
 			country = unit->getCountry();
 			colour = country->getAlliances()->getColour();
 			if (from != NULL)
@@ -169,6 +174,7 @@ void Area::marchIn(Unit *unit, Area *from)
 			{
 				air->setDefender(unit);
 				air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
+				air->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+10, getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 10);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
 			}
@@ -176,6 +182,7 @@ void Area::marchIn(Unit *unit, Area *from)
 			{
 				air->setDefender(unit);
 				air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
+				air->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+10, getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 10);
 			}
 			else if (land->getDefender()->getAlliance() != unit->getAlliance())
 			{
@@ -186,6 +193,8 @@ void Area::marchIn(Unit *unit, Area *from)
 		{
 			air->setDefender(unit);
 			air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
+			air->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+10, getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 10);
+			
 		}
 		else if (air->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -368,7 +377,7 @@ string Area::toString()
 {
 	string out = "";
 	string next = "";
-	int lineChars = 70;
+	int lineChars = 30;
 
 	for (int i = 0; i < lineChars + 1; i++)
 		out += "-";
@@ -699,13 +708,15 @@ void Area::draw(sf::RenderWindow *r)
 	{
 		// land->getDefender()->setTexture();
 		// land->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()));
-		r->draw(*(land->getDefender()->getSprite()));
+		// r->draw(*(land->getDefender()->getSprite()));
+		land->getDefender()->draw(r);
 	}
 	if (air->getDefender() != NULL)
 	{
 		// air->getDefender()->setTexture();
-		air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
-		r->draw(*(air->getDefender()->getSprite()));
+		//air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
+		//r->draw(*(air->getDefender()->getSprite()));
+		air->getDefender()->draw(r);
 	}
 
 	r->draw(*sprite);
@@ -729,7 +740,7 @@ void Area::updateLandSpriteAnimation(sf::Clock *c)
 	// if (c->getElapsedTime().asMilliseconds() >= 90)
 	// {
 	// 	sf::IntRect re = land->getDefender()->getSprite()->getTextureRect();
-	// 	if (re.left == 78)
+	// 	if (re.left == 38)
 	// 	{
 	// 		re.left = 0;
 	// 	}

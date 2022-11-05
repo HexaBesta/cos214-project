@@ -91,6 +91,14 @@ void Branch::setTexture(){
 	return this->unit->getSprite();
 }
 
+void Branch::setTextLocation(int x,int y){
+	this->unit->setTextLocation(x,y);
+}
+
+void Branch::draw(sf::RenderWindow* r){
+	this->unit->draw(r);
+}
+
 Branch::~Branch(){
 	delete this->unit;
 }

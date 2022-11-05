@@ -195,6 +195,13 @@ Unit * Unit::getUnit(){
 	return this;
 }
 
+void Unit::setTextLocation(int x,int y){
+	cout<<"Not this set text location"<<endl;
+ }
+
+void Unit::draw(sf::RenderWindow* window){
+	cout<<"Not this draw function - unit"<<endl;
+}
 
 Unit::~Unit()
 {

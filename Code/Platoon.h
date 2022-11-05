@@ -29,6 +29,8 @@ private:
 	PlatoonStrategy *strategy = NULL;
 	sf::Sprite* sprite;
 	sf::Texture texture;
+	sf::Text* unitText;
+	sf::Font font;
 
 public:
 	
@@ -209,6 +211,14 @@ public:
 	void setSpriteLocation(int x, int y);
 
 	/**
+	 * @brief Set the location of the text that displays the platoon's size
+	 * 
+	 * @param x 
+	 * @param y 
+	 */
+	virtual void setTextLocation(int x,int y);
+
+	/**
 	 * @brief Loads the air image into the texture of this sprite
 	 * 
 	 */
@@ -219,6 +229,13 @@ public:
 	 * 
 	 */
 	virtual void setLandTexture();
+
+	/**
+	 * @brief Draws the platoon sprite along with the text of its number
+	 * 
+	 * @param window 
+	 */
+	virtual void draw(sf::RenderWindow* window);
 
 	/**
 	 * @brief Destroy the Platoon object

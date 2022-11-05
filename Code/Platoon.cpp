@@ -8,21 +8,30 @@ Platoon::Platoon(vector<Unit *> human, vector<Unit *> vehicles, int pewpew, int 
 	this->boomboom = boomboom;
 	this->strategy = new PewPewAttack(this);
 	sprite = new sf::Sprite();
-	ImageLibrary* i = ImageLibrary::getInstance();
+	unitText = new sf::Text();
+	ImageLibrary *i = ImageLibrary::getInstance();
 	if (!this->texture.loadFromImage(*(i->findTexture("../dalandTilesets/images/PlaneIdleForward_1.png"))))
 	{
 		cout << "Nope" << endl;
 	}
+	if (!font.loadFromFile("../dalandTilesets/images/Terminus.ttf"))
+	{
+	}
+	unitText->setFont(font);
 	sprite->setPosition(sf::Vector2f(0, 0));
 	texture.setSmooth(true);
 	sprite->setTexture(texture);
 	sprite->setTextureRect(sf::IntRect(0, 0, 26, 28));
 	sprite->setScale(1.2, 1.2);
+	unitText->setCharacterSize(15);
+	unitText->setOutlineThickness(2);
+	unitText->setOutlineColor(sf::Color::Black);
+	unitText->setString(to_string(this->getSize()));
 }
 
 void Platoon::setAirTexture()
-{	
-	ImageLibrary* i = ImageLibrary::getInstance();
+{
+	ImageLibrary *i = ImageLibrary::getInstance();
 	this->texture.update(*(i->findTexture("../dalandTilesets/images/PlaneIdleForward_1.png")));
 	sprite->setTextureRect(sf::IntRect(0, 0, 256, 256));
 	sprite->setScale(0.2, 0.2);
@@ -30,7 +39,7 @@ void Platoon::setAirTexture()
 
 void Platoon::setLandTexture()
 {
-	ImageLibrary* i = ImageLibrary::getInstance();
+	ImageLibrary *i = ImageLibrary::getInstance();
 	this->texture.update(*(i->findTexture("../dalandTilesets/images/GroupIdleForward_1.png")));
 	sprite->setTextureRect(sf::IntRect(0, 0, 26, 28));
 }
@@ -46,7 +55,8 @@ string Platoon::toString(int lineLen)
 	string out = "";
 	int health = 0;
 	int damage = 0;
-	int deadUnits = 0; cout<<"Platoon - 53"<<endl;
+	int deadUnits = 0;
+	cout << "Platoon - 53" << endl;
 	for (auto it : this->humans)
 	{
 		health += it->getHealth();
@@ -55,7 +65,8 @@ string Platoon::toString(int lineLen)
 		{
 			deadUnits++;
 		}
-	}cout<<"Platoon - 61"<<endl;
+	}
+	cout << "Platoon - 61" << endl;
 	for (auto it : this->vehicles)
 	{
 		health += it->getHealth();
@@ -238,15 +249,14 @@ void Platoon::setAccumlateMoral()
 	this->moral = moral;
 }
 
-
-
 int Platoon::getAverageMoral()
 {
 	this->setAccumlateMoral();
 	return this->moral / (this->humans.size() * 1.0);
 }
 
-int Platoon::getMoral(){
+int Platoon::getMoral()
+{
 	int totalMoral = this->getAverageMoral();
 	return totalMoral;
 }
@@ -362,6 +372,7 @@ void Platoon::join(Unit *platoonBranch)
 	this->boomboom = this->boomboom + platoon->boomboom;
 	platoon->humans.clear();
 	platoon->vehicles.clear();
+	unitText->setString(to_string(this->getSize()));
 }
 
 // added
@@ -483,28 +494,42 @@ void Platoon::setSpriteLocation(int x, int y)
 	this->sprite->setPosition(x * 0.5 * 64, y * 0.5 * 64);
 }
 
+void Platoon::setTextLocation(int x, int y)
+{
+
+	this->unitText->setPosition(x, y);
+}
+
+void Platoon::draw(sf::RenderWindow *window)
+{
+	window->draw(*(this->sprite));
+	this->unitText->setString(to_string(this->getSize()));
+	window->draw(*(this->unitText));
+}
+
 Platoon::~Platoon()
 {
-	cout<<"Deleting Platoon"<<endl;
-	cout<<"Delete humans - Platoon"<<endl;
+	cout << "Deleting Platoon" << endl;
+	cout << "Delete humans - Platoon" << endl;
 	while (!humans.empty())
 	{
 		if (humans.back() != NULL)
 			delete humans.back();
 		humans.pop_back();
 	}
-cout<<"Delete vehicles - Platoon"<<endl;
+	cout << "Delete vehicles - Platoon" << endl;
 	while (!vehicles.empty())
 	{
 		if (humans.back() != NULL)
 			delete vehicles.back();
 		vehicles.pop_back();
 	}
-cout<<"Delete strategy - Platoon"<<endl;
+	cout << "Delete strategy - Platoon" << endl;
 	if (strategy != NULL)
 	{
 		delete strategy;
 	}
-	cout<<"Delete sprite - Platoon"<<endl;
+	cout << "Delete sprite - Platoon" << endl;
 	delete sprite;
+	delete unitText;
 }

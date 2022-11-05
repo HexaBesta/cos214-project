@@ -14,9 +14,10 @@ Battle::Battle(TheatreOfWar *air, TheatreOfWar *land, Area *area, Player *player
 
 void Battle::battleLoop()
 {
-	const int WINDOW_X = 1280;
+	const int WINDOW_X = 640;
     const int WINDOW_Y = 640;
     sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "My window2");
+	window.setPosition(sf::Vector2i(800,0));
 	sf::Text text;
     sf::Font font;
     if (!font.loadFromFile("../dalandTilesets/images/Terminus.ttf"))

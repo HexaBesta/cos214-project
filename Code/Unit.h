@@ -149,10 +149,10 @@ public:
 
 	/**
 	 * @brief Returns the current Units pointer
-	 * 
-	 * @return Unit* 
+	 *
+	 * @return Unit*
 	 */
-	virtual Unit* getUnit();
+	virtual Unit *getUnit();
 
 	/**
 	 * @brief Get the Alliance that the unit beloings to.
@@ -199,31 +199,46 @@ public:
 
 	/**
 	 * @brief Stupped function used in platoon to replenish units
-	 * 
-	 * @param transport 
+	 *
+	 * @param transport
 	 */
-	virtual void replenish(Transport ** transport);
-  
-     /**		
-	     * @brief Get the Sprite of this unit		
-	     *		
-	     * @return sf::Sprite		
-	     */		
-	    virtual sf::Sprite* getSprite();		
-			
-	    /**		
-	     * @brief Set the Sprite Location of the unit's sprite		
-	     *		
-	     * @param x The X coordinate of the sprite (unscaled)		
-	     * @param y The Y coordinate of the sprite (unscaled)		
-	     */		
-	    void setSpriteLocation(int x, int y){};		
-	    		
-	    virtual void setTexture();		
-			
-	    virtual void setAirTexture();		
-			
-	    virtual void setLandTexture();
+	virtual void replenish(Transport **transport);
+
+	/**
+	 * @brief Get the Sprite of this unit
+	 *
+	 * @return sf::Sprite
+	 */
+	virtual sf::Sprite *getSprite();
+
+	/**
+	 * @brief Set the Sprite Location of the unit's sprite
+	 *
+	 * @param x The X coordinate of the sprite (unscaled)
+	 * @param y The Y coordinate of the sprite (unscaled)
+	 */
+	void setSpriteLocation(int x, int y){};
+
+	/**
+	 * @brief Set the location of the text that displays the platoon's size
+	 *
+	 * @param x
+	 * @param y
+	 */
+	virtual void setTextLocation(int x, int y);
+
+	/**
+	 * @brief Draws the unit on the window using the sfml library
+	 *
+	 * @param window
+	 */
+	virtual void draw(sf::RenderWindow *window);
+
+	virtual void setTexture();
+
+	virtual void setAirTexture();
+
+	virtual void setLandTexture();
 
 	/**
 	 * @brief Destroy the Unit object
@@ -233,4 +248,3 @@ public:
 };
 
 #endif
-
