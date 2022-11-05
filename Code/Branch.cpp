@@ -1,18 +1,22 @@
 #include "Branch.h"
 
-Branch::Branch(Unit* unit):Unit() {
+Branch::Branch(Unit *unit) : Unit()
+{
 	this->unit = unit;
 }
 
-void Branch::attack(Unit* pl){
+void Branch::attack(Unit *pl)
+{
 	this->unit->attack(pl);
 }
 
-void Branch::requestState(){
+void Branch::requestState()
+{
 	this->unit->requestState();
 }
 
-void Branch::setUnitState(UnitsState* unitS){
+void Branch::setUnitState(UnitsState *unitS)
+{
 	this->unit->setUnitState(unitS);
 }
 
@@ -37,39 +41,48 @@ string Branch::getState()
 	return "";
 }
 
-bool Branch::takeDamage(int damage, bool pewpew){
+bool Branch::takeDamage(int damage, bool pewpew)
+{
 	return this->unit->takeDamage(damage, pewpew);
 }
 
-int Branch::getSize(){
+int Branch::getSize()
+{
 	return this->unit->getSize();
 }
 
-string Branch::getBranch(){
+string Branch::getBranch()
+{
 	return "BRANCH";
 }
 
-int * Branch::getAmmo(){
+int *Branch::getAmmo()
+{
 	return this->unit->getAmmo();
 }
 
-string Branch::getStrategyType(){
+string Branch::getStrategyType()
+{
 	return this->unit->getStrategyType();
 }
 
-void Branch::changeStrategy(){
+void Branch::changeStrategy()
+{
 	this->unit->changeStrategy();
 }
 
-int Branch::getMoral(){
+int Branch::getMoral()
+{
 	return this->unit->getMoral();
 }
 
-int Branch::getHealth(){
+int Branch::getHealth()
+{
 	return this->unit->getHealth();
 }
 
-string Branch::toString(int lineLen){
+string Branch::toString(int lineLen)
+{
 	return this->unit->toString(lineLen);
 }
 

@@ -28,20 +28,20 @@ void Player::initialiseSide(Alliances * alliance, Map* map,sf::RenderWindow* win
         Country * country = this->chooseCountryToJoinAlliance(map,window);
         country->setAlliance(alliance);
         alliance->addCountry(country);
-        vector<Area*> areas = map->getAreasByCountry(country);
-        for(auto area: areas){
+        vector<Area *> areas = map->getAreasByCountry(country);
+        for (auto area : areas)
+        {
             area->setColour();
         }
     }
 
-    vector<Country*> countries = alliance->getCountries();
+    vector<Country *> countries = alliance->getCountries();
 
-    cout<<"- - - - - - - - - Add platoons - - - - - - - - -"<<endl;
+    cout << "- - - - - - - - - Add platoons - - - - - - - - -" << endl;
 
     for(int i = 0; i<countries.size(); i++){
         this->addPlatoons(countries.at(i),map,window,{});
     }
-
 }
 
-void Player::inspect(Map * map){}
+void Player::inspect(Map *map) {}

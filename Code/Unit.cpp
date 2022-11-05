@@ -70,9 +70,10 @@ void Unit::changeStrategy()
 
 int Unit::getDamage()
 {
-	if(this->unitState == NULL)
+	if (this->unitState == NULL)
 		return this->damage;
-	else{
+	else
+	{
 		return (int)this->unitState->attackStrength(this->damage);
 	}
 }
@@ -95,7 +96,8 @@ int Unit::getSize()
 void Unit::setHealth(int healthhhh)
 {
 	this->health = healthhhh;
-	if(this->health >=100){
+	if (this->health >= 100)
+	{
 		this->health = 100;
 	}
 }
@@ -103,7 +105,8 @@ void Unit::setHealth(int healthhhh)
 void Unit::setMoral(int moral)
 {
 	this->moral = moral;
-	if(this->moral >=100){
+	if (this->moral >= 100)
+	{
 		this->moral = 100;
 	}
 }
@@ -116,7 +119,7 @@ int Unit::getMoral()
 bool Unit::takeDamage(int damage, bool checkStrat)
 {
 	this->health = this->health - damage;
-	this->moral = this->moral - (damage*(1.25));
+	this->moral = this->moral - (damage * (1.25));
 	if (this->health <= 0)
 	{
 		this->health = 0;
@@ -191,7 +194,8 @@ void Unit::setLandTexture()
 
 
 
-Unit * Unit::getUnit(){
+Unit *Unit::getUnit()
+{
 	return this;
 }
 

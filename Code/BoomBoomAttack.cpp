@@ -9,9 +9,14 @@ void BoomBoomAttack::attack(Unit *platoonAttacked)
 {
     if (this->thePlatoon->getAmmo()[1] > 0)
     {
-        int damage = this->thePlatoon->getDamage()*1.5 ;
+        int damage = this->thePlatoon->getDamage() * 1.5;
         platoonAttacked->takeDamage(damage, false);
         this->thePlatoon->decreaseAmmo();
+    }
+    else
+    {
+        platoonAttacked->takeDamage(10, true);
+        cout<<"Your platoon will now use a rock catapult - they have no ammo. If you survive...we recommend replenishing ammo"<<endl;
     }
 }
 

@@ -194,7 +194,6 @@ int CPU::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *window, 
     {
         possibleReturn.push_back(2);
     }
-    cout<<possibleReturn.size()<<"endl";
     return possibleReturn.at(rand() % possibleReturn.size());
 }
 
@@ -435,16 +434,3 @@ int CPU::platoonType()
     int random = (rand() % 3) + 1;
     return (random % 2);
 }
-
-// int CPU::chooseCountry(vector<Country *> country, Map *map)
-// {
-//     if (!country.empty())
-//     {
-//         int index = rand() % country.size();
-//         return index;
-//     }
-//     else
-//     {
-//         return -1;
-//     }
-// }

@@ -1,10 +1,10 @@
 #include "ATFactory.h"
-Transport* ATFactory::makeTypeTransport()
+Transport *ATFactory::makeTypeTransport()
 {
     return new Ammunition();
 }
 
-TransportFactory* ATFactory::clone()
+TransportFactory *ATFactory::clone()
 {
     return new ATFactory();
 }

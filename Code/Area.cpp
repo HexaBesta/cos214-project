@@ -794,11 +794,13 @@ void Area::initialiseAllFactories()
 void Area::replenish()
 {
 	Transport *resources[3];
-	int economy=0;
-	if(this->country !=nullptr){
+	int economy = 0;
+	if (this->country != nullptr)
+	{
 		economy = this->country->getEconomy();
 	}
-	if(economy<500||(this->air->getDefender()==nullptr&&this->land->getDefender()==nullptr)){
+	if (economy < 500 || (this->air->getDefender() == nullptr && this->land->getDefender() == nullptr))
+	{
 		return;
 	}
 	if (allFactories[0] == NULL)

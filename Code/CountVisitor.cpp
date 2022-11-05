@@ -29,26 +29,33 @@ void CountVisitor::visit(TransportRoute *transport)
     }
 };
 
-string CountVisitor::displayCount(){
+string CountVisitor::displayCount()
+{
     string display = "Alliance 1:\n";
-    display+=" Areas: ";
-    display+=alliance1Count;
-    display+=" Transports: ";
-    display+=alliance1CountTransport;
+    display += " Areas: ";
+    display += alliance1Count;
+    display += " Transports: ";
+    display += alliance1CountTransport;
     display += "Alliance 2:\n";
-    display+=" Areas: ";
-    display+=alliance2Count;
-    display+=" Transports: ";
-    display+=alliance2CountTransport;
+    display += " Areas: ";
+    display += alliance2Count;
+    display += " Transports: ";
+    display += alliance2CountTransport;
     return display;
 }
 
-int CountVisitor::warLoopComplete(){
-    if(this->alliance1Count == 0){
+int CountVisitor::warLoopComplete()
+{
+    if (this->alliance1Count == 0)
+    {
         return 160;
-    }else if(this->alliance2Count == 0){
+    }
+    else if (this->alliance2Count == 0)
+    {
         return 22;
-    }else{
+    }
+    else
+    {
         return 94;
     }
 }

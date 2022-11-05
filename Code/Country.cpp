@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Country::Country(string name,int colour, Player* player)
+Country::Country(string name, int colour, Player *player)
 {
 	this->name = name;
 	this->countryState = new NeutralState();
@@ -16,9 +16,9 @@ Country::Country(string name,int colour, Player* player)
 	this->military.push_back(NULL);
 	this->military.clear();
 	this->moraleAverage = 100;
-	this->civilianPopulation = rand()%(100) + 150;
+	this->civilianPopulation = rand() % (100) + 150;
 	this->player = player;
-	this->economy = rand()%(200) + 2400;
+	this->economy = rand() % (200) + 2400;
 	// default state
 }
 
@@ -32,7 +32,7 @@ Country::~Country()
 
 	while (!military.empty())
 	{
-		if(military.back() != NULL)
+		if (military.back() != NULL)
 			delete military.back();
 		military.pop_back();
 	}
@@ -47,7 +47,8 @@ string Country::requestState()
 
 void Country::setCountryState(CountryState *countryState)
 {
-	if(this->countryState != NULL){
+	if (this->countryState != NULL)
+	{
 		delete this->countryState;
 	}
 	this->countryState = countryState;
@@ -55,29 +56,34 @@ void Country::setCountryState(CountryState *countryState)
 
 double Country::getCountryMoral()
 {
-	if(this->updateCountryMoral())
+	if (this->updateCountryMoral())
 		return this->moraleAverage;
 	return 0;
 }
 
 bool Country::updateCountryMoral()
 {
-	if(this->countryState->requestState().compare("Joined")){
+	if (this->countryState->requestState().compare("Joined"))
+	{
 		this->moraleAverage = 0;
-		for(auto unit: this->military){
+		for (auto unit : this->military)
+		{
 			this->moraleAverage += unit->getAverageMoral();
 		}
 
-		double ratio = (this->moraleAverage*1.0)/this->military.size();
+		double ratio = (this->moraleAverage * 1.0) / this->military.size();
 
-		if(ratio < 20){
-			cout<<"Country: "<<this->name<<" is withdrawing due to low morale."<<endl;
+		if (ratio < 20)
+		{
+			cout << "Country: " << this->name << " is withdrawing due to low morale." << endl;
 			this->setCountryState(new WithdrawnState());
 			this->alliance->withdrawCountry(this);
 			return false;
 		}
 		return true;
-	}else{
+	}
+	else
+	{
 		return true;
 	}
 }
@@ -87,7 +93,8 @@ Alliances *Country::getAlliances()
 	return this->alliance;
 }
 
-void Country::setAlliance(Alliances * alliance){
+void Country::setAlliance(Alliances *alliance)
+{
 	this->alliance = alliance;
 	this->setCountryState(new JoinedState());
 }
@@ -101,20 +108,24 @@ void Country::recruitPlatoon(Map * map,sf::RenderWindow* window,vector<sf::Drawa
 	/*
 	Check country moral
 	*/
-	if(this->getCountryMoral()<30){
-		cout<<"No new recruits are lining up... "<<this->getName()<<"'s moral is running low, better send those troops some goods"<<endl;
+	if (this->getCountryMoral() < 30)
+	{
+		cout << "No new recruits are lining up... " << this->getName() << "'s moral is running low, better send those troops some goods" << endl;
 		return;
 	}
 	Unit * unit = this->countryState->recruitPlatoon(this->director, this, player,ui);
 
-	if(unit){
+	if (unit)
+	{
 		this->decreasePopulation(unit->getSize());
 		unit->setCountry(this);
 		this->military.push_back(unit);
 		this->updateCountryMoral();
-		cout<<"Adding new platoon to "<<this->name<<" military"<<endl;
-	}else{
-		cout<<"No unit created"<<endl;
+		cout << "Adding new platoon to " << this->name << " military" << endl;
+	}
+	else
+	{
+		cout << "No unit created" << endl;
 		return;
 	}
 	
@@ -127,10 +138,13 @@ void Country::recruitPlatoon(Map * map,sf::RenderWindow* window,vector<sf::Drawa
 	}
 }
 
-void Country::removeDeadPlatoons(){
+void Country::removeDeadPlatoons()
+{
 	int x = 0;
-	for(Unit * platoon: this->military){
-		if(platoon->getState() == "Dead"){
+	for (Unit *platoon : this->military)
+	{
+		if (platoon->getState() == "Dead")
+		{
 			delete platoon;
 			this->military.erase(this->military.begin() + x);
 		}
@@ -138,36 +152,44 @@ void Country::removeDeadPlatoons(){
 	}
 }
 
-void Country::setPlayer(Player* player){
+void Country::setPlayer(Player *player)
+{
 	this->player = player;
 }
 
-Player* Country::getPlayer(){
+Player *Country::getPlayer()
+{
 	return this->player;
 }
 
-int Country::getPopulation(){
+int Country::getPopulation()
+{
 	return this->civilianPopulation;
 }
 
-void Country::decreasePopulation(int toDec){
+void Country::decreasePopulation(int toDec)
+{
 	this->civilianPopulation -= toDec;
 }
 
-void Country::babiesGrowUpNow(){
-	double increase = this->civilianPopulation*0.02;
-	int inc = (int)(increase+1);
-	this->civilianPopulation = this->civilianPopulation+inc;
+void Country::babiesGrowUpNow()
+{
+	double increase = this->civilianPopulation * 0.02;
+	int inc = (int)(increase + 1);
+	this->civilianPopulation = this->civilianPopulation + inc;
 }
 
-int Country::getEconomy(){
+int Country::getEconomy()
+{
 	return this->economy;
 }
 
-void Country::spendMoney(int dec){
+void Country::spendMoney(int dec)
+{
 	this->economy -= dec;
 }
 
-void Country::increaseEconomy(double increase){
-	this->economy = (int)(this->economy * (increase+1));
+void Country::increaseEconomy(double increase)
+{
+	this->economy = (int)(this->economy * (increase + 1));
 }

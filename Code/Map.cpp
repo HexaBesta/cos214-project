@@ -210,7 +210,6 @@ void Map::createTransportRoute(Area *area1, Area *area2)
 
 Area *Map::chooseArea()
 {
-	// TODO - implement Map::chooseArea
 	throw "Not yet implemented";
 }
 
@@ -246,7 +245,6 @@ TransportFactory *Map::requestFactoryForArea(Area *area, int type)
 
 vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 {
-	// string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
 	vector<Area *> adjacentAreas = {};
 	for (int i = 0; i < allAreas.size(); i++)
 	{
@@ -256,19 +254,15 @@ vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 			{
 				if (transportRouteisAvailable(area, allAreas.at(i)))
 				{
-					// out += to_string(i) + ",";
 					adjacentAreas.push_back(allAreas.at(i));
 				}
 			}
 			else
 			{
-				// out += to_string(i) + ",";
 				adjacentAreas.push_back(allAreas.at(i));
 			}
 		}
 	}
-	// out += "\n";
-	// cout << out;
 	return adjacentAreas;
 }
 
@@ -865,15 +859,19 @@ bool Map::addPlatoonToMap(Unit *platoon,sf::RenderWindow* window,vector<sf::Draw
 	vector<Area *> possibleAreas = this->getAreasByCountry(platoon->getCountry());
 	if (possibleAreas.size() == 0)
 	{
-		if(platoon->getCountry() == NULL){
+		if (platoon->getCountry() == NULL)
+		{
 			return false;
-		}else if(platoon->getCountry()->getAlliances() == NULL){
+		}
+		else if (platoon->getCountry()->getAlliances() == NULL)
+		{
 			return false;
 		}
 
 		possibleAreas = this->getAreasByColour(platoon->getCountry()->getAlliances()->getColour());
-		
-		if(possibleAreas.size() == 0){
+
+		if (possibleAreas.size() == 0)
+		{
 			return false;
 		}
 	}
@@ -887,23 +885,24 @@ bool Map::addPlatoonToMap(Unit *platoon,sf::RenderWindow* window,vector<sf::Draw
 void Map::updateCountries()
 {
 	int allAreasSize = this->allAreas.size();
-	for(auto c: this->allCountries){
-		if(c){
+	for (auto c : this->allCountries)
+	{
+		if (c)
+		{
 			c->babiesGrowUpNow();
 			c->updateCountryMoral();
 			int countryAreas = this->getAreasByCountry(c).size();
-			double increaseEconomy =(countryAreas/(allAreasSize*1.0))/10;
-			if(increaseEconomy > 0.005){
+			double increaseEconomy = (countryAreas / (allAreasSize * 1.0)) / 10;
+			if (increaseEconomy > 0.005)
+			{
 				increaseEconomy = 0.005;
 			}
-			cout<<c->getName()<<" economy grew by "<<((increaseEconomy)*100)<<"% from "<<c->getEconomy()<<" to ";
+			cout << c->getName() << " economy grew by " << ((increaseEconomy)*100) << "% from " << c->getEconomy() << " to ";
 			c->increaseEconomy(increaseEconomy);
-			cout<<c->getEconomy()<<endl;
+			cout << c->getEconomy() << endl;
 		}
 	}
 }
-
-
 
 Map::~Map()
 {

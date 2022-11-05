@@ -19,7 +19,8 @@ Unit *TheatreOfWar::getDefender()
 
 void TheatreOfWar::setAttacker(Unit *attacker)
 {
-    if(attacker==nullptr){
+    if (attacker == nullptr)
+    {
         this->attacker = nullptr;
         return;
     }
@@ -34,7 +35,7 @@ void TheatreOfWar::setAttacker(Unit *attacker)
 }
 void TheatreOfWar::setDefender(Unit *defender)
 {
-    if (this->defender != NULL && this->defender->getState().compare("Dead")!=0)
+    if (this->defender != NULL && this->defender->getState().compare("Dead") != 0)
     {
         this->defender->join(defender);
     }
@@ -74,7 +75,7 @@ string TheatreOfWar::toString(int &lineLen)
     if (defender != NULL)
     {
         add = "" + defender->toString(lineLen);
-        out+=add+"\n";
+        out += add + "\n";
     }
     else
     {
@@ -87,12 +88,12 @@ string TheatreOfWar::toString(int &lineLen)
         out += add;
     }
 
-    //Skip Line
-	add= "|";
-	for (int i = 0; i < lineLen - 1; i++)
-		add += " ";
-	add += "|\n";
-    out+= add;
+    // Skip Line
+    add = "|";
+    for (int i = 0; i < lineLen - 1; i++)
+        add += " ";
+    add += "|\n";
+    out += add;
 
     add = "|                   Attacker:";
     while (add.length() < lineLen)
@@ -104,9 +105,9 @@ string TheatreOfWar::toString(int &lineLen)
 
     if (attacker != NULL)
     {
-        add =  attacker->toString(lineLen);
-       
-        out += add+"\n";
+        add = attacker->toString(lineLen);
+
+        out += add + "\n";
     }
     else
     {
@@ -167,8 +168,10 @@ Unit *TheatreOfWar::sendReinforcements()
     return NULL;
 }
 
-void TheatreOfWar::replenish(Transport** good){
-    if(this->defender!= NULL){
+void TheatreOfWar::replenish(Transport **good)
+{
+    if (this->defender != NULL)
+    {
         this->defender->replenish(good);
     }
 }

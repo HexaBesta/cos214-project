@@ -412,7 +412,7 @@ void GodOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
     {
         return;
     }
-    
+
     this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
