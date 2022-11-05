@@ -457,7 +457,7 @@ Platoon::~Platoon()
 
 	while (!vehicles.empty())
 	{
-		if (humans.back() != NULL)
+		if (vehicles.back() != NULL)
 			delete vehicles.back();
 		vehicles.pop_back();
 	}
