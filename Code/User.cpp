@@ -4,7 +4,7 @@
 
 bool User::playerRetreat(Battle *battle)
 {
-    //battle->getStateSummary();
+    // battle->getStateSummary();
 
     int resp;
     cout << "Retreat" << endl
@@ -47,7 +47,7 @@ bool User::checkChangeStrategy(Unit *active)
 bool User::requestReinforcements(Battle *battle)
 {
 
-    //battle->getStateSummary();
+    // battle->getStateSummary();
     int resp;
     cout << "Request Reinforcements" << endl
          << "1. Yes \n2. Not necessary" << endl;
@@ -66,7 +66,7 @@ bool User::requestReinforcements(Battle *battle)
     }
 }
 
-int User::chooseCountry(vector<Country *> country, Map* map)
+int User::chooseCountry(vector<Country *> country, Map *map)
 {
     int resp = 0;
     cout << "Choose country index to take turn:" << endl;
@@ -86,7 +86,7 @@ int User::chooseCountry(vector<Country *> country, Map* map)
     return resp;
 }
 
-int User::chooseActionForCountry(Area * area, Map * map)
+int User::chooseActionForCountry(Area *area, Map *map)
 {
     int resp = 0;
     cout << "Choose action to perform: \n 0 - march in \n 1 - destroy transport \n 2 - request transport factories \n 3 - recruit troops\n 4 - end turn" << endl;
@@ -109,7 +109,7 @@ int User::chooseAreaForAction(vector<Area *> areas)
     return resp;
 }
 
-int User::chooseAdjacentArea(vector<Area *> areas, Area * area)
+int User::chooseAdjacentArea(vector<Area *> areas, Area *area)
 {
     int resp = 0;
     cout << "Choose adjacent area from the list below:" << endl;
@@ -123,17 +123,20 @@ int User::chooseAdjacentArea(vector<Area *> areas, Area * area)
     return resp;
 }
 
-int* User::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current){
-    int * indexes= new int[2];
+int *User::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area *>> otherAdj, Area *current)
+{
+    int *indexes = new int[2];
     indexes[0] = indexes[1] = -1;
     indexes[0] = this->chooseAdjacentArea(adjAreas);
-    if(indexes[0] != -1 && indexes[0] < otherAdj.size()){
+    if (indexes[0] != -1 && indexes[0] < otherAdj.size())
+    {
         indexes[1] = this->chooseAdjacentArea(otherAdj.at(indexes[0]));
-        if(indexes[1] != -1 && indexes[1] < otherAdj.at(indexes[0]).size()){
+        if (indexes[1] != -1 && indexes[1] < otherAdj.at(indexes[0]).size())
+        {
             return indexes;
         }
     }
-    delete [] indexes;
+    delete[] indexes;
     indexes = NULL;
     return NULL;
 }
@@ -265,11 +268,12 @@ void User::initialiseFactories(Map *map, Alliances *alliances)
     map->requestFactoryForArea(areas.at(resp), resp1);
 }
 
-int User::platoonType(){
+int User::platoonType()
+{
     int resp = 0;
     cout << endl
-                 << "Which branch do you want to create?\n0. Air\n1. Land "<<endl;
-            cin >> resp;
+         << "Which branch do you want to create?\n0. Air\n1. Land " << endl;
+    cin >> resp;
     return resp;
 }
 

@@ -3,23 +3,28 @@
 #include "Player.h"
 using namespace std;
 
-void JoinedState::handleCountry() {
+void JoinedState::handleCountry()
+{
     cout << "You have joined the war!" << endl;
 }
 
-CountryState* JoinedState::changeCountryState() {
+CountryState *JoinedState::changeCountryState()
+{
     return new JoinedState();
 }
 
-string JoinedState::requestState() {
+string JoinedState::requestState()
+{
     return "Joined";
 }
 
-Unit * JoinedState::recruitPlatoon(Director * director, Country * country, Player * player){
+Unit *JoinedState::recruitPlatoon(Director *director, Country *country, Player *player)
+{
     bool type = player->platoonType();
-    if(country->getPopulation()<15){
+    if (country->getPopulation() < 15)
+    {
         return NULL;
     }
-	cout<<"Recruiting platoons from "<<this->requestState()<<" state"<<endl;
+    cout << "Recruiting platoons from " << this->requestState() << " state" << endl;
     return director->construct(type, country);
 }

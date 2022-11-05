@@ -737,15 +737,19 @@ bool Map::addPlatoonToMap(Unit *platoon)
 	vector<Area *> possibleAreas = this->getAreasByCountry(platoon->getCountry());
 	if (possibleAreas.size() == 0)
 	{
-		if(platoon->getCountry() == NULL){
+		if (platoon->getCountry() == NULL)
+		{
 			return false;
-		}else if(platoon->getCountry()->getAlliances() == NULL){
+		}
+		else if (platoon->getCountry()->getAlliances() == NULL)
+		{
 			return false;
 		}
 
 		possibleAreas = this->getAreasByColour(platoon->getCountry()->getAlliances()->getColour());
-		
-		if(possibleAreas.size() == 0){
+
+		if (possibleAreas.size() == 0)
+		{
 			return false;
 		}
 	}
@@ -757,23 +761,24 @@ bool Map::addPlatoonToMap(Unit *platoon)
 void Map::updateCountries()
 {
 	int allAreasSize = this->allAreas.size();
-	for(auto c: this->allCountries){
-		if(c){
+	for (auto c : this->allCountries)
+	{
+		if (c)
+		{
 			c->babiesGrowUpNow();
 			c->updateCountryMoral();
 			int countryAreas = this->getAreasByCountry(c).size();
-			double increaseEconomy =(countryAreas/(allAreasSize*1.0))/10;
-			if(increaseEconomy > 0.005){
+			double increaseEconomy = (countryAreas / (allAreasSize * 1.0)) / 10;
+			if (increaseEconomy > 0.005)
+			{
 				increaseEconomy = 0.005;
 			}
-			cout<<c->getName()<<" economy grew by "<<((increaseEconomy)*100)<<"% from "<<c->getEconomy()<<" to ";
+			cout << c->getName() << " economy grew by " << ((increaseEconomy)*100) << "% from " << c->getEconomy() << " to ";
 			c->increaseEconomy(increaseEconomy);
-			cout<<c->getEconomy()<<endl;
+			cout << c->getEconomy() << endl;
 		}
 	}
 }
-
-
 
 Map::~Map()
 {

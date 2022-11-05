@@ -133,10 +133,11 @@ void GodOfWar::takeTurn(int actions)
         if (areas.size() == 0)
         {
             cout << "This country occupies no areas - look for areas in your alliance" << endl;
-            if(countries.at(countryIndex)->getAlliances() != NULL)
+            if (countries.at(countryIndex)->getAlliances() != NULL)
                 areas = this->map->getAreasByColour(countries.at(countryIndex)->getAlliances()->getColour());
-            if(areas.size() == 0){
-                cout<<"Looks like there's nowhere to go... END TURN"<<endl;
+            if (areas.size() == 0)
+            {
+                cout << "Looks like there's nowhere to go... END TURN" << endl;
                 break;
             }
         }
@@ -208,8 +209,9 @@ void GodOfWar::takeTurn(int actions)
         else if (action == 2)
         {
             int resource = this->player->chooseResource(areas.at(areaIndex));
-            if(resource == -1){
-                cout<<"This area already has all factories"<<endl;
+            if (resource == -1)
+            {
+                cout << "This area already has all factories" << endl;
             }
             else if (areas.at(areaIndex)->requestFactory(resource))
             {
@@ -297,7 +299,7 @@ void GodOfWar::warLoop()
 
     int colour = this->map->checkIfEnd();
     cout << "---------------------------------------------------------------" << endl;
-    
+
     this->map->printMap();
 
     cout << "---------------------------------------------------------------" << endl;
@@ -332,7 +334,7 @@ void GodOfWar::round()
 
     this->turn = true;
 
-    this->takeTurn(this->map->getCountriesByColour(22).size()/2 + 1);
+    this->takeTurn(this->map->getCountriesByColour(22).size() / 2 + 1);
 
     this->map->resolveBattles();
     this->map->cleanBattles();
@@ -341,7 +343,7 @@ void GodOfWar::round()
     {
         return;
     }
-    
+
     this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
@@ -354,7 +356,7 @@ void GodOfWar::round()
         this->checkTogglePlayer();
     }
 
-    this->takeTurn(this->map->getCountriesByColour(160).size()/2 + 1);
+    this->takeTurn(this->map->getCountriesByColour(160).size() / 2 + 1);
 
     this->map->resolveBattles();
     this->map->cleanBattles();

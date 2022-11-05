@@ -1,5 +1,6 @@
 #include "DeployedState.h"
 
-void DeployedState::request(){
-    cout<<"Deployed: ";
+void DeployedState::request()
+{
+    cout << "Deployed: ";
 }

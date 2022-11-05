@@ -449,12 +449,12 @@ bool Area::retreat(string side)
 
 			if (landUnit != NULL)
 			{
-				cout<<landUnit->getCountry()->getName()<<" land unit retreating from "<<this->getName()<<" to "<<area->getName()<<endl;
+				cout << landUnit->getCountry()->getName() << " land unit retreating from " << this->getName() << " to " << area->getName() << endl;
 				area->marchIn(land->retreat(side), this);
 			}
 			if (airUnit != NULL)
 			{
-				cout<<airUnit->getCountry()->getName()<<" air unit retreating from "<<this->getName()<<" to "<<area->getName()<<endl;
+				cout << airUnit->getCountry()->getName() << " air unit retreating from " << this->getName() << " to " << area->getName() << endl;
 				area->marchIn(air->retreat(side), this);
 			}
 
@@ -472,11 +472,12 @@ bool Area::retreat(string side)
 
 				if (airUnit != NULL)
 				{
-					cout<<airUnit->getCountry()->getName()<<" air unit retreating from "<<this->getName()<<" to "<<area->getName()<<endl;
+					cout << airUnit->getCountry()->getName() << " air unit retreating from " << this->getName() << " to " << area->getName() << endl;
 					area->marchIn(air->retreat(side), this);
 				}
-				if(landUnit != NULL){
-					cout<<landUnit->getCountry()->getName()<<" land unit are left stranded in "<<this->getName()<<endl;
+				if (landUnit != NULL)
+				{
+					cout << landUnit->getCountry()->getName() << " land unit are left stranded in " << this->getName() << endl;
 					return false;
 				}
 
@@ -549,7 +550,8 @@ bool Area::setCountry(Country *country)
 	}
 }
 
-void Area::changeCountry(Country * country){
+void Area::changeCountry(Country *country)
+{
 	this->country = country;
 }
 
@@ -571,11 +573,13 @@ void Area::initialiseAllFactories()
 void Area::replenish()
 {
 	Transport *resources[3];
-	int economy=0;
-	if(this->country !=nullptr){
+	int economy = 0;
+	if (this->country != nullptr)
+	{
 		economy = this->country->getEconomy();
 	}
-	if(economy<500||(this->air->getDefender()==nullptr&&this->land->getDefender()==nullptr)){
+	if (economy < 500 || (this->air->getDefender() == nullptr && this->land->getDefender() == nullptr))
+	{
 		return;
 	}
 	if (allFactories[0] == NULL)

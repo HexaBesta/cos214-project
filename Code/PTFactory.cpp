@@ -1,11 +1,11 @@
 #include "PTFactory.h"
 
-Transport* PTFactory::makeTypeTransport()
+Transport *PTFactory::makeTypeTransport()
 {
     return new People();
 }
 
-TransportFactory* PTFactory::clone()
+TransportFactory *PTFactory::clone()
 {
     return new PTFactory();
 }
