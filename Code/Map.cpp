@@ -201,7 +201,6 @@ void Map::createTransportRoute(Area *area1, Area *area2)
 
 Area *Map::chooseArea()
 {
-	// TODO - implement Map::chooseArea
 	throw "Not yet implemented";
 }
 
@@ -239,7 +238,6 @@ TransportFactory *Map::requestFactoryForArea(Area *area, int type)
 
 vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 {
-	// string out = "Areas adjacent to " + to_string(area->getIndex()) + ": ";
 	vector<Area *> adjacentAreas = {};
 	for (int i = 0; i < allAreas.size(); i++)
 	{
@@ -249,19 +247,15 @@ vector<Area *> Map::listAdjacent(Area *area, bool transportRoute)
 			{
 				if (transportRouteisAvailable(area, allAreas.at(i)))
 				{
-					// out += to_string(i) + ",";
 					adjacentAreas.push_back(allAreas.at(i));
 				}
 			}
 			else
 			{
-				// out += to_string(i) + ",";
 				adjacentAreas.push_back(allAreas.at(i));
 			}
 		}
 	}
-	// out += "\n";
-	// cout << out;
 	return adjacentAreas;
 }
 
