@@ -16,6 +16,7 @@ void BoomBoomAttack::attack(Unit *platoonAttacked)
     else
     {
         platoonAttacked->takeDamage(10, true);
+        cout<<"Your platoon will now use a rock catapult - they have no ammo. If you survive...we recommend replenishing ammo"<<endl;
     }
 }
 
