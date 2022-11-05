@@ -10,7 +10,8 @@ Run a simulation or create your own war. Let it run by itself or be the commande
 ├── Maps                    # Map textfile templates
 ├── vpp                     # Visual Paradigm files
 ├── Report                  # Project Reports
-└── README.md```
+└── README.md
+```
 
 # Installation
 ## Linux
