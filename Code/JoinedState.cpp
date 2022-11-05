@@ -15,7 +15,7 @@ string JoinedState::requestState() {
     return "Joined";
 }
 
-Unit * JoinedState::recruitPlatoon(Director * director, Country * country, Player * player){
+Unit * JoinedState::recruitPlatoon(Director * director, Country * country, Player * player,vector<sf::Drawable*> ui){
     bool type = player->platoonType();
     if(country->getPopulation()<15){
         return NULL;

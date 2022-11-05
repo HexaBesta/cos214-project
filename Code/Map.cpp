@@ -789,7 +789,9 @@ int Map::checkIfEnd(){
 void Map::replenishAllPlatoons(){
 	AreaVisitor* areaV = new AreaVisitor();
 	for(auto it : this->allAreas){
+		cout<<"hey"<<endl;
 		it->accept(areaV);
+		cout<<"hi"<<endl;
 	}
 }
 
@@ -858,7 +860,7 @@ void Map::cleanBattles(){
 	}
 }
 
-bool Map::addPlatoonToMap(Unit *platoon)
+bool Map::addPlatoonToMap(Unit *platoon,sf::RenderWindow* window,vector<sf::Drawable*> ui)
 {
 	vector<Area *> possibleAreas = this->getAreasByCountry(platoon->getCountry());
 	if (possibleAreas.size() == 0)
@@ -875,10 +877,10 @@ bool Map::addPlatoonToMap(Unit *platoon)
 			return false;
 		}
 	}
-	int index = this->player->chooseAreaForAction(possibleAreas);
-	possibleAreas.at(index)->marchIn(platoon, NULL);
-	possibleAreas.at(index)->updateLandSpriteAnimation(NULL);
-	possibleAreas.at(index)->updateAirSpriteAnimation(NULL);
+	Area* selected = this->player->chooseAreaForAction(possibleAreas,window,this,ui);
+	selected->marchIn(platoon, NULL);
+	selected->updateLandSpriteAnimation(NULL);
+	selected->updateAirSpriteAnimation(NULL);
 	return true;
 }
 

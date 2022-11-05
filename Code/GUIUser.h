@@ -1,12 +1,9 @@
-#ifndef CPU_H
-#define CPU_H
-
+#ifndef GUIUSER_H
+#define GUIUSER_H
+#include <SFML/Graphics.hpp>
 #include "Player.h"
-#include "User.h"
-#include "GUIUser.h"
-#include "Battle.h"
-
-class CPU : public Player
+#include "CPU.h"
+class GUIUser : public Player
 {
 public:
     /**
@@ -41,22 +38,16 @@ public:
      * @param countries vector of countries of current alliance
      * @return int index of country chosen
      */
-    virtual int chooseCountry(vector<Country *> countries, Map *map,sf::RenderWindow* window,vector<sf::Drawable*> ui);
+    virtual int chooseCountry(vector<Country *> countries, Map* map,sf::RenderWindow* window,vector<sf::Drawable*> ui);
 
     /**
-         * @brief choose which action player wants to take with country
-         * 
-         * @param area the area who will take the action
-         * @param map the map in use
-         * 
-         * @return int:
-         *  - 0 if march into area
-         *  - 1 if attack transport route
-         *  - 2 if requestResource
-         *  - 3 if recruit
-         *  - other end turn
-         *  
-         */
+     * @brief choose which action player wants to take with country
+     *
+     * @return int:
+     *  - 0 if attack transport route
+     *  - 1 if requestResource
+     *  - 2 if march into area
+     */
     virtual int chooseActionForCountry(Area * area, Map * map,sf::RenderWindow* window,vector<sf::Drawable*>& ui);
 
     /**
@@ -65,16 +56,23 @@ public:
      * @param areas list of all areas
      * @return int index of chosen
      */
-    virtual Area* chooseAreaForAction(vector<Area *> areas,sf::RenderWindow* window, Map* map,vector<sf::Drawable*> ui);
+    virtual Area* chooseAreaForAction(vector<Area *> areas,sf::RenderWindow* window, Map* map,vector<sf::Drawable*> ui={});
+
+    /**
+     * @brief choose an area to take action on by clicking on the map
+     * 
+    */
+    virtual Area* chooseAreaForAction(sf::RenderWindow* window, Map* map,string prompt,vector<sf::Drawable*> ui);
 
     /**
      * @brief choose area from adjArea list
      *
      * @param adjAreas
-     * @return int
+     * @return int index of chosen
      */
     virtual Area* chooseAdjacentArea(vector<Area *> adjAreas, Area * area,sf::RenderWindow* window,vector<sf::Drawable*> ui,Map* map);
 
+    
     /**
      * @brief choose two areas to destroy transport routes between
      *
@@ -107,11 +105,18 @@ public:
     virtual Player *togglePlayer(string type);
 
     /**
-     * @brief randomly assignes a platoon either a land or air branch
-     * 
-     * @return int 
+     * @brief Allows user to inspect areas of interest
+     *
+     * @param map
+     */
+    virtual void inspect(Map *map);
+
+    /**
+     * @brief Asks Player whether it should create Air or Land Platoon
+     *
      */
     virtual int platoonType();
+
 
 protected:
     /**
@@ -147,6 +152,18 @@ protected:
      *
      */
     virtual void initialiseFactories(Map *map, Alliances *alliance);
+
+    /**
+     * @brief Initialises the GUI for this page
+     * 
+     * @details Setup includes a text box to enter number of countries, a feedback box and a component to enter country names
+     * 
+    */
+    virtual string getString(sf::RenderWindow* window,sf::Text* prompt,sf::Text* output,sf::Sprite* confirmBtn, Map* map);
+
+    virtual int getInt(sf::RenderWindow* window,sf::Text* prompt,sf::Text* output,sf::Sprite* confirmBtn, Map* map);
+
+    
 };
 
 #endif

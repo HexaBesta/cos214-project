@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "GodOfWar.h"
+#include "GUIOfWar.h"
+#include "War.h"
 #include "Map.h"
 #include "Area.h"
 #include "Director.h"
@@ -293,7 +295,7 @@ void testGui()
 }
 
 void testLoop(){
-    GodOfWar * gof = new GodOfWar("europe2.txt");
+    War * gof = new GUIOfWar("europe2.txt");
 
     gof->printMap();
      

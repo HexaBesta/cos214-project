@@ -25,7 +25,7 @@ sf::Image *ImageLibrary::findTexture(string imageName)
     unordered_map<string, sf::Image *>::iterator itr = umap.find(imageName);
     if (itr == umap.end())
     {
-        cout << imageName << " not in map\n\n";
+        //cout << imageName << " not in map\n\n";
         sf::Image *img = new sf::Image();
         if (!img->loadFromFile(imageName))
         {

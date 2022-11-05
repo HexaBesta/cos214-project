@@ -141,7 +141,7 @@ bool CPU::requestReinforcements(Battle *battle)
     return false;
 }
 
-int CPU::chooseCountry(vector<Country *> country, Map *map)
+int CPU::chooseCountry(vector<Country *> country, Map *map, sf::RenderWindow *window, vector<sf::Drawable *> ui)
 {
     if (!country.empty())
     {
@@ -154,7 +154,7 @@ int CPU::chooseCountry(vector<Country *> country, Map *map)
     }
 }
 
-int CPU::chooseActionForCountry(Area *area, Map *map)
+int CPU::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
     vector<int> possibleReturn;
     if (area->getAir()->getDefender() != NULL || area->getLand()->getDefender() != NULL)
@@ -176,38 +176,40 @@ int CPU::chooseActionForCountry(Area *area, Map *map)
                 return 0;
             }
         }
-        
+
         possibleReturn.push_back(0);
         possibleReturn.push_back(0);
         possibleReturn.push_back(1);
         possibleReturn.push_back(3);
-        if(area->getFactory(0) != NULL || area->getFactory(1) != NULL || area->getFactory(2) != NULL){
+        if (area->getFactory(0) != NULL || area->getFactory(1) != NULL || area->getFactory(2) != NULL)
+        {
             possibleReturn.push_back(2);
         }
-        return possibleReturn.at(rand()%possibleReturn.size());
+        return possibleReturn.at(rand() % possibleReturn.size());
     }
     possibleReturn.push_back(3);
     possibleReturn.push_back(3);
-    if(area->getFactory(0) != NULL || area->getFactory(1) != NULL || area->getFactory(2) != NULL){
+    if (area->getFactory(0) != NULL || area->getFactory(1) != NULL || area->getFactory(2) != NULL)
+    {
         possibleReturn.push_back(2);
     }
-    return possibleReturn.at(rand()%possibleReturn.size());
+    return possibleReturn.at(rand() % possibleReturn.size());
 }
 
-int CPU::chooseAreaForAction(vector<Area *> area)
+Area *CPU::chooseAreaForAction(vector<Area *> areas, sf::RenderWindow *window, Map *map, vector<sf::Drawable *> ui)
 {
-    if (!area.empty())
+    if (!areas.empty())
     {
-        int index = rand() % area.size();
-        return index;
+        int index = rand() % areas.size();
+        return areas.at(index);
     }
     else
     {
-        return -1;
+        return NULL;
     }
 }
 
-int CPU::chooseAdjacentArea(vector<Area *> adjacentArea, Area *area)
+Area *CPU::chooseAdjacentArea(vector<Area *> adjAreas, Area *area, sf::RenderWindow *window, vector<sf::Drawable *> ui, Map *map)
 {
     int colour = area->getColour();
     if (colour == 22)
@@ -219,26 +221,26 @@ int CPU::chooseAdjacentArea(vector<Area *> adjacentArea, Area *area)
         colour = 22;
     }
     int x = 0;
-    for (auto it : adjacentArea)
+    for (auto it : adjAreas)
     {
         if (it->getColour() == colour)
         {
-            return x;
+            return adjAreas.at(x);
         }
         x++;
     }
-    if (!adjacentArea.empty())
+    if (!adjAreas.empty())
     {
-        int index = rand() % adjacentArea.size();
-        return index;
+        int index = rand() % adjAreas.size();
+        return adjAreas.at(index);
     }
     else
     {
-        return -1;
+        return NULL;
     }
 }
 
-int *CPU::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area *>> otherAdj, Area *current)
+int *CPU::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area *>> otherAdj, Area *current, sf::RenderWindow *window, vector<sf::Drawable *> ui, Map *map)
 {
     int *indexes = new int[2];
     indexes[0] = indexes[1] = -1;
@@ -335,15 +337,24 @@ bool CPU::changePlayer()
     return false;
 }
 
-Player *CPU::togglePlayer()
+Player *CPU::togglePlayer(string type)
 {
-    Player *togglePlayer = new User();
-    return togglePlayer;
+    if (type == "user")
+    {
+
+        Player *togglePlayer = new User();
+        return togglePlayer;
+    }else if(type=="guiUser"){
+        Player *togglePlayer=new GUIUser();
+        return togglePlayer;
+    }
+
+    return NULL;
 }
 
-void CPU::createCountries(Map *map)
+void CPU::createCountries(Map *map, sf::RenderWindow *window)
 {
-    srand(123);
+    srand(0);
     int ranNum = rand() % ((8)) + 6;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;
@@ -368,7 +379,7 @@ void CPU::createCountries(Map *map)
     map->printMap();
 }
 
-int CPU::numberOfCountriesInAlliance(Map *map)
+int CPU::numberOfCountriesInAlliance(Map *map, sf::RenderWindow *window)
 {
     vector<Country *> country = map->getCountriesByColour(94);
     int random = rand() % country.size();
@@ -387,16 +398,16 @@ int CPU::numberOfCountriesInAlliance(Map *map)
     return random;
 }
 
-Country *CPU::chooseCountryToJoinAlliance(Map *map)
+Country *CPU::chooseCountryToJoinAlliance(Map *map, sf::RenderWindow *window)
 {
     vector<Country *> country = map->getCountriesByColour(94);
     int random = rand() % country.size();
     return country.at(random);
 }
 
-void CPU::addPlatoons(Country *country, Map *map)
+void CPU::addPlatoons(Country *country, Map *map, sf::RenderWindow *window, vector<sf::Drawable *> ui)
 {
-    country->recruitPlatoon(map);
+    country->recruitPlatoon(map, window, ui);
 }
 
 void CPU::initialiseFactories(Map *map, Alliances *alliance)

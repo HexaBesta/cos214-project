@@ -38,7 +38,7 @@ public:
      * @param countries vector of countries of current alliance
      * @return int index of country chosen
      */
-    virtual int chooseCountry(vector<Country *> countries, Map* map);
+    virtual int chooseCountry(vector<Country *> countries, Map* map,sf::RenderWindow* window,vector<sf::Drawable*> ui);
 
     /**
      * @brief choose which action player wants to take with country
@@ -48,7 +48,7 @@ public:
      *  - 1 if requestResource
      *  - 2 if march into area
      */
-    virtual int chooseActionForCountry(Area * area, Map * map);
+    virtual int chooseActionForCountry(Area * area, Map * map,sf::RenderWindow* window,vector<sf::Drawable*>& ui);
 
     /**
      * @brief choose which area to take action in
@@ -56,7 +56,7 @@ public:
      * @param areas list of all areas
      * @return int index of chosen
      */
-    virtual int chooseAreaForAction(vector<Area *> areas);
+    virtual Area* chooseAreaForAction(vector<Area *> areas,sf::RenderWindow* window, Map* map,vector<sf::Drawable*> ui={});
 
     /**
      * @brief choose area from adjArea list
@@ -64,7 +64,7 @@ public:
      * @param adjAreas
      * @return int index of chosen
      */
-    virtual int chooseAdjacentArea(vector<Area *> adjAreas, Area * area = NULL);
+    virtual Area* chooseAdjacentArea(vector<Area *> adjAreas, Area * area,sf::RenderWindow* window,vector<sf::Drawable*> ui,Map* map);
 
     
     /**
@@ -73,7 +73,7 @@ public:
      * @param adjAreas of immediatly adjacent area
      * @return int array with index 0 containing the first array index and index 1 the second array index of chosen
      */
-    virtual int* chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current);
+    virtual int* chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current, sf::RenderWindow *window, vector<sf::Drawable *> ui, Map *map);
 
     /**
      * @brief choose type of resource to request for area passed in
@@ -96,7 +96,7 @@ public:
      *
      * @return Player* new player object
      */
-    virtual Player *togglePlayer();
+    virtual Player *togglePlayer(string type);
 
     /**
      * @brief Allows user to inspect areas of interest
@@ -117,21 +117,21 @@ protected:
      * @brief Creates new Countries and add to map country vector
      *
      */
-    virtual void createCountries(Map *map);
+    virtual void createCountries(Map *map,sf::RenderWindow* window);
 
     /**
      * @brief Allows user to choose the number of countries to join the alliance
      *
      * @return int
      */
-    virtual int numberOfCountriesInAlliance(Map *map);
+    virtual int numberOfCountriesInAlliance(Map *map,sf::RenderWindow* window);
 
     /**
      * @brief Choose a country to form part of alliance
      *
      * @return Country *  to chosen country
      */
-    virtual Country *chooseCountryToJoinAlliance(Map *map);
+    virtual Country *chooseCountryToJoinAlliance(Map *map,sf::RenderWindow* window);
 
     /**
      * @brief Adds a platoon to passed in country
@@ -139,7 +139,7 @@ protected:
      * @param country the country to which platoon should be added
      *
      */
-    virtual void addPlatoons(Country *country, Map *map);
+    virtual void addPlatoons(Country *country, Map *map,sf::RenderWindow* window,vector<sf::Drawable*> ui);
 
     /**
      * @brief Adds selected factories to selected areas

@@ -2,6 +2,7 @@
 #define JOINEDSTATE_H
 #include "CountryState.h"
 
+
 class Player;
 
 using namespace std;
@@ -28,7 +29,7 @@ class JoinedState : public CountryState {
          * @return newly made Platoon
          * 
          */
-        virtual Unit * recruitPlatoon(Director * director, Country * country, Player * player);
+        virtual Unit * recruitPlatoon(Director * director, Country * country, Player * player,vector<sf::Drawable*> ui);
 };
 
 #endif

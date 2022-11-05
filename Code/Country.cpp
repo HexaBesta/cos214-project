@@ -96,7 +96,7 @@ string Country::getName()
 	return this->name;
 }
 
-void Country::recruitPlatoon(Map * map){
+void Country::recruitPlatoon(Map * map,sf::RenderWindow* window,vector<sf::Drawable*> ui){
 	/*
 	Check country moral
 	*/
@@ -104,7 +104,7 @@ void Country::recruitPlatoon(Map * map){
 		cout<<"No new recruits are lining up... "<<this->getName()<<"'s moral is running low, better send those troops some goods"<<endl;
 		return;
 	}
-	Unit * unit = this->countryState->recruitPlatoon(this->director, this, player);
+	Unit * unit = this->countryState->recruitPlatoon(this->director, this, player,ui);
 
 	if(unit){
 		this->decreasePopulation(unit->getSize());
@@ -117,7 +117,7 @@ void Country::recruitPlatoon(Map * map){
 		return;
 	}
 	
-	if(map->addPlatoonToMap(unit)){
+	if(map->addPlatoonToMap(unit,window,ui)){
 		cout<<"Platoon succesfully deployed"<<endl;
 	}else{
 		cout<<"No Area to place platoon, it seems that all is lost. "<<this->getName()<<" withdraws"<<endl;

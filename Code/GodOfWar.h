@@ -38,13 +38,13 @@ class GodOfWar: public War{
 		 * 
 		 * @param actions number of action points available
 		 */
-		virtual void takeTurn(int actions,sf::RenderWindow* window);
+		virtual void takeTurn(int actions,sf::RenderWindow* window, vector<sf::Drawable*> &ui);
 
 		/**
 		 * @brief one round consisting of two seperate turns
 		 * 
 		 */
-		virtual void round(sf::RenderWindow* window);
+		virtual void round(sf::RenderWindow* window, vector<sf::Drawable*> &ui);
 
 	public:
 		/**

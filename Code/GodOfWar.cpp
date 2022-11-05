@@ -90,17 +90,14 @@ GodOfWar::GodOfWar(string setupFile)
     this->turn = true;
 }
 
-void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
+void GodOfWar::takeTurn(int actions, sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
     sf::Event event;
     while (window->pollEvent(event))
     {
     }
-    // //this->map->printMap();
     window->clear(sf::Color::Black);
-    sf::Clock c = sf::Clock();
-    // map->setAreaBorders();
-    map->draw(window, &c);
+    map->draw(window, NULL);
     window->display();
     Alliances *active = (turn) ? this->groupOne : this->groupTwo;
     while (actions > 0)
@@ -135,7 +132,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         }
         else
         {
-            countryIndex = this->player->chooseCountry(countries, this->map);
+            countryIndex = this->player->chooseCountry(countries, this->map, window,ui);
         }
 
         /*
@@ -165,13 +162,21 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         }
         else
         {
-            areaIndex = this->player->chooseAreaForAction(areas);
+            Area *selected = this->player->chooseAreaForAction(areas, window, map, ui);
+
+            for (int i = 0; i < areas.size(); i++)
+            {
+                if (areas.at(i) == selected)
+                {
+                    areaIndex = i;
+                }
+            }
         }
 
         /*
         Select an action
         */
-        int action = this->player->chooseActionForCountry(areas.at(areaIndex), this->map);
+        int action = this->player->chooseActionForCountry(areas.at(areaIndex), this->map,window,ui);
 
         /*
         Chosen to attack transport route
@@ -199,7 +204,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
                 {
                     adjacentOfAdjAreas.push_back(this->map->listAdjacent(it, true));
                 }
-                index = player->chooseAreasToDestroyTransportRoutes(adjacentAreas, adjacentOfAdjAreas, areas.at(areaIndex));
+                index = player->chooseAreasToDestroyTransportRoutes(adjacentAreas, adjacentOfAdjAreas, areas.at(areaIndex),window,ui,map);
             }
 
             if (index != NULL)
@@ -260,7 +265,21 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
             }
             else
             {
-                adjAreaIndex = this->player->chooseAdjacentArea(adjacentAreas, areas.at(areaIndex));
+                 int areaIndex=-1;
+                while(areaIndex==-1){
+                     Area* selected = this->player->chooseAdjacentArea(adjacentAreas, areas.at(areaIndex),window,ui,map);
+                     for (int i = 0; i < adjacentAreas.size(); i++)
+                     {
+                        if(adjacentAreas.at(i)==selected){
+                            areaIndex=i;
+                        }
+                     }
+                     if (areaIndex==-1)
+                     {
+                        cout<<"Select a valid area"<<endl;
+                     }
+                     
+                }
             }
 
             cout << "Marching from " << areas.at(areaIndex)->getName() << " to " << adjacentAreas.at(adjAreaIndex)->getName() << endl;
@@ -268,7 +287,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         }
         else if (action == 3)
         {
-            countries.at(countryIndex)->recruitPlatoon(this->map);
+            countries.at(countryIndex)->recruitPlatoon(this->map, window,ui);
         }
         else
         {
@@ -277,7 +296,7 @@ void GodOfWar::takeTurn(int actions, sf::RenderWindow *window)
         actions--;
         window->clear(sf::Color::Black);
         // map->setAreaBorders();
-        map->draw(window, &c);
+        map->draw(window, NULL);
         window->display();
     }
     // window->clear(sf::Color::Black);
@@ -291,6 +310,7 @@ void GodOfWar::warLoop()
     const int WINDOW_X = 1280;
     const int WINDOW_Y = 640;
     sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "My window");
+    vector<sf::Drawable *> ui;
     int resp = 1;
     map->setAreaBorders();
     int skip = 0;
@@ -327,7 +347,7 @@ void GodOfWar::warLoop()
                 skip--;
             }
         }
-        round(&window);
+        round(&window, ui);
     } while (resp == 1);
 
     int colour = this->map->checkIfEnd();
@@ -366,7 +386,7 @@ void GodOfWar::warLoop()
     }
 }
 
-void GodOfWar::round(sf::RenderWindow *window)
+void GodOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
     this->map->replenishAllPlatoons();
     /*
@@ -374,12 +394,15 @@ void GodOfWar::round(sf::RenderWindow *window)
     */
     if (!this->real)
     {
+        window->clear(sf::Color::Black);
+        map->draw(window, NULL);
+        window->display();
         this->checkTogglePlayer();
     }
 
     this->turn = true;
 
-    this->takeTurn(this->map->getCountriesByColour(22).size() / 2 + 1, window);
+    this->takeTurn(this->map->getCountriesByColour(22).size() / 2 + 1, window, ui);
 
     this->map->resolveBattles();
     this->map->cleanBattles();
@@ -396,10 +419,13 @@ void GodOfWar::round(sf::RenderWindow *window)
 
     if (!this->real)
     {
+        window->clear(sf::Color::Black);
+        map->draw(window, NULL);
+        window->display();
         this->checkTogglePlayer();
     }
 
-    this->takeTurn(this->map->getCountriesByColour(160).size() / 2 + 1, window);
+    this->takeTurn(this->map->getCountriesByColour(160).size() / 2 + 1, window, ui);
 
     this->map->resolveBattles();
     this->map->cleanBattles();
@@ -411,7 +437,7 @@ void GodOfWar::checkTogglePlayer()
 {
     if (this->player->changePlayer())
     {
-        Player *temp = this->player->togglePlayer();
+        Player *temp = this->player->togglePlayer("user");
         delete this->player;
         this->player = temp;
         this->map->setPlayer(this->player);
@@ -420,10 +446,14 @@ void GodOfWar::checkTogglePlayer()
 
 void GodOfWar::initialiseSides()
 {
+    const int WINDOW_X = 1280;
+    const int WINDOW_Y = 640;
+    sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "Make Countries");
+
     cout << "--------------------------------------------------------------" << endl;
     cout << "INITIALISING SIDES" << endl;
     cout << "--------------------------------------------------------------" << endl;
-    this->player->initialise(this->groupOne, this->groupTwo, this->map);
+    this->player->initialise(this->groupOne, this->groupTwo, this->map, &window);
 }
 
 void GodOfWar::printMap()

@@ -246,7 +246,7 @@ public:
 	 * @return true if platoon was sucesfully placed
 	 * @return false otherwise
 	 */
-	bool addPlatoonToMap(Unit * platoon);
+	bool addPlatoonToMap(Unit * platoon,sf::RenderWindow* window,vector<sf::Drawable*> ui);
 
 
 	

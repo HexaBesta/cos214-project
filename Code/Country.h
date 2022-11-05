@@ -6,6 +6,7 @@
 #include "NeutralState.h"
 #include "JoinedState.h"
 #include "WithdrawnState.h"
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 class Alliances;
@@ -79,7 +80,7 @@ class Country {
 		 * 
 		 * @param map so that platoon can be placed on map
 		 */
-		void recruitPlatoon(Map * map);
+		void recruitPlatoon(Map * map,sf::RenderWindow* window,vector<sf::Drawable*> ui);
 
 		/**
 		 * @brief Removes dead units from military

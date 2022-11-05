@@ -1,13 +1,15 @@
-#ifndef WAR_H
-#define WAR_H
+#ifndef GUIOFWAR_H
+#define GUIOFWAR_H
 #include "Alliances.h"
+#include "War.h"
 #include "Area.h"
 #include "CPU.h"
 #include "User.h"
+#include "GUIUser.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
 
-class War{
+class GUIOfWar: public War{
 	private:
 		Alliances *groupOne;
 		Alliances *groupTwo;
@@ -20,7 +22,7 @@ class War{
 		 * @brief Check whether to toggle between playing modes
 		 * 
 		 */
-		virtual void checkTogglePlayer()=0;
+		virtual void checkTogglePlayer();
 
 		/**
 		 * @brief allows alliance to take a turn
@@ -37,13 +39,13 @@ class War{
 		 * 
 		 * @param actions number of action points available
 		 */
-		virtual void takeTurn(int actions,sf::RenderWindow* window, vector<sf::Drawable*> &ui)=0;
+		virtual void takeTurn(int actions,sf::RenderWindow* window, vector<sf::Drawable*> &ui);
 
 		/**
 		 * @brief one round consisting of two seperate turns
 		 * 
 		 */
-		virtual void round(sf::RenderWindow* window, vector<sf::Drawable*> &ui)=0;
+		virtual void round(sf::RenderWindow* window,vector<sf::Drawable*>& ui);
 
 	public:
 		/**
@@ -51,34 +53,42 @@ class War{
 		 * 
 		 * @param setupFile name of the textfile used to set up game
 		 */
-		//War(string setupFile);
+		GUIOfWar(string setupFile);
 
 
 		/**
 		 * @brief Calls functions in player to initialise sides with countries with platoons
 		 * 
 		 */
-		virtual void initialiseSides()=0;
+		virtual void initialiseSides();
 
 		/**
 		 * @brief Loop that continues while war is active
 		 * 
 		 */
-		virtual void warLoop()=0;
+		virtual void warLoop();
 
 		/**
 		 * @brief Print the Map object
 		 * 
 		 */
-		virtual void printMap()=0;
+		virtual void printMap();
 
 		/**
-		 * @brief Destroy the  War object and assigned memory
+		 * @brief populates the ui vector with all on screen component
+		 * 
+		 * @details components include:
+		 * Feed back text
+		 * dispay box
+		 * move,build,end turn buttons
+		*/
+		virtual void initUI(vector<sf::Drawable*> &ui);
+
+		/**
+		 * @brief Destroy the God Of War object and assigned memory
 		 * 
 		 */
-		virtual ~War(){
-            cout<<"Destroying war"<<endl;
-        }
+		virtual ~GUIOfWar();
 
 };
 

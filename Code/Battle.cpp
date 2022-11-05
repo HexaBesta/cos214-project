@@ -51,17 +51,17 @@ void Battle::battleLoop()
 	cout<<"Battle over"<<endl;
 	this->getStateSummary();
 	cout<<"-------------------------------------------------------------------"<<endl;
-	while(window.isOpen()){
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-        }
-    }
+	// while(window.isOpen()){
+    //     sf::Event event;
+    //     while (window.pollEvent(event))
+    //     {
+    //         // "close requested" event: we close the window
+    //         if (event.type == sf::Event::Closed)
+    //         {
+    //             window.close();
+    //         }
+    //     }
+    // }
 }
 
 bool Battle::checkRetreat()

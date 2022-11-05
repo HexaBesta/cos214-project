@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 
+#include <SFML/Graphics.hpp>
+
 using namespace std;
 
 class Director;
@@ -33,7 +35,7 @@ class CountryState {
 		 * @param director 
 		 * @return Unit* 
 		 */
-		virtual Unit * recruitPlatoon(Director * director, Country * country, Player * player);
+		virtual Unit * recruitPlatoon(Director * director, Country * country, Player * player,vector<sf::Drawable*> ui);
 
 		/**
 		 * @brief Destroy the Country State object

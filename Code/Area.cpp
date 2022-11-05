@@ -177,6 +177,7 @@ void Area::marchIn(Unit *unit, Area *from)
 				air->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+10, getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 10);
 				country = unit->getCountry();
 				colour = country->getAlliances()->getColour();
+				map->setAreaBorders();
 			}
 			else if (land->getDefender()->getAlliance() == unit->getAlliance())
 			{
@@ -194,7 +195,7 @@ void Area::marchIn(Unit *unit, Area *from)
 			air->setDefender(unit);
 			air->getDefender()->getSprite()->setPosition(getMiddleCooridnate()->x * (640 / map->getGridXSize()), getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 32);
 			air->getDefender()->setTextLocation(getMiddleCooridnate()->x * (640 / map->getGridXSize())+10, getMiddleCooridnate()->y * (640 / map->getGridYSize()) - 10);
-			
+			map->setAreaBorders();
 		}
 		else if (air->getDefender()->getAlliance() != unit->getAlliance())
 		{
@@ -860,7 +861,7 @@ void Area::replenish()
 	{
 		resources[2] == allFactories[2]->makeTypeTransport();
 	}
-
+	cout<<"Here Area 863"<<endl;
 	this->air->replenish(resources);
 	this->land->replenish(resources);
 }

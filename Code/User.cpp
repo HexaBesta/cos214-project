@@ -4,7 +4,7 @@
 
 bool User::playerRetreat(Battle *battle)
 {
-    //battle->getStateSummary();
+    // battle->getStateSummary();
 
     int resp;
     cout << "Retreat" << endl
@@ -47,7 +47,7 @@ bool User::checkChangeStrategy(Unit *active)
 bool User::requestReinforcements(Battle *battle)
 {
 
-    //battle->getStateSummary();
+    // battle->getStateSummary();
     int resp;
     cout << "Request Reinforcements" << endl
          << "1. Yes \n2. Not necessary" << endl;
@@ -66,7 +66,7 @@ bool User::requestReinforcements(Battle *battle)
     }
 }
 
-int User::chooseCountry(vector<Country *> country, Map* map)
+int User::chooseCountry(vector<Country *> country, Map *map, sf::RenderWindow *window, vector<sf::Drawable *> ui)
 {
     int resp = 0;
     cout << "Choose country index to take turn:" << endl;
@@ -86,7 +86,7 @@ int User::chooseCountry(vector<Country *> country, Map* map)
     return resp;
 }
 
-int User::chooseActionForCountry(Area * area, Map * map)
+int User::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *window, vector<sf::Drawable *>& ui)
 {
     int resp = 0;
     cout << "Choose action to perform: \n 0 - march in \n 1 - destroy transport \n 2 - request transport factories \n 3 - recruit troops\n 4 - end turn" << endl;
@@ -95,7 +95,7 @@ int User::chooseActionForCountry(Area * area, Map * map)
     return resp;
 }
 
-int User::chooseAreaForAction(vector<Area *> areas)
+Area *User::chooseAreaForAction(vector<Area *> areas, sf::RenderWindow *window, Map *map, vector<sf::Drawable *> ui)
 {
     int resp = 0;
     cout << "Choose area index to take action in:" << endl;
@@ -106,10 +106,10 @@ int User::chooseAreaForAction(vector<Area *> areas)
     }
     cin >> resp;
     cin.ignore(30, '\n');
-    return resp;
+    return areas.at(resp);
 }
 
-int User::chooseAdjacentArea(vector<Area *> areas, Area * area)
+Area *User::chooseAdjacentArea(vector<Area *> areas, Area *area, sf::RenderWindow *window, vector<sf::Drawable *> ui,Map* map)
 {
     int resp = 0;
     cout << "Choose adjacent area from the list below:" << endl;
@@ -120,21 +120,38 @@ int User::chooseAdjacentArea(vector<Area *> areas, Area * area)
     }
     cin >> resp;
     cin.ignore(30, '\n');
-    return resp;
+    return areas.at(resp);
 }
 
-int* User::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area*>> otherAdj, Area * current){
-    int * indexes= new int[2];
+int *User::chooseAreasToDestroyTransportRoutes(vector<Area *> adjAreas, vector<vector<Area *>> otherAdj, Area *current, sf::RenderWindow *window, vector<sf::Drawable *> ui, Map *map)
+{
+    int *indexes = new int[2];
     indexes[0] = indexes[1] = -1;
-    indexes[0] = this->chooseAdjacentArea(adjAreas);
-    if(indexes[0] != -1 && indexes[0] < otherAdj.size()){
-        indexes[1] = this->chooseAdjacentArea(otherAdj.at(indexes[0]));
-        if(indexes[1] != -1 && indexes[1] < otherAdj.at(indexes[0]).size()){
+    int areaIndex = -1;
+    Area *selected1 = this->chooseAdjacentArea(adjAreas,NULL,NULL,{},NULL);
+    for (int i = 0; i < adjAreas.size(); i++)
+    {
+        if (adjAreas.at(i) == selected1)
+            areaIndex = i;
+    }
+
+    indexes[0] = areaIndex;
+    areaIndex = -1;
+    if (indexes[0] != -1 && indexes[0] < otherAdj.size())
+    {
+        Area *selected2 = this->chooseAdjacentArea(otherAdj.at(indexes[0]),NULL,NULL,{},NULL);
+        for (int i = 0; i < otherAdj.at(indexes[0]).size(); i++)
+        {
+            if (otherAdj.at(indexes[0]).at(i) == selected2)
+                areaIndex = i;
+        }
+        indexes[1] = areaIndex;
+        if (indexes[1] != -1 && indexes[1] < otherAdj.at(indexes[0]).size())
+        {
             return indexes;
         }
     }
-    cout<<"Yep"<<endl;
-    delete [] indexes;
+    delete[] indexes;
     indexes = NULL;
     return NULL;
 }
@@ -176,13 +193,13 @@ bool User::changePlayer()
     return false;
 }
 
-Player *User::togglePlayer()
+Player *User::togglePlayer(string type)
 {
     Player *togglePlayer = new CPU();
     return togglePlayer;
 }
 
-void User::createCountries(Map *map)
+void User::createCountries(Map *map, sf::RenderWindow *window)
 {
     int resp = 0;
     cout << "How many countries would you like to initialise? ";
@@ -217,7 +234,7 @@ void User::createCountries(Map *map)
     }
 }
 
-int User::numberOfCountriesInAlliance(Map *map)
+int User::numberOfCountriesInAlliance(Map *map, sf::RenderWindow *window)
 {
     vector<Country *> country = map->getCountriesByColour(94);
     int resp = 0;
@@ -226,7 +243,7 @@ int User::numberOfCountriesInAlliance(Map *map)
     return resp;
 }
 
-Country *User::chooseCountryToJoinAlliance(Map *map)
+Country *User::chooseCountryToJoinAlliance(Map *map, sf::RenderWindow *window)
 {
     vector<Country *> country = map->getCountriesByColour(94);
     cout << "Choose from the list of countries below to join alliance. Select the index" << endl;
@@ -234,20 +251,21 @@ Country *User::chooseCountryToJoinAlliance(Map *map)
     int resp = 0;
     for (auto it : country)
     {
-        vector<Area*> areas =  map->getAreasByCountry(it);
-        cout<<it->getName()<<": \tAreas: {";
-        for(auto areasIt : areas){
-            cout << "( " <<areasIt->getName() <<","<< areasIt->getIndex() << ") ";
+        vector<Area *> areas = map->getAreasByCountry(it);
+        cout << it->getName() << ": \tAreas: {";
+        for (auto areasIt : areas)
+        {
+            cout << "( " << areasIt->getName() << "," << areasIt->getIndex() << ") ";
         }
-        cout<<"} || Index: "<<x++<<endl;
+        cout << "} || Index: " << x++ << endl;
     }
     cin >> resp;
     return country.at(resp);
 }
 
-void User::addPlatoons(Country *country, Map *map)
+void User::addPlatoons(Country *country, Map *map, sf::RenderWindow *window,vector<sf::Drawable*> ui)
 {
-    country->recruitPlatoon(map);
+    country->recruitPlatoon(map, window,ui);
 }
 
 void User::initialiseFactories(Map *map, Alliances *alliances)
@@ -270,11 +288,12 @@ void User::initialiseFactories(Map *map, Alliances *alliances)
     map->requestFactoryForArea(areas.at(resp), resp1);
 }
 
-int User::platoonType(){
+int User::platoonType()
+{
     int resp = 0;
     cout << endl
-                 << "Which branch do you want to create?\n0. Air\n1. Land "<<endl;
-            cin >> resp;
+         << "Which branch do you want to create?\n0. Air\n1. Land " << endl;
+    cin >> resp;
     return resp;
 }
 
@@ -299,4 +318,3 @@ void User::inspect(Map *map)
         }
     } while (resp != 2);
 }
-
