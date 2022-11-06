@@ -345,7 +345,10 @@ Player *CPU::togglePlayer()
 
 void CPU::createCountries(Map *map)
 {
-    srand(0);
+    cout<<"Enter seed"<<endl;
+    int seed;
+    cin>>seed;
+    srand(seed);
     int totalAreas =  map->getAreasByColour(94).size() + map->getAreasByColour(22).size() + map->getAreasByColour(160).size();
     int range = totalAreas/5;
     int minimum = totalAreas/4;

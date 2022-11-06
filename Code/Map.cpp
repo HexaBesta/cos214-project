@@ -769,9 +769,9 @@ void Map::updateCountries()
 			c->updateCountryMoral();
 			int countryAreas = this->getAreasByCountry(c).size();
 			double increaseEconomy = (countryAreas / (allAreasSize * 1.0)) / 5;
-			if (increaseEconomy > 0.015)
+			if (increaseEconomy > 0.02)
 			{
-				increaseEconomy = 0.015;
+				increaseEconomy = 0.02;
 			}
 			cout << c->getName() << " economy grew by " << ((increaseEconomy)*100) << "% from " << c->getEconomy() << " to ";
 			c->increaseEconomy(increaseEconomy);
