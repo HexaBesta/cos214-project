@@ -101,7 +101,7 @@ void Country::setAlliance(Alliances *alliance)
 
 string Country::getName()
 {
-	return this->name;
+	return this->name + " $"+to_string(economy)+"  Pop:"+to_string(civilianPopulation);
 }
 
 void Country::recruitPlatoon(Map * map,sf::RenderWindow* window,vector<sf::Drawable*> ui){
