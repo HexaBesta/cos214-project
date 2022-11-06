@@ -589,7 +589,7 @@ void Area::replenish()
 	else
 	{
 		resources[0] == allFactories[0]->makeTypeTransport();
-		this->country->spendMoney(50);
+		this->country->spendMoney(20);
 	}
 
 	if (allFactories[1] == NULL)
@@ -599,7 +599,7 @@ void Area::replenish()
 	else
 	{
 		resources[1] == allFactories[1]->makeTypeTransport();
-		this->country->spendMoney(50);
+		this->country->spendMoney(20);
 	}
 
 	if (allFactories[2] == NULL)
@@ -609,7 +609,7 @@ void Area::replenish()
 	else
 	{
 		resources[2] == allFactories[2]->makeTypeTransport();
-		this->country->spendMoney(50);
+		this->country->spendMoney(20);
 	}
 
 	this->air->replenish(resources);

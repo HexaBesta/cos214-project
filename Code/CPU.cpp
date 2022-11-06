@@ -346,18 +346,25 @@ Player *CPU::togglePlayer()
 void CPU::createCountries(Map *map)
 {
     srand(0);
-    int ranNum = rand() % ((8)) + 6;
+    int totalAreas =  map->getAreasByColour(94).size() + map->getAreasByColour(22).size() + map->getAreasByColour(160).size();
+    int range = totalAreas/5;
+    int minimum = totalAreas/4;
+    if(minimum== 0){
+        minimum == 2;
+    }
+    if(range== 0){
+        range = 2;
+    }
+    int ranNum = rand() % ((range)) + minimum;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;
     for (int i = 0; i < ranNum; i++)
     {
-        int countryNumber = rand() % ((100 - 50 + 1) + 50);
-        string countryName = "Country";
-        countryName += to_string(countryNumber);
-        Country *country = new Country(countryName, 94, this);
-        map->addCountry(country);
         vector<Area *> possibleAreas = map->getAreasByColour(94);
         int randomArea = rand() % possibleAreas.size();
+        string countryName = possibleAreas.at(randomArea)->getName();
+        Country *country = new Country(countryName, 94, this);
+        map->addCountry(country);
         Area *area = nullptr;
         area = possibleAreas.at(randomArea);
         if (area != nullptr)
