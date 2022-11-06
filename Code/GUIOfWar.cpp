@@ -383,6 +383,10 @@ void GUIOfWar::warLoop()
             }
         }
         round(&window, ui);
+        if (this->map->checkIfEnd() != 94)
+        {
+            resp = 0;
+        }
     } while (resp == 1);
 
     int colour = this->map->checkIfEnd();
