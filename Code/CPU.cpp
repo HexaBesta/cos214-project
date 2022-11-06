@@ -376,7 +376,7 @@ void CPU::createCountries(Map *map, sf::RenderWindow *window)
     cout << "Creating " << ranNum << " countries" << endl;
     for (int i = 0; i < ranNum; i++)
     {
-        vector<Area > possibleAreas = map->getAreasByColour(94);
+        vector<Area *> possibleAreas = map->getAreasByColour(94);
         int randomArea = rand() % possibleAreas.size();
         string countryName = possibleAreas.at(randomArea)->getName();
         Country * country = new Country(countryName, 94, this);

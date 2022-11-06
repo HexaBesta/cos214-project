@@ -114,7 +114,7 @@ void Branch::draw(sf::RenderWindow* r){
 
 void Branch::replenish(Transport ** transport){
 	if(this->unit != NULL){
-		this->unit->replenish();
+		this->unit->replenish(transport);
 	}
 }
 

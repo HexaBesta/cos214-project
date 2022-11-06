@@ -446,8 +446,8 @@ void GUIOfWar::warLoop()
 
 void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
-    if(interrupt == 0){
-        this.real = !this->real;
+    if(interrupt == 0 && this->real){
+        this->real = !this->real;
     }
     
     this->map->updateCountries();
