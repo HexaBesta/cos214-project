@@ -1,7 +1,7 @@
 #include "ATFactory.h"
 Transport *ATFactory::makeTypeTransport()
 {
-    return new Ammunition(20);
+    return new Ammunition(250);
 }
 
 TransportFactory *ATFactory::clone()

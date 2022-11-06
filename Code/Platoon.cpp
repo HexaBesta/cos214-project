@@ -229,10 +229,28 @@ void Platoon::retrieveGoods(Transport *good)
 
 void Platoon::retrieveHealth(Transport *medic)
 {
-	while (!medic->isEmpty())
+	vector<Unit *> aliveOnes;
+	for (auto it : this->humans)
 	{
-		int index = rand() % this->humans.size();
-		this->humans.at(index)->setHealth(medic->replenish());
+		if (it->getState().compare("Dead") != 0)
+			aliveOnes.push_back(it);
+	}
+	for (auto it : this->vehicles)
+	{
+		if (it->getState().compare("Dead") != 0)
+			aliveOnes.push_back(it);
+	}
+	if(aliveOnes.size() == 0){
+		this->setAccumlateHealth();
+		return;
+	}
+	int i = 0;
+	while (!medic->isEmpty() && i++<aliveOnes.size())
+	{
+		int index = rand() % aliveOnes.size();
+		if(aliveOnes.at(index)->getHealth() > 0){
+			aliveOnes.at(index)->setHealth(medic->replenish());
+		}
 	}
 	this->setAccumlateHealth();
 }
