@@ -394,6 +394,9 @@ bool Platoon::takeDamage(int damage, bool checkPew)
 	{
 		if (checkPew)
 		{
+			if(aliveOnes.size() == 0){
+				return false;
+			}
 			int randomIn = rand() % aliveOnes.size();
 			Unit *random = aliveOnes.at(randomIn);
 			if (random->getHealth() > 0)
@@ -418,6 +421,9 @@ bool Platoon::takeDamage(int damage, bool checkPew)
 		}
 		else
 		{
+			if(aliveOnes.size() == 0){
+				return false;
+			}
 			int rand1 = rand() % aliveOnes.size() + 1;
 			int boomDamage = damage / rand1;
 			for (int x = 0; x < rand1; x++)

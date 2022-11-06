@@ -187,6 +187,13 @@ public:
 	virtual int getHealth();
 
 	/**
+	 * @brief forwards the replenish to the unit
+	 * 
+	 * @param transport array of resources
+	 */
+	virtual void replenish(Transport ** transport);
+
+	/**
 	 * @brief Destroy the Branch object
 	 *
 	 */
