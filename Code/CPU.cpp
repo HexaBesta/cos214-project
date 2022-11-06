@@ -185,6 +185,7 @@ int CPU::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *window, 
         if (area->getFactory(0) != NULL || area->getFactory(1) != NULL || area->getFactory(2) != NULL)
         {
             possibleReturn.push_back(2);
+            possibleReturn.push_back(2);
         }
         return possibleReturn.at(rand() % possibleReturn.size());
     }
@@ -192,6 +193,8 @@ int CPU::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *window, 
     possibleReturn.push_back(3);
     if (area->getFactory(0) != NULL || area->getFactory(1) != NULL || area->getFactory(2) != NULL)
     {
+        possibleReturn.push_back(2);
+        possibleReturn.push_back(2);
         possibleReturn.push_back(2);
     }
     return possibleReturn.at(rand() % possibleReturn.size());
