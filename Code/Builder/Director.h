@@ -2,6 +2,7 @@
 #define DIRECTOR_H
 
 #include "PlatoonBuilder.h"
+#include <stdexcept>
 
 class Country;
 

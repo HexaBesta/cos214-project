@@ -92,7 +92,7 @@ bool Unit::takeDamage(int damage, bool checkStrat) {
 
 void Unit::join(Unit *others) {}
 
-void Unit::join(Unit *others) {}
+// void Unit::join(Unit *others) {}
 
 string Unit::getBranch()
 {

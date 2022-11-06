@@ -90,6 +90,10 @@ string Country::getName()
 }
 
 void Country::recruitPlatoon(Map * map){
+	if(map == NULL) {
+		throw std::invalid_argument("Expecting an map object pointer");
+	}
+
 	if(this->getCountryMoral()<40){
 		cout<<"No new recruits are lining up... "<<this->getName()<<"'s moral is running low, better send those troops some goods"<<endl;
 		return;

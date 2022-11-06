@@ -25,6 +25,9 @@ void PlatoonBuilder::createAmmo() {
 }
 
 void PlatoonBuilder::setCountry(Country* c) {
+    if(c == NULL) {
+        throw std::invalid_argument("Expecting an country object pointer");
+    }
     this->country = c;
 }
 
