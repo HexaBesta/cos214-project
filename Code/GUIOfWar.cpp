@@ -446,8 +446,9 @@ void GUIOfWar::warLoop()
 
 void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
+    bool ask = false;
     if(interrupt == 0 && this->real){
-        this->real = !this->real;
+        ask = true;
     }
     
     this->map->updateCountries();
@@ -456,7 +457,7 @@ void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
         First alliance turn
     */
     dynamic_cast<sf::Text *>(ui.at(4))->setString(groupOne->getName() + "'s turn");
-    if (!this->real)
+    if (!this->real || ask)
     {
         window->clear(sf::Color::Black);
         map->draw(window, NULL);
@@ -503,10 +504,11 @@ void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
     this->map->resolveBattles();
     this->map->cleanBattles();
 
-    if(!this->real && interrupt != -1){
+    if(this->real && interrupt != -1){
         interrupt --;
     }
 
+    cout<<"interrupt "<<interrupt<<" ask "<<ask<<" real "<<real<<endl;
     // this->map->toStringCount();
 }
 
@@ -519,6 +521,10 @@ void GUIOfWar::checkTogglePlayer()
         this->player = temp;
         this->map->setPlayer(this->player);
         real = !real;
+        if(real){
+            this->interrupt = 5;
+        }
+    }else{
         if(real){
             this->interrupt = 5;
         }
