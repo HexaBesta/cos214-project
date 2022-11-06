@@ -112,6 +112,12 @@ void Branch::draw(sf::RenderWindow* r){
 	this->unit->draw(r);
 }
 
+void Branch::replenish(Transport ** transport){
+	if(this->unit != NULL){
+		this->unit->replenish();
+	}
+}
+
 Branch::~Branch(){
 	delete this->unit;
 }

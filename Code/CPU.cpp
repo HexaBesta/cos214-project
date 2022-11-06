@@ -379,7 +379,7 @@ void CPU::createCountries(Map *map, sf::RenderWindow *window)
         vector<Area > possibleAreas = map->getAreasByColour(94);
         int randomArea = rand() % possibleAreas.size();
         string countryName = possibleAreas.at(randomArea)->getName();
-        Countrycountry = new Country(countryName, 94, this);
+        Country * country = new Country(countryName, 94, this);
         map->addCountry(country);
         Area *area = nullptr;
         area = possibleAreas.at(randomArea);
