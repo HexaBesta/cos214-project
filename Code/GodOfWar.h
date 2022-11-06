@@ -10,12 +10,7 @@ using namespace std;
 
 class GodOfWar: public War{
 	private:
-		Alliances *groupOne;
-		Alliances *groupTwo;
-		Player * player;
-		Map * map;
-		bool  turn;
-		bool real;
+		
 
 		/**
 		 * @brief Check whether to toggle between playing modes

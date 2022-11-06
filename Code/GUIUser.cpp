@@ -41,7 +41,7 @@ bool GUIUser::playerRetreat(Battle *battle)
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-                cout << "clicked " << endl;
+               
 
                 if (okayBtn.getGlobalBounds().contains(mouseClick))
                 {
@@ -109,8 +109,7 @@ bool GUIUser::checkChangeStrategy(Unit *active)
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-                cout << "clicked " << endl;
-
+               
                 if (okayBtn.getGlobalBounds().contains(mouseClick))
                 {
                     resp = 1;
@@ -177,8 +176,7 @@ bool GUIUser::requestReinforcements(Battle *battle)
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-                cout << "clicked " << endl;
-
+               
                 if (okayBtn.getGlobalBounds().contains(mouseClick))
                 {
                     resp = 1;
@@ -253,7 +251,7 @@ int GUIUser::chooseActionForCountry(Area *area, Map *map, sf::RenderWindow *wind
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-                cout << "clicked " << endl;
+               
 
                 if (dynamic_cast<sf::Sprite *>(ui.at(1))->getGlobalBounds().contains(mouseClick))
                 {
@@ -384,7 +382,7 @@ int GUIUser::chooseResource(Area *area)
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-                cout << "clicked " << endl;
+               
 
                 if (medicBtn.getGlobalBounds().contains(mouseClick))
                 {
@@ -456,7 +454,7 @@ bool GUIUser::changePlayer()
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-                cout << "clicked " << endl;
+              
 
                 if (okayBtn.getGlobalBounds().contains(mouseClick))
                 {
@@ -688,7 +686,7 @@ int GUIUser::platoonType()
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-                cout << "clicked " << endl;
+               
 
                 if (landPlatoonBtn.getGlobalBounds().contains(mouseClick))
                 {
@@ -760,8 +758,7 @@ string GUIUser::getString(sf::RenderWindow *window, sf::Text *prompt, sf::Text *
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-                cout << "clicked " << endl;
-
+           
                 if (confirmBtn->getGlobalBounds().contains(mouseClick))
                 {
                     clicked = true;
@@ -807,7 +804,7 @@ int GUIUser::getInt(sf::RenderWindow *window, sf::Text *prompt, sf::Text *output
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-                cout << "clicked " << endl;
+              
 
                 if (confirmBtn->getGlobalBounds().contains(mouseClick))
                 {
@@ -861,7 +858,7 @@ Area *GUIUser::chooseAreaForAction(sf::RenderWindow *window, Map *map, string pr
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-                cout << "clicked " << endl;
+              
 
                 selected = map->getAreaClicked(mouseClick);
             }
@@ -898,7 +895,7 @@ Area *GUIUser::chooseAreaForAction(vector<Area *> areas, sf::RenderWindow *windo
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouseClick = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-                cout << "clicked " << endl;
+                
 
                 selected = map->getAreaClicked(mouseClick);
             }

@@ -885,7 +885,7 @@ void Map::updateCountries()
 	int allAreasSize = this->allAreas.size();
 	for (auto c : this->allCountries)
 	{
-		if (c)
+		if (c!=NULL)
 		{
 			c->babiesGrowUpNow();
 			c->updateCountryMoral();

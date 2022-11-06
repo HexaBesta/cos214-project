@@ -383,6 +383,10 @@ void GUIOfWar::warLoop()
             }
         }
         round(&window, ui);
+        if (this->map->checkIfEnd() != 94)
+        {
+            resp = 0;
+        }
     } while (resp == 1);
 
     int colour = this->map->checkIfEnd();
@@ -440,6 +444,7 @@ void GUIOfWar::warLoop()
 
 void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
+    this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
         First alliance turn
@@ -468,6 +473,7 @@ void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
     {
         return;
     }
+    this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
         Second alliance turn

@@ -358,7 +358,7 @@ Player *CPU::togglePlayer(string type)
 
 void CPU::createCountries(Map *map, sf::RenderWindow *window)
 {
-    srand(54109);
+    srand(0);
     int ranNum = rand() % ((8)) + 6;
     cout << "--------------------------------------------" << endl;
     cout << "Creating " << ranNum << " countries" << endl;
