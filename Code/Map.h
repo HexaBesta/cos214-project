@@ -231,7 +231,7 @@ public:
 	 * @brief Resolves all battles after each round
 	 * 
 	 */
-	void resolveBattles();
+	void resolveBattles(sf::RenderWindow* window,vector<sf::Drawable*> ui,Map* map);
 
 	/**
 	 * @brief cleans up all the pointers of the area after each battle round

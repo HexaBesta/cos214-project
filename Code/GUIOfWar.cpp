@@ -350,7 +350,7 @@ void GUIOfWar::warLoop()
     vector<sf::Drawable *> ui;
     initUI(ui);
     int resp = 1;
-    int skip = 0;
+    int skip = 1;
     do
     {
 
@@ -381,7 +381,7 @@ void GUIOfWar::warLoop()
             }
             else
             {
-                skip--;
+                //skip--;
             }
         }
         round(&window, ui);
@@ -473,7 +473,7 @@ void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 
     this->takeTurn(this->map->getCountriesByColour(22).size() / 2 + 1, window, ui);
 
-    this->map->resolveBattles();
+    this->map->resolveBattles(window,ui,map);
     this->map->cleanBattles();
 
     if (this->map->checkIfEnd() != 94)
@@ -501,14 +501,13 @@ void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 
     this->takeTurn(this->map->getCountriesByColour(160).size() / 2 + 1, window, ui);
 
-    this->map->resolveBattles();
+    this->map->resolveBattles(window,ui,map);
     this->map->cleanBattles();
 
     if(this->real && interrupt != -1){
-        interrupt --;
+       interrupt --;
     }
-
-    cout<<"interrupt "<<interrupt<<" ask "<<ask<<" real "<<real<<endl;
+    
     // this->map->toStringCount();
 }
 

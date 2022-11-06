@@ -12,21 +12,10 @@ Battle::Battle(TheatreOfWar *air, TheatreOfWar *land, Area *area, Player *player
 	this->turn = true;
 }
 
-void Battle::battleLoop()
+void Battle::battleLoop(sf::RenderWindow* window,vector<sf::Drawable*> ui,Map* map)
 {
-	const int WINDOW_X = 640;
-    const int WINDOW_Y = 640;
-    sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "My window2");
-	window.setPosition(sf::Vector2i(800,0));
-	sf::Text text;
-    sf::Font font;
-    if (!font.loadFromFile("../dalandTilesets/images/Terminus.ttf"))
-    {
-    }
-    text.setFont(font);
-    text.setString("Hello world");
-    text.setCharacterSize(12);
-    text.setPosition(0, 20);
+	
+	
 	
 	while (this->battleActive)
 	{
@@ -42,10 +31,14 @@ void Battle::battleLoop()
 		this->takeTurn();cout<<"Battle 37"<<endl;
 		this->turn = (this->turn + 1) % 2;
 		cout<<this->getStateSummary();cout<<"Battle 39"<<endl;
-		text.setString(this->getStateSummary());cout<<"Battle 40"<<endl;
-		window.clear(sf::Color::Black);
-        window.draw(text);
-        window.display();
+		dynamic_cast<sf::Text*>(ui.at(4))->setString(this->getStateSummary());cout<<"Battle 40"<<endl;
+		window->clear(sf::Color::Black);
+		map->draw(window,NULL);
+        for(auto comp:ui){
+			window->draw(*comp);
+		}
+		
+        window->display();
 	}
 	this->setAttackerToDefender();
 	cout << "-------------------------------------------------------------------" << endl;
