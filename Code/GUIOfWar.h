@@ -11,6 +11,11 @@ using namespace std;
 
 class GUIOfWar: public War{
 	private:
+		/**
+		 * @brief how many times to run without interruption
+		 * 
+		 */
+		int interrupt;
 
 		/**
 		 * @brief Check whether to toggle between playing modes

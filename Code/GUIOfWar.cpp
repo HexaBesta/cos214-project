@@ -3,6 +3,7 @@
 GUIOfWar::GUIOfWar(string setupFile)
 {
 
+    int interrupt = 0;
     int resp;
     cout << "Choose your mode:" << endl
          << "1. Real \n2. Design" << endl;
@@ -14,6 +15,7 @@ GUIOfWar::GUIOfWar(string setupFile)
     if (resp == 1)
     {
         this->real = true;
+        this->interrupt = -1;
     }
     else
     {
@@ -444,6 +446,10 @@ void GUIOfWar::warLoop()
 
 void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 {
+    if(interrupt == 0){
+        this.real = !this->real;
+    }
+    
     this->map->updateCountries();
     this->map->replenishAllPlatoons();
     /*
@@ -497,6 +503,10 @@ void GUIOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
     this->map->resolveBattles();
     this->map->cleanBattles();
 
+    if(!this->real && interrupt != -1){
+        interrupt --;
+    }
+
     // this->map->toStringCount();
 }
 
@@ -508,6 +518,10 @@ void GUIOfWar::checkTogglePlayer()
         delete this->player;
         this->player = temp;
         this->map->setPlayer(this->player);
+        real = !real;
+        if(real){
+            this->interrupt = 5;
+        }
     }
 }
 
