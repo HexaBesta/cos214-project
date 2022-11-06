@@ -2,7 +2,7 @@
 
 Transport *GTFactory::makeTypeTransport()
 {
-    return new Goods();
+    return new Goods(20);
 }
 
 TransportFactory *GTFactory::clone()

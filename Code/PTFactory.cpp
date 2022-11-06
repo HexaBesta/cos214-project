@@ -2,7 +2,7 @@
 
 Transport *PTFactory::makeTypeTransport()
 {
-    return new People();
+    return new People(20);
 }
 
 TransportFactory *PTFactory::clone()
