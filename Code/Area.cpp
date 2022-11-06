@@ -584,31 +584,31 @@ void Area::replenish()
 	}
 	if (allFactories[0] == NULL)
 	{
-		resources[0] == NULL;
+		resources[0] = NULL;
 	}
 	else
 	{
-		resources[0] == allFactories[0]->makeTypeTransport();
+		resources[0] = allFactories[0]->makeTypeTransport();
 		this->country->spendMoney(20);
 	}
 
 	if (allFactories[1] == NULL)
 	{
-		resources[1] == NULL;
+		resources[1] =  NULL;
 	}
 	else
 	{
-		resources[1] == allFactories[1]->makeTypeTransport();
+		resources[1] = allFactories[1]->makeTypeTransport();
 		this->country->spendMoney(20);
 	}
 
 	if (allFactories[2] == NULL)
 	{
-		resources[2] == NULL;
+		resources[2] = NULL;
 	}
 	else
 	{
-		resources[2] == allFactories[2]->makeTypeTransport();
+		resources[2] = allFactories[2]->makeTypeTransport();
 		this->country->spendMoney(20);
 	}
 

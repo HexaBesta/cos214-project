@@ -74,6 +74,12 @@ string Branch::toString(int lineLen)
 	return this->unit->toString(lineLen);
 }
 
+void Branch::replenish(Transport ** transport){
+	if(this->unit != NULL){
+		this->unit->replenish(transport);
+	}
+}
+
 Branch::~Branch()
 {
 	delete this->unit;

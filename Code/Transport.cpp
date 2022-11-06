@@ -15,6 +15,9 @@ int Transport::getAmount()
     srand(time(0));
 
     int max = (this->supply < 10) ? this->supply : 10;
+    if(max == 0){
+        return 0;
+    }
     int amount = rand() % max + 1;
 
     this->supply -= amount;
