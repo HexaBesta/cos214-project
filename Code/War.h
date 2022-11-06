@@ -8,7 +8,7 @@
 using namespace std;
 
 class War{
-	private:
+	protected:
 		Alliances *groupOne;
 		Alliances *groupTwo;
 		Player * player;
