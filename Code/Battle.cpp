@@ -52,17 +52,17 @@ void Battle::battleLoop()
 	cout << "Battle over" << endl;
 	this->getStateSummary();
 	cout << "-------------------------------------------------------------------" << endl;
-	while (window.isOpen())
-	{
-		sf::Event e;
-		while(window.pollEvent(e)){
-			if (e.type==sf::Event::Closed)
-			{
-				window.close();
-			}
+	// while (window.isOpen())
+	// {
+	// 	sf::Event e;
+	// 	while(window.pollEvent(e)){
+	// 		if (e.type==sf::Event::Closed)
+	// 		{
+	// 			window.close();
+	// 		}
 			
-		}
-	}
+	// 	}
+	// }
 	
 }
 

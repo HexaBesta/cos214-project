@@ -137,12 +137,7 @@ public:
 	 */
 	virtual Unit * getUnit();
 
-	/**
-	 * @brief Forwards replenish request to unit
-	 * 
-	 * @param transport array of transport types to replenish troops
-	 */
-	virtual void replenish(Transport ** transport);
+
 
 	/**
 	 * @brief Set the Texture of the branch's unit (overridden)
