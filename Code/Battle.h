@@ -124,7 +124,7 @@ public:
 	 * @brief Will continue to alternate turns while the battle is active and print state of battle between turns
 	 * 
 	 */
-	void battleLoop();
+	void battleLoop(sf::RenderWindow* window,vector<sf::Drawable*> ui,Map* map);
 
 	/**
 	 * @brief Will resolve the battle when called at end of turn

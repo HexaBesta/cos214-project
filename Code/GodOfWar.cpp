@@ -405,7 +405,7 @@ void GodOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 
     this->takeTurn(this->map->getCountriesByColour(22).size() / 2 + 1, window, ui);
 
-    this->map->resolveBattles();
+    this->map->resolveBattles(window,ui,map);
     this->map->cleanBattles();
 
     if (this->map->checkIfEnd() != 94)
@@ -430,7 +430,7 @@ void GodOfWar::round(sf::RenderWindow *window, vector<sf::Drawable *> &ui)
 
     this->takeTurn(this->map->getCountriesByColour(160).size() / 2 + 1, window, ui);
 
-    this->map->resolveBattles();
+    this->map->resolveBattles(window,ui,map);
     this->map->cleanBattles();
 
     // this->map->toStringCount();

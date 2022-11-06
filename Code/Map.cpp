@@ -819,7 +819,7 @@ Player *Map::getPlayer()
 	return this->player;
 }
 
-void Map::resolveBattles()
+void Map::resolveBattles(sf::RenderWindow* window,vector<sf::Drawable*> ui,Map* map)
 {
 
 	/*
@@ -840,7 +840,7 @@ void Map::resolveBattles()
 	*/
 	for (auto battle : battlesToResolve)
 	{
-		battle->battleLoop();
+		battle->battleLoop(window, ui,map);
 	}
 	
 }
