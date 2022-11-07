@@ -46,6 +46,6 @@ We have created unit tests to test our various classes and that they create the 
  - main.cpp
  - unit_test.cpp
  - CMakeList.txt
-and then run `cmake CMakeList.txt`
+3.1. and then run `cmake CMakeList.txt`
 3. Once you are in the correct folder, simply run `make` (to ensure that all the unit tests are up-to-date) and then run `./runTest`
 4. Watch the tests run!
