@@ -32,7 +32,9 @@ This only applies if you are running this project in WSL.
 We do recommend running this project inside of Native Linux, wether it being a Linux Virtual Machine or an actual instance of Linux running. There is a lot less setup and is easier to run.
 
 # Documentation
-- You can read our project documentation [here](https://docs.google.com/document/d/1wIGAnmKmzZtf5SyiAyfpMH3J3QU_R3UXf-i8mV9dXS0/).
+- You can read our project design documentation [here](https://docs.google.com/document/d/1wIGAnmKmzZtf5SyiAyfpMH3J3QU_R3UXf-i8mV9dXS0/).
+- You can view our final UML [here](https://github.com/sloththedev/cos214-project/blob/main/Report/COS214-Final%20UML.pdf).
+- You can read our project report [here](https://docs.google.com/document/d/1nyAjAcHdjnokLfzVJ3SltEBrp_gzwz5tz_S7Geq3F7s/edit#heading=h.9khjc0yewo3c).
 - You can also view our project board [here](https://github.com/users/sloththedev/projects/6).
 
 # Unit Tests
