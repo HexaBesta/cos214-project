@@ -363,8 +363,8 @@ void CPU::createCountries(Map *map, sf::RenderWindow *window)
     int totalAreas =  map->getAreasByColour(94).size() + map->getAreasByColour(22).size() + map->getAreasByColour(160).size();
     int range = totalAreas/5;
     int minimum = totalAreas/4;
-    if(minimum== 0){
-        minimum == 2;
+    if(minimum<=1){
+        minimum = 2;
     }
     if(range== 0){
         range = 2;
@@ -372,9 +372,9 @@ void CPU::createCountries(Map *map, sf::RenderWindow *window)
     if(range+minimum>totalAreas){
         range = 1;
     }
-    int ranNum = rand() % ((range)) + minimum;
+    int ranNum = (rand() % ((range))) + minimum;
     cout << "--------------------------------------------" << endl;
-    cout << "Creating " << ranNum << " countries" << endl;
+    cout << "Creating " << ranNum << " countries rng:"<<range<<" min:"<<minimum << endl;
     for (int i = 0; i < ranNum; i++)
     {
         vector<Area *> possibleAreas = map->getAreasByColour(94);
