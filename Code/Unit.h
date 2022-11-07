@@ -52,44 +52,49 @@ public:
 	virtual void changeStrategy();
 
 	/**
-	 * @brief prints the state of the currently set unit state
+	 * @brief prints the state of the currently set unit state 
+	 * could either be pewpew (precision) or boomboom (explosive)
 	 */
 	virtual void requestState();
 
 	/**
 	 * @brief Stubbed method - will be used for platoon
 	 *
-	 * @return string
+	 * @return string get the strategy of the current platoon
 	 */
 	virtual string getStrategyType();
 
 	/**
 	 * @brief Returns state of unit
 	 *
-	 */
+	 */@return string will state the current state of the Unit - Fit, Injured or Dead
 	virtual string getState();
 
 	/**
-	 * @brief Sets the unit state
+	 * @brief Sets the unit state to the passed in state
 	 *
-	 * @param unitState is the state you are changing to
+	 * @param unitState is the state you are changing to from Fit -> Injured, Injured -> Dead or Injured -> Fit
 	 */
 	virtual void setUnitState(UnitsState *unitState = nullptr);
 
 	/**
 	 * @brief Returns the current health of the unit
+	 * 
+	 * @return int, returns the current health
 	 */
 	virtual int getHealth();
 
 	/**
 	 * @brief Stubbed function used in Platoon
 	 *
-	 * @return double
+	 * @return int, returns the average morale
 	 */
 	virtual int getAverageMoral();
 
 	/**
 	 * @brief Returns the current damage of the unit
+	 * 
+	 * @return int, will be the units current damage based on health
 	 */
 	virtual int getDamage();
 
@@ -99,17 +104,18 @@ public:
 	 * @param health takes in the health that will be set
 	 */
 	virtual void setHealth(int health);
+
 	/**
 	 * @brief Returns the current moral of the unit
 	 *
-	 * @return int
+	 * @return int, the moral will be different based on the amount of dead units in the platoon
 	 */
 	virtual int getMoral();
 
 	/**
 	 * @brief Get the size of the unit
 	 *
-	 * @return int size
+	 * @return int size will return the amount of units
 	 */
 	virtual int getSize();
 
@@ -123,6 +129,7 @@ public:
 	 * @brief The unit takes damage
 	 *
 	 * @param damage is the amount of damage the unit will take
+	 * @param typeStrat is the type of strategy that the unit is getting attacked with - pewpew or boomboom
 	 */
 	virtual bool takeDamage(int damage, bool typeStrat = true);
 
@@ -136,7 +143,7 @@ public:
 	/**
 	 * @brief Merges two units together
 	 *
-	 * @param others
+	 * @param others the 
 	 */
 	virtual void join(Unit *others);
 
