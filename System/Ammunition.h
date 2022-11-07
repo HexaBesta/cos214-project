@@ -10,15 +10,16 @@ class Ammunition : public Transport
     public:
 
     /**
-     * @brief Construct a new Ammunition object
+     * @brief Construct a new Ammunition object with default supply 300
      * 
      * @param supply parameter to call super constructor
      */
     Ammunition(int supply = 300);
+
      /**
-     * @brief Returns an integer value of how much to return
+     * @brief Returns an integer containing the amount of ammo that is being returned
      *
-     * @return int amount of ammo
+     * @return int amount of ammo that Platoon can replenish with
      */
     virtual int replenish(bool doublePew);
 };

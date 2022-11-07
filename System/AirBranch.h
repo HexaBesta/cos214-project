@@ -9,22 +9,23 @@ class AirBranch : public Branch
 {
 public:
 	/**
-	 * @brief Constructor, initialises unit pointer of branch
+	 * @brief Constructor makes new AirBranch instance and initialises unit pointer of branch
 	 *
 	 * @param unit the unit pointer to call parent class constructor with
 	 */
 	AirBranch(Unit *unit);
 
 	/**
-	 * @brief Prints the branch name
+	 * @brief Returns the branch name
 	 *
+	 * @return string that contains the branch name
 	 */
 	virtual string toString();
 
 	/**
 	 * @brief Get the Branch of the unit
 	 *
-	 * @return string
+	 * @return returns string containing details about the branch
 	 */
 	virtual string getBranch();
 
@@ -35,11 +36,11 @@ public:
 	 */
 	virtual Unit *split();
   
-  		/**
-		 * @brief Set the Texture of this unit to the air texture
-		 * 
-		 */
-		virtual void setTexture();
+  	/**
+	 * @brief Set the Texture of this unit to the air texture
+	 * 
+	 */
+	virtual void setTexture();
 };
 
 #endif
