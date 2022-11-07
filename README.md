@@ -1,4 +1,4 @@
-# *The Art of War* by Segmentation Fault
+# *The War Games* by Segmentation Fault
 ![Arma 3](https://www.pcgamesn.com/wp-content/sites/pcgamesn/2021/09/the-best-war-games-on-pc-2021.jpg)
 
 Run a simulation or create your own war. Let it run by itself or be the commander of your forces.
@@ -45,3 +45,9 @@ We have created unit tests to test our various classes and that they create the 
 3. Ensure that you have recreated the CMake files, by deleting all files and folders inside this folder apart from main.cpp, unit_test.cpp, CMakeList.txt and then run `cmake CMakeList.txt` to recreate the unit testing files to prevent any issues from happening.
 3. Once you are in the correct folder, simply run `make` (to ensure that all the unit tests are up-to-date) and then run `./runTest`
 4. Watch the tests run!
+
+# Video
+
+## Link
+The Introduction video can be found here https://drive.google.com/file/d/1XCJhglq4SGj7v8eJtgZwUgb33p3eAQFa/view?usp=share_link
+
