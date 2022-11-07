@@ -40,12 +40,12 @@ We have created unit tests to test our various classes and that they create the 
 
 ## Running the Unit Tests
 1. Please ensure you have Google Tests installed on your machine, `sudo apt-get install libgtest-dev`, as well as CMake, `sudo apt-get install cmake`.
-2. Go into the Code/UnitTesting file, `cd Code/UnitTesting`
+2. Go into the System/UnitTesting file, `cd System/UnitTesting`
 3. You can go into either of the various test folders we have set up, namely:
- - builer_test, `cd builder_test`.
- - unit_test, `cd unit_test`.
- - platoon_test, `cd platoon_test`.
- - country_test, `cd country_test`.
- - branches_test, `cd branches_test`.
+
+
+
+
+
 4. Once you are in the correct folder, simply run `make` and then run `./runTest`
 5. Watch the tests run!
