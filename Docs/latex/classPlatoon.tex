@@ -1,0 +1,562 @@
+\hypertarget{classPlatoon}{}\doxysection{Platoon Class Reference}
+\label{classPlatoon}\index{Platoon@{Platoon}}
+
+
+Inheritance diagram for Platoon\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=133pt]{classPlatoon__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Platoon\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classPlatoon__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPlatoon_aeda22ea5ac3bed585e7cab813f7a7197}{Platoon}} (vector$<$ \mbox{\hyperlink{classUnit}{Unit}} $\ast$ $>$ human, vector$<$ \mbox{\hyperlink{classUnit}{Unit}} $\ast$ $>$ vehicles, int pewpew, int boomboom)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPlatoon}{Platoon}} object with the given parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlatoon_a0aed58471282273b2f0268cce067ba7b}\label{classPlatoon_a0aed58471282273b2f0268cce067ba7b}} 
+void \mbox{\hyperlink{classPlatoon_a0aed58471282273b2f0268cce067ba7b}{construct}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPlatoon}{Platoon}} using \mbox{\hyperlink{classBobTheBuilder}{Bob\+The\+Builder}}. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlatoon_aa0a24e1902b69e791042f4205e590b03}{get\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Get the health of the platoon. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlatoon_ad35e59dd8c35e5ab3d90669cdb92b8ca}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the size of the platoon by counting the amount of vehicles and humans. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classPlatoon_aaf7b8ae08fe425a9d80debdeb2640999}{get\+Strategy\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Get the current strategy of the platoon. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlatoon_a6579bcb73c2c60643c2cff51d941d058}{get\+Damage}} ()
+\begin{DoxyCompactList}\small\item\em Get the total damage of the platoon by accumulating the damage of humans and vehicles. \end{DoxyCompactList}\item 
+virtual int $\ast$ \mbox{\hyperlink{classPlatoon_a76ad3961ebaa170b8330bfff3af4fe8a}{get\+Ammo}} ()
+\begin{DoxyCompactList}\small\item\em Get the ammount of ammo for platoon It will return the amount of precision ammo and explosive ammo that the platoon has. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlatoon_ab900d080126a9286a8056d12445ed134}{decrease\+Ammo}} ()
+\begin{DoxyCompactList}\small\item\em decreases the ammo of the platoon by the type of strategy they are using \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlatoon_a797e24b34bcb919783021c65de5dfd07}{set\+Accumlate\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Sets the total health of the current platoon using the human and vehicle vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlatoon_afd2f6c4d72422bb48b70c10e25677255}{retrieve\+Goods}} (\mbox{\hyperlink{classTransport}{Transport}} $\ast$good)
+\begin{DoxyCompactList}\small\item\em This will allow for a platoon to receive goods from the factory created in the area This however will only increase moralfe for a few amount of humans from the vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlatoon_a5d7acda11b6c44e0d799c20e7d5c0db2}{retrieve\+Ammo}} (\mbox{\hyperlink{classTransport}{Transport}} $\ast$ammo)
+\begin{DoxyCompactList}\small\item\em This will allow for a platoon to receive ammo from the factory created in the area The platoon will receive two types of ammo precision and explosive. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlatoon_a46c3b042f79f603f7d93fbaeda7a4cb8}{retrieve\+Health}} (\mbox{\hyperlink{classTransport}{Transport}} $\ast$medic)
+\begin{DoxyCompactList}\small\item\em This will allow for a platoon to receive medicial help from the factory created in the area This however will only heal a few amount of humans from the vector. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoon_a7f24494ce13f81a6d00351ca9f12ce73}{replenish}} (\mbox{\hyperlink{classTransport}{Transport}} $\ast$$\ast$transport)
+\begin{DoxyCompactList}\small\item\em Calls all replenish functions that the platoon can receive from the factories in the area. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlatoon_aaf0076ca5be71a3020a20fb6a31c25fd}{get\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Get the total morale of the whole platoon from the moral of the soldiers. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classPlatoon_a7829fe7ac1fe5ba8408b92a1ac45f0ba}{get\+Average\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Get the Average Moral based on the size of the platoon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlatoon_a98a9435c18510b6655c86802dbcf5e69}{set\+Accumlate\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Sets the total moral of the current platoon using all the soldiers morale and combining it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlatoon_af5a06be132ed4da3058ab4b30802c929}\label{classPlatoon_af5a06be132ed4da3058ab4b30802c929}} 
+virtual void \mbox{\hyperlink{classPlatoon_af5a06be132ed4da3058ab4b30802c929}{change\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Change the strategy of the current \mbox{\hyperlink{classPlatoon}{Platoon}} from either pewpew -\/$>$ boomboom or boomboom -\/$>$ pewpew. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classPlatoon_a10951b4fcef0372f107a1816e9ee96fa}{split}} ()
+\begin{DoxyCompactList}\small\item\em Split the current platoon in half and create two platoons. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoon_ac61beafca0d681de68b3557c47f52516}{join}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$platoon)
+\begin{DoxyCompactList}\small\item\em Join a platoon with a unit. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classPlatoon_a41e43d756ff68fa17ff8484df816f691}{take\+Damage}} (int damage, bool check\+Pew\+Pew)
+\begin{DoxyCompactList}\small\item\em function to take damage from another platoon and see what type of damage and how much \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoon_ad7f3e69631e737f5a672e2df271c9b4f}{attack}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$other)
+\begin{DoxyCompactList}\small\item\em virtual function to attack a certain platoon using the strategies that the current platoon is using \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classPlatoon_ad83b516cbf0970445d05101acf3239a2}{take\+Random}} ()
+\begin{DoxyCompactList}\small\item\em function will take a random soldier or vehicle from the humans and vehicles vectors \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classPlatoon_a7e21c39752e5d898f9e3f6117577dcfe}{to\+String}} (int line\+Len)
+\begin{DoxyCompactList}\small\item\em return a string representation of the platoon of its health, moral, amount of humans, vehicles, dead platoons, morale and amount of ammo \end{DoxyCompactList}\item 
+virtual sf\+::\+Sprite $\ast$ \mbox{\hyperlink{classPlatoon_aa2ec41471f8d5c341d1336a81b75c50f}{get\+Sprite}} ()
+\begin{DoxyCompactList}\small\item\em Get the Sprite of this platoon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlatoon_a32c27a5e36b68fad0b36259cee6c9662}{set\+Sprite\+Location}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Set the Sprite Location of the platoon\textquotesingle{}s sprite. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoon_a25d9445e01f5e95e345e5d62cd0572ed}{set\+Text\+Location}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Set the location of the text that displays the platoon\textquotesingle{}s size. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoon_acdc24b17cafed0368d09d113f7f16ac1}{set\+Air\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Loads the air image into the texture of this sprite. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoon_a37fc74a6562ec75228402db96d458646}{set\+Land\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Loads the land image into the texture of this sprite. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoon_a543e1b84135e318374fcead29cb3ea89}{draw}} (sf\+::\+Render\+Window $\ast$window)
+\begin{DoxyCompactList}\small\item\em Draws the platoon sprite along with the text of its number. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPlatoon_a789d36d61a3d37805929347341218343}{$\sim$\+Platoon}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classPlatoon}{Platoon}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPlatoon_aeda22ea5ac3bed585e7cab813f7a7197}\label{classPlatoon_aeda22ea5ac3bed585e7cab813f7a7197}} 
+\index{Platoon@{Platoon}!Platoon@{Platoon}}
+\index{Platoon@{Platoon}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{Platoon()}{Platoon()}}
+{\footnotesize\ttfamily Platoon\+::\+Platoon (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classUnit}{Unit}} $\ast$ $>$}]{human,  }\item[{vector$<$ \mbox{\hyperlink{classUnit}{Unit}} $\ast$ $>$}]{vehicles,  }\item[{int}]{pewpew,  }\item[{int}]{boomboom }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPlatoon}{Platoon}} object with the given parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em human} & the vector Units of humans in the platoon \\
+\hline
+{\em vehicles} & the vector Units of vehicles in the platoon \\
+\hline
+{\em weapons} & the vector \mbox{\hyperlink{classWeapon}{Weapon}} of weapons in the platoon \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlatoon_a789d36d61a3d37805929347341218343}\label{classPlatoon_a789d36d61a3d37805929347341218343}} 
+\index{Platoon@{Platoon}!````~Platoon@{$\sim$Platoon}}
+\index{````~Platoon@{$\sim$Platoon}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{$\sim$Platoon()}{~Platoon()}}
+{\footnotesize\ttfamily Platoon\+::$\sim$\+Platoon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classPlatoon}{Platoon}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlatoon_ad7f3e69631e737f5a672e2df271c9b4f}\label{classPlatoon_ad7f3e69631e737f5a672e2df271c9b4f}} 
+\index{Platoon@{Platoon}!attack@{attack}}
+\index{attack@{attack}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily void Platoon\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+virtual function to attack a certain platoon using the strategies that the current platoon is using 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & is a pointer of the platoon that will be attacked with the strategy of the current platoon \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classUnit_ad7e7e6db39c68e4852b7a3b165362bf1}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_ab900d080126a9286a8056d12445ed134}\label{classPlatoon_ab900d080126a9286a8056d12445ed134}} 
+\index{Platoon@{Platoon}!decreaseAmmo@{decreaseAmmo}}
+\index{decreaseAmmo@{decreaseAmmo}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{decreaseAmmo()}{decreaseAmmo()}}
+{\footnotesize\ttfamily void Platoon\+::decrease\+Ammo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+decreases the ammo of the platoon by the type of strategy they are using 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pewpew} & checks if pewpew strat so that it can decrease the bullets by the amount shot. If boomboom only decreases by 1 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlatoon_a543e1b84135e318374fcead29cb3ea89}\label{classPlatoon_a543e1b84135e318374fcead29cb3ea89}} 
+\index{Platoon@{Platoon}!draw@{draw}}
+\index{draw@{draw}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Platoon\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws the platoon sprite along with the text of its number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a9af7de7fd41e9c69ed4a413ae8fc7ec0}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a76ad3961ebaa170b8330bfff3af4fe8a}\label{classPlatoon_a76ad3961ebaa170b8330bfff3af4fe8a}} 
+\index{Platoon@{Platoon}!getAmmo@{getAmmo}}
+\index{getAmmo@{getAmmo}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{getAmmo()}{getAmmo()}}
+{\footnotesize\ttfamily int $\ast$ Platoon\+::get\+Ammo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the ammount of ammo for platoon It will return the amount of precision ammo and explosive ammo that the platoon has. 
+
+\begin{DoxyReturn}{Returns}
+int\mbox{[}\mbox{]} returns an array where index 0 is the amount of pewpew bullets and index 1 is the amount of boomboom explosives 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a76f7f59056481fea62b968679a107b48}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a7829fe7ac1fe5ba8408b92a1ac45f0ba}\label{classPlatoon_a7829fe7ac1fe5ba8408b92a1ac45f0ba}} 
+\index{Platoon@{Platoon}!getAverageMoral@{getAverageMoral}}
+\index{getAverageMoral@{getAverageMoral}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{getAverageMoral()}{getAverageMoral()}}
+{\footnotesize\ttfamily int Platoon\+::get\+Average\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Average Moral based on the size of the platoon. 
+
+\begin{DoxyReturn}{Returns}
+int will get the average moral 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a04559b2b97a740bf25cc67cf807ef173}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a6579bcb73c2c60643c2cff51d941d058}\label{classPlatoon_a6579bcb73c2c60643c2cff51d941d058}} 
+\index{Platoon@{Platoon}!getDamage@{getDamage}}
+\index{getDamage@{getDamage}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{getDamage()}{getDamage()}}
+{\footnotesize\ttfamily int Platoon\+::get\+Damage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the total damage of the platoon by accumulating the damage of humans and vehicles. 
+
+\begin{DoxyReturn}{Returns}
+int damage will return the total damage of the platoon with the current alive units 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a7b0dbed96660669a2234b715018781fa}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_aa0a24e1902b69e791042f4205e590b03}\label{classPlatoon_aa0a24e1902b69e791042f4205e590b03}} 
+\index{Platoon@{Platoon}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{getHealth()}{getHealth()}}
+{\footnotesize\ttfamily int Platoon\+::get\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the health of the platoon. 
+
+\begin{DoxyReturn}{Returns}
+int will return the total health of the platoon to keep track of 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a610a98a68a3e99227b15af4161f26b70}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_aaf0076ca5be71a3020a20fb6a31c25fd}\label{classPlatoon_aaf0076ca5be71a3020a20fb6a31c25fd}} 
+\index{Platoon@{Platoon}!getMoral@{getMoral}}
+\index{getMoral@{getMoral}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{getMoral()}{getMoral()}}
+{\footnotesize\ttfamily int Platoon\+::get\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the total morale of the whole platoon from the moral of the soldiers. 
+
+\begin{DoxyReturn}{Returns}
+int will return the total morale of the platoon, if the platoon has a morale less than 30\% then it will retreat 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_adadbc1651dbd3f652f9974c3dcd75fc8}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_ad35e59dd8c35e5ab3d90669cdb92b8ca}\label{classPlatoon_ad35e59dd8c35e5ab3d90669cdb92b8ca}} 
+\index{Platoon@{Platoon}!getSize@{getSize}}
+\index{getSize@{getSize}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Platoon\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the size of the platoon by counting the amount of vehicles and humans. 
+
+\begin{DoxyReturn}{Returns}
+int will return the total size of the platoon with the amount of humans and vehicles 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a63fe82ecf12df209d0d7ee2e97b62a7e}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_aa2ec41471f8d5c341d1336a81b75c50f}\label{classPlatoon_aa2ec41471f8d5c341d1336a81b75c50f}} 
+\index{Platoon@{Platoon}!getSprite@{getSprite}}
+\index{getSprite@{getSprite}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{getSprite()}{getSprite()}}
+{\footnotesize\ttfamily sf\+::\+Sprite $\ast$ Platoon\+::get\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Sprite of this platoon. 
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Sprite 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a73aa5d8679e9606d8561e5b77dc2084b}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_aaf7b8ae08fe425a9d80debdeb2640999}\label{classPlatoon_aaf7b8ae08fe425a9d80debdeb2640999}} 
+\index{Platoon@{Platoon}!getStrategyType@{getStrategyType}}
+\index{getStrategyType@{getStrategyType}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{getStrategyType()}{getStrategyType()}}
+{\footnotesize\ttfamily string Platoon\+::get\+Strategy\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the current strategy of the platoon. 
+
+\begin{DoxyReturn}{Returns}
+string -\/ will either return pew or boom stating if it is a precision or explosive strategy 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a2ec935b8c0e88712647b7660062102f2}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_ac61beafca0d681de68b3557c47f52516}\label{classPlatoon_ac61beafca0d681de68b3557c47f52516}} 
+\index{Platoon@{Platoon}!join@{join}}
+\index{join@{join}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily void Platoon\+::join (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{platoon }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Join a platoon with a unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em platoon} & a pointer of the unit that will be joined with the current platoon \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a59eeecc450c8d37c3cd7389f72f0d51b}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a7f24494ce13f81a6d00351ca9f12ce73}\label{classPlatoon_a7f24494ce13f81a6d00351ca9f12ce73}} 
+\index{Platoon@{Platoon}!replenish@{replenish}}
+\index{replenish@{replenish}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{replenish()}{replenish()}}
+{\footnotesize\ttfamily void Platoon\+::replenish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTransport}{Transport}} $\ast$$\ast$}]{transport }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls all replenish functions that the platoon can receive from the factories in the area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em transport} & will check what transports can be received -\/ it can bring in an ammo, goods and medic replenishes \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_ad0471a86c4477ba5d2490a762a1f011f}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a5d7acda11b6c44e0d799c20e7d5c0db2}\label{classPlatoon_a5d7acda11b6c44e0d799c20e7d5c0db2}} 
+\index{Platoon@{Platoon}!retrieveAmmo@{retrieveAmmo}}
+\index{retrieveAmmo@{retrieveAmmo}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{retrieveAmmo()}{retrieveAmmo()}}
+{\footnotesize\ttfamily void Platoon\+::retrieve\+Ammo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTransport}{Transport}} $\ast$}]{ammo }\end{DoxyParamCaption})}
+
+
+
+This will allow for a platoon to receive ammo from the factory created in the area The platoon will receive two types of ammo precision and explosive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ammo} & will receive the crate of ammo from the factory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlatoon_afd2f6c4d72422bb48b70c10e25677255}\label{classPlatoon_afd2f6c4d72422bb48b70c10e25677255}} 
+\index{Platoon@{Platoon}!retrieveGoods@{retrieveGoods}}
+\index{retrieveGoods@{retrieveGoods}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{retrieveGoods()}{retrieveGoods()}}
+{\footnotesize\ttfamily void Platoon\+::retrieve\+Goods (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTransport}{Transport}} $\ast$}]{good }\end{DoxyParamCaption})}
+
+
+
+This will allow for a platoon to receive goods from the factory created in the area This however will only increase moralfe for a few amount of humans from the vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em good} & will receive goods from the transport from the factory \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlatoon_a46c3b042f79f603f7d93fbaeda7a4cb8}\label{classPlatoon_a46c3b042f79f603f7d93fbaeda7a4cb8}} 
+\index{Platoon@{Platoon}!retrieveHealth@{retrieveHealth}}
+\index{retrieveHealth@{retrieveHealth}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{retrieveHealth()}{retrieveHealth()}}
+{\footnotesize\ttfamily void Platoon\+::retrieve\+Health (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTransport}{Transport}} $\ast$}]{medic }\end{DoxyParamCaption})}
+
+
+
+This will allow for a platoon to receive medicial help from the factory created in the area This however will only heal a few amount of humans from the vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em medic} & will recieve the medics who will heal the soldiers \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlatoon_a797e24b34bcb919783021c65de5dfd07}\label{classPlatoon_a797e24b34bcb919783021c65de5dfd07}} 
+\index{Platoon@{Platoon}!setAccumlateHealth@{setAccumlateHealth}}
+\index{setAccumlateHealth@{setAccumlateHealth}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{setAccumlateHealth()}{setAccumlateHealth()}}
+{\footnotesize\ttfamily void Platoon\+::set\+Accumlate\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the total health of the current platoon using the human and vehicle vector. 
+
+\mbox{\Hypertarget{classPlatoon_a98a9435c18510b6655c86802dbcf5e69}\label{classPlatoon_a98a9435c18510b6655c86802dbcf5e69}} 
+\index{Platoon@{Platoon}!setAccumlateMoral@{setAccumlateMoral}}
+\index{setAccumlateMoral@{setAccumlateMoral}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{setAccumlateMoral()}{setAccumlateMoral()}}
+{\footnotesize\ttfamily void Platoon\+::set\+Accumlate\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the total moral of the current platoon using all the soldiers morale and combining it. 
+
+\mbox{\Hypertarget{classPlatoon_acdc24b17cafed0368d09d113f7f16ac1}\label{classPlatoon_acdc24b17cafed0368d09d113f7f16ac1}} 
+\index{Platoon@{Platoon}!setAirTexture@{setAirTexture}}
+\index{setAirTexture@{setAirTexture}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{setAirTexture()}{setAirTexture()}}
+{\footnotesize\ttfamily void Platoon\+::set\+Air\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Loads the air image into the texture of this sprite. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classUnit}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a37fc74a6562ec75228402db96d458646}\label{classPlatoon_a37fc74a6562ec75228402db96d458646}} 
+\index{Platoon@{Platoon}!setLandTexture@{setLandTexture}}
+\index{setLandTexture@{setLandTexture}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{setLandTexture()}{setLandTexture()}}
+{\footnotesize\ttfamily void Platoon\+::set\+Land\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Loads the land image into the texture of this sprite. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classUnit}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a32c27a5e36b68fad0b36259cee6c9662}\label{classPlatoon_a32c27a5e36b68fad0b36259cee6c9662}} 
+\index{Platoon@{Platoon}!setSpriteLocation@{setSpriteLocation}}
+\index{setSpriteLocation@{setSpriteLocation}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{setSpriteLocation()}{setSpriteLocation()}}
+{\footnotesize\ttfamily void Platoon\+::set\+Sprite\+Location (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Set the Sprite Location of the platoon\textquotesingle{}s sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The X coordinate of the sprite (unscaled) \\
+\hline
+{\em y} & The Y coordinate of the sprite (unscaled) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlatoon_a25d9445e01f5e95e345e5d62cd0572ed}\label{classPlatoon_a25d9445e01f5e95e345e5d62cd0572ed}} 
+\index{Platoon@{Platoon}!setTextLocation@{setTextLocation}}
+\index{setTextLocation@{setTextLocation}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{setTextLocation()}{setTextLocation()}}
+{\footnotesize\ttfamily void Platoon\+::set\+Text\+Location (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the location of the text that displays the platoon\textquotesingle{}s size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & will take in an int that is the X coordinate of the platoon\textquotesingle{}s size \\
+\hline
+{\em y} & will take in an int that is the Y coordinate of the platoon\textquotesingle{}s size \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_ae8afd6f4bea91cfc988364417f8d1fde}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a10951b4fcef0372f107a1816e9ee96fa}\label{classPlatoon_a10951b4fcef0372f107a1816e9ee96fa}} 
+\index{Platoon@{Platoon}!split@{split}}
+\index{split@{split}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Platoon\+::split (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Split the current platoon in half and create two platoons. 
+
+\begin{DoxyReturn}{Returns}
+a unit pointer of one of the split platoons, the other platoon will be the current unit 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_ab42f0cacd995893681338a3b18b32e09}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a41e43d756ff68fa17ff8484df816f691}\label{classPlatoon_a41e43d756ff68fa17ff8484df816f691}} 
+\index{Platoon@{Platoon}!takeDamage@{takeDamage}}
+\index{takeDamage@{takeDamage}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{takeDamage()}{takeDamage()}}
+{\footnotesize\ttfamily bool Platoon\+::take\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage,  }\item[{bool}]{check\+Pew\+Pew }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+function to take damage from another platoon and see what type of damage and how much 
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & is the amount of damage inflected to the platoon \\
+\hline
+{\em check\+Pew\+Pew} & checks what strategy the platoon that attacked has\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean indicating if the platoon is alive or dead 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a63f98bd1ee4dfeb6babdf8bec56f4482}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_ad83b516cbf0970445d05101acf3239a2}\label{classPlatoon_ad83b516cbf0970445d05101acf3239a2}} 
+\index{Platoon@{Platoon}!takeRandom@{takeRandom}}
+\index{takeRandom@{takeRandom}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{takeRandom()}{takeRandom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Platoon\+::take\+Random (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+function will take a random soldier or vehicle from the humans and vehicles vectors 
+
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ will be returned to controll the randomly selected human or vehicle 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_afe5e69df8c64e6a5036ea836bf6099c7}{Unit}}.
+
+\mbox{\Hypertarget{classPlatoon_a7e21c39752e5d898f9e3f6117577dcfe}\label{classPlatoon_a7e21c39752e5d898f9e3f6117577dcfe}} 
+\index{Platoon@{Platoon}!toString@{toString}}
+\index{toString@{toString}!Platoon@{Platoon}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily string Platoon\+::to\+String (\begin{DoxyParamCaption}\item[{int}]{line\+Len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+return a string representation of the platoon of its health, moral, amount of humans, vehicles, dead platoons, morale and amount of ammo 
+
+\begin{DoxyReturn}{Returns}
+string returns the current to\+String of the platoon 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a7d6a3742cd7cd9440fa609c0b11fd3ef}{Unit}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Platoon.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Platoon.\+cpp\end{DoxyCompactItemize}

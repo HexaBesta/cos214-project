@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['sea_174',['Sea',['../classSea.html',1,'']]],
+  ['sendreinforcements_175',['sendReinforcements',['../classArea.html#a79430a2dfa87d76ea1330a01081947e4',1,'Area::sendReinforcements()'],['../classTheatreOfWar.html#a7748a5321f9688fcc377bfa737d39810',1,'TheatreOfWar::sendReinforcements()']]],
+  ['setaccumlatehealth_176',['setAccumlateHealth',['../classPlatoon.html#a797e24b34bcb919783021c65de5dfd07',1,'Platoon']]],
+  ['setaccumlatemoral_177',['setAccumlateMoral',['../classPlatoon.html#a98a9435c18510b6655c86802dbcf5e69',1,'Platoon']]],
+  ['setairtexture_178',['setAirTexture',['../classPlatoon.html#acdc24b17cafed0368d09d113f7f16ac1',1,'Platoon']]],
+  ['setalliance_179',['setAlliance',['../classCountry.html#a5821381f87b3af46641ce7e6d64b87c1',1,'Country']]],
+  ['setareaborders_180',['setAreaBorders',['../classMap.html#a992d99bf05edf8da82730bc3e311756d',1,'Map']]],
+  ['setattacker_181',['setAttacker',['../classTheatreOfWar.html#ac74083d807834caaa537d534fe35ff6f',1,'TheatreOfWar']]],
+  ['setbranch_182',['setBranch',['../classBobTheBuilder.html#ab78e3cb28ae1c02a7beb36ea6bc113a6',1,'BobTheBuilder::setBranch()'],['../classPlatoonBuilder.html#a7dd88c9d6fff0e6f6c9bca33b5531c19',1,'PlatoonBuilder::setBranch()']]],
+  ['setcoordinateborders_183',['setCoordinateBorders',['../classArea.html#a80626152d8a54a37e3794a683253d105',1,'Area']]],
+  ['setcountry_184',['setCountry',['../classArea.html#a696260005eb7eb42727aa19dc8f5d0f5',1,'Area::setCountry()'],['../classBobTheBuilder.html#a3ec3cb9ea8477229c871fb6d47ff1d1a',1,'BobTheBuilder::setCountry()'],['../classBranch.html#a86e8a2aae6d6931dd85abf2e1ffd01a8',1,'Branch::setCountry()'],['../classPlatoonBuilder.html#aae0db0b2c489a595a6deeadf34eeb5eb',1,'PlatoonBuilder::setCountry()'],['../classUnit.html#a09136c0e4fdb9090d0f46539306d4e53',1,'Unit::setCountry()']]],
+  ['setcountrystate_185',['setCountryState',['../classCountry.html#a3b4ed83e780cf0bcf4f54c2d530c95c2',1,'Country']]],
+  ['setdefender_186',['setDefender',['../classTheatreOfWar.html#aeccd15cf02193cd74594d8d8db02959b',1,'TheatreOfWar']]],
+  ['setendpoints_187',['setEndPoints',['../classTransportRoute.html#a3b7fc73693a125761dfbe953c46842d7',1,'TransportRoute']]],
+  ['sethealth_188',['setHealth',['../classUnit.html#aaec88b40541cf3eed9e3ab4780fe937e',1,'Unit']]],
+  ['setlandtexture_189',['setLandTexture',['../classPlatoon.html#a37fc74a6562ec75228402db96d458646',1,'Platoon']]],
+  ['setmoral_190',['setMoral',['../classUnit.html#ad7167b0e3f736be1fee0f21c6b9604a4',1,'Unit']]],
+  ['setplayer_191',['setPlayer',['../classCountry.html#aea7b09727532e8b70d5d521f4a8d8226',1,'Country::setPlayer()'],['../classMap.html#ab3f54c0da7482a2bb483e2472c067828',1,'Map::setPlayer()']]],
+  ['setspritelocation_192',['setSpriteLocation',['../classPlatoon.html#a32c27a5e36b68fad0b36259cee6c9662',1,'Platoon::setSpriteLocation()'],['../classUnit.html#a846c5dff64872e41b72c238e2d6dc5a0',1,'Unit::setSpriteLocation()']]],
+  ['settextlocation_193',['setTextLocation',['../classBranch.html#a0abbd40947a98b5c41e9c478d849607a',1,'Branch::setTextLocation()'],['../classPlatoon.html#a25d9445e01f5e95e345e5d62cd0572ed',1,'Platoon::setTextLocation()'],['../classUnit.html#ae8afd6f4bea91cfc988364417f8d1fde',1,'Unit::setTextLocation()']]],
+  ['settexture_194',['setTexture',['../classAirBranch.html#a3b9b3881f39e63f27580f672663303ed',1,'AirBranch::setTexture()'],['../classBranch.html#aa8169dada3877eb470deea9e83fdc510',1,'Branch::setTexture()'],['../classLandBranch.html#af43de013880585a3c894da82b64fa77e',1,'LandBranch::setTexture()']]],
+  ['setunitstate_195',['setUnitState',['../classBranch.html#ac61702dc07b1c2ee2216cf077ccd358c',1,'Branch::setUnitState()'],['../classUnit.html#a69d7b9201e098e5e9a8852c0bcf6bb53',1,'Unit::setUnitState()']]],
+  ['spendmoney_196',['spendMoney',['../classCountry.html#af092b84c00f13dfd95ec23b95b34540e',1,'Country']]],
+  ['split_197',['split',['../classAirBranch.html#a5e3d3dae23319a86180de26e1b1c2910',1,'AirBranch::split()'],['../classBranch.html#a51a98f7b8bf57c39d72c09e903776a8a',1,'Branch::split()'],['../classLandBranch.html#a752d2fe166a8261775915bc1ef9768f8',1,'LandBranch::split()'],['../classPlatoon.html#a10951b4fcef0372f107a1816e9ee96fa',1,'Platoon::split()'],['../classUnit.html#ab42f0cacd995893681338a3b18b32e09',1,'Unit::split()']]],
+  ['supply_198',['supply',['../classTransport.html#a3a4bec993d04d3fbafa5af43dadf9252',1,'Transport']]]
+];

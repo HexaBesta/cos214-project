@@ -1,0 +1,288 @@
+\hypertarget{classCountry}{}\doxysection{Country Class Reference}
+\label{classCountry}\index{Country@{Country}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCountry_a89244421a0082767fd15bf942f7c6692}{Country}} (string name, int colour, \mbox{\hyperlink{classPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Constructs a new country object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCountry_a0584ebf410b196f2e70fa121f06eccec}\label{classCountry_a0584ebf410b196f2e70fa121f06eccec}} 
+string \mbox{\hyperlink{classCountry_a0584ebf410b196f2e70fa121f06eccec}{request\+State}} ()
+\begin{DoxyCompactList}\small\item\em returns the state of the currently set country state. !! Need to implement in country state !! \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_a3b4ed83e780cf0bcf4f54c2d530c95c2}{set\+Country\+State}} (\mbox{\hyperlink{classCountryState}{Country\+State}} $\ast$country\+State)
+\begin{DoxyCompactList}\small\item\em Sets the country state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCountry_a1c1e2b5b8d21f83c31c2752321618c23}{update\+Country\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Updates the country moral by recalculating aggregate of units\textquotesingle{} moral if country is joined. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCountry_a258bd65f342e9e36c77cdbdfb76a7890}{get\+Country\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Returns the country moral. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$ \mbox{\hyperlink{classCountry_ac7c7fb3c51af95af19b7f16c34ad3d6f}{get\+Alliances}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classAlliances}{Alliances}} of this country. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_a5821381f87b3af46641ce7e6d64b87c1}{set\+Alliance}} (\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$alliance)
+\begin{DoxyCompactList}\small\item\em Set the Alliance object of. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classCountry_a61ed563237fcc7df21b6bb092b86507b}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the Name of this country. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_aadbf77370b084f5288081def95edcc20}{recruit\+Platoon}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map, sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui)
+\begin{DoxyCompactList}\small\item\em makes a new platoon and adds to existing platoon vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_a63c672ac8b0da23bc778bd0db856978b}{remove\+Dead\+Platoons}} ()
+\begin{DoxyCompactList}\small\item\em Removes dead units from military. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_aea7b09727532e8b70d5d521f4a8d8226}{set\+Player}} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Sets the player of the country to the passed in player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlayer}{Player}} $\ast$ \mbox{\hyperlink{classCountry_a49335519ac7e5666155a771cf9c4b3b4}{get\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Get the current player from the country. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCountry_a0b45148f1a1279e8940ce84aee0a3207}{get\+Population}} ()
+\begin{DoxyCompactList}\small\item\em Get the Civilian population of the country. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_a87e4326de496ef3bb1083642bab079d6}{decrease\+Population}} (int to\+Dec)
+\begin{DoxyCompactList}\small\item\em Decrease the civilian\+Population of the country. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_a5c7b9e130084e74842aa932b589723b9}{babies\+Grow\+Up\+Now}} ()
+\begin{DoxyCompactList}\small\item\em Increases population by 10\%. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCountry_adf9aba38d08fc445b66ee5f4459b369c}{get\+Economy}} ()
+\begin{DoxyCompactList}\small\item\em Returns the total economy of the Coountry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_af092b84c00f13dfd95ec23b95b34540e}{spend\+Money}} (int amount)
+\begin{DoxyCompactList}\small\item\em Decreases the economy based on the amount spent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCountry_a6f597499775643b7328323a919d95964}{increase\+Economy}} (double growth)
+\begin{DoxyCompactList}\small\item\em increase the economy by passed in percentage \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCountry_a5013557e0d93fabc976bfa0d7f0564a3}\label{classCountry_a5013557e0d93fabc976bfa0d7f0564a3}} 
+\mbox{\hyperlink{classCountry_a5013557e0d93fabc976bfa0d7f0564a3}{$\sim$\+Country}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classCountry}{Country}} Deconstructor, will delete the country\+State and military vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCountry_a89244421a0082767fd15bf942f7c6692}\label{classCountry_a89244421a0082767fd15bf942f7c6692}} 
+\index{Country@{Country}!Country@{Country}}
+\index{Country@{Country}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{Country()}{Country()}}
+{\footnotesize\ttfamily Country\+::\+Country (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{int}]{colour,  }\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Constructs a new country object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & is the name of the country \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCountry_a5c7b9e130084e74842aa932b589723b9}\label{classCountry_a5c7b9e130084e74842aa932b589723b9}} 
+\index{Country@{Country}!babiesGrowUpNow@{babiesGrowUpNow}}
+\index{babiesGrowUpNow@{babiesGrowUpNow}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{babiesGrowUpNow()}{babiesGrowUpNow()}}
+{\footnotesize\ttfamily void Country\+::babies\+Grow\+Up\+Now (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increases population by 10\%. 
+
+\mbox{\Hypertarget{classCountry_a87e4326de496ef3bb1083642bab079d6}\label{classCountry_a87e4326de496ef3bb1083642bab079d6}} 
+\index{Country@{Country}!decreasePopulation@{decreasePopulation}}
+\index{decreasePopulation@{decreasePopulation}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{decreasePopulation()}{decreasePopulation()}}
+{\footnotesize\ttfamily void Country\+::decrease\+Population (\begin{DoxyParamCaption}\item[{int}]{to\+Dec }\end{DoxyParamCaption})}
+
+
+
+Decrease the civilian\+Population of the country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Dec} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_ac7c7fb3c51af95af19b7f16c34ad3d6f}\label{classCountry_ac7c7fb3c51af95af19b7f16c34ad3d6f}} 
+\index{Country@{Country}!getAlliances@{getAlliances}}
+\index{getAlliances@{getAlliances}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getAlliances()}{getAlliances()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAlliances}{Alliances}} $\ast$ Country\+::get\+Alliances (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classAlliances}{Alliances}} of this country. 
+
+\begin{DoxyReturn}{Returns}
+Alliances$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_a258bd65f342e9e36c77cdbdfb76a7890}\label{classCountry_a258bd65f342e9e36c77cdbdfb76a7890}} 
+\index{Country@{Country}!getCountryMoral@{getCountryMoral}}
+\index{getCountryMoral@{getCountryMoral}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getCountryMoral()}{getCountryMoral()}}
+{\footnotesize\ttfamily double Country\+::get\+Country\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the country moral. 
+
+\begin{DoxyReturn}{Returns}
+Double that represents the moral of the country 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_adf9aba38d08fc445b66ee5f4459b369c}\label{classCountry_adf9aba38d08fc445b66ee5f4459b369c}} 
+\index{Country@{Country}!getEconomy@{getEconomy}}
+\index{getEconomy@{getEconomy}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getEconomy()}{getEconomy()}}
+{\footnotesize\ttfamily int Country\+::get\+Economy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the total economy of the Coountry. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_a61ed563237fcc7df21b6bb092b86507b}\label{classCountry_a61ed563237fcc7df21b6bb092b86507b}} 
+\index{Country@{Country}!getName@{getName}}
+\index{getName@{getName}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Country\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Name of this country. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_a49335519ac7e5666155a771cf9c4b3b4}\label{classCountry_a49335519ac7e5666155a771cf9c4b3b4}} 
+\index{Country@{Country}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlayer}{Player}} $\ast$ Country\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the current player from the country. 
+
+\begin{DoxyReturn}{Returns}
+Player$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_a0b45148f1a1279e8940ce84aee0a3207}\label{classCountry_a0b45148f1a1279e8940ce84aee0a3207}} 
+\index{Country@{Country}!getPopulation@{getPopulation}}
+\index{getPopulation@{getPopulation}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{getPopulation()}{getPopulation()}}
+{\footnotesize\ttfamily int Country\+::get\+Population (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Civilian population of the country. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountry_a6f597499775643b7328323a919d95964}\label{classCountry_a6f597499775643b7328323a919d95964}} 
+\index{Country@{Country}!increaseEconomy@{increaseEconomy}}
+\index{increaseEconomy@{increaseEconomy}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{increaseEconomy()}{increaseEconomy()}}
+{\footnotesize\ttfamily void Country\+::increase\+Economy (\begin{DoxyParamCaption}\item[{double}]{growth }\end{DoxyParamCaption})}
+
+
+
+increase the economy by passed in percentage 
+
+
+\begin{DoxyParams}{Parameters}
+{\em growth} & percentage to grow by \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_aadbf77370b084f5288081def95edcc20}\label{classCountry_aadbf77370b084f5288081def95edcc20}} 
+\index{Country@{Country}!recruitPlatoon@{recruitPlatoon}}
+\index{recruitPlatoon@{recruitPlatoon}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{recruitPlatoon()}{recruitPlatoon()}}
+{\footnotesize\ttfamily void Country\+::recruit\+Platoon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui }\end{DoxyParamCaption})}
+
+
+
+makes a new platoon and adds to existing platoon vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & so that platoon can be placed on map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_a63c672ac8b0da23bc778bd0db856978b}\label{classCountry_a63c672ac8b0da23bc778bd0db856978b}} 
+\index{Country@{Country}!removeDeadPlatoons@{removeDeadPlatoons}}
+\index{removeDeadPlatoons@{removeDeadPlatoons}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{removeDeadPlatoons()}{removeDeadPlatoons()}}
+{\footnotesize\ttfamily void Country\+::remove\+Dead\+Platoons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes dead units from military. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_a5821381f87b3af46641ce7e6d64b87c1}\label{classCountry_a5821381f87b3af46641ce7e6d64b87c1}} 
+\index{Country@{Country}!setAlliance@{setAlliance}}
+\index{setAlliance@{setAlliance}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{setAlliance()}{setAlliance()}}
+{\footnotesize\ttfamily void Country\+::set\+Alliance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$}]{alliance }\end{DoxyParamCaption})}
+
+
+
+Set the Alliance object of. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alliance} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_a3b4ed83e780cf0bcf4f54c2d530c95c2}\label{classCountry_a3b4ed83e780cf0bcf4f54c2d530c95c2}} 
+\index{Country@{Country}!setCountryState@{setCountryState}}
+\index{setCountryState@{setCountryState}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{setCountryState()}{setCountryState()}}
+{\footnotesize\ttfamily void Country\+::set\+Country\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountryState}{Country\+State}} $\ast$}]{country\+State }\end{DoxyParamCaption})}
+
+
+
+Sets the country state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country\+State} & is the state we are changing to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_aea7b09727532e8b70d5d521f4a8d8226}\label{classCountry_aea7b09727532e8b70d5d521f4a8d8226}} 
+\index{Country@{Country}!setPlayer@{setPlayer}}
+\index{setPlayer@{setPlayer}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{setPlayer()}{setPlayer()}}
+{\footnotesize\ttfamily void Country\+::set\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Sets the player of the country to the passed in player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & passed in from map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCountry_af092b84c00f13dfd95ec23b95b34540e}\label{classCountry_af092b84c00f13dfd95ec23b95b34540e}} 
+\index{Country@{Country}!spendMoney@{spendMoney}}
+\index{spendMoney@{spendMoney}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{spendMoney()}{spendMoney()}}
+{\footnotesize\ttfamily void Country\+::spend\+Money (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})}
+
+
+
+Decreases the economy based on the amount spent. 
+
+\mbox{\Hypertarget{classCountry_a1c1e2b5b8d21f83c31c2752321618c23}\label{classCountry_a1c1e2b5b8d21f83c31c2752321618c23}} 
+\index{Country@{Country}!updateCountryMoral@{updateCountryMoral}}
+\index{updateCountryMoral@{updateCountryMoral}!Country@{Country}}
+\doxysubsubsection{\texorpdfstring{updateCountryMoral()}{updateCountryMoral()}}
+{\footnotesize\ttfamily bool Country\+::update\+Country\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the country moral by recalculating aggregate of units\textquotesingle{} moral if country is joined. 
+
+\begin{DoxyReturn}{Returns}
+Boolean that represents whether the countries moral is above the accepted percentage 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Country.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Country.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,78 @@
+\hypertarget{classJoinedState}{}\doxysection{Joined\+State Class Reference}
+\label{classJoinedState}\index{JoinedState@{JoinedState}}
+
+
+Inheritance diagram for Joined\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{classJoinedState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Joined\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{classJoinedState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classJoinedState_a28d6f440fb29f978197586f8ec4ffb89}\label{classJoinedState_a28d6f440fb29f978197586f8ec4ffb89}} 
+void \mbox{\hyperlink{classJoinedState_a28d6f440fb29f978197586f8ec4ffb89}{handle\+Country}} ()
+\begin{DoxyCompactList}\small\item\em Handles what the Joined \mbox{\hyperlink{classCountry}{Country}} does. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classJoinedState_a2b7b3f0f270cbd73c174c5e8f798b0c5}\label{classJoinedState_a2b7b3f0f270cbd73c174c5e8f798b0c5}} 
+\mbox{\hyperlink{classCountryState}{Country\+State}} $\ast$ \mbox{\hyperlink{classJoinedState_a2b7b3f0f270cbd73c174c5e8f798b0c5}{change\+Country\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns a new \mbox{\hyperlink{classJoinedState}{Joined\+State}} class. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classJoinedState_aaac8eb87785a92978790bc8d0c16edd2}{request\+State}} ()
+\begin{DoxyCompactList}\small\item\em Requests the current state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classJoinedState_af05be8e0f70bdfb52e289b84c86ab7e8}{recruit\+Platoon}} (\mbox{\hyperlink{classDirector}{Director}} $\ast$director, \mbox{\hyperlink{classCountry}{Country}} $\ast$country, \mbox{\hyperlink{classPlayer}{Player}} $\ast$player, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui)
+\begin{DoxyCompactList}\small\item\em Makes a platoon for the country using builder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classJoinedState_af05be8e0f70bdfb52e289b84c86ab7e8}\label{classJoinedState_af05be8e0f70bdfb52e289b84c86ab7e8}} 
+\index{JoinedState@{JoinedState}!recruitPlatoon@{recruitPlatoon}}
+\index{recruitPlatoon@{recruitPlatoon}!JoinedState@{JoinedState}}
+\doxysubsubsection{\texorpdfstring{recruitPlatoon()}{recruitPlatoon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Joined\+State\+::recruit\+Platoon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDirector}{Director}} $\ast$}]{director,  }\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country,  }\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Makes a platoon for the country using builder. 
+
+\begin{DoxyReturn}{Returns}
+newly made \mbox{\hyperlink{classPlatoon}{Platoon}} 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classCountryState_a0712f705c238ff77a32b69b941a6a3dc}{Country\+State}}.
+
+\mbox{\Hypertarget{classJoinedState_aaac8eb87785a92978790bc8d0c16edd2}\label{classJoinedState_aaac8eb87785a92978790bc8d0c16edd2}} 
+\index{JoinedState@{JoinedState}!requestState@{requestState}}
+\index{requestState@{requestState}!JoinedState@{JoinedState}}
+\doxysubsubsection{\texorpdfstring{requestState()}{requestState()}}
+{\footnotesize\ttfamily string Joined\+State\+::request\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Requests the current state. 
+
+\begin{DoxyReturn}{Returns}
+A string that represents the Joined \mbox{\hyperlink{classCountry}{Country}} state 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCountryState_a404d96b704b4dbc46ce95b4c316687fa}{Country\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Joined\+State.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Joined\+State.\+cpp\end{DoxyCompactItemize}

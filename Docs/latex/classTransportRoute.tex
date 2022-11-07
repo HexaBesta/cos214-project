@@ -1,0 +1,176 @@
+\hypertarget{classTransportRoute}{}\doxysection{Transport\+Route Class Reference}
+\label{classTransportRoute}\index{TransportRoute@{TransportRoute}}
+
+
+Inheritance diagram for Transport\+Route\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classTransportRoute__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Transport\+Route\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classTransportRoute__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTransportRoute_a78a2c46dfd67505a59a4c8c85fc64cc5}{Transport\+Route}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classTransport}{Transport}} Route object setting available to false. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTransportRoute_a5c2fced33bcd15d0df08c1de0fc8f18b}{is\+Available}} ()
+\begin{DoxyCompactList}\small\item\em returns whether or not the transport route is available \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classTransportRoute_a5ba041d87932a556028fb315bb7822a4}{accept}} (\mbox{\hyperlink{classVisitor}{Visitor}} $\ast$visitor)
+\begin{DoxyCompactList}\small\item\em accept visitor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTransportRoute_a3b7fc73693a125761dfbe953c46842d7}{set\+End\+Points}} (\mbox{\hyperlink{classArea}{Area}} $\ast$end\+Point1, \mbox{\hyperlink{classArea}{Area}} $\ast$end\+Point2)
+\begin{DoxyCompactList}\small\item\em Sets the end points of the transport route. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTransportRoute_aa3c88c9bc37d31047cbf475b25da797b}{destroy}} ()
+\begin{DoxyCompactList}\small\item\em sets available to false, indicating that the transport route is not operational \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTransportRoute_ac6517a21c9b6f023cbae8c87efabb141}{create}} ()
+\begin{DoxyCompactList}\small\item\em sets available to true, indicating that the transport route is operational \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classArea}{Area}} $\ast$ \mbox{\hyperlink{classTransportRoute_a63bf7f9e588a3fc9461a587110401216}{get\+From}} ()
+\begin{DoxyCompactList}\small\item\em Get the From object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classArea}{Area}} $\ast$ \mbox{\hyperlink{classTransportRoute_ab62511105cbcee4f10a5b3111f58d368}{get\+To}} ()
+\begin{DoxyCompactList}\small\item\em Get the To object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classTransportRoute_a33bc152f48d90daafea986100453292c}{$\sim$\+Transport\+Route}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classTransport}{Transport}} Route object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTransportRoute_a78a2c46dfd67505a59a4c8c85fc64cc5}\label{classTransportRoute_a78a2c46dfd67505a59a4c8c85fc64cc5}} 
+\index{TransportRoute@{TransportRoute}!TransportRoute@{TransportRoute}}
+\index{TransportRoute@{TransportRoute}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{TransportRoute()}{TransportRoute()}}
+{\footnotesize\ttfamily Transport\+Route\+::\+Transport\+Route (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classTransport}{Transport}} Route object setting available to false. 
+
+\begin{DoxyNote}{Note}
+When initialised, transport routes are unavailable. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classTransportRoute_a33bc152f48d90daafea986100453292c}\label{classTransportRoute_a33bc152f48d90daafea986100453292c}} 
+\index{TransportRoute@{TransportRoute}!````~TransportRoute@{$\sim$TransportRoute}}
+\index{````~TransportRoute@{$\sim$TransportRoute}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{$\sim$TransportRoute()}{~TransportRoute()}}
+{\footnotesize\ttfamily Transport\+Route\+::$\sim$\+Transport\+Route (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classTransport}{Transport}} Route object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTransportRoute_a5ba041d87932a556028fb315bb7822a4}\label{classTransportRoute_a5ba041d87932a556028fb315bb7822a4}} 
+\index{TransportRoute@{TransportRoute}!accept@{accept}}
+\index{accept@{accept}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Transport\+Route\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVisitor}{Visitor}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+accept visitor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & takes in the pointer visitor that will be accpeted \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classMapComponent_a6b554f8a7aec501f0906ea10ccd27d29}{Map\+Component}}.
+
+\mbox{\Hypertarget{classTransportRoute_ac6517a21c9b6f023cbae8c87efabb141}\label{classTransportRoute_ac6517a21c9b6f023cbae8c87efabb141}} 
+\index{TransportRoute@{TransportRoute}!create@{create}}
+\index{create@{create}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily void Transport\+Route\+::create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sets available to true, indicating that the transport route is operational 
+
+\mbox{\Hypertarget{classTransportRoute_aa3c88c9bc37d31047cbf475b25da797b}\label{classTransportRoute_aa3c88c9bc37d31047cbf475b25da797b}} 
+\index{TransportRoute@{TransportRoute}!destroy@{destroy}}
+\index{destroy@{destroy}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily void Transport\+Route\+::destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sets available to false, indicating that the transport route is not operational 
+
+\mbox{\Hypertarget{classTransportRoute_a63bf7f9e588a3fc9461a587110401216}\label{classTransportRoute_a63bf7f9e588a3fc9461a587110401216}} 
+\index{TransportRoute@{TransportRoute}!getFrom@{getFrom}}
+\index{getFrom@{getFrom}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{getFrom()}{getFrom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArea}{Area}} $\ast$ Transport\+Route\+::get\+From (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the From object. 
+
+\begin{DoxyReturn}{Returns}
+Area$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTransportRoute_ab62511105cbcee4f10a5b3111f58d368}\label{classTransportRoute_ab62511105cbcee4f10a5b3111f58d368}} 
+\index{TransportRoute@{TransportRoute}!getTo@{getTo}}
+\index{getTo@{getTo}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{getTo()}{getTo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArea}{Area}} $\ast$ Transport\+Route\+::get\+To (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the To object. 
+
+\begin{DoxyReturn}{Returns}
+Area$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTransportRoute_a5c2fced33bcd15d0df08c1de0fc8f18b}\label{classTransportRoute_a5c2fced33bcd15d0df08c1de0fc8f18b}} 
+\index{TransportRoute@{TransportRoute}!isAvailable@{isAvailable}}
+\index{isAvailable@{isAvailable}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{isAvailable()}{isAvailable()}}
+{\footnotesize\ttfamily bool Transport\+Route\+::is\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns whether or not the transport route is available 
+
+\begin{DoxyReturn}{Returns}
+true if the transport route is available 
+
+false if the transport route is not available 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTransportRoute_a3b7fc73693a125761dfbe953c46842d7}\label{classTransportRoute_a3b7fc73693a125761dfbe953c46842d7}} 
+\index{TransportRoute@{TransportRoute}!setEndPoints@{setEndPoints}}
+\index{setEndPoints@{setEndPoints}!TransportRoute@{TransportRoute}}
+\doxysubsubsection{\texorpdfstring{setEndPoints()}{setEndPoints()}}
+{\footnotesize\ttfamily void Transport\+Route\+::set\+End\+Points (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{end\+Point1,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{end\+Point2 }\end{DoxyParamCaption})}
+
+
+
+Sets the end points of the transport route. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em end\+Point1} & The first end point of the transport route \\
+\hline
+{\em end\+Point2} & The first end point of the transport route \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Transport\+Route.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Transport\+Route.\+cpp\end{DoxyCompactItemize}

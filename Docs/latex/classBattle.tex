@@ -1,0 +1,146 @@
+\hypertarget{classBattle}{}\doxysection{Battle Class Reference}
+\label{classBattle}\index{Battle@{Battle}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBattle_ac81c287ed56fdc4578941c8a10f28e68}{Battle}} (\mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} $\ast$air, \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} $\ast$land, \mbox{\hyperlink{classArea}{Area}} $\ast$area, \mbox{\hyperlink{classPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classBattle}{Battle}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} $\ast$ \mbox{\hyperlink{classBattle_ae77c2280fd9a92b94dda7980b067fd80}{get\+Air}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classAir}{Air}} \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} $\ast$ \mbox{\hyperlink{classBattle_aa539343386151571c0b3f5c880fd06d1}{get\+Land}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classLand}{Land}} \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBattle_aca88d1a295306b1c3ebb4e5c1e8189ca}{get\+Turn}} ()
+\begin{DoxyCompactList}\small\item\em Get the turn of the batlle. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classBattle_a5dbae8e143e05650700724f7df06f3bb}{get\+State\+Summary}} ()
+\begin{DoxyCompactList}\small\item\em Will print a summary of the current state of a battle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBattle_a86bb5564bc823c4e182bb5dc7ec32353}{take\+Turn}} ()
+\begin{DoxyCompactList}\small\item\em Template method to initiate turn taken by active side. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBattle_a77a03040498d5737889017c04808197f}{battle\+Loop}} (sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui, \mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Will continue to alternate turns while the battle is active and print state of battle between turns. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBattle_a21d4477625446b5391746517d9612660}{resolve\+Battle}} ()
+\begin{DoxyCompactList}\small\item\em Will resolve the battle when called at end of turn. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBattle_ac81c287ed56fdc4578941c8a10f28e68}\label{classBattle_ac81c287ed56fdc4578941c8a10f28e68}} 
+\index{Battle@{Battle}!Battle@{Battle}}
+\index{Battle@{Battle}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{Battle()}{Battle()}}
+{\footnotesize\ttfamily Battle\+::\+Battle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} $\ast$}]{air,  }\item[{\mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} $\ast$}]{land,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area,  }\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classBattle}{Battle}} object. 
+
+Constructor will set member functions.
+\begin{DoxyItemize}
+\item Turn will be set to true (side1 will take their turn first)
+\item Active will be set to true (attacker attack first)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em air} & the air Theatre of \mbox{\hyperlink{classWar}{War}} \\
+\hline
+{\em side2} & the land Theatre Of \mbox{\hyperlink{classWar}{War}} \\
+\hline
+{\em area} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBattle_a77a03040498d5737889017c04808197f}\label{classBattle_a77a03040498d5737889017c04808197f}} 
+\index{Battle@{Battle}!battleLoop@{battleLoop}}
+\index{battleLoop@{battleLoop}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{battleLoop()}{battleLoop()}}
+{\footnotesize\ttfamily void Battle\+::battle\+Loop (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Will continue to alternate turns while the battle is active and print state of battle between turns. 
+
+\mbox{\Hypertarget{classBattle_ae77c2280fd9a92b94dda7980b067fd80}\label{classBattle_ae77c2280fd9a92b94dda7980b067fd80}} 
+\index{Battle@{Battle}!getAir@{getAir}}
+\index{getAir@{getAir}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{getAir()}{getAir()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} $\ast$ Battle\+::get\+Air (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classAir}{Air}} \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} object. 
+
+\begin{DoxyReturn}{Returns}
+Theatre\+Of\+War$\ast$ of the air theatre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBattle_aa539343386151571c0b3f5c880fd06d1}\label{classBattle_aa539343386151571c0b3f5c880fd06d1}} 
+\index{Battle@{Battle}!getLand@{getLand}}
+\index{getLand@{getLand}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{getLand()}{getLand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} $\ast$ Battle\+::get\+Land (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classLand}{Land}} \mbox{\hyperlink{classTheatreOfWar}{Theatre\+Of\+War}} object. 
+
+\begin{DoxyReturn}{Returns}
+Theatre\+Of\+War$\ast$ of the land theatre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBattle_a5dbae8e143e05650700724f7df06f3bb}\label{classBattle_a5dbae8e143e05650700724f7df06f3bb}} 
+\index{Battle@{Battle}!getStateSummary@{getStateSummary}}
+\index{getStateSummary@{getStateSummary}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{getStateSummary()}{getStateSummary()}}
+{\footnotesize\ttfamily string Battle\+::get\+State\+Summary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Will print a summary of the current state of a battle. 
+
+Each platoon\textquotesingle{}s cumulative health and damage will be shown along with the currently active side \mbox{\Hypertarget{classBattle_aca88d1a295306b1c3ebb4e5c1e8189ca}\label{classBattle_aca88d1a295306b1c3ebb4e5c1e8189ca}} 
+\index{Battle@{Battle}!getTurn@{getTurn}}
+\index{getTurn@{getTurn}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{getTurn()}{getTurn()}}
+{\footnotesize\ttfamily bool Battle\+::get\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the turn of the batlle. 
+
+\begin{DoxyReturn}{Returns}
+true -\/ attackers turn 
+
+false -\/ defenders turn 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBattle_a21d4477625446b5391746517d9612660}\label{classBattle_a21d4477625446b5391746517d9612660}} 
+\index{Battle@{Battle}!resolveBattle@{resolveBattle}}
+\index{resolveBattle@{resolveBattle}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{resolveBattle()}{resolveBattle()}}
+{\footnotesize\ttfamily void Battle\+::resolve\+Battle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Will resolve the battle when called at end of turn. 
+
+\mbox{\Hypertarget{classBattle_a86bb5564bc823c4e182bb5dc7ec32353}\label{classBattle_a86bb5564bc823c4e182bb5dc7ec32353}} 
+\index{Battle@{Battle}!takeTurn@{takeTurn}}
+\index{takeTurn@{takeTurn}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{takeTurn()}{takeTurn()}}
+{\footnotesize\ttfamily void Battle\+::take\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Template method to initiate turn taken by active side. 
+
+Turn will consist of\+:
+\begin{DoxyItemize}
+\item Retreat OR
+\item Changing Strategy (optional)
+\item Attacking (required)
+\end{DoxyItemize}
+
+Requesting reinforcements (optional) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Battle.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Battle.\+cpp\end{DoxyCompactItemize}

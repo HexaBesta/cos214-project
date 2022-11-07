@@ -1,0 +1,113 @@
+\hypertarget{classFitState}{}\doxysection{Fit\+State Class Reference}
+\label{classFitState}\index{FitState@{FitState}}
+
+
+Inheritance diagram for Fit\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classFitState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Fit\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classFitState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{classFitState_a0a120b692fbee127f3fe9bf52d6b1f3e}{attack\+Strength}} (double damage)
+\begin{DoxyCompactList}\small\item\em Returns the actual damage that can be inflicted by a unit based on their state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ \mbox{\hyperlink{classFitState_a7c44d081f02cac20c61fe3f82a1e48e6}{change\+Unit\+State}} ()
+\begin{DoxyCompactList}\small\item\em change \mbox{\hyperlink{classUnit}{Unit}}\textquotesingle{}s state to the default next state \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classFitState_a9f15d3c427100ddf0f42bb6ba4e7f832}{request}} ()
+\begin{DoxyCompactList}\small\item\em Prints the current state. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classFitState_a3eb13e73257dc0f34daecb759d47f2cd}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the name of the state\+: \char`\"{}\+Fit\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFitState_a0a120b692fbee127f3fe9bf52d6b1f3e}\label{classFitState_a0a120b692fbee127f3fe9bf52d6b1f3e}} 
+\index{FitState@{FitState}!attackStrength@{attackStrength}}
+\index{attackStrength@{attackStrength}!FitState@{FitState}}
+\doxysubsubsection{\texorpdfstring{attackStrength()}{attackStrength()}}
+{\footnotesize\ttfamily double Fit\+State\+::attack\+Strength (\begin{DoxyParamCaption}\item[{double}]{damage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the actual damage that can be inflicted by a unit based on their state. 
+
+In the Fit State units deal their full potential damage
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & the unadjusted damage of the unit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the adjusted damage of the unit (full damage) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUnitsState_a6c32ab64e2d0e4c1880a4f57fe1620c1}{Units\+State}}.
+
+\mbox{\Hypertarget{classFitState_a7c44d081f02cac20c61fe3f82a1e48e6}\label{classFitState_a7c44d081f02cac20c61fe3f82a1e48e6}} 
+\index{FitState@{FitState}!changeUnitState@{changeUnitState}}
+\index{changeUnitState@{changeUnitState}!FitState@{FitState}}
+\doxysubsubsection{\texorpdfstring{changeUnitState()}{changeUnitState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ Fit\+State\+::change\+Unit\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+change \mbox{\hyperlink{classUnit}{Unit}}\textquotesingle{}s state to the default next state 
+
+Fit State will change to (Deployed) Injured State
+
+\begin{DoxyReturn}{Returns}
+Units\+State$\ast$ the new \mbox{\hyperlink{classInjuredState}{Injured\+State}} state of the unit 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classUnitsState_a7421e9735dcdae2fe4538c9241de0cf2}{Units\+State}}.
+
+\mbox{\Hypertarget{classFitState_a3eb13e73257dc0f34daecb759d47f2cd}\label{classFitState_a3eb13e73257dc0f34daecb759d47f2cd}} 
+\index{FitState@{FitState}!getState@{getState}}
+\index{getState@{getState}!FitState@{FitState}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily string Fit\+State\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the name of the state\+: \char`\"{}\+Fit\char`\"{}. 
+
+
+
+Implements \mbox{\hyperlink{classUnitsState_abf11db2e27c2d78ba15174327ae5ff02}{Units\+State}}.
+
+\mbox{\Hypertarget{classFitState_a9f15d3c427100ddf0f42bb6ba4e7f832}\label{classFitState_a9f15d3c427100ddf0f42bb6ba4e7f832}} 
+\index{FitState@{FitState}!request@{request}}
+\index{request@{request}!FitState@{FitState}}
+\doxysubsubsection{\texorpdfstring{request()}{request()}}
+{\footnotesize\ttfamily void Fit\+State\+::request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Prints the current state. 
+
+Calls the parent class request before completing own print F\+IT 
+
+Reimplemented from \mbox{\hyperlink{classDeployedState_a5b3cd54acd90973a66c48ac955c22f70}{Deployed\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Fit\+State.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Fit\+State.\+cpp\end{DoxyCompactItemize}

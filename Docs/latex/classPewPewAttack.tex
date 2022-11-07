@@ -1,0 +1,97 @@
+\hypertarget{classPewPewAttack}{}\doxysection{Pew\+Pew\+Attack Class Reference}
+\label{classPewPewAttack}\index{PewPewAttack@{PewPewAttack}}
+
+
+Inheritance diagram for Pew\+Pew\+Attack\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classPewPewAttack__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pew\+Pew\+Attack\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classPewPewAttack__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPewPewAttack_a19c4e200d3f15956839a260d547bbe7e}\label{classPewPewAttack_a19c4e200d3f15956839a260d547bbe7e}} 
+{\bfseries Pew\+Pew\+Attack} (\mbox{\hyperlink{classPlatoon}{Platoon}} $\ast$this\+Platoon)
+\item 
+virtual void \mbox{\hyperlink{classPewPewAttack_aa6c11b0c67bce7001a9ffedcfcd7e35d}{attack}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$plankton)
+\begin{DoxyCompactList}\small\item\em This is a pure virtual method which will attack a platoon from a different alliance baised on the current strategy of the chosen platoon. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPlatoonStrategy}{Platoon\+Strategy}} $\ast$ \mbox{\hyperlink{classPewPewAttack_a242ae7eef15e28c1c3a282a8c6e56a74}{toggle\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em This method allows for a platoon to change its current strategy to the other strategy available. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classPewPewAttack_a80c1bd6685c0df0e15e29e26cb33e57c}{get\+Platoon\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classPlatoon}{Platoon}} Strategy string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPewPewAttack_aa6c11b0c67bce7001a9ffedcfcd7e35d}\label{classPewPewAttack_aa6c11b0c67bce7001a9ffedcfcd7e35d}} 
+\index{PewPewAttack@{PewPewAttack}!attack@{attack}}
+\index{attack@{attack}!PewPewAttack@{PewPewAttack}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily void Pew\+Pew\+Attack\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{plankton }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+This is a pure virtual method which will attack a platoon from a different alliance baised on the current strategy of the chosen platoon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em plankton} & is the platoon that will be attacked \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classPlatoonStrategy_a2fc593db743e417a54c9d0f176f1f730}{Platoon\+Strategy}}.
+
+\mbox{\Hypertarget{classPewPewAttack_a80c1bd6685c0df0e15e29e26cb33e57c}\label{classPewPewAttack_a80c1bd6685c0df0e15e29e26cb33e57c}} 
+\index{PewPewAttack@{PewPewAttack}!getPlatoonStrategy@{getPlatoonStrategy}}
+\index{getPlatoonStrategy@{getPlatoonStrategy}!PewPewAttack@{PewPewAttack}}
+\doxysubsubsection{\texorpdfstring{getPlatoonStrategy()}{getPlatoonStrategy()}}
+{\footnotesize\ttfamily string Pew\+Pew\+Attack\+::get\+Platoon\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classPlatoon}{Platoon}} Strategy string. 
+
+\begin{DoxyReturn}{Returns}
+string of the current strategy 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlatoonStrategy_a48c650f6967ca5f6e66a27e34a5146fd}{Platoon\+Strategy}}.
+
+\mbox{\Hypertarget{classPewPewAttack_a242ae7eef15e28c1c3a282a8c6e56a74}\label{classPewPewAttack_a242ae7eef15e28c1c3a282a8c6e56a74}} 
+\index{PewPewAttack@{PewPewAttack}!toggleStrategy@{toggleStrategy}}
+\index{toggleStrategy@{toggleStrategy}!PewPewAttack@{PewPewAttack}}
+\doxysubsubsection{\texorpdfstring{toggleStrategy()}{toggleStrategy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlatoonStrategy}{Platoon\+Strategy}} $\ast$ Pew\+Pew\+Attack\+::toggle\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+This method allows for a platoon to change its current strategy to the other strategy available. 
+
+\begin{DoxyReturn}{Returns}
+Platoon\+Strategy$\ast$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlatoonStrategy_a0cb9c56973270aa7fe13059a77e36e42}{Platoon\+Strategy}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Pew\+Pew\+Attack.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Pew\+Pew\+Attack.\+cpp\end{DoxyCompactItemize}

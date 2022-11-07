@@ -1,0 +1,180 @@
+\hypertarget{classWar}{}\doxysection{War Class Reference}
+\label{classWar}\index{War@{War}}
+
+
+Inheritance diagram for War\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{classWar__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for War\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{classWar__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classWar_a965b88033fc8c3e1958c9abee50b6f90}{initialise\+Sides}} ()=0
+\begin{DoxyCompactList}\small\item\em Construct a new God Of \mbox{\hyperlink{classWar}{War}} object using setup file. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWar_aa09a05e2a83029ce9159a4c1463d2ec7}{war\+Loop}} ()=0
+\begin{DoxyCompactList}\small\item\em Loop that continues while war is active. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWar_acefb030774c20044e398b1bd624e2a3c}{print\+Map}} ()=0
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classMap}{Map}} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classWar_abc6bfc4b6a0b195c2c5cea145fe93b33}{$\sim$\+War}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classWar}{War}} object and assigned memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classWar_af3009858f8af6b3b5e158937089adf35}{check\+Toggle\+Player}} ()=0
+\begin{DoxyCompactList}\small\item\em Check whether to toggle between playing modes. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWar_a60ea0849131c4cb7b8c0a62b64b0b0e5}{take\+Turn}} (int actions, sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ \&ui)=0
+\begin{DoxyCompactList}\small\item\em allows alliance to take a turn \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWar_a8e8bbc5a4f5fefb0e0c1978fe4b6c4f5}{round}} (sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ \&ui)=0
+\begin{DoxyCompactList}\small\item\em one round consisting of two seperate turns \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWar_ab0cd1c3793e7407c8d43c4cc9f763877}\label{classWar_ab0cd1c3793e7407c8d43c4cc9f763877}} 
+\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$ {\bfseries group\+One}
+\item 
+\mbox{\Hypertarget{classWar_a2b895659285dc1da10c27846f9ee392e}\label{classWar_a2b895659285dc1da10c27846f9ee392e}} 
+\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$ {\bfseries group\+Two}
+\item 
+\mbox{\Hypertarget{classWar_a10db6c711858703741d7749e86d217e5}\label{classWar_a10db6c711858703741d7749e86d217e5}} 
+\mbox{\hyperlink{classPlayer}{Player}} $\ast$ {\bfseries player}
+\item 
+\mbox{\Hypertarget{classWar_aa12b3788e48f21a8aaaa97b28424471b}\label{classWar_aa12b3788e48f21a8aaaa97b28424471b}} 
+\mbox{\hyperlink{classMap}{Map}} $\ast$ {\bfseries map}
+\item 
+\mbox{\Hypertarget{classWar_a598c0c20c2a5575dc2d9b0e8960b76c5}\label{classWar_a598c0c20c2a5575dc2d9b0e8960b76c5}} 
+bool {\bfseries turn}
+\item 
+\mbox{\Hypertarget{classWar_ad45769b2b9e1b6120b3bf35d3ca81d11}\label{classWar_ad45769b2b9e1b6120b3bf35d3ca81d11}} 
+bool {\bfseries real}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWar_abc6bfc4b6a0b195c2c5cea145fe93b33}\label{classWar_abc6bfc4b6a0b195c2c5cea145fe93b33}} 
+\index{War@{War}!````~War@{$\sim$War}}
+\index{````~War@{$\sim$War}!War@{War}}
+\doxysubsubsection{\texorpdfstring{$\sim$War()}{~War()}}
+{\footnotesize\ttfamily virtual War\+::$\sim$\+War (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classWar}{War}} object and assigned memory. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWar_af3009858f8af6b3b5e158937089adf35}\label{classWar_af3009858f8af6b3b5e158937089adf35}} 
+\index{War@{War}!checkTogglePlayer@{checkTogglePlayer}}
+\index{checkTogglePlayer@{checkTogglePlayer}!War@{War}}
+\doxysubsubsection{\texorpdfstring{checkTogglePlayer()}{checkTogglePlayer()}}
+{\footnotesize\ttfamily virtual void War\+::check\+Toggle\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Check whether to toggle between playing modes. 
+
+\mbox{\Hypertarget{classWar_a965b88033fc8c3e1958c9abee50b6f90}\label{classWar_a965b88033fc8c3e1958c9abee50b6f90}} 
+\index{War@{War}!initialiseSides@{initialiseSides}}
+\index{initialiseSides@{initialiseSides}!War@{War}}
+\doxysubsubsection{\texorpdfstring{initialiseSides()}{initialiseSides()}}
+{\footnotesize\ttfamily virtual void War\+::initialise\+Sides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Construct a new God Of \mbox{\hyperlink{classWar}{War}} object using setup file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em setup\+File} & name of the textfile used to set up game\\
+\hline
+\end{DoxyParams}
+Calls functions in player to initialise sides with countries with platoons 
+
+Implemented in \mbox{\hyperlink{classGUIOfWar_a7f197a15fa38b2981b97622ed2c3d3fa}{G\+U\+I\+Of\+War}}, and \mbox{\hyperlink{classGodOfWar_aac3e0527f302d34b584a3077d3ae1968}{God\+Of\+War}}.
+
+\mbox{\Hypertarget{classWar_acefb030774c20044e398b1bd624e2a3c}\label{classWar_acefb030774c20044e398b1bd624e2a3c}} 
+\index{War@{War}!printMap@{printMap}}
+\index{printMap@{printMap}!War@{War}}
+\doxysubsubsection{\texorpdfstring{printMap()}{printMap()}}
+{\footnotesize\ttfamily virtual void War\+::print\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Print the \mbox{\hyperlink{classMap}{Map}} object. 
+
+
+
+Implemented in \mbox{\hyperlink{classGUIOfWar_a1e1e140a7d1a4ec365e368cfd0e74000}{G\+U\+I\+Of\+War}}, and \mbox{\hyperlink{classGodOfWar_ac4f7bd2d9af15aeebcdb795c2b9ccd64}{God\+Of\+War}}.
+
+\mbox{\Hypertarget{classWar_a8e8bbc5a4f5fefb0e0c1978fe4b6c4f5}\label{classWar_a8e8bbc5a4f5fefb0e0c1978fe4b6c4f5}} 
+\index{War@{War}!round@{round}}
+\index{round@{round}!War@{War}}
+\doxysubsubsection{\texorpdfstring{round()}{round()}}
+{\footnotesize\ttfamily virtual void War\+::round (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$ \&}]{ui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+one round consisting of two seperate turns 
+
+\mbox{\Hypertarget{classWar_a60ea0849131c4cb7b8c0a62b64b0b0e5}\label{classWar_a60ea0849131c4cb7b8c0a62b64b0b0e5}} 
+\index{War@{War}!takeTurn@{takeTurn}}
+\index{takeTurn@{takeTurn}!War@{War}}
+\doxysubsubsection{\texorpdfstring{takeTurn()}{takeTurn()}}
+{\footnotesize\ttfamily virtual void War\+::take\+Turn (\begin{DoxyParamCaption}\item[{int}]{actions,  }\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$ \&}]{ui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+allows alliance to take a turn 
+
+While there are action points remaining\+:
+\begin{DoxyItemize}
+\item Pick a country\+:
+\item Select action\+:
+\begin{DoxyItemize}
+\item Destroy transport route
+\item Choose area\+:
+\begin{DoxyItemize}
+\item March into adjacent areas OR
+\item Choose resource to clone factory of When no more action points remaining -\/ resolve\+All\+Battles
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em actions} & number of action points available \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWar_aa09a05e2a83029ce9159a4c1463d2ec7}\label{classWar_aa09a05e2a83029ce9159a4c1463d2ec7}} 
+\index{War@{War}!warLoop@{warLoop}}
+\index{warLoop@{warLoop}!War@{War}}
+\doxysubsubsection{\texorpdfstring{warLoop()}{warLoop()}}
+{\footnotesize\ttfamily virtual void War\+::war\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Loop that continues while war is active. 
+
+
+
+Implemented in \mbox{\hyperlink{classGUIOfWar_aaee30bb1fec6653173107396462a75c0}{G\+U\+I\+Of\+War}}, and \mbox{\hyperlink{classGodOfWar_a676d0d012c49a78a4b97d1525108c80f}{God\+Of\+War}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/War.\+h\end{DoxyCompactItemize}

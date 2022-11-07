@@ -1,0 +1,106 @@
+\hypertarget{classCountVisitor}{}\doxysection{Count\+Visitor Class Reference}
+\label{classCountVisitor}\index{CountVisitor@{CountVisitor}}
+
+
+Inheritance diagram for Count\+Visitor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classCountVisitor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Count\+Visitor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classCountVisitor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classCountVisitor_ac7e94eae91e70b92723785da5714b5ef}{visit}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area)
+\begin{DoxyCompactList}\small\item\em this function will count how many areas are occupied by different alliances \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classCountVisitor_ad7d03cd910f0bd1d11b5782e4e52627b}{visit}} (\mbox{\hyperlink{classTransportRoute}{Transport\+Route}} $\ast$transport)
+\begin{DoxyCompactList}\small\item\em this function will count the amount of transport routes adjacent to the specific area \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classCountVisitor_a93f7429118ea6cae1734970797eb7c7e}{display\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Returns the counts of the Areas and Transport\+Routes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCountVisitor_ac79b6d5a401580e401304132a50233d0}{war\+Loop\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Returns if either alliance has won. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCountVisitor_a93f7429118ea6cae1734970797eb7c7e}\label{classCountVisitor_a93f7429118ea6cae1734970797eb7c7e}} 
+\index{CountVisitor@{CountVisitor}!displayCount@{displayCount}}
+\index{displayCount@{displayCount}!CountVisitor@{CountVisitor}}
+\doxysubsubsection{\texorpdfstring{displayCount()}{displayCount()}}
+{\footnotesize\ttfamily string Count\+Visitor\+::display\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the counts of the Areas and Transport\+Routes. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCountVisitor_ac7e94eae91e70b92723785da5714b5ef}\label{classCountVisitor_ac7e94eae91e70b92723785da5714b5ef}} 
+\index{CountVisitor@{CountVisitor}!visit@{visit}}
+\index{visit@{visit}!CountVisitor@{CountVisitor}}
+\doxysubsubsection{\texorpdfstring{visit()}{visit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Count\+Visitor\+::visit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+this function will count how many areas are occupied by different alliances 
+
+
+\begin{DoxyParams}{Parameters}
+{\em area} & takes in a pointer of the area to iterate through the area \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classVisitor}{Visitor}}.
+
+\mbox{\Hypertarget{classCountVisitor_ad7d03cd910f0bd1d11b5782e4e52627b}\label{classCountVisitor_ad7d03cd910f0bd1d11b5782e4e52627b}} 
+\index{CountVisitor@{CountVisitor}!visit@{visit}}
+\index{visit@{visit}!CountVisitor@{CountVisitor}}
+\doxysubsubsection{\texorpdfstring{visit()}{visit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Count\+Visitor\+::visit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTransportRoute}{Transport\+Route}} $\ast$}]{transport }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+this function will count the amount of transport routes adjacent to the specific area 
+
+
+\begin{DoxyParams}{Parameters}
+{\em transport} & will take in the transport route to iterate through the adjacent transport routes \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classVisitor}{Visitor}}.
+
+\mbox{\Hypertarget{classCountVisitor_ac79b6d5a401580e401304132a50233d0}\label{classCountVisitor_ac79b6d5a401580e401304132a50233d0}} 
+\index{CountVisitor@{CountVisitor}!warLoopComplete@{warLoopComplete}}
+\index{warLoopComplete@{warLoopComplete}!CountVisitor@{CountVisitor}}
+\doxysubsubsection{\texorpdfstring{warLoopComplete()}{warLoopComplete()}}
+{\footnotesize\ttfamily int Count\+Visitor\+::war\+Loop\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns if either alliance has won. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Count\+Visitor.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Count\+Visitor.\+cpp\end{DoxyCompactItemize}

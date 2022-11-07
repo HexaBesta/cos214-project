@@ -1,0 +1,99 @@
+\hypertarget{classUnitsState}{}\doxysection{Units\+State Class Reference}
+\label{classUnitsState}\index{UnitsState@{UnitsState}}
+
+
+Inheritance diagram for Units\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classUnitsState__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{classUnitsState_a6c32ab64e2d0e4c1880a4f57fe1620c1}{attack\+Strength}} (double damage)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method implemented by concrete states that returns the actual damage that can be inflicted by a unit based on their state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$ \mbox{\hyperlink{classUnitsState_a7421e9735dcdae2fe4538c9241de0cf2}{change\+Unit\+State}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function implemented by concrete state to return default next state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classUnitsState_a644227be199daccde81f23fe65fb31c1}{request}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function implemented by concrete states to print the current state. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classUnitsState_abf11db2e27c2d78ba15174327ae5ff02}{get\+State}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the name of the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnitsState_a6c32ab64e2d0e4c1880a4f57fe1620c1}\label{classUnitsState_a6c32ab64e2d0e4c1880a4f57fe1620c1}} 
+\index{UnitsState@{UnitsState}!attackStrength@{attackStrength}}
+\index{attackStrength@{attackStrength}!UnitsState@{UnitsState}}
+\doxysubsubsection{\texorpdfstring{attackStrength()}{attackStrength()}}
+{\footnotesize\ttfamily virtual double Units\+State\+::attack\+Strength (\begin{DoxyParamCaption}\item[{double}]{damage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual method implemented by concrete states that returns the actual damage that can be inflicted by a unit based on their state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & the unadjusted damage of the unit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the adjusted damage of the unit (full damage) 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classInjuredState_a0f124ed34b273eafd18954ffa6b24f03}{Injured\+State}}, \mbox{\hyperlink{classCivilianState_ab49e38146e4ce9110031fb05fff67456}{Civilian\+State}}, \mbox{\hyperlink{classDeadState_ac75f9c2b0f28c3f1ebcc9d14df4402cc}{Dead\+State}}, and \mbox{\hyperlink{classFitState_a0a120b692fbee127f3fe9bf52d6b1f3e}{Fit\+State}}.
+
+\mbox{\Hypertarget{classUnitsState_a7421e9735dcdae2fe4538c9241de0cf2}\label{classUnitsState_a7421e9735dcdae2fe4538c9241de0cf2}} 
+\index{UnitsState@{UnitsState}!changeUnitState@{changeUnitState}}
+\index{changeUnitState@{changeUnitState}!UnitsState@{UnitsState}}
+\doxysubsubsection{\texorpdfstring{changeUnitState()}{changeUnitState()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classUnitsState}{Units\+State}}$\ast$ Units\+State\+::change\+Unit\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function implemented by concrete state to return default next state. 
+
+\begin{DoxyReturn}{Returns}
+Units\+State$\ast$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classInjuredState_a0b74844ddfd1209a1ec4e0ff83bdd386}{Injured\+State}}, \mbox{\hyperlink{classCivilianState_a137c37ce81c5d46d07ed93390581eab0}{Civilian\+State}}, \mbox{\hyperlink{classDeadState_a79fc87bae3e984cc996c193c3b3a650b}{Dead\+State}}, and \mbox{\hyperlink{classFitState_a7c44d081f02cac20c61fe3f82a1e48e6}{Fit\+State}}.
+
+\mbox{\Hypertarget{classUnitsState_abf11db2e27c2d78ba15174327ae5ff02}\label{classUnitsState_abf11db2e27c2d78ba15174327ae5ff02}} 
+\index{UnitsState@{UnitsState}!getState@{getState}}
+\index{getState@{getState}!UnitsState@{UnitsState}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily virtual string Units\+State\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the name of the state. 
+
+
+
+Implemented in \mbox{\hyperlink{classInjuredState_a64726053d9ff35816efe07f3392fdece}{Injured\+State}}, \mbox{\hyperlink{classFitState_a3eb13e73257dc0f34daecb759d47f2cd}{Fit\+State}}, \mbox{\hyperlink{classCivilianState_ae24c18ea3581ff303694ae2e4d66f6fd}{Civilian\+State}}, and \mbox{\hyperlink{classDeadState_ae7c34511cafc1d38111126d911ee9a16}{Dead\+State}}.
+
+\mbox{\Hypertarget{classUnitsState_a644227be199daccde81f23fe65fb31c1}\label{classUnitsState_a644227be199daccde81f23fe65fb31c1}} 
+\index{UnitsState@{UnitsState}!request@{request}}
+\index{request@{request}!UnitsState@{UnitsState}}
+\doxysubsubsection{\texorpdfstring{request()}{request()}}
+{\footnotesize\ttfamily virtual void Units\+State\+::request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function implemented by concrete states to print the current state. 
+
+
+
+Implemented in \mbox{\hyperlink{classInjuredState_a5eff5f83ee7d76c277ad1187652dea3e}{Injured\+State}}, \mbox{\hyperlink{classFitState_a9f15d3c427100ddf0f42bb6ba4e7f832}{Fit\+State}}, \mbox{\hyperlink{classCivilianState_afa82cc7d63245236196105daac7c5b9a}{Civilian\+State}}, \mbox{\hyperlink{classDeadState_a49174f842209b71bab2d7a7cfbc0ecfb}{Dead\+State}}, and \mbox{\hyperlink{classDeployedState_a5b3cd54acd90973a66c48ac955c22f70}{Deployed\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Units\+State.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Units\+State.\+cpp\end{DoxyCompactItemize}

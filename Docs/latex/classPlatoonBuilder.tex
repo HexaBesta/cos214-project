@@ -1,0 +1,110 @@
+\hypertarget{classPlatoonBuilder}{}\doxysection{Platoon\+Builder Class Reference}
+\label{classPlatoonBuilder}\index{PlatoonBuilder@{PlatoonBuilder}}
+
+
+Inheritance diagram for Platoon\+Builder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classPlatoonBuilder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Platoon\+Builder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classPlatoonBuilder__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPlatoonBuilder_a7f1a822c34f4bebeba5c147ed8f52334}\label{classPlatoonBuilder_a7f1a822c34f4bebeba5c147ed8f52334}} 
+virtual void \mbox{\hyperlink{classPlatoonBuilder_a7f1a822c34f4bebeba5c147ed8f52334}{create\+Vehicles}} ()
+\begin{DoxyCompactList}\small\item\em Creates new vehicles for the platoon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlatoonBuilder_a19e061bc595ef72c047db102a2fafe1c}\label{classPlatoonBuilder_a19e061bc595ef72c047db102a2fafe1c}} 
+virtual void \mbox{\hyperlink{classPlatoonBuilder_a19e061bc595ef72c047db102a2fafe1c}{create\+Soldiers}} ()
+\begin{DoxyCompactList}\small\item\em Creates new soldiers for the platoon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlatoonBuilder_a50a059f96da5014f99532cb3348abe8a}\label{classPlatoonBuilder_a50a059f96da5014f99532cb3348abe8a}} 
+virtual void \mbox{\hyperlink{classPlatoonBuilder_a50a059f96da5014f99532cb3348abe8a}{create\+Ammo}} ()
+\begin{DoxyCompactList}\small\item\em Creates the ammo for the platoon. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoonBuilder_aae0db0b2c489a595a6deeadf34eeb5eb}{set\+Country}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Creates new vehicles for the platoon. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classPlatoonBuilder_a7dd88c9d6fff0e6f6c9bca33b5531c19}{set\+Branch}} (bool type)
+\begin{DoxyCompactList}\small\item\em Creates new vehicles for the platoon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlatoonBuilder_ace176320587f8408b8dc283c061e8a1a}\label{classPlatoonBuilder_ace176320587f8408b8dc283c061e8a1a}} 
+virtual void \mbox{\hyperlink{classPlatoonBuilder_ace176320587f8408b8dc283c061e8a1a}{create\+Platoon}} ()
+\begin{DoxyCompactList}\small\item\em Creates the platoon. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classPlatoonBuilder_aa45269f2e44528c999299e451f011a1f}{get\+Platoon}} ()
+\begin{DoxyCompactList}\small\item\em Function to return the platoon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlatoonBuilder_acdab4785d9c99ea42b2f52195842f7b3}\label{classPlatoonBuilder_acdab4785d9c99ea42b2f52195842f7b3}} 
+virtual void \mbox{\hyperlink{classPlatoonBuilder_acdab4785d9c99ea42b2f52195842f7b3}{clear\+Builder}} ()
+\begin{DoxyCompactList}\small\item\em Resets the builder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlatoonBuilder_aa45269f2e44528c999299e451f011a1f}\label{classPlatoonBuilder_aa45269f2e44528c999299e451f011a1f}} 
+\index{PlatoonBuilder@{PlatoonBuilder}!getPlatoon@{getPlatoon}}
+\index{getPlatoon@{getPlatoon}!PlatoonBuilder@{PlatoonBuilder}}
+\doxysubsubsection{\texorpdfstring{getPlatoon()}{getPlatoon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Platoon\+Builder\+::get\+Platoon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function to return the platoon. 
+
+\begin{DoxyReturn}{Returns}
+a platoon of type unit 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBobTheBuilder_afc01f4c2a04780a3d8ad76162db8e3d4}{Bob\+The\+Builder}}.
+
+\mbox{\Hypertarget{classPlatoonBuilder_a7dd88c9d6fff0e6f6c9bca33b5531c19}\label{classPlatoonBuilder_a7dd88c9d6fff0e6f6c9bca33b5531c19}} 
+\index{PlatoonBuilder@{PlatoonBuilder}!setBranch@{setBranch}}
+\index{setBranch@{setBranch}!PlatoonBuilder@{PlatoonBuilder}}
+\doxysubsubsection{\texorpdfstring{setBranch()}{setBranch()}}
+{\footnotesize\ttfamily void Platoon\+Builder\+::set\+Branch (\begin{DoxyParamCaption}\item[{bool}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Creates new vehicles for the platoon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & represents the type of the \mbox{\hyperlink{classBranch}{Branch}}, true represents a land branch while false represents an air branch \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBobTheBuilder_ab78e3cb28ae1c02a7beb36ea6bc113a6}{Bob\+The\+Builder}}.
+
+\mbox{\Hypertarget{classPlatoonBuilder_aae0db0b2c489a595a6deeadf34eeb5eb}\label{classPlatoonBuilder_aae0db0b2c489a595a6deeadf34eeb5eb}} 
+\index{PlatoonBuilder@{PlatoonBuilder}!setCountry@{setCountry}}
+\index{setCountry@{setCountry}!PlatoonBuilder@{PlatoonBuilder}}
+\doxysubsubsection{\texorpdfstring{setCountry()}{setCountry()}}
+{\footnotesize\ttfamily void Platoon\+Builder\+::set\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Creates new vehicles for the platoon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & represents the country of the platoon \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBobTheBuilder_a3ec3cb9ea8477229c871fb6d47ff1d1a}{Bob\+The\+Builder}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Platoon\+Builder.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Platoon\+Builder.\+cpp\end{DoxyCompactItemize}

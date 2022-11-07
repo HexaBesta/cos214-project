@@ -1,0 +1,130 @@
+\hypertarget{classAlliances}{}\doxysection{Alliances Class Reference}
+\label{classAlliances}\index{Alliances@{Alliances}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAlliances_a2e174c248990a80c122672eb6f8861ad}{Alliances}} (string name, int colour)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classAlliances}{Alliances}} object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classAlliances_a0b43f5718fabfdb4e013754aca097b67}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the Name of the alliance. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAlliances_a2d49f41c15e6e6ff442b1ec118c296c1}{get\+Colour}} ()
+\begin{DoxyCompactList}\small\item\em Get the Colour of the alliance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAlliances_af37c833da7770a3b20c6410078dfdc54}{add\+Country}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$country)
+\begin{DoxyCompactList}\small\item\em Adds a country to the array of countries. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAlliances_a5c0e7e8007917f869b09f8abd46239ea}{withdraw\+Country}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$country)
+\begin{DoxyCompactList}\small\item\em Withdraws coountry from alliance by removing country from vector. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classAlliances_ab5e05f44a886c4eeeb04e6988d231670}{access\+Country\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Accesses each country\textquotesingle{}s moral, change to neureal state if moral too low. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$ \mbox{\hyperlink{classAlliances_ab86718d91eb4b9c8a058b914ea6ebefe}{get\+Countries}} ()
+\begin{DoxyCompactList}\small\item\em Get the Countries object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAlliances_a2e174c248990a80c122672eb6f8861ad}\label{classAlliances_a2e174c248990a80c122672eb6f8861ad}} 
+\index{Alliances@{Alliances}!Alliances@{Alliances}}
+\index{Alliances@{Alliances}!Alliances@{Alliances}}
+\doxysubsubsection{\texorpdfstring{Alliances()}{Alliances()}}
+{\footnotesize\ttfamily Alliances\+::\+Alliances (\begin{DoxyParamCaption}\item[{string}]{name,  }\item[{int}]{colour }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classAlliances}{Alliances}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em colour} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAlliances_ab5e05f44a886c4eeeb04e6988d231670}\label{classAlliances_ab5e05f44a886c4eeeb04e6988d231670}} 
+\index{Alliances@{Alliances}!accessCountryMoral@{accessCountryMoral}}
+\index{accessCountryMoral@{accessCountryMoral}!Alliances@{Alliances}}
+\doxysubsubsection{\texorpdfstring{accessCountryMoral()}{accessCountryMoral()}}
+{\footnotesize\ttfamily string Alliances\+::access\+Country\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Accesses each country\textquotesingle{}s moral, change to neureal state if moral too low. 
+
+\begin{DoxyReturn}{Returns}
+string describing changes made 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAlliances_af37c833da7770a3b20c6410078dfdc54}\label{classAlliances_af37c833da7770a3b20c6410078dfdc54}} 
+\index{Alliances@{Alliances}!addCountry@{addCountry}}
+\index{addCountry@{addCountry}!Alliances@{Alliances}}
+\doxysubsubsection{\texorpdfstring{addCountry()}{addCountry()}}
+{\footnotesize\ttfamily void Alliances\+::add\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country }\end{DoxyParamCaption})}
+
+
+
+Adds a country to the array of countries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAlliances_a2d49f41c15e6e6ff442b1ec118c296c1}\label{classAlliances_a2d49f41c15e6e6ff442b1ec118c296c1}} 
+\index{Alliances@{Alliances}!getColour@{getColour}}
+\index{getColour@{getColour}!Alliances@{Alliances}}
+\doxysubsubsection{\texorpdfstring{getColour()}{getColour()}}
+{\footnotesize\ttfamily int Alliances\+::get\+Colour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Colour of the alliance. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAlliances_ab86718d91eb4b9c8a058b914ea6ebefe}\label{classAlliances_ab86718d91eb4b9c8a058b914ea6ebefe}} 
+\index{Alliances@{Alliances}!getCountries@{getCountries}}
+\index{getCountries@{getCountries}!Alliances@{Alliances}}
+\doxysubsubsection{\texorpdfstring{getCountries()}{getCountries()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$ Alliances\+::get\+Countries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Countries object. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$\+Country$\ast$$>$ that holds the countries in this alliance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAlliances_a0b43f5718fabfdb4e013754aca097b67}\label{classAlliances_a0b43f5718fabfdb4e013754aca097b67}} 
+\index{Alliances@{Alliances}!getName@{getName}}
+\index{getName@{getName}!Alliances@{Alliances}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Alliances\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Name of the alliance. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAlliances_a5c0e7e8007917f869b09f8abd46239ea}\label{classAlliances_a5c0e7e8007917f869b09f8abd46239ea}} 
+\index{Alliances@{Alliances}!withdrawCountry@{withdrawCountry}}
+\index{withdrawCountry@{withdrawCountry}!Alliances@{Alliances}}
+\doxysubsubsection{\texorpdfstring{withdrawCountry()}{withdrawCountry()}}
+{\footnotesize\ttfamily void Alliances\+::withdraw\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country }\end{DoxyParamCaption})}
+
+
+
+Withdraws coountry from alliance by removing country from vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Alliances.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Alliance.\+cpp\end{DoxyCompactItemize}

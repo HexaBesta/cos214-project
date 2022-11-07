@@ -1,0 +1,449 @@
+\hypertarget{classGUIUser}{}\doxysection{G\+U\+I\+User Class Reference}
+\label{classGUIUser}\index{GUIUser@{GUIUser}}
+
+
+Inheritance diagram for G\+U\+I\+User\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=137pt]{classGUIUser__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for G\+U\+I\+User\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=137pt]{classGUIUser__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classGUIUser_a7ca4ee9820242f31e55d0ca2147489ca}{player\+Retreat}} (\mbox{\hyperlink{classBattle}{Battle}} $\ast$battle)
+\begin{DoxyCompactList}\small\item\em Check whether the active player will retreat in this turn. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classGUIUser_a07acb966ab39ba4107aba9b777028f69}{check\+Change\+Strategy}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$active)
+\begin{DoxyCompactList}\small\item\em Check whether the active player wants to change strategy in this turn. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classGUIUser_a13b0967db9b70817a381731810c5a2eb}{request\+Reinforcements}} (\mbox{\hyperlink{classBattle}{Battle}} $\ast$battle)
+\begin{DoxyCompactList}\small\item\em Checks whether active side will request reinforcements in their turn. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classGUIUser_a05338b386680cc8ba67ad1fb622d326d}{choose\+Country}} (vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$ countries, \mbox{\hyperlink{classMap}{Map}} $\ast$map, sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui)
+\begin{DoxyCompactList}\small\item\em Choses a country to take a turn with. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classGUIUser_a1163546b2ac9927b63993ea3f27fcbd8}{choose\+Action\+For\+Country}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area, \mbox{\hyperlink{classMap}{Map}} $\ast$map, sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ \&ui)
+\begin{DoxyCompactList}\small\item\em choose which action player wants to take with country \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classArea}{Area}} $\ast$ \mbox{\hyperlink{classGUIUser_a302c96878521d31e773615bb59ec0981}{choose\+Area\+For\+Action}} (vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ areas, sf\+::\+Render\+Window $\ast$window, \mbox{\hyperlink{classMap}{Map}} $\ast$map, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui=\{\})
+\begin{DoxyCompactList}\small\item\em choose which area to take action in \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classArea}{Area}} $\ast$ \mbox{\hyperlink{classGUIUser_a583423ebaf8540a64ce7da6a0b8b46dd}{choose\+Area\+For\+Action}} (sf\+::\+Render\+Window $\ast$window, \mbox{\hyperlink{classMap}{Map}} $\ast$map, string prompt, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui)
+\begin{DoxyCompactList}\small\item\em choose an area to take action on by clicking on the map \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classArea}{Area}} $\ast$ \mbox{\hyperlink{classGUIUser_a402244712b7a72089ac669860d72afcc}{choose\+Adjacent\+Area}} (vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ adj\+Areas, \mbox{\hyperlink{classArea}{Area}} $\ast$area, sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui, \mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em choose area from adj\+Area list \end{DoxyCompactList}\item 
+virtual int $\ast$ \mbox{\hyperlink{classGUIUser_a4c4af1c8d6399e0d6dc04bfa2e94ecdd}{choose\+Areas\+To\+Destroy\+Transport\+Routes}} (vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$ adj\+Areas, vector$<$ vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$$>$ other\+Adj, \mbox{\hyperlink{classArea}{Area}} $\ast$current, sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui, \mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em choose two areas to destroy transport routes between \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classGUIUser_aab1845fbf2c09b10a6ade345d886b80e}{choose\+Resource}} (\mbox{\hyperlink{classArea}{Area}} $\ast$area)
+\begin{DoxyCompactList}\small\item\em choose type of resource to request for area passed in \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classGUIUser_afb006d5c8323ba9c150027b2be669fef}{change\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Check whether to change from C\+P\+U-\/$>$\mbox{\hyperlink{classUser}{User}} or User-\/$>$\mbox{\hyperlink{classCPU}{C\+PU}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classPlayer}{Player}} $\ast$ \mbox{\hyperlink{classGUIUser_ad1b3a20bfd84d3c3ce4e0b9258fe5b28}{toggle\+Player}} (string type)
+\begin{DoxyCompactList}\small\item\em Change between player types. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classGUIUser_a6b3f35472da977860ca5bbe87c25289e}{inspect}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Allows user to inspect areas of interest. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classGUIUser_a0d80eac347a13aef58182b4397f3220f}{platoon\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Asks \mbox{\hyperlink{classPlayer}{Player}} whether it should create \mbox{\hyperlink{classAir}{Air}} or \mbox{\hyperlink{classLand}{Land}} \mbox{\hyperlink{classPlatoon}{Platoon}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classGUIUser_a63fbc98ac20758d29cdf90eab779bb0e}{create\+Countries}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map, sf\+::\+Render\+Window $\ast$window)
+\begin{DoxyCompactList}\small\item\em Creates new Countries and add to map country vector. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classGUIUser_a9dbf8ba37714eadba76fabe5059529ce}{number\+Of\+Countries\+In\+Alliance}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map, sf\+::\+Render\+Window $\ast$window)
+\begin{DoxyCompactList}\small\item\em Allows user to choose the number of countries to join the alliance. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCountry}{Country}} $\ast$ \mbox{\hyperlink{classGUIUser_a859530f62fe7598b5a30d7c9cfb25ef6}{choose\+Country\+To\+Join\+Alliance}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map, sf\+::\+Render\+Window $\ast$window)
+\begin{DoxyCompactList}\small\item\em Choose a country to form part of alliance. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classGUIUser_aea1931fd862307c4c29ab23abb12490f}{add\+Platoons}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$country, \mbox{\hyperlink{classMap}{Map}} $\ast$map, sf\+::\+Render\+Window $\ast$window, vector$<$ sf\+::\+Drawable $\ast$ $>$ ui)
+\begin{DoxyCompactList}\small\item\em Adds a platoon to passed in country. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classGUIUser_ae629fdfecd3500dde34bf0f35b2a9cc0}{initialise\+Factories}} (\mbox{\hyperlink{classMap}{Map}} $\ast$map, \mbox{\hyperlink{classAlliances}{Alliances}} $\ast$alliance)
+\begin{DoxyCompactList}\small\item\em Adds selected factories to selected areas. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classGUIUser_a409e197d9ff027243e4bff28256db99b}{get\+String}} (sf\+::\+Render\+Window $\ast$window, sf\+::\+Text $\ast$prompt, sf\+::\+Text $\ast$output, sf\+::\+Sprite $\ast$confirm\+Btn, \mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Initialises the G\+UI for this page. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGUIUser_aac28df4d0a68b23e71e105e39d6bc428}\label{classGUIUser_aac28df4d0a68b23e71e105e39d6bc428}} 
+virtual int {\bfseries get\+Int} (sf\+::\+Render\+Window $\ast$window, sf\+::\+Text $\ast$prompt, sf\+::\+Text $\ast$output, sf\+::\+Sprite $\ast$confirm\+Btn, \mbox{\hyperlink{classMap}{Map}} $\ast$map)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGUIUser_aea1931fd862307c4c29ab23abb12490f}\label{classGUIUser_aea1931fd862307c4c29ab23abb12490f}} 
+\index{GUIUser@{GUIUser}!addPlatoons@{addPlatoons}}
+\index{addPlatoons@{addPlatoons}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{addPlatoons()}{addPlatoons()}}
+{\footnotesize\ttfamily void G\+U\+I\+User\+::add\+Platoons (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{country,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Adds a platoon to passed in country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em country} & the country to which platoon should be added \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classPlayer_a9fbe4ad494eb6e29f26e9eae9a5b33a7}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_afb006d5c8323ba9c150027b2be669fef}\label{classGUIUser_afb006d5c8323ba9c150027b2be669fef}} 
+\index{GUIUser@{GUIUser}!changePlayer@{changePlayer}}
+\index{changePlayer@{changePlayer}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{changePlayer()}{changePlayer()}}
+{\footnotesize\ttfamily bool G\+U\+I\+User\+::change\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check whether to change from C\+P\+U-\/$>$\mbox{\hyperlink{classUser}{User}} or User-\/$>$\mbox{\hyperlink{classCPU}{C\+PU}}. 
+
+\begin{DoxyReturn}{Returns}
+true if change should occur 
+
+false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_ac5300319a91446ff291ffa7fbe079b17}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a07acb966ab39ba4107aba9b777028f69}\label{classGUIUser_a07acb966ab39ba4107aba9b777028f69}} 
+\index{GUIUser@{GUIUser}!checkChangeStrategy@{checkChangeStrategy}}
+\index{checkChangeStrategy@{checkChangeStrategy}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{checkChangeStrategy()}{checkChangeStrategy()}}
+{\footnotesize\ttfamily bool G\+U\+I\+User\+::check\+Change\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{active }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check whether the active player wants to change strategy in this turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em active,the} & unit\textquotesingle{}s whose turn it is \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if unit wants to change strategy 
+
+false if unit does not want to change strategy 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_ac3f6d3947e0cf8f6a6802784de40e8a7}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a1163546b2ac9927b63993ea3f27fcbd8}\label{classGUIUser_a1163546b2ac9927b63993ea3f27fcbd8}} 
+\index{GUIUser@{GUIUser}!chooseActionForCountry@{chooseActionForCountry}}
+\index{chooseActionForCountry@{chooseActionForCountry}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{chooseActionForCountry()}{chooseActionForCountry()}}
+{\footnotesize\ttfamily int G\+U\+I\+User\+::choose\+Action\+For\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$ \&}]{ui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose which action player wants to take with country 
+
+\begin{DoxyReturn}{Returns}
+int\+:
+\begin{DoxyItemize}
+\item 0 if attack transport route
+\item 1 if request\+Resource
+\item 2 if march into area 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a9cdd6350ea76e005f5aaf31fc372ccbb}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a402244712b7a72089ac669860d72afcc}\label{classGUIUser_a402244712b7a72089ac669860d72afcc}} 
+\index{GUIUser@{GUIUser}!chooseAdjacentArea@{chooseAdjacentArea}}
+\index{chooseAdjacentArea@{chooseAdjacentArea}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{chooseAdjacentArea()}{chooseAdjacentArea()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArea}{Area}} $\ast$ G\+U\+I\+User\+::choose\+Adjacent\+Area (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$}]{adj\+Areas,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area,  }\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose area from adj\+Area list 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adj\+Areas} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int index of chosen 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a0cc6621ba80cb95e232671314f72d46f}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a583423ebaf8540a64ce7da6a0b8b46dd}\label{classGUIUser_a583423ebaf8540a64ce7da6a0b8b46dd}} 
+\index{GUIUser@{GUIUser}!chooseAreaForAction@{chooseAreaForAction}}
+\index{chooseAreaForAction@{chooseAreaForAction}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{chooseAreaForAction()}{chooseAreaForAction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArea}{Area}} $\ast$ G\+U\+I\+User\+::choose\+Area\+For\+Action (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{string}]{prompt,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose an area to take action on by clicking on the map 
+
+\mbox{\Hypertarget{classGUIUser_a302c96878521d31e773615bb59ec0981}\label{classGUIUser_a302c96878521d31e773615bb59ec0981}} 
+\index{GUIUser@{GUIUser}!chooseAreaForAction@{chooseAreaForAction}}
+\index{chooseAreaForAction@{chooseAreaForAction}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{chooseAreaForAction()}{chooseAreaForAction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArea}{Area}} $\ast$ G\+U\+I\+User\+::choose\+Area\+For\+Action (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$}]{areas,  }\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose which area to take action in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em areas} & list of all areas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int index of chosen 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_ad83f70f5a550ac555d7a5a9b78948927}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a4c4af1c8d6399e0d6dc04bfa2e94ecdd}\label{classGUIUser_a4c4af1c8d6399e0d6dc04bfa2e94ecdd}} 
+\index{GUIUser@{GUIUser}!chooseAreasToDestroyTransportRoutes@{chooseAreasToDestroyTransportRoutes}}
+\index{chooseAreasToDestroyTransportRoutes@{chooseAreasToDestroyTransportRoutes}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{chooseAreasToDestroyTransportRoutes()}{chooseAreasToDestroyTransportRoutes()}}
+{\footnotesize\ttfamily int $\ast$ G\+U\+I\+User\+::choose\+Areas\+To\+Destroy\+Transport\+Routes (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$}]{adj\+Areas,  }\item[{vector$<$ vector$<$ \mbox{\hyperlink{classArea}{Area}} $\ast$ $>$$>$}]{other\+Adj,  }\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{current,  }\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose two areas to destroy transport routes between 
+
+
+\begin{DoxyParams}{Parameters}
+{\em adj\+Areas} & of immediatly adjacent area \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int array with index 0 containing the first array index and index 1 the second array index of chosen 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_aabae012d800fdcaceecff68334508d38}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a05338b386680cc8ba67ad1fb622d326d}\label{classGUIUser_a05338b386680cc8ba67ad1fb622d326d}} 
+\index{GUIUser@{GUIUser}!chooseCountry@{chooseCountry}}
+\index{chooseCountry@{chooseCountry}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{chooseCountry()}{chooseCountry()}}
+{\footnotesize\ttfamily int G\+U\+I\+User\+::choose\+Country (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classCountry}{Country}} $\ast$ $>$}]{countries,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{vector$<$ sf\+::\+Drawable $\ast$ $>$}]{ui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Choses a country to take a turn with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em countries} & vector of countries of current alliance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int index of country chosen 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a931dd39e4164d6a4b24f30a5777249fc}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a859530f62fe7598b5a30d7c9cfb25ef6}\label{classGUIUser_a859530f62fe7598b5a30d7c9cfb25ef6}} 
+\index{GUIUser@{GUIUser}!chooseCountryToJoinAlliance@{chooseCountryToJoinAlliance}}
+\index{chooseCountryToJoinAlliance@{chooseCountryToJoinAlliance}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{chooseCountryToJoinAlliance()}{chooseCountryToJoinAlliance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCountry}{Country}} $\ast$ G\+U\+I\+User\+::choose\+Country\+To\+Join\+Alliance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{sf\+::\+Render\+Window $\ast$}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Choose a country to form part of alliance. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classCountry}{Country}} $\ast$ to chosen country 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a8c711709329a99b9bcafc77b8b3bacd8}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_aab1845fbf2c09b10a6ade345d886b80e}\label{classGUIUser_aab1845fbf2c09b10a6ade345d886b80e}} 
+\index{GUIUser@{GUIUser}!chooseResource@{chooseResource}}
+\index{chooseResource@{chooseResource}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{chooseResource()}{chooseResource()}}
+{\footnotesize\ttfamily int G\+U\+I\+User\+::choose\+Resource (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classArea}{Area}} $\ast$}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+choose type of resource to request for area passed in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em area} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int type of resource 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a3ed50cfd54e166c3b780a020188883cb}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a63fbc98ac20758d29cdf90eab779bb0e}\label{classGUIUser_a63fbc98ac20758d29cdf90eab779bb0e}} 
+\index{GUIUser@{GUIUser}!createCountries@{createCountries}}
+\index{createCountries@{createCountries}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{createCountries()}{createCountries()}}
+{\footnotesize\ttfamily void G\+U\+I\+User\+::create\+Countries (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{sf\+::\+Render\+Window $\ast$}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Creates new Countries and add to map country vector. 
+
+
+
+Implements \mbox{\hyperlink{classPlayer_af26747fe0c341b55bbc3da8235a68be0}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a409e197d9ff027243e4bff28256db99b}\label{classGUIUser_a409e197d9ff027243e4bff28256db99b}} 
+\index{GUIUser@{GUIUser}!getString@{getString}}
+\index{getString@{getString}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{getString()}{getString()}}
+{\footnotesize\ttfamily string G\+U\+I\+User\+::get\+String (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{window,  }\item[{sf\+::\+Text $\ast$}]{prompt,  }\item[{sf\+::\+Text $\ast$}]{output,  }\item[{sf\+::\+Sprite $\ast$}]{confirm\+Btn,  }\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Initialises the G\+UI for this page. 
+
+Setup includes a text box to enter number of countries, a feedback box and a component to enter country names \mbox{\Hypertarget{classGUIUser_ae629fdfecd3500dde34bf0f35b2a9cc0}\label{classGUIUser_ae629fdfecd3500dde34bf0f35b2a9cc0}} 
+\index{GUIUser@{GUIUser}!initialiseFactories@{initialiseFactories}}
+\index{initialiseFactories@{initialiseFactories}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{initialiseFactories()}{initialiseFactories()}}
+{\footnotesize\ttfamily void G\+U\+I\+User\+::initialise\+Factories (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{classAlliances}{Alliances}} $\ast$}]{alliance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Adds selected factories to selected areas. 
+
+
+
+Implements \mbox{\hyperlink{classPlayer_a979a41dc78551d6a07e6be5a3d12084d}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a6b3f35472da977860ca5bbe87c25289e}\label{classGUIUser_a6b3f35472da977860ca5bbe87c25289e}} 
+\index{GUIUser@{GUIUser}!inspect@{inspect}}
+\index{inspect@{inspect}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{inspect()}{inspect()}}
+{\footnotesize\ttfamily void G\+U\+I\+User\+::inspect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Allows user to inspect areas of interest. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classPlayer_a71f4d476f2a7d5f7c89c519808e899ef}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a9dbf8ba37714eadba76fabe5059529ce}\label{classGUIUser_a9dbf8ba37714eadba76fabe5059529ce}} 
+\index{GUIUser@{GUIUser}!numberOfCountriesInAlliance@{numberOfCountriesInAlliance}}
+\index{numberOfCountriesInAlliance@{numberOfCountriesInAlliance}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{numberOfCountriesInAlliance()}{numberOfCountriesInAlliance()}}
+{\footnotesize\ttfamily int G\+U\+I\+User\+::number\+Of\+Countries\+In\+Alliance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMap}{Map}} $\ast$}]{map,  }\item[{sf\+::\+Render\+Window $\ast$}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Allows user to choose the number of countries to join the alliance. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a371191e8d8a8b6e80ccce67311ade0f3}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a0d80eac347a13aef58182b4397f3220f}\label{classGUIUser_a0d80eac347a13aef58182b4397f3220f}} 
+\index{GUIUser@{GUIUser}!platoonType@{platoonType}}
+\index{platoonType@{platoonType}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{platoonType()}{platoonType()}}
+{\footnotesize\ttfamily int G\+U\+I\+User\+::platoon\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Asks \mbox{\hyperlink{classPlayer}{Player}} whether it should create \mbox{\hyperlink{classAir}{Air}} or \mbox{\hyperlink{classLand}{Land}} \mbox{\hyperlink{classPlatoon}{Platoon}}. 
+
+
+
+Implements \mbox{\hyperlink{classPlayer_a4b0e54a05d2ac0bee9a2dc5649526a30}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a7ca4ee9820242f31e55d0ca2147489ca}\label{classGUIUser_a7ca4ee9820242f31e55d0ca2147489ca}} 
+\index{GUIUser@{GUIUser}!playerRetreat@{playerRetreat}}
+\index{playerRetreat@{playerRetreat}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{playerRetreat()}{playerRetreat()}}
+{\footnotesize\ttfamily bool G\+U\+I\+User\+::player\+Retreat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBattle}{Battle}} $\ast$}]{battle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Check whether the active player will retreat in this turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em turn} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a85b65d724e693ff145ada66e1d079727}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_a13b0967db9b70817a381731810c5a2eb}\label{classGUIUser_a13b0967db9b70817a381731810c5a2eb}} 
+\index{GUIUser@{GUIUser}!requestReinforcements@{requestReinforcements}}
+\index{requestReinforcements@{requestReinforcements}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{requestReinforcements()}{requestReinforcements()}}
+{\footnotesize\ttfamily bool G\+U\+I\+User\+::request\+Reinforcements (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBattle}{Battle}} $\ast$}]{battle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks whether active side will request reinforcements in their turn. 
+
+\begin{DoxyReturn}{Returns}
+true if reinforcements will be requested 
+
+false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_a6e99dce143c6effc43edf3d172bfdcb6}{Player}}.
+
+\mbox{\Hypertarget{classGUIUser_ad1b3a20bfd84d3c3ce4e0b9258fe5b28}\label{classGUIUser_ad1b3a20bfd84d3c3ce4e0b9258fe5b28}} 
+\index{GUIUser@{GUIUser}!togglePlayer@{togglePlayer}}
+\index{togglePlayer@{togglePlayer}!GUIUser@{GUIUser}}
+\doxysubsubsection{\texorpdfstring{togglePlayer()}{togglePlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlayer}{Player}} $\ast$ G\+U\+I\+User\+::toggle\+Player (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Change between player types. 
+
+\begin{DoxyReturn}{Returns}
+Player$\ast$ new player object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPlayer_aa21dd8f2c39dc2018de8383da3fc6b21}{Player}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/G\+U\+I\+User.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/G\+U\+I\+User.\+cpp\end{DoxyCompactItemize}

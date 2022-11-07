@@ -67,7 +67,8 @@ public:
 	/**
 	 * @brief Returns state of unit
 	 *
-	 */@return string will state the current state of the Unit - Fit, Injured or Dead
+	 *@return string will state the current state of the Unit - Fit, Injured or Dead
+	 */
 	virtual string getState();
 
 	/**

@@ -1,0 +1,559 @@
+\hypertarget{classBranch}{}\doxysection{Branch Class Reference}
+\label{classBranch}\index{Branch@{Branch}}
+
+
+Inheritance diagram for Branch\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{classBranch__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Branch\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classBranch__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBranch_a194db2b1ed403aef692d289063167d62}{Branch}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$unit)
+\begin{DoxyCompactList}\small\item\em Initialises unit pointer of branch. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classBranch_aa0d18216d63f2a16e8ce30ae3db17598}{to\+String}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function with specialisations printing specific branch. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classBranch_a06238cab4a212e1ce77112f90cbb86d7}{to\+String}} (int)
+\begin{DoxyCompactList}\small\item\em Prints all the details about \mbox{\hyperlink{classUnit}{Unit}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_aef2280c91527a93a325338192579e8ea}{attack}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$other)
+\begin{DoxyCompactList}\small\item\em Calls the unit\textquotesingle{}s attack method. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_a2658d58f184a25eb9c8f56261976d384}{request\+State}} ()
+\begin{DoxyCompactList}\small\item\em Calls the unit\textquotesingle{}s request\+State. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classBranch_aed855e11852e3ebd5f652c64eba132fe}{get\+Strategy\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Get the strategy of the unit. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_a32340309f1e8c8c7a5ab370163ce26d2}{change\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Forwards change strategy to unit. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_ac61702dc07b1c2ee2216cf077ccd358c}{set\+Unit\+State}} (\mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$unit\+State)
+\begin{DoxyCompactList}\small\item\em Calls the unit\textquotesingle{}s set\+Unit\+State. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classBranch_aa5c7e0bae4860d2139c01bdc543189cc}{take\+Damage}} (int damage, bool pewpew)
+\begin{DoxyCompactList}\small\item\em Calls the unit\textquotesingle{}s take\+Damage. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classBranch_a05ad231f948bbc870b9b3f29cedac93a}{get\+Branch}} ()
+\begin{DoxyCompactList}\small\item\em Get the branch of the unit as a string. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classBranch_aee4e1c8c7d6a04ac258a06f6309b295b}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets state of unit. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classBranch_a19ae83c0340f1b849c661dcb08dd7cbf}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the size of the unit in branch. \end{DoxyCompactList}\item 
+virtual int $\ast$ \mbox{\hyperlink{classBranch_ab4b55f8ced0b6850400b3cd06beca897}{get\+Ammo}} ()
+\begin{DoxyCompactList}\small\item\em Calls the units get\+Ammo and returns result. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classBranch_a51a98f7b8bf57c39d72c09e903776a8a}{split}} ()=0
+\begin{DoxyCompactList}\small\item\em Splits the unit into equal halves if possible. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_a86e8a2aae6d6931dd85abf2e1ffd01a8}{set\+Country}} (\mbox{\hyperlink{classCountry}{Country}} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Sets the country of the wrapped unit. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classCountry}{Country}} $\ast$ \mbox{\hyperlink{classBranch_a8c39c19c0c8d94894fb5abecbbf08cab}{get\+Country}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classCountry}{Country}} of the wrapped unit. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{classBranch_ad819bb043df323d46ce37fe80060af2a}{get\+Alliance}} ()
+\begin{DoxyCompactList}\small\item\em Get the Alliance of the wrapped unit. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_a4ba910a0cfe723165035bbc399bcee84}{join}} (\mbox{\hyperlink{classUnit}{Unit}} $\ast$others)
+\begin{DoxyCompactList}\small\item\em Merges two units together. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classUnit}{Unit}} $\ast$ \mbox{\hyperlink{classBranch_a2b2414fac70a482630740eb49153e207}{get\+Unit}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classUnit}{Unit}} object from branch. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_aa8169dada3877eb470deea9e83fdc510}{set\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Set the Texture of the branch\textquotesingle{}s unit (overridden) \end{DoxyCompactList}\item 
+virtual sf\+::\+Sprite $\ast$ \mbox{\hyperlink{classBranch_a63418687e9198146f0a77fc639910bf1}{get\+Sprite}} ()
+\begin{DoxyCompactList}\small\item\em Returns the sprite of trhe unit wrapped by the branch. Used for drawing and positioning the platoon on the G\+UI map. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_a0abbd40947a98b5c41e9c478d849607a}{set\+Text\+Location}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Set the Text Location of the wrapped unit. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_a886487ea9aa6c794ec292c93c35459b0}{draw}} (sf\+::\+Render\+Window $\ast$r)
+\begin{DoxyCompactList}\small\item\em Calls the draw function of the wrapped unit. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classBranch_a4a18b605c5a29dd2339a003c8952f336}{get\+Moral}} ()
+\begin{DoxyCompactList}\small\item\em Returns the average moral of the branch. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classBranch_a268e1d20dea8603e97a940d0ad652d10}{get\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Get the total health of the current branch. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classBranch_aa5e01128f774ebfd0b6cd0b32779117b}{replenish}} (\mbox{\hyperlink{classTransport}{Transport}} $\ast$$\ast$transport)
+\begin{DoxyCompactList}\small\item\em forwards the replenish to the unit \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBranch_a1ccd4c921c1c87869e8ec96da0e2dff8}{$\sim$\+Branch}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classBranch}{Branch}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBranch_a4d70a80d9cd92c234ec7168055eccaa9}\label{classBranch_a4d70a80d9cd92c234ec7168055eccaa9}} 
+\mbox{\hyperlink{classUnit}{Unit}} $\ast$ {\bfseries unit}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBranch_a194db2b1ed403aef692d289063167d62}\label{classBranch_a194db2b1ed403aef692d289063167d62}} 
+\index{Branch@{Branch}!Branch@{Branch}}
+\index{Branch@{Branch}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{Branch()}{Branch()}}
+{\footnotesize\ttfamily Branch\+::\+Branch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{unit }\end{DoxyParamCaption})}
+
+
+
+Initialises unit pointer of branch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit} & the unit pointer to initialise this-\/$>$unit with \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBranch_a1ccd4c921c1c87869e8ec96da0e2dff8}\label{classBranch_a1ccd4c921c1c87869e8ec96da0e2dff8}} 
+\index{Branch@{Branch}!````~Branch@{$\sim$Branch}}
+\index{````~Branch@{$\sim$Branch}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{$\sim$Branch()}{~Branch()}}
+{\footnotesize\ttfamily Branch\+::$\sim$\+Branch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroy the \mbox{\hyperlink{classBranch}{Branch}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBranch_aef2280c91527a93a325338192579e8ea}\label{classBranch_aef2280c91527a93a325338192579e8ea}} 
+\index{Branch@{Branch}!attack@{attack}}
+\index{attack@{attack}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily void Branch\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the unit\textquotesingle{}s attack method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the platoon which the unit will attack \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classUnit_ad7e7e6db39c68e4852b7a3b165362bf1}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a32340309f1e8c8c7a5ab370163ce26d2}\label{classBranch_a32340309f1e8c8c7a5ab370163ce26d2}} 
+\index{Branch@{Branch}!changeStrategy@{changeStrategy}}
+\index{changeStrategy@{changeStrategy}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{changeStrategy()}{changeStrategy()}}
+{\footnotesize\ttfamily void Branch\+::change\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Forwards change strategy to unit. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a16a2b3dcab30982b90ec86cfe156cbc4}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a886487ea9aa6c794ec292c93c35459b0}\label{classBranch_a886487ea9aa6c794ec292c93c35459b0}} 
+\index{Branch@{Branch}!draw@{draw}}
+\index{draw@{draw}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Branch\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window $\ast$}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the draw function of the wrapped unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a9af7de7fd41e9c69ed4a413ae8fc7ec0}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_ad819bb043df323d46ce37fe80060af2a}\label{classBranch_ad819bb043df323d46ce37fe80060af2a}} 
+\index{Branch@{Branch}!getAlliance@{getAlliance}}
+\index{getAlliance@{getAlliance}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getAlliance()}{getAlliance()}}
+{\footnotesize\ttfamily string Branch\+::get\+Alliance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Alliance of the wrapped unit. 
+
+\begin{DoxyReturn}{Returns}
+Alliances$\ast$ 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a893f290ef47c7b99ab79bd136e035e1f}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_ab4b55f8ced0b6850400b3cd06beca897}\label{classBranch_ab4b55f8ced0b6850400b3cd06beca897}} 
+\index{Branch@{Branch}!getAmmo@{getAmmo}}
+\index{getAmmo@{getAmmo}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getAmmo()}{getAmmo()}}
+{\footnotesize\ttfamily int $\ast$ Branch\+::get\+Ammo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the units get\+Ammo and returns result. 
+
+\begin{DoxyReturn}{Returns}
+int$\ast$ ammo -\/ \mbox{[}0\mbox{]} = pew\+Pew, \mbox{[}1\mbox{]} = boom\+Boom 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a76f7f59056481fea62b968679a107b48}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a05ad231f948bbc870b9b3f29cedac93a}\label{classBranch_a05ad231f948bbc870b9b3f29cedac93a}} 
+\index{Branch@{Branch}!getBranch@{getBranch}}
+\index{getBranch@{getBranch}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getBranch()}{getBranch()}}
+{\footnotesize\ttfamily string Branch\+::get\+Branch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the branch of the unit as a string. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a59552d2d4730661866fe2d245f49f738}{Unit}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classLandBranch_ab5175d75055d6acc76086a493dfbcf10}{Land\+Branch}}, and \mbox{\hyperlink{classAirBranch_a941582344db4099aab263f84edf72ad7}{Air\+Branch}}.
+
+\mbox{\Hypertarget{classBranch_a8c39c19c0c8d94894fb5abecbbf08cab}\label{classBranch_a8c39c19c0c8d94894fb5abecbbf08cab}} 
+\index{Branch@{Branch}!getCountry@{getCountry}}
+\index{getCountry@{getCountry}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getCountry()}{getCountry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCountry}{Country}} $\ast$ Branch\+::get\+Country (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classCountry}{Country}} of the wrapped unit. 
+
+\begin{DoxyReturn}{Returns}
+Country$\ast$ 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a1cebb65d61d34d00201d5e77859b1e64}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a268e1d20dea8603e97a940d0ad652d10}\label{classBranch_a268e1d20dea8603e97a940d0ad652d10}} 
+\index{Branch@{Branch}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getHealth()}{getHealth()}}
+{\footnotesize\ttfamily int Branch\+::get\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the total health of the current branch. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a610a98a68a3e99227b15af4161f26b70}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a4a18b605c5a29dd2339a003c8952f336}\label{classBranch_a4a18b605c5a29dd2339a003c8952f336}} 
+\index{Branch@{Branch}!getMoral@{getMoral}}
+\index{getMoral@{getMoral}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getMoral()}{getMoral()}}
+{\footnotesize\ttfamily int Branch\+::get\+Moral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the average moral of the branch. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_adadbc1651dbd3f652f9974c3dcd75fc8}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a19ae83c0340f1b849c661dcb08dd7cbf}\label{classBranch_a19ae83c0340f1b849c661dcb08dd7cbf}} 
+\index{Branch@{Branch}!getSize@{getSize}}
+\index{getSize@{getSize}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Branch\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the size of the unit in branch. 
+
+\begin{DoxyReturn}{Returns}
+size of unit 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a63fe82ecf12df209d0d7ee2e97b62a7e}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a63418687e9198146f0a77fc639910bf1}\label{classBranch_a63418687e9198146f0a77fc639910bf1}} 
+\index{Branch@{Branch}!getSprite@{getSprite}}
+\index{getSprite@{getSprite}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getSprite()}{getSprite()}}
+{\footnotesize\ttfamily sf\+::\+Sprite $\ast$ Branch\+::get\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the sprite of trhe unit wrapped by the branch. Used for drawing and positioning the platoon on the G\+UI map. 
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Sprire$\ast$ 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a73aa5d8679e9606d8561e5b77dc2084b}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_aee4e1c8c7d6a04ac258a06f6309b295b}\label{classBranch_aee4e1c8c7d6a04ac258a06f6309b295b}} 
+\index{Branch@{Branch}!getState@{getState}}
+\index{getState@{getState}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily string Branch\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets state of unit. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a39e63d8bcdee33328b9e704e475f6fde}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_aed855e11852e3ebd5f652c64eba132fe}\label{classBranch_aed855e11852e3ebd5f652c64eba132fe}} 
+\index{Branch@{Branch}!getStrategyType@{getStrategyType}}
+\index{getStrategyType@{getStrategyType}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getStrategyType()}{getStrategyType()}}
+{\footnotesize\ttfamily string Branch\+::get\+Strategy\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the strategy of the unit. 
+
+\begin{DoxyReturn}{Returns}
+string -\/ return pew or boom 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a2ec935b8c0e88712647b7660062102f2}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a2b2414fac70a482630740eb49153e207}\label{classBranch_a2b2414fac70a482630740eb49153e207}} 
+\index{Branch@{Branch}!getUnit@{getUnit}}
+\index{getUnit@{getUnit}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{getUnit()}{getUnit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUnit}{Unit}} $\ast$ Branch\+::get\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classUnit}{Unit}} object from branch. 
+
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a4a11c36aa573927c1478be2f89515a77}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a4ba910a0cfe723165035bbc399bcee84}\label{classBranch_a4ba910a0cfe723165035bbc399bcee84}} 
+\index{Branch@{Branch}!join@{join}}
+\index{join@{join}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily void Branch\+::join (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnit}{Unit}} $\ast$}]{others }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Merges two units together. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em others} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a59eeecc450c8d37c3cd7389f72f0d51b}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_aa5e01128f774ebfd0b6cd0b32779117b}\label{classBranch_aa5e01128f774ebfd0b6cd0b32779117b}} 
+\index{Branch@{Branch}!replenish@{replenish}}
+\index{replenish@{replenish}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{replenish()}{replenish()}}
+{\footnotesize\ttfamily void Branch\+::replenish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTransport}{Transport}} $\ast$$\ast$}]{transport }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+forwards the replenish to the unit 
+
+
+\begin{DoxyParams}{Parameters}
+{\em transport} & array of resources \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_ad0471a86c4477ba5d2490a762a1f011f}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a2658d58f184a25eb9c8f56261976d384}\label{classBranch_a2658d58f184a25eb9c8f56261976d384}} 
+\index{Branch@{Branch}!requestState@{requestState}}
+\index{requestState@{requestState}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{requestState()}{requestState()}}
+{\footnotesize\ttfamily void Branch\+::request\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the unit\textquotesingle{}s request\+State. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_ab65200c8f1dd263d8dc14f14a20c2ba7}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a86e8a2aae6d6931dd85abf2e1ffd01a8}\label{classBranch_a86e8a2aae6d6931dd85abf2e1ffd01a8}} 
+\index{Branch@{Branch}!setCountry@{setCountry}}
+\index{setCountry@{setCountry}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{setCountry()}{setCountry()}}
+{\footnotesize\ttfamily void Branch\+::set\+Country (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCountry}{Country}} $\ast$}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the country of the wrapped unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a09136c0e4fdb9090d0f46539306d4e53}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a0abbd40947a98b5c41e9c478d849607a}\label{classBranch_a0abbd40947a98b5c41e9c478d849607a}} 
+\index{Branch@{Branch}!setTextLocation@{setTextLocation}}
+\index{setTextLocation@{setTextLocation}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{setTextLocation()}{setTextLocation()}}
+{\footnotesize\ttfamily void Branch\+::set\+Text\+Location (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the Text Location of the wrapped unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_ae8afd6f4bea91cfc988364417f8d1fde}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_aa8169dada3877eb470deea9e83fdc510}\label{classBranch_aa8169dada3877eb470deea9e83fdc510}} 
+\index{Branch@{Branch}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void Branch\+::set\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the Texture of the branch\textquotesingle{}s unit (overridden) 
+
+
+
+Reimplemented from \mbox{\hyperlink{classUnit}{Unit}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classLandBranch_af43de013880585a3c894da82b64fa77e}{Land\+Branch}}, and \mbox{\hyperlink{classAirBranch_a3b9b3881f39e63f27580f672663303ed}{Air\+Branch}}.
+
+\mbox{\Hypertarget{classBranch_ac61702dc07b1c2ee2216cf077ccd358c}\label{classBranch_ac61702dc07b1c2ee2216cf077ccd358c}} 
+\index{Branch@{Branch}!setUnitState@{setUnitState}}
+\index{setUnitState@{setUnitState}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{setUnitState()}{setUnitState()}}
+{\footnotesize\ttfamily void Branch\+::set\+Unit\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUnitsState}{Units\+State}} $\ast$}]{unit\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the unit\textquotesingle{}s set\+Unit\+State. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+State} & a pointer to to the new unit\+State \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a69d7b9201e098e5e9a8852c0bcf6bb53}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_a51a98f7b8bf57c39d72c09e903776a8a}\label{classBranch_a51a98f7b8bf57c39d72c09e903776a8a}} 
+\index{Branch@{Branch}!split@{split}}
+\index{split@{split}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classUnit}{Unit}}$\ast$ Branch\+::split (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Splits the unit into equal halves if possible. 
+
+\begin{DoxyReturn}{Returns}
+Unit$\ast$ 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_ab42f0cacd995893681338a3b18b32e09}{Unit}}.
+
+
+
+Implemented in \mbox{\hyperlink{classLandBranch_a752d2fe166a8261775915bc1ef9768f8}{Land\+Branch}}, and \mbox{\hyperlink{classAirBranch_a5e3d3dae23319a86180de26e1b1c2910}{Air\+Branch}}.
+
+\mbox{\Hypertarget{classBranch_aa5c7e0bae4860d2139c01bdc543189cc}\label{classBranch_aa5c7e0bae4860d2139c01bdc543189cc}} 
+\index{Branch@{Branch}!takeDamage@{takeDamage}}
+\index{takeDamage@{takeDamage}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{takeDamage()}{takeDamage()}}
+{\footnotesize\ttfamily bool Branch\+::take\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage,  }\item[{bool}]{pewpew }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calls the unit\textquotesingle{}s take\+Damage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & the amount of damage the unit should take, passed in as a parameter \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classUnit_a63f98bd1ee4dfeb6babdf8bec56f4482}{Unit}}.
+
+\mbox{\Hypertarget{classBranch_aa0d18216d63f2a16e8ce30ae3db17598}\label{classBranch_aa0d18216d63f2a16e8ce30ae3db17598}} 
+\index{Branch@{Branch}!toString@{toString}}
+\index{toString@{toString}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual string Branch\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function with specialisations printing specific branch. 
+
+
+
+Implemented in \mbox{\hyperlink{classLandBranch_afa0a3d449d30b512780c23d386f58e92}{Land\+Branch}}, and \mbox{\hyperlink{classAirBranch_a825e58d57d6a62e0ae804be10bdef9c9}{Air\+Branch}}.
+
+\mbox{\Hypertarget{classBranch_a06238cab4a212e1ce77112f90cbb86d7}\label{classBranch_a06238cab4a212e1ce77112f90cbb86d7}} 
+\index{Branch@{Branch}!toString@{toString}}
+\index{toString@{toString}!Branch@{Branch}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily string Branch\+::to\+String (\begin{DoxyParamCaption}\item[{int}]{line\+Len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Prints all the details about \mbox{\hyperlink{classUnit}{Unit}}. 
+
+Pure virtual -\/ implemented in subclasses 
+
+Reimplemented from \mbox{\hyperlink{classUnit_a7d6a3742cd7cd9440fa609c0b11fd3ef}{Unit}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Branch.\+h\item 
+/mnt/c/\+Users/gteuw/\+Documents/\+Git\+Hub/cos214-\/project/\+System/Branch.\+cpp\end{DoxyCompactItemize}
