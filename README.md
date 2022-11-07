@@ -45,6 +45,7 @@ We have created unit tests to test our various classes and that they create the 
  - builer_test, `cd builder_test`.
  - unit_test, `cd unit_test`.
  - platoon_test, `cd platoon_test`.
- - 
+ - country_test, `cd country_test`.
+ - branches_test, `cd branches_test`.
 4. Once you are in the correct folder, simply run `make` and then run `./runTest`
 5. Watch the tests run!
