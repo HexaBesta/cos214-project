@@ -1,4 +1,4 @@
-# The War Games by Segmentation Fault
+# *The Art of War* by Segmentation Fault
 ![Arma 3](https://www.pcgamesn.com/wp-content/sites/pcgamesn/2021/09/the-best-war-games-on-pc-2021.jpg)
 
 Run a simulation or create your own war. Let it run by itself or be the commander of your forces.
@@ -9,7 +9,7 @@ Run a simulation or create your own war. Let it run by itself or be the commande
 ├── Code                    # Source code folder
 ├── Docs                    # Documentation files
 ├── Maps                    # Map textfile templates
-├── vpp                     # Visual Paradigm files
+├── VPP                     # Visual Paradigm files
 ├── Report                  # Project Reports
 └── README.md
 ```
@@ -33,4 +33,18 @@ We do recommend running this project inside of Native Linux, wether it being a L
 
 # Documentation
 - You can read our project documentation [here](https://docs.google.com/document/d/1wIGAnmKmzZtf5SyiAyfpMH3J3QU_R3UXf-i8mV9dXS0/).
-- You can also view our project board [here](https://github.com/users/sloththedev/projects/6)].
+- You can also view our project board [here](https://github.com/users/sloththedev/projects/6).
+
+# Unit Tests
+We have created unit tests to test our various classes and that they create the correct values upon return etc.
+
+## Running the Unit Tests
+1. Please ensure you have Google Tests installed on your machine.
+2. Go into the Code/UnitTesting file, `cd Code/UnitTesting`
+3. You can go into either of the various test folders we have set up, namely:
+ - builer_test, `cd builder_test`.
+ - unit_test, `cd unit_test`.
+ - platoon_test, `cd platoon_test`.
+ - 
+4. Once you are in the correct folder, simply run `make` and then run `./runTest`
+5. Watch the tests run!
