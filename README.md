@@ -42,10 +42,6 @@ We have created unit tests to test our various classes and that they create the 
 1. You will need to download the UnitTesting archive to avoid conflicts with our GUI. You can download it [here](https://github.com/sloththedev/cos214-project/archive/refs/tags/testing.zip).
 1. Please ensure you have Google Tests installed on your machine, `sudo apt-get install libgtest-dev`, as well as CMake, `sudo apt-get install cmake`.
 2. Go into the System/UnitTesting file, `cd System/UnitTesting`
-3. Ensure that you have recreated the CMake files, by deleting all files inside this folder apart from
- - main.cpp
- - unit_test.cpp
- - CMakeList.txt
-3.1. and then run `cmake CMakeList.txt`
+3. Ensure that you have recreated the CMake files, by deleting all files and folders inside this folder apart from main.cpp, unit_test.cpp, CMakeList.txt and then run `cmake CMakeList.txt` to recreate the unit testing files to prevent any issues from happening.
 3. Once you are in the correct folder, simply run `make` (to ensure that all the unit tests are up-to-date) and then run `./runTest`
 4. Watch the tests run!
