@@ -5,12 +5,12 @@ Run a simulation or create your own war. Let it run by itself or be the commande
 
 # Directory Structure
 ```
-.
-├── Code                    # Source code folder
-├── Docs                    # Documentation files
-├── Maps                    # Map textfile templates
-├── VPP                     # Visual Paradigm files
-├── Report                  # Project Reports
+.                     # Root Directory
+├── System          # Source code folder
+├── Docs            # Documentation files
+├── Data            # Map textfile templates
+├── VPP             # Visual Paradigm files
+├── Report          # Project Reports
 └── README.md
 ```
 
