@@ -39,7 +39,7 @@ We do recommend running this project inside of Native Linux, wether it being a L
 We have created unit tests to test our various classes and that they create the correct values upon return etc.
 
 ## Running the Unit Tests
-1. Please ensure you have Google Tests installed on your machine, `sudo apt-get install libgtest-dev`, as well as Camera, `sudo apt-get install cmake`.
+1. Please ensure you have Google Tests installed on your machine, `sudo apt-get install libgtest-dev`, as well as CMake, `sudo apt-get install cmake`.
 2. Go into the Code/UnitTesting file, `cd Code/UnitTesting`
 3. You can go into either of the various test folders we have set up, namely:
  - builer_test, `cd builder_test`.
