@@ -39,13 +39,8 @@ We do recommend running this project inside of Native Linux, wether it being a L
 We have created unit tests to test our various classes and that they create the correct values upon return etc.
 
 ## Running the Unit Tests
+1. You will need to download the UnitTesting archive to avoid conflicts with our GUI. You can download it [here](https://github.com/sloththedev/cos214-project/archive/refs/tags/testing.zip).
 1. Please ensure you have Google Tests installed on your machine, `sudo apt-get install libgtest-dev`, as well as CMake, `sudo apt-get install cmake`.
 2. Go into the System/UnitTesting file, `cd System/UnitTesting`
-3. You can go into either of the various test folders we have set up, namely:
-
-
-
-
-
-4. Once you are in the correct folder, simply run `make` and then run `./runTest`
-5. Watch the tests run!
+3. Once you are in the correct folder, simply run `make` (to ensure that all the unit tests are up-to-date) and then run `./runTest`
+4. Watch the tests run!
