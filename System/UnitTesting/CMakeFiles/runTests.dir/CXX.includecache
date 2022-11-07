@@ -76,6 +76,12 @@ DeadState.h
 CountryState.h
 /mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/CountryState.h
 
+/mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/LandBranch.h
+Branch.h
+/mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/Branch.h
+Unit.h
+/mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/Unit.h
+
 /mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/NeutralState.h
 CountryState.h
 /mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/CountryState.h
@@ -153,6 +159,10 @@ stdexcept
 /mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/Platoon.h
 ../AirBranch.h
 /mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/AirBranch.h
+../LandBranch.h
+/mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/LandBranch.h
+../DeployedState.h
+/mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/DeployedState.h
 gtest/gtest.h
 /mnt/c/Users/gteuw/Documents/GitHub/cos214-project/System/UnitTesting/gtest/gtest.h
 

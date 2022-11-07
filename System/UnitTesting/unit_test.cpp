@@ -5,6 +5,8 @@
 #include "../Country.h"
 #include "../Platoon.h"
 #include "../AirBranch.h"
+#include "../LandBranch.h"
+#include "../DeployedState.h"
 #include "gtest/gtest.h"
 
 namespace {
@@ -91,9 +93,54 @@ namespace {
     // ---- End of Platoon testing ---- //
 
     // ---- Start of Branch Test ---- //
-    TEST(BranchTesting, getBranch) {
+    TEST(BranchTesting, getAirBranch) {
         AirBranch air(NULL);
 
-        cout << air.getBranch() << endl;
+        string branch = air.getBranch();
+
+        if(branch == "AIR BRANCH") {
+            SUCCEED();
+        } else {
+            FAIL();
+        }
     }
+
+    TEST(BranchTesting, getLandBranch) {
+        LandBranch land(NULL);
+
+        string branch = land.getBranch();
+
+        if(branch == "LAND BRANCH") {
+            SUCCEED();
+        } else {
+            FAIL();
+        }
+
+    }
+
+    // ---- End of Branch Testing ---- //
+
+    // ---- Start of Country Testing ---- //
+    TEST(CountryTesting, getName) {
+        Country country("Sandton", 22, NULL);
+        string name = country.getName();
+
+        if(name == "Sandton") {
+            SUCCEED();
+        } else {
+            FAIL();
+        }
+
+    }
+
+    TEST(CountryTesting, getPopulation) {
+        Country country("Sandton", 22, NULL);
+
+        if(country.getPopulation() > 0) {
+            SUCCEED();
+        } else {
+            FAIL();
+        }
+    }
+
 }
